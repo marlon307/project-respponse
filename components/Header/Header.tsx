@@ -17,11 +17,11 @@ function Header() {
           alt="Respponse"
         />
       </div>
-      <div className={ style.menu }>
-        { width < 1024
+      {
+        width < 750
           ? <MenuMobile />
-          : <MenuDescktop /> }
-      </div>
+          : <MenuDescktop />
+      }
     </header>
   );
 }
