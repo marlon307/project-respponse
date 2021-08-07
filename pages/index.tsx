@@ -1,7 +1,9 @@
-const Home: React.FC = () => {
+import React from 'react';
+
+function index() {
   return (
     <h1>Hello World</h1>
-  )
+  );
 }
 
-export default Home
+export default index;
