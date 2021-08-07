@@ -1,11 +1,11 @@
-import { useLayoutEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react
 
 function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
     }
