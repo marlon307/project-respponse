@@ -2,9 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import style from './styles/styleHeader.module.scss';
 import Logo from '../../img/Logo.svg';
-import Menu from '../../img/Menu.svg';
+import useWindowSize from '../../hooks/useWindowSize';
+import MenuDescktop from './components/MenuDescktop';
+import MenuMobile from './components/MenuMobile';
 
 function Header() {
+  const [width] = useWindowSize();
+
   return (
     <header className={ style.header }>
       <div className={ style.container }>
@@ -14,7 +18,9 @@ function Header() {
         />
       </div>
       <div className={ style.menu }>
-        <Image src={ Menu } alt="Menu" />
+        { width < 1024
+          ? <MenuMobile />
+          : <MenuDescktop /> }
       </div>
     </header>
   );
