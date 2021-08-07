@@ -1,5 +1,72 @@
+$galaxyFold: 280px;
+$surfaceDuo: 540px;
+$ipadPro: 1024px;
+
 .header {
-  height: 140px;
   width: 100%;
-  background: #bb6c6c;
+  height: 140px;
+  background: transparent;
+  position: fixed;
+  transition: 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    background: #df5d5dea;
+    backdrop-filter: blur(4px);
+  }
+
+  @media screen and (min-width: $surfaceDuo) {
+    position: relative;
+    height: 10vh;
+
+    .container,
+    .menu {
+      display: flex;
+      margin: 0 2rem;
+    }
+
+    .container img {
+      width: 16vh;
+      height: 50px;
+    }
+  }
+
+  @media screen and (min-width: $galaxyFold) {
+    position: relative;
+    height: 10vh;
+
+    .container,
+    .menu {
+      display: flex;
+      margin: 0 1.5rem;
+    }
+
+    .container img {
+      width: 16vh;
+      height: 50px;
+    }
+  }
+
+  @media screen and (min-width: $ipadPro) {
+    position: relative;
+    height: 10vh;
+
+    .container,
+    .menu {
+      display: flex;
+      margin: 0 5rem;
+    }
+
+    .menu img {
+      width: 4vh;
+      height: 50px;
+    }
+
+    .container img {
+      width: 16vh;
+      height: 50px;
+    }
+  }
 }
