@@ -28,6 +28,23 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-curly-spacing": [2, {"when": "always", "spacing": {
       "objectLiterals": "never"
-    }}]
+    }}],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }
