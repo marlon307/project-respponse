@@ -6,7 +6,15 @@ import style from './styles/styleMenuUser.module.scss';
 function MenuUser() {
   return (
     <div className={ style.menuUser }>
-      <Image src={ icoUser } />
+      <Image src={ icoUser } alt="Menu Usuário" />
+      <div className={ style.dropmenu }>
+        <ul>
+          <li>Ajuda</li>
+          <li>Conta</li>
+          <li>Tema</li>
+          <li>Login</li>
+        </ul>
+      </div>
     </div>
   );
 }
