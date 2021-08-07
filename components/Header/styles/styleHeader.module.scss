@@ -2,9 +2,10 @@ $size: 750px;
 
 .header {
   width: 100%;
-  height: 130px;
+  height: 14vh;
   background: transparent;
   position: fixed;
+  z-index: 9999;
   transition: 0.1s;
   display: flex;
   align-items: center;
@@ -13,7 +14,8 @@ $size: 750px;
 
   &:hover {
     background: #ffffffea;
-    backdrop-filter: blur(4px);
+    backdrop-filter: saturate(100%) blur(5px);
+    box-shadow: inset 0 -1px 0 0 #0000001a;
   }
 
   .container {

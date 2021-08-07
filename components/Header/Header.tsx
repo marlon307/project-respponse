@@ -10,19 +10,21 @@ function Header() {
   const [width] = useWindowSize();
 
   return (
-    <header className={ style.header }>
-      <div className={ style.container }>
-        <Image
-          src={ Logo }
-          alt="Respponse"
-        />
-      </div>
-      {
-        width < 750
-          ? <MenuMobile />
-          : <MenuDescktop />
-      }
-    </header>
+    <>
+      <header className={ style.header }>
+        <div className={ style.container }>
+          <Image
+            src={ Logo }
+            alt="Respponse"
+          />
+        </div>
+        {
+          width < 750
+            ? <MenuMobile />
+            : <MenuDescktop />
+        }
+      </header>
+    </>
   );
 }
 
