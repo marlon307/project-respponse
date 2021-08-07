@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function index() {
   return (
-    <h1>Hello World</h1>
+    <Header />
   );
 }
 
