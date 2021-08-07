@@ -2,7 +2,7 @@ $size: 750px;
 
 .header {
   width: 100%;
-  height: 14vh;
+  height: 130px;
   background: transparent;
   position: fixed;
   z-index: 9999;
@@ -24,11 +24,16 @@ $size: 750px;
   }
 
   .container img {
-    width: 16vh;
+    width: 10em;
     height: 50px;
   }
 
   @media screen and (max-width: $size) {
     height: 9vh;
+
+    .container img {
+      width: 6em;
+      height: 50px;
+    }
   }
 }
