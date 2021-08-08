@@ -13,14 +13,18 @@ $size: 750px;
   border-radius: 0 0 1rem 1rem;
 
   &:hover {
-    background: #ffffffea;
+    background: var(--maincolormenu);
     backdrop-filter: saturate(100%) blur(5px);
-    box-shadow: inset 0 -1px 0 0 #0000001a;
+    box-shadow: inset 0 -1px 0 0 var(--bodercolor);
   }
 
   .container {
     margin-left: 6%;
     display: flex;
+    width: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .container img {
