@@ -1,6 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import icoUser from '../../../img/u_user.svg';
+import icoLogin from '../../../img/signin.svg';
+import icoFav from '../../../img/heart.svg';
+import icoSetting from '../../../img/setting.svg';
+import icoHelp from '../../../img/u_question-circle.svg';
 import style from './styles/styleMenuUser.module.scss';
 
 function MenuUser() {
@@ -10,10 +14,22 @@ function MenuUser() {
       <span />
       <div className={ style.dropmenu }>
         <ul>
-          <li>Ajuda</li>
-          <li>Conta</li>
-          <li>Favoritos</li>
-          <li>Login</li>
+          <li>
+            <Image src={ icoHelp } />
+            Ajuda
+          </li>
+          <li>
+            <Image src={ icoSetting } />
+            Conta
+          </li>
+          <li>
+            <Image src={ icoFav } />
+            Favoritos
+          </li>
+          <li>
+            <Image src={ icoLogin } />
+            Login
+          </li>
         </ul>
       </div>
     </div>
