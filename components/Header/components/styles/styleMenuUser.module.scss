@@ -48,10 +48,18 @@
 
   }
 
-  &:hover .dropmenu,
-  &:hover span {
+  &:hover .dropmenu {
     display: block;
     background: var(--maincolormenu);
     backdrop-filter: saturate(100%) blur(5px);
+  }
+
+  &:hover span {
+    display: block;
+
+    &::after {
+      background: var(--maincolormenu);
+      backdrop-filter: saturate(100%) blur(5px);
+    }
   }
 }

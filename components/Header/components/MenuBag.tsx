@@ -7,6 +7,15 @@ function MenuBag() {
   return (
     <div className={ style.bag }>
       <Image src={ iconBag } />
+      <span />
+
+      <div className={ style.dropBag }>
+        <ul>
+          <li>
+            Card
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
