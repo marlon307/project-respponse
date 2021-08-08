@@ -1,7 +1,11 @@
 .menuUser {
   width: 28px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 15px;
+  cursor: pointer;
 
   .dropmenu {
     position: absolute;
@@ -10,19 +14,42 @@
     right: 0;
     border-radius: 12px;
     top: 60px;
+    border: 1px solid var(--bodercolor);
 
     li {
       font-family: 'Open Sans', sans-serif;
       font-weight: 400;
       padding: 22px;
     }
+  }
+
+  span {
+    position: absolute;
+    display: none;
+    width: 20px;
+    height: 8px;
+    top: 52px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      left: 50%;
+      border: 1px solid var(--bodercolor);
+      position: absolute;
+      top: -0.5px;
+      width: 10px;
+      height: 10px;
+      transform: rotate(45deg);
+      transform-origin: 0% 0;
+      z-index: 1;
+    }
 
   }
 
-  &:hover .dropmenu {
+  &:hover .dropmenu,
+  &:hover span {
     display: block;
-    background: #ffffffea;
+    background: var(--maincolormenu);
     backdrop-filter: saturate(100%) blur(5px);
-    border: 1px solid #0000001a;
   }
 }

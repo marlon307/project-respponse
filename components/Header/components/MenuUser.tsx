@@ -7,11 +7,12 @@ function MenuUser() {
   return (
     <div className={ style.menuUser }>
       <Image src={ icoUser } alt="Menu Usuário" />
+      <span />
       <div className={ style.dropmenu }>
         <ul>
           <li>Ajuda</li>
           <li>Conta</li>
-          <li>Tema</li>
+          <li>Favoritos</li>
           <li>Login</li>
         </ul>
       </div>
