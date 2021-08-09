@@ -4,10 +4,16 @@ import MenuBag from './MenuBag';
 import MenuUser from './MenuUser';
 import style from './styles/styleMenudescktop.module.scss';
 
-function MenuDescktop() {
+type Props = {
+  setSearchopen: Function
+}
+
+function MenuDescktop({ setSearchopen }: Props) {
   return (
     <div className={ style.menuDescktop }>
-      <SearchBar />
+      <SearchBar
+        setSearchopen={ setSearchopen }
+      />
       <MenuBag />
       <MenuUser />
     </div>
