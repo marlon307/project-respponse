@@ -8,9 +8,9 @@ function MenuBag() {
   return (
     <div className={ style.bag }>
       <Image src={ iconBag } />
-      <span />
-
+      <span className={ style.set } />
       <div className={ style.dropBag }>
+        <h2 className={ style.titlemenu }>Sacola</h2>
         <ul>
           <li>
             <SmallCard />
@@ -22,6 +22,15 @@ function MenuBag() {
             <SmallCard />
           </li>
         </ul>
+        <div className={ style.baginfo }>
+          <div>
+            <span>Total:</span>
+            <span>R$ 554,00</span>
+          </div>
+          <button type="button" className={ style.buyButton }>
+            Ir para checkout
+          </button>
+        </div>
       </div>
     </div>
   );
