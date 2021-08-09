@@ -24,7 +24,7 @@ function SmallCard() {
             <span title="3 Berrylush - Top Forever 21 Canelado Preto" style={ { color: '#AAB4D9' } }>3x</span>
           </div>
           <div className={ style.price }>
-            <span title="Price R$ 199,90">R$ 199,90</span>
+            <span title="Valor da unidade R$ 199,90">R$ 199,90</span>
           </div>
         </div>
       </div>
