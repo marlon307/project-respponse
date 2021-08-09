@@ -22,10 +22,14 @@
       padding: 22px;
       display: flex;
       gap: 20px;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
-  span {
+  .set {
     position: absolute;
     display: none;
     width: 20px;
@@ -54,7 +58,7 @@
     backdrop-filter: saturate(100%) blur(5px);
   }
 
-  &:hover span {
+  &:hover .set {
     display: block;
 
     &::after {

@@ -7,26 +7,101 @@
   align-items: center;
   justify-content: center;
 
-
   &:hover .dropBag {
     display: block;
+  }
+
+  &:hover .set {
+    display: block;
+
+    &::after {
+      background: var(--maincolormenu);
+      backdrop-filter: saturate(100%) blur(5px);
+    }
   }
 }
 
 .dropBag {
   position: absolute;
   top: 60px;
-  right: -140px;
+  right: 0;
   display: none;
-  width: 400px;
+  width: 420px;
   background: var(--maincolormenu);
-  max-height: 450px;
-  overflow: auto;
-  padding: 0 18px;
+  backdrop-filter: saturate(100%) blur(5px);
   border-radius: 12px;
+
   border: 1px solid var(--bodercolor);
 
+  .titlemenu {
+    margin: 8px 12px;
+    color: var(--titlecolor);
+  }
+
+  ul {
+    padding: 12px 12px 0;
+    max-height: 450px;
+    overflow: auto;
+  }
+
   li {
-    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+}
+
+.set {
+  position: absolute;
+  display: none;
+  width: 20px;
+  height: 8px;
+  top: 52px;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    left: 50%;
+    border: 1px solid var(--bodercolor);
+    position: absolute;
+    top: -0.5px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    transform-origin: 0% 0;
+    z-index: 1;
+  }
+}
+
+.baginfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  margin: 14px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--bodercolor);
+
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span:first-child {
+      font-weight: 700;
+    }
+
+    span {
+      margin: 0 12px 18px;
+    }
+  }
+
+  button {
+    padding: 16px 72px;
+    border-radius: 12px;
+    background: #E7F4E7;
+    font-weight: 700;
+    cursor: pointer;
   }
 }
