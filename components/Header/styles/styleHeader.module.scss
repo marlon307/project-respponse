@@ -35,6 +35,10 @@ $size: 750px;
   @media screen and (max-width: $size) {
     height: 9vh;
 
+    .container {
+      width: 6em;
+    }
+
     .container img {
       width: 6em;
       height: 50px;
