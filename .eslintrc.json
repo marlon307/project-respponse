@@ -27,7 +27,7 @@
     // "import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
     "react/jsx-props-no-spreading": "off",
     "react/jsx-curly-spacing": [2, {"when": "always", "spacing": {
-      "objectLiterals": "never"
+      "objectLiterals": "always"
     }}],
     "import/extensions": [
       "error",

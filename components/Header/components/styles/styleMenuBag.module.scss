@@ -7,13 +7,26 @@
   align-items: center;
   justify-content: center;
 
-  .dropBag {
-    position: absolute;
-    top: 60px;
-    display: none;
-  }
 
   &:hover .dropBag {
     display: block;
+  }
+}
+
+.dropBag {
+  position: absolute;
+  top: 60px;
+  right: -140px;
+  display: none;
+  width: 400px;
+  background: var(--maincolormenu);
+  max-height: 450px;
+  overflow: auto;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1px solid var(--bodercolor);
+
+  li {
+    margin-top: 36px;
   }
 }
