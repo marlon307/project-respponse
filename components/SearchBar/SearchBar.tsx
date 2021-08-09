@@ -13,8 +13,11 @@ function SearchBar({ setSearchopen }: Props) {
   }
 
   return (
-    <div className={ style.searchBar } onMouseEnter={ openSearchBar }>
-      <Image src={ inconSearch } />
+    <div className={ style.searchBar }>
+      <Image
+        src={ inconSearch }
+        onClick={ openSearchBar }
+      />
     </div>
   );
 }
