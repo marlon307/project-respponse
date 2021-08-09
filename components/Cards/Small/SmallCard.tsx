@@ -19,9 +19,9 @@ function SmallCard() {
         <h3>Top Forever 21 Canelado Preto</h3>
         <div className={ style.infos }>
           <div className={ style.setting }>
-            <span title="Color Name" style={ { background: '#AAB4D9' } } />
-            <span title="Size Name" style={ { color: '#AAB4D9' } }>G</span>
-            <span title="Size Name" style={ { color: '#AAB4D9' } }>3x</span>
+            <span title="Roxo Claro" style={ { background: '#AAB4D9' } } />
+            <span title="Tamanho G" style={ { color: '#AAB4D9' } }>G</span>
+            <span title="3 Berrylush - Top Forever 21 Canelado Preto" style={ { color: '#AAB4D9' } }>3x</span>
           </div>
           <div className={ style.price }>
             <span title="Price R$ 199,90">R$ 199,90</span>

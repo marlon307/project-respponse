@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
     }
