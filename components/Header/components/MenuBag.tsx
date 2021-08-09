@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import iconBag from '../../../img/u_shopping-bag.svg';
 import style from './styles/styleMenuBag.module.scss';
+import { SmallCard } from '../../Cards';
 
 function MenuBag() {
   return (
@@ -12,7 +13,13 @@ function MenuBag() {
       <div className={ style.dropBag }>
         <ul>
           <li>
-            Card
+            <SmallCard />
+          </li>
+          <li>
+            <SmallCard />
+          </li>
+          <li>
+            <SmallCard />
           </li>
         </ul>
       </div>
