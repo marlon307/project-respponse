@@ -90,6 +90,7 @@
 
     span:first-child {
       font-weight: 700;
+      color: var(--titlecolor);
     }
 
     span {
@@ -98,10 +99,29 @@
   }
 
   button {
+    color: var(--titlecolor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 16px 72px;
     border-radius: 12px;
     background: #E7F4E7;
     font-weight: 700;
     cursor: pointer;
+    font-size: 1em;
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 16px;
+      right: 0;
+      opacity: 0;
+      transition: .2s;
+    }
+
+    &:hover span {
+      opacity: 1;
+      right: 12%;
+    }
   }
 }

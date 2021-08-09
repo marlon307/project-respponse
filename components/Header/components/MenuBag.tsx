@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import iconBag from '../../../img/u_shopping-bag.svg';
 import style from './styles/styleMenuBag.module.scss';
+import indication from '../../../img/u_arrow-right.svg';
 import { SmallCard } from '../../Cards';
 
 function MenuBag() {
@@ -29,6 +30,9 @@ function MenuBag() {
           </div>
           <button type="button" className={ style.buyButton }>
             Ir para checkout
+            <span>
+              <Image src={ indication } />
+            </span>
           </button>
         </div>
       </div>

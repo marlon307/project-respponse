@@ -11,7 +11,7 @@ function SmallCard() {
         <Image
           src={ TesteImgUrl }
           alt="Title"
-          quality="80"
+          quality="90"
         />
       </div>
       <div className={ style.desc }>
