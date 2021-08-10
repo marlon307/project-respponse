@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 import iconBag from '../../../img/u_shopping-bag.svg';
 import style from './styles/styleMenuBag.module.scss';
 import indication from '../../../img/u_arrow-right.svg';
 import { SmallCard } from '../../Cards';
+import useOutsideClick from '../../../hooks/useOutSide';
 
 function MenuBag() {
   const [enable, setEnable] = useState(false);
+  const ref = useRef(null);
+
+  useOutsideClick(ref, () => enable && setEnable(false));
+
   return (
     <div className={ style.bag }>
       <Image src={ iconBag } onClick={ () => setEnable(!enable) } />
 
-      <div className={ cx(style.dropBag, {
-        [style.drop]: enable,
-      }) }
+      <div
+        ref={ ref }
+        className={ cx(style.dropBag, {
+          [style.drop]: enable,
+        }) }
       >
         <span className={ style.set } />
         <div className={ style.containBag }>

@@ -25,6 +25,7 @@ function Header() {
       >
         <Bar
           setSearchopen={ setSearchopen }
+          searchopen={ searchopen }
         />
       </div>
       {
