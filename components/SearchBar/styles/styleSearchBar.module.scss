@@ -5,13 +5,18 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+
+  img {
+    transition: 3s;
+  }
+
 }
 
 .bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
   height: 100%;
 
   img {

@@ -16,11 +16,10 @@ function MenuUser() {
       <div className={
         cx(style.dropmenu, {
           [style.drop]: teste,
-          [style.anim]: teste,
         })
       }
       >
-        <ul className={ style.ul }>
+        <ul>
           <li>
             <Image src={ icoHelp } />
             Ajuda

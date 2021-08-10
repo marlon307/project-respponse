@@ -5,20 +5,25 @@ import style from './styles/styleSearchBar.module.scss';
 
 type Props = {
   setSearchopen: Function
+  searchopen: boolean
 }
 
-function SearchBar({ setSearchopen }: Props) {
+function SearchBar({ setSearchopen, searchopen }: Props) {
   function openSearchBar() {
-    setSearchopen(true);
+    setSearchopen(!searchopen);
   }
 
   return (
-    <div className={ style.searchBar }>
-      <Image
-        src={ inconSearch }
-        onClick={ openSearchBar }
-      />
-    </div>
+    <>
+      { !searchopen && (
+        <div className={ style.searchBar }>
+          <Image
+            src={ inconSearch }
+            onClick={ openSearchBar }
+          />
+        </div>
+      ) }
+    </>
   );
 }
 

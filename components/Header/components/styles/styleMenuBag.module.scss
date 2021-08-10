@@ -5,70 +5,73 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
-
-  &:hover .dropBag {
-    display: block;
-  }
-
-  &:hover .set {
-    display: block;
-
-    &::after {
-      background: var(--maincolormenu);
-      backdrop-filter: saturate(100%) blur(5px);
-    }
-  }
 }
 
 .dropBag {
-  position: absolute;
-  top: 60px;
-  right: 0;
-  display: none;
-  width: 420px;
-  background: var(--maincolormenu);
-  backdrop-filter: saturate(100%) blur(5px);
-  border-radius: 12px;
+  opacity: 0;
 
-  border: 1px solid var(--bodercolor);
-
-  .titlemenu {
-    margin: 8px 12px;
-    color: var(--titlecolor);
-  }
-
-  ul {
-    padding: 12px 12px 0;
-    max-height: 450px;
-    overflow: auto;
-  }
-
-  li {
-    margin-bottom: 36px;
-  }
-}
-
-.set {
-  position: absolute;
-  display: none;
-  width: 20px;
-  height: 8px;
-  top: 52px;
-  overflow: hidden;
-
-  &::after {
-    content: "";
-    left: 50%;
-    border: 1px solid var(--bodercolor);
+  .containBag {
+    display: none;
     position: absolute;
-    top: -0.5px;
-    width: 10px;
-    height: 10px;
-    transform: rotate(45deg);
-    transform-origin: 0% 0;
-    z-index: 1;
+    top: 50px;
+    right: 0;
+    width: 420px;
+    background: var(--maincolormenu);
+    backdrop-filter: saturate(100%) blur(5px);
+    border-radius: 12px;
+    border: 1px solid var(--bodercolor);
+
+    .titlemenu {
+      margin: 8px 12px;
+      color: var(--titlecolor);
+    }
+
+    ul {
+      padding: 12px 12px 0;
+      max-height: 450px;
+      overflow: auto;
+    }
+
+    li {
+      margin-bottom: 36px;
+    }
   }
+
 }
+
+.drop .containBag {
+  display: block;
+}
+
+.drop.dropBag {
+  transform: translateY(-1rem);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+// .set {
+//   position: absolute;
+//   display: none;
+//   width: 20px;
+//   height: 8px;
+//   top: 52px;
+//   overflow: hidden;
+
+//   &::after {
+//     content: "";
+//     left: 50%;
+//     border: 1px solid var(--bodercolor);
+//     background: var(--maincolormenu);
+//     backdrop-filter: saturate(100%) blur(5px);
+//     position: absolute;
+//     top: -0.5px;
+//     width: 10px;
+//     height: 10px;
+//     transform: rotate(45deg);
+//     transform-origin: 0% 0;
+//     z-index: 1;
+//   }
+// }
 
 .baginfo {
   display: flex;
