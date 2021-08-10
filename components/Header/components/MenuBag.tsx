@@ -16,6 +16,7 @@ function MenuBag() {
         [style.drop]: enable,
       }) }
       >
+        <span className={ style.set } />
         <div className={ style.containBag }>
           <h2 className={ style.titlemenu }>Sacola</h2>
           <ul>

@@ -19,6 +19,7 @@ function MenuUser() {
         })
       }
       >
+        <span className={ style.set } />
         <ul>
           <li>
             <Image src={ icoHelp } />

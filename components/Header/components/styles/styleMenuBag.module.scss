@@ -14,7 +14,7 @@
     display: none;
     position: absolute;
     top: 50px;
-    right: 0;
+    right: -20px;
     width: 420px;
     background: var(--maincolormenu);
     backdrop-filter: saturate(100%) blur(5px);
@@ -49,29 +49,29 @@
   transition: 0.3s;
 }
 
-// .set {
-//   position: absolute;
-//   display: none;
-//   width: 20px;
-//   height: 8px;
-//   top: 52px;
-//   overflow: hidden;
+.set {
+  position: absolute;
+  width: 20px;
+  height: 8px;
+  top: 42px;
+  right: 3.1px;
+  overflow: hidden;
 
-//   &::after {
-//     content: "";
-//     left: 50%;
-//     border: 1px solid var(--bodercolor);
-//     background: var(--maincolormenu);
-//     backdrop-filter: saturate(100%) blur(5px);
-//     position: absolute;
-//     top: -0.5px;
-//     width: 10px;
-//     height: 10px;
-//     transform: rotate(45deg);
-//     transform-origin: 0% 0;
-//     z-index: 1;
-//   }
-// }
+  &::after {
+    content: "";
+    left: 50%;
+    border: 1px solid var(--bodercolor);
+    background: var(--maincolormenu);
+    backdrop-filter: saturate(100%) blur(5px);
+    position: absolute;
+    top: -0.5px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    transform-origin: 0% 0;
+    z-index: 1;
+  }
+}
 
 .baginfo {
   display: flex;
