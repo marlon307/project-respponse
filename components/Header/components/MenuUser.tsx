@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 import icoUser from '../../../img/u_user.svg';
@@ -13,15 +13,16 @@ function MenuUser() {
   const [teste, setTeste] = useState(false);
   const ref = useRef(null);
   useOutsideClick(ref, () => teste && setTeste(false));
-
   return (
     <div className={ style.menuUser }>
       <Image src={ icoUser } alt="Menu Usuário" onClick={ () => setTeste(!teste) } />
-      <div className={
-        cx(style.dropmenu, {
-          [style.drop]: teste,
-        })
-      }
+      <div
+        ref={ ref }
+        className={
+          cx(style.dropmenu, {
+            [style.drop]: teste,
+          })
+        }
       >
         <span className={ style.set } />
         <ul>
