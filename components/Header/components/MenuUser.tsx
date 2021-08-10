@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import cx from 'classnames';
 import icoUser from '../../../img/u_user.svg';
 import icoLogin from '../../../img/signin.svg';
 import icoFav from '../../../img/heart.svg';
@@ -8,12 +9,18 @@ import icoHelp from '../../../img/u_question-circle.svg';
 import style from './styles/styleMenuUser.module.scss';
 
 function MenuUser() {
+  const [teste, setTeste] = useState(false);
   return (
     <div className={ style.menuUser }>
-      <Image src={ icoUser } alt="Menu Usuário" />
-      <span className={ style.set } />
-      <div className={ style.dropmenu }>
-        <ul>
+      <Image src={ icoUser } alt="Menu Usuário" onClick={ () => setTeste(!teste) } />
+      <div className={
+        cx(style.dropmenu, {
+          [style.drop]: teste,
+          [style.anim]: teste,
+        })
+      }
+      >
+        <ul className={ style.ul }>
           <li>
             <Image src={ icoHelp } />
             Ajuda

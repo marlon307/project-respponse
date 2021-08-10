@@ -7,13 +7,19 @@
   cursor: pointer;
 
   .dropmenu {
-    position: absolute;
-    display: none;
-    width: 230px;
-    right: 0;
-    border-radius: 12px;
-    top: 60px;
-    border: 1px solid var(--bodercolor);
+    opacity: 0;
+
+    ul {
+      display: none;
+      position: absolute;
+      width: 230px;
+      right: 0;
+      border-radius: 12px;
+      top: 50px;
+      border: 1px solid var(--bodercolor);
+      background: var(--maincolormenu);
+      backdrop-filter: saturate(100%) blur(5px);
+    }
 
     li {
       font-family: 'Open Sans', sans-serif;
@@ -28,41 +34,13 @@
     }
   }
 
-  .set {
-    position: absolute;
-    display: none;
-    width: 20px;
-    height: 8px;
-    top: 52px;
-    overflow: hidden;
-
-    &::after {
-      content: "";
-      left: 50%;
-      border: 1px solid var(--bodercolor);
-      position: absolute;
-      top: -0.5px;
-      width: 10px;
-      height: 10px;
-      transform: rotate(45deg);
-      transform-origin: 0% 0;
-      z-index: 1;
-    }
-
+  .drop .ul {
+    display: block;
   }
 
-  &:hover .dropmenu {
-    display: block;
-    background: var(--maincolormenu);
-    backdrop-filter: saturate(100%) blur(5px);
-  }
-
-  &:hover .set {
-    display: block;
-
-    &::after {
-      background: var(--maincolormenu);
-      backdrop-filter: saturate(100%) blur(5px);
-    }
+  .drop.dropmenu {
+    transform: translateY(-1rem);
+    opacity: 1;
+    transition: 0.3s;
   }
 }
