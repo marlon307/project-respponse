@@ -32,6 +32,17 @@ $size: 750px;
     height: 50px;
   }
 
+  .searchdrop {
+    width: 0;
+    height: 0;
+    transition: 0.3s;
+  }
+
+  .drop.searchdrop {
+    width: 40%;
+    height: 100%;
+  }
+
   @media screen and (max-width: $size) {
     height: 9vh;
 

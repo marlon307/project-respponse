@@ -6,12 +6,14 @@ import style from './styles/styleMenudescktop.module.scss';
 
 type Props = {
   setSearchopen: Function
+  searchopen: boolean
 }
 
-function MenuDescktop({ setSearchopen }: Props) {
+function MenuDescktop({ setSearchopen, searchopen }: Props) {
   return (
     <div className={ style.menuDescktop }>
       <SearchBar
+        searchopen={ searchopen }
         setSearchopen={ setSearchopen }
       />
       <MenuBag />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import cx from 'classnames';
 import style from './styles/styleHeader.module.scss';
 import Logo from '../../img/Logo.svg';
 import useWindowSize from '../../hooks/useWindowSize';
@@ -18,13 +19,21 @@ function Header() {
           alt="Respponse"
         />
       </div>
-      { searchopen && <Bar setSearchopen={ setSearchopen } /> }
+      <div className={ cx(style.searchdrop, {
+        [style.drop]: searchopen,
+      }) }
+      >
+        <Bar
+          setSearchopen={ setSearchopen }
+        />
+      </div>
       {
         width < 750
           ? <MenuMobile />
           : (
             <MenuDescktop
               setSearchopen={ setSearchopen }
+              searchopen={ searchopen }
             />
           )
       }
