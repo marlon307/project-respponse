@@ -17,13 +17,11 @@ function MenuUser() {
   return (
     <div className={ style.menuUser }>
       <Image src={ icoUser } alt="Menu Usuário" onClick={ () => setTeste(!teste) } />
-      <div
-        ref={ ref }
-        className={
-          cx(style.dropmenu, {
-            [style.drop]: teste,
-          })
-        }
+      <div className={
+        cx(style.dropmenu, {
+          [style.drop]: teste,
+        })
+      }
       >
         <span className={ style.set } />
         <ul>
