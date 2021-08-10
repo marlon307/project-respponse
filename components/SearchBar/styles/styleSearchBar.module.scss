@@ -6,7 +6,6 @@
   justify-content: center;
   cursor: pointer;
 
-
   img {
     transition: 3s;
   }
@@ -29,5 +28,6 @@
     padding: 0 26px;
     height: 50%;
     font-size: 1.6em;
+    background: var(--maincolormenu);
   }
 }

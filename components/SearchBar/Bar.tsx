@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import style from './styles/styleSearchBar.module.scss';
 import icoSearch from '../../img/u_search.svg';
 import icoClose from '../../img/close.svg';
+import useOutsideClick from '../../hooks/useOutSide';
 
 type Props = {
   setSearchopen: Function
+  searchopen: boolean
 }
 
-function Bar({ setSearchopen }: Props) {
+function Bar({ setSearchopen, searchopen }: Props) {
+  const ref = useRef(null);
+  useOutsideClick(ref, () => searchopen && setSearchopen(false));
+
   return (
-    <div className={ style.bar }>
+    <div ref={ ref } className={ style.bar }>
       <Image src={ icoSearch } />
       <input
         type="text"
