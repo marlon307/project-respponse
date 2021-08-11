@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import cx from 'classnames';
 import icoUser from '../../../assets/img/u_user.svg';
 import icoLogin from '../../../assets/img/signin.svg';
@@ -28,19 +29,27 @@ function MenuUser() {
         <ul>
           <li>
             <Image src={ icoHelp } />
-            Ajuda
+            <Link href="/help">
+              Ajuda
+            </Link>
           </li>
           <li>
             <Image src={ icoSetting } />
-            Conta
+            <Link href="/account">
+              Conta
+            </Link>
           </li>
           <li>
             <Image src={ icoFav } />
-            Favoritos
+            <Link href="/favorite">
+              Favoritos
+            </Link>
           </li>
           <li>
             <Image src={ icoLogin } />
-            Login
+            <Link href="/login">
+              Login
+            </Link>
           </li>
         </ul>
       </div>

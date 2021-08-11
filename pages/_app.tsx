@@ -1,10 +1,14 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
 import '../styles/globals.scss';
+import Header from '../components/Header';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Component { ...pageProps } />
+    <>
+      <Header />
+      <Component { ...pageProps } />
+    </>
   );
 }
 
