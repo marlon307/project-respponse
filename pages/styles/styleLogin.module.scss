@@ -1,5 +1,34 @@
 .contlogin {
   width: 90%;
   max-width: 400px;
-  margin: 14rem auto;
+  margin: 11em auto;
+
+  label {
+    margin: 46px 0 15px;
+  }
+
+  a {
+    color: #2f89dd;
+  }
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 32px 0;
+
+  label {
+    margin-right: 12px;
+    color: #858585;
+  }
+
+  button {
+    border-radius: 12px;
+    padding: 14px 38px;
+    background: #E7F4E7;
+    font-weight: 600;
+    color: #595555;
+    font-size: 1em;
+  }
 }
