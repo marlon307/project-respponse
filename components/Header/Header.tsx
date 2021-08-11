@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 import style from './styles/styleHeader.module.scss';
-import Logo from '../../img/Logo.svg';
+import Logo from '../../assets/img/Logo.svg';
 import useWindowSize from '../../hooks/useWindowSize';
 import MenuDescktop from './components/MenuDescktop';
 import MenuMobile from './components/MenuMobile';

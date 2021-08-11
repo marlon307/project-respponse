@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import style from './styles/styleSearchBar.module.scss';
-import icoSearch from '../../img/u_search.svg';
-import icoClose from '../../img/close.svg';
+import icoSearch from '../../assets/img/u_search.svg';
+import icoClose from '../../assets/img/close.svg';
 import useOutsideClick from '../../hooks/useOutSide';
 
 type Props = {
