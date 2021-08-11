@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
-import iconBag from '../../../img/u_shopping-bag.svg';
+import iconBag from '../../../assets/img/u_shopping-bag.svg';
 import style from './styles/styleMenuBag.module.scss';
-import indication from '../../../img/u_arrow-right.svg';
+import indication from '../../../assets/img/u_arrow-right.svg';
 import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
 

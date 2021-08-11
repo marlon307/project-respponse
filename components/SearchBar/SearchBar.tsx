@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import inconSearch from '../../img/u_search.svg';
+import inconSearch from '../../assets/img/u_search.svg';
 import style from './styles/styleSearchBar.module.scss';
 
 type Props = {

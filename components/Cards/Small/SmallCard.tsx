@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import TesteImgUrl from '../../../img/brian-lawson-e9o9sAy5PL4-unsplash 1.png';
-import iconTrash from '../../../img/u_trash.svg';
+import TesteImgUrl from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash 1.png';
 import style from './styles/stylesSmallCard.module.scss';
+import Svg from '../../../assets/Svg';
 
 function SmallCard() {
   return (
@@ -29,7 +29,7 @@ function SmallCard() {
         </div>
       </div>
       <div className={ style.delete } title="Excluir">
-        <Image src={ iconTrash } alt="Excluir" />
+        <Svg icoName="trash" />
       </div>
     </div>
   );

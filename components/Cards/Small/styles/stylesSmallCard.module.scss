@@ -80,8 +80,13 @@
   top: 16px;
   display: none;
 
-  img {
+  svg {
     width: 18px;
     height: 18px;
+
+    &:hover {
+      stroke: var(--hovericon);
+      fill: var(--hovericon);
+    }
   }
 }

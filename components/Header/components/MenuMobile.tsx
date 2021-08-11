@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Menu from '../../../img/Menu.svg';
+import Menu from '../../../assets/img/Menu.svg';
 import style from './styles/styleMenuMobile.module.scss';
 
 function MenuMobile() {

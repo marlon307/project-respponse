@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
-import icoUser from '../../../img/u_user.svg';
-import icoLogin from '../../../img/signin.svg';
-import icoFav from '../../../img/heart.svg';
-import icoSetting from '../../../img/setting.svg';
-import icoHelp from '../../../img/u_question-circle.svg';
+import icoUser from '../../../assets/img/u_user.svg';
+import icoLogin from '../../../assets/img/signin.svg';
+import icoFav from '../../../assets/img/heart.svg';
+import icoSetting from '../../../assets/img/setting.svg';
+import icoHelp from '../../../assets/img/u_question-circle.svg';
 import style from './styles/styleMenuUser.module.scss';
 import useOutsideClick from '../../../hooks/useOutSide';
 
