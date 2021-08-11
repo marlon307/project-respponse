@@ -1,0 +1,35 @@
+.input {
+  margin: 46px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  input {
+    background: #F3F3F3;
+    width: 100%;
+    height: 50px;
+    font-size: 1em;
+    padding: 0 22px;
+    border-radius: 20px;
+    color: #151515;
+  }
+
+  span {
+    margin-left: 22px;
+    position: absolute;
+    color: #9791E4;
+    transition: 0.3s;
+    top: 14px;
+  }
+
+  input::placeholder {
+    color: transparent;
+  }
+
+  input:not(:placeholder-shown)~span,
+  input:focus~span {
+    top: -26px;
+  }
+}
+
+//#9791E4
