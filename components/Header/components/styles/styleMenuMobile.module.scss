@@ -2,3 +2,39 @@
   display: flex;
   margin-right: 6%;
 }
+
+.dropmobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+
+  ul {
+    margin: 32px 8%;
+
+    li {
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      img {
+        width: 28px;
+      }
+    }
+  }
+
+}
+
+.close {
+  margin: 20% auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 32px;
+  }
+}

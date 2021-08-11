@@ -21,10 +21,12 @@ function Bar({ setSearchopen, searchopen }: Props) {
         type="text"
         placeholder="Busque aqui"
       />
-      <Image
-        src={ icoClose }
-        onClick={ () => setSearchopen(false) }
-      />
+      <div className={ style.close }>
+        <Image
+          src={ icoClose }
+          onClick={ () => setSearchopen(false) }
+        />
+      </div>
     </div>
   );
 }

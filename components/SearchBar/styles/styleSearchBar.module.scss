@@ -30,4 +30,18 @@
     font-size: 1.6em;
     background: transparent;
   }
+
+
+}
+
+@media (max-width: 750px) {
+  .bar {
+    height: 100px;
+    border-bottom: 1px solid var(--bodercolor);
+    margin: 0 6%;
+  }
+
+  .close {
+    display: none;
+  }
 }
