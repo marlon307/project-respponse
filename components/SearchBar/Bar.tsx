@@ -5,14 +5,14 @@ import icoSearch from '../../assets/img/u_search.svg';
 import icoClose from '../../assets/img/close.svg';
 import useOutsideClick from '../../hooks/useOutSide';
 
-type Props = {
-  setSearchopen: Function
-  searchopen: boolean
+export interface IProps {
+  setSearchopen?: Function;
+  searchopen?: boolean;
 }
 
-function Bar({ setSearchopen, searchopen }: Props) {
+function Bar({ setSearchopen, searchopen }: IProps) {
   const ref = useRef(null);
-  useOutsideClick(ref, () => searchopen && setSearchopen(false));
+  useOutsideClick(ref, () => searchopen && setSearchopen!(false));
 
   return (
     <div ref={ ref } className={ style.bar }>
@@ -21,10 +21,12 @@ function Bar({ setSearchopen, searchopen }: Props) {
         type="text"
         placeholder="Busque aqui"
       />
-      <Image
-        src={ icoClose }
-        onClick={ () => setSearchopen(false) }
-      />
+      <div className={ style.close }>
+        <Image
+          src={ icoClose }
+          onClick={ () => setSearchopen!(false) }
+        />
+      </div>
     </div>
   );
 }
