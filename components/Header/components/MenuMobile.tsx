@@ -15,7 +15,7 @@ function MenuMobile() {
     <div className={ style.mobile }>
       <Image src={ Menu } alt="Menu" />
       <div className={ style.dropmobile }>
-        <Bar searchopen />
+        <Bar />
         <ul>
           <li>
             <Image src={ icoHelp } />
