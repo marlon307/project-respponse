@@ -23,10 +23,12 @@ function Header() {
         [style.drop]: searchopen,
       }) }
       >
-        <Bar
-          setSearchopen={ setSearchopen }
-          searchopen={ searchopen }
-        />
+        { width > 750 && (
+          <Bar
+            setSearchopen={ setSearchopen }
+            searchopen={ searchopen }
+          />
+        ) }
       </div>
       {
         width < 750
