@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import cx from 'classnames';
 import Menu from '../../../assets/img/Menu.svg';
 import icoFav from '../../../assets/img/heart.svg';
@@ -28,24 +29,44 @@ function MenuMobile() {
           <Bar />
           <ul>
             <li>
-              <Image src={ icoHelp } />
-              Ajuda
+              <Link href="/help">
+                <span>
+                  <Image src={ icoHelp } />
+                  Ajuda
+                </span>
+              </Link>
             </li>
             <li>
-              <Image src={ icoAcount } />
-              Conta
+              <Link href="/account">
+                <span>
+                  <Image src={ icoAcount } />
+                  Conta
+                </span>
+              </Link>
             </li>
             <li>
-              <Image src={ icoFav } />
-              Favoritos
+              <Link href="/favorite">
+                <span>
+                  <Image src={ icoFav } />
+                  Favoritos
+                </span>
+              </Link>
             </li>
             <li>
-              <Image src={ iconBag } />
-              Sacola
+              <Link href="/bag">
+                <span>
+                  <Image src={ iconBag } />
+                  Sacola
+                </span>
+              </Link>
             </li>
             <li>
-              <Image src={ iconLogin } />
-              Login
+              <Link href="/login">
+                <span>
+                  <Image src={ iconLogin } />
+                  Login
+                </span>
+              </Link>
             </li>
           </ul>
           <div className={ style.close }>
