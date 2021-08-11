@@ -20,9 +20,17 @@
 
       li {
         padding: 22px;
-        display: flex;
-        align-items: center;
-        gap: 16px;
+
+        span {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          gap: 16px;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
 
         img {
           width: 28px;

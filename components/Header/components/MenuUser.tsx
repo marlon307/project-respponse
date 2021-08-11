@@ -28,27 +28,35 @@ function MenuUser() {
         <span className={ style.set } />
         <ul>
           <li>
-            <Image src={ icoHelp } />
             <Link href="/help">
-              Ajuda
+              <span>
+                <Image src={ icoHelp } />
+                Ajuda
+              </span>
             </Link>
           </li>
           <li>
-            <Image src={ icoSetting } />
             <Link href="/account">
-              Conta
+              <span>
+                <Image src={ icoSetting } />
+                Conta
+              </span>
             </Link>
           </li>
           <li>
-            <Image src={ icoFav } />
             <Link href="/favorite">
-              Favoritos
+              <span>
+                <Image src={ icoFav } />
+                Favoritos
+              </span>
             </Link>
           </li>
           <li>
-            <Image src={ icoLogin } />
             <Link href="/login">
-              Login
+              <span>
+                <Image src={ icoLogin } />
+                Login
+              </span>
             </Link>
           </li>
         </ul>

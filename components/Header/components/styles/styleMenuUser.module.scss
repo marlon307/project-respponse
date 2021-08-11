@@ -25,11 +25,15 @@
       font-family: 'Open Sans', sans-serif;
       font-weight: 400;
       padding: 22px;
-      display: flex;
-      gap: 20px;
 
-      &:hover {
-        text-decoration: underline;
+      span {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
