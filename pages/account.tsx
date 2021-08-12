@@ -7,6 +7,7 @@ import icoHelp from '../assets/img/u_question-circle.svg';
 import icoCard from '../assets/img/card.svg';
 import icoOrder from '../assets/img/u_list-ul.svg';
 import Usercfg from './usercfg';
+import Order from './orders';
 
 function account() {
   const [dropOption, setDropOption] = useState('');
@@ -38,6 +39,7 @@ function account() {
           <Image src={ icoOrder } />
           <span>Pedidos</span>
         </a>
+        { dropOption === 'order' && <Order /> }
       </div>
       <div className={ style.container }>
         <a

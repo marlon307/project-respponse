@@ -1,33 +1,3 @@
-.account {
-  width: 50rem;
-  margin: 10rem auto;
-}
-
-.container {
-  margin: 34px 6%;
-  border-radius: 22px;
-  border: 1px solid var(--bodercolor);
-
-  a {
-    display: flex;
-    padding: 28px;
-    align-items: center;
-    gap: 18px;
-    cursor: pointer;
-    color: #333;
-  }
-
-  img {
-    width: 28px;
-  }
-
-  .usercfg {
-    margin: 28px auto 62px;
-    max-width: 500px;
-  }
-
-}
-
 .usercfg {
   width: 90%;
   max-width: 400px;
@@ -73,5 +43,107 @@
 
   .contact {
     margin-top: 32px;
+  }
+}
+
+
+.orders {
+  display: flex;
+  width: 90%;
+  max-width: 700px;
+  margin: 200px auto;
+
+  .table {
+    width: 100%;
+  }
+
+  .toptable {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    h4:nth-child(1) {
+      margin: 0 26px;
+      width: 31.6%;
+    }
+
+    h4:nth-child(2) {
+      margin: 0 26px;
+      width: 31.6%;
+    }
+  }
+
+  .bodytable {
+    a {
+      margin-top: 26px;
+      height: 72px;
+      display: flex;
+      border-radius: 20px;
+      align-items: center;
+      color: #9791E4;
+      border: 1px solid var(--bodercolor);
+      background: #F4F4F4;
+    }
+
+    a:hover {
+      background: #eeeeee;
+    }
+
+    span {
+      text-align: left;
+    }
+
+    span:nth-child(1) {
+      width: 31.6%;
+      margin: 0 26px;
+    }
+
+    span:nth-child(2) {
+      margin: 0 26px;
+      width: 31.6%;
+    }
+  }
+}
+
+// Estilização da pagina (account) deve ser sempre a ultima
+.account {
+  width: 50rem;
+  margin: 10rem auto;
+}
+
+.container {
+  margin: 34px 6%;
+  border-radius: 22px;
+  border: 1px solid var(--bodercolor);
+
+  a {
+    display: flex;
+    padding: 28px;
+    align-items: center;
+    gap: 18px;
+    cursor: pointer;
+    color: #333;
+  }
+
+  img {
+    width: 28px;
+  }
+
+  .usercfg {
+    margin: 28px auto 62px;
+    max-width: 500px;
+  }
+
+  .orders {
+    margin: 28px auto 62px;
+
+    a {
+      height: 20px;
+    }
+
+    span:nth-child(1) {
+      width: 35.6%;
+      margin: 0;
+    }
   }
 }
