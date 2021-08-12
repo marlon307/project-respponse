@@ -72,21 +72,3 @@
     margin-right: 20px;
   }
 }
-
-.delete {
-  cursor: pointer;
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  display: none;
-
-  svg {
-    width: 18px;
-    height: 18px;
-
-    &:hover {
-      stroke: var(--hovericon);
-      fill: var(--hovericon);
-    }
-  }
-}

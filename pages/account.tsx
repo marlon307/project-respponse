@@ -8,6 +8,7 @@ import icoCard from '../assets/img/card.svg';
 import icoOrder from '../assets/img/u_list-ul.svg';
 import Usercfg from './usercfg';
 import Order from './orders';
+import Cards from './cards';
 
 function account() {
   const [dropOption, setDropOption] = useState('');
@@ -60,6 +61,7 @@ function account() {
           <Image src={ icoCard } />
           <span>Cartões</span>
         </a>
+        { dropOption === 'cards' && <Cards /> }
       </div>
       <div className={ style.container }>
         <a

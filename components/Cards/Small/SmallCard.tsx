@@ -28,7 +28,7 @@ function SmallCard() {
           </div>
         </div>
       </div>
-      <div className={ style.delete } title="Excluir">
+      <div className="delete" title="Excluir">
         <Svg icoName="trash" />
       </div>
     </div>

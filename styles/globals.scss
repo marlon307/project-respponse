@@ -25,6 +25,23 @@
   }
 }
 
+.delete {
+  position: absolute;
+  cursor: pointer;
+  right: 12px;
+  top: 12px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+
+    &:hover {
+      stroke: var(--hovericon);
+      fill: var(--hovericon);
+    }
+  }
+}
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 5px;
