@@ -19,6 +19,12 @@
   text-decoration: none;
 }
 
+.inputs {
+  label {
+    margin: 46px 0 15px;
+  }
+}
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 5px;
