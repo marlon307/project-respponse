@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import cx from 'classnames';
 import style from './styles/styleHeader.module.scss';
 import Logo from '../../assets/img/Logo.svg';
@@ -11,16 +11,16 @@ import Bar from '../SearchBar/Bar';
 
 function Header() {
   const [width] = useWindowSize();
+  const router = useRouter();
   const [searchopen, setSearchopen] = useState(false);
   return (
     <header className={ style.header }>
       <div className={ style.container }>
-        <Link href="/">
-          <Image
-            src={ Logo }
-            alt="Respponse"
-          />
-        </Link>
+        <Image
+          src={ Logo }
+          alt="Respponse"
+          onClick={ () => router.push('/') }
+        />
       </div>
       <div className={ cx(style.searchdrop, {
         [style.drop]: searchopen,

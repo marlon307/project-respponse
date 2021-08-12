@@ -4,17 +4,17 @@
 }
 
 .container {
-  cursor: pointer;
   margin: 34px 6%;
-  padding: 28px;
   border-radius: 22px;
   border: 1px solid var(--bodercolor);
 
-  label {
+  a {
     display: flex;
+    padding: 28px;
     align-items: center;
     gap: 18px;
     cursor: pointer;
+    color: #333;
   }
 
   img {
@@ -25,16 +25,59 @@
     display: none;
   }
 
-  input:checked {
-    background: #000;
-    margin-left: 50px;
-  }
-
   .panel {
     display: none;
   }
 
-  input:checked>.panel {
+  .panel.open {
     display: block;
+  }
+}
+
+.usercfg {
+  width: 90%;
+  max-width: 400px;
+  margin: 200px auto;
+
+  .genere {
+    margin: 48px 0;
+
+    label {
+      margin: 16px 0;
+    }
+
+    div {
+      display: flex;
+      gap: 15px;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 5px;
+      }
+
+      input {
+        display: none;
+      }
+
+      span::before {
+        content: '';
+        width: 12px;
+        height: 12px;
+        margin-right: 6px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 1px #9791E4;
+        border: 3px solid var(--maincolor);
+      }
+
+      input:checked~span:before {
+        background: #9791E4;
+      }
+    }
+  }
+
+  .contact {
+    margin-top: 32px;
   }
 }
