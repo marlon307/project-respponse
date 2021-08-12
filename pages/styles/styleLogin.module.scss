@@ -3,14 +3,21 @@
   max-width: 400px;
   margin: 11em auto;
 
-  label {
-    margin: 46px 0 15px;
-  }
-
   a {
     color: #2f89dd;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
+
+@media (max-width: 540px) {
+  .contlogin {
+    margin: 7em auto;
+  }
+}
+
 
 .action {
   display: flex;

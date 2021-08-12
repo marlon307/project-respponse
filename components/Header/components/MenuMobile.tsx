@@ -64,7 +64,7 @@ function MenuMobile() {
               <Link href="/login">
                 <span>
                   <Image src={ iconLogin } />
-                  Login
+                  Entrar
                 </span>
               </Link>
             </li>

@@ -55,7 +55,7 @@ function MenuUser() {
             <Link href="/login">
               <span>
                 <Image src={ icoLogin } />
-                Login
+                Entrar
               </span>
             </Link>
           </li>
