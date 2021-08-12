@@ -1,0 +1,19 @@
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 46em;
+
+  img {
+    width: 100vw;
+    height: 46em;
+    border-radius: 0 0 38px 38px;
+  }
+}
+
+.sectionfilter {
+  width: 100%;
+  margin: 120px 0;
+  background: #333;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import cx from 'classnames';
 import style from './styles/styleHeader.module.scss';
 import Logo from '../../assets/img/Logo.svg';
@@ -14,10 +15,12 @@ function Header() {
   return (
     <header className={ style.header }>
       <div className={ style.container }>
-        <Image
-          src={ Logo }
-          alt="Respponse"
-        />
+        <Link href="/">
+          <Image
+            src={ Logo }
+            alt="Respponse"
+          />
+        </Link>
       </div>
       <div className={ cx(style.searchdrop, {
         [style.drop]: searchopen,
