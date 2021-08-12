@@ -8,54 +8,56 @@ import icoCard from '../assets/img/card.svg';
 import icoOrder from '../assets/img/u_list-ul.svg';
 
 function account() {
+  function openMenu(e: { preventDefault: () => void; }) {
+    e.preventDefault();
+  }
+
   return (
     <div className={ style.account }>
       <div className={ style.container }>
-        <label htmlFor="userconfig">
-          <input id="userconfig" type="checkbox" />
+        <a href="teste" onClick={ openMenu } className={ style.dropOption }>
           <Image src={ icoUser } />
           <span>Configurações do Usuário</span>
-        </label>
+        </a>
         <div className={ style.panel }>
           Panel
         </div>
       </div>
       <div className={ style.container }>
-        <label htmlFor="userconfig">
-          <input id="userconfig" type="checkbox" />
+        <a href="teste" onClick={ openMenu } className={ style.dropOption }>
           <Image src={ icoOrder } />
           <span>Pedidos</span>
-        </label>
+        </a>
         <div className={ style.panel }>
           Panel
         </div>
       </div>
       <div className={ style.container }>
-        <label htmlFor="userconfig">
+        <a href="teste" onClick={ openMenu } className={ style.dropOption }>
           <input id="userconfig" type="checkbox" />
           <Image src={ icoMap } />
           <span>Endereços</span>
-        </label>
+        </a>
         <div className={ style.panel }>
           Panel
         </div>
       </div>
       <div className={ style.container }>
-        <label htmlFor="userconfig">
+        <a href="teste" onClick={ openMenu } className={ style.dropOption }>
           <input id="userconfig" type="checkbox" />
           <Image src={ icoCard } />
           <span>Cartões</span>
-        </label>
+        </a>
         <div className={ style.panel }>
           Panel
         </div>
       </div>
       <div className={ style.container }>
-        <label htmlFor="userconfig">
+        <a href="teste" onClick={ openMenu } className={ style.dropOption }>
           <input id="userconfig" type="checkbox" />
           <Image src={ icoHelp } />
           <span>Ajuda</span>
-        </label>
+        </a>
         <div className={ style.panel }>
           Panel
         </div>
