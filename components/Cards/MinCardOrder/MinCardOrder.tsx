@@ -1,12 +1,18 @@
 import React from 'react';
 import style from './styleMinCardOrder.module.scss';
 
-function MinCardOrder() {
+interface IProps {
+  idOrder: string;
+  date: string;
+  status: string;
+}
+
+function MinCardOrder({ idOrder, date, status }: IProps) {
   return (
     <a href="/" className={ style.mincardOrder }>
-      <span>00003</span>
-      <span>12/08/2021</span>
-      <span>Enviado</span>
+      <span>{ idOrder }</span>
+      <span>{ date }</span>
+      <span>{ status }</span>
     </a>
   );
 }
