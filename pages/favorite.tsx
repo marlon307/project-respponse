@@ -1,20 +1,28 @@
 import React from 'react';
+import Image from 'next/image';
 import { SmallCard } from '../components/Cards';
 import style from './styles/styleFavorite.module.scss';
+import iconBag from '../assets/img/u_heart-sign.svg';
 
 function favorite() {
   return (
-    <ul className={ style.favorites }>
-      <li>
-        <SmallCard />
-      </li>
-      <li>
-        <SmallCard />
-      </li>
-      <li>
-        <SmallCard />
-      </li>
-    </ul>
+    <div className={ style.favorites }>
+      <h2 className={ style.title } title="Favoritos">
+        <Image src={ iconBag } />
+        Favoritos
+      </h2>
+      <ul>
+        <li>
+          <SmallCard />
+        </li>
+        <li>
+          <SmallCard />
+        </li>
+        <li>
+          <SmallCard />
+        </li>
+      </ul>
+    </div>
   );
 }
 
