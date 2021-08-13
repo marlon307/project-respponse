@@ -12,9 +12,9 @@ function order() {
           <h4>Status</h4>
         </div>
         <div className={ style.bodytable }>
-          <MinCardOrder />
-          <MinCardOrder />
-          <MinCardOrder />
+          <MinCardOrder idOrder="00003" date="01/08/2021" status="Pag. Aprovado" />
+          <MinCardOrder idOrder="00002" date="06/08/2021" status="Enviado" />
+          <MinCardOrder idOrder="00001" date="01/08/2021" status="Entregue" />
         </div>
       </div>
     </section>
