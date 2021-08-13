@@ -4,7 +4,7 @@ import Input from '../components/ComponentsForm/Input';
 
 function usercfg() {
   return (
-    <div className={ style.usercfg }>
+    <section className={ style.usercfg }>
       <div className="inputs">
         <form>
           <h3>Informações básicas</h3>
@@ -37,7 +37,7 @@ function usercfg() {
           </div>
         </form>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import cx from 'classnames';
 import style from './styles/styleAccount.module.scss';
 import icoUser from '../assets/img/u_user.svg';
 import icoMap from '../assets/img/map-marker.svg';
@@ -31,7 +32,12 @@ function account() {
           <Image src={ icoUser } />
           <span>Configurações do Usuário</span>
         </a>
-        { dropOption === 'usercfg' && <Usercfg /> }
+        <div className={ cx(style.dropcontainer, {
+          [style.open]: dropOption === 'usercfg',
+        }) }
+        >
+          <Usercfg />
+        </div>
       </div>
       <div className={ style.container }>
         <a
@@ -42,7 +48,12 @@ function account() {
           <Image src={ icoOrder } />
           <span>Pedidos</span>
         </a>
-        { dropOption === 'order' && <Order /> }
+        <div className={ cx(style.dropcontainer, {
+          [style.open]: dropOption === 'order',
+        }) }
+        >
+          <Order />
+        </div>
       </div>
       <div className={ style.container }>
         <a
@@ -53,7 +64,12 @@ function account() {
           <Image src={ icoMap } />
           <span>Endereços</span>
         </a>
-        { dropOption === 'address' && <Address /> }
+        <div className={ cx(style.dropcontainer, {
+          [style.open]: dropOption === 'address',
+        }) }
+        >
+          <Address />
+        </div>
       </div>
       <div className={ style.container }>
         <a
@@ -64,7 +80,12 @@ function account() {
           <Image src={ icoCard } />
           <span>Cartões</span>
         </a>
-        { dropOption === 'cards' && <Cards /> }
+        <div className={ cx(style.dropcontainer, {
+          [style.open]: dropOption === 'cards',
+        }) }
+        >
+          <Cards />
+        </div>
       </div>
       <div className={ style.container }>
         <a
@@ -75,7 +96,12 @@ function account() {
           <Image src={ icoHelp } />
           <span>Ajuda</span>
         </a>
-        { dropOption === 'help' && <Help /> }
+        <div className={ cx(style.dropcontainer, {
+          [style.open]: dropOption === 'help',
+        }) }
+        >
+          <Help />
+        </div>
       </div>
     </div>
   );

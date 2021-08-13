@@ -4,7 +4,7 @@
   margin: 11em auto;
 
   a {
-    color: #2f89dd;
+    color: var(--colorlink);
 
     &:hover {
       text-decoration: underline;
