@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import style from './styles/styleSearchBar.module.scss';
+import style from './styleSearchBar.module.scss';
 import icoSearch from '../../assets/img/u_search.svg';
 import icoClose from '../../assets/img/close.svg';
 import useOutsideClick from '../../hooks/useOutSide';

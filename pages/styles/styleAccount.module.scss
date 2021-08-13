@@ -108,7 +108,7 @@
 
 .cards {
   width: 90%;
-  max-width: 700px;
+  max-width: 750px;
   margin: 200px auto;
 
   button {
@@ -122,24 +122,7 @@
   .sectioncards {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
-  }
-
-  .card {
-    position: relative;
-    width: 250px;
-    margin: 22px 12px;
-    border: 1px solid var(--bodercolor);
-    border-radius: 20px;
-    padding: 18px;
-  }
-
-  .infos {
-    margin-top: 82px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 }
 
@@ -154,7 +137,7 @@
   border-radius: 22px;
   border: 1px solid var(--bodercolor);
 
-  a {
+  .dropOption {
     display: flex;
     padding: 28px;
     align-items: center;
