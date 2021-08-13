@@ -13,12 +13,19 @@ import Cards from './cards';
 import Address from './address';
 import Help from './help';
 
+interface IProps {
+  preventDefault?: any;
+  target?: any;
+}
+
 function account() {
   const [dropOption, setDropOption] = useState('');
 
-  function openMenu(event: { preventDefault: () => void; }, menu: string) {
+  function openMenu(event: IProps) {
     event.preventDefault();
-    setDropOption(menu);
+
+    const { target: { id } } = event;
+    setDropOption(id);
   }
 
   return (
@@ -26,7 +33,8 @@ function account() {
       <div className={ style.container }>
         <a
           href="/usercfg"
-          onClick={ (event) => openMenu(event, 'usercfg') }
+          id="usercfg"
+          onClick={ openMenu }
           className={ style.dropOption }
         >
           <Image src={ icoUser } />
@@ -42,7 +50,8 @@ function account() {
       <div className={ style.container }>
         <a
           href="/order"
-          onClick={ (event) => openMenu(event, 'order') }
+          id="order"
+          onClick={ openMenu }
           className={ style.dropOption }
         >
           <Image src={ icoOrder } />
@@ -58,7 +67,8 @@ function account() {
       <div className={ style.container }>
         <a
           href="/address"
-          onClick={ (event) => openMenu(event, 'address') }
+          id="address"
+          onClick={ openMenu }
           className={ style.dropOption }
         >
           <Image src={ icoMap } />
@@ -74,7 +84,8 @@ function account() {
       <div className={ style.container }>
         <a
           href="/cards"
-          onClick={ (event) => openMenu(event, 'cards') }
+          id="cards"
+          onClick={ openMenu }
           className={ style.dropOption }
         >
           <Image src={ icoCard } />
@@ -90,7 +101,8 @@ function account() {
       <div className={ style.container }>
         <a
           href="/help"
-          onClick={ (event) => openMenu(event, 'help') }
+          id="help"
+          onClick={ openMenu }
           className={ style.dropOption }
         >
           <Image src={ icoHelp } />
