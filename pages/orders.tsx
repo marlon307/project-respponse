@@ -1,4 +1,5 @@
 import React from 'react';
+import { MinCardOrder } from '../components/Cards';
 import style from './styles/styleAccount.module.scss';
 
 function order() {
@@ -11,21 +12,9 @@ function order() {
           <h4>Status</h4>
         </div>
         <div className={ style.bodytable }>
-          <a href="/">
-            <span>00003</span>
-            <span>12/08/2021</span>
-            <span>Enviado</span>
-          </a>
-          <a href="/">
-            <span>00002</span>
-            <span>05/08/2021</span>
-            <span>Entregue</span>
-          </a>
-          <a href="/">
-            <span>00001</span>
-            <span>01/08/2021</span>
-            <span>Entregue</span>
-          </a>
+          <MinCardOrder />
+          <MinCardOrder />
+          <MinCardOrder />
         </div>
       </div>
     </section>
