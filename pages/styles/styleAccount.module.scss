@@ -160,6 +160,11 @@
     display: none;
   }
 
+  .dropcontainer {
+    max-height: 1000px;
+    overflow: auto;
+  }
+
   .open+.dropcontainer section {
     display: block;
     border: none;
