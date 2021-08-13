@@ -47,7 +47,6 @@
   }
 }
 
-
 .orders {
   display: flex;
   width: 90%;
@@ -69,37 +68,6 @@
     }
 
     h4:nth-child(2) {
-      margin: 0 26px;
-      width: 31.6%;
-    }
-  }
-
-  .bodytable {
-    a {
-      margin-top: 26px;
-      height: 72px;
-      display: flex;
-      border-radius: 20px;
-      align-items: center;
-      color: #9791E4;
-      border: 1px solid var(--bodercolor);
-      background: #F4F4F4;
-    }
-
-    a:hover {
-      background: #eeeeee;
-    }
-
-    span {
-      text-align: left;
-    }
-
-    span:nth-child(1) {
-      width: 31.6%;
-      margin: 0 26px;
-    }
-
-    span:nth-child(2) {
       margin: 0 26px;
       width: 31.6%;
     }
@@ -217,5 +185,25 @@
 @media (max-width: 280px) {
   .cards {
     width: 95%;
+  }
+}
+
+@media (max-width: 411px) {
+  .orders {
+    width: 100%;
+
+    .toptable {
+      font-size: 0.8rem;
+
+      h4:nth-child(1) {
+        margin: 0 9px;
+        width: 31.6%;
+      }
+
+      h4:nth-child(2) {
+        margin: 0 9px;
+        width: 31.6%;
+      }
+    }
   }
 }
