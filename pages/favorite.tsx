@@ -1,10 +1,20 @@
 import React from 'react';
+import { SmallCard } from '../components/Cards';
+import style from './styles/styleFavorite.module.scss';
 
 function favorite() {
   return (
-    <div>
-      Favoritos
-    </div>
+    <ul className={ style.favorites }>
+      <li>
+        <SmallCard />
+      </li>
+      <li>
+        <SmallCard />
+      </li>
+      <li>
+        <SmallCard />
+      </li>
+    </ul>
   );
 }
 
