@@ -3,8 +3,8 @@ import style from './styles/styleAccount.module.scss';
 
 function order() {
   return (
-    <div className={ style.orders }>
-      <section className={ style.table }>
+    <section className={ style.orders }>
+      <div className={ style.table }>
         <div className={ style.toptable }>
           <h4>Numero do pedido</h4>
           <h4>Data</h4>
@@ -27,8 +27,8 @@ function order() {
             <span>Entregue</span>
           </a>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 

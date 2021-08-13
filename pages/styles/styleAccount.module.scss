@@ -108,7 +108,7 @@
 
 .cards {
   width: 90%;
-  max-width: 750px;
+  max-width: 700px;
   margin: 200px auto;
 
   button {
@@ -128,7 +128,7 @@
 
 .address {
   width: 90%;
-  max-width: 750px;
+  max-width: 700px;
   margin: 200px auto;
 
   button {
@@ -142,7 +142,7 @@
 
 .help {
   width: 90%;
-  max-width: 750px;
+  max-width: 700px;
   margin: 200px auto;
 
   ol {
@@ -153,7 +153,7 @@
   li {
     color: var(--colorlink);
     list-style: decimal;
-    margin: 12px auto;
+    margin-bottom: 12px;
   }
 
   a {
@@ -169,16 +169,14 @@
 .dropcontainer {
   position: relative;
   display: flex;
-  height: 0;
+  transition: 0.3s;
 
   section {
     display: none;
   }
-
 }
 
 .open {
-  height: auto;
 
   section {
     display: block;
@@ -209,24 +207,11 @@
     width: 28px;
   }
 
-  .usercfg {
-    margin: 28px auto 52px;
-    max-width: 500px;
-  }
-
-  .orders {
-    margin: 28px auto 52px;
-  }
-
-  .cards {
-    margin: 12px auto 52px;
-  }
-
-  .address {
-    margin: 12px auto 52px;
-  }
-
+  .usercfg,
+  .orders,
+  .cards,
+  .address,
   .help {
-    margin: 12px auto 52px;
+    margin: 28px auto;
   }
 }
