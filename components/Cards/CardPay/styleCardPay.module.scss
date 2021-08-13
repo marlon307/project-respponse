@@ -1,0 +1,17 @@
+.card {
+  position: relative;
+  width: 250px;
+  margin: 12px;
+  border: 1px solid var(--bodercolor);
+  border-radius: 20px;
+  padding: 18px;
+  color: #303030;
+}
+
+.infos {
+  color: #858585;
+  margin-top: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

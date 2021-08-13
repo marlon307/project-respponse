@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import TesteImgUrl from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash 1.png';
-import style from './styles/stylesSmallCard.module.scss';
+import style from './stylesSmallCard.module.scss';
 import Svg from '../../../assets/Svg';
 
 function SmallCard() {
