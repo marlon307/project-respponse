@@ -13,19 +13,12 @@ import Cards from './cards';
 import Address from './address';
 import Help from './help';
 
-interface IProps {
-  preventDefault?: any;
-  target?: any;
-}
-
 function account() {
   const [dropOption, setDropOption] = useState('');
 
-  function openMenu(event: IProps) {
+  function openMenu(event: any, menuName: string) {
     event.preventDefault();
-
-    const { target: { id } } = event;
-    setDropOption(id);
+    setDropOption(menuName);
   }
 
   return (
@@ -33,8 +26,7 @@ function account() {
       <div className={ style.container }>
         <a
           href="/usercfg"
-          id="usercfg"
-          onClick={ openMenu }
+          onClick={ (event) => openMenu(event, 'usercfg') }
           className={ style.dropOption }
         >
           <Image src={ icoUser } />
@@ -50,8 +42,7 @@ function account() {
       <div className={ style.container }>
         <a
           href="/order"
-          id="order"
-          onClick={ openMenu }
+          onClick={ (event) => openMenu(event, 'order') }
           className={ style.dropOption }
         >
           <Image src={ icoOrder } />
@@ -67,8 +58,7 @@ function account() {
       <div className={ style.container }>
         <a
           href="/address"
-          id="address"
-          onClick={ openMenu }
+          onClick={ (event) => openMenu(event, 'address') }
           className={ style.dropOption }
         >
           <Image src={ icoMap } />
@@ -84,8 +74,7 @@ function account() {
       <div className={ style.container }>
         <a
           href="/cards"
-          id="cards"
-          onClick={ openMenu }
+          onClick={ (event) => openMenu(event, 'cards') }
           className={ style.dropOption }
         >
           <Image src={ icoCard } />
@@ -101,8 +90,7 @@ function account() {
       <div className={ style.container }>
         <a
           href="/help"
-          id="help"
-          onClick={ openMenu }
+          onClick={ (event) => openMenu(event, 'help') }
           className={ style.dropOption }
         >
           <Image src={ icoHelp } />
