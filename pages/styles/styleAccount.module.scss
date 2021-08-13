@@ -140,6 +140,32 @@
   }
 }
 
+.help {
+  width: 90%;
+  max-width: 750px;
+  margin: 200px auto;
+
+  ol {
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  li {
+    color: var(--colorlink);
+    list-style: decimal;
+    margin: 12px auto;
+  }
+
+  a {
+    color: var(--colorlink);
+    font-size: 1.2em;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 // Estilização da pagina (account) deve ser sempre a ultima
 .account {
   width: 50rem;
@@ -178,6 +204,10 @@
   }
 
   .address {
+    margin: 12px auto 52px;
+  }
+
+  .help {
     margin: 12px auto 52px;
   }
 }
