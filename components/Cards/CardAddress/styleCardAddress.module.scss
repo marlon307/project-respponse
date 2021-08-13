@@ -1,0 +1,21 @@
+.cardadderess {
+  position: relative;
+  width: 350px;
+  margin: 0 auto 22px;
+  padding: 18px;
+  border: 1px solid var(--bodercolor);
+  border-radius: 20px;
+  color: #333;
+
+  span {
+    display: flex;
+    margin-top: 12px;
+    color: #858585;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
