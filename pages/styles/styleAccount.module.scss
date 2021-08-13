@@ -12,6 +12,7 @@
 
     div {
       display: flex;
+      flex-wrap: wrap;
       gap: 15px;
 
       span {
@@ -114,7 +115,7 @@
   margin: 200px auto;
 
   ol {
-    padding: 0 3rem;
+    padding: 0 3em;
     margin: 0 auto;
   }
 
@@ -204,6 +205,16 @@
         margin: 0 9px;
         width: 31.6%;
       }
+    }
+  }
+
+  .help {
+    ol {
+      padding: 1em;
+    }
+
+    a {
+      font-size: 0.8em;
     }
   }
 }
