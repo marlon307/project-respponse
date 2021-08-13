@@ -27,15 +27,14 @@ function account() {
         <a
           href="/usercfg"
           onClick={ (event) => openMenu(event, 'usercfg') }
-          className={ style.dropOption }
+          className={ cx(style.dropOption, {
+            [style.open]: dropOption === 'usercfg',
+          }) }
         >
           <Image src={ icoUser } />
           <span>Configurações do Usuário</span>
         </a>
-        <div className={ cx(style.dropcontainer, {
-          [style.open]: dropOption === 'usercfg',
-        }) }
-        >
+        <div className={ style.dropcontainer }>
           <Usercfg />
         </div>
       </div>
@@ -43,15 +42,14 @@ function account() {
         <a
           href="/order"
           onClick={ (event) => openMenu(event, 'order') }
-          className={ style.dropOption }
+          className={ cx(style.dropOption, {
+            [style.open]: dropOption === 'order',
+          }) }
         >
           <Image src={ icoOrder } />
           <span>Pedidos</span>
         </a>
-        <div className={ cx(style.dropcontainer, {
-          [style.open]: dropOption === 'order',
-        }) }
-        >
+        <div className={ style.dropcontainer }>
           <Order />
         </div>
       </div>
@@ -59,15 +57,14 @@ function account() {
         <a
           href="/address"
           onClick={ (event) => openMenu(event, 'address') }
-          className={ style.dropOption }
+          className={ cx(style.dropOption, {
+            [style.open]: dropOption === 'address',
+          }) }
         >
           <Image src={ icoMap } />
           <span>Endereços</span>
         </a>
-        <div className={ cx(style.dropcontainer, {
-          [style.open]: dropOption === 'address',
-        }) }
-        >
+        <div className={ style.dropcontainer }>
           <Address />
         </div>
       </div>
@@ -75,15 +72,14 @@ function account() {
         <a
           href="/cards"
           onClick={ (event) => openMenu(event, 'cards') }
-          className={ style.dropOption }
+          className={ cx(style.dropOption, {
+            [style.open]: dropOption === 'cards',
+          }) }
         >
           <Image src={ icoCard } />
           <span>Cartões</span>
         </a>
-        <div className={ cx(style.dropcontainer, {
-          [style.open]: dropOption === 'cards',
-        }) }
-        >
+        <div className={ style.dropcontainer }>
           <Cards />
         </div>
       </div>
@@ -91,15 +87,14 @@ function account() {
         <a
           href="/help"
           onClick={ (event) => openMenu(event, 'help') }
-          className={ style.dropOption }
+          className={ cx(style.dropOption, {
+            [style.open]: dropOption === 'help',
+          }) }
         >
           <Image src={ icoHelp } />
           <span>Ajuda</span>
         </a>
-        <div className={ cx(style.dropcontainer, {
-          [style.open]: dropOption === 'help',
-        }) }
-        >
+        <div className={ style.dropcontainer }>
           <Help />
         </div>
       </div>
