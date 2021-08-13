@@ -166,6 +166,25 @@
   }
 }
 
+.dropcontainer {
+  position: relative;
+  display: flex;
+  height: 0;
+
+  section {
+    display: none;
+  }
+
+}
+
+.open {
+  height: auto;
+
+  section {
+    display: block;
+  }
+}
+
 // Estilização da pagina (account) deve ser sempre a ultima
 .account {
   width: 50rem;
