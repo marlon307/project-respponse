@@ -1,9 +1,12 @@
 import React from 'react';
+import { CardAdderess } from '../components/Cards';
+import styles from './styles/styleAccount.module.scss';
 
 function address() {
   return (
-    <div>
-      Endereço
+    <div className={ styles.address }>
+      <CardAdderess />
+      <CardAdderess />
     </div>
   );
 }

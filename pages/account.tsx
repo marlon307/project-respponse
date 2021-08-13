@@ -9,6 +9,8 @@ import icoOrder from '../assets/img/u_list-ul.svg';
 import Usercfg from './usercfg';
 import Order from './orders';
 import Cards from './cards';
+import Address from './address';
+import Help from './help';
 
 function account() {
   const [dropOption, setDropOption] = useState('');
@@ -51,6 +53,7 @@ function account() {
           <Image src={ icoMap } />
           <span>Endereços</span>
         </a>
+        { dropOption === 'address' && <Address /> }
       </div>
       <div className={ style.container }>
         <a
@@ -72,6 +75,7 @@ function account() {
           <Image src={ icoHelp } />
           <span>Ajuda</span>
         </a>
+        { dropOption === 'help' && <Help /> }
       </div>
     </div>
   );

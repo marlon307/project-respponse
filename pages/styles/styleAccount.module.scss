@@ -126,6 +126,12 @@
   }
 }
 
+.address {
+  width: 90%;
+  max-width: 750px;
+  margin: 200px auto;
+}
+
 // Estilização da pagina (account) deve ser sempre a ultima
 .account {
   width: 50rem;
@@ -151,15 +157,19 @@
   }
 
   .usercfg {
-    margin: 28px auto 62px;
+    margin: 28px auto 52px;
     max-width: 500px;
   }
 
   .orders {
-    margin: 28px auto 62px;
+    margin: 28px auto 52px;
   }
 
   .cards {
-    margin-top: 12px;
+    margin: 12px auto 52px;
+  }
+
+  .address {
+    margin: 12px auto 52px;
   }
 }
