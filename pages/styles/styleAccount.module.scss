@@ -172,10 +172,6 @@
   margin: 10rem auto;
 }
 
-// @media (max-width: 750px) {
-//   .account {}
-// }
-
 .container {
   margin: 34px 6%;
 
@@ -215,5 +211,11 @@
   .address,
   .help {
     margin: 28px auto 72px;
+  }
+}
+
+@media (max-width: 280px) {
+  .cards {
+    width: 95%;
   }
 }

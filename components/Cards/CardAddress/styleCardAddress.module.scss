@@ -1,6 +1,6 @@
 .cardadderess {
   position: relative;
-  width: 350px;
+  max-width: 350px;
   margin: 0 auto 22px;
   padding: 18px;
   border: 1px solid var(--bodercolor);
@@ -17,5 +17,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 750px) {
+  .cardadderess {
+    span {
+      font-size: 0.82rem;
+    }
   }
 }
