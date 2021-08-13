@@ -3,6 +3,18 @@
   max-width: 700px;
   width: 100%;
 
+  .title {
+    margin: 0 6% 42px;
+    gap: 16px;
+    color: #333;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 32px;
+    }
+  }
+
   li {
     margin: 0 6% 42px;
   }
