@@ -146,7 +146,7 @@
   margin: 200px auto;
 
   ol {
-    width: 500px;
+    padding: 0 3rem;
     margin: 0 auto;
   }
 
@@ -177,7 +177,6 @@
 }
 
 .open {
-
   section {
     display: block;
   }
@@ -187,6 +186,12 @@
 .account {
   width: 50rem;
   margin: 10rem auto;
+}
+
+@media (max-width: 750px) {
+  .account {
+    width: 100%;
+  }
 }
 
 .container {
