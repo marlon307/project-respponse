@@ -30,7 +30,7 @@
 }
 
 .checkout {
-  margin-left: 6%;
+  margin-left: 4%;
   width: 400px;
 
   h3 {
@@ -43,15 +43,19 @@
 }
 
 .container {
-  margin-top: 28px;
+  a {
+    margin: 26px 0 18px;
+  }
 
-  div {
-    margin: 12px 0;
+  label {
+    display: flex;
+    margin: 16px 0;
   }
 }
 
 .options {
   padding: 12px 12px;
+  margin: 0 auto 0;
   border: 1px solid var(--bodercolor);
   border-radius: 20px;
   max-width: 362px;
@@ -77,5 +81,5 @@
   border-right: 3px solid #333;
   border-radius: 3px;
   transform: rotate(135deg);
-  right: 0;
+  right: 16px;
 }
