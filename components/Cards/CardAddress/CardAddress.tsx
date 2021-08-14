@@ -19,35 +19,35 @@ function CardAdderess({
       <div className={ style.cardadderess }>
         <h4 title="Entregar para">{ name }</h4>
         <div>
-          <span title={ `Rua: ${road}` }>
+          <span title={ `Rua: ${road}` } className={ style.line }>
             Rua:
             { ' ' }
             { road }
           </span>
-          <span title={ `N°: ${number}` }>
+          <span title={ `N°: ${number}` } className={ style.line }>
             N°:
             { ' ' }
             { number }
           </span>
         </div>
-        <span title={ `Barrio: ${district}` }>
+        <span title={ `Barrio: ${district}` } className={ style.line }>
           Barrio:
           { ' ' }
           { district }
         </span>
         <div>
-          <span title={ `Estado: ${uf}` }>
+          <span title={ `Estado: ${uf}` } className={ style.line }>
             Estado:
             { ' ' }
             { uf }
           </span>
-          <span title={ `Cidade: ${city}` }>
+          <span title={ `Cidade: ${city}` } className={ style.line }>
             Cidade:
             { ' ' }
             { city }
           </span>
         </div>
-        <span title={ `CEP: ${zipcode}` }>
+        <span title={ `CEP: ${zipcode}` } className={ style.line }>
           CEP:
           { ' ' }
           { zipcode }
