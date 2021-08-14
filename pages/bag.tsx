@@ -7,7 +7,7 @@ import icoLoaction from '../assets/img/map-marker.svg';
 import icoShip from '../assets/img/truck.svg';
 import icoPay from '../assets/img/payment.svg';
 import icoCupom from '../assets/img/u_tag-alt.svg';
-import { InputRadio } from '../components/ComponentsForm';
+import { Input, InputRadio } from '../components/ComponentsForm';
 
 function bag() {
   return (
@@ -57,9 +57,9 @@ function bag() {
               Frete
             </h3>
           </a>
-          <div>
+          <div className={ style.options }>
             <InputRadio name="Correios Pac - R$ 25,00 - 2 dias uteis" id="correios" family="shippe" />
-            <InputRadio name="Pac - R$ 10,00 5 - dias uteis" id="pac" family="shippe" />
+            <InputRadio name="Pac - R$ 10,00 - 5 dias uteis" id="pac" family="shippe" />
             <InputRadio name="Fedex - R$ 15,00 - 3 dias uteis" id="fedex" family="shippe" />
           </div>
         </div>
@@ -70,6 +70,11 @@ function bag() {
               Forma de pagamento
             </h3>
           </a>
+          <div className={ style.options }>
+            <InputRadio name="Cartão de Credito" id="credit" family="payment" />
+            <InputRadio name="PayPal" id="paypal" family="payment" />
+            <InputRadio name="Pix" id="pix" family="payment" />
+          </div>
         </div>
         <div className={ style.container }>
           <a href="/" className={ style.select }>
@@ -78,6 +83,10 @@ function bag() {
               Cupom de Desconto
             </h3>
           </a>
+          <div className={ style.options }>
+            <Input id="cupom" type="text" name="cupom" placeholder="" />
+            <span className={ style.descount }>Desconto - R$ 0,00</span>
+          </div>
         </div>
         <div className={ style.sume }>
           <span>Valores</span>
