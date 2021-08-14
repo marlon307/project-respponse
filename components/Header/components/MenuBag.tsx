@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import cx from 'classnames';
 import iconBag from '../../../assets/img/u_shopping-bag.svg';
@@ -8,6 +9,7 @@ import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
 
 function MenuBag() {
+  const router = useRouter();
   const [enable, setEnable] = useState(false);
   const ref = useRef(null);
 
@@ -42,7 +44,11 @@ function MenuBag() {
               <span>Total:</span>
               <span>R$ 554,00</span>
             </div>
-            <button type="button" className={ style.buyButton }>
+            <button
+              type="button"
+              className={ style.buyButton }
+              onClick={ () => router.push('/bag') }
+            >
               Ir para checkout
               <span>
                 <Image src={ indication } />
