@@ -7,6 +7,7 @@ import icoLoaction from '../assets/img/map-marker.svg';
 import icoShip from '../assets/img/truck.svg';
 import icoPay from '../assets/img/payment.svg';
 import icoCupom from '../assets/img/u_tag-alt.svg';
+import { InputRadio } from '../components/ComponentsForm';
 
 function bag() {
   return (
@@ -56,6 +57,11 @@ function bag() {
               Frete
             </h3>
           </a>
+          <div>
+            <InputRadio name="Correios Pac - R$ 25,00 - 2 dias uteis" id="correios" family="shippe" />
+            <InputRadio name="Pac - R$ 10,00 5 - dias uteis" id="pac" family="shippe" />
+            <InputRadio name="Fedex - R$ 15,00 - 3 dias uteis" id="fedex" family="shippe" />
+          </div>
         </div>
         <div className={ style.container }>
           <a href="/" className={ style.select }>
