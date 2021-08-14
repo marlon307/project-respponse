@@ -31,4 +31,35 @@
   }
 }
 
-//#9791E4
+.inputRadio {
+  label {
+    margin: 16px 0;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+
+  input {
+    display: none;
+  }
+
+  span::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #9791E4;
+    border: 3px solid var(--maincolor);
+    margin-right: 12px;
+  }
+
+  input:checked~span:before {
+    background: #9791E4;
+  }
+}

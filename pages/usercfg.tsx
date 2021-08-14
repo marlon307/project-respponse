@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './styles/styleAccount.module.scss';
 import Input from '../components/ComponentsForm/Input';
+import { InputRadio } from '../components/ComponentsForm';
 
 function usercfg() {
   return (
@@ -16,18 +17,9 @@ function usercfg() {
           <div className={ style.genere }>
             <span>Sexo</span>
             <div>
-              <label htmlFor="men">
-                <input id="men" type="radio" name="grnere" />
-                <span>Masculino</span>
-              </label>
-              <label htmlFor="female">
-                <input id="female" type="radio" name="grnere" />
-                <span>Femenino</span>
-              </label>
-              <label htmlFor="undefined">
-                <input id="undefined" type="radio" name="grnere" />
-                <span>Não informar</span>
-              </label>
+              <InputRadio id="men" name="Masculino" family="grnere" />
+              <InputRadio id="female" name="Femenino" family="grnere" />
+              <InputRadio id="undefined" name="Não informar" family="grnere" />
             </div>
           </div>
           <div className={ style.contact }>
