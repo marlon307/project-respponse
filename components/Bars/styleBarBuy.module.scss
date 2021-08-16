@@ -1,0 +1,42 @@
+.buybar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--maincolormenu);
+  backdrop-filter: saturate(100%) blur(5px);
+  border: 1px solid var(--bodercolor);
+}
+
+.container {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  gap: 10em;
+}
+
+.calc {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    margin-bottom: 6px;
+    font-size: 0.98em;
+  }
+}
+
+.calcfinish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  span {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+}

@@ -43,10 +43,6 @@
 }
 
 .container {
-  a {
-    margin: 26px 0 18px;
-  }
-
   label {
     display: flex;
     margin: 16px 0;
@@ -54,7 +50,7 @@
 }
 
 .options {
-  padding: 12px 12px;
+  padding: 2px 12px;
   margin: 0 auto 0;
   border: 1px solid var(--bodercolor);
   border-radius: 20px;
@@ -69,7 +65,8 @@
 .select {
   display: flex;
   align-items: center;
-  position: relative
+  position: relative;
+  margin: 26px 0 18px;
 }
 
 .select::before {

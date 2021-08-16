@@ -30,14 +30,14 @@ function CardAdderess({
             { number }
           </span>
         </div>
-        <span title={ `Barrio: ${district}` } className={ style.line }>
-          Barrio:
+        <span title={ `Bairro: ${district}` } className={ style.line }>
+          Bairro:
           { ' ' }
           { district }
         </span>
         <div>
           <span title={ `Estado: ${uf}` } className={ style.line }>
-            Estado:
+            UF:
             { ' ' }
             { uf }
           </span>

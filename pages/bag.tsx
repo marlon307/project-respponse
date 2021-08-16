@@ -8,8 +8,13 @@ import icoShip from '../assets/img/truck.svg';
 import icoPay from '../assets/img/payment.svg';
 import icoCupom from '../assets/img/u_tag-alt.svg';
 import { Input, InputRadio } from '../components/ComponentsForm';
+import BarBuy from '../components/Bars/BarBuy';
 
 function bag() {
+  function openOptions(event: { preventDefault: () => void; }) {
+    event.preventDefault();
+  }
+
   return (
     <div className={ style.bag }>
       <section className={ style.list }>
@@ -27,12 +32,21 @@ function bag() {
           <li>
             <SmallCard />
           </li>
+          <li>
+            <SmallCard />
+          </li>
+          <li>
+            <SmallCard />
+          </li>
+          <li>
+            <SmallCard />
+          </li>
         </ul>
       </section>
       <section className={ style.checkout }>
         <h2>Checkout</h2>
         <div className={ style.container }>
-          <a href="/" className={ style.select }>
+          <a href="/" className={ style.select } onClick={ openOptions }>
             <h3>
               <Image src={ icoLoaction } />
               Endereço de entrega
@@ -51,20 +65,20 @@ function bag() {
           </div>
         </div>
         <div className={ style.container }>
-          <a href="/" className={ style.select }>
+          <a href="/" className={ style.select } onClick={ openOptions }>
             <h3>
               <Image src={ icoShip } />
               Frete
             </h3>
           </a>
           <div className={ style.options }>
-            <InputRadio name="Correios Pac - R$ 25,00 - 2 dias uteis" id="correios" family="shippe" />
+            <InputRadio name="Correios - R$ 25,00 - 2 dias uteis" id="correios" family="shippe" />
             <InputRadio name="Pac - R$ 10,00 - 5 dias uteis" id="pac" family="shippe" />
             <InputRadio name="Fedex - R$ 15,00 - 3 dias uteis" id="fedex" family="shippe" />
           </div>
         </div>
         <div className={ style.container }>
-          <a href="/" className={ style.select }>
+          <a href="/" className={ style.select } onClick={ openOptions }>
             <h3>
               <Image src={ icoPay } />
               Forma de pagamento
@@ -77,7 +91,7 @@ function bag() {
           </div>
         </div>
         <div className={ style.container }>
-          <a href="/" className={ style.select }>
+          <a href="/" className={ style.select } onClick={ openOptions }>
             <h3>
               <Image src={ icoCupom } />
               Cupom de Desconto
@@ -88,10 +102,8 @@ function bag() {
             <span className={ style.descount }>Desconto - R$ 0,00</span>
           </div>
         </div>
-        <div className={ style.sume }>
-          <span>Valores</span>
-        </div>
       </section>
+      <BarBuy />
     </div>
   );
 }
