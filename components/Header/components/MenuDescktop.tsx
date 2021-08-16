@@ -4,12 +4,12 @@ import MenuBag from './MenuBag';
 import MenuUser from './MenuUser';
 import style from './styles/styleMenudescktop.module.scss';
 
-type Props = {
+interface IProps {
   setSearchopen: Function
   searchopen: boolean
 }
 
-function MenuDescktop({ setSearchopen, searchopen }: Props) {
+function MenuDescktop({ setSearchopen, searchopen }: IProps) {
   return (
     <div className={ style.menuDescktop }>
       <SearchBar

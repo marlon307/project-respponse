@@ -19,24 +19,34 @@
 }
 
 .calc {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 6px;
+  font-weight: 700;
 
-  span {
-    margin-bottom: 6px;
+  span:nth-child(2) {
+    font-weight: 500;
     font-size: 0.98em;
+    margin-left: 12px;
   }
 }
 
 .calcfinish {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
 
-  span {
+  div {
     font-size: 1.2em;
     font-weight: 700;
     margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+    span:nth-child(2) {
+      font-size: 0.9em;
+      font-weight: 500;
+    }
   }
 }
