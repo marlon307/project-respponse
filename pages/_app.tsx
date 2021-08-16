@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Response</title>
+        <title>Respponse</title>
         <link rel="icon" href="/favico.ico" />
       </Head>
       <Header />

@@ -12,6 +12,8 @@ function SmallCard() {
           src={ TesteImgUrl }
           alt="Title"
           quality="90"
+          width={ 130 }
+          height={ 165 }
         />
       </div>
       <div className={ style.desc }>
