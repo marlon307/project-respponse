@@ -21,11 +21,13 @@
 .calc {
   margin-bottom: 6px;
   font-weight: 700;
+  color: #525252;
 
   span:nth-child(2) {
     font-weight: 500;
     font-size: 0.98em;
     margin-left: 12px;
+    color: #6b6b6b;
   }
 }
 
@@ -36,6 +38,7 @@
   flex-direction: column;
 
   div {
+    color: #525252;
     font-size: 1.2em;
     font-weight: 700;
     margin-bottom: 12px;
@@ -47,6 +50,7 @@
     span:nth-child(2) {
       font-size: 0.9em;
       font-weight: 500;
+      color: #6b6b6b;
     }
   }
 }
