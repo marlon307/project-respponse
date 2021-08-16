@@ -19,12 +19,13 @@
 }
 
 .calc {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 6px;
+  font-weight: 700;
 
-  span {
-    margin-bottom: 6px;
+  span:nth-child(2) {
+    font-weight: 500;
     font-size: 0.98em;
+    margin-left: 12px;
   }
 }
 
