@@ -32,6 +32,21 @@ function bag() {
           <li>
             <SmallCard />
           </li>
+          <li>
+            <SmallCard />
+          </li>
+          <li>
+            <SmallCard />
+          </li>
+          <li>
+            <SmallCard />
+          </li>
+          <li>
+            <SmallCard />
+          </li>
+          <li>
+            <SmallCard />
+          </li>
         </ul>
       </section>
       <section className={ style.checkout }>
