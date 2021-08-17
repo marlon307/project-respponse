@@ -27,6 +27,7 @@
 .desc {
   width: 100%;
   margin-left: 150px;
+  overflow: hidden;
 
   h2 {
     color: #525252;
@@ -80,5 +81,11 @@
 @media (max-width: 750px) {
   .desc {
     margin-left: 140px;
+  }
+}
+
+@media (max-width: 321px) {
+  .setting {
+    gap: 6px;
   }
 }
