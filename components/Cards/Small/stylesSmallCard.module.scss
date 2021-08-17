@@ -33,6 +33,10 @@
     color: #525252;
     font-size: 1em;
     font-weight: 700;
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   h3 {
@@ -87,5 +91,14 @@
 @media (max-width: 321px) {
   .setting {
     gap: 6px;
+  }
+
+  .infos {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .price {
+    margin-top: 6px;
   }
 }

@@ -1,7 +1,7 @@
 .usercfg {
   width: 90%;
   max-width: 400px;
-  margin: 10vh auto;
+  margin: 12vh auto;
 
   .genere {
     div {
@@ -20,7 +20,7 @@
   display: flex;
   width: 90%;
   max-width: 700px;
-  margin: 10vh auto;
+  margin: 12vh auto;
 
   .table {
     width: 100%;
@@ -41,12 +41,17 @@
       width: 31.6%;
     }
   }
+
+  .bodytable {
+    max-height: 80vh;
+    overflow: auto;
+  }
 }
 
 .cards {
   width: 90%;
   max-width: 700px;
-  margin: 10vh auto;
+  margin: 12vh auto;
 
   button {
     padding: 12px 24px;
@@ -60,13 +65,14 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    gap: 57px;
   }
 }
 
 .address {
   width: 90%;
   max-width: 700px;
-  margin: 10vh auto;
+  margin: 12vh auto;
 
   button {
     padding: 12px 24px;
@@ -80,7 +86,7 @@
 .help {
   width: 90%;
   max-width: 700px;
-  margin: 10vh auto;
+  margin: 12vh auto;
 
   ol {
     padding: 0 3em;
@@ -126,11 +132,6 @@
 
   section {
     display: none;
-  }
-
-  .dropcontainer {
-    max-height: 1200px;
-    overflow: auto;
   }
 
   .open+.dropcontainer section {
