@@ -1,6 +1,6 @@
 .bag {
   position: relative;
-  margin: 12vh auto;
+  margin: 110px auto;
   max-width: 1200px;
   display: flex;
   justify-content: flex-start;
@@ -84,6 +84,10 @@
 }
 
 @media (max-width: 750px) {
+  .bag {
+    margin-top: 70px;
+  }
+
   .list {
     width: 100%;
   }

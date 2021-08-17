@@ -12,12 +12,6 @@
   }
 }
 
-@media (max-width: 540px) {
-  .contlogin {
-    margin: 12vh auto;
-  }
-}
-
 .action {
   display: flex;
   align-items: center;
@@ -36,5 +30,11 @@
     font-weight: 600;
     color: #595555;
     font-size: 1em;
+  }
+}
+
+@media (max-width: 540px) {
+  .contlogin {
+    margin: 12vh auto;
   }
 }
