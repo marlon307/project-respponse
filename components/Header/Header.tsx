@@ -8,13 +8,20 @@ import useWindowSize from '../../hooks/useWindowSize';
 import MenuDescktop from './components/MenuDescktop';
 import MenuMobile from './components/MenuMobile';
 import Bar from '../SearchBar/Bar';
+import useScroll from '../../hooks/useScroll';
 
 function Header() {
   const [width] = useWindowSize();
   const router = useRouter();
+  const scrollY = useScroll();
+
   const [searchopen, setSearchopen] = useState(false);
+
   return (
-    <header className={ style.header }>
+    <header className={ cx(style.header, {
+      [style.active]: scrollY > 60,
+    }) }
+    >
       <div className={ style.container }>
         <Image
           src={ Logo }

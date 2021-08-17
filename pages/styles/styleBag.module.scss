@@ -60,7 +60,7 @@
 
   .descount {
     display: flex;
-    margin: 16px 8px 0;
+    margin: 16px 8px;
   }
 }
 
@@ -98,6 +98,7 @@
 
     .options {
       max-width: 100%;
+      margin: 0 4.5%;
     }
   }
 }
