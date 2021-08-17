@@ -2,7 +2,6 @@
   position: relative;
   margin: 10vh auto;
   max-width: 1200px;
-  width: 100%;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -25,7 +24,7 @@
 }
 
 .list {
-  width: 700px;
+  width: 60%;
 
   ul {
     padding-top: 16px;
@@ -34,7 +33,7 @@
 
 .checkout {
   margin-left: 4%;
-  width: 400px;
+  width: 35%;
 
   h3 {
     display: flex;
@@ -82,4 +81,19 @@
   border-radius: 3px;
   transform: rotate(135deg);
   right: 16px;
+}
+
+@media (max-width: 750px) {
+  .list {
+    width: 100%;
+  }
+
+  .checkout {
+    margin: 0 6%;
+    width: 100%;
+
+    .options {
+      max-width: 100%;
+    }
+  }
 }
