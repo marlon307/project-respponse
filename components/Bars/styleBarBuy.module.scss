@@ -61,9 +61,9 @@
 
 @media (max-width: 750px) {
   .buybar {
+    max-height: 40vh;
     overflow: hidden;
-    transition: 0.3s;
-    max-height: 20vh;
+    height: auto;
 
     a {
       position: absolute;
@@ -101,7 +101,7 @@
   }
 
   .open.buybar {
-    max-height: 45vh;
+    max-height: 60vh;
 
     .calc {
       display: flex;
