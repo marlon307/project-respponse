@@ -6,6 +6,10 @@
   background: var(--maincolormenu);
   backdrop-filter: saturate(100%) blur(5px);
   border: 1px solid var(--bodercolor);
+
+  a {
+    display: none;
+  }
 }
 
 .container {
@@ -15,7 +19,7 @@
   align-items: center;
   justify-content: center;
   padding: 12px 0;
-  gap: 10em;
+  gap: 16vh;
 }
 
 .calc {
@@ -51,6 +55,65 @@
       font-size: 0.9em;
       font-weight: 500;
       color: #6b6b6b;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .buybar {
+    max-height: 110px;
+    overflow: hidden;
+    transition: 0.3s;
+
+    a {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -1px;
+      left: 3%;
+      border-radius: 0 0 8px 8px;
+      width: 28px;
+      height: 38px;
+      border: 1px solid var(--bodercolor);
+
+      &:before {
+        position: absolute;
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-top: 3px solid #333;
+        border-right: 3px solid #333;
+        border-radius: 3px;
+        transform: rotate(-45deg);
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 2vh;
+    transform: translateY(-95px);
+  }
+
+  .calc {
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 30vh;
+  }
+
+  .open.buybar {
+    max-height: 210px;
+
+    .container {
+      transform: translateY(0px);
+    }
+
+    a {
+      &:before {
+        transform: rotate(135deg);
+      }
     }
   }
 }
