@@ -61,7 +61,7 @@
 
 @media (max-width: 750px) {
   .buybar {
-    max-height: 110px;
+    max-height: 20vh;
     overflow: hidden;
     transition: 0.3s;
 
@@ -104,7 +104,7 @@
   }
 
   .open.buybar {
-    max-height: 210px;
+    max-height: 45vh;
 
     .container {
       transform: translateY(0px);
