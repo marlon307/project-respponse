@@ -1,7 +1,7 @@
 .usercfg {
   width: 90%;
   max-width: 400px;
-  margin: 12vh auto;
+  margin: 110px auto;
 
   .genere {
     div {
@@ -20,7 +20,7 @@
   display: flex;
   width: 90%;
   max-width: 700px;
-  margin: 12vh auto;
+  margin: 110px auto;
 
   .table {
     width: 100%;
@@ -51,7 +51,7 @@
 .cards {
   width: 90%;
   max-width: 700px;
-  margin: 12vh auto;
+  margin: 110px auto;
 
   button {
     padding: 12px 24px;
@@ -72,7 +72,7 @@
 .address {
   width: 90%;
   max-width: 700px;
-  margin: 12vh auto;
+  margin: 110px auto;
 
   button {
     padding: 12px 24px;
@@ -86,7 +86,7 @@
 .help {
   width: 90%;
   max-width: 700px;
-  margin: 12vh auto;
+  margin: 110px auto;
 
   ol {
     padding: 0 3em;
@@ -112,7 +112,7 @@
 // Estilização da pagina (account) deve ser sempre a ultima
 .account {
   max-width: 800px;
-  margin: 14vh auto;
+  margin: 110px auto;
 }
 
 .container {
@@ -154,6 +154,18 @@
   .address,
   .help {
     margin: 5% auto;
+  }
+}
+
+@media (max-width: 750px) {
+
+  .account,
+  .usercfg,
+  .orders,
+  .cards,
+  .address,
+  .help {
+    margin-top: 70px;
   }
 }
 

@@ -1,5 +1,5 @@
 .favorites {
-  margin: 12vh auto;
+  margin: 110px auto;
   max-width: 700px;
   width: 100%;
 
@@ -17,5 +17,11 @@
 
   li {
     margin: 0 6% 42px;
+  }
+}
+
+@media (max-width: 750px) {
+  .favorites {
+    margin-top: 70px;
   }
 }
