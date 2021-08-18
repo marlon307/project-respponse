@@ -29,9 +29,8 @@
 
 .primaryline {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 42px;
-  gap: 5em;
 
   h1,
   span {
@@ -67,21 +66,14 @@
   }
 
   .primaryline {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 42px;
-    gap: 5em;
 
     h1,
     span {
-      color: #525252;
-      font-weight: 700;
       font-size: 1.2em;
     }
 
     h2 {
-      color: #707070;
-      font-size: 0.65em;
+      font-size: 0.8em;
     }
   }
 
