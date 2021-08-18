@@ -7,13 +7,13 @@ interface IObjectsColor {
 }
 
 interface IProps {
-  arrayColor: Array<IObjectsColor>
+  array: Array<IObjectsColor>
 }
 
-function BarColors({ arrayColor }: IProps) {
+function BarColors({ array }: IProps) {
   return (
     <div className={ style.barcolor } title="Cores">
-      { arrayColor.map(({ colorName, color }) => (
+      { array.map(({ colorName, color }) => (
         <label htmlFor={ colorName } key={ color }>
           <input id={ colorName } type="radio" name="color" />
           <span
