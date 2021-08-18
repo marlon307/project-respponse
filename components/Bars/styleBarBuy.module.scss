@@ -6,6 +6,7 @@
   background: var(--maincolormenu);
   backdrop-filter: saturate(100%) blur(5px);
   border: 1px solid var(--bodercolor);
+  border-radius: 1rem 1rem 0 0;
 
   a {
     display: none;
