@@ -1,0 +1,43 @@
+.barcolor {
+  top: 32%;
+  left: 7%;
+  position: absolute;
+  width: 40px;
+  max-height: 150px;
+  background: var(--maincolormenu);
+  backdrop-filter: saturate(100%) blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 22px 0;
+  overflow: hidden;
+  gap: 12px;
+
+  input {
+    display: none;
+  }
+
+  span {
+    cursor: pointer;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  input:checked~span {
+    border: 6px solid;
+    background: transparent !important;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// @media (man-width: 750px) {
+//   .barcolor {
+//     width: 35px;
+//     max-height: 140px;
+//   }
+// }
