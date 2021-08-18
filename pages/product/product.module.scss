@@ -5,6 +5,16 @@
   background: rgb(248, 216, 186);
 }
 
+.infos {
+  margin-top: -170px;
+  padding: 32px;
+  z-index: 9998;
+  background: var(--maincolor);
+  border-radius: 26px;
+  box-shadow: 0 0 30px var(--boxshdowncolo);
+  transition: 0.3s;
+}
+
 .infodesc {
   display: flex;
   align-items: center;
@@ -41,6 +51,13 @@
 }
 
 @media (max-width: 750px) {
+
+  .infos {
+    margin-top: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
   .slide {
     height: 50ch;
   }
@@ -59,12 +76,12 @@
     span {
       color: #525252;
       font-weight: 700;
-      font-size: 1.6em;
+      font-size: 1.2em;
     }
 
     h2 {
       color: #707070;
-      font-size: 0.9em;
+      font-size: 0.65em;
     }
   }
 
