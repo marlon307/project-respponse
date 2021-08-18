@@ -1,0 +1,25 @@
+.barsize {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  input {
+    display: none;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--bodercolor);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  input:checked+span {
+    color: rgb(255, 0, 0);
+  }
+}

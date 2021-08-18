@@ -2,9 +2,9 @@
   top: 32%;
   left: 7%;
   position: absolute;
-  width: 40px;
+  width: 34px;
   max-height: 150px;
-  background: var(--maincolormenu);
+  background: #ffffff99;
   backdrop-filter: saturate(100%) blur(5px);
   display: flex;
   align-items: center;
@@ -22,16 +22,16 @@
   span {
     cursor: pointer;
     display: flex;
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
   }
 
   input:checked~span {
     border: 6px solid;
     background: transparent !important;
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
   }
 }
 
