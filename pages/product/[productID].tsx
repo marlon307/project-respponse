@@ -1,16 +1,23 @@
 import React from 'react';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
-import colors from '../../service/colorsMock';
+import { options } from '../../service/colorsMock';
 import BarSize from '../../components/Bars/BarSize';
+import AddBag from '../../components/Bars/AddBag';
 
 function productId() {
   return (
     <div className={ style.product }>
       <div className={ style.slide }>
-        <BarColors array={ colors } />
+        <BarColors array={ options } />
       </div>
       <div className={ style.infodesc }>
+        <div className={ style.mindetail }>
+          <p>
+            Do mesmo modo, a consulta aos diversos militantes
+            desafia a capacidade de equalização de todos os recursos funcionais envolvidos.
+          </p>
+        </div>
         <div className={ style.infos }>
           <div className={ style.primaryline }>
             <div className={ style.titles }>
@@ -22,8 +29,9 @@ function productId() {
             </div>
           </div>
           <div className={ style.secondline }>
-            <BarSize array={ colors } colorName="Laranja" />
+            <BarSize array={ options } colorName="Laranja" />
           </div>
+          <AddBag />
         </div>
       </div>
     </div>
