@@ -50,6 +50,53 @@
   margin-bottom: 42px;
 }
 
+
+.moreinfo {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 150px;
+
+  input {
+    display: none;
+  }
+
+  input:checked~h2 {
+    color: #535353;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #8a8a8a;
+  }
+}
+
+.details {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  margin: 24px 0 150px;
+
+  div {
+    width: 350px;
+
+    h3 {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #535353;
+    }
+  }
+}
+
+
 @media (max-width: 750px) {
   .infos {
     margin-top: 0;
@@ -81,5 +128,10 @@
   .mindetail {
     margin: 52px auto 0;
     order: 2;
+  }
+
+  .moreinfo {
+    margin-left: 6%;
+    gap: 32px;
   }
 }
