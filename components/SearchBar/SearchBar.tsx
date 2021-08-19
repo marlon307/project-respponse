@@ -14,14 +14,16 @@ function SearchBar({ setSearchopen, searchopen }: Props) {
   }
 
   return (
-    !searchopen && (
-      <div className={ style.searchBar }>
-        <Image
-          src={ inconSearch }
-          onClick={ openSearchBar }
-        />
-      </div>
-    )
+    <>
+      { !searchopen && (
+        <div className={ style.searchBar }>
+          <Image
+            src={ inconSearch }
+            onClick={ openSearchBar }
+          />
+        </div>
+      ) }
+    </>
   );
 }
 
