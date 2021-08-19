@@ -132,16 +132,14 @@
 
   .moreinfo {
     gap: 32px;
-    width: 94%;
-
-    label {
-      margin-left: 6%;
-    }
+    width: 85%;
+    margin-left: 6%;
   }
 
   .details {
     width: 100%;
     justify-content: flex-start;
+    overflow: auto;
 
     div {
       flex: none;
