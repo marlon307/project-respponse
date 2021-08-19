@@ -131,12 +131,12 @@
   }
 
   .moreinfo {
-    gap: 32px;
-    width: 85%;
+    gap: 18px;
+    width: 91%;
     margin-left: 6%;
 
     h2 {
-      font-size: 0.8em;
+      font-size: 0.99em;
     }
   }
 
@@ -145,8 +145,13 @@
     justify-content: flex-start;
     overflow: auto;
 
+    h3 {
+      font-size: 0.8em;
+    }
+
     div {
       flex: none;
+      width: 258px;
     }
   }
 }
