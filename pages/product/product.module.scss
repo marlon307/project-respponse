@@ -58,6 +58,7 @@
   align-items: center;
   justify-content: center;
   gap: 150px;
+  margin: 0 auto;
 
   input {
     display: none;
@@ -81,7 +82,7 @@
   justify-content: center;
   align-items: flex-start;
   gap: 32px;
-  margin: 24px 0 150px;
+  margin: 24px 0;
 
   div {
     width: 350px;
@@ -132,8 +133,7 @@
 
   .moreinfo {
     gap: 18px;
-    width: 91%;
-    margin-left: 6%;
+    width: 85%;
 
     h2 {
       font-size: 0.99em;
@@ -152,6 +152,11 @@
     div {
       flex: none;
       width: 258px;
+    }
+
+    span {
+      font-size: 0.7em;
+      color: #505050;
     }
   }
 }
