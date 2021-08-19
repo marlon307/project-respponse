@@ -1,14 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
 import { CardAdderess, SmallCard } from '../components/Cards';
 import style from './styles/styleBag.module.scss';
-import iconBag from '../assets/img/u_shopping-bag.svg';
-import icoLoaction from '../assets/img/map-marker.svg';
-import icoShip from '../assets/img/truck.svg';
-import icoPay from '../assets/img/payment.svg';
-import icoCupom from '../assets/img/u_tag-alt.svg';
 import { Input, InputRadio } from '../components/ComponentsForm';
 import BarBuy from '../components/Bars/BarBuy';
+import Svg from '../assets/Svg';
 
 function bag() {
   function openOptions(event: { preventDefault: () => void; }) {
@@ -19,7 +14,7 @@ function bag() {
     <div className={ style.bag }>
       <section className={ style.list }>
         <h2 className={ style.title } title="Sacola">
-          <Image src={ iconBag } />
+          <Svg icoName="bag" />
           Sacola
         </h2>
         <ul>
@@ -54,7 +49,7 @@ function bag() {
         <div className={ style.container }>
           <a href="/" className={ style.select } onClick={ openOptions }>
             <h3>
-              <Image src={ icoLoaction } />
+              <Svg icoName="map" />
               Endereço de entrega
             </h3>
           </a>
@@ -73,7 +68,7 @@ function bag() {
         <div className={ style.container }>
           <a href="/" className={ style.select } onClick={ openOptions }>
             <h3>
-              <Image src={ icoShip } />
+              <Svg icoName="truck" />
               Frete
             </h3>
           </a>
@@ -86,7 +81,7 @@ function bag() {
         <div className={ style.container }>
           <a href="/" className={ style.select } onClick={ openOptions }>
             <h3>
-              <Image src={ icoPay } />
+              <Svg icoName="payment" />
               Forma de pagamento
             </h3>
           </a>
@@ -99,7 +94,7 @@ function bag() {
         <div className={ style.container }>
           <a href="/" className={ style.select } onClick={ openOptions }>
             <h3>
-              <Image src={ icoCupom } />
+              <Svg icoName="map" />
               Cupom de Desconto
             </h3>
           </a>

@@ -1,14 +1,13 @@
 import React from 'react';
-import Image from 'next/image';
 import { SmallCard } from '../components/Cards';
 import style from './styles/styleFavorite.module.scss';
-import iconFav from '../assets/img/u_heart-sign.svg';
+import Svg from '../assets/Svg';
 
 function favorite() {
   return (
     <div className={ style.favorites }>
       <h2 className={ style.title } title="Favoritos">
-        <Image src={ iconFav } />
+        <Svg icoName="healt" />
         Favoritos
       </h2>
       <ul>
