@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import cx from 'classnames';
 import style from './styleHeader.module.scss';
-import Logo from '../../assets/img/Logo.svg';
 import useWindowSize from '../../hooks/useWindowSize';
 import MenuDescktop from './components/MenuDescktop';
 import MenuMobile from './components/MenuMobile';
 import Bar from '../SearchBar/Bar';
 import useScroll from '../../hooks/useScroll';
+import Svg from '../../assets/Svg';
 
 function Header() {
   const [width] = useWindowSize();
-  const router = useRouter();
   const scrollY = useScroll();
 
   const [searchopen, setSearchopen] = useState(false);
@@ -23,11 +21,11 @@ function Header() {
     }) }
     >
       <div className={ style.container }>
-        <Image
-          src={ Logo }
-          alt="Respponse"
-          onClick={ () => router.push('/') }
-        />
+        <Link href="/">
+          <span>
+            <Svg icoName="logo" />
+          </span>
+        </Link>
       </div>
       <div className={ cx(style.searchdrop, {
         [style.drop]: searchopen,

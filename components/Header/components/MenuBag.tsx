@@ -1,12 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import cx from 'classnames';
-import iconBag from '../../../assets/img/u_shopping-bag.svg';
 import style from './styles/styleMenuBag.module.scss';
-import indication from '../../../assets/img/u_arrow-right.svg';
 import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
+import Svg from '../../../assets/Svg';
 
 function MenuBag() {
   const router = useRouter();
@@ -15,10 +13,16 @@ function MenuBag() {
 
   useOutsideClick(ref, () => enable && setEnable(false));
 
+  function clickBag(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+    event.preventDefault();
+    setEnable(!enable);
+  }
+
   return (
     <div className={ style.bag }>
-      <Image src={ iconBag } onClick={ () => setEnable(!enable) } />
-
+      <a href="/bag" onClick={ (event) => clickBag(event) }>
+        <Svg icoName="bag" />
+      </a>
       <div
         ref={ ref }
         className={ cx(style.dropBag, {
@@ -50,9 +54,7 @@ function MenuBag() {
               onClick={ () => router.push('/bag') }
             >
               Ir para checkout
-              <span>
-                <Image src={ indication } />
-              </span>
+              <Svg icoName="indication" />
             </button>
           </div>
         </div>
