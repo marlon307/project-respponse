@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import cx from 'classnames';
 import style from './styles/styleAccount.module.scss';
-import icoUser from '../assets/img/u_user.svg';
-import icoMap from '../assets/img/map-marker.svg';
-import icoHelp from '../assets/img/u_question-circle.svg';
-import icoCard from '../assets/img/card.svg';
-import icoOrder from '../assets/img/u_list-ul.svg';
 import Usercfg from './usercfg';
 import Order from './orders';
 import Cards from './cards';
 import Address from './address';
 import Help from './help';
+import Svg from '../assets/Svg';
 
 function account() {
   const [dropOption, setDropOption] = useState('');
@@ -31,7 +26,7 @@ function account() {
             [style.open]: dropOption === 'usercfg',
           }) }
         >
-          <Image src={ icoUser } />
+          <Svg icoName="user" />
           <span>Configurações do Usuário</span>
         </a>
         <div className={ style.dropcontainer }>
@@ -46,7 +41,7 @@ function account() {
             [style.open]: dropOption === 'order',
           }) }
         >
-          <Image src={ icoOrder } />
+          <Svg icoName="list" />
           <span>Pedidos</span>
         </a>
         <div className={ style.dropcontainer }>
@@ -61,7 +56,7 @@ function account() {
             [style.open]: dropOption === 'address',
           }) }
         >
-          <Image src={ icoMap } />
+          <Svg icoName="map" />
           <span>Endereços</span>
         </a>
         <div className={ style.dropcontainer }>
@@ -76,7 +71,7 @@ function account() {
             [style.open]: dropOption === 'cards',
           }) }
         >
-          <Image src={ icoCard } />
+          <Svg icoName="card" />
           <span>Cartões</span>
         </a>
         <div className={ style.dropcontainer }>
@@ -91,7 +86,7 @@ function account() {
             [style.open]: dropOption === 'help',
           }) }
         >
-          <Image src={ icoHelp } />
+          <Svg icoName="question" />
           <span>Ajuda</span>
         </a>
         <div className={ style.dropcontainer }>

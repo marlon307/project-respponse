@@ -1,26 +1,23 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import cx from 'classnames';
-import Menu from '../../../assets/img/Menu.svg';
-import icoFav from '../../../assets/img/heart.svg';
-import icoAcount from '../../../assets/img/setting.svg';
-import icoHelp from '../../../assets/img/u_question-circle.svg';
-import iconBag from '../../../assets/img/u_shopping-bag.svg';
-import iconClose from '../../../assets/img/close.svg';
-import iconLogin from '../../../assets/img/signin.svg';
 import style from './styles/styleMenuMobile.module.scss';
 import Bar from '../../SearchBar/Bar';
+import Svg from '../../../assets/Svg';
 
 function MenuMobile() {
   const [dropMnMobile, setDropMnMobile] = useState(false);
+
+  function openMenu(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+    event.preventDefault();
+    setDropMnMobile(!dropMnMobile);
+  }
+
   return (
     <div className={ style.mobile }>
-      <Image
-        src={ Menu }
-        alt="Menu"
-        onClick={ () => setDropMnMobile(true) }
-      />
+      <a href="/" onClick={ (event) => openMenu(event) }>
+        <Svg icoName="menu" />
+      </a>
       <div className={ cx(style.dromn, {
         [style.drop]: dropMnMobile,
       }) }
@@ -31,7 +28,7 @@ function MenuMobile() {
             <li>
               <Link href="/help">
                 <span>
-                  <Image src={ icoHelp } />
+                  <Svg icoName="question" />
                   Ajuda
                 </span>
               </Link>
@@ -39,7 +36,7 @@ function MenuMobile() {
             <li>
               <Link href="/account">
                 <span>
-                  <Image src={ icoAcount } />
+                  <Svg icoName="setting" />
                   Conta
                 </span>
               </Link>
@@ -47,7 +44,7 @@ function MenuMobile() {
             <li>
               <Link href="/favorite">
                 <span>
-                  <Image src={ icoFav } />
+                  <Svg icoName="healt" />
                   Favoritos
                 </span>
               </Link>
@@ -55,7 +52,7 @@ function MenuMobile() {
             <li>
               <Link href="/bag">
                 <span>
-                  <Image src={ iconBag } />
+                  <Svg icoName="bag" />
                   Sacola
                 </span>
               </Link>
@@ -63,17 +60,21 @@ function MenuMobile() {
             <li>
               <Link href="/login">
                 <span>
-                  <Image src={ iconLogin } />
+                  <Svg icoName="singin" />
                   Entrar
                 </span>
               </Link>
             </li>
           </ul>
           <div className={ style.close }>
-            <Image
-              src={ iconClose }
-              onClick={ () => setDropMnMobile(false) }
-            />
+            <a
+              href="/"
+              onClick={
+                (event) => openMenu(event)
+              }
+            >
+              <Svg icoName="close" />
+            </a>
           </div>
         </div>
       </div>

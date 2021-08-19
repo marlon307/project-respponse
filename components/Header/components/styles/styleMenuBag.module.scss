@@ -1,10 +1,12 @@
 .bag {
-  width: 28px;
-  position: relative;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
+  svg {
+    width: 28px;
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .dropBag {
@@ -13,7 +15,7 @@
   .containBag {
     display: none;
     position: absolute;
-    top: 50px;
+    top: 30px;
     right: -20px;
     width: 420px;
     background: var(--maincolormenu);
@@ -53,7 +55,7 @@
   position: absolute;
   width: 20px;
   height: 8px;
-  top: 42px;
+  top: 23px;
   right: 3.1px;
   overflow: hidden;
 
@@ -113,7 +115,7 @@
     font-size: 1em;
     position: relative;
 
-    span {
+    svg {
       position: absolute;
       top: 16px;
       right: 0;
@@ -121,7 +123,7 @@
       transition: .2s;
     }
 
-    &:hover span {
+    &:hover svg {
       opacity: 1;
       right: 12%;
     }
