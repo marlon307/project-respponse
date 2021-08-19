@@ -50,7 +50,6 @@
   margin-bottom: 42px;
 }
 
-
 .moreinfo {
   position: relative;
   width: 100%;
@@ -93,6 +92,12 @@
       align-items: center;
       gap: 6px;
       color: #535353;
+    }
+
+    span {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 }
