@@ -4,7 +4,7 @@ import style from './product.module.scss';
 import { options } from '../../service/colorsMock';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Bars/AddBag';
-import DragItens from '../../components/SlideDrag/DragItens';
+import { Carousel, ItemCarousel } from '../../components/Carousel';
 import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
 
@@ -61,10 +61,14 @@ function productId() {
           <span>Produos Similares</span>
         </label>
       </div>
-      <DragItens>
-        <DetailsCard />
-        <Spec />
-      </DragItens>
+      <Carousel>
+        <ItemCarousel width={ 32 }>
+          <DetailsCard />
+        </ItemCarousel>
+        <ItemCarousel width={ 32 }>
+          <Spec />
+        </ItemCarousel>
+      </Carousel>
     </div>
   );
 }
