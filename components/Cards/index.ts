@@ -3,6 +3,8 @@ import LargeCard from './Large/LargeCard';
 import CardPay from './CardPay/CardPay';
 import CardAdderess from './CardAddress/CardAddress';
 import MinCardOrder from './MinCardOrder/MinCardOrder';
+import DetailsCard from './CardDetail/Detail';
+import Spec from './CardDetail/Spec';
 
 export {
   CardAdderess,
@@ -10,4 +12,6 @@ export {
   LargeCard,
   MinCardOrder,
   SmallCard,
+  DetailsCard,
+  Spec,
 };
