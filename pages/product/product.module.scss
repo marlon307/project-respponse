@@ -50,6 +50,26 @@
   margin-bottom: 42px;
 }
 
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 28px;
+
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  input {
+    display: none;
+  }
+
+}
+
 @media (max-width: 750px) {
   .infos {
     margin-top: 0;
