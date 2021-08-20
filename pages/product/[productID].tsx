@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
 import { options } from '../../service/colorsMock';
@@ -6,8 +6,11 @@ import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Bars/AddBag';
 import DragItens from '../../components/SlideDrag/DragItens';
 import { DetailsCard, Spec } from '../../components/Cards';
+import Svg from '../../assets/Svg';
 
 function productId() {
+  const [itemdrag, setItemDrag] = useState(false);
+
   return (
     <div className={ style.product }>
       <div className={ style.slide }>
@@ -35,6 +38,28 @@ function productId() {
           </div>
           <AddBag />
         </div>
+      </div>
+      <div className={ style.options }>
+        <label htmlFor="detail">
+          <input
+            type="radio"
+            name="dragoption"
+            id="detail"
+            onClick={ () => setItemDrag(itemdrag) }
+          />
+          <Svg icoName="spec" />
+          Detalhes
+        </label>
+        <label htmlFor="recomendation">
+          <input
+            type="radio"
+            name="dragoption"
+            id="recomendation"
+            onClick={ () => setItemDrag(true) }
+          />
+          <Svg icoName="similar" />
+          <span>Produos Similares</span>
+        </label>
       </div>
       <DragItens>
         <DetailsCard />
