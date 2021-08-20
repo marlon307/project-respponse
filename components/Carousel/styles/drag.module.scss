@@ -1,0 +1,21 @@
+.contentcarousel {
+  position: relative;
+  width: 88%;
+  height: 100%;
+  margin: 0 6% 100px;
+  overflow: hidden;
+}
+
+.drag {
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.card {
+  margin: 0 22px;
+  width: 100%;
+  height: 100%;
+  flex: none;
+}
