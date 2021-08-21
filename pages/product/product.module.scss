@@ -54,7 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 6%;
   margin-bottom: 28px;
 
   label {
@@ -71,7 +71,22 @@
 }
 
 .slideinfo {
-  margin: 0 6%;
+  position: relative;
+  margin-left: 6%;
+
+  &:after {
+    content: '';
+    position: absolute;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 14px 20px #ffffff;
+    top: 0;
+    right: 0;
+    display: flex;
+    width: 32px;
+    height: 100%;
+    z-index: 8888;
+    filter: saturate(100%) blur(5px);
+  }
 }
 
 @media (max-width: 750px) {
