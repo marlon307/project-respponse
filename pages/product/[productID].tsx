@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Carousel } from '@trendyol-js/react-carousel';
+import Flicking from '@egjs/react-flicking';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
 import { options } from '../../service/colorsMock';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Bars/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
+import '@egjs/react-flicking/dist/flicking.css';
 import Svg from '../../assets/Svg';
 
 function productId() {
@@ -61,10 +62,17 @@ function productId() {
           <span>Produos Similares</span>
         </label>
       </div>
-      <Carousel show={ 3.5 } slide={ 2 } transition={ 0.5 }>
-        <DetailsCard />
-        <Spec />
-      </Carousel>
+      <Flicking
+        align="prev"
+        circular
+      >
+        <div className="panel">
+          <DetailsCard />
+        </div>
+        <div className="panel">
+          <Spec />
+        </div>
+      </Flicking>
     </div>
   );
 }
