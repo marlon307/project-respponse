@@ -66,7 +66,7 @@ function productId() {
         <Flicking
           align="prev"
           autoResize
-          bound
+          bounce={ 100 }
         >
           <div className="panel">
             <DetailsCard />
