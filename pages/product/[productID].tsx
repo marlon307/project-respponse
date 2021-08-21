@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import Flicking from '@egjs/react-flicking';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
 import { options } from '../../service/colorsMock';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Bars/AddBag';
-import { Carousel, ItemCarousel } from '../../components/Carousel';
 import { DetailsCard, Spec } from '../../components/Cards';
+import '@egjs/react-flicking/dist/flicking.css';
 import Svg from '../../assets/Svg';
 
 function productId() {
@@ -61,14 +62,17 @@ function productId() {
           <span>Produos Similares</span>
         </label>
       </div>
-      <Carousel>
-        <ItemCarousel width={ 32 }>
+      <Flicking
+        align="prev"
+        circular
+      >
+        <div className="panel">
           <DetailsCard />
-        </ItemCarousel>
-        <ItemCarousel width={ 32 }>
+        </div>
+        <div className="panel">
           <Spec />
-        </ItemCarousel>
-      </Carousel>
+        </div>
+      </Flicking>
     </div>
   );
 }
