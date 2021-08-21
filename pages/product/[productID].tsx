@@ -65,8 +65,6 @@ function productId() {
       <section className={ style.slideinfo }>
         <Flicking
           align="prev"
-          autoResize
-          bounce={ 100 }
         >
           <div className="panel">
             <DetailsCard />
