@@ -62,17 +62,18 @@ function productId() {
           <span>Produos Similares</span>
         </label>
       </div>
-      <Flicking
-        align="prev"
-        circular
-      >
-        <div className="panel">
-          <DetailsCard />
-        </div>
-        <div className="panel">
-          <Spec />
-        </div>
-      </Flicking>
+      <section className={ style.slideinfo }>
+        <Flicking
+          align="prev"
+        >
+          <div className="panel">
+            <DetailsCard />
+          </div>
+          <div className="panel">
+            <Spec />
+          </div>
+        </Flicking>
+      </section>
     </div>
   );
 }
