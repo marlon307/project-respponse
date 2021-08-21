@@ -65,6 +65,8 @@ function productId() {
       <section className={ style.slideinfo }>
         <Flicking
           align="prev"
+          autoResize
+          bound
         >
           <div className="panel">
             <DetailsCard />
