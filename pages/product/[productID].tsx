@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { Carousel } from '@trendyol-js/react-carousel';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
 import { options } from '../../service/colorsMock';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Bars/AddBag';
-import { Carousel, ItemCarousel } from '../../components/Carousel';
 import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
 
@@ -61,13 +61,9 @@ function productId() {
           <span>Produos Similares</span>
         </label>
       </div>
-      <Carousel>
-        <ItemCarousel width={ 32 }>
-          <DetailsCard />
-        </ItemCarousel>
-        <ItemCarousel width={ 32 }>
-          <Spec />
-        </ItemCarousel>
+      <Carousel show={ 3.5 } slide={ 2 } transition={ 0.5 }>
+        <DetailsCard />
+        <Spec />
       </Carousel>
     </div>
   );

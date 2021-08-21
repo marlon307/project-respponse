@@ -5,28 +5,40 @@ type Props = {
   children: any
 }
 
+interface IEvent {
+  type: string;
+  clientX: number;
+}
+
 function DragItens({ children }: Props) {
-  const ref = createRef<HTMLDivElement>();
+  const ref = createRef<HTMLElement>();
   const [move, setMove] = useState(0);
+  const [initpositionClick, setInitpositionClick] = useState(0);
 
   const moveMouse = useCallback((event) => {
-    const teste = event.pageX;
-    setMove(teste);
+    const position1 = event.layerX - initpositionClick;
+    // setMove(position1);
+    // console.log(event);
   }, []);
 
-  function mouseEvent(event: { type: string; }) {
+  function mouseEvent(event: IEvent) {
     const { current } = ref;
-    if (event.type === 'mousedown') current?.addEventListener('mousemove', moveMouse);
-    else current?.removeEventListener('mousemove', moveMouse);
+
+    if (event.type === 'mousedown') {
+      current?.addEventListener('mousemove', moveMouse);
+      setInitpositionClick(event.clientX);
+    } else {
+      current?.removeEventListener('mousemove', moveMouse);
+    }
   }
 
   return (
     <section
-      id="testesss"
       className={ style.contentcarousel }
       ref={ ref }
       onMouseDown={ mouseEvent }
       onMouseUp={ mouseEvent }
+      onMouseLeave={ mouseEvent }
       role="button"
       tabIndex={ 0 }
     >

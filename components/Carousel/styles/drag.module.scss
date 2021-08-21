@@ -4,6 +4,7 @@
   height: 100%;
   margin: 0 6% 100px;
   overflow: hidden;
+  background: rgb(255, 106, 106);
 }
 
 .drag {
@@ -11,6 +12,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.822);
 }
 
 .card {
