@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-
 import Flicking, { ViewportSlot } from '@egjs/react-flicking';
 import { Arrow } from '@egjs/flicking-plugins';
 import style from './styles/styleIndex.module.scss';
 import TesteSlide from '../assets/img/mWYhrOiAgmA.png';
 import { CardCategory } from '../components/Cards';
+import { mockApiCategory } from '../service/colorsMock';
 import '@egjs/flicking-plugins/dist/arrow.css';
 
 function index() {
@@ -18,24 +18,11 @@ function index() {
       <section className={ style.sectionfilter }>
         <div className={ style.category }>
           <Flicking align="6%" plugins={ plugins }>
-            <div className="panel">
-              <CardCategory />
-            </div>
-            <div className="panel">
-              <CardCategory />
-            </div>
-            <div className="panel">
-              <CardCategory />
-            </div>
-            <div className="panel">
-              <CardCategory />
-            </div>
-            <div className="panel">
-              <CardCategory />
-            </div>
-            <div className="panel">
-              <CardCategory />
-            </div>
+            { mockApiCategory.map(({ categoryId, imgCategory, categoryName }) => (
+              <div className="panel" key={ categoryId }>
+                <CardCategory id={ categoryId } image={ imgCategory } ctgName={ categoryName } />
+              </div>
+            )) }
             <ViewportSlot>
               <span className="flicking-arrow-prev is-outside" />
               <span className="flicking-arrow-next is-outside" />

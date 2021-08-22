@@ -1,7 +1,9 @@
+// Style card category
 .itencategory {
   margin: 0 22px;
 
   label {
+    cursor: pointer;
     display: flex;
     align-items: center;
     flex-direction: column;
