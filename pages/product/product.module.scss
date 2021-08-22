@@ -14,6 +14,7 @@
   box-shadow: 0 0 30px var(--boxshdowncolo);
   transition: 0.3s;
   width: 500px;
+  flex: none;
 }
 
 .infodesc {
@@ -25,7 +26,8 @@
 
 .mindetail {
   width: 250px;
-  margin-left: 16%;
+  flex: none;
+  margin: 0 auto;
 }
 
 .primaryline {
@@ -67,7 +69,6 @@
   input {
     display: none;
   }
-
 }
 
 .slideinfo {
@@ -91,6 +92,17 @@
   }
 }
 
+@media (max-width: 950px) {
+  .infodesc {
+    flex-direction: column;
+  }
+
+  .mindetail {
+    margin: 52px auto 0;
+    order: 2;
+  }
+}
+
 @media (max-width: 750px) {
   .infos {
     margin-top: 0;
@@ -103,10 +115,6 @@
     height: 50ch;
   }
 
-  .infodesc {
-    flex-direction: column;
-  }
-
   .primaryline {
 
     h1,
@@ -117,11 +125,6 @@
     h2 {
       font-size: 0.8em;
     }
-  }
-
-  .mindetail {
-    margin: 52px auto 0;
-    order: 2;
   }
 
   .slideinfo {
