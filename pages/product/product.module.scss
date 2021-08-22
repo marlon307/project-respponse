@@ -72,7 +72,9 @@
 
 .slideinfo {
   position: relative;
-  margin-left: 6%;
+  max-width: 98vh;
+  padding: 0 6%;
+  margin: 0 auto;
 
   &:after {
     content: '';
@@ -82,7 +84,7 @@
     top: 0;
     right: 0;
     display: flex;
-    width: 32px;
+    width: 6%;
     height: 100%;
     z-index: 8888;
     filter: saturate(100%) blur(5px);
@@ -120,5 +122,11 @@
   .mindetail {
     margin: 52px auto 0;
     order: 2;
+  }
+
+  .slideinfo {
+    width: auto;
+    margin-left: 6%;
+    padding: 0;
   }
 }
