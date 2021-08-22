@@ -43,6 +43,26 @@
   }
 }
 
+.prev,
+.next {
+  z-index: 77777;
+  position: absolute;
+  cursor: pointer;
+
+  svg {
+    width: 26px;
+    height: 52px;
+  }
+}
+
+.prev {
+  left: 3%;
+}
+
+.next {
+  right: 3%;
+}
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 5px;

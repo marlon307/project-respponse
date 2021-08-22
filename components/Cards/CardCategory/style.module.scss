@@ -1,0 +1,29 @@
+.itencategory {
+  margin: 0 22px;
+
+  label {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  input {
+    display: none;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  span {
+    font-weight: 700;
+    color: #8e8e8e;
+    margin-top: 12px;
+  }
+
+  input:checked~span {
+    color: #323232;
+  }
+}
