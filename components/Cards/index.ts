@@ -5,6 +5,7 @@ import CardAdderess from './CardAddress/CardAddress';
 import MinCardOrder from './MinCardOrder/MinCardOrder';
 import DetailsCard from './CardDetail/Detail';
 import Spec from './CardDetail/Spec';
+import CardCategory from './CardCategory/CardCategory';
 
 export {
   CardAdderess,
@@ -14,4 +15,5 @@ export {
   SmallCard,
   DetailsCard,
   Spec,
+  CardCategory,
 };
