@@ -4,7 +4,6 @@ import Flicking from '@egjs/react-flicking';
 import style from './styles/styleIndex.module.scss';
 import TesteSlide from '../assets/img/mWYhrOiAgmA.png';
 import { CardCategory } from '../components/Cards';
-import Svg from '../assets/Svg';
 
 function index() {
   return (
@@ -14,7 +13,6 @@ function index() {
       </section>
       <section className={ style.sectionfilter }>
         <div className={ style.category }>
-
           <Flicking align="6%">
             <div className="panel">
               <CardCategory />
@@ -35,7 +33,6 @@ function index() {
               <CardCategory />
             </div>
           </Flicking>
-
         </div>
         <div className={ style.filter }>
           Filter
