@@ -6,7 +6,6 @@ import { options } from '../../service/colorsMock';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Bars/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
-import '@egjs/react-flicking/dist/flicking.css';
 import Svg from '../../assets/Svg';
 
 function productId() {
@@ -65,6 +64,7 @@ function productId() {
       <section className={ style.slideinfo }>
         <Flicking
           align="prev"
+          bounce="100%"
         >
           <div className="panel">
             <DetailsCard />
