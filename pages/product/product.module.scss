@@ -77,20 +77,6 @@
   max-width: 98vh;
   padding: 0 6%;
   margin: 0 auto;
-
-  &:after {
-    content: '';
-    position: absolute;
-    background: rgb(255, 255, 255);
-    box-shadow: 0 0 14px 20px #ffffff;
-    top: 0;
-    right: 0;
-    display: flex;
-    width: 6%;
-    height: 100%;
-    z-index: 8888;
-    filter: saturate(100%) blur(5px);
-  }
 }
 
 @media (max-width: 950px) {
