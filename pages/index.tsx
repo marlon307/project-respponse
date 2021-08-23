@@ -6,6 +6,7 @@ import TesteSlide from '../assets/img/mWYhrOiAgmA.png';
 import { CardCategory } from '../components/Cards';
 import { mockApiCategory } from '../service/colorsMock';
 import { BtnPrevNext } from '../components/Buttons';
+import BarFilter from '../components/Bars/BarFilter';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
@@ -19,7 +20,7 @@ function index() {
           <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="prev" />
           <Flicking
             bound
-            align="3%"
+            align="prev"
             ref={ buttonPrevNext }
           >
             { mockApiCategory.map(({ categoryId, imgCategory, categoryName }) => (
@@ -30,9 +31,7 @@ function index() {
           </Flicking>
           <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="next" />
         </div>
-        <div className={ style.filter }>
-          Filter
-        </div>
+        <BarFilter />
       </section>
       <section className={ style.advertising }>
         Divugaçoes
