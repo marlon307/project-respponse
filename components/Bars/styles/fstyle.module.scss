@@ -3,16 +3,19 @@
   display: flex;
   gap: 16px;
   color: #8e8e8e;
+  overflow: hidden;
 
   span {
     cursor: pointer;
     padding: 3px 16px;
     border-radius: 26px;
     border: 1px solid var(--bodercolor);
+    flex: none;
   }
 }
 
 .mainfilter {
+
   cursor: pointer;
   padding: 3px 16px;
   border-radius: 26px;
