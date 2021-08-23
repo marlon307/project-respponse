@@ -23,3 +23,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@media (max-width: 750px) {
+  .sectionfilter {
+    margin-right: 0;
+  }
+}
