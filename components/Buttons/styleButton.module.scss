@@ -12,3 +12,31 @@
   font-size: 1em;
   position: relative;
 }
+
+.next,
+.prev {
+  position: absolute;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  z-index: 7777;
+  cursor: pointer;
+
+  svg {
+    height: 42px;
+  }
+}
+
+.next {
+  right: -32px;
+  box-shadow: -2px 0px 5px 3px #f6f6f6;
+}
+
+.prev {
+  left: -32px;
+  box-shadow: 2px 0px 5px 3px #f6f6f6;
+}

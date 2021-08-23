@@ -143,6 +143,76 @@ const mockApiCategory = [
     imgCategory: imgRelogios,
     categoryName: 'Relogios',
   },
+  {
+    categoryId: '7',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '8',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '9',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '10',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '11',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '12',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '13',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '14',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '15',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '16',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '17',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '18',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '19',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
+  {
+    categoryId: '20',
+    imgCategory: imgRelogios,
+    categoryName: 'Relogios',
+  },
 ];
 
 const mockApiCarousel = [{
