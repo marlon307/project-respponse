@@ -48,6 +48,8 @@
 
 @media (max-width: 750px) {
   .itencategory {
+    width: 100px;
+    height: 130px;
     margin: 0 14px;
 
     img {
@@ -56,7 +58,7 @@
     }
 
     span {
-      margin-top: 80%;
+      margin-top: 104%;
     }
   }
 }
