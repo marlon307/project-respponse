@@ -5,7 +5,6 @@ import style from './styles/styleIndex.module.scss';
 import TesteSlide from '../assets/img/mWYhrOiAgmA.png';
 import { CardCategory } from '../components/Cards';
 import { mockApiCategory } from '../service/colorsMock';
-import '@egjs/flicking-plugins/dist/arrow.css';
 import { BtnPrevNext } from '../components/Buttons';
 
 function index() {
