@@ -14,35 +14,35 @@
 
 .sectionfilter {
   position: relative;
-  margin: 8vh 0;
+  margin: 8vh 6%;
 
-  &:after {
-    content: '';
-    position: absolute;
-    background: rgb(255, 255, 255);
-    box-shadow: 0 0 14px 20px #ffffff;
-    top: 0;
-    right: 0;
-    display: flex;
-    width: 5%;
-    height: 100%;
-    z-index: 8888;
-    filter: saturate(100%) blur(5px);
-  }
+  // &:after {
+  //   content: '';
+  //   position: absolute;
+  //   background: rgb(255, 255, 255);
+  //   box-shadow: 0 0 14px 20px #ffffff;
+  //   top: 0;
+  //   right: -4%;
+  //   display: flex;
+  //   width: 5%;
+  //   height: 100%;
+  //   z-index: 8888;
+  //   filter: saturate(100%) blur(5px);
+  // }
 
-  &:before {
-    content: '';
-    position: absolute;
-    background: rgb(255, 255, 255);
-    box-shadow: 0 0 14px 20px #ffffff;
-    top: 0;
-    left: 0;
-    display: flex;
-    width: 5%;
-    height: 100%;
-    z-index: 8888;
-    filter: saturate(100%) blur(5px);
-  }
+  // &:before {
+  //   content: '';
+  //   position: absolute;
+  //   background: rgb(255, 255, 255);
+  //   box-shadow: 0 0 14px 20px #ffffff;
+  //   top: 0;
+  //   left: -4%;
+  //   display: flex;
+  //   width: 5%;
+  //   height: 100%;
+  //   z-index: 8888;
+  //   filter: saturate(100%) blur(5px);
+  // }
 }
 
 .category {
