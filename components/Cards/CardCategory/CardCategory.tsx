@@ -13,7 +13,9 @@ function CardCategory({ id, image, ctgName }: Props) {
     <div className={ style.itencategory }>
       <label htmlFor={ id }>
         <input id={ id } type="radio" name="category" />
-        <Image src={ image } />
+        <figure className={ style.imgctg }>
+          <Image src={ image } />
+        </figure>
         <span>{ ctgName }</span>
       </label>
     </div>
