@@ -1,8 +1,11 @@
 // Style card category
 .itencategory {
   margin: 0 22px;
+  width: 135px;
+  height: auto;
 
   label {
+    position: relative;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -13,20 +16,33 @@
     display: none;
   }
 
-  img {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
+  .imgctg {
+    position: absolute;
+
+    img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
   }
 
   span {
     font-weight: 700;
     color: #8e8e8e;
-    margin-top: 12px;
+    margin-top: 104%;
   }
 
   input:checked~span {
     color: #323232;
+  }
+
+  &:hover {
+    img {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+    }
   }
 }
 
@@ -35,8 +51,12 @@
     margin: 0 14px;
 
     img {
-      width: 100px;
-      height: 100px;
+      width: 100px !important;
+      height: 100px !important;
+    }
+
+    span {
+      margin-top: 80%;
     }
   }
 }
