@@ -19,7 +19,7 @@ function index() {
           <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="prev" />
           <Flicking
             bound
-            align="3%"
+            align="prev"
             ref={ buttonPrevNext }
           >
             { mockApiCategory.map(({ categoryId, imgCategory, categoryName }) => (
