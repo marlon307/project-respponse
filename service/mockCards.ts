@@ -1,0 +1,57 @@
+const mockCards = [{
+  id: 0,
+  title: '',
+  type: '',
+  keyDesc: '',
+  price: '',
+  categoryId: '',
+  categoryName: '',
+  descrtion: '',
+  branch: '',
+  gender: 'Femenino',
+  descount: 0,
+  details: {
+    mesh: '',
+    model: '',
+    material: '',
+    fabrictype: '',
+    pokecket: '',
+    measures: '',
+    length: '',
+    available: true,
+  },
+  specification: {
+    print: '',
+    characteristics: '',
+    wash: '',
+    occasion: '',
+  },
+  options: [{
+    colorName: '',
+    color: '#fff',
+    size: {
+      P: 28,
+      PP: 30,
+      GG: 50,
+      G: 40,
+      M: 20,
+    },
+    img: ['url', 'url'],
+  },
+  {
+    colorName: 'Cinza Escuro',
+    color: '#333',
+    size: {
+      P: 28,
+      PP: 30,
+      GG: 50,
+      G: 40,
+      M: 20,
+    },
+    img: ['url', 'url'],
+  },
+  ],
+  shipping: false,
+}];
+
+export default mockCards;
