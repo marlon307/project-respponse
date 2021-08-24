@@ -28,15 +28,16 @@
 
 @media (max-width: 750px) {
   .sectionfilter {
-    margin-top: 6vh;
+    margin-top: 4vh;
     margin-right: 0;
   }
 
   .slide {
-    height: 35em;
+    height: 32em;
+    border-radius: 0 0 1em 1em;
 
     img {
-      height: 35em;
+      height: 32em;
     }
   }
 }
