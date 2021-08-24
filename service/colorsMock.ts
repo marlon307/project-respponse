@@ -227,12 +227,16 @@ const mockApiFilterUsed = [
   { size: 'M' },
   { tecid: 'Moleton' },
   {
-    color: '#ffde49',
+    color: '#e6b207',
     colorName: 'Laranja',
   },
   { tecid: 'Tactel' },
   { size: 'GG' },
   { branch: 'Nike' },
+  {
+    color: '#e00606',
+    colorName: 'Vermelho',
+  },
 ];
 
 export {
