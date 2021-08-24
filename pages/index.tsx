@@ -2,20 +2,39 @@ import React, { createRef } from 'react';
 import Image from 'next/image';
 import Flicking from '@egjs/react-flicking';
 import style from './styles/styleIndex.module.scss';
-import TesteSlide from '../assets/img/mWYhrOiAgmA.png';
 import { CardCategory } from '../components/Cards';
 import mockCategory from '../service/mockCategory';
 import { BtnPrevNext } from '../components/Buttons';
 import { BarFilter } from '../components/Filter';
+import TesteSlide1 from '../assets/img/mWYhrOiAgmA.png';
+import TesteSlide2 from '../assets/img/SmIlY2uAHo8.png';
+import TesteSlide3 from '../assets/img/atikh-bana-_KaMTEmJnxY-unsplash.jpg';
+// import TesteSlide4 from '../assets/img/mWYhrOiAgmA.png';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
   return (
     <>
-      <section className={ style.slide }>
-        <Image
-          src={ TesteSlide }
-        />
+      <section>
+        <div className={ style.slide }>
+          <Flicking circular>
+            <div className="panel">
+              <Image
+                src={ TesteSlide1 }
+              />
+            </div>
+            <div className="panel">
+              <Image
+                src={ TesteSlide2 }
+              />
+            </div>
+            <div className="panel">
+              <Image
+                src={ TesteSlide3 }
+              />
+            </div>
+          </Flicking>
+        </div>
       </section>
       <section className={ style.sectionfilter }>
         <nav>
