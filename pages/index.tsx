@@ -1,6 +1,7 @@
 import React, { createRef } from 'react';
 import Image from 'next/image';
 import Flicking from '@egjs/react-flicking';
+import { AutoPlay } from '@egjs/flicking-plugins';
 import style from './styles/styleIndex.module.scss';
 import { CardCategory } from '../components/Cards';
 import mockCategory from '../service/mockCategory';
@@ -13,11 +14,12 @@ import TesteSlide3 from '../assets/img/atikh-bana-_KaMTEmJnxY-unsplash.jpg';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
+  const plugins = [new AutoPlay({ duration: 12000, direction: 'NEXT', stopOnHover: false })];
   return (
     <>
       <section>
         <div className={ style.slide }>
-          <Flicking circular>
+          <Flicking circular plugins={ plugins } duration={ 2000 }>
             <div className="panel">
               <Image
                 src={ TesteSlide1 }
