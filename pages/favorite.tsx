@@ -5,11 +5,11 @@ import Svg from '../assets/Svg';
 
 function favorite() {
   return (
-    <div className={ style.favorites }>
-      <h2 className={ style.title } title="Favoritos">
+    <section className={ style.favorites }>
+      <h1 className={ style.title } title="Favoritos">
         <Svg icoName="healt" />
         Favoritos
-      </h2>
+      </h1>
       <ul>
         <li>
           <SmallCard />
@@ -21,7 +21,7 @@ function favorite() {
           <SmallCard />
         </li>
       </ul>
-    </div>
+    </section>
   );
 }
 
