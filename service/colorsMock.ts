@@ -1,6 +1,5 @@
 import imgFemenino from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 1.png';
 import imgMasculino from '../assets/img/jonas-jaeken-31upv631160-unsplash 2.png';
-
 import imgCriança from '../assets/img/kiana-bosman-GvleXr4tIPk-unsplash 1.png';
 import imgBolsa from '../assets/img/he-s-her-lobster-9b6UhV4nLZs-unsplash 1.png';
 import imgPerfumes from '../assets/img/klim-musalimov-gizyWV5IV3g-unsplash 1.png';
@@ -219,9 +218,27 @@ const mockApiCarousel = [{
   thumbnail: 'url',
 }];
 
+const mockApiFilterUsed = [
+  { branch: 'Lacoste' },
+  {
+    color: '#5549ff',
+    colorName: 'Azul',
+  },
+  { size: 'M' },
+  { tecid: 'Moleton' },
+  {
+    color: '#ffde49',
+    colorName: 'Laranja',
+  },
+  { tecid: 'Tactel' },
+  { size: 'GG' },
+  { branch: 'Nike' },
+];
+
 export {
   mockApiCarousel,
   options,
   mockApiCards,
   mockApiCategory,
+  mockApiFilterUsed,
 };
