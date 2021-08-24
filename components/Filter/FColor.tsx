@@ -1,7 +1,7 @@
 import React from 'react';
 
-type Props = {
-  cName: string;
+export type Props = {
+  cName?: string;
   color: string;
 }
 
