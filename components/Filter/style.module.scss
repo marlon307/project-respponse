@@ -4,13 +4,28 @@
   gap: 16px;
   color: #8e8e8e;
   overflow: hidden;
+  align-items: center;
 
-  span {
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     padding: 3px 16px;
     border-radius: 26px;
     border: 1px solid var(--bodercolor);
-    flex: none;
+
+    span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-left: 8px;
+    }
+  }
+
+  input:checked+div {
+    color: currentColor;
+    border-color: currentColor;
   }
 }
 

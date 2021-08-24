@@ -6,7 +6,7 @@ import TesteSlide from '../assets/img/mWYhrOiAgmA.png';
 import { CardCategory } from '../components/Cards';
 import { mockApiCategory } from '../service/colorsMock';
 import { BtnPrevNext } from '../components/Buttons';
-import BarFilter from '../components/Bars/BarFilter';
+import { BarFilter } from '../components/Filter';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
