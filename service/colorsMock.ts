@@ -1,4 +1,4 @@
-const options = [{
+const colorsMock = [{
   colorName: 'Rosa',
   color: '#cf49cf',
   size: {
@@ -48,4 +48,4 @@ const options = [{
 },
 ];
 
-export default options;
+export default colorsMock;
