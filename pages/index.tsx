@@ -10,7 +10,6 @@ import { BarFilter } from '../components/Filter';
 import TesteSlide1 from '../assets/img/mWYhrOiAgmA.png';
 import TesteSlide2 from '../assets/img/SmIlY2uAHo8.png';
 import TesteSlide3 from '../assets/img/atikh-bana-_KaMTEmJnxY-unsplash.jpg';
-// import TesteSlide4 from '../assets/img/mWYhrOiAgmA.png';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
