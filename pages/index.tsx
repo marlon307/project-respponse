@@ -19,7 +19,7 @@ function index() {
     <>
       <section>
         <div className={ style.slide }>
-          <Flicking circular plugins={ plugins } duration={ 2000 }>
+          <Flicking circular plugins={ plugins }>
             <div className="panel">
               <Image
                 src={ TesteSlide1 }
