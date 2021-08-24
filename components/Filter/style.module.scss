@@ -8,6 +8,10 @@
   justify-content: center;
   line-height: 1.4;
 
+  input {
+    display: none;
+  }
+
   input:checked+div {
     color: currentColor;
     border-color: currentColor;
