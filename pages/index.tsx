@@ -16,22 +16,24 @@ function index() {
         <Image src={ TesteSlide } />
       </section>
       <section className={ style.sectionfilter }>
-        <div className={ style.category }>
-          <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="prev" />
-          <Flicking
-            bound
-            align="prev"
-            ref={ buttonPrevNext }
-          >
-            { mockApiCategory.map(({ categoryId, imgCategory, categoryName }) => (
-              <div className="panel" key={ categoryId }>
-                <CardCategory id={ categoryId } image={ imgCategory } ctgName={ categoryName } />
-              </div>
-            )) }
-          </Flicking>
-          <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="next" />
-        </div>
-        <BarFilter />
+        <nav>
+          <div className={ style.category }>
+            <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="prev" />
+            <Flicking
+              bound
+              align="prev"
+              ref={ buttonPrevNext }
+            >
+              { mockApiCategory.map(({ categoryId, imgCategory, categoryName }) => (
+                <div className="panel" key={ categoryId }>
+                  <CardCategory id={ categoryId } image={ imgCategory } ctgName={ categoryName } />
+                </div>
+              )) }
+            </Flicking>
+            <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="next" />
+          </div>
+          <BarFilter />
+        </nav>
       </section>
       <section className={ style.advertising }>
         Divugaçoes

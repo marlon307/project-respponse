@@ -5,7 +5,7 @@ import style from './styles/styleLogin.module.scss';
 
 function resetpsw() {
   return (
-    <div className={ style.contlogin }>
+    <section className={ style.contlogin }>
       <h1>Recuperar senha</h1>
       <form>
         <div className="inputs">
@@ -16,7 +16,7 @@ function resetpsw() {
           <button type="button">Enviar</button>
         </div>
       </form>
-    </div>
+    </section>
   );
 }
 

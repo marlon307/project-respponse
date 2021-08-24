@@ -5,7 +5,7 @@ import style from './styles/styleLogin.module.scss';
 
 function register() {
   return (
-    <div className={ style.contlogin }>
+    <section className={ style.contlogin }>
       <h1>Registre-se</h1>
       <form>
         <div className="inputs">
@@ -18,7 +18,7 @@ function register() {
           <button type="button">Criar</button>
         </div>
       </form>
-    </div>
+    </section>
   );
 }
 

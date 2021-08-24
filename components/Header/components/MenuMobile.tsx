@@ -22,7 +22,7 @@ function MenuMobile() {
         [style.drop]: dropMnMobile,
       }) }
       >
-        <div className={ style.dropmobile }>
+        <nav className={ style.dropmobile }>
           <Bar />
           <ul>
             <li>
@@ -76,7 +76,7 @@ function MenuMobile() {
               <Svg icoName="close" />
             </a>
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   );

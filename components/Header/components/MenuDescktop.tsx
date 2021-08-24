@@ -11,14 +11,14 @@ interface IProps {
 
 function MenuDescktop({ setSearchopen, searchopen }: IProps) {
   return (
-    <div className={ style.menuDescktop }>
+    <nav className={ style.menuDescktop }>
       <SearchBar
         searchopen={ searchopen }
         setSearchopen={ setSearchopen }
       />
       <MenuBag />
       <MenuUser />
-    </div>
+    </nav>
   );
 }
 

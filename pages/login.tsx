@@ -5,7 +5,7 @@ import style from './styles/styleLogin.module.scss';
 
 function login() {
   return (
-    <div className={ style.contlogin }>
+    <section className={ style.contlogin }>
       <h1>Entrar</h1>
       <form>
         <div className="inputs">
@@ -25,7 +25,7 @@ function login() {
           <button type="button">Entrar</button>
         </div>
       </form>
-    </div>
+    </section>
   );
 }
 

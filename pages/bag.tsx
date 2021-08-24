@@ -13,10 +13,10 @@ function bag() {
   return (
     <div className={ style.bag }>
       <section className={ style.list }>
-        <h2 className={ style.title } title="Sacola">
+        <h1 className={ style.title } title="Sacola">
           <Svg icoName="bag" />
           Sacola
-        </h2>
+        </h1>
         <ul>
           <li>
             <SmallCard />
