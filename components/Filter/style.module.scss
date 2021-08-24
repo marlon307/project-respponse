@@ -5,6 +5,8 @@
   color: #8e8e8e;
   overflow: hidden;
   align-items: center;
+  justify-content: center;
+  line-height: 1.4;
 
   input:checked+div {
     color: currentColor;
