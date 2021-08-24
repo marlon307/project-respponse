@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@egjs/flicking-plugins": "^4.2.0",
+    "@egjs/flicking-plugins": "^4.2.1",
     "@egjs/react-flicking": "^4.2.2",
     "@reduxjs/toolkit": "^1.6.1",
     "classnames": "^2.3.1",
