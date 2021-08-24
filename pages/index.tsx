@@ -4,7 +4,7 @@ import Flicking from '@egjs/react-flicking';
 import style from './styles/styleIndex.module.scss';
 import TesteSlide from '../assets/img/mWYhrOiAgmA.png';
 import { CardCategory } from '../components/Cards';
-import { mockApiCategory } from '../service/colorsMock';
+import mockCategory from '../service/mockCategory';
 import { BtnPrevNext } from '../components/Buttons';
 import { BarFilter } from '../components/Filter';
 
@@ -24,7 +24,7 @@ function index() {
               align="prev"
               ref={ buttonPrevNext }
             >
-              { mockApiCategory.map(({ categoryId, imgCategory, categoryName }) => (
+              { mockCategory.map(({ categoryId, imgCategory, categoryName }) => (
                 <div className="panel" key={ categoryId }>
                   <CardCategory id={ categoryId } image={ imgCategory } ctgName={ categoryName } />
                 </div>

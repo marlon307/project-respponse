@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Flicking from '@egjs/react-flicking';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
-import { options } from '../../service/colorsMock';
+import colorsMock from '../../service/colorsMock';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Bars/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
@@ -14,7 +14,7 @@ function productId() {
   return (
     <div className={ style.product }>
       <div className={ style.slide }>
-        <BarColors array={ options } />
+        <BarColors array={ colorsMock } />
       </div>
       <div className={ style.infodesc }>
         <div className={ style.mindetail }>
@@ -34,7 +34,7 @@ function productId() {
             </div>
           </div>
           <div className={ style.secondline }>
-            <BarSize array={ options } colorName="Laranja" />
+            <BarSize array={ colorsMock } colorName="Laranja" />
           </div>
           <AddBag />
         </div>

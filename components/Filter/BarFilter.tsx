@@ -1,7 +1,7 @@
 import React from 'react';
 import Flicking from '@egjs/react-flicking';
 import style from './style.module.scss';
-import { mockApiFilterUsed } from '../../service/colorsMock';
+import mockApiFilterUsed from '../../service/mockFiltermostUsed';
 import {
   FBranch, FColor, FTissue, FSize,
 } from './index';
@@ -10,16 +10,19 @@ function BarFilter() {
   return (
     <div className={ style.filter }>
       <Flicking
-        bound
         align="prev"
+        bound
       >
         <div className={ style.mainfilter }>
           Filtro
         </div>
+        <div className={ style.mainfilter }>
+          Ordernar Por
+        </div>
         { mockApiFilterUsed.map(({
-          color, colorName, size, tecid, branch,
+          id, color, colorName, size, tecid, branch,
         }) => (
-          <div className="panel">
+          <div className="panel" key={ id }>
             { color && <FColor color={ color } cName={ colorName } /> }
             { tecid && <FTissue tecid={ tecid } /> }
             { branch && <FBranch branch={ branch } /> }
