@@ -4,11 +4,13 @@
   justify-content: center;
   width: 100%;
   height: 46em;
+  overflow: hidden;
+  border-radius: 0 0 38px 38px;
 
   img {
     width: 100vw;
     height: 46em;
-    border-radius: 0 0 38px 38px;
+    object-fit: cover;
   }
 }
 
@@ -26,6 +28,15 @@
 
 @media (max-width: 750px) {
   .sectionfilter {
+    margin-top: 6vh;
     margin-right: 0;
+  }
+
+  .slide {
+    height: 35em;
+
+    img {
+      height: 35em;
+    }
   }
 }

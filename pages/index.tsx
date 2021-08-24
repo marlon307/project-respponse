@@ -13,7 +13,9 @@ function index() {
   return (
     <>
       <section className={ style.slide }>
-        <Image src={ TesteSlide } />
+        <Image
+          src={ TesteSlide }
+        />
       </section>
       <section className={ style.sectionfilter }>
         <nav>
