@@ -5,13 +5,12 @@
   width: 100%;
   height: 46em;
   overflow: hidden;
-  border-radius: 0 0 38px 38px;
 
   img {
     width: 100vw;
     height: 46em;
     object-fit: cover;
-    border-radius: 0 0 38px 38px;
+    border-radius: 0 0 2em 2em;
   }
 }
 
@@ -35,10 +34,10 @@
 
   .slide {
     height: 28em; //32
-    border-radius: 0 0 1em 1em;
 
     img {
       height: 28em; //32
+      border-radius: 0 0 1em 1em;
     }
   }
 }
