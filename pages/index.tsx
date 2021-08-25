@@ -8,6 +8,7 @@ import mockCategory from '../service/mockCategory';
 import { BtnPrevNext } from '../components/Buttons';
 import { BarFilter } from '../components/Filter';
 import mockCarousel from '../service/mockCarousel';
+// import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
@@ -17,9 +18,16 @@ function index() {
       <section>
         <div className={ style.slide }>
           <Flicking circular plugins={ plugins }>
-            { mockCarousel.map(({ id, urlImg, url }) => (
+            { mockCarousel.map(({
+              id, urlImg, url, alt,
+            }) => (
               <div className="panel" key={ id }>
-                <Image src={ urlImg } priority />
+                <Image
+                  src={ urlImg }
+                  priority
+                  quality={ 80 }
+                  alt={ alt }
+                />
                 <span>{ url }</span>
               </div>
             )) }
@@ -47,7 +55,10 @@ function index() {
         </nav>
       </section>
       <section className={ style.advertising }>
-        Divugaçoes
+        {/* <div>
+          <h1>Relogios</h1>
+          <Image src={ teste } />
+        </div> */}
       </section>
     </>
   );
