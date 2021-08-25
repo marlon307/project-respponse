@@ -41,6 +41,28 @@
   box-shadow: 2px 0px 5px 3px #f6f6f6;
 }
 
+.redirect {
+  position: relative;
+  padding: 18px 24px;
+  background: #E7F4E7;
+  width: 150px;
+  border-radius: 1em;
+  cursor: pointer;
+  font-weight: 600;
+
+  svg {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    transition: 0.2s;
+  }
+
+  &:hover svg {
+    opacity: 1;
+    right: 42px;
+  }
+}
+
 @media (max-width: 750px) {
 
   .next,
