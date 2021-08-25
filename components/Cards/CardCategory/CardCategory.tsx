@@ -14,7 +14,11 @@ function CardCategory({ id, image, ctgName }: Props) {
       <label htmlFor={ id }>
         <input id={ id } type="radio" name="category" />
         <figure className={ style.imgctg }>
-          <Image src={ image } placeholder="blur" />
+          <Image
+            src={ image }
+            placeholder="blur"
+            quality={ 75 }
+          />
         </figure>
         <span>{ ctgName }</span>
       </label>

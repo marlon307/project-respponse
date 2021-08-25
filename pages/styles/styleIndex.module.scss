@@ -26,6 +26,18 @@
   justify-content: space-between;
 }
 
+.advertising {
+  margin: 14vh 6%;
+
+  h1 {
+    margin: 16px 24px;
+  }
+
+  img {
+    border-radius: 2rem;
+  }
+}
+
 @media (max-width: 750px) {
   .sectionfilter {
     margin-top: 4vh;
