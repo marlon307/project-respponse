@@ -55,11 +55,15 @@ function index() {
         </nav>
       </section>
       <section className={ style.advertising }>
-        <div>
-          <h1>Oculos</h1>
-          <Image src={ teste } />
-          <CardInfo />
-          <BtnRedirect />
+        <div className={ style.container }>
+          <div className={ style.cont1 }>
+            <h1>Oculos</h1>
+            <Image src={ teste } />
+          </div>
+          <div className={ style.cont2 }>
+            <CardInfo />
+            <BtnRedirect />
+          </div>
         </div>
       </section>
     </>

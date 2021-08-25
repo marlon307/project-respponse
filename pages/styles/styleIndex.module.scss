@@ -37,6 +37,25 @@
   img {
     border-radius: 2rem;
   }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cont1 {
+    max-width: auto;
+  }
+
+  .cont2 {
+    display: flex;
+    gap: 3em;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2em 6%;
+  }
 }
 
 @media (max-width: 750px) {
@@ -55,6 +74,20 @@
   }
 
   .advertising {
-    margin: 12vh 6%;
+    margin: 6vh 6%;
+
+    .cont2 {
+      gap: 1.5em;
+    }
+  }
+
+  .container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    flex-wrap: wrap;
   }
 }
