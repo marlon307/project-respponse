@@ -27,6 +27,7 @@
 }
 
 .advertising {
+  position: relative;
   margin: 14vh 6%;
 
   h1 {
@@ -51,5 +52,9 @@
       height: 28em; //32
       border-radius: 0 0 1em 1em;
     }
+  }
+
+  .advertising {
+    margin: 12vh 6%;
   }
 }

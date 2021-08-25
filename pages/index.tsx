@@ -3,12 +3,12 @@ import Image from 'next/image';
 import Flicking from '@egjs/react-flicking';
 import { AutoPlay } from '@egjs/flicking-plugins';
 import style from './styles/styleIndex.module.scss';
-import { CardCategory } from '../components/Cards';
+import { CardCategory, CardInfo } from '../components/Cards';
 import mockCategory from '../service/mockCategory';
-import { BtnPrevNext } from '../components/Buttons';
+import { BtnPrevNext, BtnRedirect } from '../components/Buttons';
 import { BarFilter } from '../components/Filter';
 import mockCarousel from '../service/mockCarousel';
-// import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
+import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
@@ -55,10 +55,12 @@ function index() {
         </nav>
       </section>
       <section className={ style.advertising }>
-        {/* <div>
-          <h1>Relogios</h1>
+        <div>
+          <h1>Oculos</h1>
           <Image src={ teste } />
-        </div> */}
+          <CardInfo />
+          <BtnRedirect />
+        </div>
       </section>
     </>
   );
