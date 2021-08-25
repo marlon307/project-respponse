@@ -7,33 +7,22 @@ import { CardCategory } from '../components/Cards';
 import mockCategory from '../service/mockCategory';
 import { BtnPrevNext } from '../components/Buttons';
 import { BarFilter } from '../components/Filter';
-import TesteSlide1 from '../assets/img/mWYhrOiAgmA.png';
-import TesteSlide2 from '../assets/img/SmIlY2uAHo8.png';
-import TesteSlide3 from '../assets/img/atikh-bana-_KaMTEmJnxY-unsplash.jpg';
+import mockCarousel from '../service/mockCarousel';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
-  const plugins = [new AutoPlay({ duration: 12000, direction: 'NEXT', stopOnHover: false })];
+  const plugins = [new AutoPlay({ duration: 12000 })];
   return (
     <>
       <section>
         <div className={ style.slide }>
           <Flicking circular plugins={ plugins }>
-            <div className="panel">
-              <Image
-                src={ TesteSlide1 }
-              />
-            </div>
-            <div className="panel">
-              <Image
-                src={ TesteSlide2 }
-              />
-            </div>
-            <div className="panel">
-              <Image
-                src={ TesteSlide3 }
-              />
-            </div>
+            { mockCarousel.map(({ id, urlImg, url }) => (
+              <div className="panel" key={ id }>
+                <Image src={ urlImg } priority />
+                <span>{ url }</span>
+              </div>
+            )) }
           </Flicking>
         </div>
       </section>
