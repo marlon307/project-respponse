@@ -15,9 +15,8 @@
   }
 
   .imgctg {
-    will-change: transform;
-
     img {
+      will-change: transform;
       width: 130px;
       height: 130px;
       border-radius: 50%;
