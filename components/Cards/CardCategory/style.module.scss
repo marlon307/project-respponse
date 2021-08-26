@@ -1,7 +1,6 @@
 // Style card category
 .itencategory {
   margin: 0 22px;
-  width: 135px;
   height: auto;
 
   label {
@@ -17,20 +16,17 @@
   }
 
   .imgctg {
-    position: absolute;
-
     img {
-      width: 130px;
-      height: 130px;
+      will-change: transform;
       border-radius: 50%;
       transition: 0.2s;
+      transform: scale3d(0.96, 0.96, 0.96);
     }
   }
 
   span {
     font-weight: 700;
     color: #8e8e8e;
-    margin-top: 104%;
   }
 
   input:checked~span {
@@ -39,9 +35,7 @@
 
   &:hover {
     img {
-      width: 135px;
-      height: 135px;
-      border-radius: 50%;
+      transform: scale3d(1, 1, 1);
     }
   }
 }
@@ -49,21 +43,5 @@
 @media (max-width: 750px) {
   .itencategory {
     width: 100px;
-    height: 130px;
-    margin: 0 14px;
-
-    .imgctg {
-      position: relative;
-
-      img {
-        width: 100px;
-        height: 100px;
-        transition: none;
-      }
-    }
-
-    span {
-      margin-top: 0;
-    }
   }
 }
