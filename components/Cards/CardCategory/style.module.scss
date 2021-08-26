@@ -15,10 +15,11 @@
   }
 
   .imgctg {
+    will-change: transform;
+
     img {
       width: 130px;
       height: 130px;
-      will-change: transform;
       border-radius: 50%;
       transition: 0.2s;
       transform: scale3d(0.96, 0.96, 0.96);
@@ -35,6 +36,7 @@
   }
 
   &:hover {
+
     img {
       transform: scale3d(1, 1, 1);
     }
@@ -47,6 +49,7 @@
       img {
         width: 100px;
         height: 100px;
+        transform: scale3d(1, 1, 1);
       }
     }
   }
