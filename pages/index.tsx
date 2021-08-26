@@ -25,7 +25,7 @@ function index() {
                 <Image
                   src={ urlImg }
                   priority
-                  quality={ 80 }
+                  quality={ 75 }
                   alt={ alt }
                 />
                 <span>{ url }</span>
