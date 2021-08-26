@@ -13,11 +13,15 @@ function BarFilter() {
         align="prev"
         bound
       >
-        <div className={ style.mainfilter }>
-          Filtro
+        <div className="panel">
+          <div className={ style.filtername }>
+            Filtro
+          </div>
         </div>
-        <div className={ style.mainfilter }>
-          Ordernar Por
+        <div className="panel">
+          <div className={ style.filtername }>
+            Ordernar Por
+          </div>
         </div>
         { mockApiFilterUsed.map(({
           id, color, colorName, size, tecid, branch,
