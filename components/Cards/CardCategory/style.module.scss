@@ -52,13 +52,18 @@
     height: 130px;
     margin: 0 14px;
 
-    img {
-      width: 100px !important;
-      height: 100px !important;
+    .imgctg {
+      position: relative;
+
+      img {
+        width: 100px;
+        height: 100px;
+        transition: none;
+      }
     }
 
     span {
-      margin-top: 104%;
+      margin-top: 0;
     }
   }
 }
