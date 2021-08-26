@@ -1,7 +1,6 @@
 // Style card category
 .itencategory {
   margin: 0 22px;
-  height: auto;
 
   label {
     position: relative;
@@ -17,6 +16,8 @@
 
   .imgctg {
     img {
+      width: 130px;
+      height: 130px;
       will-change: transform;
       border-radius: 50%;
       transition: 0.2s;
@@ -42,6 +43,11 @@
 
 @media (max-width: 750px) {
   .itencategory {
-    width: 100px;
+    .imgctg {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
   }
 }
