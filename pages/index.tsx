@@ -58,7 +58,7 @@ function index() {
         <div className={ style.container }>
           <div className={ style.cont1 }>
             <h1>Oculos</h1>
-            <Image src={ teste } />
+            <Image src={ teste } alt="Oculos" />
           </div>
           <div className={ style.cont2 }>
             <CardInfo />
