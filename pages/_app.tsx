@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <link rel="alternate" href="http://br.respponse.com/" hrefLang="x-default" />
         <title>Respponse</title>
         <link rel="icon" href="/favico.ico" />
       </Head>
