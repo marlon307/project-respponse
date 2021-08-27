@@ -18,6 +18,7 @@ function CardCategory({ id, image, ctgName }: Props) {
             src={ image }
             placeholder="blur"
             quality={ 60 }
+            alt={ ctgName }
           />
         </figure>
         <span>{ ctgName }</span>
