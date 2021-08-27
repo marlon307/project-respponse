@@ -15,7 +15,11 @@ function MenuMobile() {
 
   return (
     <div className={ style.mobile }>
-      <a href="/" onClick={ (event) => openMenu(event) }>
+      <a
+        href="/"
+        onClick={ (event) => openMenu(event) }
+        aria-label="Menu"
+      >
         <Svg icoName="menu" />
       </a>
       <div className={ cx(style.dromn, {
