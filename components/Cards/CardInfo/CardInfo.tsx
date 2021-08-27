@@ -5,7 +5,7 @@ function CardInfo() {
   return (
     <div className={ style.info }>
       <div className={ style.primaryline }>
-        <h3>Oculos</h3>
+        <span>Oculos</span>
         <span>R$ 199,00</span>
       </div>
       <span>Oculos armação em aço</span>
