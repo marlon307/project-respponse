@@ -27,6 +27,7 @@ function index() {
                   priority
                   quality={ 75 }
                   alt={ alt }
+                  objectFit="cover"
                 />
                 <span>{ url }</span>
               </div>
