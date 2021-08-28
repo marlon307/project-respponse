@@ -34,7 +34,6 @@ function index() {
           )) }
         </Flicking>
       </div>
-
       <section className={ style.sectionfilter }>
         <nav>
           <div className={ style.category }>

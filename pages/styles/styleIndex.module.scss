@@ -1,19 +1,14 @@
 .slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 46em;
   overflow: hidden;
 
   figure {
-    width: 100vh;
-    height: 100vh;
+    width: 100vmax;
+    height: 100vmax;
   }
 
   img {
-    width: 100vw;
-    height: 46em;
     object-fit: cover;
     border-radius: 0 0 2em 2em;
   }
