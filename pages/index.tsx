@@ -28,6 +28,7 @@ function index() {
                   quality={ 75 }
                   alt={ alt }
                   objectFit="cover"
+
                 />
                 <span>{ url }</span>
               </div>
@@ -59,7 +60,11 @@ function index() {
         <div className={ style.container }>
           <div className={ style.cont1 }>
             <h1>Oculos</h1>
-            <Image src={ teste } alt="Oculos" />
+            <Image
+              src={ teste }
+              layout="responsive"
+              alt="Oculos"
+            />
           </div>
           <div className={ style.cont2 }>
             <CardInfo />
