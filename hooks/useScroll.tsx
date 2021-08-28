@@ -5,7 +5,10 @@ function useScroll() {
 
   useEffect(() => {
     const functionScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', functionScroll);
+    window.addEventListener('scroll', functionScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', functionScroll);
+    };
   }, []);
 
   return scrollY;
