@@ -15,27 +15,26 @@ function index() {
   const plugins = [new AutoPlay({ duration: 12000 })];
   return (
     <>
-      <section>
-        <div className={ style.slide }>
-          <Flicking circular plugins={ plugins }>
-            { mockCarousel.map(({
-              id, urlImg, url, alt,
-            }) => (
-              <div className="panel" key={ id }>
+      <div className={ style.slide }>
+        <Flicking circular plugins={ plugins }>
+          { mockCarousel.map(({
+            id, urlImg, url, alt,
+          }) => (
+            <div className="panel" key={ id }>
+              <figure>
                 <Image
                   src={ urlImg }
                   priority
-                  quality={ 75 }
+                  layout="responsive"
                   alt={ alt }
-                  objectFit="cover"
-
                 />
-                <span>{ url }</span>
-              </div>
-            )) }
-          </Flicking>
-        </div>
-      </section>
+              </figure>
+              <span>{ url }</span>
+            </div>
+          )) }
+        </Flicking>
+      </div>
+
       <section className={ style.sectionfilter }>
         <nav>
           <div className={ style.category }>
