@@ -19,7 +19,9 @@ function CardCategory({ id, image, ctgName }: Props) {
             placeholder="blur"
             quality={ 60 }
             alt={ ctgName }
-            layout="intrinsic"
+            layout="responsive"
+            width={ 130 }
+            height={ 130 }
           />
         </figure>
         <span>{ ctgName }</span>

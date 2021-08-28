@@ -5,9 +5,13 @@
   label {
     position: relative;
     cursor: pointer;
+    width: 130px;
+    height: 156px;
+    gap: 5px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-items: center;
   }
 
   input {
@@ -15,10 +19,11 @@
   }
 
   .imgctg {
+    width: 130px;
+    height: 130px;
+
     img {
       will-change: transform;
-      width: 130px;
-      height: 130px;
       border-radius: 50%;
       transition: 0.2s;
       transform: scale3d(0.96, 0.96, 0.96);
@@ -46,10 +51,16 @@
   .itencategory {
     margin: 0 12px;
 
+    label {
+      width: 100px;
+      height: 126px;
+    }
+
     .imgctg {
+      width: 100px;
+      height: 100px;
+
       img {
-        width: 100px;
-        height: 100px;
         transform: scale3d(1, 1, 1);
       }
     }
