@@ -22,9 +22,9 @@ function Header() {
     >
       <div className={ style.container }>
         <Link href="/">
-          <span>
+          <a>
             <Svg icoName="logo" />
-          </span>
+          </a>
         </Link>
       </div>
       <div className={ cx(style.searchdrop, {

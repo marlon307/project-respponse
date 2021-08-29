@@ -31,42 +31,42 @@ function MenuMobile() {
           <ul>
             <li>
               <Link href="/help">
-                <span>
+                <a>
                   <Svg icoName="question" />
                   Ajuda
-                </span>
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/account">
-                <span>
+                <a>
                   <Svg icoName="setting" />
                   Conta
-                </span>
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/favorite">
-                <span>
+                <a>
                   <Svg icoName="healt" />
                   Favoritos
-                </span>
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/bag">
-                <span>
+                <a>
                   <Svg icoName="bag" />
                   Sacola
-                </span>
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/login">
-                <span>
+                <a>
                   <Svg icoName="singin" />
                   Entrar
-                </span>
+                </a>
               </Link>
             </li>
           </ul>
