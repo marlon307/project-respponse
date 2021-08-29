@@ -31,7 +31,7 @@ function MenuMobile() {
           <ul>
             <li>
               <Link href="/help">
-                <a>
+                <a aria-label="Ajuda">
                   <Svg icoName="question" />
                   Ajuda
                 </a>
@@ -39,7 +39,7 @@ function MenuMobile() {
             </li>
             <li>
               <Link href="/account">
-                <a>
+                <a aria-label="Conta">
                   <Svg icoName="setting" />
                   Conta
                 </a>
@@ -47,7 +47,7 @@ function MenuMobile() {
             </li>
             <li>
               <Link href="/favorite">
-                <a>
+                <a aria-label="Favoritos">
                   <Svg icoName="healt" />
                   Favoritos
                 </a>
@@ -63,7 +63,7 @@ function MenuMobile() {
             </li>
             <li>
               <Link href="/login">
-                <a>
+                <a aria-label="Login">
                   <Svg icoName="singin" />
                   Entrar
                 </a>
@@ -76,6 +76,7 @@ function MenuMobile() {
               onClick={
                 (event) => openMenu(event)
               }
+              aria-label="Fechar Menu"
             >
               <Svg icoName="close" />
             </a>

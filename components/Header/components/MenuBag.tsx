@@ -20,7 +20,11 @@ function MenuBag() {
 
   return (
     <div className={ style.bag }>
-      <a href="/bag" onClick={ (event) => clickBag(event) }>
+      <a
+        href="/bag"
+        onClick={ (event) => clickBag(event) }
+        aria-label="Sacola"
+      >
         <Svg icoName="bag" />
       </a>
       <div
