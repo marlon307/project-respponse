@@ -68,11 +68,12 @@
   }
 
   .slide {
-    height: 28em; //32
+    width: 100%;
+    height: 38em;
+    border-radius: 0 0 1em 1em;
 
-    img {
-      height: 28em; //32
-      border-radius: 0 0 1em 1em;
+    figure {
+      height: 38em;
     }
   }
 
