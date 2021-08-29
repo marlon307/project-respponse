@@ -18,13 +18,13 @@ function index() {
       <div className={ style.slide }>
         <Flicking circular plugins={ plugins }>
           { mockCarousel.map(({
-            id, urlImg, url, alt,
+            id, urlImg, url, alt, priority,
           }) => (
             <div className="panel" key={ id }>
               <figure>
                 <Image
                   src={ urlImg }
-                  priority
+                  priority={ priority }
                   layout="responsive"
                   alt={ alt }
                 />
