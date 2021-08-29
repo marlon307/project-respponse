@@ -13,6 +13,7 @@ import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
 function index() {
   const buttonPrevNext = createRef<Flicking>();
   const plugins = [new AutoPlay({ duration: 12000 })];
+
   return (
     <>
       <div className={ style.slide }>
