@@ -21,11 +21,12 @@
       li {
         padding: 22px;
 
-        span {
+        a {
           display: flex;
           align-items: center;
           cursor: pointer;
           gap: 16px;
+          color: #333333;
 
           &:hover {
             text-decoration: underline;
