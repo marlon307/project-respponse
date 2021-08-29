@@ -32,7 +32,7 @@ function MenuUser() {
         <ul>
           <li>
             <Link href="/help">
-              <a>
+              <a aria-label="Ajuda">
                 <Svg icoName="question" />
                 Ajuda
               </a>
@@ -40,7 +40,7 @@ function MenuUser() {
           </li>
           <li>
             <Link href="/account">
-              <a>
+              <a aria-label="Conta">
                 <Svg icoName="setting" />
                 Conta
               </a>
@@ -48,7 +48,7 @@ function MenuUser() {
           </li>
           <li>
             <Link href="/favorite">
-              <a>
+              <a aria-label="Favoritos">
                 <Svg icoName="healt" />
                 Favoritos
               </a>
@@ -56,7 +56,7 @@ function MenuUser() {
           </li>
           <li>
             <Link href="/login">
-              <a>
+              <a aria-label="Login">
                 <Svg icoName="singin" />
                 Entrar
               </a>

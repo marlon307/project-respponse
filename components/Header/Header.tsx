@@ -22,7 +22,7 @@ function Header() {
     >
       <div className={ style.container }>
         <Link href="/">
-          <a>
+          <a aria-label="Respponse">
             <Svg icoName="logo" />
           </a>
         </Link>
