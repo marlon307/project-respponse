@@ -27,6 +27,7 @@ function index() {
                   src={ urlImg }
                   priority={ priority }
                   layout="responsive"
+                  placeholder="blur"
                   alt={ alt }
                 />
               </figure>
@@ -66,6 +67,7 @@ function index() {
             <Image
               src={ teste }
               layout="responsive"
+              placeholder="blur"
               alt="Oculos"
             />
           </div>
