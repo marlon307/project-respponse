@@ -8,13 +8,17 @@ function SmallCard() {
   return (
     <div className={ style.smallcard }>
       <div className={ style.img }>
-        <Image
-          src={ TesteImgUrl }
-          alt="Title"
-          quality="90"
-          width={ 130 }
-          height={ 165 }
-        />
+        <figure>
+          <Image
+            src={ TesteImgUrl }
+            alt="Title"
+            quality="90"
+            placeholder="blur"
+            layout="responsive"
+            width={ 130 }
+            height={ 165 }
+          />
+        </figure>
       </div>
       <div className={ style.desc }>
         <h2>Berrylush</h2>
