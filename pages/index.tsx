@@ -46,7 +46,11 @@ function index() {
             >
               { mockCategory.map(({ categoryId, imgCategory, categoryName }) => (
                 <div className="panel" key={ categoryId }>
-                  <CardCategory id={ categoryId } image={ imgCategory } ctgName={ categoryName } />
+                  <CardCategory
+                    id={ categoryId }
+                    image={ imgCategory }
+                    ctgName={ categoryName }
+                  />
                 </div>
               )) }
             </Flicking>
