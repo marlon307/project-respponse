@@ -20,8 +20,8 @@ function CardProduct() {
             alt="Product name"
             layout="responsive"
             quality={ 85 }
-            width={ 270 }
-            height={ 400 }
+            width={ 300 }
+            height={ 450 }
           />
         </figure>
         <div className={ style.infocont }>
