@@ -1,0 +1,23 @@
+.productcard {
+  position: relative;
+  margin-bottom: 42px;
+
+  figure {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    border-radius: 22px;
+  }
+
+  img {
+    border-radius: 22px;
+    object-fit: cover;
+  }
+}
+
+.infocont {
+  position: absolute;
+  top: 1em;
+  left: 9px;
+  z-index: 44444;
+}

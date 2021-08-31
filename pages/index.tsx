@@ -9,6 +9,7 @@ import { BtnPrevNext, BtnRedirect } from '../components/Buttons';
 import { BarFilter } from '../components/Filter';
 import mockCarousel from '../service/mockCarousel';
 import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
+import CardProduct from '../components/Cards/CardProduct/CardProduct';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
@@ -75,6 +76,30 @@ function index() {
             <CardInfo />
             <BtnRedirect />
           </div>
+        </div>
+      </section>
+      <section className={ style.produinitial }>
+        <h1>Products</h1>
+        <div className={ style.contentcards }>
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
         </div>
       </section>
     </>

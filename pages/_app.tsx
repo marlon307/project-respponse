@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favico.ico" />
         <link rel="canonical" href="https://respponse.com" />
         <meta name="description" content="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
+        <link rel="apple-touch-icon" href="/favico.ico" />
       </Head>
       <Header />
       <Component { ...pageProps } />

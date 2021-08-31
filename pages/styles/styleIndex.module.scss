@@ -61,6 +61,18 @@
   margin: 2em 6%;
 }
 
+.produinitial {
+  margin: 0 auto 120px;
+  width: 90%;
+
+  .contentcards {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+
 @media (max-width: 750px) {
   .sectionfilter {
     margin-top: 4vh;
