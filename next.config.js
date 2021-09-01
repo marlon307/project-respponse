@@ -1,3 +1,5 @@
+const withPWA = require('next-pwa');
+
 module.exports = {
   reactStrictMode: true,
   i18n: {
@@ -9,3 +11,13 @@ module.exports = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 };
+
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+    disable: process.env.NODE_ENV === 'development',
+    register: true,
+    scope: '/',
+    sw: 'sw.js',
+  },
+});
