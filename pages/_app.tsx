@@ -11,9 +11,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Respponse</title>
         <link rel="icon" href="/favico.ico" />
+        <link rel="apple-touch-icon" href="/favico.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="canonical" href="https://respponse.com" />
         <meta name="description" content="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
-        <link rel="apple-touch-icon" href="/favico.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="./favico.ico" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#FFFFFF" />
@@ -24,6 +25,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="format-detection" content="telephone=no" />
         <link rel="apple-touch-icon" href="/favico.ico" />
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover" />
+        <meta property="og:type" content="Repponse" />
+        <meta property="og:title" content="Respponse" />
+        <meta property="og:description" content="Respponse" />
+        <meta property="og:site_name" content="Respponse" />
+        <meta property="og:url" content="https://respponse.com" />
       </Head>
       <Header />
       <Component { ...pageProps } />
