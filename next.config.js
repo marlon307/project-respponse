@@ -1,6 +1,7 @@
+const withPlugins = require('next-compose-plugins');
 const withPWA = require('next-pwa');
 
-module.exports = {
+const NextConfig = { // Next Config
   reactStrictMode: true,
   i18n: {
     locales: ['pt-br'],
@@ -12,12 +13,14 @@ module.exports = {
   },
 };
 
-module.exports = withPWA({
-  pwa: {
-    dest: 'public',
-    disable: process.env.NODE_ENV !== 'production',
-    register: true,
-    scope: '/',
-    sw: 'sw.js',
-  },
-});
+module.exports = withPlugins([
+  // Plugins
+  [withPWA, {
+    pwa: {
+      dest: 'public',
+      disable: process.env.NODE_ENV !== 'production',
+      register: true,
+      sw: 'sw.js',
+    },
+  }],
+], NextConfig);

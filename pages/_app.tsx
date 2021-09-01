@@ -14,6 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="canonical" href="https://respponse.com" />
         <meta name="description" content="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
         <link rel="apple-touch-icon" href="/favico.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./favico.ico" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
       </Head>
       <Header />
       <Component { ...pageProps } />
