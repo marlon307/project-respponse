@@ -21,6 +21,12 @@
       "sizes": "518x80",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "./respponse512.png",
+      "sizes": "512x76",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
