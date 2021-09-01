@@ -1,6 +1,14 @@
 {
   "name": "Respponse",
   "short_name": "App",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "Descriptor": "Loja Respponse",
+  "lang": "pt-BR",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "./respponse.png",
@@ -8,13 +16,5 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
-  "theme_color": "#FFFFFF",
-  "background_color": "#FFFFFF",
-  "Descriptor": "Loja Respponse",
-  "lang": "pt-br",
-  "scope": "/",
-  "start_url": "/",
-  "display": "standalone",
-  "orientation": "portrait"
+  ]
 }
