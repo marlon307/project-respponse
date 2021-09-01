@@ -3,14 +3,17 @@
   "short_name": "App",
   "icons": [
     {
-      "src": "./favico.ico",
-      "sizes": "192x192",
+      "src": "./respponse.png",
+      "sizes": "250x40",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
   "theme_color": "#FFFFFF",
   "background_color": "#FFFFFF",
+  "Descriptor": "Loja Respponse",
+  "lang": "pt-br",
+  "scope": "/",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"
