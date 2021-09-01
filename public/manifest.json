@@ -11,8 +11,8 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "./respponse.png",
-      "sizes": "250x40",
+      "src": "./respponse250.png",
+      "sizes": "250x250",
       "type": "image/png",
       "purpose": "any maskable"
     },
