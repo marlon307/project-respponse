@@ -13,7 +13,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favico.ico" />
         <link rel="canonical" href="https://respponse.com" />
         <meta name="description" content="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
-        <link rel="icon" type="image/png" sizes="32x32" href="./favico.ico" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#FFFFFF" />
         <meta name="application-name" content="Respponse" />
