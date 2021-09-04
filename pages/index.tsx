@@ -14,7 +14,6 @@ import CardProduct from '../components/Cards/CardProduct/CardProduct';
 function index() {
   const buttonPrevNext = createRef<Flicking>();
   const plugins = [new AutoPlay({ duration: 12000 })];
-
   return (
     <>
       <div className={ style.slide }>
