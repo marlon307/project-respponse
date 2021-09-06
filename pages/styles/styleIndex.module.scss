@@ -119,6 +119,8 @@
 .column {
   display: flex;
   flex-direction: column;
+  max-width: 300px;
+  width: 47%;
   gap: 14vh;
 }
 
@@ -151,11 +153,29 @@
   }
 
   .cont2 {
+    width: 180px;
     gap: 1.5em;
   }
 
   .container {
     flex-direction: column;
+  }
+
+  .contentcards {
+    gap: 2vh;
+  }
+
+  .produinitial {
+    margin: 52px auto;
+    width: 88%;
+  }
+
+  .column {
+    gap: 4vh;
+  }
+
+  .column:nth-child(1) {
+    order: 4;
   }
 }
 
