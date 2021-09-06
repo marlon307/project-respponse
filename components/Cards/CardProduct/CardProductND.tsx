@@ -12,7 +12,7 @@ function CardProductND() {
       href={ `product/${product1}` }
       as="/product/1"
     >
-      <a className={ style.productcard }>
+      <a className={ style.productcardND }>
         <figure>
           <Image
             src={ testeImage }

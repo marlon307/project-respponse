@@ -87,36 +87,37 @@
 @media (max-width: 750px) {
   .productcard {
     width: 100%;
-    height: 30vh;
+    height: 100%;
 
     figure {
       width: 100%;
-      height: 30vh;
+      height: 100%;
       border-radius: 1em;
+    }
+  }
+
+  .productcardNDS {
+    width: 100%;
+    height: 100%;
+
+    figure {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .productcardND {
+    width: 100%;
+    height: 100%;
+
+    figure {
+      width: 100%;
+      height: 100%;
     }
   }
 
   .infocont {
     top: 0.5em;
     left: 6px;
-  }
-
-  .productcardNDS {
-    width: 100%;
-    height: 20vh;
-
-    figure {
-      width: 100%;
-      height: 20vh;
-    }
-  }
-
-  .productcardND {
-    width: 100%;
-
-    figure {
-      width: 100%;
-      height: 220px;
-    }
   }
 }
