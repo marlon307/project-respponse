@@ -10,6 +10,7 @@ import { BarFilter } from '../components/Filter';
 import mockCarousel from '../service/mockCarousel';
 import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
+import Svg from '../assets/Svg';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
@@ -36,6 +37,9 @@ function index() {
             </div>
           )) }
         </Flicking>
+        <div className={ style.scrollset }>
+          <Svg icoName="setLeft" />
+        </div>
       </div>
       <section className={ style.sectionfilter }>
         <nav>

@@ -1,20 +1,68 @@
 .slide {
+  position: relative;
   width: 100%;
-  height: 46em;
+  height: 100vh;
   overflow: hidden;
+  min-height: 100ch;
   border-radius: 0 0 2em 2em;
 
   figure {
     display: grid;
     width: 100vmax;
-    height: 46em;
+    height: 100vh;
+    min-height: 100ch;
+    // background-image: url('../../assets/img/angle-left-b.svg');
+    // background-repeat: no-repeat;
   }
 
   img {
     object-fit: cover;
     border-radius: 0 0 2em 2em;
   }
+
+  &:after {
+    content: '';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 9em;
+    position: absolute;
+    bottom: 0;
+    z-index: 989898;
+    box-shadow: inset 0px -90px 58px -52px #0000008c;
+  }
 }
+
+.scrollset {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  bottom: 6px;
+  left: 49.39%;
+  z-index: 989899;
+  animation: updown 1s infinite alternate;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  svg {
+    transform: rotate(270deg);
+    fill: #ffffff;
+    stroke: #ffffff;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@keyframes updown {
+  from {
+    transform: translateY(-32px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
+
 
 .sectionfilter {
   position: relative;
@@ -81,12 +129,7 @@
   }
 
   .slide {
-    height: 32em;
     border-radius: 0 0 1em 1em;
-
-    figure {
-      height: 32em;
-    }
   }
 
   .advertising {
