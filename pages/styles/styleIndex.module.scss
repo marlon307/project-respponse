@@ -1,18 +1,16 @@
 .slide {
   position: relative;
   width: 100%;
-  height: 100vh;
   overflow: hidden;
-  min-height: 100ch;
+  height: 100vh;
+  min-height: 100vw;
   border-radius: 0 0 2em 2em;
 
   figure {
     display: grid;
     width: 100vmax;
     height: 100vh;
-    min-height: 100ch;
-    // background-image: url('../../assets/img/angle-left-b.svg');
-    // background-repeat: no-repeat;
+    min-height: 100vw;
   }
 
   img {
@@ -129,7 +127,6 @@
   }
 
   .slide {
-    height: 100vh;
     border-radius: 0 0 1em 1em;
   }
 
