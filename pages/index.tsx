@@ -68,7 +68,6 @@ function index() {
       <section className={ style.advertising }>
         <div className={ style.container }>
           <div className={ style.cont1 }>
-            <h1>Oculos</h1>
             <Image
               src={ teste }
               layout="responsive"
@@ -83,7 +82,6 @@ function index() {
         </div>
       </section>
       <section className={ style.produinitial }>
-        <h1>Products</h1>
         <div className={ style.contentcards }>
           <CardProduct />
           <CardProduct />
