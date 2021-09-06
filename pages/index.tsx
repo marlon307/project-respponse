@@ -9,7 +9,7 @@ import { BtnPrevNext, BtnRedirect } from '../components/Buttons';
 import { BarFilter } from '../components/Filter';
 import mockCarousel from '../service/mockCarousel';
 import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
-import CardProduct from '../components/Cards/CardProduct/CardProduct';
+import { CardProduct, CardProductNDS, CardProductND } from '../components/Cards/CardProduct';
 import Svg from '../assets/Svg';
 
 function index() {
@@ -83,25 +83,22 @@ function index() {
       </section>
       <section className={ style.produinitial }>
         <div className={ style.contentcards }>
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
+          <div className={ style.column }>
+            <div className={ style.redirect }>
+              <BtnRedirect />
+            </div>
+          </div>
+          <div className={ style.column }>
+            <CardInfo />
+            <CardProductND />
+          </div>
+          <div className={ style.column }>
+            <CardProductNDS />
+            <CardProductNDS />
+          </div>
+          <div className={ style.column }>
+            <CardProduct />
+          </div>
         </div>
       </section>
     </>
