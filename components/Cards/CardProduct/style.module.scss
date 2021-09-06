@@ -1,5 +1,7 @@
 .productcard {
   position: relative;
+  display: flex;
+  width: 300px;
 
   figure {
     position: relative;
@@ -12,7 +14,68 @@
   img {
     object-fit: cover;
   }
+
+  &:hover .infocontND {
+    visibility: visible;
+    opacity: 1;
+  }
 }
+
+.productcardNDS {
+  position: relative;
+  display: flex;
+  width: 300px;
+  height: 300px;
+
+  figure {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  &:hover .infocontND {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.productcardND {
+  position: relative;
+
+  figure {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  &:hover .infocontND {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.infocontND {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  top: 1em;
+  left: 19px;
+  z-index: 44444;
+  transition: 0.3s;
+}
+
 
 .infocont {
   position: absolute;
