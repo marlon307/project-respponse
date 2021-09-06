@@ -1,3 +1,4 @@
+// Style Card producsts
 .productcard {
   position: relative;
   display: flex;
@@ -76,10 +77,46 @@
   transition: 0.3s;
 }
 
-
 .infocont {
   position: absolute;
   top: 1em;
   left: 19px;
   z-index: 44444;
+}
+
+@media (max-width: 750px) {
+  .productcard {
+    width: 100%;
+    height: 30vh;
+
+    figure {
+      width: 100%;
+      height: 30vh;
+      border-radius: 1em;
+    }
+  }
+
+  .infocont {
+    top: 0.5em;
+    left: 6px;
+  }
+
+  .productcardNDS {
+    width: 100%;
+    height: 20vh;
+
+    figure {
+      width: 100%;
+      height: 20vh;
+    }
+  }
+
+  .productcardND {
+    width: 100%;
+
+    figure {
+      width: 100%;
+      height: 220px;
+    }
+  }
 }

@@ -46,7 +46,8 @@
   position: relative;
   padding: 18px 24px;
   background: #E7F4E7;
-  width: 150px;
+  max-width: 150px;
+  width: 68%;
   border-radius: 1em;
   cursor: pointer;
   font-weight: 600;
@@ -60,7 +61,7 @@
 
   &:hover svg {
     opacity: 1;
-    right: 42px;
+    right: 14%;
   }
 }
 

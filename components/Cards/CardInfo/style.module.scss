@@ -19,23 +19,43 @@
   span {
     color: #707070;
   }
+}
+
+.primaryline {
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.secondline {
+  margin-top: 1em;
+  width: 100%;
+
+  span {
+    width: 1em;
+    height: 1em;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: rgb(112, 6, 6);
+  }
+}
+
+@media (max-width: 750px) {
+  .info {
+    width: 90%;
+    border-radius: 0.8em;
+    padding: 8px 12px;
+
+    span {
+      font-size: 0.6em;
+    }
+  }
 
   .primaryline {
-    justify-content: space-between;
-    font-weight: 700;
-    font-size: 1.1em;
+    margin-bottom: -0.3em;
   }
 
   .secondline {
-    margin-top: 1em;
-    width: 100%;
-
-    span {
-      width: 1em;
-      height: 1em;
-      margin-right: 8px;
-      border-radius: 50%;
-      background: rgb(112, 6, 6);
-    }
+    margin-top: 0.6em;
   }
 }
