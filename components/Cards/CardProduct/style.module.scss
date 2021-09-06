@@ -71,16 +71,16 @@
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  top: 1em;
-  left: 19px;
+  top: 4%;
+  width: 100%;
   z-index: 44444;
   transition: 0.3s;
 }
 
 .infocont {
   position: absolute;
-  top: 1em;
-  left: 19px;
+  top: 4%;
+  width: 100%;
   z-index: 44444;
 }
 
@@ -118,6 +118,5 @@
 
   .infocont {
     top: 0.5em;
-    left: 6px;
   }
 }
