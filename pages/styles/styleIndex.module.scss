@@ -27,7 +27,7 @@
     height: 9em;
     position: absolute;
     bottom: 0;
-    z-index: 989898;
+    z-index: 98898;
     box-shadow: inset 0px -90px 58px -52px #0000008c;
   }
 }
@@ -36,9 +36,9 @@
   position: absolute;
   width: 34px;
   height: 34px;
-  bottom: 4%;
+  bottom: 6%;
   left: 49.39%;
-  z-index: 989899;
+  z-index: 98899;
   animation: updown 1s infinite alternate;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -77,10 +77,6 @@
 .advertising {
   position: relative;
   margin: 8vh 6%;
-
-  h1 {
-    margin: 16px 24px;
-  }
 
   img {
     border-radius: 2rem;
