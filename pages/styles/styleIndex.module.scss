@@ -3,14 +3,12 @@
   width: 100%;
   overflow: hidden;
   height: 100vh;
-  min-height: 100vw;
   border-radius: 0 0 2em 2em;
 
   figure {
     display: grid;
     width: 100vmax;
     height: 100vh;
-    min-height: 100vw;
   }
 
   img {
