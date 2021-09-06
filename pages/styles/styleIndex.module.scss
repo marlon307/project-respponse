@@ -124,6 +124,21 @@
   gap: 14vh;
 }
 
+@media (max-width: 1300px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .produinitial {
+    margin: 152px auto;
+    width: 78%;
+  }
+
+  .contentcards {
+    gap: 0;
+  }
+}
+
 @media (max-width: 750px) {
   .sectionfilter {
     margin-top: 4vh;
@@ -176,11 +191,5 @@
 
   .column:nth-child(1) {
     order: 4;
-  }
-}
-
-@media (max-width: 1200px) {
-  .container {
-    flex-wrap: wrap;
   }
 }
