@@ -1,0 +1,28 @@
+.footer {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 4em 0 8em;
+
+
+  h1 {
+    color: #333;
+  }
+
+  section {
+    div {
+      width: 100%;
+      margin: 20px 6%;
+    }
+  }
+}
+
+.footercolumn {
+  display: flex;
+  align-items: flex-start;
+  width: 5 0%;
+  margin: 0 6%;
+  gap: 52px;
+  flex-wrap: wrap;
+}

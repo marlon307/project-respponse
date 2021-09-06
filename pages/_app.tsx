@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import '../styles/globals.scss';
 import '@egjs/react-flicking/dist/flicking.css';
+import Footer from '../components/Footer/Footer';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -30,7 +31,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:url" content="https://respponse.com" />
       </Head>
       <Header />
-      <Component { ...pageProps } />
+      <main>
+        <Component { ...pageProps } />
+      </main>
+      <Footer />
     </>
   );
 }
