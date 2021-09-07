@@ -10,13 +10,13 @@ function Footer() {
           <h1>Sobre</h1>
           <ul>
             <li>
-              <a>
+              <a aria-label="Construção do Site">
                 <Svg icoName="construction" />
                 Construção do Site
               </a>
             </li>
             <li>
-              <a>
+              <a aria-label="Quem Somos">
                 <Svg icoName="question" />
                 Quem Somos
               </a>
@@ -27,19 +27,19 @@ function Footer() {
           <h1>Ajuda</h1>
           <ul>
             <li>
-              <a href="Tel:+999999999" className="link" data-link="">
+              <a href="Tel:+999999999" className="link" aria-label="Numéro de telefone">
                 <Svg icoName="phone" />
                 (99) 9 9999-9999
               </a>
             </li>
             <li>
-              <a href="mailto:email@email.com" className="link" data-link="">
+              <a href="mailto:email@email.com" className="link" aria-label=" Email email@email.com">
                 <Svg icoName="email" />
                 email@email.com
               </a>
             </li>
             <li>
-              <a>
+              <a aria-label="Politica de troca e devoluções">
                 <Svg icoName="doc" />
                 Politica de troca e devoluções
               </a>
