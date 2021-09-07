@@ -101,6 +101,11 @@
   justify-content: center;
   flex-direction: column;
   margin: 2em 6%;
+  max-width: 300px;
+
+  h1 {
+    font-size: 3em;
+  }
 }
 
 .produinitial {
@@ -121,6 +126,10 @@
   max-width: 300px;
   width: 47%;
   gap: 14vh;
+
+  h1 {
+    font-size: 2.2em;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -158,8 +167,11 @@
   }
 
   .cont2 {
-    width: 180px;
     gap: 1.5em;
+
+    h1 {
+      font-size: 1.8em;
+    }
   }
 
   .container {
@@ -177,6 +189,10 @@
 
   .column {
     gap: 4vh;
+
+    h1 {
+      font-size: 1.5em;
+    }
   }
 
   .column:nth-child(1) {

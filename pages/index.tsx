@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Flicking from '@egjs/react-flicking';
 import { AutoPlay } from '@egjs/flicking-plugins';
 import style from './styles/styleIndex.module.scss';
-import { CardCategory, CardInfo } from '../components/Cards';
+import { CardCategory } from '../components/Cards';
 import mockCategory from '../service/mockCategory';
 import { BtnPrevNext, BtnRedirect } from '../components/Buttons';
 import { BarFilter } from '../components/Filter';
@@ -76,7 +76,7 @@ function index() {
             />
           </div>
           <div className={ style.cont2 }>
-            <CardInfo />
+            <h1>Oculos de varias marcas e modelos</h1>
             <BtnRedirect />
           </div>
         </div>
@@ -89,7 +89,7 @@ function index() {
             </div>
           </div>
           <div className={ style.column }>
-            <CardInfo />
+            <h1>Veja as últimas novidades</h1>
             <CardProductND />
           </div>
           <div className={ style.column }>
