@@ -76,7 +76,7 @@ function index() {
             />
           </div>
           <div className={ style.cont2 }>
-            <h1>Oculos de varias marcas e modelos</h1>
+            <h1>Óculos de varias marcas e modelos</h1>
             <BtnRedirect />
           </div>
         </div>

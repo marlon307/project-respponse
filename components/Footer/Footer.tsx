@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Svg from '../../assets/Svg';
 import style from './style.module.scss';
 
@@ -10,16 +11,20 @@ function Footer() {
           <h1>Sobre</h1>
           <ul>
             <li>
-              <a aria-label="Construção do Site">
-                <Svg icoName="construction" />
-                Construção do Site
-              </a>
+              <Link href="/help">
+                <a aria-label="Construção do Site">
+                  <Svg icoName="construction" />
+                  Construção do Site
+                </a>
+              </Link>
             </li>
             <li>
-              <a aria-label="Quem Somos">
-                <Svg icoName="question" />
-                Quem Somos
-              </a>
+              <Link href="/help">
+                <a aria-label="Quem Somos">
+                  <Svg icoName="question" />
+                  Quem Somos
+                </a>
+              </Link>
             </li>
           </ul>
         </section>
@@ -39,10 +44,12 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a aria-label="Politica de troca e devoluções">
-                <Svg icoName="doc" />
-                Politica de troca e devoluções
-              </a>
+              <Link href="/help">
+                <a aria-label="Politica de troca e devoluções">
+                  <Svg icoName="doc" />
+                  Politica de troca e devoluções
+                </a>
+              </Link>
             </li>
           </ul>
         </section>
