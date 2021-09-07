@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
-import Image from 'next/image';
 import style from './styleSearchBar.module.scss';
-import icoSearch from '../../assets/img/u_search.svg';
-import icoClose from '../../assets/img/close.svg';
 import useOutsideClick from '../../hooks/useOutSide';
+import Svg from '../../assets/Svg';
 
 export interface IProps {
   setSearchopen?: Function;
@@ -16,16 +14,21 @@ function Bar({ setSearchopen, searchopen }: IProps) {
 
   return (
     <div ref={ ref } className={ style.bar }>
-      <Image src={ icoSearch } />
+      <Svg icoName="search" />
       <input
         type="text"
         placeholder="Busque aqui"
       />
       <div className={ style.close }>
-        <Image
-          src={ icoClose }
+        <button
+          type="button"
           onClick={ () => setSearchopen!(false) }
-        />
+          aria-label="Fechar barra de pesquisa"
+        >
+          <Svg
+            icoName="close"
+          />
+        </button>
       </div>
     </div>
   );

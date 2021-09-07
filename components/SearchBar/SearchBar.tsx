@@ -1,7 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
-import inconSearch from '../../assets/img/u_search.svg';
 import style from './styleSearchBar.module.scss';
+import Svg from '../../assets/Svg';
 
 type Props = {
   setSearchopen: Function
@@ -9,7 +8,8 @@ type Props = {
 }
 
 function SearchBar({ setSearchopen, searchopen }: Props) {
-  function openSearchBar() {
+  function openSearchBar(event: { preventDefault: () => void; }) {
+    event.preventDefault();
     setSearchopen(!searchopen);
   }
 
@@ -17,10 +17,12 @@ function SearchBar({ setSearchopen, searchopen }: Props) {
     <>
       { !searchopen && (
         <div className={ style.searchBar }>
-          <Image
-            src={ inconSearch }
+          <a
+            href="/"
             onClick={ openSearchBar }
-          />
+          >
+            <Svg icoName="search" />
+          </a>
         </div>
       ) }
     </>
