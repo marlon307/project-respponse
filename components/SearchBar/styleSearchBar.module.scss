@@ -1,12 +1,18 @@
 .searchBar {
-  width: 28px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 
-  img {
+  a {
+    width: 28px;
+    height: 28px;
+  }
+
+  svg {
+    width: 28px;
+    height: 28px;
     transition: 3s;
   }
 }
@@ -16,8 +22,9 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  overflow: hidden;
 
-  img {
+  svg {
     width: 28px;
     cursor: pointer;
   }
@@ -28,6 +35,18 @@
     height: 50%;
     font-size: 1.6em;
     background: transparent;
+  }
+}
+
+.close {
+  button {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    cursor: pointer;
   }
 }
 

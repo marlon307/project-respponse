@@ -74,8 +74,8 @@ const mockApiFilterUsed = [
   },
   {
     id: 18,
-    color: '#e00606',
-    colorName: 'Vermelho',
+    color: '#000',
+    colorName: 'Preto',
   },
   {
     id: 19,

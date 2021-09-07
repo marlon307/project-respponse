@@ -1,6 +1,7 @@
 .bag {
   svg {
     width: 28px;
+    height: 28px;
     position: relative;
     display: flex;
     cursor: pointer;
@@ -21,7 +22,7 @@
     background: var(--maincolormenu);
     backdrop-filter: saturate(100%) blur(5px);
     border-radius: 12px;
-    border: 1px solid var(--bodercolor);
+    border: 1px solid var(--bordercolor);
 
     .titlemenu {
       margin: 8px 12px;
@@ -62,7 +63,7 @@
   &::after {
     content: "";
     left: 50%;
-    border: 1px solid var(--bodercolor);
+    border: 1px solid var(--bordercolor);
     background: var(--maincolormenu);
     backdrop-filter: saturate(100%) blur(5px);
     position: absolute;
@@ -84,7 +85,7 @@
   width: 100%;
   margin: 14px 0;
   padding-top: 12px;
-  border-top: 1px solid var(--bodercolor);
+  border-top: 1px solid var(--bordercolor);
 
   div {
     width: 100%;

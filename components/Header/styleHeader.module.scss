@@ -16,7 +16,7 @@ $size: 750px;
   &:hover {
     background: var(--maincolormenu);
     backdrop-filter: saturate(100%) blur(5px);
-    box-shadow: inset 0 -1px 0 0 var(--bodercolor);
+    box-shadow: inset 0 -1px 0 0 var(--bordercolor);
   }
 
   .container {
@@ -62,5 +62,5 @@ $size: 750px;
 .active {
   background: var(--maincolormenu);
   backdrop-filter: saturate(100%) blur(5px);
-  box-shadow: inset 0 -1px 0 0 var(--bodercolor);
+  box-shadow: inset 0 -1px 0 0 var(--bordercolor);
 }
