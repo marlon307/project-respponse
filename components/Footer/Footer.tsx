@@ -47,7 +47,7 @@ function Footer() {
               <Link href="/help">
                 <a aria-label="Politica de troca e devoluções">
                   <Svg icoName="doc" />
-                  Politica de troca e devoluções
+                  Politica de troca e devoluçõe
                 </a>
               </Link>
             </li>

@@ -11,7 +11,7 @@
   z-index: 9998;
   background: var(--maincolor);
   border-radius: 26px;
-  box-shadow: 0 0 30px var(--boxshdowncolo);
+  box-shadow: 0 0 30px var(--boxshadowcolor);
   transition: 0.3s;
   width: 500px;
   flex: none;
@@ -76,7 +76,7 @@
   position: relative;
   max-width: 98vh;
   padding: 0 6%;
-  margin: 0 auto;
+  margin: 0 auto 3em;
 }
 
 @media (max-width: 950px) {
