@@ -104,16 +104,15 @@
 }
 
 .produinitial {
-  margin: 152px auto;
-  width: 60%;
+  margin: 152px 6%;
 }
 
 .contentcards {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 8vh;
 }
 
 .column {
@@ -124,18 +123,9 @@
   gap: 14vh;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
   .container {
     flex-wrap: wrap;
-  }
-
-  .produinitial {
-    margin: 152px auto;
-    width: 78%;
-  }
-
-  .contentcards {
-    gap: 0;
   }
 }
 
