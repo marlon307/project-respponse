@@ -38,6 +38,49 @@ const mockApiFilterUsed = [
     color: '#e00606',
     colorName: 'Vermelho',
   },
+  {
+    id: 10,
+    branch: 'Hang Loose',
+  },
+  {
+    id: 11,
+    color: '#83cf80',
+    colorName: 'Verde Claro',
+  },
+  {
+    id: 12,
+    tecid: '100% Algodão',
+  },
+  {
+    id: 13,
+    branch: 'Puma',
+  },
+  {
+    id: 14,
+    tecid: 'Jeans',
+  },
+  {
+    id: 15,
+    color: '#8c00ff',
+    colorName: 'Roxo',
+  },
+  {
+    id: 16,
+    tecid: 'Dry Fit',
+  },
+  {
+    id: 17,
+    branch: 'UOT',
+  },
+  {
+    id: 18,
+    color: '#e00606',
+    colorName: 'Vermelho',
+  },
+  {
+    id: 19,
+    tecid: 'Jeans Escuro',
+  },
 ];
 
 export default mockApiFilterUsed;

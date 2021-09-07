@@ -15,10 +15,11 @@
     margin: 20px 6%;
 
     a {
-      color: var(--colorlink);
+      color: #333;
       display: flex;
       margin-top: 6px;
       gap: 6px;
+      cursor: pointer;
 
       &:hover {
         text-decoration: underline;
