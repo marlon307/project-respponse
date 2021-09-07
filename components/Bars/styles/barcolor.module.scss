@@ -25,6 +25,7 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
+    border: 1px solid var(--bordercolor);
   }
 
   input:checked~span {
