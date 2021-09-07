@@ -917,12 +917,12 @@
 
 "@egjs/agent@^2.2.1":
   version "2.3.0"
-  resolved "https://registry.npmjs.org/@egjs/agent/-/agent-2.3.0.tgz"
+  resolved "https://registry.yarnpkg.com/@egjs/agent/-/agent-2.3.0.tgz#5a18150ce46a2ba1d237a847db44b0a234bd96f0"
   integrity sha512-ENhwkOW6rnYW8IuXJwvECIAzj7nMxq+ctB8uCJ+mKnoKK8tGiv3YXtN6nuaOov2YmXdRdwafSz9rhgRNXswX/A==
 
 "@egjs/axes@^2.8.0":
   version "2.8.0"
-  resolved "https://registry.npmjs.org/@egjs/axes/-/axes-2.8.0.tgz"
+  resolved "https://registry.yarnpkg.com/@egjs/axes/-/axes-2.8.0.tgz#b038378ad0a085b3b4a5218dd8e7db396898212c"
   integrity sha512-WPMIM/ExZBS8guD3oeNr6YGDn2xSnj0YUZHWvY/NWvTQIs7A2O7WxJivYgzcg7r2q0RYtzrdpHn+982iaKCLSw==
   dependencies:
     "@egjs/agent" "^2.2.1"
@@ -931,12 +931,12 @@
 
 "@egjs/component@^2.2.2":
   version "2.2.2"
-  resolved "https://registry.npmjs.org/@egjs/component/-/component-2.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/@egjs/component/-/component-2.2.2.tgz#b8208ea4ca05f6562a51d58f1e6f9979aad8a9d9"
   integrity sha512-2m6nu6/Mbs6VnoT4IHFGUBX6V82Zp01zDmlWpIJ3fMatHpe7BB1qUYFgMmSWGY0uOvOl4plvflwbCRUAGMfwWQ==
 
 "@egjs/component@^3.0.1":
   version "3.0.1"
-  resolved "https://registry.npmjs.org/@egjs/component/-/component-3.0.1.tgz"
+  resolved "https://registry.yarnpkg.com/@egjs/component/-/component-3.0.1.tgz#4bf122b5f81fd01126646c63f4fd7aa200a5a057"
   integrity sha512-Hus9GMXOVfHBzyumyeRL1TkN60LhGen+e9FpqXqbS9jA9hDYEE1AH3ulahbBGhRdMs4uXYl3hRnB5kGZRb9n7Q==
 
 "@egjs/flicking-plugins@^4.2.1":
@@ -955,14 +955,14 @@
 
 "@egjs/hammerjs@^2.0.15":
   version "2.0.17"
-  resolved "https://registry.npmjs.org/@egjs/hammerjs/-/hammerjs-2.0.17.tgz"
+  resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
   integrity sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
 "@egjs/list-differ@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.npmjs.org/@egjs/list-differ/-/list-differ-1.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/@egjs/list-differ/-/list-differ-1.0.0.tgz#2277aff52e3e4bd9318d5c30ffc3ba3b6216f05e"
   integrity sha512-HsbMKc0ZAQH+EUeCmI/2PvTYSybmkaWwakU8QGDYYgMVIg9BQ5sM0A0Nnombjxo2+JzXHxmH+jw//yGX+y6GYw==
 
 "@egjs/react-flicking@^4.2.5":
@@ -1163,7 +1163,7 @@
 
 "@types/hammerjs@^2.0.36":
   version "2.0.40"
-  resolved "https://registry.npmjs.org/@types/hammerjs/-/hammerjs-2.0.40.tgz"
+  resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.40.tgz#ded0240b6ea1ad7afc1e60374c49087aaea5dbd8"
   integrity sha512-VbjwR1fhsn2h2KXAY4oy1fm7dCxaKy0D+deTb8Ilc3Eo3rc5+5eA4rfYmZaHgNJKxVyI0f6WIXzO2zLkVmQPHA==
 
 "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.7", "@types/json-schema@^7.0.8":
