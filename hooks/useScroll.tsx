@@ -1,11 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 
-declare global {
-  // eslint-disable-next-line no-unused-vars
-  interface Window {
-    platform: any;
-  }
-}
+// declare global {
+//   // eslint-disable-next-line no-unused-vars
+//   interface Window {
+//     platform: any;
+//   }
+// }
 
 function useScroll() {
   const [scrollY, setScrollY] = useState(0);
@@ -15,13 +15,13 @@ function useScroll() {
     [],
   );
 
-  const getDevice = window.platform.os.family;
+  // const getDevice = window.platform.os.family;
 
   // Mudar lista de dispositivos
-  const isMobile = /Android|iOS|Windows Phone|BlackBerry|Tablet OS|null/i.test(getDevice);
+  // const isMobile = /Android|iOS|Windows Phone|BlackBerry|Tablet OS|null/i.test(getDevice);
 
   useEffect(() => {
-    window.addEventListener('scroll', functionScroll, { passive: isMobile });
+    window.addEventListener('scroll', functionScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', functionScroll);
