@@ -8,8 +8,15 @@ function useScroll() {
     [],
   );
 
+  // const getDevice = window.platform.os.family;
+  //
+  //
+  //
+  // Mudar lista de dispositivos
+  // const isMobile = /Android|iOS|Windows Phone|BlackBerry|Tablet OS|null/i.test(getDevice);
+
   useEffect(() => {
-    window.addEventListener('scroll', functionScroll, { passive: true });
+    window.addEventListener('scroll', functionScroll, false);
 
     return () => {
       window.removeEventListener('scroll', functionScroll);
