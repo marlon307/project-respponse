@@ -50,7 +50,7 @@
       border-radius: 1em;
       height: 12px;
       width: 0;
-      transition: 0.5s;
+      transition: 2s width cubic-bezier(0.39, 0.58, 0.57, 1);
     }
   }
 
@@ -175,7 +175,7 @@
 
 @media (max-width: 600px) {
   .order {
-    margin-top: 70px;
+    margin: 70px auto 20px;
   }
 
   .progressbar {
