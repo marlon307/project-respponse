@@ -45,7 +45,9 @@ function orderId() {
         </div>
         <div>
           <h3>Correios</h3>
-          <span>QF000000000BR</span>
+          <span>
+            <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">QF000000000BR</a>
+          </span>
         </div>
       </div>
       <div className={ style.orderitems }>

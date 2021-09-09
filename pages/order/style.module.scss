@@ -3,6 +3,10 @@
   max-width: 700px;
   padding: 2em;
   border-radius: 1.6em;
+
+  span {
+    color: #464646;
+  }
 }
 
 .topline {
@@ -13,7 +17,7 @@
   }
 
   b {
-    color: #333;
+    color: #464646;
   }
 }
 
@@ -21,7 +25,7 @@
   margin: 1.6em 0;
 
   h2 {
-    color: #333;
+    color: #464646;
   }
 }
 
@@ -121,7 +125,7 @@
   justify-content: space-between;
 
   h3 {
-    color: #333;
+    color: #464646;
   }
 
   div {
@@ -133,6 +137,10 @@
   div:last-child {
     align-items: center;
   }
+
+  a {
+    color: var(--colorlink);
+  }
 }
 
 .orderitems {
@@ -143,7 +151,7 @@
     padding: 16px 0;
 
     li {
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
   }
 }
@@ -159,11 +167,7 @@
 
     span:first-child {
       font-weight: 600;
-      color: #333;
-    }
-
-    span {
-      color: #585858;
+      color: #464646;
     }
   }
 }
