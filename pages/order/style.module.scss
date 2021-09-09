@@ -176,9 +176,12 @@
 @media (max-width: 600px) {
   .order {
     margin: 70px auto 20px;
+    padding: 1.3em;
   }
 
   .progressbar {
+    margin: 3em 1%;
+
     *span {
       &::after {
         content: '';
@@ -212,6 +215,7 @@
     [data-status='5']span:nth-child(5) {
       &::after {
         content: attr(title);
+        right: 0;
       }
     }
   }
