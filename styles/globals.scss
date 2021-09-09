@@ -24,6 +24,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+main {
+  min-height: 70vh;
+}
+
 .inputs {
   label {
     margin: 46px 0 15px;
