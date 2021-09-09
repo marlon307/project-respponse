@@ -1,8 +1,9 @@
 .order {
-  margin: 110px auto;
+  margin: 90px auto;
   max-width: 700px;
   padding: 2em;
   border-radius: 1.6em;
+  background: var(--maincolor);
 
   span {
     color: #464646;
@@ -173,6 +174,10 @@
 }
 
 @media (max-width: 600px) {
+  .order {
+    margin-top: 70px;
+  }
+
   .progressbar {
     *span {
       &::after {

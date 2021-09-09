@@ -9,7 +9,7 @@ interface IProps {
 
 function MinCardOrder({ idOrder, date, status }: IProps) {
   return (
-    <a href="/" className={ style.mincardOrder }>
+    <a href="/order/1" className={ style.mincardOrder }>
       <span>{ idOrder }</span>
       <span>{ date }</span>
       <span>{ status }</span>
