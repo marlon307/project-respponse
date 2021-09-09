@@ -44,10 +44,36 @@
     &:before {
       content: '';
       position: absolute;
-      width: 27%;
-      height: 12px;
       border-radius: 1em;
-      background: #96A9EC;
+      height: 12px;
+    }
+  }
+
+  div[data-status='2'] {
+    &:before {
+      width: 25%;
+      background: linear-gradient(to right, #96A9EC, #A2B5D8);
+    }
+  }
+
+  div[data-status='3'] {
+    &:before {
+      width: 50%;
+      background: linear-gradient(to right, #96A9EC, #A2B5D8, #8ECEAB);
+    }
+  }
+
+  div[data-status='4'] {
+    &:before {
+      width: 75%;
+      background: linear-gradient(to right, #96A9EC, #A2B5D8, #8ECEAB, #93E1A0);
+    }
+  }
+
+  div[data-status='5'] {
+    &:before {
+      width: 100%;
+      background: linear-gradient(to right, #96A9EC, #A2B5D8, #8ECEAB, #93E1A0, #ADEEB0);
     }
   }
 
