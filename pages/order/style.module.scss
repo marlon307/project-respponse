@@ -33,7 +33,7 @@
 .progressbar {
   margin: 3em 6%;
   width: auto;
-  border: 1px solid #ececec;
+  border: 1px solid var(--bordercolor);
   border-radius: 1em;
 
   div {
