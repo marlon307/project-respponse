@@ -27,7 +27,7 @@ function orderId() {
       <div className={ style.status }>
         <h2>Status do Pedido</h2>
         <div className={ style.progressbar }>
-          <div data-status="1">
+          <div data-status="4">
             <span title="Pedido Realizado" aria-label="Pedido Realizado" />
             <span title="Pagamento Aprovado" aria-label="Pagamento Aprovado" />
             <span title="NF-e Disponivel" aria-label="NF-e Disponivel" />
