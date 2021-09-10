@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import '../styles/globals.scss';
 import '@egjs/react-flicking/dist/flicking.css';
 import Footer from '../components/Footer/Footer';
+import Modal from '../components/Modal/Modal';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Header />
       <main>
         <Component { ...pageProps } />
+        <Modal />
       </main>
       <Footer />
     </>

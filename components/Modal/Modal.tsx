@@ -1,14 +1,21 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
+// { ReactNode }
+import cx from 'classnames';
 import style from './style.module.scss';
+import stateModal from './stateModal';
 
-type Props = {
-  children: ReactNode
-}
+function Modal() {
+  const { openModal } = stateModal();
 
-function Modal({ children }: Props) {
   return (
-    <div className={ style.modal }>
-      { children }
+    <div className={
+      cx(
+        style.modal,
+        { [style.open]: openModal },
+      )
+    }
+    >
+      value
     </div>
   );
 }
