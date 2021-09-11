@@ -4,7 +4,13 @@ import cx from 'classnames';
 import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 
-function ContentModal({ children, isOpen, openModal }: any) {
+type pModal = {
+  children: any,
+  isOpen: boolean;
+  openModal: Function;
+}
+
+function ContentModal({ children, isOpen, openModal }: pModal) {
   if (typeof window === 'undefined') return null;
 
   const getModal = document.getElementById('modal')!;
@@ -24,7 +30,13 @@ function ContentModal({ children, isOpen, openModal }: any) {
   function contetModal() {
     return (
       isOpen && (
-        <>
+        <div
+          className="content"
+          onClick={ () => openModal(false) }
+          onKeyPress={ () => { } }
+          role="button"
+          tabIndex={ 0 }
+        >
           <button
             type="button"
             className={ style.close }
@@ -33,7 +45,7 @@ function ContentModal({ children, isOpen, openModal }: any) {
             <Svg icoName="close" />
           </button>
           { children }
-        </>
+        </div>
       )
     );
   }
