@@ -1,23 +1,46 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import style from './style.module.scss';
+import Svg from '../../assets/Svg';
 
-function ContentModal({ children }: any) {
+function ContentModal({ children, isOpen, openModal }: any) {
   if (typeof window === 'undefined') return null;
 
   const getModal = document.getElementById('modal')!;
 
   useEffect(() => {
     getModal.className = cx(style.modal, {
-      [style.open]: children !== false,
+      [style.open]: isOpen,
     });
-    if (children !== false) document.body.style.overflow = 'hidden';
+
+    if (isOpen) {
+      document.body.className = 'hidden';
+    } else {
+      document.body.removeAttribute('class');
+    }
   }, [children]);
+
+  function contetModal() {
+    return (
+      isOpen && (
+        <>
+          <button
+            type="button"
+            className={ style.close }
+            onClick={ () => openModal(false) }
+          >
+            <Svg icoName="close" />
+          </button>
+          { children }
+        </>
+      )
+    );
+  }
 
   return getModal
     ? ReactDOM.createPortal(
-      children !== false && children,
+      contetModal(),
       getModal,
     ) : null;
 }
