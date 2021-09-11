@@ -4,11 +4,16 @@ import cx from 'classnames';
 import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 
-function ContentModal({ children, isOpen, openModal }: any) {
+type pModal = {
+  children: any,
+  isOpen: boolean;
+  openModal: Function;
+}
+
+function ContentModal({ children, isOpen, openModal }: pModal) {
   if (typeof window === 'undefined') return null;
 
   const getModal = document.getElementById('modal')!;
-
   useEffect(() => {
     getModal.className = cx(style.modal, {
       [style.open]: isOpen,
