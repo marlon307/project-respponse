@@ -16,9 +16,7 @@ function Modal() {
           { [style.open]: openModal },
         )
       }
-    >
-      value
-    </div>
+    />
   );
 }
 
