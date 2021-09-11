@@ -14,7 +14,6 @@ function ContentModal({ children, isOpen, openModal }: pModal) {
   if (typeof window === 'undefined') return null;
 
   const getModal = document.getElementById('modal')!;
-
   useEffect(() => {
     getModal.className = cx(style.modal, {
       [style.open]: isOpen,
@@ -30,13 +29,7 @@ function ContentModal({ children, isOpen, openModal }: pModal) {
   function contetModal() {
     return (
       isOpen && (
-        <div
-          className="content"
-          onClick={ () => openModal(false) }
-          onKeyPress={ () => { } }
-          role="button"
-          tabIndex={ 0 }
-        >
+        <>
           <button
             type="button"
             className={ style.close }
@@ -45,7 +38,7 @@ function ContentModal({ children, isOpen, openModal }: pModal) {
             <Svg icoName="close" />
           </button>
           { children }
-        </div>
+        </>
       )
     );
   }
