@@ -52,6 +52,10 @@ main {
   }
 }
 
+.hidden {
+  overflow: hidden;
+}
+
 .prev,
 .next {
   z-index: 77777;

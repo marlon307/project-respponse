@@ -42,7 +42,10 @@ function order() {
           />
         </div>
       </div>
-      <ContentModal>
+      <ContentModal
+        isOpen={ open }
+        openModal={ setOpen }
+      >
         { open && <OrderId /> }
       </ContentModal>
     </section>
