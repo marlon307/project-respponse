@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './styleMinCardOrder.module.scss';
-import stateModal from '../../Modal/stateModal';
+import ContentModal from '../../Modal/ContentModal';
 
 interface IProps {
   idOrder: string;
@@ -9,11 +9,9 @@ interface IProps {
 }
 
 function MinCardOrder({ idOrder, date, status }: IProps) {
-  const { openModal, setOpenModal } = stateModal();
-
   function openOrder(event: { preventDefault: () => void; }) {
     event.preventDefault();
-    setOpenModal(!openModal);
+    ContentModal(<h1>dafef</h1>);
   }
 
   return (

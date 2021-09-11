@@ -8,12 +8,14 @@ function Modal() {
   const { openModal } = stateModal();
 
   return (
-    <div className={
-      cx(
-        style.modal,
-        { [style.open]: openModal },
-      )
-    }
+    <div
+      id="modal"
+      className={
+        cx(
+          style.modal,
+          { [style.open]: openModal },
+        )
+      }
     >
       value
     </div>
