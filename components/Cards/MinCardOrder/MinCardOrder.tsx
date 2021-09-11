@@ -5,11 +5,15 @@ interface IProps {
   idOrder: string;
   date: string;
   status: string;
+  openOrderId: Function;
 }
 
-function MinCardOrder({ idOrder, date, status }: IProps) {
-  function openOrder(event: { preventDefault: () => void; }) {
+function MinCardOrder({
+  idOrder, openOrderId, date, status,
+}: IProps) {
+  function orderIdOpen(event: { preventDefault: () => void; }) {
     event.preventDefault();
+    openOrderId();
   }
 
   return (
@@ -17,7 +21,7 @@ function MinCardOrder({ idOrder, date, status }: IProps) {
       <a
         href="/order/1"
         className={ style.mincardOrder }
-        onClick={ openOrder }
+        onClick={ orderIdOpen }
       >
         <span>{ idOrder }</span>
         <span>{ date }</span>
