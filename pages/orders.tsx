@@ -1,6 +1,10 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { MinCardOrder } from '../components/Cards';
 import style from './styles/styleAccount.module.scss';
+import ContentModal from '../components/Modal/ContentModal';
+
+const OrderId = dynamic(() => import('./order/[orderId]'));
 
 function order() {
   return (
@@ -17,6 +21,9 @@ function order() {
           <MinCardOrder idOrder="00001" date="01/08/2021" status="Entregue" />
         </div>
       </div>
+      <ContentModal>
+        <OrderId />
+      </ContentModal>
     </section>
   );
 }

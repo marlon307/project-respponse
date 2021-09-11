@@ -1,12 +1,15 @@
 import ReactDOM from 'react-dom';
 
-function ContentModal({ props: { children } }) {
+function ContentModal({ children }: any) {
+  if (typeof window === 'undefined') return null;
+
   const getModal = document.getElementById('modal')!;
 
-  return getModal ? ReactDOM.createPortal(
-    { children },
-    getModal,
-  ) : null;
+  return getModal
+    ? ReactDOM.createPortal(
+      children,
+      getModal,
+    ) : null;
 }
 
 export default ContentModal;
