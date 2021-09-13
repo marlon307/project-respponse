@@ -116,7 +116,7 @@
 }
 
 .container {
-  margin: 34px 6%;
+  margin: 2em 6%;
 
   .dropOption {
     display: flex;
@@ -159,6 +159,9 @@
 }
 
 @media (max-width: 750px) {
+  .container {
+    margin: 1.2em 6%;
+  }
 
   .account,
   .usercfg,

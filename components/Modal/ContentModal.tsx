@@ -14,6 +14,7 @@ function ContentModal({ children, isOpen, openModal }: pModal) {
   if (typeof window === 'undefined') return null;
 
   const getModal = document.getElementById('modal')!;
+
   useEffect(() => {
     getModal.className = cx(style.modal, {
       [style.open]: isOpen,

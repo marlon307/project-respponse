@@ -6,13 +6,13 @@ import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
 
 function MenuUser() {
-  const [teste, setTeste] = useState(false);
+  const [outsideClick, setTutsideClicl] = useState(false);
   const ref = useRef(null);
-  useOutsideClick(ref, () => teste && setTeste(false));
+  useOutsideClick(ref, () => outsideClick && setTutsideClicl(false));
 
   function clickUser(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
-    setTeste(!teste);
+    setTutsideClicl(!outsideClick);
   }
 
   return (
@@ -24,7 +24,7 @@ function MenuUser() {
         ref={ ref }
         className={
           cx(style.dropmenu, {
-            [style.drop]: teste,
+            [style.drop]: outsideClick,
           })
         }
       >
@@ -58,7 +58,7 @@ function MenuUser() {
             <Link href="/login">
               <a aria-label="Login">
                 <Svg icoName="singin" />
-                Entrar
+                Login
               </a>
             </Link>
           </li>
