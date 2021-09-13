@@ -1,19 +1,20 @@
 .modal {
   position: fixed;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 140ms ease-in-out;
+  background: #00000070;
+  overflow: auto;
+  z-index: 99999;
 }
 
 .modal.open {
-  overflow: auto;
   inset: 0 0 0 0;
-  z-index: 100000;
-  background: #00000070;
   opacity: 1;
 }
 
 .content_modal {
-  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+  transition: transform 140ms ease-in-out;
   transform: translateY(6em);
   opacity: 0;
 }
@@ -38,6 +39,7 @@
   height: 2em;
   margin: 4em auto -4em;
   border: 1px solid var(--bordercolor);
+  box-sizing: content-box;
 
   svg {
     width: 1.8em;
