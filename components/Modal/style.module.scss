@@ -1,7 +1,5 @@
 .modal {
   position: fixed;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
   background: #00000070;
   overflow: auto;
   z-index: 99999;
@@ -9,7 +7,6 @@
 
 .modal.open {
   inset: 0 0 0 0;
-  opacity: 1;
 }
 
 .open .content_modal {
