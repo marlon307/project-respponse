@@ -1,8 +1,13 @@
 import React from 'react';
+import Svg from '../../assets/Svg';
 import { SmallCard } from '../../components/Cards';
 import style from './style.module.scss';
 
 function orderId() {
+  function copyCode(event: { preventDefault: () => void; }) {
+    event.preventDefault();
+  }
+
   return (
     <div className={ style.order }>
       <div className={ style.topline }>
@@ -45,8 +50,16 @@ function orderId() {
         </div>
         <div>
           <h3>Correios</h3>
-          <span>
+          <span className={ style.shippingcompany }>
             <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">QF000000000BR</a>
+            <a
+              href="/"
+              aria-label="Copiar"
+              title="Copiar"
+              onClick={ copyCode }
+            >
+              <Svg icoName="copy" />
+            </a>
           </span>
         </div>
       </div>
