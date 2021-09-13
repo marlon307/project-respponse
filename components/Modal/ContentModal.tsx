@@ -35,9 +35,7 @@ function ContentModal({ children, isOpen, openModal }: pModal) {
           >
             <Svg icoName="close" />
           </button>
-          <div
-            className={ style.content_modal }
-          >
+          <div className={ style.content_modal }>
             { children }
           </div>
         </>
