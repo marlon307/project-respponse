@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import cx from 'classnames';
 import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 
@@ -16,13 +15,11 @@ function ContentModal({ children, isOpen, openModal }: pModal) {
   const getModal = document.getElementById('modal')!;
 
   useEffect(() => {
-    getModal.className = cx(style.modal, {
-      [style.open]: isOpen,
-    });
-
     if (isOpen) {
-      document.body.className = 'hidden';
+      getModal.classList.add(style.open);
+      document.body.classList.add('hidden');
     } else {
+      getModal.classList.remove(style.open);
       document.body.removeAttribute('class');
     }
   }, [children]);
@@ -38,7 +35,11 @@ function ContentModal({ children, isOpen, openModal }: pModal) {
           >
             <Svg icoName="close" />
           </button>
-          { children }
+          <div
+            className={ style.content_modal }
+          >
+            { children }
+          </div>
         </>
       )
     );
