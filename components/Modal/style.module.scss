@@ -34,3 +34,10 @@
     height: 1.8em;
   }
 }
+
+@media (max-width: 750px) {
+  .close {
+    width: 2.4em;
+    height: 2.4em;
+  }
+}
