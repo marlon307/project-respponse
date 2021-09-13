@@ -154,6 +154,11 @@
   svg {
     fill: #616161;
   }
+
+  svg:active {
+    transition: transform 0.1s ease-in-out;
+    transform: scale3d(0.85, 0.85, 0.85);
+  }
 }
 
 .orderitems {

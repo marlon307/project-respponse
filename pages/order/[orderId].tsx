@@ -6,6 +6,8 @@ import style from './style.module.scss';
 function orderId() {
   function copyCode(event: { preventDefault: () => void; }) {
     event.preventDefault();
+    // https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
+    navigator.clipboard.writeText('QF000000000BR');
   }
 
   return (
