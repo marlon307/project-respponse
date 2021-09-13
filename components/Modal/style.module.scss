@@ -1,7 +1,7 @@
 .modal {
   position: fixed;
   opacity: 0;
-  transition: opacity 140ms ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   background: #00000070;
   overflow: auto;
   z-index: 99999;
@@ -12,16 +12,8 @@
   opacity: 1;
 }
 
-.content_modal {
-  will-change: transform;
-  transition: transform 140ms ease-in-out;
-  transform: translateY(6em);
-  opacity: 0;
-}
-
 .open .content_modal {
-  opacity: 1;
-  transform: translateY(0);
+  animation: contentmodal 0.3s ease-in-out;
 }
 
 .close {
@@ -40,16 +32,35 @@
   margin: 4em auto -4em;
   border: 1px solid var(--bordercolor);
   box-sizing: content-box;
-
-  svg {
-    width: 1.8em;
-    height: 1.8em;
-  }
 }
 
 @media (max-width: 750px) {
   .close {
     width: 2.6em;
     height: 2.6em;
+  }
+}
+
+@keyframes contentmodal {
+  from {
+    will-change: transform, opacity;
+    transform: translateY(6em);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes contentmodal {
+  from {
+    will-change: transform, opacity;
+    transform: translateY(6em);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
