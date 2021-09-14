@@ -81,6 +81,14 @@ main {
   width: 100%;
 }
 
+.link {
+  color: var(--colorlink);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 5px;

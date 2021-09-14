@@ -12,7 +12,11 @@ function resetpsw() {
           <Input id="email" type="email" name="email" placeholder="E-mail" />
         </div>
         <div className={ style.action }>
-          <Link href="/login">Fazer Login</Link>
+          <Link href="/login-register">
+            <a className="link">
+              Fazer Login
+            </a>
+          </Link>
           <button type="button">Enviar</button>
         </div>
       </form>

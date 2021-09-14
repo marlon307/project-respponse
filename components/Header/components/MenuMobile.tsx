@@ -62,7 +62,7 @@ function MenuMobile() {
               </Link>
             </li>
             <li>
-              <Link href="/login">
+              <Link href="/login-register">
                 <a aria-label="Login">
                   <Svg icoName="singin" />
                   Entrar
