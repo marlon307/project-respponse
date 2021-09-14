@@ -31,7 +31,7 @@ function ContentModal({ children, isOpen, openModal }: pModal) {
           <button
             type="button"
             className={ style.close }
-            onClick={ () => openModal(false) }
+            onClick={ () => openModal(!isOpen) }
           >
             <Svg icoName="close" />
           </button>
