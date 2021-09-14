@@ -5,8 +5,8 @@ import style from './styles/styleAccount.module.scss';
 
 function addcard() {
   return (
-    <section className={ style.section }>
-      <h1>Adicionar Cartão de credito</h1>
+    <section className={ style.sectionadd }>
+      <h1>Adicionar Cartão de Crédito</h1>
       <form>
         <div className="inputs">
           <Input id="namecard" type="text" name="namecard" placeholder="Nome do cartão de credito" />

@@ -10,7 +10,7 @@
 
   // Pagina Help
   ol {
-    padding: 0 1.4em;
+    padding: 0 2em;
     margin: 0 auto;
 
     li {
@@ -30,6 +30,19 @@
   }
 
   // Fim pagina Help
+}
+
+.contaienrsection {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.sectionadd {
+  margin: 110px auto;
+  background: var(--maincolor);
+  max-width: 400px;
+  padding: 2em;
+  border-radius: 1em;
 }
 
 .genere {
@@ -126,8 +139,8 @@
     margin: 1.2em 6%;
   }
 
-  .section {
-    margin-top: 70px;
+  .account {
+    margin-top: 40px;
   }
 }
 
@@ -145,14 +158,10 @@
       width: 31.6%;
     }
   }
+}
 
-  .section {
-    ol {
-      padding: 1em;
-
-      a {
-        font-size: 0.8em;
-      }
-    }
+@media (max-width: 810px) {
+  .contentoption {
+    justify-content: center;
   }
 }
