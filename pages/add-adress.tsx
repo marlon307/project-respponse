@@ -5,7 +5,7 @@ import style from './styles/styleAccount.module.scss';
 
 function addaderess() {
   return (
-    <section className={ style.section }>
+    <section className={ style.sectionadd }>
       <h1>Adicionar endereço</h1>
       <form>
         <div className="inputs">
