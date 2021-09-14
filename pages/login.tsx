@@ -1,16 +1,45 @@
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import cx from 'classnames';
 import Input from '../components/ComponentsForm/Input';
 import style from './styles/styleLogin.module.scss';
 
 function login() {
+  const [sectionTab, setSectionTab] = useState(true);
+
+  function tabSectionLogin(event: { preventDefault: () => void; }) {
+    event.preventDefault();
+    setSectionTab(true);
+  }
+
+  function tabSectionRegister(event: { preventDefault: () => void; }) {
+    event.preventDefault();
+    setSectionTab(false);
+  }
+
   return (
     <section className={ style.contlogin }>
-      <h1>Entrar</h1>
-      <form>
+      <div className={ style.sectiontab }>
+        <a
+          href="/login"
+          aria-label="Login"
+          onClick={ tabSectionLogin }
+          className={ cx(style.section, { [style.active]: sectionTab }) }
+        >
+          <h1>Entrar</h1>
+        </a>
+        <a
+          href="/login"
+          aria-label="Registre-se"
+          onClick={ tabSectionRegister }
+          className={ cx(style.section, { [style.active]: !sectionTab }) }
+        >
+          <h1>Registre-se</h1>
+        </a>
+      </div>
+      <form className={ cx(style.tab, { [style.active]: sectionTab }) }>
         <div className="inputs">
-          <Input id="email" type="email" name="email" placeholder="E-mail" />
-          <Input id="psw" type="password" name="psw" placeholder="Senha" />
+          <Input id="lemail" type="email" name="lemail" placeholder="E-mail" />
+          <Input id="lpsw" type="password" name="lpsw" placeholder="Senha" />
         </div>
         <div className={ style.action }>
           <label htmlFor="remember">
@@ -18,11 +47,27 @@ function login() {
             { ' ' }
             Lembrar meus dados.
           </label>
-          <Link href="/resetpsw">Esqueceu a senha?</Link>
+          <a
+            href="/resetpsw"
+            className="link"
+            target="_blank"
+            aria-label="Esqueceu a senha?"
+          >
+            Esqueceu a senha?
+          </a>
         </div>
         <div className={ style.action }>
-          <Link href="/register">Criar conta</Link>
           <button type="button">Entrar</button>
+        </div>
+      </form>
+      <form className={ cx(style.tab, { [style.active]: !sectionTab }) }>
+        <div className="inputs">
+          <Input id="rname" type="name" name="rname" placeholder="Nome Sobrenome" />
+          <Input id="remail" type="email" name="remail" placeholder="E-mail" />
+          <Input id="rpsw" type="password" name="rpsw" placeholder="Senha" />
+        </div>
+        <div className={ style.action }>
+          <button type="button">Criar</button>
         </div>
       </form>
     </section>
