@@ -4,7 +4,7 @@ import style from './styles/styleAccount.module.scss';
 
 function help() {
   return (
-    <section className={ style.help }>
+    <section className={ style.section }>
       <ol>
         <li>
           <a href="/">Politica de Privacidade</a>

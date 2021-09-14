@@ -7,10 +7,29 @@
   h1 {
     color: #333;
   }
-}
 
-.content {
-  max-width: 400px;
+  // Pagina Help
+  ol {
+    padding: 0 1.4em;
+    margin: 0 auto;
+
+    li {
+      color: var(--colorlink);
+      list-style: decimal;
+      margin-bottom: 12px;
+    }
+
+    a {
+      color: var(--colorlink);
+      font-size: 1.2em;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Fim pagina Help
 }
 
 .genere {
@@ -19,10 +38,6 @@
     flex-wrap: wrap;
     gap: 15px;
   }
-}
-
-.contact {
-  margin-top: 32px;
 }
 
 // Tabela de pedidos
@@ -58,32 +73,6 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 8px;
-}
-
-.help {
-  width: 90%;
-  max-width: 700px;
-  margin: 110px auto;
-
-  ol {
-    padding: 0 3em;
-    margin: 0 auto;
-  }
-
-  li {
-    color: var(--colorlink);
-    list-style: decimal;
-    margin-bottom: 12px;
-  }
-
-  a {
-    color: var(--colorlink);
-    font-size: 1.2em;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
 
 // Estilização da pagina (account) deve ser sempre a ultima
@@ -142,12 +131,6 @@
   }
 }
 
-@media (max-width: 280px) {
-  .cards {
-    width: 95%;
-  }
-}
-
 @media (max-width: 411px) {
   .toptable {
     font-size: 0.8rem;
@@ -163,13 +146,13 @@
     }
   }
 
-  .help {
+  .section {
     ol {
       padding: 1em;
-    }
 
-    a {
-      font-size: 0.8em;
+      a {
+        font-size: 0.8em;
+      }
     }
   }
 }
