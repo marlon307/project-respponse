@@ -69,6 +69,18 @@
   }
 }
 
+.btnadd {
+  border-radius: 12px;
+  text-align: center;
+  padding: 14px 38px;
+  background: #E7F4E7;
+  font-weight: 600;
+  color: #595555;
+  font-size: 1em;
+  margin-top: 3em;
+  cursor: pointer;
+}
+
 @media (max-width: 750px) {
 
   .next,

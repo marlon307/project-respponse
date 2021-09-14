@@ -109,6 +109,19 @@
   }
 }
 
+.addaderess {
+  width: 90%;
+  max-width: 400px;
+  margin: 110px auto;
+  background: var(--maincolor);
+  padding: 2em;
+  border-radius: 1em;
+
+  h1 {
+    color: #333;
+  }
+}
+
 // Estilização da pagina (account) deve ser sempre a ultima
 .account {
   max-width: 800px;

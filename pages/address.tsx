@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { CardAdderess } from '../components/Cards';
+import ContentModal from '../components/Modal/ContentModal';
 import styles from './styles/styleAccount.module.scss';
+import Loading from '../components/Loading/Loading';
+
+const Addaderess = dynamic(() => import('./add-aderess'),
+  { loading: () => <Loading /> });
 
 function address() {
+  const [openModal, setOpenModal] = useState(false);
+
+  function openModalAddAderess() {
+    setOpenModal(true);
+  }
+
   return (
     <section className={ styles.address }>
-      <button type="button">Adicionar local de entrega</button>
+      <button
+        type="button"
+        onClick={ openModalAddAderess }
+      >
+        Adicionar local de entrega
+      </button>
       <div className={ styles.addressoptions }>
         <CardAdderess
           name="Name Teste"
@@ -26,6 +43,9 @@ function address() {
           district="Alterosas"
         />
       </div>
+      <ContentModal isOpen={ openModal } openModal={ setOpenModal }>
+        <Addaderess />
+      </ContentModal>
     </section>
   );
 }
