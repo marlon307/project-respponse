@@ -1,11 +1,15 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import cx from 'classnames';
 import style from './styles/styleMenuUser.module.scss';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';
-import LoginRegister from '../../../pages/login-register';
+import Loading from '../../Loading/Loading';
+
+const LoginRegister = dynamic(() => import('../../../pages/login-register'),
+  { loading: () => <Loading /> });
 
 function MenuUser() {
   const [outsideClick, setTutsideClicl] = useState(false);

@@ -3,8 +3,10 @@ import dynamic from 'next/dynamic';
 import { MinCardOrder } from '../components/Cards';
 import style from './styles/styleAccount.module.scss';
 import ContentModal from '../components/Modal/ContentModal';
+import Loading from '../components/Loading/Loading';
 
-const OrderId = dynamic(() => import('./order/[orderId]'));
+const OrderId = dynamic(() => import('./order/[orderId]'),
+  { loading: () => <Loading /> });
 
 function order() {
   const [open, setOpen] = useState(false);
