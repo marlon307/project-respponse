@@ -5,7 +5,7 @@ import { InputRadio } from '../components/ComponentsForm';
 
 function usercfg() {
   return (
-    <section className={ style.usercfg }>
+    <section className={ style.section }>
       <div className="inputs">
         <form>
           <h3>Informações básicas</h3>

@@ -5,7 +5,7 @@ import style from './styles/styleAccount.module.scss';
 
 function addaderess() {
   return (
-    <section className={ style.addaderess }>
+    <section className={ style.section }>
       <h1>Adicionar endereço</h1>
       <form>
         <div className="inputs">
@@ -16,7 +16,7 @@ function addaderess() {
           <Input id="city" type="text" name="city" placeholder="Cidade" />
           <Input id="zipcode" type="text" name="zipcode" placeholder="CEP" />
         </div>
-        <BtnAdd />
+        <BtnAdd eventBtn={ () => { } } />
       </form>
     </section>
   );

@@ -1,86 +1,58 @@
-.usercfg {
+.section {
   width: 90%;
-  max-width: 400px;
   margin: 110px auto;
+  background: var(--maincolor);
+  padding: 2em;
+  border-radius: 1em;
 
-  .genere {
-    div {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-  }
-
-  .contact {
-    margin-top: 32px;
+  h1 {
+    color: #333;
   }
 }
 
-.orders {
-  display: flex;
-  width: 90%;
-  max-width: 700px;
-  margin: 110px auto;
-
-  .table {
-    width: 100%;
-  }
-
-  .toptable {
-    width: 100%;
+.genere {
+  div {
     display: flex;
-    align-items: center;
-
-    h4:nth-child(1) {
-      margin: 0 26px;
-      width: 31.6%;
-    }
-
-    h4:nth-child(2) {
-      margin: 0 26px;
-      width: 31.6%;
-    }
-  }
-
-  .bodytable {
-    max-height: 80vh;
-    overflow: auto;
-  }
-}
-
-.cards {
-  width: 90%;
-  max-width: 700px;
-  margin: 110px auto;
-
-  button {
-    padding: 12px 24px;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-bottom: 18px;
-    cursor: pointer;
-  }
-
-  .sectioncards {
-    display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 57px;
+    gap: 15px;
   }
 }
 
-.address {
-  width: 90%;
-  max-width: 700px;
-  margin: 110px auto;
+.contact {
+  margin-top: 32px;
+}
 
-  button {
-    padding: 12px 24px;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-bottom: 18px;
-    cursor: pointer;
+// Tabela de pedidos
+.table {
+  width: 100%;
+}
+
+.toptable {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  h4:nth-child(1) {
+    margin: 0 26px;
+    width: 31.6%;
   }
+
+  h4:nth-child(2) {
+    margin: 0 26px;
+    width: 31.6%;
+  }
+}
+
+.bodytable {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.sectioncards {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 57px;
 }
 
 .help {
@@ -106,19 +78,6 @@
     &:hover {
       text-decoration: underline;
     }
-  }
-}
-
-.addaderess {
-  width: 90%;
-  max-width: 400px;
-  margin: 110px auto;
-  background: var(--maincolor);
-  padding: 2em;
-  border-radius: 1em;
-
-  h1 {
-    color: #333;
   }
 }
 
@@ -162,12 +121,9 @@
     height: 28px;
   }
 
-  .usercfg,
-  .orders,
-  .cards,
-  .address,
-  .help {
-    margin: 5% auto;
+  .section {
+    margin: 0 auto;
+    padding: 0;
   }
 }
 
@@ -176,12 +132,7 @@
     margin: 1.2em 6%;
   }
 
-  .account,
-  .usercfg,
-  .orders,
-  .cards,
-  .address,
-  .help {
+  .section {
     margin-top: 70px;
   }
 }
@@ -193,21 +144,17 @@
 }
 
 @media (max-width: 411px) {
-  .orders {
-    width: 100%;
+  .toptable {
+    font-size: 0.8rem;
 
-    .toptable {
-      font-size: 0.8rem;
+    h4:nth-child(1) {
+      margin: 0 9px;
+      width: 31.6%;
+    }
 
-      h4:nth-child(1) {
-        margin: 0 9px;
-        width: 31.6%;
-      }
-
-      h4:nth-child(2) {
-        margin: 0 9px;
-        width: 31.6%;
-      }
+    h4:nth-child(2) {
+      margin: 0 9px;
+      width: 31.6%;
     }
   }
 

@@ -4,6 +4,7 @@ import { CardPay } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import style from './styles/styleAccount.module.scss';
 import Loading from '../components/Loading/Loading';
+import BtnAdd from '../components/Buttons/BtnAdd';
 
 const AddCard = dynamic(() => import('./add-card'),
   { loading: () => <Loading /> });
@@ -16,13 +17,8 @@ function cards() {
   }
 
   return (
-    <section className={ style.cards }>
-      <button
-        type="button"
-        onClick={ openModalCard }
-      >
-        Adicionar Cartão
-      </button>
+    <section className={ style.section }>
+      <BtnAdd eventBtn={ openModalCard } />
       <div className={ style.sectioncards }>
         <CardPay name="Nome Teste..." cardValidate="01/29" endNumber="... ... 1234" flag="MasterCard" />
         <CardPay name="Nome Teste..." cardValidate="01/24" endNumber="... ... 1234" flag="Visa" />

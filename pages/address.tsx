@@ -4,6 +4,7 @@ import { CardAdderess } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import styles from './styles/styleAccount.module.scss';
 import Loading from '../components/Loading/Loading';
+import BtnAdd from '../components/Buttons/BtnAdd';
 
 const Addaderess = dynamic(() => import('./add-aderess'),
   { loading: () => <Loading /> });
@@ -16,13 +17,8 @@ function address() {
   }
 
   return (
-    <section className={ styles.address }>
-      <button
-        type="button"
-        onClick={ openModalAddAderess }
-      >
-        Adicionar local de entrega
-      </button>
+    <section className={ styles.section }>
+      <BtnAdd eventBtn={ openModalAddAderess } />
       <div className={ styles.addressoptions }>
         <CardAdderess
           name="Name Teste"

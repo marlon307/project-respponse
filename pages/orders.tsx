@@ -16,7 +16,7 @@ function order() {
   }
 
   return (
-    <section className={ style.orders }>
+    <section className={ style.section }>
       <div className={ style.table }>
         <div className={ style.toptable }>
           <h4>Numero do pedido</h4>
