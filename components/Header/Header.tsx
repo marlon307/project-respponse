@@ -38,16 +38,11 @@ function Header() {
           />
         ) }
       </div>
-      {
-        width > 750 ? (
-          <MenuDescktop
-            setSearchopen={ setSearchopen }
-            searchopen={ searchopen }
-          />
-        ) : (
-          <MenuMobile />
-        )
-      }
+      <MenuDescktop
+        setSearchopen={ setSearchopen }
+        searchopen={ searchopen }
+      />
+      <MenuMobile />
     </header>
   );
 }

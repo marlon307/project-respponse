@@ -3,3 +3,9 @@
   gap: 52px;
   margin-right: 6%;
 }
+
+@media (max-width: 750px) {
+  .menuDescktop {
+    display: none;
+  }
+}
