@@ -4,15 +4,23 @@ import cx from 'classnames';
 import style from './styles/styleMenuUser.module.scss';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
+import ContentModal from '../../Modal/ContentModal';
+import LoginRegister from '../../../pages/login-register';
 
 function MenuUser() {
   const [outsideClick, setTutsideClicl] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
   const ref = useRef(null);
   useOutsideClick(ref, () => outsideClick && setTutsideClicl(false));
 
   function clickUser(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
     setTutsideClicl(!outsideClick);
+  }
+
+  function openModalLogin(event: { preventDefault: () => void; }) {
+    event.preventDefault();
+    setOpenLogin(true);
   }
 
   return (
@@ -55,15 +63,20 @@ function MenuUser() {
             </Link>
           </li>
           <li>
-            <Link href="/login">
-              <a aria-label="Login">
-                <Svg icoName="singin" />
-                Login
-              </a>
-            </Link>
+            <a
+              href="/login-register"
+              aria-label="Login"
+              onClick={ openModalLogin }
+            >
+              <Svg icoName="singin" />
+              Login
+            </a>
           </li>
         </ul>
       </div>
+      <ContentModal isOpen={ openLogin } openModal={ setOpenLogin }>
+        { openLogin && <LoginRegister /> }
+      </ContentModal>
     </div>
   );
 }

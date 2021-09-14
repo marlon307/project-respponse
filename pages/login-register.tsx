@@ -20,7 +20,7 @@ function login() {
     <section className={ style.contlogin }>
       <div className={ style.sectiontab }>
         <a
-          href="/login"
+          href="/login-register"
           aria-label="Login"
           onClick={ tabSectionLogin }
           className={ cx(style.section, { [style.active]: sectionTab }) }
@@ -28,7 +28,7 @@ function login() {
           <h1>Entrar</h1>
         </a>
         <a
-          href="/login"
+          href="/login-register"
           aria-label="Registre-se"
           onClick={ tabSectionRegister }
           className={ cx(style.section, { [style.active]: !sectionTab }) }
