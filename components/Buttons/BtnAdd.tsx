@@ -3,9 +3,9 @@ import style from './styleButton.module.scss';
 
 function BtnAdd() {
   return (
-    <div className={ style.btnadd }>
+    <button className={ style.btnadd } type="button">
       Adicionar
-    </div>
+    </button>
   );
 }
 
