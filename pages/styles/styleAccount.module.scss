@@ -1,5 +1,4 @@
 .section {
-  width: 90%;
   margin: 110px auto;
   background: var(--maincolor);
   padding: 2em;
@@ -8,6 +7,10 @@
   h1 {
     color: #333;
   }
+}
+
+.content {
+  max-width: 400px;
 }
 
 .genere {
@@ -48,11 +51,13 @@
   overflow: auto;
 }
 
-.sectioncards {
+// Content Address and Card
+.contentoption {
+  margin-top: 1em;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 57px;
+  gap: 8px;
 }
 
 .help {

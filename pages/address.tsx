@@ -6,20 +6,20 @@ import styles from './styles/styleAccount.module.scss';
 import Loading from '../components/Loading/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
-const Addaderess = dynamic(() => import('./add-aderess'),
+const Addaderess = dynamic(() => import('./add-adress'),
   { loading: () => <Loading /> });
 
 function address() {
   const [openModal, setOpenModal] = useState(false);
 
-  function openModalAddAderess() {
+  function openModalAddAdress() {
     setOpenModal(true);
   }
 
   return (
     <section className={ styles.section }>
-      <BtnAdd eventBtn={ openModalAddAderess } />
-      <div className={ styles.addressoptions }>
+      <BtnAdd eventBtn={ openModalAddAdress } />
+      <div className={ styles.contentoption }>
         <CardAdderess
           name="Name Teste"
           road="Fernando de noronha"
