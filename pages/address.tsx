@@ -4,26 +4,22 @@ import { CardAdderess } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import styles from './styles/styleAccount.module.scss';
 import Loading from '../components/Loading/Loading';
+import BtnAdd from '../components/Buttons/BtnAdd';
 
-const Addaderess = dynamic(() => import('./add-aderess'),
+const Addaderess = dynamic(() => import('./add-adress'),
   { loading: () => <Loading /> });
 
 function address() {
   const [openModal, setOpenModal] = useState(false);
 
-  function openModalAddAderess() {
+  function openModalAddAdress() {
     setOpenModal(true);
   }
 
   return (
-    <section className={ styles.address }>
-      <button
-        type="button"
-        onClick={ openModalAddAderess }
-      >
-        Adicionar local de entrega
-      </button>
-      <div className={ styles.addressoptions }>
+    <section className={ styles.section }>
+      <BtnAdd eventBtn={ openModalAddAdress } />
+      <div className={ styles.contentoption }>
         <CardAdderess
           name="Name Teste"
           road="Fernando de noronha"

@@ -1,117 +1,4 @@
-.usercfg {
-  width: 90%;
-  max-width: 400px;
-  margin: 110px auto;
-
-  .genere {
-    div {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-  }
-
-  .contact {
-    margin-top: 32px;
-  }
-}
-
-.orders {
-  display: flex;
-  width: 90%;
-  max-width: 700px;
-  margin: 110px auto;
-
-  .table {
-    width: 100%;
-  }
-
-  .toptable {
-    width: 100%;
-    display: flex;
-    align-items: center;
-
-    h4:nth-child(1) {
-      margin: 0 26px;
-      width: 31.6%;
-    }
-
-    h4:nth-child(2) {
-      margin: 0 26px;
-      width: 31.6%;
-    }
-  }
-
-  .bodytable {
-    max-height: 80vh;
-    overflow: auto;
-  }
-}
-
-.cards {
-  width: 90%;
-  max-width: 700px;
-  margin: 110px auto;
-
-  button {
-    padding: 12px 24px;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-bottom: 18px;
-    cursor: pointer;
-  }
-
-  .sectioncards {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 57px;
-  }
-}
-
-.address {
-  width: 90%;
-  max-width: 700px;
-  margin: 110px auto;
-
-  button {
-    padding: 12px 24px;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-bottom: 18px;
-    cursor: pointer;
-  }
-}
-
-.help {
-  width: 90%;
-  max-width: 700px;
-  margin: 110px auto;
-
-  ol {
-    padding: 0 3em;
-    margin: 0 auto;
-  }
-
-  li {
-    color: var(--colorlink);
-    list-style: decimal;
-    margin-bottom: 12px;
-  }
-
-  a {
-    color: var(--colorlink);
-    font-size: 1.2em;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.addaderess {
-  width: 90%;
-  max-width: 400px;
+.section {
   margin: 110px auto;
   background: var(--maincolor);
   padding: 2em;
@@ -120,6 +7,72 @@
   h1 {
     color: #333;
   }
+
+  // Pagina Help
+  ol {
+    padding: 0 1.4em;
+    margin: 0 auto;
+
+    li {
+      color: var(--colorlink);
+      list-style: decimal;
+      margin-bottom: 12px;
+    }
+
+    a {
+      color: var(--colorlink);
+      font-size: 1.2em;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Fim pagina Help
+}
+
+.genere {
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+// Tabela de pedidos
+.table {
+  width: 100%;
+}
+
+.toptable {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  h4:nth-child(1) {
+    margin: 0 26px;
+    width: 31.6%;
+  }
+
+  h4:nth-child(2) {
+    margin: 0 26px;
+    width: 31.6%;
+  }
+}
+
+.bodytable {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+// Content Address and Card
+.contentoption {
+  margin-top: 1em;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 // Estilização da pagina (account) deve ser sempre a ultima
@@ -162,12 +115,9 @@
     height: 28px;
   }
 
-  .usercfg,
-  .orders,
-  .cards,
-  .address,
-  .help {
-    margin: 5% auto;
+  .section {
+    margin: 0 auto;
+    padding: 0;
   }
 }
 
@@ -176,48 +126,33 @@
     margin: 1.2em 6%;
   }
 
-  .account,
-  .usercfg,
-  .orders,
-  .cards,
-  .address,
-  .help {
+  .section {
     margin-top: 70px;
   }
 }
 
-@media (max-width: 280px) {
-  .cards {
-    width: 95%;
-  }
-}
-
 @media (max-width: 411px) {
-  .orders {
-    width: 100%;
+  .toptable {
+    font-size: 0.8rem;
 
-    .toptable {
-      font-size: 0.8rem;
+    h4:nth-child(1) {
+      margin: 0 9px;
+      width: 31.6%;
+    }
 
-      h4:nth-child(1) {
-        margin: 0 9px;
-        width: 31.6%;
-      }
-
-      h4:nth-child(2) {
-        margin: 0 9px;
-        width: 31.6%;
-      }
+    h4:nth-child(2) {
+      margin: 0 9px;
+      width: 31.6%;
     }
   }
 
-  .help {
+  .section {
     ol {
       padding: 1em;
-    }
 
-    a {
-      font-size: 0.8em;
+      a {
+        font-size: 0.8em;
+      }
     }
   }
 }

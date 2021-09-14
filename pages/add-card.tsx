@@ -5,7 +5,7 @@ import style from './styles/styleAccount.module.scss';
 
 function addcard() {
   return (
-    <section className={ style.addaderess }>
+    <section className={ style.section }>
       <h1>Adicionar Cartão de credito</h1>
       <form>
         <div className="inputs">
@@ -14,7 +14,7 @@ function addcard() {
           <Input id="numbercard" type="text" name="numbercard" placeholder="Numero do cartão" />
           <Input id="codev" type="text" name="codev" placeholder="Codigo de segurança" />
         </div>
-        <BtnAdd />
+        <BtnAdd eventBtn={ () => { } } />
       </form>
     </section>
   );
