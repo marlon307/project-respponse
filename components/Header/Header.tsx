@@ -39,14 +39,14 @@ function Header() {
         ) }
       </div>
       {
-        width < 750
-          ? <MenuMobile />
-          : (
-            <MenuDescktop
-              setSearchopen={ setSearchopen }
-              searchopen={ searchopen }
-            />
-          )
+        width > 750 ? (
+          <MenuDescktop
+            setSearchopen={ setSearchopen }
+            searchopen={ searchopen }
+          />
+        ) : (
+          <MenuMobile />
+        )
       }
     </header>
   );
