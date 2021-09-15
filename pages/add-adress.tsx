@@ -1,4 +1,5 @@
 import React from 'react';
+import Svg from '../assets/Svg';
 import BtnAdd from '../components/Buttons/BtnAdd';
 import { Input } from '../components/ComponentsForm';
 import style from './styles/styleAccount.module.scss';
@@ -6,7 +7,10 @@ import style from './styles/styleAccount.module.scss';
 function addaderess() {
   return (
     <section className={ style.sectionadd }>
-      <h1>Adicionar endereço</h1>
+      <h1>
+        <Svg icoName="map" />
+        Adicionar endereço
+      </h1>
       <form>
         <div className="inputs">
           <Input
