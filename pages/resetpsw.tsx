@@ -9,7 +9,13 @@ function resetpsw() {
       <h1>Recuperar senha</h1>
       <form>
         <div className="inputs">
-          <Input id="email" type="email" name="email" placeholder="E-mail" />
+          <Input
+            id="email"
+            type="email"
+            name="email"
+            placeHolder="E-mail"
+            autoComplete="email"
+          />
         </div>
         <div className={ style.action }>
           <Link href="/login-register">
