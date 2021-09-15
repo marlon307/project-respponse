@@ -4,7 +4,11 @@ import TesteImgUrl from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash 1
 import style from './stylesSmallCard.module.scss';
 import Svg from '../../../assets/Svg';
 
-function SmallCard() {
+type Props = {
+  removable?: boolean
+}
+
+function SmallCard({ removable }: Props) {
   return (
     <div className={ style.smallcard }>
       <div className={ style.img }>
@@ -34,11 +38,17 @@ function SmallCard() {
           </div>
         </div>
       </div>
-      <div className="delete" title="Excluir">
-        <Svg icoName="trash" />
-      </div>
+      { removable && (
+        <div className="delete" title="Excluir">
+          <Svg icoName="trash" />
+        </div>
+      ) }
     </div>
   );
 }
 
 export default SmallCard;
+
+SmallCard.defaultProps = {
+  removable: true,
+};
