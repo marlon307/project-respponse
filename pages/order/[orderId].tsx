@@ -68,13 +68,13 @@ function orderId() {
       <div className={ style.orderitems }>
         <ul>
           <li>
-            <SmallCard />
+            <SmallCard removable={ false } />
           </li>
           <li>
-            <SmallCard />
+            <SmallCard removable={ false } />
           </li>
           <li>
-            <SmallCard />
+            <SmallCard removable={ false } />
           </li>
         </ul>
       </div>
