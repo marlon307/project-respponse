@@ -1,19 +1,21 @@
 .buyFinish {
-  color: var(--titlecolor);
-  display: -moz-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   padding: 16px 72px;
   border-radius: 12px;
-  background: #E7F4E7;
+  background: #fff;
+  border: 2px solid #006bef;
+  color: #006bef;
   font-weight: 700;
   cursor: pointer;
   font-size: 1em;
-  position: relative;
+  transition: transform 0.2s ease-in-out;
 
   &:hover {
-    background: #d7f5d7;
+    transform: scale3d(1.01, 1.01, 1.01);
+  }
+
+  &:active {
+    transform: scale3d(0.99, 0.99, 0.99);
   }
 }
 
@@ -69,6 +71,11 @@
   &:hover {
     background: #006bef;
     color: #fff;
+    transform: scale3d(1.01, 1.01, 1.01);
+  }
+
+  &:active {
+    transform: scale3d(0.99, 0.99, 0.99);
   }
 
   &:hover svg {
@@ -94,11 +101,11 @@
   transition: transform 0.2s ease-in-out;
 
   &:hover {
-    transform: scale3d(1.02, 1.02, 1.02);
+    transform: scale3d(1.01, 1.01, 1.01);
   }
 
   &:active {
-    transform: scale3d(0.96, 0.96, 0.96);
+    transform: scale3d(0.99, 0.99, 0.99);
   }
 }
 
