@@ -89,6 +89,19 @@ main {
   }
 }
 
+// Animate Buttons
+.button1 {
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale3d(1.01, 1.01, 1.01);
+  }
+
+  &:active {
+    transform: scale3d(0.98, 0.98, 0.98);
+  }
+}
+
 // https://tobiasahlin.com/spinkit/
 
 .spinner {

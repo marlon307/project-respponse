@@ -8,15 +8,6 @@
   font-weight: 700;
   cursor: pointer;
   font-size: 1em;
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale3d(1.01, 1.01, 1.01);
-  }
-
-  &:active {
-    transform: scale3d(0.99, 0.99, 0.99);
-  }
 }
 
 .next,
@@ -58,7 +49,6 @@
   border-radius: 1em;
   cursor: pointer;
   font-weight: 600;
-  transition: transform 0.2s ease-in-out;
 
   svg {
     position: absolute;
@@ -71,21 +61,12 @@
   &:hover {
     background: #006bef;
     color: #fff;
-    transform: scale3d(1.01, 1.01, 1.01);
-  }
-
-  &:active {
-    transform: scale3d(0.99, 0.99, 0.99);
   }
 
   &:hover svg {
     fill: #fff;
     opacity: 1;
     right: 14%;
-  }
-
-  &:active {
-    transform: scale3d(0.96, 0.96, 0.96);
   }
 }
 
@@ -98,15 +79,6 @@
   color: #fff;
   font-size: 1em;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale3d(1.01, 1.01, 1.01);
-  }
-
-  &:active {
-    transform: scale3d(0.99, 0.99, 0.99);
-  }
 }
 
 @media (max-width: 750px) {
