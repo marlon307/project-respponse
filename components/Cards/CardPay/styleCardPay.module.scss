@@ -1,6 +1,7 @@
 .card {
   position: relative;
-  width: 250px;
+  width: 310px;
+  height: 18%;
   border: 1px solid var(--bordercolor);
   border-radius: 20px;
   padding: 18px;
@@ -9,7 +10,7 @@
 
 .infos {
   color: #858585;
-  margin-top: 82px;
+  margin-top: 39%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,9 +21,5 @@
     p {
       font-size: 0.82rem;
     }
-  }
-
-  .infos {
-    margin-top: 35%;
   }
 }
