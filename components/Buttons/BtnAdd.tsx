@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import style from './styleButton.module.scss';
 
 type TProps = {
@@ -12,7 +13,7 @@ function BtnAdd({ eventBtn }: TProps) {
 
   return (
     <button
-      className={ style.btnadd }
+      className={ cx('button1', style.btnadd) }
       type="button"
       onClick={ eventButtonAdd }
     >
