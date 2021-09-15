@@ -35,6 +35,7 @@ function addcard() {
             type="text"
             name="codev"
             placeHolder="Codigo de segurança"
+            autoComplete="off"
           />
         </div>
         <BtnAdd eventBtn={ () => { } } />

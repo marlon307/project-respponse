@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { CardAdderess } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
-import styles from './styles/styleAccount.module.scss';
+import style from './styles/styleAccount.module.scss';
 import Loading from '../components/Loading/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
@@ -17,27 +17,31 @@ function address() {
   }
 
   return (
-    <section className={ styles.section }>
+    <section className={ style.section }>
       <BtnAdd eventBtn={ openModalAddAdress } />
-      <div className={ styles.contentoption }>
-        <CardAdderess
-          name="Name Teste"
-          road="Fernando de noronha"
-          number="123"
-          city="Ipatinga"
-          uf="MG"
-          zipcode="12345-67"
-          district="Alterosas"
-        />
-        <CardAdderess
-          name="Name Teste"
-          road="Fernando de noronha"
-          number="123"
-          city="Ipatinga"
-          uf="MG"
-          zipcode="12345-67"
-          district="Alterosas"
-        />
+      <div className={ style.contentoption }>
+        <div className={ style.optionadd }>
+          <CardAdderess
+            name="Name Teste"
+            road="Fernando de noronha"
+            number="123"
+            city="Ipatinga"
+            uf="MG"
+            zipcode="12345-67"
+            district="Alterosas"
+          />
+        </div>
+        <div className={ style.optionadd }>
+          <CardAdderess
+            name="Name Teste"
+            road="Fernando de noronha"
+            number="123"
+            city="Ipatinga"
+            uf="MG"
+            zipcode="12345-67"
+            district="Alterosas"
+          />
+        </div>
       </div>
       <ContentModal isOpen={ openModal } openModal={ setOpenModal }>
         <Addaderess />
