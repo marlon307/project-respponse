@@ -21,7 +21,7 @@ function addcard() {
             type="text"
             name="cardvalidate"
             placeHolder="Data de validade"
-            autoComplete="cc-exp-month"
+            autoComplete="cc-exp"
           />
           <Input
             id="numbercard"
