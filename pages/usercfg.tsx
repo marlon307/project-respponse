@@ -10,9 +10,9 @@ function usercfg() {
         <div className="inputs">
           <form>
             <h3>Informações básicas</h3>
-            <Input id="name" type="name" name="name" placeHolder="Nome" />
-            <Input id="email" type="email" name="email" placeHolder="E-mail" />
-            <Input id="psw" type="password" name="psw" placeHolder="Senha" />
+            <Input id="name" type="name" name="name" placeHolder="Nome" autoComplete="name" />
+            <Input id="email" type="email" name="email" placeHolder="E-mail" autoComplete="email" />
+            <Input id="psw" type="password" name="psw" placeHolder="Senha" autoComplete="off" />
             <Input id="date" type="date" name="date" placeHolder="Data" />
             <Input id="doc" type="doc" name="doc" placeHolder="CPF" />
             <div className={ style.genere }>
@@ -25,8 +25,8 @@ function usercfg() {
             </div>
             <div className={ style.contact }>
               <span>Contato</span>
-              <Input id="tel" type="tel" name="tel" placeHolder="Telefone" />
-              <Input id="cel" type="tel" name="cel" placeHolder="Telefone" />
+              <Input id="tel" type="tel" name="tel" placeHolder="Telefone" autoComplete="tel" />
+              <Input id="cel" type="tel" name="cel" placeHolder="Telefone" autoComplete="tel" />
             </div>
           </form>
         </div>
