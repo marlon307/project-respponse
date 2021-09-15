@@ -6,7 +6,7 @@
   --bordercolor: #0000001a;
   --boxshadowcolor: #0000001a;
   --titlecolor: #303030;
-  --hovericon: #cccccc;
+  --hovericon: #919191;
   --colorlink: #649FD6;
   --backgroundimg: #eaeaea
 }
@@ -44,9 +44,9 @@ main {
   svg {
     width: 22px !important;
     height: 22px !important;
+    fill: #c2c2c2;
 
     &:hover {
-      stroke: var(--hovericon);
       fill: var(--hovericon);
     }
   }
