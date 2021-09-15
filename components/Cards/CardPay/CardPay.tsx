@@ -13,7 +13,7 @@ function CardPay({
   name, cardValidate, endNumber, flag,
 }: Props) {
   return (
-    <a href="/" className={ style.card }>
+    <div className={ style.card }>
       <h4 title={ name }>{ name }</h4>
       <div className={ style.infos }>
         <div>
@@ -30,7 +30,7 @@ function CardPay({
           <Svg icoName="trash" />
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 
