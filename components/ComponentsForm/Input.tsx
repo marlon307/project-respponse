@@ -5,11 +5,12 @@ interface Props {
   id: string;
   type: string;
   name: string;
-  placeholder: string;
+  placeHolder: string;
+  autoComplete?: string;
 }
 
 function Input({
-  id, type, name, placeholder,
+  id, type, name, placeHolder, autoComplete,
 }: Props) {
   return (
     <label
@@ -20,11 +21,16 @@ function Input({
         id={ id }
         type={ type }
         name={ name }
-        placeholder={ placeholder }
+        placeholder={ placeHolder }
+        autoComplete={ autoComplete }
       />
-      <span>{ placeholder }</span>
+      <span>{ placeHolder }</span>
     </label>
   );
 }
 
 export default Input;
+
+Input.defaultProps = {
+  autoComplete: null,
+};

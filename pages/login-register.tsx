@@ -38,8 +38,20 @@ function login() {
       </div>
       <form className={ cx(style.tab, { [style.active]: sectionTab }) }>
         <div className="inputs">
-          <Input id="lemail" type="email" name="lemail" placeholder="E-mail" />
-          <Input id="lpsw" type="password" name="lpsw" placeholder="Senha" />
+          <Input
+            id="lemail"
+            type="email"
+            name="lemail"
+            placeHolder="E-mail"
+            autoComplete="email"
+          />
+          <Input
+            id="lpsw"
+            type="password"
+            name="lpsw"
+            placeHolder="Senha"
+            autoComplete="current-password"
+          />
         </div>
         <div className={ style.action }>
           <label htmlFor="remember">
@@ -62,9 +74,26 @@ function login() {
       </form>
       <form className={ cx(style.tab, { [style.active]: !sectionTab }) }>
         <div className="inputs">
-          <Input id="rname" type="name" name="rname" placeholder="Nome Sobrenome" />
-          <Input id="remail" type="email" name="remail" placeholder="E-mail" />
-          <Input id="rpsw" type="password" name="rpsw" placeholder="Senha" />
+          <Input
+            id="rname"
+            type="name"
+            name="rname"
+            placeHolder="Nome Sobrenome"
+            autoComplete="name"
+          />
+          <Input
+            id="remail"
+            type="email"
+            name="remail"
+            placeHolder="E-mail"
+            autoComplete="email"
+          />
+          <Input
+            id="rpsw"
+            type="password"
+            name="rpsw"
+            placeHolder="Senha"
+          />
         </div>
         <div className={ style.action }>
           <button type="button">Criar</button>

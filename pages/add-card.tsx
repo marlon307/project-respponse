@@ -9,10 +9,33 @@ function addcard() {
       <h1>Adicionar Cartão de Crédito</h1>
       <form>
         <div className="inputs">
-          <Input id="namecard" type="text" name="namecard" placeholder="Nome do cartão de credito" />
-          <Input id="cardvalidate" type="text" name="cardvalidate" placeholder="Data de validade" />
-          <Input id="numbercard" type="text" name="numbercard" placeholder="Numero do cartão" />
-          <Input id="codev" type="text" name="codev" placeholder="Codigo de segurança" />
+          <Input
+            id="namecard"
+            type="text"
+            name="namecard"
+            placeHolder="Nome do cartão de credito"
+            autoComplete="cc-name"
+          />
+          <Input
+            id="cardvalidate"
+            type="text"
+            name="cardvalidate"
+            placeHolder="Data de validade"
+            autoComplete="cc-number"
+          />
+          <Input
+            id="numbercard"
+            type="text"
+            name="numbercard"
+            placeHolder="Numero do cartão"
+            autoComplete="cc-number"
+          />
+          <Input
+            id="codev"
+            type="text"
+            name="codev"
+            placeHolder="Codigo de segurança"
+          />
         </div>
         <BtnAdd eventBtn={ () => { } } />
       </form>

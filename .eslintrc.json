@@ -25,7 +25,6 @@
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    // "import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
     "react/jsx-props-no-spreading": "off",
     "react/jsx-curly-spacing": [2, {"when": "always", "spacing": {
       "objectLiterals": "always"

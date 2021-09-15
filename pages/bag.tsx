@@ -100,7 +100,7 @@ function bag() {
               </h3>
             </a>
             <div className={ style.options }>
-              <Input id="cupom" type="text" name="cupom" placeholder="" />
+              <Input id="cupom" type="text" name="cupom" placeHolder="" />
               <span className={ style.descount }>Desconto - R$ 0,00</span>
             </div>
           </div>
