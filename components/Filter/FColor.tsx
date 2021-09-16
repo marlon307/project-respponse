@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './style.module.scss';
 
-export type Props = {
+export type PFColor = {
   cName?: string;
   color: string;
 }
 
-function FColor({ cName = 'Color Name', color }: Props) {
+function FColor({ cName = 'Color Name', color }: PFColor) {
   return (
     <label htmlFor={ cName }>
       <input type="checkbox" name="filter" id={ cName } />

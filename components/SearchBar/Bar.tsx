@@ -3,7 +3,7 @@ import style from './styleSearchBar.module.scss';
 import useOutsideClick from '../../hooks/useOutSide';
 import Svg from '../../assets/Svg';
 
-export interface IProps {
+export type IProps = {
   setSearchopen?: Function;
   searchopen?: boolean;
 }

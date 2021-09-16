@@ -3,13 +3,13 @@ import cx from 'classnames';
 import Svg from '../../assets/Svg';
 import style from './styleButton.module.scss';
 
-type Props = {
+type PBtnIco = {
   textBtn: string;
   icoName: string;
   action: Function;
 }
 
-function BtnIco({ textBtn, icoName, action }: Props) {
+function BtnIco({ textBtn, icoName, action }: PBtnIco) {
   return (
     <button
       type="button"

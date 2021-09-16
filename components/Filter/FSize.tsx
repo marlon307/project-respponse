@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './style.module.scss';
 
-type Props = {
+type PFSize = {
   size: string;
 }
 
-function FSize({ size }: Props) {
+function FSize({ size }: PFSize) {
   return (
     <label htmlFor={ size }>
       <input type="checkbox" name="filter" id={ size } />

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './styleInput.module.scss';
 
-interface Props {
+export interface Props {
   id: string;
   type: string;
   name: string;
@@ -30,7 +30,3 @@ function Input({
 }
 
 export default Input;
-
-Input.defaultProps = {
-  autoComplete: null,
-};

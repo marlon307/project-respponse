@@ -2,7 +2,7 @@ import React from 'react';
 import Svg from '../../../assets/Svg';
 import style from './styleCardPay.module.scss';
 
-interface Props {
+interface PCardPay {
   name: string;
   cardValidate: string;
   endNumber: string;
@@ -11,7 +11,7 @@ interface Props {
 
 function CardPay({
   name, cardValidate, endNumber, flag,
-}: Props) {
+}: PCardPay) {
   return (
     <div className={ style.card }>
       <h4 title={ name }>{ name }</h4>

@@ -4,12 +4,12 @@ import MenuBag from './MenuBag';
 import MenuUser from './MenuUser';
 import style from './styles/styleMenudescktop.module.scss';
 
-interface IProps {
+type PMnDescktop = {
   setSearchopen: Function
   searchopen: boolean
 }
 
-function MenuDescktop({ setSearchopen, searchopen }: IProps) {
+function MenuDescktop({ setSearchopen, searchopen }: PMnDescktop) {
   return (
     <nav className={ style.menuDescktop }>
       <SearchBar

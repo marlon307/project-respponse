@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './styleMinCardOrder.module.scss';
 
-interface IProps {
+type PMinCardOrder = {
   idOrder: string;
   date: string;
   status: string;
@@ -10,7 +10,7 @@ interface IProps {
 
 function MinCardOrder({
   idOrder, openOrderId, date, status,
-}: IProps) {
+}: PMinCardOrder) {
   function orderIdOpen(event: { preventDefault: () => void; }) {
     event.preventDefault();
     openOrderId();
