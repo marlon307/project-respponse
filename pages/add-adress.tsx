@@ -21,6 +21,13 @@ function addaderess() {
             autoComplete="name"
           />
           <Input
+            id="zipcode"
+            type="text"
+            name="zipcode"
+            placeHolder="CEP"
+            autoComplete="postal-code"
+          />
+          <Input
             id="street"
             type="text"
             name="street"
@@ -53,13 +60,6 @@ function addaderess() {
             name="city"
             placeHolder="Cidade"
             autoComplete="shipping shipping address-level2"
-          />
-          <Input
-            id="zipcode"
-            type="text"
-            name="zipcode"
-            placeHolder="CEP"
-            autoComplete="postal-code"
           />
         </div>
         <BtnAdd eventBtn={ () => { } } />
