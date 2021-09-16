@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 import Input from '../components/ComponentsForm/Input';
 import style from './styles/styleLogin.module.scss';
+import BtnIco from '../components/Buttons/BtnIco';
 
 function login() {
   const [sectionTab, setSectionTab] = useState(true);
@@ -69,7 +70,7 @@ function login() {
           </a>
         </div>
         <div className={ style.action }>
-          <button type="button">Entrar</button>
+          <BtnIco textBtn="Entrar" icoName="singin" action={ () => { } } />
         </div>
       </form>
       <form className={ cx(style.tab, { [style.active]: !sectionTab }) }>
@@ -96,7 +97,7 @@ function login() {
           />
         </div>
         <div className={ style.action }>
-          <button type="button">Criar</button>
+          <BtnIco textBtn="Criar Conta" icoName="setRight" action={ () => { } } />
         </div>
       </form>
     </section>
