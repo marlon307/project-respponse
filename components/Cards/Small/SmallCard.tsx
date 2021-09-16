@@ -4,11 +4,11 @@ import TesteImgUrl from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash 1
 import style from './stylesSmallCard.module.scss';
 import Svg from '../../../assets/Svg';
 
-type Props = {
+type PSmallCard = {
   removable?: boolean
 }
 
-function SmallCard({ removable }: Props) {
+function SmallCard({ removable }: PSmallCard) {
   return (
     <div className={ style.smallcard }>
       <div className={ style.img }>

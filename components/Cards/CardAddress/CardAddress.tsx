@@ -2,7 +2,7 @@ import React from 'react';
 import Svg from '../../../assets/Svg';
 import style from './styleCardAddress.module.scss';
 
-interface IProps {
+type PCardAdderess = {
   name: string;
   road: string;
   district: string;
@@ -14,7 +14,7 @@ interface IProps {
 
 function CardAdderess({
   name, road, district, number, uf, city, zipcode,
-}: IProps) {
+}: PCardAdderess) {
   return (
     <div className={ style.cardadderess }>
       <h4 title="Entregar para">{ name }</h4>

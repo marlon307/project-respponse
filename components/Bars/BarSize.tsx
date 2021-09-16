@@ -1,13 +1,13 @@
 import React from 'react';
 import style from './styles/size.module.scss';
 
-type TObject = {
+interface IObject {
   size: Object
   colorName: String
 }
 
-interface IProps {
-  array: Array<TObject>;
+type IProps = {
+  array: Array<IObject>;
   colorName: string
 }
 

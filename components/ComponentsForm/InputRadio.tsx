@@ -1,13 +1,13 @@
 import React from 'react';
 import style from './styleInput.module.scss';
 
-interface IProps {
+type PInputRadio = {
   name: string;
   id: string;
   family: string;
 }
 
-function inputRadio({ name, id, family }: IProps) {
+function InputRadio({ name, id, family }: PInputRadio) {
   return (
     <div className={ style.inputRadio }>
       <label htmlFor={ id }>
@@ -18,4 +18,4 @@ function inputRadio({ name, id, family }: IProps) {
   );
 }
 
-export default inputRadio;
+export default InputRadio;

@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 
-type pModal = {
+type PModal = {
   children: any,
   isOpen: boolean;
   openModal: Function;
 }
 
-function ContentModal({ children, isOpen, openModal }: pModal) {
+function ContentModal({ children, isOpen, openModal }: PModal) {
   if (typeof window === 'undefined') return null;
 
   const getModal = document.getElementById('modal')!;

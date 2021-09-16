@@ -4,12 +4,12 @@ import cx from 'classnames';
 import style from './styleButton.module.scss';
 import Svg from '../../assets/Svg';
 
-type Props = {
+type PBtnPrevNext = {
   typePrevOrNext: String;
   reference: any;
 }
 
-function BtnPrevNext({ reference, typePrevOrNext }: Props) {
+function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrevNext) {
   async function btnPrevNext() {
     const { current } = reference;
     if (typePrevOrNext === 'next') {

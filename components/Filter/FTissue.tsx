@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './style.module.scss';
 
-type Props = {
+type PFTissue = {
   tecid: string;
 }
 
-function FTissue({ tecid }: Props) {
+function FTissue({ tecid }: PFTissue) {
   return (
     <label htmlFor={ tecid }>
       <input type="checkbox" name="filter" id={ tecid } />

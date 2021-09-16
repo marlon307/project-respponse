@@ -2,13 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import style from './style.module.scss';
 
-type Props = {
+type PCardCategory = {
   id: string;
   image: any;
   ctgName: string;
 }
 
-function CardCategory({ id, image, ctgName }: Props) {
+function CardCategory({ id, image, ctgName }: PCardCategory) {
   return (
     <div className={ style.itencategory }>
       <label htmlFor={ id }>

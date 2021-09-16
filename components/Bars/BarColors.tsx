@@ -6,11 +6,11 @@ interface IObjectsColor {
   color: string;
 }
 
-interface IProps {
+type PBarColors = {
   array: Array<IObjectsColor>
 }
 
-function BarColors({ array }: IProps) {
+function BarColors({ array }: PBarColors) {
   return (
     <div className={ style.barcolor } title="Cores">
       { array.map(({ colorName, color }) => (

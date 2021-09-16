@@ -2,11 +2,11 @@ import React from 'react';
 import cx from 'classnames';
 import style from './styleButton.module.scss';
 
-type TProps = {
+type PBtnAdd = {
   eventBtn: Function,
 }
 
-function BtnAdd({ eventBtn }: TProps) {
+function BtnAdd({ eventBtn }: PBtnAdd) {
   function eventButtonAdd() {
     eventBtn();
   }
