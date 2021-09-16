@@ -3,7 +3,7 @@
   max-width: 400px;
   margin: 11em auto;
   background: var(--maincolor);
-  padding: 2em;
+  padding: 2em min(2em, 6%);
   border-radius: 1em;
 }
 
@@ -55,6 +55,5 @@
 @media (max-width: 540px) {
   .contlogin {
     margin: 12vh auto;
-    padding: 0;
   }
 }
