@@ -8,8 +8,10 @@ function CardInfo() {
         <span>Oculos</span>
         <span>R$ 199,00</span>
       </div>
-      <span>Oculos armação em aço</span>
       <div className={ style.secondline }>
+        <span>Oculos armação em aço</span>
+      </div>
+      <div className={ style.thirdline }>
         <span />
         <span />
         <span />
