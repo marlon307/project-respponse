@@ -20,6 +20,7 @@ function SearchBar({ setSearchopen, searchopen }: Props) {
           <a
             href="/"
             onClick={ openSearchBar }
+            aria-label="Pesquisar Produos"
           >
             <Svg icoName="search" />
           </a>
