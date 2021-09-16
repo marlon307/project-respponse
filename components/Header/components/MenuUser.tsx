@@ -29,7 +29,7 @@ function MenuUser() {
 
   return (
     <div className={ style.menuUser }>
-      <a href="/account" onClick={ (e) => clickUser(e) }>
+      <a href="/account" aria-label="Usuário" onClick={ (e) => clickUser(e) }>
         <Svg icoName="user" />
       </a>
       <div

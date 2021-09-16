@@ -30,6 +30,7 @@ function BtnPrevNext({ reference, typePrevOrNext }: Props) {
       }
       type="button"
       onClick={ btnPrevNext }
+      aria-label={ typePrevOrNext === 'next' ? 'Próximo' : 'Voltar' }
     >
       { typePrevOrNext === 'next'
         ? <Svg icoName="setRight" />
