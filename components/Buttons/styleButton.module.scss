@@ -51,7 +51,7 @@
   font-weight: 600;
 
   svg {
-    margin-left: 1em;
+    margin-left: 6px;
     position: absolute;
     fill: #006bef;
     transition: transform 0.2s ease-in-out;
@@ -64,7 +64,7 @@
 
   &:hover svg {
     fill: #fff;
-    transform: translateX(42px);
+    transform: translateX(1em);
   }
 }
 
