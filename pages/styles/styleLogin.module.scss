@@ -1,9 +1,8 @@
 .contlogin {
-  width: 90%;
   max-width: 400px;
   margin: 11em auto;
   background: var(--maincolor);
-  padding: 2em;
+  padding: 2em min(2em, 6%);
   border-radius: 1em;
 }
 
@@ -13,6 +12,18 @@
   justify-content: center;
   gap: 32px;
   margin-bottom: 4em;
+  font-size: 0.8em;
+}
+
+.logo {
+  display: flex;
+  margin: 1em auto 1.4em;
+  height: 2em;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .section {
@@ -55,6 +66,5 @@
 @media (max-width: 540px) {
   .contlogin {
     margin: 12vh auto;
-    padding: 0;
   }
 }

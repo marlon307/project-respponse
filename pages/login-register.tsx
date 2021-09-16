@@ -3,6 +3,7 @@ import cx from 'classnames';
 import Input from '../components/ComponentsForm/Input';
 import style from './styles/styleLogin.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
+import Svg from '../assets/Svg';
 
 function login() {
   const [sectionTab, setSectionTab] = useState(true);
@@ -19,6 +20,9 @@ function login() {
 
   return (
     <section className={ style.contlogin }>
+      <div className={ style.logo }>
+        <Svg icoName="logo" />
+      </div>
       <div className={ style.sectiontab }>
         <a
           href="/login-register"

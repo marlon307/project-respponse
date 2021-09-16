@@ -41,7 +41,7 @@
   margin: 110px auto;
   background: var(--maincolor);
   max-width: 400px;
-  padding: 2em;
+  padding: 2em min(2em, 6%);
   border-radius: 1em;
 
   h1 {
