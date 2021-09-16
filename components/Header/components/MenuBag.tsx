@@ -54,7 +54,7 @@ function MenuBag() {
             </div>
             <button
               type="button"
-              className={ style.buyButton }
+              className={ cx('button1', style.buyButton) }
               onClick={ () => router.push('/bag') }
             >
               Ir para checkout

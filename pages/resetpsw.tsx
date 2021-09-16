@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Input from '../components/ComponentsForm/Input';
 import style from './styles/styleLogin.module.scss';
+import BtnIco from '../components/Buttons/BtnIco';
 
 function resetpsw() {
   return (
@@ -23,7 +24,7 @@ function resetpsw() {
               Fazer Login
             </a>
           </Link>
-          <button type="button">Enviar</button>
+          <BtnIco textBtn="Enviar Email" icoName="email" action={ () => { } } />
         </div>
       </form>
     </section>

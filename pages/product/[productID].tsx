@@ -4,7 +4,7 @@ import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
 import colorsMock from '../../service/colorsMock';
 import BarSize from '../../components/Bars/BarSize';
-import AddBag from '../../components/Bars/AddBag';
+import AddBag from '../../components/Buttons/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
 
