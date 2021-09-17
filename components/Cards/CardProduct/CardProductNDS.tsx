@@ -5,12 +5,16 @@ import style from './style.module.scss';
 import testeImage from '../../../assets/img/kimiya-oveisi-7qis_qyDK4g-unsplash 1.png';
 import CardInfo from '../CardInfo/CardInfo';
 // CardProductNotDescrtion
-function CardProductNDS() {
-  const product1 = 1;
+
+type TCardNDS = {
+  link: string;
+}
+
+function CardProductNDS({ link }: TCardNDS) {
   return (
     <Link
-      href={ `product/${product1}` }
-      as="/product/1"
+      href={ link }
+      as={ link }
     >
       <a className={ style.productcardNDS }>
         <figure>

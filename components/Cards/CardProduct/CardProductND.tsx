@@ -5,12 +5,15 @@ import style from './style.module.scss';
 import testeImage from '../../../assets/img/analia-baggiano-7_Gkf5JZRv4-unsplash 1.png';
 import CardInfo from '../CardInfo/CardInfo';
 
-function CardProductND() {
-  const product1 = 1;
+type PCardND = {
+  link: string;
+}
+
+function CardProductND({ link }: PCardND) {
   return (
     <Link
-      href={ `product/${product1}` }
-      as="/product/1"
+      href={ link }
+      as={ link }
     >
       <a className={ style.productcardND }>
         <figure>

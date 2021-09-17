@@ -5,12 +5,15 @@ import style from './style.module.scss';
 import testeImage from '../../../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 12.png';
 import CardInfo from '../CardInfo/CardInfo';
 
-function CardProduct() {
-  const product1 = 1;
+type PCardP = {
+  link: string;
+}
+
+function CardProduct({ link }: PCardP) {
   return (
     <Link
-      href={ `product/${product1}` }
-      as="/product/1"
+      href={ link }
+      as={ link }
     >
       <a className={ style.productcard }>
         <figure>
