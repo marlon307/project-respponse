@@ -1,14 +1,21 @@
 import React from 'react';
 import cx from 'classnames';
+import Link from 'next/link';
 import Svg from '../../assets/Svg';
 import style from './styleButton.module.scss';
 
-function BtnRedirect() {
+type PBtnR = {
+  path: string
+}
+
+function BtnRedirect({ path }: PBtnR) {
   return (
-    <div className={ cx('button1', style.redirect) }>
-      <span>Veja Mais</span>
-      <Svg icoName="indication" />
-    </div>
+    <Link href={ path }>
+      <a className={ cx('button1', style.redirect) }>
+        <span>Veja Mais</span>
+        <Svg icoName="indication" />
+      </a>
+    </Link>
   );
 }
 

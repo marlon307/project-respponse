@@ -77,16 +77,16 @@ function index() {
           </div>
           <div className={ style.cont2 }>
             <h1>Óculos de varias marcas e modelos</h1>
-            <BtnRedirect />
+            <BtnRedirect path="/category/oculos" />
           </div>
         </div>
       </section>
       <section className={ style.produinitial }>
         <div className={ style.contentcards }>
           <div className={ style.column }>
-            <div className={ style.redirect }>
-              <BtnRedirect />
-            </div>
+
+            <BtnRedirect path="/category/relogios" />
+
           </div>
           <div className={ style.column }>
             <h1>Veja as últimas novidades</h1>
