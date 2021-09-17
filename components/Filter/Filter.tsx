@@ -1,9 +1,11 @@
 import React from 'react';
 import {
-  FBranch, FColor, FSize, FGen, FCtg,
+  FBranch, FColor, FSize, FGen, FCtg, FModel,
 } from '.';
 import mockBranch from '../../service/mockBranch';
 import mockColor from '../../service/mockColor';
+import mockCtg from '../../service/mockCtg';
+import mockModel from '../../service/mockModel';
 import mockSize from '../../service/mockSize';
 import style from './style.module.scss';
 
@@ -23,10 +25,11 @@ function Filter() {
       </div>
       <h1>Categoria</h1>
       <div className={ style.block }>
-        <FCtg ctg="Esporte" />
-        <FCtg ctg="Lazer" />
-        <FCtg ctg="Casual" />
-        <FCtg ctg="Dia a dia" />
+        {
+          mockCtg.map((ctg) => (
+            <FCtg ctg={ ctg } />
+          ))
+        }
       </div>
       <h1>Tamanho</h1>
       <div className={ style.block }>
@@ -50,12 +53,13 @@ function Filter() {
         <FGen gen="Infantil" />
         <FGen gen="Masculino" />
       </div>
-      <h1>Tipo</h1>
+      <h1>Modelo</h1>
       <div className={ style.block }>
-        <FColor color="#333" cName="Cinza Escuro" />
-        <FColor color="#333" cName="Cinza" />
-        <FColor color="#333" cName="Escuro" />
-        <FColor color="#333" cName="Azul" />
+        {
+          mockModel.map((model) => (
+            <FModel model={ model } />
+          ))
+        }
       </div>
     </div>
   );
