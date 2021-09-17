@@ -11,8 +11,9 @@ import style from './style.module.scss';
 
 function Filter() {
   return (
-    <div className={ style.optionsfilter }>
-      <h1>Cores</h1>
+    <section className={ style.optionsfilter }>
+      <h1>Filtro</h1>
+      <h2>Cores</h2>
       <div className={ style.block }>
         {
           mockColor.map(({ color, colorName }) => (
@@ -24,7 +25,7 @@ function Filter() {
           ))
         }
       </div>
-      <h1>Categoria</h1>
+      <h2>Categoria</h2>
       <div className={ style.block }>
         {
           mockCtg.map((ctg) => (
@@ -32,7 +33,7 @@ function Filter() {
           ))
         }
       </div>
-      <h1>Tamanho</h1>
+      <h2>Tamanho</h2>
       <div className={ style.block }>
         {
           mockSize.map((size) => (
@@ -43,7 +44,7 @@ function Filter() {
           ))
         }
       </div>
-      <h1>Marca</h1>
+      <h2>Marca</h2>
       <div className={ style.block }>
         { mockBranch.map((branch) => (
           <FBranch
@@ -52,13 +53,13 @@ function Filter() {
           />
         )) }
       </div>
-      <h1>Genero</h1>
+      <h2>Genero</h2>
       <div className={ style.block }>
         <FGen gen="Femenino" />
         <FGen gen="Infantil" />
         <FGen gen="Masculino" />
       </div>
-      <h1>Modelo</h1>
+      <h2>Modelo</h2>
       <div className={ style.block }>
         {
           mockModel.map((model) => (
@@ -69,7 +70,7 @@ function Filter() {
           ))
         }
       </div>
-    </div>
+    </section>
   );
 }
 
