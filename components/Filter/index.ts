@@ -5,6 +5,7 @@ import FTissue from './FTissue';
 import FSize from './FSize';
 import FGen from './FGen';
 import FCtg from './FCtg';
+import FModel from './FModel';
 
 export {
   BarFilter,
@@ -14,4 +15,5 @@ export {
   FSize,
   FGen,
   FCtg,
+  FModel,
 };

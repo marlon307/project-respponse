@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 import Flicking from '@egjs/react-flicking';
+import dynamic from 'next/dynamic';
 import style from './style.module.scss';
 import mockApiFilterUsed from '../../service/mockFiltermostUsed';
 import {
   FBranch, FColor, FTissue, FSize,
 } from './index';
 import ContentModal from '../Modal/ContentModal';
-import Filter from './Filter';
+import Svg from '../../assets/Svg';
+import Loading from '../Loading/Loading';
+
+const Filter = dynamic(() => import('./Filter'), {
+  loading: () => <Loading />,
+});
+const OrderFilter = dynamic(() => import('./Order'), {
+  loading: () => <Loading />,
+});
 
 function BarFilter() {
-  const [openFilter, setOpenFilter] = useState(false);
+  const [openFilter, setOpenFilter] = useState('');
 
   return (
     <div className={ style.filter }>
@@ -21,15 +30,21 @@ function BarFilter() {
           <button
             className={ style.filtername }
             type="button"
-            onClick={ () => setOpenFilter(true) }
+            onClick={ () => setOpenFilter('filter') }
           >
             Filtro
+            <Svg icoName="setLeft" />
           </button>
         </div>
         <div className="panel">
-          <div className={ style.filtername }>
+          <button
+            type="button"
+            className={ style.filtername }
+            onClick={ () => setOpenFilter('ofilter') }
+          >
             Ordernar Por
-          </div>
+            <Svg icoName="setLeft" />
+          </button>
         </div>
         { mockApiFilterUsed.map(({
           id, color, colorName, size, tecid, branch,
@@ -42,8 +57,14 @@ function BarFilter() {
           </div>
         )) }
       </Flicking>
-      <ContentModal isOpen={ openFilter } openModal={ setOpenFilter }>
-        <Filter />
+      <ContentModal
+        isOpen={
+          openFilter === 'ofilter' || openFilter === 'filter'
+        }
+        openModal={ () => setOpenFilter('') }
+      >
+        { openFilter === 'filter' && <Filter /> }
+        { openFilter === 'ofilter' && <OrderFilter /> }
       </ContentModal>
     </div>
   );
