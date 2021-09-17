@@ -8,7 +8,7 @@ export type PFColor = {
 
 function FColor({ cName = 'Color Name', color }: PFColor) {
   return (
-    <label htmlFor={ cName }>
+    <label htmlFor={ cName } className={ style.itemfilter }>
       <input type="checkbox" name="filter" id={ cName } />
       <div className={ style.filtername }>
         { cName }
