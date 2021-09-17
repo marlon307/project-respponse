@@ -53,9 +53,15 @@
   background: var(--maincolor);
 
   h1 {
+    font-size: 1.3em;
+    color: #3d3d3d;
+    text-align: center;
+  }
+
+  h2 {
     font-size: 1em;
     color: #505050;
-    margin: 12px 0;
+    margin: 16px 0;
   }
 
   label {
@@ -116,6 +122,6 @@
 @media (max-width: 470px) {
   .contentorder {
     justify-content: center;
-    gap: 1em;
+    gap: 2em;
   }
 }

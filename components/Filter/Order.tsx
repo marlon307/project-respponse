@@ -4,7 +4,7 @@ import style from './style.module.scss';
 
 function FOrder() {
   return (
-    <div className={ style.optionsfilter }>
+    <section className={ style.optionsfilter }>
       <h1>Ordenar por</h1>
       <div className={ style.contentorder }>
         <label htmlFor="minprice">
@@ -29,7 +29,7 @@ function FOrder() {
           </span>
         </label>
       </div>
-    </div>
+    </section>
   );
 }
 
