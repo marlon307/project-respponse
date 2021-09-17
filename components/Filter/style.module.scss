@@ -70,3 +70,52 @@
   flex-wrap: wrap;
   gap: 0.5em 0;
 }
+
+.contentorder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 2em 0;
+
+  input {
+    display: none;
+  }
+
+  input:checked~.order {
+    color: currentColor;
+    border-color: currentColor;
+
+    svg {
+      fill: currentColor;
+    }
+  }
+}
+
+.order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
+  border: 1px solid var(--bordercolor);
+  line-height: 2;
+  font-weight: 600;
+  cursor: pointer;
+  color: #6f6f6f;
+  margin: 0 auto;
+
+  svg {
+    fill: #6f6f6f;
+    transform: rotate(-90deg);
+  }
+}
+
+@media (max-width: 470px) {
+  .contentorder {
+    justify-content: center;
+    gap: 1em;
+  }
+}

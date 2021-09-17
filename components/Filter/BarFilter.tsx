@@ -13,9 +13,12 @@ import Loading from '../Loading/Loading';
 const Filter = dynamic(() => import('./Filter'), {
   loading: () => <Loading />,
 });
+const OrderFilter = dynamic(() => import('./Order'), {
+  loading: () => <Loading />,
+});
 
 function BarFilter() {
-  const [openFilter, setOpenFilter] = useState(false);
+  const [openFilter, setOpenFilter] = useState('');
 
   return (
     <div className={ style.filter }>
@@ -27,7 +30,7 @@ function BarFilter() {
           <button
             className={ style.filtername }
             type="button"
-            onClick={ () => setOpenFilter(true) }
+            onClick={ () => setOpenFilter('filter') }
           >
             Filtro
             <Svg icoName="setLeft" />
@@ -37,6 +40,7 @@ function BarFilter() {
           <button
             type="button"
             className={ style.filtername }
+            onClick={ () => setOpenFilter('ofilter') }
           >
             Ordernar Por
             <Svg icoName="setLeft" />
@@ -53,8 +57,14 @@ function BarFilter() {
           </div>
         )) }
       </Flicking>
-      <ContentModal isOpen={ openFilter } openModal={ setOpenFilter }>
-        { openFilter && <Filter /> }
+      <ContentModal
+        isOpen={
+          openFilter === 'ofilter' || openFilter === 'filter'
+        }
+        openModal={ () => setOpenFilter('') }
+      >
+        { openFilter === 'filter' && <Filter /> }
+        { openFilter === 'ofilter' && <OrderFilter /> }
       </ContentModal>
     </div>
   );
