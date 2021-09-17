@@ -1,11 +1,9 @@
-.filter {
+.itemfilter {
   display: flex;
-  width: 100%;
   color: #6f6f6f;
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  line-height: 1.4;
 
   input {
     display: none;
@@ -26,6 +24,12 @@
   border-radius: 26px;
   margin-right: 16px;
   border: 1px solid var(--bordercolor);
+  background: transparent;
+  color: #6f6f6f;
+
+  button {
+    flex: none;
+  }
 
   span {
     width: 12px;
@@ -34,4 +38,30 @@
     margin-left: 8px;
     border: 1px solid var(--bordercolor);
   }
+}
+
+.optionsfilter {
+  margin: 110px auto;
+  padding: 2em min(2em, 6%);
+  max-width: 600px;
+  border-radius: 1em;
+  background: var(--maincolor);
+
+  h1 {
+    font-size: 1em;
+    color: #505050;
+    margin: 12px 0;
+  }
+
+  label {
+    flex: none;
+  }
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5em 0;
 }

@@ -7,7 +7,7 @@ type PBSearch = {
 
 function FBranch({ branch }: PBSearch) {
   return (
-    <label htmlFor={ branch }>
+    <label htmlFor={ branch } className={ style.itemfilter }>
       <input type="checkbox" name="filter" id={ branch } />
       <div className={ style.filtername }>
         { branch }

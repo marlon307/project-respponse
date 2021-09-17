@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Flicking from '@egjs/react-flicking';
 import style from './style.module.scss';
 import mockApiFilterUsed from '../../service/mockFiltermostUsed';
 import {
   FBranch, FColor, FTissue, FSize,
 } from './index';
+import ContentModal from '../Modal/ContentModal';
+import Filter from './Filter';
 
 function BarFilter() {
+  const [openFilter, setOpenFilter] = useState(false);
+
   return (
     <div className={ style.filter }>
       <Flicking
@@ -14,9 +18,13 @@ function BarFilter() {
         bound
       >
         <div className="panel">
-          <div className={ style.filtername }>
+          <button
+            className={ style.filtername }
+            type="button"
+            onClick={ () => setOpenFilter(true) }
+          >
             Filtro
-          </div>
+          </button>
         </div>
         <div className="panel">
           <div className={ style.filtername }>
@@ -34,6 +42,9 @@ function BarFilter() {
           </div>
         )) }
       </Flicking>
+      <ContentModal isOpen={ openFilter } openModal={ setOpenFilter }>
+        <Filter />
+      </ContentModal>
     </div>
   );
 }

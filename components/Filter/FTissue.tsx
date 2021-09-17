@@ -7,7 +7,7 @@ type PFTissue = {
 
 function FTissue({ tecid }: PFTissue) {
   return (
-    <label htmlFor={ tecid }>
+    <label htmlFor={ tecid } className={ style.itemfilter }>
       <input type="checkbox" name="filter" id={ tecid } />
       <div className={ style.filtername }>
         { tecid }
