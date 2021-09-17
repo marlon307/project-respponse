@@ -7,6 +7,7 @@ import {
 } from './index';
 import ContentModal from '../Modal/ContentModal';
 import Filter from './Filter';
+import Svg from '../../assets/Svg';
 
 function BarFilter() {
   const [openFilter, setOpenFilter] = useState(false);
@@ -24,12 +25,17 @@ function BarFilter() {
             onClick={ () => setOpenFilter(true) }
           >
             Filtro
+            <Svg icoName="setLeft" />
           </button>
         </div>
         <div className="panel">
-          <div className={ style.filtername }>
+          <button
+            type="button"
+            className={ style.filtername }
+          >
             Ordernar Por
-          </div>
+            <Svg icoName="setLeft" />
+          </button>
         </div>
         { mockApiFilterUsed.map(({
           id, color, colorName, size, tecid, branch,

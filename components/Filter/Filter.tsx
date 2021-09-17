@@ -17,6 +17,7 @@ function Filter() {
         {
           mockColor.map(({ color, colorName }) => (
             <FColor
+              key={ colorName }
               color={ color }
               cName={ colorName }
             />
@@ -27,7 +28,7 @@ function Filter() {
       <div className={ style.block }>
         {
           mockCtg.map((ctg) => (
-            <FCtg ctg={ ctg } />
+            <FCtg key={ ctg } ctg={ ctg } />
           ))
         }
       </div>
@@ -36,6 +37,7 @@ function Filter() {
         {
           mockSize.map((size) => (
             <FSize
+              key={ size }
               size={ size }
             />
           ))
@@ -44,7 +46,10 @@ function Filter() {
       <h1>Marca</h1>
       <div className={ style.block }>
         { mockBranch.map((branch) => (
-          <FBranch branch={ branch } />
+          <FBranch
+            key={ branch }
+            branch={ branch }
+          />
         )) }
       </div>
       <h1>Genero</h1>
@@ -57,7 +62,10 @@ function Filter() {
       <div className={ style.block }>
         {
           mockModel.map((model) => (
-            <FModel model={ model } />
+            <FModel
+              key={ model }
+              model={ model }
+            />
           ))
         }
       </div>
