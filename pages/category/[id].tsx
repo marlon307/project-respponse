@@ -10,20 +10,22 @@ const items = [
 
 function categoryId() {
   return (
-    <div className={ style.category }>
+    <>
       <div className={ style.filter }>
         <BarFilter />
       </div>
-      <div className={ style.categorycont }>
-        {
-          items.map((qtd) => (
-            <div key={ qtd }>
-              <CardProduct />
-            </div>
-          ))
-        }
+      <div className={ style.category }>
+        <div className={ style.categorycont }>
+          {
+            items.map((qtd) => (
+              <div key={ qtd } className={ style.card }>
+                <CardProduct />
+              </div>
+            ))
+          }
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

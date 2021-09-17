@@ -89,7 +89,7 @@
 
 @media (max-width: 750px) {
   .productcard {
-    width: 100%;
+    max-width: 200px;
     height: 100%;
 
     figure {
@@ -100,7 +100,7 @@
   }
 
   .productcardNDS {
-    width: 100%;
+    max-width: 200px;
     height: 100%;
 
     figure {
@@ -111,7 +111,7 @@
   }
 
   .productcardND {
-    width: 100%;
+    max-width: 200px;
     height: 100%;
 
     figure {
