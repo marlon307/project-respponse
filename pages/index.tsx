@@ -82,9 +82,7 @@ function index() {
       <section className={ style.produinitial }>
         <div className={ style.contentcards }>
           <div className={ style.column }>
-
             <BtnRedirect path="/category/relogios" />
-
           </div>
           <div className={ style.column }>
             <h1>Veja as últimas novidades</h1>
