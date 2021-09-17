@@ -3,6 +3,9 @@
   width: 100%;
   overflow: hidden;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 0 0 2em 2em;
   background: var(--backgroundimg);
   min-height: 500px;
@@ -35,10 +38,7 @@
 
 .scrollset {
   position: absolute;
-  width: 34px;
-  height: 34px;
   bottom: 6%;
-  left: 49.39%;
   z-index: 98899;
   animation: updown 1s infinite alternate;
   animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
