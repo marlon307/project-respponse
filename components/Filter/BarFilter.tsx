@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import Flicking from '@egjs/react-flicking';
+import dynamic from 'next/dynamic';
 import style from './style.module.scss';
 import mockApiFilterUsed from '../../service/mockFiltermostUsed';
 import {
   FBranch, FColor, FTissue, FSize,
 } from './index';
 import ContentModal from '../Modal/ContentModal';
-import Filter from './Filter';
 import Svg from '../../assets/Svg';
+import Loading from '../Loading/Loading';
+
+const Filter = dynamic(() => import('./Filter'), {
+  loading: () => <Loading />,
+});
 
 function BarFilter() {
   const [openFilter, setOpenFilter] = useState(false);
@@ -49,7 +54,7 @@ function BarFilter() {
         )) }
       </Flicking>
       <ContentModal isOpen={ openFilter } openModal={ setOpenFilter }>
-        <Filter />
+        { openFilter && <Filter /> }
       </ContentModal>
     </div>
   );
