@@ -2,6 +2,9 @@ import React from 'react';
 import {
   FBranch, FColor, FSize, FGen, FCtg,
 } from '.';
+import mockBranch from '../../service/mockBranch';
+import mockColor from '../../service/mockColor';
+import mockSize from '../../service/mockSize';
 import style from './style.module.scss';
 
 function Filter() {
@@ -9,13 +12,14 @@ function Filter() {
     <div className={ style.optionsfilter }>
       <h1>Cores</h1>
       <div className={ style.block }>
-        <FColor color="#000000" cName="Preto" />
-        <FColor color="#e88b3c" cName="Laranja" />
-        <FColor color="#dd3ce8" cName="Rosa" />
-        <FColor color="#0a1f84" cName="Azul" />
-        <FColor color="#fff" cName="Branco" />
-        <FColor color="#22840a" cName="Verde" />
-        <FColor color="#840a0a" cName="Vermelho" />
+        {
+          mockColor.map(({ color, colorName }) => (
+            <FColor
+              color={ color }
+              cName={ colorName }
+            />
+          ))
+        }
       </div>
       <h1>Categoria</h1>
       <div className={ style.block }>
@@ -26,29 +30,19 @@ function Filter() {
       </div>
       <h1>Tamanho</h1>
       <div className={ style.block }>
-        <FSize size="XGG" />
-        <FSize size="GG" />
-        <FSize size="G" />
-        <FSize size="M" />
-        <FSize size="P" />
-        <FSize size="PP" />
-        <FSize size="34" />
-        <FSize size="36" />
-        <FSize size="35 / 36" />
-        <FSize size="37 / 38" />
-        <FSize size="40" />
-        <FSize size="42" />
-        <FSize size="46" />
+        {
+          mockSize.map((size) => (
+            <FSize
+              size={ size }
+            />
+          ))
+        }
       </div>
       <h1>Marca</h1>
       <div className={ style.block }>
-        <FBranch branch="Nike" />
-        <FBranch branch="Lacoste" />
-        <FBranch branch="Hang Loose" />
-        <FBranch branch="Polo" />
-        <FBranch branch="Hurley" />
-        <FBranch branch="Gucci" />
-        <FBranch branch="Gangster" />
+        { mockBranch.map((branch) => (
+          <FBranch branch={ branch } />
+        )) }
       </div>
       <h1>Genero</h1>
       <div className={ style.block }>
