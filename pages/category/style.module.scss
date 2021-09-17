@@ -1,0 +1,22 @@
+.category {
+  position: relative;
+  margin: 110px 6% 0;
+}
+
+.filter {
+  position: sticky;
+  top: 100px;
+  z-index: 99997;
+  background: var(--maincolormenu);
+  backdrop-filter: saturate(100%) blur(5px);
+  padding: 1em 0 1em;
+}
+
+.categorycont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 3em 0;
+  gap: 1em;
+}
