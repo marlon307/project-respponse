@@ -19,7 +19,7 @@ function categoryId() {
           {
             items.map((qtd) => (
               <div key={ qtd } className={ style.card }>
-                <CardProduct />
+                <CardProduct link="../product/1" />
               </div>
             ))
           }
