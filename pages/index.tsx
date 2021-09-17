@@ -6,7 +6,6 @@ import style from './styles/styleIndex.module.scss';
 import { CardCategory } from '../components/Cards';
 import mockCategory from '../service/mockCategory';
 import { BtnPrevNext, BtnRedirect } from '../components/Buttons';
-import { BarFilter } from '../components/Filter';
 import mockCarousel from '../service/mockCarousel';
 import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
 import { CardProduct, CardProductNDS, CardProductND } from '../components/Cards/CardProduct';
@@ -62,7 +61,6 @@ function index() {
             </Flicking>
             <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="next" />
           </div>
-          <BarFilter />
         </nav>
       </section>
       <section className={ style.advertising }>
