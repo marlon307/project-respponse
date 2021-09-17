@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import Header from '../components/Header';
 import '../styles/globals.scss';
 import '@egjs/react-flicking/dist/flicking.css';
 import Footer from '../components/Footer/Footer';
 import Modal from '../components/Modal/Modal';
+import Loading from '../components/Loading/Loading';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = () => setLoading(false);
+    const routeChangeComplete = () => setLoading(true);
+    if (router.pathname) setLoading(true);
+
+    router.events.on('routeChangeStart', handleRouteChange);
+    router.events.on('routeChangeComplete', routeChangeComplete);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+      router.events.off('routeChangeComplete', routeChangeComplete);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -34,7 +53,15 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Header />
       <main>
-        <Component { ...pageProps } />
+        {
+          loading
+            ? (
+              <div className="maincontent">
+                <Component { ...pageProps } />
+              </div>
+            )
+            : <Loading />
+        }
         <Modal />
       </main>
       <Footer />
