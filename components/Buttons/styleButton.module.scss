@@ -41,24 +41,26 @@
 
 .redirect {
   position: relative;
-  padding: 18px 24px;
   border: 2px solid #006bef;
-  color: #006bef;
   max-width: 150px;
-  width: 68%;
   border-radius: 1em;
   cursor: pointer;
   font-weight: 600;
-
-  svg {
-    margin-left: 6px;
-    position: absolute;
-    fill: #006bef;
-    transition: transform 0.2s ease-in-out;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
   &:hover {
     background: #006bef;
+  }
+
+  a {
+    width: 100%;
+    padding: 18px 24px;
+    color: #006bef;
+  }
+
+  &:hover a {
     color: #fff;
   }
 
@@ -66,7 +68,23 @@
     fill: #fff;
     transform: translateX(1em);
   }
+
+  svg {
+    margin-right: 12%;
+    position: absolute;
+    fill: #006bef;
+    transition: transform 0.2s ease-in-out;
+  }
 }
+
+// &:hover {
+//   background: #006bef;
+//   color: #fff;
+// }
+// &:hover svg {
+//   fill: #fff;
+//   
+// }
 
 .btnadd {
   border-radius: 12px;

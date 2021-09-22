@@ -10,12 +10,12 @@ type PBtnR = {
 
 function BtnRedirect({ path }: PBtnR) {
   return (
-    <Link href={ path }>
-      <a className={ cx('button1', style.redirect) }>
-        <span>Veja Mais</span>
-        <Svg icoName="indication" />
-      </a>
-    </Link>
+    <div className={ cx('button1', style.redirect) }>
+      <Link href={ path }>
+        <a>Veja Mais</a>
+      </Link>
+      <Svg icoName="indication" />
+    </div>
   );
 }
 
