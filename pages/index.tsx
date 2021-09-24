@@ -30,6 +30,7 @@ function index() {
                   layout="responsive"
                   placeholder="blur"
                   alt={ alt }
+                  quality="90"
                 />
               </figure>
               <span>{ url }</span>
