@@ -21,7 +21,6 @@ function index() {
         <Flicking
           circular
           plugins={ plugins }
-          deceleration={ 0.0075 }
         >
           { mockCarousel.map(({
             id, urlImg, url, title, priority,
