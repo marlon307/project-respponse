@@ -6,16 +6,26 @@ import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
 
-function MenuBag() {
+type PropsMNBag = {
+  setMenuDropdown: Function;
+}
+
+function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
   const [enable, setEnable] = useState(false);
   const ref = useRef(null);
 
-  useOutsideClick(ref, () => enable && setEnable(false));
+  useOutsideClick(ref, () => {
+    if (enable) {
+      setEnable(false);
+      setMenuDropdown(null);
+    }
+  });
 
   function clickBag(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
     setEnable(!enable);
+    setMenuDropdown('bag');
   }
 
   return (

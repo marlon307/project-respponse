@@ -11,15 +11,25 @@ import Loading from '../../Loading/Loading';
 const LoginRegister = dynamic(() => import('../../../pages/login-register'),
   { loading: () => <Loading /> });
 
-function MenuUser() {
+type PropsMNUser = {
+  setMenuDropdown: Function;
+}
+
+function MenuUser({ setMenuDropdown }: PropsMNUser) {
   const [outsideClick, setTutsideClicl] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const ref = useRef(null);
-  useOutsideClick(ref, () => outsideClick && setTutsideClicl(false));
+  useOutsideClick(ref, () => {
+    if (outsideClick) {
+      setTutsideClicl(false);
+      setMenuDropdown(null);
+    }
+  });
 
   function clickUser(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
     setTutsideClicl(!outsideClick);
+    setMenuDropdown('mnuser');
   }
 
   function openModalLogin(event: { preventDefault: () => void; }) {
