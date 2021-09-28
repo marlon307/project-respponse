@@ -6,18 +6,19 @@ import style from './styles/styleMenudescktop.module.scss';
 
 type PMnDescktop = {
   setSearchopen: Function
+  setMenuDropdown: Function;
   searchopen: boolean
 }
 
-function MenuDescktop({ setSearchopen, searchopen }: PMnDescktop) {
+function MenuDescktop({ setSearchopen, searchopen, setMenuDropdown }: PMnDescktop) {
   return (
     <nav className={ style.menuDescktop }>
       <SearchBar
         searchopen={ searchopen }
         setSearchopen={ setSearchopen }
       />
-      <MenuBag />
-      <MenuUser />
+      <MenuBag setMenuDropdown={ setMenuDropdown } />
+      <MenuUser setMenuDropdown={ setMenuDropdown } />
     </nav>
   );
 }

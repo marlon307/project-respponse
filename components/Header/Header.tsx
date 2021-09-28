@@ -14,10 +14,14 @@ function Header() {
   const scrollY = useScroll();
 
   const [searchopen, setSearchopen] = useState(false);
+  const [menuDropdown, setMenuDropdown] = useState(null);
 
   return (
     <header className={ cx(style.header, {
-      [style.active]: scrollY > 60,
+      [style.active]:
+        scrollY > 60
+        || searchopen
+        || menuDropdown,
     }) }
     >
       <div className={ style.container }>
@@ -41,6 +45,7 @@ function Header() {
       <MenuDescktop
         setSearchopen={ setSearchopen }
         searchopen={ searchopen }
+        setMenuDropdown={ setMenuDropdown }
       />
       <MenuMobile />
     </header>
