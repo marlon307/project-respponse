@@ -18,9 +18,13 @@ function index() {
   return (
     <>
       <div className={ style.slide }>
-        <Flicking circular plugins={ plugins }>
+        <Flicking
+          circular
+          plugins={ plugins }
+          deceleration={ 0.0075 }
+        >
           { mockCarousel.map(({
-            id, urlImg, url, alt, priority,
+            id, urlImg, url, title, priority,
           }) => (
             <div className="panel" key={ id }>
               <figure>
@@ -29,11 +33,14 @@ function index() {
                   priority={ priority }
                   layout="responsive"
                   placeholder="blur"
-                  alt={ alt }
+                  alt={ title }
                   quality="90"
                 />
+                <div className={ style.titleproduct }>
+                  <h1>{ title }</h1>
+                  <BtnRedirect path={ url } />
+                </div>
               </figure>
-              <span>{ url }</span>
             </div>
           )) }
         </Flicking>

@@ -6,22 +6,22 @@ const mockCarousel = [
   {
     id: '0',
     urlImg: TesteSlide1,
-    url: '',
-    alt: 'Teste 1',
+    url: '/category/tenis',
+    title: 'Tenis AllStars',
     priority: true,
   },
   {
     id: '2',
     urlImg: TesteSlide2,
-    url: '',
-    alt: 'Teste 2',
+    url: '/category/calcas',
+    title: 'Calça e Moletons',
     priority: false,
   },
   {
     id: '3',
     urlImg: TesteSlide3,
-    url: '',
-    alt: 'Teste 3',
+    url: '/category/oculos',
+    title: 'Oculos de sol',
     priority: false,
   },
 ];
