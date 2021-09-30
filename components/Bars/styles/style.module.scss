@@ -1,0 +1,68 @@
+.barcolor {
+  top: 32%;
+  left: 7%;
+  position: absolute;
+  width: 34px;
+  max-height: 150px;
+  background: #ffffff99;
+  backdrop-filter: saturate(100%) blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 22px 0;
+  overflow: hidden;
+  gap: 12px;
+  z-index: 5555;
+  box-shadow: 0 0 4px var(--boxshadowcolor);
+
+  input {
+    display: none;
+  }
+
+  span {
+    cursor: pointer;
+    display: flex;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--bordercolor);
+  }
+
+  input:checked~span {
+    border: 6px solid;
+    background: transparent !important;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.qtd {
+  margin-top: 30px;
+  border: 1px solid var(--bordercolor);
+  border-radius: 0.8em;
+  padding: 0.2em;
+  width: fit-content;
+
+  input {
+    width: 50px;
+    text-align: center;
+    font-size: 1em;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  button {
+    width: 2.2em;
+    height: 2.2em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1em;
+    text-align: center;
+    background: transparent;
+  }
+}
