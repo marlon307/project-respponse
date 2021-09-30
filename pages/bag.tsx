@@ -54,17 +54,15 @@ function bag() {
                 Endereço de entrega
               </h3>
             </a>
-            <div>
-              <CardAdderess
-                name="Name Teste"
-                road="Fernando de noronha"
-                number="123"
-                city="Ipatinga"
-                uf="MG"
-                zipcode="12345-67"
-                district="Alterosas"
-              />
-            </div>
+            <CardAdderess
+              name="Name Teste"
+              road="Fernando de noronha"
+              number="123"
+              city="Ipatinga"
+              uf="MG"
+              zipcode="12345-67"
+              district="Alterosas"
+            />
           </div>
           <div className={ style.container }>
             <a href="/" className={ style.select } onClick={ openOptions }>
