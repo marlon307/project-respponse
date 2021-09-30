@@ -10,16 +10,16 @@ type PBtnPrevNext = {
 }
 
 function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrevNext) {
+  // current.control.activeIndex > 1
   async function btnPrevNext() {
     const { current } = reference;
+
     if (typePrevOrNext === 'next') {
-      try {
-        await current?.next();
-      } catch (error) { }
+      await current?.next()
+        .catch(() => { });
     } else {
-      try {
-        await current?.prev();
-      } catch (error) { }
+      await current?.prev()
+        .catch(() => { });
     }
   }
 
@@ -30,7 +30,9 @@ function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrevNext) {
       }
       type="button"
       onClick={ btnPrevNext }
-      aria-label={ typePrevOrNext === 'next' ? 'Próximo' : 'Voltar' }
+      aria-label={
+        typePrevOrNext === 'next' ? 'Próximo' : 'Voltar'
+      }
     >
       { typePrevOrNext === 'next'
         ? <Svg icoName="setRight" />
