@@ -20,28 +20,19 @@ function bag() {
           </h1>
           <ul>
             <li>
-              <SmallCard />
+              <SmallCard editable />
             </li>
             <li>
-              <SmallCard />
+              <SmallCard editable />
             </li>
             <li>
-              <SmallCard />
+              <SmallCard editable />
             </li>
             <li>
-              <SmallCard />
+              <SmallCard editable />
             </li>
             <li>
-              <SmallCard />
-            </li>
-            <li>
-              <SmallCard />
-            </li>
-            <li>
-              <SmallCard />
-            </li>
-            <li>
-              <SmallCard />
+              <SmallCard editable />
             </li>
           </ul>
         </section>

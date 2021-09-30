@@ -64,6 +64,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  svg {
+    fill: #c2c2c2;
+
+    &:hover {
+      fill: var(--hovericon);
+    }
+  }
+
 }
 
 .setting {

@@ -6,9 +6,10 @@ import Svg from '../../../assets/Svg';
 
 type PSmallCard = {
   removable?: boolean
+  editable?: boolean
 }
 
-function SmallCard({ removable }: PSmallCard) {
+function SmallCard({ removable, editable }: PSmallCard) {
   return (
     <div className={ style.smallcard }>
       <div className={ style.img }>
@@ -32,6 +33,11 @@ function SmallCard({ removable }: PSmallCard) {
             <span title="Roxo Claro" style={ { background: '#AAB4D9' } } />
             <span title="Tamanho G" style={ { color: '#AAB4D9' } }>G</span>
             <span title="3 Berrylush - Top Forever 21 Canelado Preto" style={ { color: '#AAB4D9' } }>3x</span>
+            { editable && (
+              <a href="/" aria-label="Editar quantidade e cor." title="Editar quantidade e cor">
+                <Svg icoName="edit" />
+              </a>
+            ) }
           </div>
           <div className={ style.price }>
             <span title="Valor da unidade R$ 199,90">R$ 199,90</span>
@@ -39,7 +45,7 @@ function SmallCard({ removable }: PSmallCard) {
         </div>
       </div>
       { removable && (
-        <div className="delete" title="Excluir">
+        <div className="action" title="Excluir">
           <Svg icoName="trash" />
         </div>
       ) }
@@ -51,4 +57,5 @@ export default SmallCard;
 
 SmallCard.defaultProps = {
   removable: true,
+  editable: false,
 };
