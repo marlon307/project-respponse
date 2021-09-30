@@ -24,11 +24,12 @@ function productId() {
             <div className="panel" key={ id }>
               <div className={ style.contentpanel }>
                 <Image
-                  objectFit="cover"
                   quality={ 90 }
                   placeholder="blur"
                   src={ img }
                   alt={ title }
+                  layout="responsive"
+                  objectPosition="relative"
                 />
               </div>
             </div>
