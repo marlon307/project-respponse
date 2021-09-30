@@ -26,6 +26,7 @@ function productId() {
                 <Image
                   objectFit="cover"
                   quality={ 90 }
+                  placeholder="blur"
                   src={ img }
                   alt={ title }
                 />
