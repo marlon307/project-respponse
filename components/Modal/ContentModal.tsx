@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import useOutsideClick from '../../hooks/useOutSide';
 import style from './style.module.scss';
-import Svg from '../../assets/Svg';
 
 type PModal = {
   children: any,
@@ -11,6 +11,11 @@ type PModal = {
 
 function ContentModal({ children, isOpen, openModal }: PModal) {
   if (typeof window === 'undefined') return null;
+  const modalRef = useRef(null);
+
+  useOutsideClick(modalRef, () => {
+    if (isOpen) openModal(!isOpen);
+  });
 
   const getModal = document.getElementById('modal')!;
 
@@ -28,14 +33,10 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
     return (
       isOpen && (
         <>
-          <button
-            type="button"
-            className={ style.close }
-            onClick={ () => openModal(!isOpen) }
+          <div
+            ref={ modalRef }
+            className={ style.content_modal }
           >
-            <Svg icoName="close" />
-          </button>
-          <div className={ style.content_modal }>
             { children }
           </div>
         </>

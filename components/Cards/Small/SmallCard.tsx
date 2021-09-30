@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import TesteImgUrl from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash 1.png';
 import style from './stylesSmallCard.module.scss';
 import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';
-import CardEdit from '../CardEdit/CardEdit';
+import Loading from '../../Loading/Loading';
+
+const CardEdit = dynamic(() => import('../CardEdit/CardEdit'), {
+  loading: () => <Loading />,
+});
 
 type PSmallCard = {
   removable?: boolean
@@ -46,8 +51,8 @@ function SmallCard({ removable, editable }: PSmallCard) {
               { editable && (
                 <a
                   href="/"
-                  aria-label="Editar quantidade e cor."
-                  title="Editar quantidade e cor"
+                  aria-label="Editar cor, tamanho e quantidade."
+                  title="Editar cor, tamanho e quantidade."
                   onClick={ openModalEdit }
                 >
                   <Svg icoName="edit" />
