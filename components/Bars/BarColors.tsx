@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './styles/barcolor.module.scss';
+import style from './styles/style.module.scss';
 
 interface IObjectsColor {
   colorName: string;
