@@ -23,7 +23,13 @@ function CardEdit() {
       </div>
       <BarSize array={ size } colorName="Laranja" />
       <BarColors array={ mockColors } />
-      <Qtd />
+      <div className={ style.secondline }>
+        <Qtd />
+        <div className={ style.titles }>
+          <h1>Berrylush</h1>
+          <h2>Top Forever 21 Canelado Preto</h2>
+        </div>
+      </div>
     </div>
   );
 }
