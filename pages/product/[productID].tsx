@@ -3,12 +3,12 @@ import Image from 'next/image';
 import Flicking from '@egjs/react-flicking';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
-import colorsMock from '../../service/colorsMock';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Buttons/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
 import mockProduct from '../../service/mockProduct';
+import colorsMock from '../../service/colorsMock';
 
 function productId() {
   const [itemdrag, setItemDrag] = useState(false);
