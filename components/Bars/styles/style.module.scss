@@ -38,9 +38,31 @@
   }
 }
 
-// @media (man-width: 750px) {
-//   .barcolor {
-//     width: 35px;
-//     max-height: 140px;
-//   }
-// }
+.qtd {
+  margin-top: 30px;
+  border: 1px solid var(--bordercolor);
+  border-radius: 0.8em;
+  padding: 0.2em;
+  width: fit-content;
+
+  input {
+    width: 50px;
+    text-align: center;
+    font-size: 1em;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  button {
+    width: 2.2em;
+    height: 2.2em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1em;
+    text-align: center;
+    background: transparent;
+  }
+}
