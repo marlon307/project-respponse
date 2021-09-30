@@ -52,7 +52,7 @@ function index() {
           <div className={ style.category }>
             <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="prev" />
             <Flicking
-              bound
+              circular
               align="prev"
               ref={ buttonPrevNext }
             >

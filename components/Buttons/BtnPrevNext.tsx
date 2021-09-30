@@ -1,4 +1,3 @@
-/* eslint-disable no-empty */
 import React from 'react';
 import cx from 'classnames';
 import style from './styleButton.module.scss';
@@ -10,10 +9,8 @@ type PBtnPrevNext = {
 }
 
 function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrevNext) {
-  // current.control.activeIndex > 1
   async function btnPrevNext() {
     const { current } = reference;
-
     if (typePrevOrNext === 'next') {
       await current?.next()
         .catch(() => { });
