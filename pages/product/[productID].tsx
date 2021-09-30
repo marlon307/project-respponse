@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Flicking from '@egjs/react-flicking';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
@@ -7,6 +8,7 @@ import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Buttons/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
+import imageteste from '../../assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
 
 function productId() {
   const [itemdrag, setItemDrag] = useState(false);
@@ -14,6 +16,26 @@ function productId() {
   return (
     <div className={ style.product }>
       <div className={ style.slide }>
+        <Flicking
+          align="center"
+          bound
+        >
+          <div className="panel">
+            <Image src={ imageteste } />
+          </div>
+          <div className="panel">
+            <Image src={ imageteste } />
+          </div>
+          <div className="panel">
+            <Image src={ imageteste } />
+          </div>
+          <div className="panel">
+            <Image src={ imageteste } />
+          </div>
+          <div className="panel">
+            <Image src={ imageteste } />
+          </div>
+        </Flicking>
         <BarColors array={ colorsMock } />
       </div>
       <div className={ style.infodesc }>
