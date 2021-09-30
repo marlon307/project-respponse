@@ -2,6 +2,11 @@
   position: relative;
   width: 100%;
   height: 80ch;
+}
+
+.contentpanel {
+  margin: 0 6em;
+  max-width: 400px;
 
   img {
     height: 80ch;
@@ -104,6 +109,9 @@
   .slide {
     height: 60ch;
 
+  }
+
+  .contentpanel {
     img {
       height: 60ch;
     }
