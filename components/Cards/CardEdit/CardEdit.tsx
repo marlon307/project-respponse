@@ -5,8 +5,7 @@ import Qtd from '../../Bars/Qtd';
 import style from './style.module.scss';
 import img from '../../../assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
 import BarSize from '../../Bars/BarSize';
-import mockColors from '../../../service/mockColor';
-import size from '../../../service/colorsMock';
+import mockColors from '../../../service/colorsMock';
 
 function CardEdit() {
   return (
@@ -21,7 +20,7 @@ function CardEdit() {
           objectPosition="relative"
         />
       </div>
-      <BarSize array={ size } colorName="Laranja" />
+      <BarSize array={ mockColors } colorName="Laranja" />
       <BarColors array={ mockColors } />
       <div className={ style.secondline }>
         <Qtd />
