@@ -9,26 +9,16 @@
   inset: 0 0 0 0;
 }
 
-.open .content_modal {
-  animation: contentmodal 0.3s ease-in-out;
+.content_modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  min-width: fit-content;
 }
 
-.close {
-  z-index: 3;
-  top: 2em;
-  position: sticky;
-  box-sizing: border-box;
-  background: var(--maincolor);
-  cursor: pointer;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2em;
-  height: 2em;
-  margin: 4em auto -4em;
-  border: 1px solid var(--bordercolor);
-  box-sizing: content-box;
+.open .content_modal {
+  animation: contentmodal 0.3s ease-in-out;
 }
 
 @media (max-width: 750px) {
@@ -41,7 +31,7 @@
 @keyframes contentmodal {
   from {
     will-change: transform, opacity;
-    transform: translateY(3em);
+    transform: translate3d(0, 3em, 0);
     opacity: 0;
   }
 
