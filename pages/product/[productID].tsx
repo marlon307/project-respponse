@@ -8,7 +8,7 @@ import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Buttons/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
-import imageteste from '../../assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
+import mockProduct from '../../service/mockProduct';
 
 function productId() {
   const [itemdrag, setItemDrag] = useState(false);
@@ -18,23 +18,21 @@ function productId() {
       <div className={ style.slide }>
         <Flicking
           align="center"
-          bound
+          circular
         >
-          <div className="panel">
-            <Image src={ imageteste } />
-          </div>
-          <div className="panel">
-            <Image src={ imageteste } />
-          </div>
-          <div className="panel">
-            <Image src={ imageteste } />
-          </div>
-          <div className="panel">
-            <Image src={ imageteste } />
-          </div>
-          <div className="panel">
-            <Image src={ imageteste } />
-          </div>
+          { mockProduct.map(({ id, img, title }) => (
+            <div className="panel" key={ id }>
+              <div className={ style.contentpanel }>
+                <Image
+                  objectFit="cover"
+                  quality={ 90 }
+                  placeholder="blur"
+                  src={ img }
+                  alt={ title }
+                />
+              </div>
+            </div>
+          )) }
         </Flicking>
         <BarColors array={ colorsMock } />
       </div>
