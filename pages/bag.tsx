@@ -12,12 +12,15 @@ const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), {
   loading: () => <Loading />,
 });
 
-function bag() {
-  const [openModal, setOpenModal] = useState(false);
+interface TEvent {
+  preventDefault: any
+}
 
-  function openOptions(event: { preventDefault: () => void; }) {
-    event.preventDefault();
-    setOpenModal(true);
+function bag() {
+  const [openModal, setOpenModal] = useState<String>('');
+
+  function openModalEdit() {
+    setOpenModal('edit');
   }
 
   return (
@@ -30,30 +33,38 @@ function bag() {
           </h1>
           <ul>
             <li>
-              <SmallCard editable eventModal={ setOpenModal } />
+              <SmallCard editable eventModal={ openModalEdit } />
             </li>
             <li>
-              <SmallCard editable eventModal={ setOpenModal } />
+              <SmallCard editable eventModal={ openModalEdit } />
             </li>
             <li>
-              <SmallCard editable eventModal={ setOpenModal } />
+              <SmallCard editable eventModal={ openModalEdit } />
             </li>
             <li>
-              <SmallCard editable eventModal={ setOpenModal } />
+              <SmallCard editable eventModal={ openModalEdit } />
             </li>
             <li>
-              <SmallCard editable eventModal={ setOpenModal } />
+              <SmallCard editable eventModal={ openModalEdit } />
             </li>
           </ul>
         </section>
         <section className={ style.checkout }>
           <h2>Checkout</h2>
           <div className={ style.container }>
-            <a href="/" className={ style.select } onClick={ openOptions }>
+            <a
+              href="/"
+              className={ style.select }
+              onClick={ (event: TEvent) => {
+                event.preventDefault();
+                setOpenModal('address');
+              } }
+            >
               <h3>
                 <Svg icoName="map" />
                 Endereço de entrega
               </h3>
+              <span />
             </a>
             <CardAdderess
               name="Name Teste"
@@ -66,12 +77,12 @@ function bag() {
             />
           </div>
           <div className={ style.container }>
-            <a href="/" className={ style.select } onClick={ openOptions }>
+            <div className={ style.select }>
               <h3>
                 <Svg icoName="truck" />
                 Frete
               </h3>
-            </a>
+            </div>
             <div className={ style.options }>
               <InputRadio name="Correios - R$ 25,00 - 2 dias uteis" id="correios" family="shippe" />
               <InputRadio name="Pac - R$ 10,00 - 5 dias uteis" id="pac" family="shippe" />
@@ -79,12 +90,12 @@ function bag() {
             </div>
           </div>
           <div className={ style.container }>
-            <a href="/" className={ style.select } onClick={ openOptions }>
+            <div className={ style.select }>
               <h3>
                 <Svg icoName="payment" />
                 Forma de pagamento
               </h3>
-            </a>
+            </div>
             <div className={ style.options }>
               <InputRadio name="Cartão de Credito" id="credit" family="payment" />
               <InputRadio name="PayPal" id="paypal" family="payment" />
@@ -92,12 +103,12 @@ function bag() {
             </div>
           </div>
           <div className={ style.container }>
-            <a href="/" className={ style.select } onClick={ openOptions }>
+            <div className={ style.select }>
               <h3>
                 <Svg icoName="map" />
                 Cupom de Desconto
               </h3>
-            </a>
+            </div>
             <div className={ style.options }>
               <Input id="cupom" type="text" name="cupom" placeHolder="" />
               <span className={ style.descount }>Desconto - R$ 0,00</span>
@@ -106,8 +117,11 @@ function bag() {
         </section>
       </div>
       <BarBuy />
-      <ContentModal isOpen={ openModal } openModal={ setOpenModal }>
-        { openModal && <CardEdit /> }
+      <ContentModal
+        isOpen={ openModal === 'edit' }
+        openModal={ setOpenModal }
+      >
+        { openModal === 'edit' && <CardEdit /> }
       </ContentModal>
     </>
   );

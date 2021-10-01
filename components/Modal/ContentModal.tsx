@@ -16,7 +16,7 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
   const modalRef = useRef(null);
 
   useOutsideClick(modalRef, () => {
-    if (isOpen) openModal(!isOpen);
+    if (isOpen) openModal(false);
   });
 
   useEffect(() => {
