@@ -26,7 +26,7 @@ function CardPay({
             { endNumber }
           </p>
         </div>
-        <div className="delete" title="Excluir Cartão">
+        <div className="action" title="Excluir Cartão">
           <Svg icoName="trash" />
         </div>
       </div>

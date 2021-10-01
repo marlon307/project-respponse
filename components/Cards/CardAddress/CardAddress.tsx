@@ -52,7 +52,7 @@ function CardAdderess({
         { ' ' }
         { zipcode }
       </span>
-      <div className="delete" title="Excluir Endereço">
+      <div className="action" title="Excluir Endereço">
         <Svg icoName="trash" />
       </div>
     </div>
