@@ -6,7 +6,7 @@ import style from './styles/styleAccount.module.scss';
 import Loading from '../components/Loading/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
-const AddCard = dynamic(() => import('./add-card'),
+const AddCard = dynamic(() => import('../components/Add/add-card'),
   { loading: () => <Loading /> });
 
 function cards() {
