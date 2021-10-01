@@ -43,8 +43,11 @@ function address() {
           />
         </div>
       </div>
-      <ContentModal isOpen={ openModal } openModal={ setOpenModal }>
-        <Addaderess />
+      <ContentModal
+        isOpen={ openModal }
+        openModal={ setOpenModal }
+      >
+        { openModal && <Addaderess /> }
       </ContentModal>
     </section>
   );

@@ -9,10 +9,10 @@ const OrderId = dynamic(() => import('../components/Order/Order'),
   { loading: () => <Loading /> });
 
 function order() {
-  const [open, setOpen] = useState(false);
+  const [openModalOrder, setOpenModalOrder] = useState(false);
 
   function openOrder() {
-    setOpen(true);
+    setOpenModalOrder(true);
   }
 
   return (
@@ -45,10 +45,10 @@ function order() {
         </div>
       </div>
       <ContentModal
-        isOpen={ open }
-        openModal={ setOpen }
+        isOpen={ openModalOrder }
+        openModal={ setOpenModalOrder }
       >
-        { open && <OrderId /> }
+        { openModalOrder && <OrderId /> }
       </ContentModal>
     </section>
   );
