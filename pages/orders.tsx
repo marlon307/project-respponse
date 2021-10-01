@@ -5,8 +5,11 @@ import style from './styles/styleAccount.module.scss';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading/Loading';
 
-const OrderId = dynamic(() => import('../components/Order/Order'),
-  { loading: () => <Loading /> });
+const OrderId = dynamic(() => import('../components/Order/OrderId'),
+  {
+    loading: () => <Loading />,
+    ssr: false,
+  });
 
 function order() {
   const [openModalOrder, setOpenModalOrder] = useState(false);

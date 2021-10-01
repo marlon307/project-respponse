@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CardAdderess, SmallCard } from '../components/Cards';
 import style from './styles/styleBag.module.scss';
 import { Input, InputRadio } from '../components/ComponentsForm';
 import BarBuy from '../components/Bars/BarBuy';
 import Svg from '../assets/Svg';
+import ContentModal from '../components/Modal/ContentModal';
+import CardEdit from '../components/Cards/CardEdit/CardEdit';
 
 function bag() {
+  const [openModal, setOpenModal] = useState(false);
+
   function openOptions(event: { preventDefault: () => void; }) {
     event.preventDefault();
+    setOpenModal(true);
   }
 
   return (
@@ -20,19 +25,19 @@ function bag() {
           </h1>
           <ul>
             <li>
-              <SmallCard editable />
+              <SmallCard editable eventModal={ setOpenModal } />
             </li>
             <li>
-              <SmallCard editable />
+              <SmallCard editable eventModal={ setOpenModal } />
             </li>
             <li>
-              <SmallCard editable />
+              <SmallCard editable eventModal={ setOpenModal } />
             </li>
             <li>
-              <SmallCard editable />
+              <SmallCard editable eventModal={ setOpenModal } />
             </li>
             <li>
-              <SmallCard editable />
+              <SmallCard editable eventModal={ setOpenModal } />
             </li>
           </ul>
         </section>
@@ -96,6 +101,9 @@ function bag() {
         </section>
       </div>
       <BarBuy />
+      <ContentModal isOpen={ openModal } openModal={ setOpenModal }>
+        { openModal && <CardEdit /> }
+      </ContentModal>
     </>
   );
 }
