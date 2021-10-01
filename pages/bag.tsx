@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { CardAdderess, SmallCard } from '../components/Cards';
 import style from './styles/styleBag.module.scss';
 import { Input, InputRadio } from '../components/ComponentsForm';
 import BarBuy from '../components/Bars/BarBuy';
 import Svg from '../assets/Svg';
 import ContentModal from '../components/Modal/ContentModal';
-import CardEdit from '../components/Cards/CardEdit/CardEdit';
+import Loading from '../components/Loading/Loading';
+
+const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), {
+  loading: () => <Loading />,
+});
 
 function bag() {
   const [openModal, setOpenModal] = useState(false);
