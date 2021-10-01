@@ -46,7 +46,7 @@
 @-webkit-keyframes contentmodal {
   from {
     will-change: transform, opacity;
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 3em, 0);
     opacity: 0;
   }
 
