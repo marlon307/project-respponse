@@ -17,17 +17,15 @@ function MinCardOrder({
   }
 
   return (
-    <>
-      <a
-        href="/order/1"
-        className={ style.mincardOrder }
-        onClick={ orderIdOpen }
-      >
-        <span>{ idOrder }</span>
-        <span>{ date }</span>
-        <span>{ status }</span>
-      </a>
-    </>
+    <a
+      href="/order/1"
+      className={ style.mincardOrder }
+      onClick={ orderIdOpen }
+    >
+      <span>{ idOrder }</span>
+      <span>{ date }</span>
+      <span>{ status }</span>
+    </a>
   );
 }
 

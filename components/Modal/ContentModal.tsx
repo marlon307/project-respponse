@@ -32,14 +32,12 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
   function contetModal() {
     return (
       isOpen && (
-        <>
-          <div
-            ref={ modalRef }
-            className={ style.content_modal }
-          >
-            { children }
-          </div>
-        </>
+        <div
+          ref={ modalRef }
+          className={ style.content_modal }
+        >
+          { children }
+        </div>
       )
     );
   }
