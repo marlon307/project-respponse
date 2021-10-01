@@ -14,7 +14,7 @@
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   overflow: overlay;
-  max-height: 90%;
+  max-height: 88%;
   border-radius: 1em;
 }
 
@@ -25,7 +25,7 @@
 
 @media (max-width: 470px) {
   .content_modal {
-    top: 10%;
+    top: 12%;
     transform: translate3d(-50%, 0, 0);
     width: -webkit-fill-available;
   }

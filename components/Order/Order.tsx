@@ -1,9 +1,9 @@
 import React from 'react';
 import Svg from '../../assets/Svg';
-import { SmallCard } from '../../components/Cards';
+import { SmallCard } from '../Cards';
 import style from './style.module.scss';
 
-function orderId() {
+function Order() {
   function copyCode(event: { preventDefault: () => void; }) {
     event.preventDefault();
     // https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
@@ -100,4 +100,4 @@ function orderId() {
   );
 }
 
-export default orderId;
+export default Order;

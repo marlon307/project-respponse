@@ -191,7 +191,19 @@
 
 @media (max-width: 771px) {
   .order {
-    width: auto;
+    width: 600px;
+  }
+}
+
+@media (max-width: 670px) {
+  .order {
+    width: 500px;
+  }
+}
+
+@media (max-width: 550px) {
+  .order {
+    width: 400px;
   }
 }
 
@@ -239,5 +251,11 @@
         right: 0;
       }
     }
+  }
+}
+
+@media (max-width: 470px) {
+  .order {
+    width: auto;
   }
 }

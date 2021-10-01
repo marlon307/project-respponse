@@ -6,7 +6,7 @@ import style from './styles/styleAccount.module.scss';
 import Loading from '../components/Loading/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
-const Addaderess = dynamic(() => import('./add-adress'),
+const Addaderess = dynamic(() => import('../components/Add/add-adress'),
   { loading: () => <Loading /> });
 
 function address() {

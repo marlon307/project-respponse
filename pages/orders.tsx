@@ -5,7 +5,7 @@ import style from './styles/styleAccount.module.scss';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading/Loading';
 
-const OrderId = dynamic(() => import('./order/[orderId]'),
+const OrderId = dynamic(() => import('../components/Order/Order'),
   { loading: () => <Loading /> });
 
 function order() {

@@ -1,8 +1,8 @@
 import React from 'react';
-import Svg from '../assets/Svg';
-import BtnAdd from '../components/Buttons/BtnAdd';
-import { Input } from '../components/ComponentsForm';
-import style from './styles/styleAccount.module.scss';
+import Svg from '../../assets/Svg';
+import BtnAdd from '../Buttons/BtnAdd';
+import { Input } from '../ComponentsForm';
+import style from './style.module.scss';
 
 function addcard() {
   return (
