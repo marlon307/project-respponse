@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import style from './styleInput.module.scss';
 
 export interface Props {
@@ -12,6 +12,13 @@ export interface Props {
 function Input({
   id, type, name, placeHolder, autoComplete,
 }: Props) {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = useCallback(({ target }) => {
+    const { value } = target;
+    setInputValue(value);
+  }, []);
+
   return (
     <label
       className={ style.input }
@@ -23,6 +30,8 @@ function Input({
         name={ name }
         placeholder={ placeHolder }
         autoComplete={ autoComplete }
+        onChange={ handleChange }
+        value={ inputValue }
       />
       <span>{ placeHolder }</span>
     </label>
