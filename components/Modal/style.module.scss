@@ -16,12 +16,8 @@
   overflow: overlay;
   max-height: 88%;
   border-radius: 1em;
-}
-
-.open .content_modal {
   animation: contentmodal 0.3s ease-in-out;
 }
-
 
 @media (max-width: 470px) {
   .content_modal {
