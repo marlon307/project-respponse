@@ -13,7 +13,7 @@
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  overflow: auto;
+  overflow: overlay;
   max-height: 90%;
   border-radius: 1em;
 }
@@ -46,7 +46,7 @@
 @-webkit-keyframes contentmodal {
   from {
     will-change: transform, opacity;
-    transform: translateY(3em);
+    transform: translate3d(-50%, 0, 0);
     opacity: 0;
   }
 
