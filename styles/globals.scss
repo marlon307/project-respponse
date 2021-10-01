@@ -131,6 +131,13 @@ main {
   }
 }
 
+.loading {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  transform: translate3d(0, 32vh, 0);
+}
+
 // https://tobiasahlin.com/spinkit/
 
 .spinner {

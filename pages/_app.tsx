@@ -60,7 +60,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Component { ...pageProps } />
               </div>
             )
-            : <Loading />
+            : (
+              <div className="loading">
+                <Loading />
+              </div>
+            )
         }
         <Modal />
       </main>
