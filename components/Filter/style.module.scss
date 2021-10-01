@@ -46,8 +46,7 @@
 }
 
 .optionsfilter {
-  margin: 110px auto;
-  padding: 2em min(2em, 6%);
+  padding: 2em max(2em, 6%);
   max-width: 600px;
   border-radius: 1em;
   background: var(--maincolor);
@@ -81,8 +80,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 2em 0;
+  margin: 1em 0;
+  gap: 1em;
 
   input {
     display: none;
