@@ -11,13 +11,13 @@ type PModal = {
 
 function ContentModal({ children, isOpen, openModal }: PModal) {
   if (typeof window === 'undefined') return null;
+
+  const getModal = document.getElementById('modal')!;
   const modalRef = useRef(null);
 
   useOutsideClick(modalRef, () => {
     if (isOpen) openModal(!isOpen);
   });
-
-  const getModal = document.getElementById('modal')!;
 
   useEffect(() => {
     if (isOpen) {
