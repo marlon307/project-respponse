@@ -24,7 +24,9 @@
 
 @media (max-width: 470px) {
   .content_modal {
-    top: 12%;
+    top: auto;
+    bottom: 0;
+    max-height: 70%;
     transform: translate3d(-50%, 0, 0);
     width: -webkit-fill-available;
   }
