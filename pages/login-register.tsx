@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import cx from 'classnames';
 import Input from '../components/ComponentsForm/Input';
 import style from './styles/styleLogin.module.scss';
@@ -7,6 +7,54 @@ import Svg from '../assets/Svg';
 
 function login() {
   const [sectionTab, setSectionTab] = useState(true);
+
+  // Functions Login
+  const [stateLogin, setStateLogin] = useState({
+    lemail: '',
+    lpsw: '',
+  });
+
+  const actionLogin = useCallback((target) => {
+    const { name, value } = target;
+
+    setStateLogin({
+      ...stateLogin,
+      [name]: value,
+    });
+  }, [stateLogin]);
+
+  // eslint-disable-next-line
+  const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  // https://www.w3schools.com/howto/howto_js_password_validation.asp
+  const validpsw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+  // Deve conter pelo menos um número e uma letra
+  // maiúscula e minúscula e pelo menos 8 ou mais caracteres
+
+  function handleLogin() {
+    const { lemail, lpsw } = stateLogin;
+    // https://emailregex.com/
+
+    if (validEmail.test(lemail) && validpsw.test(lpsw)) {
+      // qw
+    }
+  }
+
+  // Function Register
+  const [stateRegister, setStateRegister] = useState({
+    rname: '',
+    remail: '',
+    rpsw: '',
+  });
+
+  const actionRegister = useCallback((target) => {
+    const { name, value } = target;
+
+    setStateRegister({
+      ...stateRegister,
+      [name]: value,
+    });
+  }, [stateRegister]);
 
   function tabSectionLogin(event: { preventDefault: () => void; }) {
     event.preventDefault();
@@ -47,15 +95,23 @@ function login() {
             id="lemail"
             type="email"
             name="lemail"
-            placeHolder="E-mail"
             autoComplete="email"
+            ivalue={ stateLogin.lemail }
+            inputValue={ actionLogin }
+            regexValidator={ validEmail }
+            placeHolder="E-mail"
+            msgError="Email invalido!"
           />
           <Input
             id="lpsw"
             type="password"
             name="lpsw"
-            placeHolder="Senha"
             autoComplete="current-password"
+            ivalue={ stateLogin.lpsw }
+            inputValue={ actionLogin }
+            regexValidator={ validpsw }
+            placeHolder="Senha"
+            msgError="Senha invalida!"
           />
         </div>
         <div className={ style.action }>
@@ -74,7 +130,7 @@ function login() {
           </a>
         </div>
         <div className={ style.action }>
-          <BtnIco textBtn="Entrar" icoName="singin" action={ () => { } } />
+          <BtnIco textBtn="Entrar" icoName="singin" action={ handleLogin } />
         </div>
       </form>
       <form className={ cx(style.tab, { [style.active]: !sectionTab }) }>
@@ -85,6 +141,8 @@ function login() {
             name="rname"
             placeHolder="Nome Sobrenome"
             autoComplete="name"
+            inputValue={ actionRegister }
+            ivalue={ stateRegister.rname }
           />
           <Input
             id="remail"
@@ -92,12 +150,16 @@ function login() {
             name="remail"
             placeHolder="E-mail"
             autoComplete="email"
+            inputValue={ actionRegister }
+            ivalue={ stateRegister.remail }
           />
           <Input
             id="rpsw"
             type="password"
             name="rpsw"
             placeHolder="Senha"
+            inputValue={ actionRegister }
+            ivalue={ stateRegister.rpsw }
           />
         </div>
         <div className={ style.action }>

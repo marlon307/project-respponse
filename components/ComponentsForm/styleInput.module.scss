@@ -2,31 +2,40 @@
   display: flex;
   align-items: center;
   position: relative;
+  border-radius: 20px;
 
   input {
+    border-radius: 20px;
     background: #F3F3F3;
     width: 100%;
     height: 50px;
     font-size: 1em;
     padding: 0 22px;
-    border-radius: 20px;
-  }
-
-  span {
-    margin-left: 22px;
-    position: absolute;
-    color: #9791E4;
-    transition: 0.3s;
-    top: 14px;
   }
 
   input::placeholder {
     color: transparent;
   }
 
-  input:not(:placeholder-shown)~span,
-  input:focus~span {
+  input:not(:placeholder-shown)~.ph,
+  input:focus~.ph {
     top: -26px;
+  }
+}
+
+.ph {
+  margin-left: 22px;
+  position: absolute;
+  color: #9791E4;
+  transition: 0.3s;
+  top: 14px;
+}
+
+.err {
+  border: 1px solid rgb(255, 72, 72);
+
+  span {
+    color: rgb(255, 72, 72);
   }
 }
 

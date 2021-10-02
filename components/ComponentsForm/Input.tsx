@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
+import cx from 'classnames';
 import style from './styleInput.module.scss';
 
 export interface Props {
@@ -7,21 +8,34 @@ export interface Props {
   name: string;
   placeHolder: string;
   autoComplete?: string;
+  ivalue: string;
+  inputValue: Function;
+  regexValidator?: RegExp;
+  msgError?: string;
 }
 
 function Input({
-  id, type, name, placeHolder, autoComplete,
+  id, type, name, placeHolder, autoComplete, inputValue, ivalue, regexValidator, msgError,
 }: Props) {
-  const [inputValue, setInputValue] = useState('');
+  const [statusValid, setSatusValid] = useState(false);
 
-  const handleChange = useCallback(({ target }) => {
-    const { value } = target;
-    setInputValue(value);
-  }, []);
+  function handleChange({ target }: any) {
+    inputValue(target);
+  }
+
+  function validInput() {
+    if (regexValidator?.test(ivalue)) {
+      setSatusValid(false);
+    } else {
+      setSatusValid(true);
+    }
+  }
 
   return (
     <label
-      className={ style.input }
+      className={ cx(style.input, {
+        [style.err]: statusValid,
+      }) }
       htmlFor={ id }
     >
       <input
@@ -31,9 +45,15 @@ function Input({
         placeholder={ placeHolder }
         autoComplete={ autoComplete }
         onChange={ handleChange }
-        value={ inputValue }
+        onBlur={ validInput }
+        value={ ivalue }
       />
-      <span>{ placeHolder }</span>
+      <span className={ style.ph }>
+        {
+          regexValidator && statusValid
+            ? msgError : placeHolder
+        }
+      </span>
     </label>
   );
 }
