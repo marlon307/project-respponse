@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import cx from 'classnames';
 import Input from '../components/ComponentsForm/Input';
-import style from './Sass/styleLogin.module.scss';
+import style from './sass/styleLogin.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
 import Svg from '../assets/Svg';
 

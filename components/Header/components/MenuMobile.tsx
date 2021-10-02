@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
-import style from './styles/styleMenuMobile.module.scss';
+import style from './sass/styleMenuMobile.module.scss';
 import Bar from '../../SearchBar/Bar';
 import Svg from '../../../assets/Svg';
 

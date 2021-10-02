@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './styles/size.module.scss';
+import style from './sass/size.module.scss';
 
 interface IObject {
   size: Object

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import style from './Sass/styleAccount.module.scss';
+import style from './sass/styleAccount.module.scss';
 
 function help() {
   return (

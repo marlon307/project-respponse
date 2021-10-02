@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import Svg from '../../assets/Svg';
 import BtnAdd from '../Buttons/BtnAdd';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
-function addaderess() {
+function address() {
+  const [addressForm, setAddressForm] = useState({
+    namedest: '',
+    zipcode: '',
+    street: '',
+    district: '',
+    number: '',
+    state: '',
+    city: '',
+  });
+
+  const hadleChange = useCallback((target) => {
+    const { name, value } = target;
+    setAddressForm({
+      ...addressForm,
+      [name]: value,
+    });
+  }, [addressForm]);
+
   return (
     <section className={ style.sectionadd }>
       <h1>
@@ -19,6 +37,8 @@ function addaderess() {
             name="namedest"
             placeHolder="Nome do destinatário"
             autoComplete="name"
+            ivalue={ addressForm.namedest }
+            inputValue={ hadleChange }
           />
           <Input
             id="zipcode"
@@ -26,6 +46,8 @@ function addaderess() {
             name="zipcode"
             placeHolder="CEP"
             autoComplete="postal-code"
+            ivalue={ addressForm.zipcode }
+            inputValue={ hadleChange }
           />
           <Input
             id="street"
@@ -33,6 +55,8 @@ function addaderess() {
             name="street"
             placeHolder="Rua"
             autoComplete="street-address"
+            ivalue={ addressForm.street }
+            inputValue={ hadleChange }
           />
           <Input
             id="district"
@@ -40,12 +64,16 @@ function addaderess() {
             name="district"
             placeHolder="Bairro"
             autoComplete="address-level3"
+            ivalue={ addressForm.district }
+            inputValue={ hadleChange }
           />
           <Input
             id="number"
             type="text"
             name="number"
             placeHolder="N°"
+            ivalue={ addressForm.number }
+            inputValue={ hadleChange }
           />
           <Input
             id="state"
@@ -53,6 +81,8 @@ function addaderess() {
             name="state"
             placeHolder="UF"
             autoComplete="shipping address-level1"
+            ivalue={ addressForm.state }
+            inputValue={ hadleChange }
           />
           <Input
             id="city"
@@ -60,6 +90,8 @@ function addaderess() {
             name="city"
             placeHolder="Cidade"
             autoComplete="shipping shipping address-level2"
+            ivalue={ addressForm.city }
+            inputValue={ hadleChange }
           />
         </div>
         <BtnAdd eventBtn={ () => { } } />
@@ -68,4 +100,4 @@ function addaderess() {
   );
 }
 
-export default addaderess;
+export default address;
