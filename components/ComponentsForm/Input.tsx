@@ -34,7 +34,7 @@ function Input({
   return (
     <label
       className={ cx(style.input, {
-        [style.err]: statusValid,
+        [style.err]: regexValidator && statusValid,
       }) }
       htmlFor={ id }
     >
