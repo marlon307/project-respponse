@@ -1,6 +1,6 @@
 import React from 'react';
 import { SmallCard } from '../components/Cards';
-import style from './styles/styleFavorite.module.scss';
+import style from './Sass/styleFavorite.module.scss';
 import Svg from '../assets/Svg';
 
 function favorite() {

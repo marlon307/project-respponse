@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import cx from 'classnames';
 import Input from '../components/ComponentsForm/Input';
-import style from './styles/styleLogin.module.scss';
+import style from './Sass/styleLogin.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
 import Svg from '../assets/Svg';
 
@@ -23,17 +23,14 @@ function login() {
     });
   }, [stateLogin]);
 
+  // https://emailregex.com/
   // eslint-disable-next-line
   const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // https://www.w3schools.com/howto/howto_js_password_validation.asp
   const validpsw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
-  // Deve conter pelo menos um número e uma letra
-  // maiúscula e minúscula e pelo menos 8 ou mais caracteres
-
   function handleLogin() {
     const { lemail, lpsw } = stateLogin;
-    // https://emailregex.com/
 
     if (validEmail.test(lemail) && validpsw.test(lpsw)) {
       // qw
@@ -152,6 +149,8 @@ function login() {
             autoComplete="email"
             inputValue={ actionRegister }
             ivalue={ stateRegister.remail }
+            regexValidator={ validEmail }
+            msgError="E-mail invalido!"
           />
           <Input
             id="rpsw"
@@ -160,6 +159,8 @@ function login() {
             placeHolder="Senha"
             inputValue={ actionRegister }
             ivalue={ stateRegister.rpsw }
+            regexValidator={ validpsw }
+            msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres"
           />
         </div>
         <div className={ style.action }>

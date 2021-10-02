@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { MinCardOrder } from '../components/Cards';
-import style from './styles/styleAccount.module.scss';
+import style from './Sass/styleAccount.module.scss';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading/Loading';
 
