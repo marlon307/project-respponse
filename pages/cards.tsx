@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { CardPay } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
-import style from './styles/styleAccount.module.scss';
+import style from './Sass/styleAccount.module.scss';
 import Loading from '../components/Loading/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 

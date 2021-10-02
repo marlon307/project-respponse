@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import cx from 'classnames';
 import Input from '../components/ComponentsForm/Input';
-import style from './styles/styleLogin.module.scss';
+import style from './Sass/styleLogin.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
 import Svg from '../assets/Svg';
 
@@ -23,6 +23,7 @@ function login() {
     });
   }, [stateLogin]);
 
+  // https://emailregex.com/
   // eslint-disable-next-line
   const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // https://www.w3schools.com/howto/howto_js_password_validation.asp
@@ -30,7 +31,6 @@ function login() {
 
   function handleLogin() {
     const { lemail, lpsw } = stateLogin;
-    // https://emailregex.com/
 
     if (validEmail.test(lemail) && validpsw.test(lpsw)) {
       // qw
