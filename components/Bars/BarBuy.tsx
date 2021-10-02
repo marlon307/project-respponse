@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
 import { BuyFinishBtn } from '../Buttons';
-import style from './styles/styleBarBuy.module.scss';
+import style from './sass/styleBarBuy.module.scss';
 
 function BarBuy() {
   const [openInfo, setOpenInfo] = useState(false);

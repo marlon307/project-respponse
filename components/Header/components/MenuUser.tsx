@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import cx from 'classnames';
-import style from './styles/styleMenuUser.module.scss';
+import style from './sass/styleMenuUser.module.scss';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';

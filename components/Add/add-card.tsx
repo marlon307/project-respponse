@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import Svg from '../../assets/Svg';
 import BtnAdd from '../Buttons/BtnAdd';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
 function addcard() {
+  const [addCardState, setAddCardState] = useState({
+    namecard: '',
+    cardvalidate: '',
+    name: '',
+    codev: '',
+  });
+
+  const hadleChange = useCallback((target) => {
+    const { name, value } = target;
+    setAddCardState({
+      ...addCardState,
+      [name]: value,
+    });
+  }, [addCardState]);
+
   return (
     <section className={ style.sectionadd }>
       <h1>
@@ -19,6 +34,8 @@ function addcard() {
             name="namecard"
             placeHolder="Nome do cartão de credito"
             autoComplete="cc-name"
+            ivalue=""
+            inputValue={ hadleChange }
           />
           <Input
             id="cardvalidate"
@@ -26,6 +43,8 @@ function addcard() {
             name="cardvalidate"
             placeHolder="Data de validade"
             autoComplete="cc-exp"
+            ivalue=""
+            inputValue={ hadleChange }
           />
           <Input
             id="numbercard"
@@ -33,6 +52,8 @@ function addcard() {
             name="numbercard"
             placeHolder="Numero do cartão"
             autoComplete="cc-number"
+            ivalue=""
+            inputValue={ hadleChange }
           />
           <Input
             id="codev"
@@ -40,6 +61,8 @@ function addcard() {
             name="codev"
             placeHolder="Codigo de segurança"
             autoComplete="off"
+            ivalue=""
+            inputValue={ hadleChange }
           />
         </div>
         <BtnAdd eventBtn={ () => { } } />

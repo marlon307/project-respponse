@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
-import style from './Sass/styleAccount.module.scss';
+import style from './sass/styleAccount.module.scss';
 import Usercfg from './usercfg';
 import Order from './orders';
 import Cards from './cards';

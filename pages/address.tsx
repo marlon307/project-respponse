@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { CardAdderess } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
-import style from './Sass/styleAccount.module.scss';
+import style from './sass/styleAccount.module.scss';
 import Loading from '../components/Loading/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
-const Addaderess = dynamic(() => import('../components/Add/add-adress'),
+const Addaderess = dynamic(() => import('../components/Add/add-address'),
   { loading: () => <Loading /> });
 
 function address() {

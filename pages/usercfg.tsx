@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import style from './Sass/styleAccount.module.scss';
+import style from './sass/styleAccount.module.scss';
 import Input from '../components/ComponentsForm/Input';
 import { InputRadio } from '../components/ComponentsForm';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from './styles/style.module.scss';
+import style from './sass/style.module.scss';
 
 type TQtdChange = {
   target: {

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { CardAdderess, SmallCard } from '../components/Cards';
-import style from './Sass/styleBag.module.scss';
+import style from './sass/styleBag.module.scss';
 import { Input, InputRadio } from '../components/ComponentsForm';
 import BarBuy from '../components/Bars/BarBuy';
 import Svg from '../assets/Svg';
