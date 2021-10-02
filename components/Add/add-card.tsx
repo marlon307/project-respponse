@@ -7,6 +7,7 @@ import style from './style.module.scss';
 function addcard() {
   const [addCardState, setAddCardState] = useState({
     namecard: '',
+    numbercard: '',
     cardvalidate: '',
     name: '',
     codev: '',
@@ -34,7 +35,7 @@ function addcard() {
             name="namecard"
             placeHolder="Nome do cartão de credito"
             autoComplete="cc-name"
-            ivalue=""
+            ivalue={ addCardState.namecard }
             inputValue={ hadleChange }
           />
           <Input
@@ -43,7 +44,7 @@ function addcard() {
             name="cardvalidate"
             placeHolder="Data de validade"
             autoComplete="cc-exp"
-            ivalue=""
+            ivalue={ addCardState.cardvalidate }
             inputValue={ hadleChange }
           />
           <Input
@@ -52,7 +53,7 @@ function addcard() {
             name="numbercard"
             placeHolder="Numero do cartão"
             autoComplete="cc-number"
-            ivalue=""
+            ivalue={ addCardState.numbercard }
             inputValue={ hadleChange }
           />
           <Input
@@ -61,7 +62,7 @@ function addcard() {
             name="codev"
             placeHolder="Codigo de segurança"
             autoComplete="off"
-            ivalue=""
+            ivalue={ addCardState.codev }
             inputValue={ hadleChange }
           />
         </div>
