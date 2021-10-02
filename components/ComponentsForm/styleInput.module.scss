@@ -29,13 +29,17 @@
   color: #9791E4;
   transition: 0.3s;
   top: 14px;
+  width: 88%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .err {
-  border: 1px solid rgb(255, 72, 72);
+  border: 1px solid #f35e5e;
 
   span {
-    color: rgb(255, 72, 72);
+    color: #f35e5e;
   }
 }
 

@@ -48,7 +48,10 @@ function Input({
         onBlur={ validInput }
         value={ ivalue }
       />
-      <span className={ style.ph }>
+      <span
+        className={ style.ph }
+        title={ statusValid ? msgError : placeHolder }
+      >
         {
           regexValidator && statusValid
             ? msgError : placeHolder

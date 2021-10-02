@@ -28,9 +28,6 @@ function login() {
   // https://www.w3schools.com/howto/howto_js_password_validation.asp
   const validpsw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
-  // Deve conter pelo menos um número e uma letra
-  // maiúscula e minúscula e pelo menos 8 ou mais caracteres
-
   function handleLogin() {
     const { lemail, lpsw } = stateLogin;
     // https://emailregex.com/
@@ -152,6 +149,8 @@ function login() {
             autoComplete="email"
             inputValue={ actionRegister }
             ivalue={ stateRegister.remail }
+            regexValidator={ validEmail }
+            msgError="E-mail invalido!"
           />
           <Input
             id="rpsw"
@@ -160,6 +159,8 @@ function login() {
             placeHolder="Senha"
             inputValue={ actionRegister }
             ivalue={ stateRegister.rpsw }
+            regexValidator={ validpsw }
+            msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres"
           />
         </div>
         <div className={ style.action }>
