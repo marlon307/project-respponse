@@ -3,6 +3,7 @@
   align-items: center;
   position: relative;
   border-radius: 20px;
+  border: 1px solid transparent;
 
   input {
     border-radius: 20px;
@@ -36,10 +37,10 @@
 }
 
 .err {
-  border: 1px solid #f35e5e;
+  border-color: var(--colorerr);
 
   span {
-    color: #f35e5e;
+    color: var(--colorerr);
   }
 }
 
