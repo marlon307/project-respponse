@@ -16,6 +16,7 @@
   overflow: overlay;
   max-height: 88%;
   border-radius: 1em;
+  opacity: 1;
 }
 
 .open .content_modal {
@@ -37,19 +38,11 @@
     transform: translate3d(-50%, 3em, 0);
     opacity: 0;
   }
-
-  to {
-    opacity: 1;
-  }
 }
 
 @-webkit-keyframes contentmodal {
   from {
     transform: translate3d(-50%, 3em, 0);
     opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
