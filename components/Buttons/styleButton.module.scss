@@ -51,41 +51,32 @@
   justify-content: flex-end;
   width: 100%;
 
-  &:hover {
-    background: #006bef;
-  }
-
   a {
     width: 100%;
     padding: 18px 24px;
     color: #006bef;
   }
 
+  &:hover {
+    background: #006bef;
+  }
+
   &:hover a {
     color: #fff;
   }
 
-  &:hover svg {
-    fill: #fff;
-    transform: translateX(0.7em);
-  }
-
   svg {
-    margin-right: 12%;
     position: absolute;
     fill: #006bef;
+    transform: translateX(-3em);
     transition: transform 0.2s ease-in-out;
   }
-}
 
-// &:hover {
-//   background: #006bef;
-//   color: #fff;
-// }
-// &:hover svg {
-//   fill: #fff;
-//   
-// }
+  &:hover svg {
+    fill: #fff;
+    transform: translateX(-1em);
+  }
+}
 
 .btnadd {
   border-radius: 12px;
