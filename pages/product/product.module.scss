@@ -12,10 +12,10 @@
 
 .infos {
   margin-top: -170px;
-  padding: 32px;
+  padding: max(1em, 2em);
   z-index: 9998;
   background: var(--maincolor);
-  border-radius: 26px;
+  border-radius: 1em;
   box-shadow: 0 0 30px var(--boxshadowcolor);
   transition: 0.3s;
   width: 500px;
@@ -90,17 +90,27 @@
   }
 
   .mindetail {
-    margin: 52px auto 0;
+    margin: 1.6em auto 0;
     order: 2;
   }
 }
 
 @media (max-width: 750px) {
+  .maincontentinfo {
+    box-shadow: 0 -38px 28px var(--boxshadowcolor);
+    border-radius: 1em;
+    margin-top: -4em;
+  }
+
+  .infodesc {
+    margin: 0 auto;
+  }
+
   .infos {
     margin-top: 0;
     box-shadow: none;
-    padding: 0;
-    width: 100%;
+    width: -webkit-fill-available;
+    padding: 2em 1em;
   }
 
   .slide {
