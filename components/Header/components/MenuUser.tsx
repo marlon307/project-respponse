@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import cx from 'classnames';
@@ -7,6 +8,7 @@ import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';
 import Loading from '../../Loading/Loading';
+import { actionLogOut } from '../../../redux/redux-actions';
 
 const LoginRegister = dynamic(() => import('../../../pages/login-register'),
   { loading: () => <Loading /> });
@@ -15,10 +17,20 @@ type PropsMNUser = {
   setMenuDropdown: Function;
 }
 
+interface IUser {
+  user: {
+    logged: boolean;
+  }
+}
+
 function MenuUser({ setMenuDropdown }: PropsMNUser) {
+  const dipatch = useDispatch();
+  const { logged } = useSelector(({ user }: IUser) => user);
+
   const [outsideClick, setTutsideClicl] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const ref = useRef(null);
+
   useOutsideClick(ref, () => {
     if (outsideClick) {
       setTutsideClicl(false);
@@ -34,7 +46,11 @@ function MenuUser({ setMenuDropdown }: PropsMNUser) {
 
   function openModalLogin(event: { preventDefault: () => void; }) {
     event.preventDefault();
-    setOpenLogin(true);
+    if (!logged) {
+      setOpenLogin(true);
+    } else {
+      dipatch(actionLogOut());
+    }
   }
 
   return (
@@ -60,31 +76,46 @@ function MenuUser({ setMenuDropdown }: PropsMNUser) {
               </a>
             </Link>
           </li>
+          { logged && (
+            <li>
+              <Link href="/account">
+                <a aria-label="Conta">
+                  <Svg icoName="setting" />
+                  Conta
+                </a>
+              </Link>
+            </li>
+          ) }
+          { logged && (
+            <li>
+              <Link href="/favorite">
+                <a aria-label="Favoritos">
+                  <Svg icoName="healt" />
+                  Favoritos
+                </a>
+              </Link>
+            </li>
+          ) }
           <li>
-            <Link href="/account">
-              <a aria-label="Conta">
-                <Svg icoName="setting" />
-                Conta
+            { logged ? (
+              <a
+                href="/login-register"
+                aria-label="Logout"
+                onClick={ openModalLogin }
+              >
+                <Svg icoName="singout" />
+                Logout
               </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/favorite">
-              <a aria-label="Favoritos">
-                <Svg icoName="healt" />
-                Favoritos
+            ) : (
+              <a
+                href="/login-register"
+                aria-label="Login"
+                onClick={ openModalLogin }
+              >
+                <Svg icoName="singin" />
+                Login
               </a>
-            </Link>
-          </li>
-          <li>
-            <a
-              href="/login-register"
-              aria-label="Login"
-              onClick={ openModalLogin }
-            >
-              <Svg icoName="singin" />
-              Login
-            </a>
+            ) }
           </li>
         </ul>
       </div>

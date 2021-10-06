@@ -11,7 +11,12 @@ export const actionLogin = () => (dispatch: any) => {
   });
 };
 
-// INCREMENT COUNTER BY 1
-export const incrementCount = () => ({
-  type: types.INCREMENT,
-});
+export const actionLogOut = () => (dispatch: any) => {
+  dispatch({
+    type: types.LOGOUT,
+    payload: {
+      auth: '',
+      log: false,
+    },
+  });
+};

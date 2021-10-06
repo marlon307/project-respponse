@@ -1,16 +1,6 @@
 import { combineReducers } from 'redux';
 import * as types from '../types';
 
-// // COUNTER REDUCER
-// const counterReducer = (state = 0, { type }: any) => {
-//   switch (type) {
-//     case types.INCREMENT:
-//       return state + 1;
-//     default:
-//       return state;
-//   }
-// };
-
 // INITIAL TIMER STATE
 const initialUserState = {
   authenticated: '',
@@ -23,7 +13,12 @@ const userReducer = (state = initialUserState, { type, payload }: any) => {
     case types.LOGIN:
       return {
         authenticated: payload.auth,
-        logged: !!payload.log,
+        logged: payload.log,
+      };
+    case types.LOGOUT:
+      return {
+        authenticated: payload.auth,
+        logged: payload.log,
       };
     default:
       return state;
