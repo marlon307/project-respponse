@@ -9,13 +9,18 @@ import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';
 import Loading from '../../Loading/Loading';
 import { actionLogOut } from '../../../redux/redux-actions';
-import { IUser } from './type';
 
 const LoginRegister = dynamic(() => import('../../../pages/login-register'),
   { loading: () => <Loading /> });
 
 type PropsMNUser = {
   setMenuDropdown: Function;
+}
+
+interface IUser {
+  user: {
+    logged: boolean;
+  }
 }
 
 function MenuUser({ setMenuDropdown }: PropsMNUser) {
