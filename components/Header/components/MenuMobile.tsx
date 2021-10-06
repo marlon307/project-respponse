@@ -6,12 +6,7 @@ import style from './sass/styleMenuMobile.module.scss';
 import Bar from '../../SearchBar/Bar';
 import Svg from '../../../assets/Svg';
 import { actionLogin, actionLogOut } from '../../../redux/redux-actions';
-
-interface IUser {
-  user: {
-    logged: boolean;
-  }
-}
+import { IUser } from './type';
 
 function MenuMobile() {
   const dipatch = useDispatch();
