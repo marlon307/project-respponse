@@ -4,7 +4,7 @@ import TesteImgUrl from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash 1
 import style from './stylesSmallCard.module.scss';
 import Svg from '../../../assets/Svg';
 
-type PSmallCard = {
+export interface PSmallCard {
   removable?: boolean
   editable?: boolean
   eventModal?: Function
@@ -65,9 +65,3 @@ function SmallCard({ removable, editable, eventModal }: PSmallCard) {
 }
 
 export default SmallCard;
-
-SmallCard.defaultProps = {
-  removable: true,
-  editable: false,
-  eventModal: Function,
-};

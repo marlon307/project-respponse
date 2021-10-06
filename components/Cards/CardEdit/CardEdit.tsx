@@ -10,18 +10,20 @@ import mockColors from '../../../service/colorsMock';
 function CardEdit() {
   return (
     <div className={ style.edit }>
-      <div className={ style.contimg }>
-        <Image
-          quality={ 90 }
-          placeholder="blur"
-          src={ img }
-          alt="Title"
-          layout="responsive"
-          objectPosition="relative"
-        />
+      <div className={ style.visualcont }>
+        <div className={ style.contimg }>
+          <Image
+            quality={ 90 }
+            placeholder="blur"
+            src={ img }
+            alt="Title"
+            layout="responsive"
+            objectPosition="relative"
+          />
+        </div>
+        <BarColors array={ mockColors } />
       </div>
       <BarSize array={ mockColors } colorName="Laranja" />
-      <BarColors array={ mockColors } />
       <div className={ style.secondline }>
         <Qtd />
         <div className={ style.titles }>

@@ -35,7 +35,9 @@ function productId() {
             </div>
           )) }
         </Flicking>
-        <BarColors array={ colorsMock } />
+        <div className={ style.barcolor }>
+          <BarColors array={ colorsMock } />
+        </div>
       </div>
       <div className={ style.maincontentinfo }>
         <div className={ style.infodesc }>
