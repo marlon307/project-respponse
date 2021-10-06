@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { Provider } from 'react-redux';
 import Header from '../components/Header';
 import '../styles/globals.scss';
 import '@egjs/react-flicking/dist/flicking.css';
 import Footer from '../components/Footer/Footer';
 import Modal from '../components/Modal/Modal';
 import Loading from '../components/Loading/Loading';
+import { useStore } from '../redux/redux-store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
@@ -27,8 +29,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, []);
 
+  const store = useStore(pageProps.initialReduxState);
+
   return (
-    <>
+    <Provider store={ store }>
       <Head>
         <title>Respponse</title>
         <link rel="icon" href="/favico.ico" />
@@ -69,7 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Modal />
       </main>
       <Footer />
-    </>
+    </Provider>
   );
 }
 

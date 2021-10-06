@@ -1,11 +1,14 @@
 import React, { useState, useCallback } from 'react';
 import cx from 'classnames';
+import { useDispatch } from 'react-redux';
 import Input from '../components/ComponentsForm/Input';
 import style from './sass/styleLogin.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
 import Svg from '../assets/Svg';
+import { actionLogin } from '../redux/redux-actions';
 
 function login() {
+  const dispatch = useDispatch();
   const [sectionTab, setSectionTab] = useState(true);
 
   // Functions Login
@@ -14,7 +17,7 @@ function login() {
     lpsw: '',
   });
 
-  const actionLogin = useCallback((target) => {
+  const actionUserLogin = useCallback((target) => {
     const { name, value } = target;
 
     setStateLogin({
@@ -33,7 +36,7 @@ function login() {
     const { lemail, lpsw } = stateLogin;
 
     if (validEmail.test(lemail) && validpsw.test(lpsw)) {
-      // qw
+      dispatch(actionLogin());
     }
   }
 
@@ -94,7 +97,7 @@ function login() {
             name="lemail"
             autoComplete="email"
             ivalue={ stateLogin.lemail }
-            inputValue={ actionLogin }
+            inputValue={ actionUserLogin }
             regexValidator={ validEmail }
             placeHolder="E-mail"
             msgError="Email invalido!"
@@ -105,7 +108,7 @@ function login() {
             name="lpsw"
             autoComplete="current-password"
             ivalue={ stateLogin.lpsw }
-            inputValue={ actionLogin }
+            inputValue={ actionUserLogin }
             regexValidator={ validpsw }
             placeHolder="Senha"
             msgError="Senha invalida!"
