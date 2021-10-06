@@ -97,23 +97,25 @@ function MenuUser({ setMenuDropdown }: PropsMNUser) {
             </li>
           ) }
           <li>
-            <a
-              href="/login-register"
-              aria-label="Login"
-              onClick={ openModalLogin }
-            >
-              { logged ? (
-                <>
-                  <Svg icoName="singout" />
-                  Logout
-                </>
-              ) : (
-                <>
-                  <Svg icoName="singin" />
-                  Login
-                </>
-              ) }
-            </a>
+            { logged ? (
+              <a
+                href="/login-register"
+                aria-label="Logout"
+                onClick={ openModalLogin }
+              >
+                <Svg icoName="singout" />
+                Logout
+              </a>
+            ) : (
+              <a
+                href="/login-register"
+                aria-label="Login"
+                onClick={ openModalLogin }
+              >
+                <Svg icoName="singin" />
+                Login
+              </a>
+            ) }
           </li>
         </ul>
       </div>
