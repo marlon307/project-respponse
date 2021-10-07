@@ -32,7 +32,12 @@ function resetpsw() {
               Fazer Login
             </a>
           </Link>
-          <BtnIco textBtn="Enviar Email" icoName="email" action={ () => { } } />
+          <BtnIco
+            textBtn="Enviar Email"
+            icoName="email"
+            action={ () => { } }
+            actionLiberate={ false }
+          />
         </div>
       </form>
     </section>
