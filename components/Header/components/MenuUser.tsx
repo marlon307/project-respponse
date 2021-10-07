@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -52,6 +52,12 @@ function MenuUser({ setMenuDropdown }: PropsMNUser) {
       dipatch(actionLogOut());
     }
   }
+  // Fechar modal apos login
+  useEffect(() => {
+    if (logged) {
+      setOpenLogin(false);
+    }
+  }, [logged]);
 
   return (
     <div className={ style.menuUser }>
