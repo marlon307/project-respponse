@@ -92,7 +92,7 @@ function MenuMobile() {
                     aria-hidden="true"
                     onClick={ logUser }
                   >
-                    <Svg icoName="singin" />
+                    <Svg icoName="singout" />
                     Logout
                   </a>
                 ) : (
