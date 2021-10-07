@@ -1,6 +1,7 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import cx from 'classnames';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import Input from '../components/ComponentsForm/Input';
 import style from './sass/styleLogin.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
@@ -13,8 +14,16 @@ const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+")
 // https://www.w3schools.com/howto/howto_js_password_validation.asp
 const validpsw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
+interface IUser {
+  user: {
+    logged: boolean;
+  }
+}
+
 function login() {
   const dispatch = useDispatch();
+  const { logged } = useSelector(({ user }: IUser) => user);
+  const router = useRouter();
   const [sectionTab, setSectionTab] = useState(true);
 
   // Functions Login
@@ -64,6 +73,12 @@ function login() {
     event.preventDefault();
     setSectionTab(false);
   }
+
+  useEffect(() => {
+    if (router.asPath === '/login-register' && logged) {
+      router.push('/');
+    }
+  }, [logged]);
 
   return (
     <section className={ style.contlogin }>
