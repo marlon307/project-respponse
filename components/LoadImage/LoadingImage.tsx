@@ -21,7 +21,7 @@ function LoadingImage({ url }: PLoadImg) {
       }) }
       >
         <Image
-          quality={ 100 }
+          quality={ 90 }
           src={ url }
           alt="Title"
           layout="responsive"
