@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { MinCardOrder } from '../components/Cards';
 import style from './sass/styleAccount.module.scss';
 import ContentModal from '../components/Modal/ContentModal';
@@ -8,9 +10,23 @@ import Loading from '../components/Loading/Loading';
 const OrderId = dynamic(() => import('../components/Order/OrderId'),
   { loading: () => <Loading /> });
 
-function order() {
-  const [openModalOrder, setOpenModalOrder] = useState(false);
+interface IUser {
+  user: {
+    logged: boolean;
+  }
+}
 
+function order() {
+  const { logged } = useSelector(({ user }: IUser) => user);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!logged) {
+      router.push('/');
+    }
+  }, [logged]);
+
+  const [openModalOrder, setOpenModalOrder] = useState(false);
   function openOrder() {
     setOpenModalOrder(true);
   }

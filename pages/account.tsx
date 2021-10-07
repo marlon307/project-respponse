@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import style from './sass/styleAccount.module.scss';
 import Usercfg from './usercfg';
 import Order from './orders';
@@ -8,9 +10,23 @@ import Address from './address';
 import Help from './help';
 import Svg from '../assets/Svg';
 
-function account() {
-  const [dropOption, setDropOption] = useState('');
+interface IUser {
+  user: {
+    logged: boolean;
+  }
+}
 
+function account() {
+  const { logged } = useSelector(({ user }: IUser) => user);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!logged) {
+      router.push('/');
+    }
+  }, [logged]);
+
+  const [dropOption, setDropOption] = useState('');
   function openMenu(event: any, menuName: string) {
     event.preventDefault();
     setDropOption(menuName);

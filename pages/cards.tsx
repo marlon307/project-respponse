@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { CardPay } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import style from './sass/styleAccount.module.scss';
@@ -9,9 +11,23 @@ import BtnAdd from '../components/Buttons/BtnAdd';
 const AddCard = dynamic(() => import('../components/Add/add-card'),
   { loading: () => <Loading /> });
 
-function cards() {
-  const [openModal, setOpenModal] = useState(false);
+interface IUser {
+  user: {
+    logged: boolean;
+  }
+}
 
+function cards() {
+  const { logged } = useSelector(({ user }: IUser) => user);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!logged) {
+      router.push('/');
+    }
+  }, [logged]);
+
+  const [openModal, setOpenModal] = useState(false);
   function openModalCard() {
     setOpenModal(true);
   }
