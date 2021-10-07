@@ -1,9 +1,20 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 import style from './sass/styleAccount.module.scss';
 import Input from '../components/ComponentsForm/Input';
 import { InputRadio } from '../components/ComponentsForm';
 
+interface IUser {
+  user: {
+    logged: boolean;
+  }
+}
+
 function usercfg() {
+  const { logged } = useSelector(({ user }: IUser) => user);
+  const router = useRouter();
+
   const [stateIfonUser, setStateIfoUser] = useState({
     name: '',
     email: '',
@@ -21,6 +32,12 @@ function usercfg() {
       [name]: value,
     });
   }, [stateIfonUser]);
+
+  useEffect(() => {
+    if (!logged) {
+      router.push('/');
+    }
+  }, [logged]);
 
   return (
     <section className={ style.section }>

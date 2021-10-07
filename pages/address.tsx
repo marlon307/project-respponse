@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { CardAdderess } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import style from './sass/styleAccount.module.scss';
@@ -9,9 +11,23 @@ import BtnAdd from '../components/Buttons/BtnAdd';
 const Addaderess = dynamic(() => import('../components/Add/add-address'),
   { loading: () => <Loading /> });
 
-function address() {
-  const [openModal, setOpenModal] = useState(false);
+interface IUser {
+  user: {
+    logged: boolean;
+  }
+}
 
+function address() {
+  const { logged } = useSelector(({ user }: IUser) => user);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!logged) {
+      router.push('/');
+    }
+  }, [logged]);
+
+  const [openModal, setOpenModal] = useState(false);
   function openModalAddAdress() {
     setOpenModal(true);
   }
