@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
 import TesteImgUrl from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash 1.png';
 import style from './stylesSmallCard.module.scss';
 import Svg from '../../../assets/Svg';
+import LoadingImage from '../../LoadImage/LoadingImage';
 
 export interface PSmallCard {
   removable?: boolean
@@ -20,15 +20,7 @@ function SmallCard({ removable, editable, eventModal }: PSmallCard) {
     <div className={ style.smallcard }>
       <div className={ style.img }>
         <figure>
-          <Image
-            src={ TesteImgUrl }
-            alt="Title"
-            quality="90"
-            placeholder="blur"
-            layout="responsive"
-            width={ 130 }
-            height={ 165 }
-          />
+          <LoadingImage url={ TesteImgUrl } />
         </figure>
       </div>
       <div className={ style.desc }>
