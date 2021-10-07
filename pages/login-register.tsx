@@ -12,7 +12,6 @@ import { actionLogin } from '../redux/redux-actions';
 const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 // https://www.w3schools.com/howto/howto_js_password_validation.asp
 const validpsw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-
 function login() {
   const dispatch = useDispatch();
   const [sectionTab, setSectionTab] = useState(true);
