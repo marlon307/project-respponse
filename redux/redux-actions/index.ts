@@ -1,7 +1,7 @@
 import * as types from '../types';
 
 // INITIALIZES actionLogin ON CLIENT
-export const actionLogin = () => (dispatch: any) => {
+export const actionLogin = () => (dispatch: Function) => {
   dispatch({
     type: types.LOGIN,
     payload: {
@@ -11,7 +11,7 @@ export const actionLogin = () => (dispatch: any) => {
   });
 };
 
-export const actionLogOut = () => (dispatch: any) => {
+export const actionLogOut = () => (dispatch: Function) => {
   dispatch({
     type: types.LOGOUT,
     payload: {

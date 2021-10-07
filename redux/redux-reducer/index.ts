@@ -2,13 +2,21 @@ import { combineReducers } from 'redux';
 import * as types from '../types';
 
 // INITIAL TIMER STATE
+interface IReducerAction {
+  type: string,
+  payload: {
+    auth: string;
+    log: boolean;
+  },
+}
+
 const initialUserState = {
   authenticated: '',
   logged: false,
 };
 
 // TIMER REDUCER
-const userReducer = (state = initialUserState, { type, payload }: any) => {
+const userReducer = (state = initialUserState, { type, payload }: IReducerAction) => {
   switch (type) {
     case types.LOGIN:
       return {
