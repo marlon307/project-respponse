@@ -19,7 +19,6 @@ function login() {
 
   const actionUserLogin = useCallback((target) => {
     const { name, value } = target;
-
     setStateLogin({
       ...stateLogin,
       [name]: value,
@@ -49,7 +48,6 @@ function login() {
 
   const actionRegister = useCallback((target) => {
     const { name, value } = target;
-
     setStateRegister({
       ...stateRegister,
       [name]: value,
