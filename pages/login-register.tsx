@@ -54,7 +54,7 @@ function login() {
       [name]: value,
     });
   }, [stateRegister]);
-
+  // Tabs Login
   function tabSectionLogin(event: { preventDefault: () => void; }) {
     event.preventDefault();
     setSectionTab(true);
