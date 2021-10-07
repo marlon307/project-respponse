@@ -7,17 +7,26 @@ type PBtnIco = {
   textBtn: string;
   icoName: string;
   action: Function;
+  actionLiberate: boolean;
 }
 
-function BtnIco({ textBtn, icoName, action }: PBtnIco) {
+function BtnIco({
+  textBtn, icoName, action, actionLiberate,
+}: PBtnIco) {
+  function handleClick() {
+    if (!actionLiberate) {
+      action();
+    }
+  }
+
   return (
     <button
       type="button"
       className={ cx('button1', style.btn_t1) }
-      onClick={ () => action() }
+      onClick={ handleClick }
     >
       { textBtn }
-      <Svg icoName={ icoName } />
+      { actionLiberate ? ' ...' : <Svg icoName={ icoName } /> }
     </button>
   );
 }

@@ -7,6 +7,12 @@ import BtnIco from '../components/Buttons/BtnIco';
 import Svg from '../assets/Svg';
 import { actionLogin } from '../redux/redux-actions';
 
+// https://emailregex.com/
+// eslint-disable-next-line
+const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+// https://www.w3schools.com/howto/howto_js_password_validation.asp
+const validpsw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
 function login() {
   const dispatch = useDispatch();
   const [sectionTab, setSectionTab] = useState(true);
@@ -25,17 +31,12 @@ function login() {
     });
   }, [stateLogin]);
 
-  // https://emailregex.com/
-  // eslint-disable-next-line
-  const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  // https://www.w3schools.com/howto/howto_js_password_validation.asp
-  const validpsw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-
-  function handleLogin() {
+  const [loadingLogin, setLoadingLogin] = useState(false);
+  function clickLogin() {
     const { lemail, lpsw } = stateLogin;
-
     if (validEmail.test(lemail) && validpsw.test(lpsw)) {
       dispatch(actionLogin());
+      setLoadingLogin(true);
     }
   }
 
@@ -128,7 +129,12 @@ function login() {
           </a>
         </div>
         <div className={ style.action }>
-          <BtnIco textBtn="Entrar" icoName="singin" action={ handleLogin } />
+          <BtnIco
+            textBtn="Entrar"
+            icoName="singin"
+            action={ clickLogin }
+            actionLiberate={ loadingLogin }
+          />
         </div>
       </form>
       <form className={ cx(style.tab, { [style.active]: !sectionTab }) }>
@@ -165,7 +171,12 @@ function login() {
           />
         </div>
         <div className={ style.action }>
-          <BtnIco textBtn="Criar Conta" icoName="setRight" action={ () => { } } />
+          <BtnIco
+            textBtn="Criar Conta"
+            icoName="setRight"
+            action={ () => { } }
+            actionLiberate={ false }
+          />
         </div>
       </form>
     </section>

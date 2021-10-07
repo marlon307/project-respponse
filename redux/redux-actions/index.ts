@@ -1,7 +1,7 @@
 import * as types from '../types';
 
 // INITIALIZES actionLogin ON CLIENT
-export const actionLogin = () => (dispatch: Function) => {
+export const actionLogin = () => (dispatch: Function) => setTimeout(() => {
   dispatch({
     type: types.LOGIN,
     payload: {
@@ -9,7 +9,7 @@ export const actionLogin = () => (dispatch: Function) => {
       log: true,
     },
   });
-};
+}, 2000);
 
 export const actionLogOut = () => (dispatch: Function) => {
   dispatch({
