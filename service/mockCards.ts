@@ -1,6 +1,8 @@
 import image0 from '../assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
 import image1 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash 1.png';
 import image3 from '../assets/img/kimiya-oveisi-7qis_qyDK4g-unsplash 1.png';
+import image4 from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 12.png';
+import image5 from '../assets/img/jonas-jaeken-31upv631160-unsplash 4.png';
 
 export const mockCards = [{
   id: 0,
@@ -179,5 +181,34 @@ export const mockminObjectCards = [{
   }, {
     colorName: 'Vermelho',
     color: '#f54a4aef',
+  }],
+}, {
+  id: 3,
+  title: 'Camisa femenina blackout',
+  type: 'Camisa',
+  mainImg: image4,
+  price: 'R$ 36,00',
+  options: [{
+    colorName: 'Preto',
+    color: '#000',
+  }, {
+    colorName: 'Branco',
+    color: '#fff',
+  }, {
+    colorName: 'Azul Claro',
+    color: '#00d9ff',
+  }],
+}, {
+  id: 4,
+  title: 'Next station',
+  type: 'Jaqueta',
+  mainImg: image5,
+  price: 'R$ 36,00',
+  options: [{
+    colorName: 'Jeans',
+    color: '#38516d',
+  }, {
+    colorName: 'Jeans Claro',
+    color: '#8297af',
   }],
 }];
