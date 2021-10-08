@@ -23,7 +23,7 @@ function CardProductNDS({ link }: TCardNDS) {
             quality={ 85 }
             width={ 300 }
             height={ 300 }
-            alt="title"
+            alt="Nome teste do produto"
           />
         </figure>
         <div className={ style.infocontND }>

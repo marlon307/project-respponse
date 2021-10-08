@@ -22,7 +22,7 @@ function CardProductND({ link }: PCardND) {
             quality={ 85 }
             width={ 300 }
             height={ 450 }
-            alt="title"
+            alt="Nome teste do produto"
           />
         </figure>
         <div className={ style.infocontND }>
