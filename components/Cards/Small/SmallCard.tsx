@@ -24,6 +24,7 @@ function SmallCard({ removable, editable, eventModal }: PSmallCard) {
             url={ TesteImgUrl }
             width={ 130 }
             height={ 165 }
+            alt="Title"
           />
         </figure>
       </div>
