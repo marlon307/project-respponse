@@ -90,7 +90,7 @@ function index() {
           <div className={ style.column }>
             <h1>Veja as últimas novidades</h1>
             <CardProductND
-              id={ 1 }
+              id={ 4 }
             />
           </div>
           <div className={ style.column }>
@@ -98,7 +98,7 @@ function index() {
               id={ 2 }
             />
             <CardProductNDS
-              id={ 2 }
+              id={ 3 }
             />
           </div>
           <div className={ style.column }>
