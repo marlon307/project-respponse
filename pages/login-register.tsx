@@ -43,7 +43,7 @@ function login() {
   const [loadingLogin, setLoadingLogin] = useState(false);
   function clickLogin() {
     const { lemail, lpsw } = stateLogin;
-    if (validEmail.test(lemail) && validpsw.test(lpsw)) {
+    if (validEmail.test(lemail) && validpsw.test(lpsw) && !loadingLogin) {
       dispatch(actionLogin());
       setLoadingLogin(true);
     }
