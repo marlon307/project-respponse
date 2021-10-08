@@ -4,7 +4,7 @@ import Qtd from '../../Bars/Qtd';
 import style from './style.module.scss';
 import BarSize from '../../Bars/BarSize';
 import mockColors from '../../../service/colorsMock';
-import LoadingImage from '../../LoadImage/LoadingImage';
+import LoadingImage from '../../LoadImage';
 import img from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash_1-removebg-preview.png';
 
 function CardEdit() {

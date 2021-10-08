@@ -10,7 +10,7 @@ import mockCarousel from '../service/mockCarousel';
 import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
 import { CardProduct, CardProductNDS, CardProductND } from '../components/Cards/CardProduct';
 import Svg from '../assets/Svg';
-import LoadingImage from '../components/LoadImage/LoadingImage';
+import LoadingImage from '../components/LoadImage';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();

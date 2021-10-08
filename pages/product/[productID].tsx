@@ -8,7 +8,7 @@ import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
 import mockProduct from '../../service/mockProduct';
 import colorsMock from '../../service/colorsMock';
-import LoadingImage from '../../components/LoadImage/LoadingImage';
+import LoadingImage from '../../components/LoadImage';
 
 function productId() {
   const [itemdrag, setItemDrag] = useState(false);
