@@ -48,13 +48,13 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
           <h2 className={ style.titlemenu }>Sacola</h2>
           <ul>
             <li>
-              <SmallCard />
+              <SmallCard removable />
             </li>
             <li>
-              <SmallCard />
+              <SmallCard removable />
             </li>
             <li>
-              <SmallCard />
+              <SmallCard removable />
             </li>
           </ul>
           <div className={ style.baginfo }>
