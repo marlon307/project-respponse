@@ -62,7 +62,7 @@ export const mockCards = [{
 },
 {
   id: 1,
-  title: 'Jérsei de Algodão Pima',
+  title: 'Algodão Pima',
   type: 'Jérsei',
   keyDesc: '',
   price: 'R$ 150,90',
@@ -148,7 +148,7 @@ export const mockminObjectCards = [{
 },
 {
   id: 1,
-  title: 'Terno da meia noite',
+  title: 'Secrect state',
   type: 'Terno',
   mainImg: image1,
   price: 'R$ 150,90',
@@ -156,8 +156,8 @@ export const mockminObjectCards = [{
     colorName: 'Branco',
     color: '#fff',
   }, {
-    colorName: 'Azul',
-    color: '#74bcf7',
+    colorName: 'Azul meia noite',
+    color: '#2a4f6c',
   }, {
     colorName: 'Laranja',
     color: '#f5b04aef',

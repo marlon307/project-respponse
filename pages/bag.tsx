@@ -7,6 +7,7 @@ import BarBuy from '../components/Bars/BarBuy';
 import Svg from '../assets/Svg';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading/Loading';
+import mockBag from '../service/mockBag';
 
 const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), {
   loading: () => <Loading />,
@@ -37,41 +38,16 @@ function bag() {
             Sacola
           </h1>
           <ul>
-            <li>
-              <SmallCard
-                removable
-                editable
-                eventModal={ openModalEdit }
-              />
-            </li>
-            <li>
-              <SmallCard
-                removable
-                editable
-                eventModal={ openModalEdit }
-              />
-            </li>
-            <li>
-              <SmallCard
-                removable
-                editable
-                eventModal={ openModalEdit }
-              />
-            </li>
-            <li>
-              <SmallCard
-                removable
-                editable
-                eventModal={ openModalEdit }
-              />
-            </li>
-            <li>
-              <SmallCard
-                removable
-                editable
-                eventModal={ openModalEdit }
-              />
-            </li>
+            { mockBag.map((object) => (
+              <li key={ object.id }>
+                <SmallCard
+                  objectID={ object }
+                  removable
+                  editable
+                  eventModal={ openModalEdit }
+                />
+              </li>
+            )) }
           </ul>
         </section>
         <section className={ style.checkout }>

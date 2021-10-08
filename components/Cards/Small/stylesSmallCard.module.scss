@@ -96,6 +96,13 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
+    color: #747474;
+  }
+
+  span:first-child {
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--bordercolor);
   }
 }
 
