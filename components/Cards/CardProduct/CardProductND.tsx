@@ -3,7 +3,7 @@ import Link from 'next/link';
 import style from './style.module.scss';
 import testeImage from '../../../assets/img/analia-baggiano-7_Gkf5JZRv4-unsplash 1.png';
 import CardInfo from '../CardInfo/CardInfo';
-import LoadingImage from '../../LoadImage/LoadingImage';
+import LoadingImage from '../../LoadImage';
 
 type PCardND = {
   link: string;

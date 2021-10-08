@@ -3,7 +3,7 @@ import Link from 'next/link';
 import style from './style.module.scss';
 import testeImage from '../../../assets/img/kimiya-oveisi-7qis_qyDK4g-unsplash 1.png';
 import CardInfo from '../CardInfo/CardInfo';
-import LoadingImage from '../../LoadImage/LoadingImage';
+import LoadingImage from '../../LoadImage';
 // CardProductNotDescrtion
 
 type TCardNDS = {
