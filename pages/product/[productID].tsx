@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Flicking from '@egjs/react-flicking';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
@@ -9,6 +8,7 @@ import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
 import mockProduct from '../../service/mockProduct';
 import colorsMock from '../../service/colorsMock';
+import LoadingImage from '../../components/LoadImage/LoadingImage';
 
 function productId() {
   const [itemdrag, setItemDrag] = useState(false);
@@ -23,13 +23,10 @@ function productId() {
           { mockProduct.map(({ id, img, title }) => (
             <div className="panel" key={ id }>
               <div className={ style.contentpanel }>
-                <Image
+                <LoadingImage
+                  url={ img }
                   quality={ 90 }
-                  placeholder="blur"
-                  src={ img }
                   alt={ title }
-                  layout="responsive"
-                  objectPosition="relative"
                 />
               </div>
             </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import style from './style.module.scss';
 import testeImage from '../../../assets/img/kimiya-oveisi-7qis_qyDK4g-unsplash 1.png';
 import CardInfo from '../CardInfo/CardInfo';
+import LoadingImage from '../../LoadImage/LoadingImage';
 // CardProductNotDescrtion
 
 type TCardNDS = {
@@ -18,14 +18,12 @@ function CardProductNDS({ link }: TCardNDS) {
     >
       <a className={ style.productcardNDS }>
         <figure>
-          <Image
-            src={ testeImage }
-            placeholder="blur"
-            alt="Product name"
-            layout="responsive"
+          <LoadingImage
+            url={ testeImage }
             quality={ 85 }
             width={ 300 }
             height={ 300 }
+            alt="title"
           />
         </figure>
         <div className={ style.infocontND }>
