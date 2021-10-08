@@ -38,19 +38,39 @@ function bag() {
           </h1>
           <ul>
             <li>
-              <SmallCard editable eventModal={ openModalEdit } />
+              <SmallCard
+                removable
+                editable
+                eventModal={ openModalEdit }
+              />
             </li>
             <li>
-              <SmallCard editable eventModal={ openModalEdit } />
+              <SmallCard
+                removable
+                editable
+                eventModal={ openModalEdit }
+              />
             </li>
             <li>
-              <SmallCard editable eventModal={ openModalEdit } />
+              <SmallCard
+                removable
+                editable
+                eventModal={ openModalEdit }
+              />
             </li>
             <li>
-              <SmallCard editable eventModal={ openModalEdit } />
+              <SmallCard
+                removable
+                editable
+                eventModal={ openModalEdit }
+              />
             </li>
             <li>
-              <SmallCard editable eventModal={ openModalEdit } />
+              <SmallCard
+                removable
+                editable
+                eventModal={ openModalEdit }
+              />
             </li>
           </ul>
         </section>

@@ -29,13 +29,13 @@ function favorite() {
       </h1>
       <ul>
         <li>
-          <SmallCard />
+          <SmallCard removable />
         </li>
         <li>
-          <SmallCard />
+          <SmallCard removable />
         </li>
         <li>
-          <SmallCard />
+          <SmallCard removable />
         </li>
       </ul>
     </section>
