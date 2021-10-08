@@ -12,7 +12,7 @@ function CardEdit() {
     <div className={ style.edit }>
       <div className={ style.visualcont }>
         <div className={ style.contimg }>
-          <LoadingImage url={ img } />
+          <LoadingImage url={ img } alt="title" />
         </div>
         <BarColors array={ mockColors } />
       </div>
