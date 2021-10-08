@@ -5,6 +5,7 @@ import style from './sass/styleMenuBag.module.scss';
 import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
+import mockBag from '../../../service/mockBag';
 
 type PropsMNBag = {
   setMenuDropdown: Function;
@@ -47,15 +48,14 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
         <div className={ style.containBag }>
           <h2 className={ style.titlemenu }>Sacola</h2>
           <ul>
-            <li>
-              <SmallCard removable />
-            </li>
-            <li>
-              <SmallCard removable />
-            </li>
-            <li>
-              <SmallCard removable />
-            </li>
+            { mockBag.map((object) => (
+              <li key={ object.id }>
+                <SmallCard
+                  objectID={ object }
+                  removable
+                />
+              </li>
+            )) }
           </ul>
           <div className={ style.baginfo }>
             <div>

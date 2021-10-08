@@ -1,16 +1,32 @@
 import React from 'react';
-import TesteImgUrl from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash 1.png';
 import style from './stylesSmallCard.module.scss';
 import Svg from '../../../assets/Svg';
 import LoadingImage from '../../LoadImage';
 
+type ObjectId = {
+  title: string;
+  type: string;
+  mainImg: string | any;
+  price: string;
+  colorName: string;
+  color: string;
+  size: string;
+  quantity: number;
+}
+
 export interface PSmallCard {
+  objectID: ObjectId;
   removable?: boolean
   editable?: boolean
   eventModal?: Function
 }
 
-function SmallCard({ removable, editable, eventModal }: PSmallCard) {
+function SmallCard({
+  objectID, removable, editable, eventModal,
+}: PSmallCard) {
+  const {
+    title, type, mainImg, price, colorName, color, size, quantity,
+  } = objectID;
   function handleClick(event: { preventDefault: () => void; }) {
     event.preventDefault();
     eventModal!(true);
@@ -21,21 +37,24 @@ function SmallCard({ removable, editable, eventModal }: PSmallCard) {
       <div className={ style.img }>
         <figure>
           <LoadingImage
-            url={ TesteImgUrl }
+            url={ mainImg }
             width={ 130 }
             height={ 165 }
-            alt="Title"
+            alt={ title }
           />
         </figure>
       </div>
       <div className={ style.desc }>
-        <h2>Berrylush</h2>
-        <h3>Top Forever 21 Canelado Preto</h3>
+        <h2>{ type }</h2>
+        <h3>{ title }</h3>
         <div className={ style.infos }>
           <div className={ style.setting }>
-            <span title="Roxo Claro" style={ { background: '#AAB4D9' } } />
-            <span title="Tamanho G" style={ { color: '#AAB4D9' } }>G</span>
-            <span title="3 Berrylush - Top Forever 21 Canelado Preto" style={ { color: '#AAB4D9' } }>3x</span>
+            <span title={ `${colorName}` } style={ { background: `${color}` } } />
+            <span title={ `Tamanho ${size}` }>{ size }</span>
+            <span title={ `${quantity} ${type} - ${title}` }>
+              { quantity }
+              x
+            </span>
             { editable && (
               <a
                 href="/"
@@ -48,7 +67,7 @@ function SmallCard({ removable, editable, eventModal }: PSmallCard) {
             ) }
           </div>
           <div className={ style.price }>
-            <span title="Valor da unidade R$ 199,90">R$ 199,90</span>
+            <span title={ `Valor da unidade ${price}` }>{ price }</span>
           </div>
         </div>
       </div>
