@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 import style from './style.module.scss';
@@ -15,9 +15,10 @@ function LoadingImage({
   url, width, height, quality, alt,
 }: PLoadImg) {
   const [isloading, setIsoading] = useState(false);
-  function finishLoading() {
-    setIsoading(true);
-  }
+
+  const finishLoading = useCallback(() => setIsoading(true), []);
+
+  useEffect(() => () => finishLoading(), []);
 
   return (
     <div className={ style.contentimg }>
