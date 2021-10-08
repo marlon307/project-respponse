@@ -14,9 +14,9 @@ export interface PLoadImg {
 function LoadingImage({
   url, width, height, quality, alt,
 }: PLoadImg) {
-  const [isloading, setIsoading] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
 
-  const finishLoading = useCallback(() => setIsoading(true), []);
+  const finishLoading = useCallback(() => setIsLoading(true), []);
 
   useEffect(() => () => finishLoading(), []);
 
@@ -31,7 +31,6 @@ function LoadingImage({
           src={ url }
           alt={ alt }
           layout="responsive"
-          objectPosition="relative"
           width={ width }
           height={ height }
           onLoadingComplete={ finishLoading }
