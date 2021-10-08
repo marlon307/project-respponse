@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 import style from './style.module.scss';
-import Loading from '../Loading/Loading';
 
-type PLoadImg = {
-  url: string | any
+export interface PLoadImg {
+  url: string | any;
+  width?: number;
+  height?: number;
+  quality?: number;
+  alt: string;
 }
 
-function LoadingImage({ url }: PLoadImg) {
+function LoadingImage({
+  url, width, height, quality, alt,
+}: PLoadImg) {
   const [isloading, setIsoading] = useState(false);
   function finishLoading() {
     setIsoading(true);
@@ -21,18 +26,18 @@ function LoadingImage({ url }: PLoadImg) {
       }) }
       >
         <Image
-          quality={ 90 }
+          quality={ quality }
           src={ url }
-          alt="Title"
+          alt={ alt }
           layout="responsive"
           objectPosition="relative"
+          width={ width }
+          height={ height }
           onLoadingComplete={ finishLoading }
         />
       </div>
       { !isloading && (
-        <div className={ style.statusloading }>
-          <Loading />
-        </div>
+        <div className={ style.statusloading } />
       ) }
     </div>
   );

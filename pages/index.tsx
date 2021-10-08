@@ -10,6 +10,7 @@ import mockCarousel from '../service/mockCarousel';
 import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
 import { CardProduct, CardProductNDS, CardProductND } from '../components/Cards/CardProduct';
 import Svg from '../assets/Svg';
+import LoadingImage from '../components/LoadImage/LoadingImage';
 
 function index() {
   const buttonPrevNext = createRef<Flicking>();
@@ -33,7 +34,7 @@ function index() {
                   layout="responsive"
                   placeholder="blur"
                   alt={ title }
-                  quality="90"
+                  quality={ 90 }
                 />
                 <div className={ style.titleproduct }>
                   <h1>{ title }</h1>
@@ -73,12 +74,7 @@ function index() {
       <section className={ style.advertising }>
         <div className={ style.container }>
           <div className={ style.cont1 }>
-            <Image
-              src={ teste }
-              layout="responsive"
-              placeholder="blur"
-              alt="Oculos"
-            />
+            <LoadingImage url={ teste } alt="Title" />
           </div>
           <div className={ style.cont2 }>
             <h1>Óculos de varias marcas e modelos</h1>

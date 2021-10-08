@@ -1,7 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import style from './style.module.scss';
+import LoadingImage from '../../LoadImage/LoadingImage';
 
 type PCardCategory = {
   id: string;
@@ -15,12 +15,10 @@ function CardCategory({ id, image, ctgName }: PCardCategory) {
       <Link href={ `/category/${ctgName}` }>
         <a id={ id }>
           <figure className={ style.imgctg }>
-            <Image
-              src={ image }
-              placeholder="blur"
+            <LoadingImage
+              url={ image }
               quality={ 60 }
               alt={ ctgName }
-              layout="responsive"
               width={ 130 }
               height={ 130 }
             />

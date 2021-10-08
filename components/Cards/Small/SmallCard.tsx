@@ -20,7 +20,11 @@ function SmallCard({ removable, editable, eventModal }: PSmallCard) {
     <div className={ style.smallcard }>
       <div className={ style.img }>
         <figure>
-          <LoadingImage url={ TesteImgUrl } />
+          <LoadingImage
+            url={ TesteImgUrl }
+            width={ 130 }
+            height={ 165 }
+          />
         </figure>
       </div>
       <div className={ style.desc }>
