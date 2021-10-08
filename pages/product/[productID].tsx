@@ -1,17 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Flicking from '@egjs/react-flicking';
+import { useRouter } from 'next/router';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Buttons/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
-import mockProduct from '../../service/mockProduct';
 import colorsMock from '../../service/colorsMock';
 import LoadingImage from '../../components/LoadImage';
+import { mockCards } from '../../service/mockCards';
 
 function productId() {
+  const router = useRouter();
   const [itemdrag, setItemDrag] = useState(false);
+
+  useEffect(() => {
+    const { productID } = router.query;
+
+    if (mockCards[0].id !== Number(productID)) {
+      // router.push('/404');
+    }
+  }, []);
+
+  const {
+    title, type, price, descrtion, branch, gender, descount, shipping,
+    details, specification, options,
+  }: any = mockCards[0];
 
   return (
     <div className={ style.product }>
@@ -20,11 +35,11 @@ function productId() {
           align="center"
           circular
         >
-          { mockProduct.map(({ id, img, title }) => (
-            <div className="panel" key={ id }>
+          { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
+            <div className="panel" key={ imgid }>
               <div className={ style.contentpanel }>
                 <LoadingImage
-                  url={ img }
+                  url={ urlImg }
                   quality={ 90 }
                   alt={ title }
                 />
@@ -33,25 +48,30 @@ function productId() {
           )) }
         </Flicking>
         <div className={ style.barcolor }>
-          <BarColors array={ colorsMock } />
+          <BarColors array={ options } />
         </div>
       </div>
       <div className={ style.maincontentinfo }>
         <div className={ style.infodesc }>
           <div className={ style.mindetail }>
             <p>
-              Do mesmo modo, a consulta aos diversos militantes
-              desafia a capacidade de equalização de todos os recursos funcionais envolvidos.
+              { descrtion }
             </p>
           </div>
           <div className={ style.infos }>
+            { shipping && <span className={ style.shipping }>Frete Grátis</span> }
             <div className={ style.primaryline }>
               <div className={ style.titles }>
-                <h1>Berrylush</h1>
-                <h2>Top Forever 21 Canelado Preto</h2>
+                <h1>{ type }</h1>
+                <h2>{ title }</h2>
               </div>
               <div className={ style.price }>
-                <span>R$ 199,00</span>
+                <span>
+                  R$
+                  { ' ' }
+                  { price }
+                </span>
+                { descount > 0 && <span /> }
               </div>
             </div>
             <div className={ style.secondline }>
@@ -88,10 +108,14 @@ function productId() {
             bounce="100%"
           >
             <div className="panel">
-              <DetailsCard />
+              <DetailsCard
+                gender={ gender }
+                branch={ branch }
+                details={ details }
+              />
             </div>
             <div className="panel">
-              <Spec />
+              <Spec specification={ specification } />
             </div>
           </Flicking>
         </section>

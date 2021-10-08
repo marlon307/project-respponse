@@ -13,18 +13,19 @@ type PBarColors = {
 function BarColors({ array }: PBarColors) {
   return (
     <div className={ style.barcolor } title="Cores">
-      { array.map(({ colorName, color }) => (
-        <label htmlFor={ colorName } key={ color }>
-          <input id={ colorName } type="radio" name="color" />
-          <span
-            title={ colorName }
-            style={ {
-              background: color,
-              borderColor: color,
-            } }
-          />
-        </label>
-      )) }
+      { array !== undefined
+        && array.map(({ colorName, color }) => (
+          <label htmlFor={ colorName } key={ color }>
+            <input id={ colorName } type="radio" name="color" />
+            <span
+              title={ colorName }
+              style={ {
+                background: color,
+                borderColor: color,
+              } }
+            />
+          </label>
+        )) }
     </div>
   );
 }
