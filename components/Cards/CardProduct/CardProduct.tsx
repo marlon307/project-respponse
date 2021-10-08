@@ -1,32 +1,41 @@
 import React from 'react';
 import Link from 'next/link';
 import style from './style.module.scss';
-import testeImage from '../../../assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
 import CardInfo from '../CardInfo/CardInfo';
 import LoadingImage from '../../LoadImage';
+import { mockminObjectCards } from '../../../service/mockCards';
 
 type PCardP = {
-  link: string;
+  id: number;
 }
 
-function CardProduct({ link }: PCardP) {
+function CardProduct({ id }: PCardP) {
+  const {
+    type, title, mainImg, price, options,
+  } = mockminObjectCards[id];
+
   return (
     <Link
-      href={ link }
-      as={ link }
+      href={ `/product/${id.toString()}` }
+      as={ `/product/${id.toString()}` }
     >
       <a className={ style.productcard }>
         <figure>
           <LoadingImage
-            url={ testeImage }
+            url={ mainImg }
             width={ 300 }
             height={ 450 }
             quality={ 85 }
-            alt="title"
+            alt={ title }
           />
         </figure>
         <div className={ style.infocont }>
-          <CardInfo />
+          <CardInfo
+            type={ type }
+            title={ title }
+            price={ price }
+            colors={ options }
+          />
         </div>
       </a>
     </Link>

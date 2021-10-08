@@ -1,32 +1,40 @@
 import React from 'react';
 import Link from 'next/link';
 import style from './style.module.scss';
-import testeImage from '../../../assets/img/analia-baggiano-7_Gkf5JZRv4-unsplash 1.png';
 import CardInfo from '../CardInfo/CardInfo';
 import LoadingImage from '../../LoadImage';
+import { mockminObjectCards } from '../../../service/mockCards';
 
 type PCardND = {
-  link: string;
+  id: number;
 }
 
-function CardProductND({ link }: PCardND) {
+function CardProductND({ id }: PCardND) {
+  const {
+    type, title, mainImg, price, options,
+  } = mockminObjectCards[id];
   return (
     <Link
-      href={ link }
-      as={ link }
+      href={ `/product/${id.toString()}` }
+      as={ `/product/${id.toString()}` }
     >
       <a className={ style.productcardND }>
         <figure>
           <LoadingImage
-            url={ testeImage }
-            quality={ 85 }
+            url={ mainImg }
             width={ 300 }
             height={ 450 }
-            alt="title"
+            quality={ 85 }
+            alt={ title }
           />
         </figure>
         <div className={ style.infocontND }>
-          <CardInfo />
+          <CardInfo
+            type={ type }
+            title={ title }
+            price={ price }
+            colors={ options }
+          />
         </div>
       </a>
     </Link>
