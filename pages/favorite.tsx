@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { SmallCard } from '../components/Cards';
 import style from './sass/styleFavorite.module.scss';
 import Svg from '../assets/Svg';
+import mockBag from '../service/mockBag';
 
 interface IUser {
   user: {
@@ -28,15 +29,14 @@ function favorite() {
         Favoritos
       </h1>
       <ul>
-        <li>
-          <SmallCard removable />
-        </li>
-        <li>
-          <SmallCard removable />
-        </li>
-        <li>
-          <SmallCard removable />
-        </li>
+        { mockBag.map((object) => (
+          <li key={ object.id }>
+            <SmallCard
+              removable={ false }
+              objectID={ object }
+            />
+          </li>
+        )) }
       </ul>
     </section>
   );
