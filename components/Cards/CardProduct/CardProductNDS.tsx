@@ -1,33 +1,41 @@
 import React from 'react';
 import Link from 'next/link';
 import style from './style.module.scss';
-import testeImage from '../../../assets/img/kimiya-oveisi-7qis_qyDK4g-unsplash 1.png';
 import CardInfo from '../CardInfo/CardInfo';
 import LoadingImage from '../../LoadImage';
-// CardProductNotDescrtion
+import { mockminObjectCards } from '../../../service/mockCards';
 
 type TCardNDS = {
-  link: string;
+  id: number;
 }
 
-function CardProductNDS({ link }: TCardNDS) {
+function CardProductNDS({ id }: TCardNDS) {
+  const {
+    type, title, mainImg, price, options,
+  } = mockminObjectCards[id];
+
   return (
     <Link
-      href={ link }
-      as={ link }
+      href={ `/product/${id.toString()}` }
+      as={ `/product/${id.toString()}` }
     >
       <a className={ style.productcardNDS }>
         <figure>
           <LoadingImage
-            url={ testeImage }
-            quality={ 85 }
+            url={ mainImg }
             width={ 300 }
             height={ 300 }
-            alt="Nome teste do produto"
+            quality={ 85 }
+            alt={ title }
           />
         </figure>
         <div className={ style.infocontND }>
-          <CardInfo />
+          <CardInfo
+            type={ type }
+            title={ title }
+            price={ price }
+            colors={ options }
+          />
         </div>
       </a>
     </Link>

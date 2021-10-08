@@ -90,21 +90,19 @@ function index() {
           <div className={ style.column }>
             <h1>Veja as últimas novidades</h1>
             <CardProductND
-              link="/product/1"
+              id={ 1 }
             />
           </div>
           <div className={ style.column }>
             <CardProductNDS
-              link="/product/1"
+              id={ 2 }
             />
             <CardProductNDS
-              link="/product/1"
+              id={ 2 }
             />
           </div>
           <div className={ style.column }>
-            <CardProduct
-              link="/product/1"
-            />
+            <CardProduct id={ 0 } />
           </div>
         </div>
       </section>

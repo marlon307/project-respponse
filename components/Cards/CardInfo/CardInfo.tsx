@@ -1,21 +1,37 @@
 import React from 'react';
 import style from './style.module.scss';
 
-function CardInfo() {
+type TInfoProps = {
+  type: string;
+  title: string;
+  price: string;
+  colors: Array<Object>;
+}
+
+function CardInfo({
+  title, type, price, colors,
+}: TInfoProps) {
   return (
     <div className={ style.info }>
       <div className={ style.primaryline }>
-        <span>Oculos</span>
-        <span>R$ 199,00</span>
+        <span>{ type }</span>
+        <span>{ price }</span>
       </div>
       <div className={ style.secondline }>
-        <span>Oculos armação em aço</span>
+        <span>{ title }</span>
       </div>
       <div className={ style.thirdline }>
-        <span />
-        <span />
-        <span />
-        <span />
+        { colors!
+          && colors.map((_null, index) => {
+            const value = Object.values(colors![index]);
+            return (
+              <span
+                key={ value[0] }
+                title={ value[0] }
+                style={ { backgroundColor: `${value[1]}` } }
+              />
+            );
+          }) }
       </div>
     </div>
   );
