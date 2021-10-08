@@ -2,22 +2,37 @@ import React from 'react';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
 
-function Spec() {
+function Spec({ specification }: any) {
   return (
     <div className={ style.detail }>
       <h3>
         <Svg icoName="spec" />
         Especificações
       </h3>
-      <span>SKU NE224SRM17PRY</span>
-      <span>Modelo New Era NEI18MOL026</span>
-      <span>Características Especiais Possui capuz com ajuste</span>
-      <span>Cor Preto</span>
-      <span>Ocasião de uso Casual</span>
-      <span>Lavagem Pode ser lavado na máquina</span>
-      <span>Material Algodão</span>
-      <span>Estampa Logo</span>
-      <span>Tipo de frete: Leve</span>
+      { specification !== undefined && (
+        <>
+          <span>
+            SKU:
+            { ' ' }
+            { specification.sku }
+          </span>
+          <span>
+            Modelo:
+            { ' ' }
+            { specification.model }
+          </span>
+          <span>
+            Ocasião:
+            { ' ' }
+            { specification.occasion }
+          </span>
+          <span>
+            Tipo de frete:
+            { ' ' }
+            { specification.typeshipping }
+          </span>
+        </>
+      ) }
     </div>
   );
 }

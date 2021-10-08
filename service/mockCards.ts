@@ -3,36 +3,43 @@ import image1 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash 1.png';
 import image3 from '../assets/img/kimiya-oveisi-7qis_qyDK4g-unsplash 1.png';
 import image4 from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 12.png';
 import image5 from '../assets/img/jonas-jaeken-31upv631160-unsplash 4.png';
+// import clean image
+import cleanImage1 from '../assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
+import cleanImage2 from '../assets/img/brian-lawson-e9o9sAy5PL4-unsplash_1-removebg-preview.png';
+import cleanImage3 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash_1-removebg-preview.png';
 
 export const mockCards = [{
   id: 0,
   title: 'Nike F.C',
   type: 'Futebol',
   keyDesc: 'Nike Futebol',
-  price: 'R$ 68,98',
+  price: 68.98,
   categoryId: 6,
-  categoryName: 'Futebol',
-  descrtion: '',
+  descrtion: 'Do mesmo modo, a consulta aos diversos militantes desafia a capacidade de equalização de todos os recursos funcionais envolvidos.',
   branch: 'Nike',
   gender: 'Maculino',
   descount: 0,
   shipping: false,
   mainImg: image0,
   details: {
-    mesh: 'Tactel + Algodão',
     model: 'Jaqueta',
-    material: 'Algo',
-    fabrictype: 'Nike',
-    pokecket: '---',
-    measures: '70*25*12',
-    length: 'Medidas da peça: Ombro: 17cm Ombro a Ombro: 58cm Manga: 70cm Tórax: 128cm Comprimento: 79cm',
+    printPattern: 'Outras',
+    mango: 'Longa',
+    composition: '50% Algodão e 50% Poliéster',
+    numbPocked: 2,
+    length: 'Ombro: 17cm Ombro a Ombro: 58cm Manga: 70cm Tórax: 128cm Comprimento: 79cm',
+    modelMeasures: 'Altura: 1,87m/ Tórax: 93cm/ Manequim 38',
     available: true,
+    wash: 'Pode ser na maquina',
+    kindfabric: 'Moletom não flanelado (Moletinho)',
+    specialFeatures: 'Possui capuz com ajuste',
   },
   specification: {
-    print: 'Silk',
-    characteristics: 'Teste',
-    wash: 'Pode se na maquina',
-    occasion: 'Jogar Futebol',
+    sku: 'NE224SRM17PRY',
+    model: 'New Era NEI18MOL026',
+    occasion: 'de uso Casual',
+    typeshipping: 'Leve',
+
   },
   options: [{
     colorName: 'Branco',
@@ -44,9 +51,23 @@ export const mockCards = [{
       G: 40,
       M: 20,
     },
-    img: ['url', 'url'],
-  },
-  {
+    imgs: [{
+      imgid: 0,
+      urlImg: cleanImage1,
+    }, {
+      imgid: 1,
+      urlImg: cleanImage2,
+    }, {
+      imgid: 2,
+      urlImg: cleanImage3,
+    }, {
+      imgid: 3,
+      urlImg: cleanImage1,
+    }, {
+      imgid: 4,
+      urlImg: cleanImage3,
+    }],
+  }, {
     colorName: 'Cinza Escuro',
     color: '#333',
     size: {
@@ -56,43 +77,16 @@ export const mockCards = [{
       G: 40,
       M: 20,
     },
-    img: ['url', 'url'],
-  },
-  ],
-},
-{
-  id: 1,
-  title: 'Algodão Pima',
-  type: 'Jérsei',
-  keyDesc: '',
-  price: 'R$ 150,90',
-  categoryId: 5,
-  categoryName: 'Casual',
-  descrtion: '',
-  branch: 'Lacoste',
-  gender: 'Maculino',
-  descount: 0,
-  shipping: false,
-  mainImg: image1,
-  details: {
-    mesh: 'Tactel + Algodão',
-    model: 'Jaqueta',
-    material: 'Algo',
-    fabrictype: 'Lacoste',
-    pokecket: '---',
-    measures: '70*25*12',
-    length: 'Medidas da peça: Ombro: 17cm Ombro a Ombro: 58cm Manga: 70cm Tórax: 128cm Comprimento: 79cm',
-    available: true,
-  },
-  specification: {
-    print: 'Tint',
-    characteristics: 'Teste',
-    wash: 'Pode se na maquina',
-    occasion: 'Casual',
-  },
-  options: [{
-    colorName: 'Branco',
-    color: '#fff',
+    imgs: [{
+      imgid: 0,
+      urlImg: cleanImage1,
+    }, {
+      imgid: 1,
+      urlImg: cleanImage2,
+    }],
+  }, {
+    colorName: 'Preto',
+    color: '#000',
     size: {
       P: 28,
       PP: 30,
@@ -100,31 +94,13 @@ export const mockCards = [{
       G: 40,
       M: 20,
     },
-    img: ['url', 'url'],
-  },
-  {
-    colorName: 'Rosa',
-    color: '#f8a3f8',
-    size: {
-      P: 0,
-      PP: 30,
-      GG: 0,
-      G: 40,
-      M: 20,
-    },
-    img: ['url', 'url'],
-  },
-  {
-    colorName: 'Preto',
-    color: '#000',
-    size: {
-      P: 0,
-      PP: 30,
-      GG: 0,
-      G: 40,
-      M: 20,
-    },
-    img: ['url', 'url'],
+    imgs: [{
+      imgid: 0,
+      urlImg: cleanImage1,
+    }, {
+      imgid: 1,
+      urlImg: cleanImage2,
+    }],
   },
   ],
 }];

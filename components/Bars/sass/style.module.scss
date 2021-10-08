@@ -21,9 +21,17 @@
     display: none;
   }
 
+  label {
+    border: 1px solid var(--bordercolor);
+    border-radius: 50%;
+  }
+
   span {
+    position: relative;
     cursor: pointer;
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -35,6 +43,15 @@
     background: transparent !important;
     width: 16px;
     height: 16px;
+  }
+
+  input:checked~span::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--bordercolor);
+    border-radius: 50%;
   }
 }
 
