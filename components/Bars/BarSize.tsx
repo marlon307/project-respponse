@@ -3,12 +3,12 @@ import style from './sass/size.module.scss';
 
 interface IObject {
   size: Object;
-  colorName: String
+  colorName: string;
 }
 
 type TProps = {
   array: Array<IObject>;
-  colorName: string
+  colorName: string;
 }
 
 function BarSize({ array, colorName }: TProps) {
