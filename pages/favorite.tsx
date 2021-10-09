@@ -32,7 +32,7 @@ function favorite() {
         { mockBag.map((object) => (
           <li key={ object.id }>
             <SmallCard
-              removable={ false }
+              removable
               objectID={ object }
             />
           </li>
