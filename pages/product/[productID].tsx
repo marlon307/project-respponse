@@ -7,7 +7,6 @@ import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Buttons/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
-import colorsMock from '../../service/colorsMock';
 import LoadingImage from '../../components/LoadImage';
 import { mockCards } from '../../service/mockCards';
 
@@ -75,7 +74,7 @@ function productId() {
               </div>
             </div>
             <div className={ style.secondline }>
-              <BarSize array={ colorsMock } colorName="Laranja" />
+              <BarSize array={ options } colorName="Branco" />
             </div>
             <AddBag />
           </div>

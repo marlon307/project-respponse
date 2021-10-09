@@ -2,17 +2,17 @@ import React from 'react';
 import style from './sass/size.module.scss';
 
 interface IObject {
-  size: Object
+  size: Object;
   colorName: String
 }
 
-type IProps = {
+type TProps = {
   array: Array<IObject>;
   colorName: string
 }
 
-function BarSize({ array, colorName }: IProps) {
-  const { size } = array.filter((object) => object.colorName === colorName)[0];
+function BarSize({ array, colorName }: TProps) {
+  const { size } = array.find((object) => object.colorName === colorName)!;
   const arraySize = Object.keys(size);
 
   return (
