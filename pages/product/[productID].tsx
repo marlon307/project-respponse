@@ -27,6 +27,9 @@ function productId() {
     details, specification, options,
   }: any = mockCards[0];
 
+  const calcDescount = () => (
+    (descount * price) / 100).toFixed(2);
+
   return (
     <div className={ style.product }>
       <div className={ style.slide }>
@@ -64,13 +67,30 @@ function productId() {
                 <h1>{ type }</h1>
                 <h2>{ title }</h2>
               </div>
-              <div className={ style.price }>
+              <div className={ descount && style.price }>
                 <span>
                   R$
                   { ' ' }
                   { price }
                 </span>
-                { descount > 0 && <span /> }
+                { descount > 0 && (
+                  <>
+                    <span>
+                      R$
+                      { ' ' }
+                      { (Number(price) - Number(calcDescount())).toFixed(2) }
+                    </span>
+                    <span>
+                      R$
+                      { ' ' }
+                      { calcDescount() }
+                      { ' ' }
+                      (
+                      { descount }
+                      %)
+                    </span>
+                  </>
+                ) }
               </div>
             </div>
             <div className={ style.secondline }>

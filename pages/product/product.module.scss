@@ -64,6 +64,26 @@
   }
 }
 
+.price {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  span:first-child {
+    text-decoration: line-through;
+    color: #a5a5a5;
+    font-size: 0.9em;
+  }
+
+  span:nth-child(2) {
+    font-size: 1.7em;
+  }
+
+  span:nth-child(3) {
+    font-size: 0.9em;
+  }
+}
+
 .secondline {
   margin-bottom: 42px;
 }
