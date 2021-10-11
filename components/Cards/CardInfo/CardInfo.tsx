@@ -20,15 +20,20 @@ function CardInfo({
         <div>
           { discount > 0 && (
             <span>
-              R$
-              { ' ' }
-              { (price - Number(calcPercentage(discount, price))).toFixed(2) }
+              { (price - Number(calcPercentage(discount, price)))
+                .toLocaleString('pt-br',
+                  {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }) }
             </span>
           ) }
           <span>
-            R$
-            { ' ' }
-            { price.toFixed(2) }
+            { price.toLocaleString('pt-br',
+              {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
           </span>
         </div>
       </div>

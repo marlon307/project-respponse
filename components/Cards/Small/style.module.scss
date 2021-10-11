@@ -107,6 +107,17 @@
 }
 
 .price {
+  position: relative;
+
+  span:nth-child(2n) {
+    position: absolute;
+    bottom: 1.4em;
+    left: 0;
+    text-decoration: line-through;
+    color: #bfbfbf;
+    font-size: 0.8em;
+  }
+
   span {
     font-weight: 700;
     color: #6b6b6b;
