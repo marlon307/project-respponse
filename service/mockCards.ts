@@ -110,8 +110,8 @@ export const mockminObjectCards = [{
   title: 'Jérsei de Algodão Pima',
   type: 'Jérsei',
   mainImg: image0,
-  price: 'R$ 75,00',
-  discount: 0,
+  price: 75.00,
+  discount: 6,
   options: [{
     colorName: 'Branco',
     color: '#000',
@@ -128,7 +128,8 @@ export const mockminObjectCards = [{
   title: 'Secrect state',
   type: 'Terno',
   mainImg: image1,
-  price: 'R$ 150,90',
+  price: 150.90,
+  discount: 0,
   options: [{
     colorName: 'Branco',
     color: '#fff',
@@ -148,7 +149,7 @@ export const mockminObjectCards = [{
   title: 'Prisma time',
   type: 'Relogio',
   mainImg: image3,
-  price: 'R$ 150,90',
+  price: 150.90,
   discount: 0,
   options: [{
     colorName: 'Dourado',
@@ -165,7 +166,7 @@ export const mockminObjectCards = [{
   title: 'Camisa femenina blackout',
   type: 'Camisa',
   mainImg: image4,
-  price: 'R$ 36,00',
+  price: 36.00,
   discount: 0,
   options: [{
     colorName: 'Preto',
@@ -182,7 +183,7 @@ export const mockminObjectCards = [{
   title: 'Next station',
   type: 'Jaqueta',
   mainImg: image5,
-  price: 'R$ 36,00',
+  price: 36.00,
   discount: 10,
   options: [{
     colorName: 'Jeans',

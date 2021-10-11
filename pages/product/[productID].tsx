@@ -10,6 +10,7 @@ import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
 import LoadingImage from '../../components/LoadImage';
 import { mockCards } from '../../service/mockCards';
+import calcPercentage from '../../service/calcPercentage';
 
 function productId() {
   const router = useRouter();
@@ -27,9 +28,6 @@ function productId() {
     title, type, price, descrtion, branch, gender, discount,
     details, specification, options,
   } = mockCards[0];
-
-  const calcDescount = () => (
-    (discount * price) / 100).toFixed(2);
 
   return (
     <div className={ style.product }>
@@ -73,7 +71,7 @@ function productId() {
                   <span>
                     R$
                     { ' ' }
-                    { price }
+                    { price.toFixed(2) }
                   </span>
                 </div>
                 { discount > 0 && (
@@ -82,7 +80,7 @@ function productId() {
                     <span>
                       R$
                       { ' ' }
-                      { (Number(price) - Number(calcDescount())).toFixed(2) }
+                      { (Number(price) - Number(calcPercentage(discount, price))).toFixed(2) }
                     </span>
                   </div>
                 ) }

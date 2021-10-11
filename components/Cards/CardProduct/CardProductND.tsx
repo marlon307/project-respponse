@@ -11,7 +11,7 @@ type PCardND = {
 
 function CardProductND({ id }: PCardND) {
   const {
-    type, title, mainImg, price, options,
+    type, title, mainImg, price, options, discount,
   } = mockminObjectCards[id];
   return (
     <Link
@@ -34,6 +34,7 @@ function CardProductND({ id }: PCardND) {
             title={ title }
             price={ price }
             colors={ options }
+            discount={ discount }
           />
         </div>
       </a>
