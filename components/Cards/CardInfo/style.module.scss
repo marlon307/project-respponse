@@ -23,6 +23,18 @@
   justify-content: space-between;
   font-weight: 700;
   font-size: 2ch;
+
+  div {
+    position: relative;
+
+    span:nth-child(2n) {
+      position: absolute;
+      bottom: 1.9em;
+      font-size: 1ch;
+      color: #bfbfbf;
+      text-decoration: line-through;
+    }
+  }
 }
 
 .price {

@@ -1,21 +1,36 @@
 import React from 'react';
+import calcPercentage from '../../../service/calcPercentage';
 import style from './style.module.scss';
 
 type TInfoProps = {
   type: string;
   title: string;
-  price: string;
+  price: number;
+  discount: number;
   colors: Array<Object>;
 }
 
 function CardInfo({
-  title, type, price, colors,
+  title, type, price, colors, discount,
 }: TInfoProps) {
   return (
     <div className={ style.info }>
       <div className={ style.primaryline }>
         <span>{ type }</span>
-        <span>{ price }</span>
+        <div>
+          { discount > 0 && (
+            <span>
+              R$
+              { ' ' }
+              { (price - Number(calcPercentage(discount, price))).toFixed(2) }
+            </span>
+          ) }
+          <span>
+            R$
+            { ' ' }
+            { price.toFixed(2) }
+          </span>
+        </div>
       </div>
       <div className={ style.secondline }>
         <span>{ title }</span>
