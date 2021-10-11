@@ -18,7 +18,7 @@ export const mockCards = [{
   descrtion: 'Do mesmo modo, a consulta aos diversos militantes desafia a capacidade de equalização de todos os recursos funcionais envolvidos.',
   branch: 'Nike',
   gender: 'Maculino',
-  descount: 10,
+  discount: 17,
   shipping: false,
   mainImg: image0,
   details: {
@@ -111,6 +111,7 @@ export const mockminObjectCards = [{
   type: 'Jérsei',
   mainImg: image0,
   price: 'R$ 75,00',
+  discount: 0,
   options: [{
     colorName: 'Branco',
     color: '#000',
@@ -148,6 +149,7 @@ export const mockminObjectCards = [{
   type: 'Relogio',
   mainImg: image3,
   price: 'R$ 150,90',
+  discount: 0,
   options: [{
     colorName: 'Dourado',
     color: '#e9b065',
@@ -164,6 +166,7 @@ export const mockminObjectCards = [{
   type: 'Camisa',
   mainImg: image4,
   price: 'R$ 36,00',
+  discount: 0,
   options: [{
     colorName: 'Preto',
     color: '#000',
@@ -180,6 +183,7 @@ export const mockminObjectCards = [{
   type: 'Jaqueta',
   mainImg: image5,
   price: 'R$ 36,00',
+  discount: 10,
   options: [{
     colorName: 'Jeans',
     color: '#38516d',

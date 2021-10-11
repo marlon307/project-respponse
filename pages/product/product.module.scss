@@ -27,12 +27,6 @@
   flex: none;
 }
 
-.shipping {
-  position: absolute;
-  bottom: 3%;
-  font-size: 0.8em;
-}
-
 .infodesc {
   display: flex;
   align-items: center;
@@ -167,6 +161,26 @@
 
     h2 {
       font-size: 0.8em;
+    }
+  }
+
+  .price {
+    position: relative;
+
+    div:first-child {
+      span:first-child {
+        font-size: 0.8em;
+      }
+
+      span:last-child {
+        font-size: 0.8em;
+      }
+    }
+
+    div:last-child {
+      span:first-child {
+        font-size: 0.8em;
+      }
     }
   }
 
