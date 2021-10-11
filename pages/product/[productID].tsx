@@ -24,7 +24,7 @@ function productId() {
   }, []);
 
   const {
-    title, type, price, descrtion, branch, gender, discount, shipping,
+    title, type, price, descrtion, branch, gender, discount,
     details, specification, options,
   } = mockCards[0];
 
@@ -62,7 +62,6 @@ function productId() {
             </p>
           </div>
           <div className={ style.infos }>
-            { shipping && <span className={ style.shipping }>Frete Grátis</span> }
             <div className={ style.primaryline }>
               <div className={ style.titles }>
                 <h1>{ type }</h1>
