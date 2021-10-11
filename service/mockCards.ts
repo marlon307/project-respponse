@@ -14,11 +14,11 @@ export const mockCards = [{
   type: 'Futebol',
   keyDesc: 'Nike Futebol',
   price: 68.98,
-  categoryId: 6,
+  categoryId: 0,
   descrtion: 'Do mesmo modo, a consulta aos diversos militantes desafia a capacidade de equalização de todos os recursos funcionais envolvidos.',
   branch: 'Nike',
   gender: 'Maculino',
-  descount: 0,
+  descount: 10,
   shipping: false,
   mainImg: image0,
   details: {
