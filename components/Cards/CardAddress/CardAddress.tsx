@@ -1,6 +1,6 @@
 import React from 'react';
 import Svg from '../../../assets/Svg';
-import style from './styleCardAddress.module.scss';
+import style from './style.module.scss';
 
 type PCardAdderess = {
   name: string;

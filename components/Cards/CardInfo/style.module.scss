@@ -67,6 +67,13 @@
   .primaryline {
     margin-bottom: -0.3em;
     font-size: 1.8ch;
+
+    div {
+      span:nth-child(2n) {
+        bottom: 1.5em;
+        font-size: 1.3ch;
+      }
+    }
   }
 
   .secondline {
