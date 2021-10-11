@@ -170,6 +170,26 @@
     }
   }
 
+  .price {
+    position: relative;
+
+    div:first-child {
+      span:first-child {
+        font-size: 0.8em;
+      }
+
+      span:last-child {
+        font-size: 0.8em;
+      }
+    }
+
+    div:last-child {
+      span:first-child {
+        font-size: 0.8em;
+      }
+    }
+  }
+
   .slideinfo {
     width: auto;
     margin-left: 6%;

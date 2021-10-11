@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Flicking from '@egjs/react-flicking';
 import { useRouter } from 'next/router';
+import cx from 'classnames';
 import BarColors from '../../components/Bars/BarColors';
 import style from './product.module.scss';
 import BarSize from '../../components/Bars/BarSize';
@@ -23,12 +24,12 @@ function productId() {
   }, []);
 
   const {
-    title, type, price, descrtion, branch, gender, descount, shipping,
+    title, type, price, descrtion, branch, gender, discount, shipping,
     details, specification, options,
-  }: any = mockCards[0];
+  } = mockCards[0];
 
   const calcDescount = () => (
-    (descount * price) / 100).toFixed(2);
+    (discount * price) / 100).toFixed(2);
 
   return (
     <div className={ style.product }>
@@ -67,16 +68,16 @@ function productId() {
                 <h1>{ type }</h1>
                 <h2>{ title }</h2>
               </div>
-              <div className={ descount && style.price }>
+              <div className={ cx(discount && style.price) }>
                 <div>
-                  { descount > 0 && <span>de </span> }
+                  { discount > 0 && <span>de </span> }
                   <span>
                     R$
                     { ' ' }
                     { price }
                   </span>
                 </div>
-                { descount > 0 && (
+                { discount > 0 && (
                   <div>
                     <span>por </span>
                     <span>
