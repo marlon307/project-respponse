@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
-import style from './styleHeader.module.scss';
+import style from './style.module.scss';
 import useWindowSize from '../../hooks/useWindowSize';
 import MenuDescktop from './components/MenuDescktop';
 import MenuMobile from './components/MenuMobile';

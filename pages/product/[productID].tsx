@@ -69,18 +69,21 @@ function productId() {
                 <div>
                   { discount > 0 && <span>de </span> }
                   <span>
-                    R$
-                    { ' ' }
-                    { price.toFixed(2) }
+                    { price.toLocaleString('pt-br', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    }) }
                   </span>
                 </div>
                 { discount > 0 && (
                   <div>
                     <span>por </span>
                     <span>
-                      R$
-                      { ' ' }
-                      { (Number(price) - Number(calcPercentage(discount, price))).toFixed(2) }
+                      { (Number(price) - Number(calcPercentage(discount, price)))
+                        .toLocaleString('pt-br', {
+                          style: 'currency',
+                          currency: 'BRL',
+                        }) }
                     </span>
                   </div>
                 ) }
