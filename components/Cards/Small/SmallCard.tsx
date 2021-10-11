@@ -71,20 +71,20 @@ function SmallCard({
           <div className={ style.price }>
             { discount > 0 && (
               <span>
-                {
-                  price.toLocaleString('pt-br', {
+                { (Number(price) - Number(calcPercentage(discount, price)))
+                  .toLocaleString('pt-br', {
                     style: 'currency',
                     currency: 'BRL',
-                  })
-                }
+                  }) }
               </span>
             ) }
             <span title={ `Valor da unidade ${price}` }>
-              { (Number(price) - Number(calcPercentage(discount, price)))
-                .toLocaleString('pt-br', {
+              {
+                price.toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL',
-                }) }
+                })
+              }
             </span>
           </div>
         </div>
