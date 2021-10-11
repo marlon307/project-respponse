@@ -66,21 +66,25 @@
 
 .price {
   position: relative;
-  display: flex;
-  flex-direction: column;
 
-  span:first-child {
-    text-decoration: line-through;
-    color: #a5a5a5;
-    font-size: 0.9em;
+  div:first-child {
+    span:first-child {
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    span:last-child {
+      font-size: 0.9em;
+      text-decoration: line-through;
+      color: #bfbfbf;
+    }
   }
 
-  span:nth-child(2) {
-    font-size: 1.7em;
-  }
-
-  span:nth-child(3) {
-    font-size: 0.9em;
+  div:last-child {
+    span:first-child {
+      font-size: 1em;
+      font-weight: 600;
+    }
   }
 }
 

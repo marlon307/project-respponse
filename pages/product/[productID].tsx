@@ -68,28 +68,23 @@ function productId() {
                 <h2>{ title }</h2>
               </div>
               <div className={ descount && style.price }>
-                <span>
-                  R$
-                  { ' ' }
-                  { price }
-                </span>
+                <div>
+                  { descount > 0 && <span>de </span> }
+                  <span>
+                    R$
+                    { ' ' }
+                    { price }
+                  </span>
+                </div>
                 { descount > 0 && (
-                  <>
+                  <div>
+                    <span>por </span>
                     <span>
                       R$
                       { ' ' }
                       { (Number(price) - Number(calcDescount())).toFixed(2) }
                     </span>
-                    <span>
-                      R$
-                      { ' ' }
-                      { calcDescount() }
-                      { ' ' }
-                      (
-                      { descount }
-                      %)
-                    </span>
-                  </>
+                  </div>
                 ) }
               </div>
             </div>
