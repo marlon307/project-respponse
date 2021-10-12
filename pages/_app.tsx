@@ -10,6 +10,7 @@ import Modal from '../components/Modal/Modal';
 import Loading from '../components/Loading/Loading';
 import { useStore } from '../redux/redux-store';
 import Head from '../components/Head/Head';
+import GetInfos from '../hooks/getInfos';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Provider store={ store }>
+      <GetInfos />
       <Head />
       <Header />
       <main>
