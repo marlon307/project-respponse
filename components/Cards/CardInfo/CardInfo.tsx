@@ -17,7 +17,25 @@ function CardInfo({
     <div className={ style.info }>
       <div className={ style.primaryline }>
         <span>{ type }</span>
-        <div>
+      </div>
+      <div className={ style.secondline }>
+        <span>{ title }</span>
+      </div>
+      <div className={ style.thirdline }>
+        <div className={ style.colors }>
+          { colors!
+            && colors.map((_null, index) => {
+              const value = Object.values(colors![index]);
+              return (
+                <span
+                  key={ value[0] }
+                  title={ value[0] }
+                  style={ { backgroundColor: `${value[1]}` } }
+                />
+              );
+            }) }
+        </div>
+        <div className={ style.price }>
           { discount > 0 && (
             <span>
               { (price - Number(calcPercentage(discount, price)))
@@ -36,22 +54,6 @@ function CardInfo({
               }) }
           </span>
         </div>
-      </div>
-      <div className={ style.secondline }>
-        <span>{ title }</span>
-      </div>
-      <div className={ style.thirdline }>
-        { colors!
-          && colors.map((_null, index) => {
-            const value = Object.values(colors![index]);
-            return (
-              <span
-                key={ value[0] }
-                title={ value[0] }
-                style={ { backgroundColor: `${value[1]}` } }
-              />
-            );
-          }) }
       </div>
     </div>
   );
