@@ -2,6 +2,9 @@ import * as types from '../types';
 
 // INITIALIZES actionLogin ON CLIENT
 export const actionLogin = () => (dispatch: Function) => {
+  localStorage.setItem('data_user', JSON.stringify({
+    logged: true,
+  }));
   dispatch({
     type: types.LOGIN,
     payload: {
@@ -12,6 +15,9 @@ export const actionLogin = () => (dispatch: Function) => {
 };
 
 export const actionLogOut = () => (dispatch: Function) => {
+  localStorage.setItem('data_user', JSON.stringify({
+    logged: false,
+  }));
   dispatch({
     type: types.LOGOUT,
     payload: {
