@@ -19,7 +19,7 @@ function MenuMobile() {
 
   const [dropMnMobile, setDropMnMobile] = useState(false);
 
-  function logUser() {
+  function handleClickLogOutUser() {
     if (logged) {
       dipatch(actionLogOut());
     }
@@ -83,27 +83,23 @@ function MenuMobile() {
               </Link>
             </li>
             <li>
-              <Link href="/login-register">
-                { logged ? (
-                  <a
-                    aria-label="Logout"
-                    aria-hidden="true"
-                    onClick={ logUser }
-                  >
-                    <Svg icoName="singout" />
-                    Logout
-                  </a>
-                ) : (
-                  <a
-                    aria-label="Login"
-                    aria-hidden="true"
-                    onClick={ logUser }
-                  >
+              { logged ? (
+                <a
+                  aria-label="Logout"
+                  aria-hidden="true"
+                  onClick={ handleClickLogOutUser }
+                >
+                  <Svg icoName="singout" />
+                  Logout
+                </a>
+              ) : (
+                <Link href="/login-register">
+                  <a aria-label="Login">
                     <Svg icoName="singin" />
                     Login
                   </a>
-                ) }
-              </Link>
+                </Link>
+              ) }
             </li>
           </ul>
           <div className={ style.close }>
