@@ -5,7 +5,7 @@ import cx from 'classnames';
 import style from './sass/styleMenuMobile.module.scss';
 import Bar from '../../SearchBar/Bar';
 import Svg from '../../../assets/Svg';
-import { actionLogin, actionLogOut } from '../../../redux/redux-actions';
+import { actionLogOut } from '../../../redux/redux-actions';
 
 interface IUser {
   user: {
@@ -21,8 +21,6 @@ function MenuMobile() {
 
   function logUser() {
     if (logged) {
-      dipatch(actionLogin());
-    } else {
       dipatch(actionLogOut());
     }
   }
