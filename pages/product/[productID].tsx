@@ -3,7 +3,7 @@ import Flicking from '@egjs/react-flicking';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 import BarColors from '../../components/Bars/BarColors';
-import style from './product.module.scss';
+import style from './style.module.scss';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Buttons/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';

@@ -62,6 +62,9 @@
   position: relative;
 
   div:first-child {
+    margin-top: 1em;
+    line-height: 0;
+
     span:first-child {
       font-size: 1em;
       font-weight: 600;
@@ -168,6 +171,8 @@
     position: relative;
 
     div:first-child {
+      margin-top: 0.68em;
+
       span:first-child {
         font-size: 0.8em;
       }
