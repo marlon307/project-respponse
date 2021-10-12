@@ -21,24 +21,8 @@
 
 .primaryline {
   justify-content: space-between;
-  font-weight: 700;
   font-size: 2ch;
-
-  div {
-    position: relative;
-
-    span:nth-child(2n) {
-      position: absolute;
-      bottom: 1.9em;
-      font-size: 1ch;
-      color: #bfbfbf;
-      text-decoration: line-through;
-    }
-  }
-}
-
-.price {
-  font-size: 3em;
+  font-weight: 700;
 }
 
 .secondline {
@@ -46,9 +30,27 @@
 }
 
 .thirdline {
-  margin-top: 12%;
+  margin-top: 8%;
   width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.price {
+  position: relative;
+  font-weight: 700;
+  font-size: 2ch;
+
+  span:nth-child(2n) {
+    position: absolute;
+    bottom: 1.6em;
+    font-size: 0.7em;
+    color: #bfbfbf;
+    text-decoration: line-through;
+  }
+}
+
+.colors {
   span {
     width: 0.9em;
     height: 0.9em;
@@ -66,24 +68,32 @@
 
   .primaryline {
     margin-bottom: -0.3em;
-    font-size: 1.8ch;
-
-    div {
-      span:nth-child(2n) {
-        bottom: 1.5em;
-        font-size: 0.65em;
-      }
-    }
+    font-size: 1.6ch;
   }
 
   .secondline {
     margin-top: 0.4em;
     font-size: 1.3ch;
   }
+
+  .colors {
+    span {
+      width: 0.62em;
+      height: 0.62em;
+    }
+  }
+
+  .price {
+    font-size: 1.6ch;
+
+    span:nth-child(2n) {
+      bottom: 1.5em;
+      font-size: 0.65em;
+    }
+  }
 }
 
 @media (max-width: 400px) {
-
   .primaryline {
     font-size: 1.2ch;
   }
@@ -94,10 +104,21 @@
 
   .thirdline {
     margin-top: 4%;
+  }
 
+  .colors {
     span {
       width: 0.46em;
       height: 0.46em;
+    }
+  }
+
+  .price {
+    font-size: 1.2ch;
+
+    span:nth-child(2n) {
+      bottom: 1.2em;
+      font-size: 0.8em;
     }
   }
 }
