@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from '../../SearchBar';
 import MenuBag from './MenuBag';
 import MenuUser from './MenuUser';
-import style from './sass/styleMenudescktop.module.scss';
+import style from './style.module.scss';
 
 type PMnDescktop = {
   setSearchopen: Function

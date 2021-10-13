@@ -52,7 +52,7 @@ function bag() {
         </section>
         <section className={ style.checkout }>
           <h2>Checkout</h2>
-          <div className={ style.container }>
+          <div className={ style.contcheckout }>
             <a
               href="/"
               className={ style.select }
@@ -77,7 +77,7 @@ function bag() {
               district="Alterosas"
             />
           </div>
-          <div className={ style.container }>
+          <div className={ style.contcheckout }>
             <div className={ style.select }>
               <h3>
                 <Svg icoName="truck" />
@@ -90,7 +90,7 @@ function bag() {
               <InputRadio name="Fedex - R$ 15,00 - 3 dias uteis" id="fedex" family="shippe" />
             </div>
           </div>
-          <div className={ style.container }>
+          <div className={ style.contcheckout }>
             <div className={ style.select }>
               <h3>
                 <Svg icoName="payment" />
@@ -103,7 +103,7 @@ function bag() {
               <InputRadio name="Pix" id="pix" family="payment" />
             </div>
           </div>
-          <div className={ style.container }>
+          <div className={ style.contcheckout }>
             <div className={ style.select }>
               <h3>
                 <Svg icoName="map" />
