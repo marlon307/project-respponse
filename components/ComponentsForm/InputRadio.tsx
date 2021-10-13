@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './styleInput.module.scss';
+import style from './style.module.scss';
 
 type PInputRadio = {
   name: string;

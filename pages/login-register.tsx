@@ -90,7 +90,7 @@ function login() {
           href="/login-register"
           aria-label="Login"
           onClick={ tabSectionLogin }
-          className={ cx(style.section, { [style.active]: sectionTab }) }
+          className={ cx(style.tablog, { [style.active]: sectionTab }) }
         >
           <h1>Entrar</h1>
         </a>
@@ -98,7 +98,7 @@ function login() {
           href="/login-register"
           aria-label="Registre-se"
           onClick={ tabSectionRegister }
-          className={ cx(style.section, { [style.active]: !sectionTab }) }
+          className={ cx(style.tablog, { [style.active]: !sectionTab }) }
         >
           <h1>Registre-se</h1>
         </a>

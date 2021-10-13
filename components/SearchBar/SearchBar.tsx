@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './styleSearchBar.module.scss';
+import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 
 type Props = {

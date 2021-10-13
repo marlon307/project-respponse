@@ -267,13 +267,13 @@
   }
 }
 
-.section {
+.tablog {
   display: block;
   color: #595555;
   position: relative;
 }
 
-.section.active {
+.tablog.active {
   &:after {
     content: '';
     position: absolute;
