@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { MinCardOrder } from '../components/Cards';
-import style from './sass/styleAccount.module.scss';
+import style from './style.module.scss';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading/Loading';
 

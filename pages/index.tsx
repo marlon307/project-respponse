@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import Image from 'next/image';
 import Flicking from '@egjs/react-flicking';
 import { AutoPlay } from '@egjs/flicking-plugins';
-import style from './sass/styleIndex.module.scss';
+import style from './style.module.scss';
 import { CardCategory } from '../components/Cards';
 import mockCategory from '../service/mockCategory';
 import { BtnPrevNext, BtnRedirect } from '../components/Buttons';

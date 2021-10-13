@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import style from './sass/styleAccount.module.scss';
+import style from './style.module.scss';
 import Input from '../components/ComponentsForm/Input';
 import { InputRadio } from '../components/ComponentsForm';
 

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import style from './styleSearchBar.module.scss';
+import style from './style.module.scss';
 import useOutsideClick from '../../hooks/useOutSide';
 import Svg from '../../assets/Svg';
 

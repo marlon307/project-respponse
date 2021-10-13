@@ -1,0 +1,239 @@
+.barcolor {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  width: 34px;
+  max-height: 150px;
+  background: #ffffff99;
+  backdrop-filter: saturate(100%) blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 22px 0;
+  overflow: hidden;
+  gap: 12px;
+  z-index: 5555;
+  box-shadow: 0 0 4px var(--boxshadowcolor);
+
+  input {
+    display: none;
+  }
+
+  label {
+    border: 1px solid var(--bordercolor);
+    border-radius: 50%;
+  }
+
+  span {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--bordercolor);
+  }
+
+  input:checked~span {
+    border: 6px solid;
+    background: transparent !important;
+    width: 16px;
+    height: 16px;
+  }
+
+  input:checked~span::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--bordercolor);
+    border-radius: 50%;
+  }
+}
+
+.qtd {
+  margin-top: 30px;
+  border: 1px solid var(--bordercolor);
+  border-radius: 0.8em;
+  padding: 0.2em;
+  width: fit-content;
+
+  input {
+    width: 50px;
+    text-align: center;
+    font-size: 1em;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  button {
+    width: 2.2em;
+    height: 2.2em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1em;
+    text-align: center;
+    background: transparent;
+  }
+}
+
+//-------------------buy bar--------------------
+.buybar {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--maincolormenu);
+  backdrop-filter: saturate(100%) blur(5px);
+  border-top: 1px solid var(--bordercolor);
+  border-radius: 1rem 1rem 0 0;
+  margin-bottom: 20px;
+
+  a {
+    display: none;
+  }
+}
+
+.container {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  gap: 16vh;
+}
+
+.calc {
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: #525252;
+
+  span:nth-child(2) {
+    font-weight: 500;
+    font-size: 0.98em;
+    margin-left: 12px;
+    color: #585858;
+  }
+}
+
+.calcfinish {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  div {
+    color: #525252;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+    span:nth-child(2) {
+      font-size: 0.9em;
+      font-weight: 500;
+      color: #585858;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .buybar {
+    max-height: 40vh;
+    overflow: hidden;
+    height: auto;
+
+    a {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -1px;
+      left: 3%;
+      border-radius: 0 0 8px 8px;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--bordercolor);
+
+      &:before {
+        position: absolute;
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-top: 3px solid #333;
+        border-right: 3px solid #333;
+        border-radius: 3px;
+        transform: rotate(-45deg);
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 2vh;
+  }
+
+  .calc {
+    display: none;
+  }
+
+  .open.buybar {
+    max-height: 60vh;
+
+    .calc {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      width: 280px;
+    }
+
+    a {
+      &:before {
+        transform: rotate(135deg);
+      }
+    }
+  }
+}
+
+//----------fim buy bar-------------------
+//-------------- size --------------------
+.barsize {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  input {
+    display: none;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--bordercolor);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  input:checked+span {
+    color: rgb(255, 0, 0);
+  }
+}
+
+//----------------------fim style size-------------------

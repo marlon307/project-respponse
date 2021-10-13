@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Flicking from '@egjs/react-flicking';
 import dynamic from 'next/dynamic';
+import { useSelector } from 'react-redux';
 import style from './style.module.scss';
-import mockApiFilterUsed from '../../service/mockFiltermostUsed';
 import {
   FBranch, FColor, FTissue, FSize,
 } from './index';
@@ -17,8 +17,15 @@ const OrderFilter = dynamic(() => import('./Order'), {
   loading: () => <Loading />,
 });
 
+// import mockApiFilterUsed from '../../service/mockFiltermostUsed';
 function BarFilter() {
+  const { filter } = useSelector(({ application }: any) => application);
+  const [updateList, setupdateList] = useState(filter);
   const [openFilter, setOpenFilter] = useState('');
+
+  useEffect(() => {
+    setupdateList(filter);
+  }, [filter]);
 
   return (
     <div className={ style.filter }>
@@ -46,11 +53,11 @@ function BarFilter() {
             <Svg icoName="setLeft" />
           </button>
         </div>
-        { mockApiFilterUsed.map(({
-          id, color, colorName, size, tecid, branch,
-        }) => (
-          <div className="panel" key={ id }>
-            { color && <FColor color={ color } cName={ colorName } /> }
+        { updateList.map(({
+          color, colorName, size, tecid, branch,
+        }: any) => (
+          <div className="panel" key={ colorName || size || tecid || branch }>
+            { color && <FColor color={ color } cName={ colorName } key={ colorName } /> }
             { tecid && <FTissue tecid={ tecid } /> }
             { branch && <FBranch branch={ branch } /> }
             { size && <FSize size={ size } /> }

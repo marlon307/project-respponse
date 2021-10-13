@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { SmallCard } from '../components/Cards';
-import style from './sass/styleFavorite.module.scss';
+import style from './style.module.scss';
 import Svg from '../assets/Svg';
 import mockBag from '../service/mockBag';
 

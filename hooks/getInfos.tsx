@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { actionLogin, actionLogOut } from '../redux/redux-actions';
+import { actionLogin } from '../redux/redux-actions';
 
 function getInfos() {
   const dispatch = useDispatch();
@@ -12,7 +12,6 @@ function getInfos() {
       if (getLocalStorage !== null) {
         const { logged } = JSON.parse(getLocalStorage);
         if (logged) dispatch(actionLogin());
-        else dispatch(actionLogOut());
       } else {
         localStorage.setItem('data_user', JSON.stringify({
           logged: false,

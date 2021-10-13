@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import * as types from '../types';
 
 // INITIAL TIMER STATE
-interface IReducerAction {
+interface IUserAction {
   type: string,
   payload: {
     auth: string;
@@ -16,7 +16,7 @@ const initialUserState = {
 };
 
 // TIMER REDUCER
-const userReducer = (state = initialUserState, { type, payload }: IReducerAction) => {
+const userReducer = (state = initialUserState, { type, payload }: IUserAction) => {
   switch (type) {
     case types.LOGIN:
       return {
@@ -33,10 +33,31 @@ const userReducer = (state = initialUserState, { type, payload }: IReducerAction
   }
 };
 
+interface IAppAction {
+  type: string,
+  payload: {
+    filter: Array<Object>;
+  },
+}
+
+const intialStateApp = {
+  filter: [],
+};
+
+const application = (state = intialStateApp, { type, payload }: IAppAction) => {
+  switch (type) {
+    case types.ADDFILTER:
+      return {
+        filter: [...state.filter, payload],
+      };
+    default:
+      return state;
+  }
+};
 // COMBINED REDUCERS
 const reducers = {
   user: userReducer,
-  // application: counterReducer,
+  application,
 };
 
 export default combineReducers(reducers);

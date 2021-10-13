@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { CardAdderess } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
-import style from './sass/styleAccount.module.scss';
+import style from './style.module.scss';
 import Loading from '../components/Loading/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 

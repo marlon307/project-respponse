@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
-import style from './styleInput.module.scss';
+import style from './style.module.scss';
 
 export interface Props {
   id: string;
