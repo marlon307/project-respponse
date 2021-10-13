@@ -26,3 +26,10 @@ export const actionLogOut = () => (dispatch: Function) => {
     },
   });
 };
+
+export const addFilter = (object: Object) => (dispatch: Function) => {
+  dispatch({
+    type: types.ADDFILTER,
+    payload: object,
+  });
+};

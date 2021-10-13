@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Input from '../components/ComponentsForm/Input';
-import style from './sass/styleLogin.module.scss';
+import style from './style.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
 import Svg from '../assets/Svg';
 import { actionLogin } from '../redux/redux-actions';

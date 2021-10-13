@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import style from './sass/styleAccount.module.scss';
+import style from './style.module.scss';
 import Usercfg from './usercfg';
 import Order from './orders';
 import Cards from './cards';
