@@ -24,7 +24,7 @@ function BarFilter() {
   return (
     <div className={ style.filter }>
       <Flicking
-        align="prev"
+        align="center"
         bound
       >
         <div className="panel">
