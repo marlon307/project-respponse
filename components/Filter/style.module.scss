@@ -46,8 +46,9 @@
 }
 
 .optionsfilter {
-  padding: 2em max(2em, 6%);
-  max-width: 600px;
+  padding: 2em;
+  max-width: 700px;
+  width: max-content;
   border-radius: 1em;
   background: var(--maincolor);
 
@@ -115,6 +116,24 @@
   svg {
     fill: #6f6f6f;
     transform: rotate(-90deg);
+  }
+}
+
+@media (max-width: 790px) {
+  .optionsfilter {
+    width: 500px;
+  }
+}
+
+@media (max-width: 600px) {
+  .optionsfilter {
+    width: 400px;
+  }
+}
+
+@media (max-width: 470px) {
+  .optionsfilter {
+    width: auto;
   }
 }
 
