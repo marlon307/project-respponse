@@ -40,77 +40,54 @@ Atualmente eu @_marlon307 trabalho no projeto sozinho esta sendo divertido, pois
 
 <h4 align="center">🚧  Respponse 🚀 Em construção...  🚧</h4>
 
-</br>
-
 ## O que falta fazer?
 
-- [BackEnd](>-####-BackEnd-0%)
-
-</br>
+- [BackEnd](#-BackEnd)
 
 <h2 align="center">Progresso de produção do site</h2>
 
-</br>
-
-> ### Home page
+### Home page
 
 - [x] Interface 98%
 - [ ] BackEnd 0%
 
-</br>
-
-> ### Pagina de categorias
+### Pagina de categorias
 
 - [x] Interface 98%
 - [ ] BackEnd 0%
 
-</br>
-
-> ### Pagina do Produto
+### Pagina do Produto
 
 - [x] Interface 98%
 - [ ] BackEnd 0%
 
-</br>
-
-> ### Pagina de Login
+### Pagina de Login
 
 - [x] Interface 98%
 - [ ] BackEnd 0%
 
-</br>
-
-> ### Pagina configurações do usuário
+### Pagina configurações do usuário
 
 - [x] Interface 98%
 - [ ] BackEnd 0%
 
-</br>
-
-> ### Pagina favoritos compras
+### Pagina favoritos compras
 
 - [x] Interface 98%
 - [ ] BackEnd 0%
 
-</br>
-
-> ### Pagina Checkout/Sacola de compras
+### Pagina Checkout/Sacola de compras
 
 - [x] Interface 98%
 - [ ] BackEnd 0%
 
-</br>
-
-> ### Header/Footer
+### Header/Footer
 
 - [x] Interface 98%
 - [ ] BackEnd 0%
 
-</br>
-
-> #### BackEnd 0%
+### BackEnd
 
 - [ ] Rotas 0%
-- [ ] Models 0%
+- [ ] Modelos 0%
 - [ ] Validaçoes 0%
-</br>
