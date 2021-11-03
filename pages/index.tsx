@@ -1,6 +1,7 @@
 import React, { createRef } from 'react';
 import Image from 'next/image';
-import { Carousel } from 'react-responsive-carousel';
+import Flicking from '@egjs/react-flicking';
+import { AutoPlay } from '@egjs/flicking-plugins';
 import style from './style.module.scss';
 import { CardCategory } from '../components/Cards';
 import mockCategory from '../service/mockCategory';
@@ -12,40 +13,37 @@ import Svg from '../assets/Svg';
 import LoadingImage from '../components/LoadImage';
 
 function index() {
-  const buttonPrevNext = createRef();
+  const buttonPrevNext = createRef<Flicking>();
+  const plugins = [new AutoPlay({ duration: 12000 })];
 
   return (
     <>
       <div className={ style.slide }>
-        <Carousel
-          showArrows={ false }
-          autoPlay
-          interval={ 4800 }
-          transitionTime={ 1200 }
-          infiniteLoop
-          showStatus={ false }
-          showThumbs={ false }
-          animationHandler="fade"
+        <Flicking
+          circular
+          plugins={ plugins }
         >
           { mockCarousel.map(({
             id, urlImg, url, title, priority,
           }) => (
-            <figure key={ id }>
-              <Image
-                src={ urlImg }
-                priority={ priority }
-                layout="responsive"
-                placeholder="blur"
-                alt={ title }
-                quality={ 90 }
-              />
-              <div className={ style.titleproduct }>
-                <h1>{ title }</h1>
-                <BtnRedirect path={ url } />
-              </div>
-            </figure>
+            <div className="panel" key={ id }>
+              <figure>
+                <Image
+                  src={ urlImg }
+                  priority={ priority }
+                  layout="responsive"
+                  placeholder="blur"
+                  alt={ title }
+                  quality={ 90 }
+                />
+                <div className={ style.titleproduct }>
+                  <h1>{ title }</h1>
+                  <BtnRedirect path={ url } />
+                </div>
+              </figure>
+            </div>
           )) }
-        </Carousel>
+        </Flicking>
         <div className={ style.scrollset }>
           <Svg icoName="setLeft" />
         </div>
@@ -54,21 +52,21 @@ function index() {
         <nav>
           <div className={ style.category }>
             <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="prev" />
-            <Carousel
-              showStatus={ false }
-              showThumbs={ false }
-              showIndicators={ false }
-              width="100%"
+            <Flicking
+              circular
+              align="prev"
+              ref={ buttonPrevNext }
             >
               { mockCategory.map(({ categoryId, imgCategory, categoryName }) => (
-                <CardCategory
-                  key={ categoryId }
-                  id={ categoryId }
-                  image={ imgCategory }
-                  ctgName={ categoryName }
-                />
+                <div className="panel" key={ categoryId }>
+                  <CardCategory
+                    id={ categoryId }
+                    image={ imgCategory }
+                    ctgName={ categoryName }
+                  />
+                </div>
               )) }
-            </Carousel>
+            </Flicking>
             <BtnPrevNext reference={ buttonPrevNext } typePrevOrNext="next" />
           </div>
         </nav>

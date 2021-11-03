@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import Flicking from '@egjs/react-flicking';
 import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
-import { Carousel } from 'react-responsive-carousel';
 import style from './style.module.scss';
 import {
   FBranch, FColor, FTissue, FSize,
@@ -23,7 +23,10 @@ function BarFilter() {
 
   return (
     <div className={ style.filter }>
-      <Carousel>
+      <Flicking
+        align="center"
+        bound
+      >
         <div className="panel">
           <button
             className={ style.filtername }
@@ -54,7 +57,7 @@ function BarFilter() {
             { size && <FSize size={ size } /> }
           </div>
         )) }
-      </Carousel>
+      </Flicking>
       <ContentModal
         isOpen={
           openFilter === 'ofilter' || openFilter === 'filter'
