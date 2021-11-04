@@ -35,7 +35,8 @@ function productId() {
         <AliceCarousel
           autoWidth
           infinite
-
+          disableButtonsControls
+          disableDotsControls
         >
           { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
             <div key={ imgid } className={ style.contentpanel }>
@@ -121,17 +122,15 @@ function productId() {
         <section className={ style.slideinfo }>
           <AliceCarousel
             autoWidth
+            disableButtonsControls
+            disableDotsControls
           >
-            <div className="panel">
-              <DetailsCard
-                gender={ gender }
-                branch={ branch }
-                details={ details }
-              />
-            </div>
-            <div className="panel">
-              <Spec specification={ specification } />
-            </div>
+            <DetailsCard
+              gender={ gender }
+              branch={ branch }
+              details={ details }
+            />
+            <Spec specification={ specification } />
           </AliceCarousel>
         </section>
       </div>
