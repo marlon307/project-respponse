@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Flicking from '@egjs/react-flicking';
+import AliceCarousel from 'react-alice-carousel';
 import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
 import style from './style.module.scss';
@@ -22,31 +22,30 @@ function BarFilter() {
   const [openFilter, setOpenFilter] = useState('');
 
   return (
-    <div className={ style.filter }>
-      <Flicking
-        align="center"
-        bound
+    <>
+      <AliceCarousel
+        autoWidth
+        disableButtonsControls
+        disableDotsControls
+        mouseTracking
+        paddingRight={ 16 }
       >
-        <div className="panel">
-          <button
-            className={ style.filtername }
-            type="button"
-            onClick={ () => setOpenFilter('filter') }
-          >
-            Filtro
-            <Svg icoName="setLeft" />
-          </button>
-        </div>
-        <div className="panel">
-          <button
-            type="button"
-            className={ style.filtername }
-            onClick={ () => setOpenFilter('ofilter') }
-          >
-            Ordernar Por
-            <Svg icoName="setLeft" />
-          </button>
-        </div>
+        <button
+          className={ style.filtername }
+          type="button"
+          onClick={ () => setOpenFilter('filter') }
+        >
+          Filtro
+          <Svg icoName="setLeft" />
+        </button>
+        <button
+          type="button"
+          className={ style.filtername }
+          onClick={ () => setOpenFilter('ofilter') }
+        >
+          Ordernar Por
+          <Svg icoName="setLeft" />
+        </button>
         { filter.map(({
           color, cName, size, tecid, branch,
         }: any) => (
@@ -57,7 +56,7 @@ function BarFilter() {
             { size && <FSize size={ size } /> }
           </div>
         )) }
-      </Flicking>
+      </AliceCarousel>
       <ContentModal
         isOpen={
           openFilter === 'ofilter' || openFilter === 'filter'
@@ -67,7 +66,7 @@ function BarFilter() {
         { openFilter === 'filter' && <Filter /> }
         { openFilter === 'ofilter' && <OrderFilter /> }
       </ContentModal>
-    </div>
+    </>
   );
 }
 

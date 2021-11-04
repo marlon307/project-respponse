@@ -12,11 +12,9 @@ function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrevNext) {
   async function btnPrevNext() {
     const { current } = reference;
     if (typePrevOrNext === 'next') {
-      await current?.next()
-        .catch(() => { });
+      await current?.slideNext();
     } else {
-      await current?.prev()
-        .catch(() => { });
+      await current?.slidePrev();
     }
   }
 

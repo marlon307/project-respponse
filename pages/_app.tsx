@@ -10,7 +10,7 @@ import Loading from '../components/Loading/Loading';
 import { useStore } from '../redux/redux-store';
 import Head from '../components/Head/Head';
 import GetInfos from '../hooks/getInfos';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
