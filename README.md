@@ -6,7 +6,7 @@
 
 ##### CTRL+click
 
-##### COMAND+click
+##### COMMAND+click
 
 [www.respponse.com](https://www.respponse.com)
 
