@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Flicking from '@egjs/react-flicking';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
+import AliceCarousel from 'react-alice-carousel';
 import BarColors from '../../components/Bars/BarColors';
 import style from './style.module.scss';
 import BarSize from '../../components/Bars/BarSize';
@@ -32,22 +32,23 @@ function productId() {
   return (
     <div className={ style.product }>
       <div className={ style.slide }>
-        <Flicking
-          align="center"
-          circular
+        <AliceCarousel
+          autoWidth
+          infinite
+
         >
           { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
-            <div className="panel" key={ imgid }>
-              <div className={ style.contentpanel }>
+            <div key={ imgid } className={ style.contentpanel }>
+              <figure>
                 <LoadingImage
                   url={ urlImg }
                   quality={ 90 }
                   alt={ title }
                 />
-              </div>
+              </figure>
             </div>
           )) }
-        </Flicking>
+        </AliceCarousel>
         <div className={ style.barcolor }>
           <BarColors array={ options } />
         </div>
@@ -118,9 +119,8 @@ function productId() {
           </label>
         </div>
         <section className={ style.slideinfo }>
-          <Flicking
-            align="prev"
-            bounce="100%"
+          <AliceCarousel
+            autoWidth
           >
             <div className="panel">
               <DetailsCard
@@ -132,7 +132,7 @@ function productId() {
             <div className="panel">
               <Spec specification={ specification } />
             </div>
-          </Flicking>
+          </AliceCarousel>
         </section>
       </div>
     </div>

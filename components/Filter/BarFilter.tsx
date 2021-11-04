@@ -28,7 +28,6 @@ function BarFilter() {
         disableButtonsControls
         disableDotsControls
         mouseTracking
-        paddingRight={ 16 }
       >
         <button
           className={ style.filtername }

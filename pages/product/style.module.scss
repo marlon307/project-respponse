@@ -5,9 +5,13 @@
 }
 
 .contentpanel {
-  margin: 0 6em;
-  width: 51.6ch;
+  width: 70ch;
   height: 80ch;
+
+  figure {
+    width: 50ch;
+    margin: 0 auto;
+  }
 }
 
 .barcolor {
@@ -152,7 +156,10 @@
   .contentpanel {
     width: 38.5ch;
     height: 60ch;
-    margin: 0;
+
+    figure {
+      width: 40ch;
+    }
   }
 
   .primaryline {
