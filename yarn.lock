@@ -937,7 +937,7 @@
   resolved "https://registry.yarnpkg.com/@egjs/component/-/component-3.0.2.tgz#c56794fcf1b2cb2768d09b021444779e54d0de1b"
   integrity sha512-Mze3mwEE19+dERrimg0JVLtpOHG4AC+LOuKqvF4qGZjn0k23ZbNI7b/gy1LFR63LigC2b8k70aDjy8xoT+WNPA==
 
-"@egjs/flicking-plugins@^4.2.2":
+"@egjs/flicking-plugins@^4.2.1":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@egjs/flicking-plugins/-/flicking-plugins-4.2.2.tgz#993c45dce82e451044a8b0a8cbaeadd4734d3990"
   integrity sha512-HJigDVl4z7p8rVSyET72/96s45pgJNW0M8KbbABP+Y/aYttpMHmU+c2YtotY/45ViLq4gQfZkm98AJ7p1s1Bzg==
@@ -971,7 +971,7 @@
   resolved "https://registry.yarnpkg.com/@egjs/list-differ/-/list-differ-1.0.0.tgz#2277aff52e3e4bd9318d5c30ffc3ba3b6216f05e"
   integrity sha512-HsbMKc0ZAQH+EUeCmI/2PvTYSybmkaWwakU8QGDYYgMVIg9BQ5sM0A0Nnombjxo2+JzXHxmH+jw//yGX+y6GYw==
 
-"@egjs/react-flicking@^4.4.0":
+"@egjs/react-flicking@^4.3.2":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@egjs/react-flicking/-/react-flicking-4.4.0.tgz#a0652d66fe07ec4b594e929260d2ccc235faaa08"
   integrity sha512-Ek2YKLZ/IOgBGMborumDiERibwcuXBdAoSkdoaX+9i46M7sluvqqtbV7Q2+RtmRbrqwYHgH4yrB6wO4bpS8Zlw==
@@ -4118,16 +4118,6 @@ react-responsive-carousel@^3.2.22:
     classnames "^2.2.5"
     prop-types "^15.5.8"
     react-easy-swipe "^0.0.21"
-
-react-server-dom-webpack@0.0.0-experimental-3c4c1c470-20211021:
-  version "0.0.0-experimental-3c4c1c470-20211021"
-  resolved "https://registry.yarnpkg.com/react-server-dom-webpack/-/react-server-dom-webpack-0.0.0-experimental-3c4c1c470-20211021.tgz#cdcaa2f19c8d820c1f4d31252319fb05e2de0e88"
-  integrity sha512-YyRlED5kR0C2aQ3IJ/8BR2TELt51RcDZhnUDKz+m/HU+Gb/qak0CZkG0A8Zxffom9VI6HFkUj1dRFZqm0Lh9Pg==
-  dependencies:
-    acorn "^6.2.1"
-    loose-envify "^1.1.0"
-    neo-async "^2.6.1"
-    object-assign "^4.1.1"
 
 react@^17.0.2:
   version "17.0.2"
