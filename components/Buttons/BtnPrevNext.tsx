@@ -3,7 +3,7 @@ import cx from 'classnames';
 import style from './style.module.scss';
 
 type PBtnPrevNext = {
-  typePrevOrNext: String;
+  typePrevOrNext: string;
   reference: any;
 }
 
