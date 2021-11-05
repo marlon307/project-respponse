@@ -18,6 +18,16 @@
   margin-left: 6%;
 }
 
+.buttons {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: -webkit-fill-available;
+  justify-content: space-between;
+  bottom: 48%;
+  padding: 0 4%;
+}
+
 .infos {
   position: relative;
   margin-top: -170px;
@@ -160,6 +170,10 @@
     figure {
       width: 40ch;
     }
+  }
+
+  .buttons {
+    bottom: 28%;
   }
 
   .primaryline {

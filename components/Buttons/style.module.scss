@@ -12,7 +12,6 @@
 
 .next,
 .prev {
-  position: absolute;
   background: transparent;
   display: flex;
   align-items: center;
@@ -32,16 +31,12 @@
 }
 
 .next {
-  right: -1.6em;
-
   &::before {
     transform: rotateZ(225deg);
   }
 }
 
 .prev {
-  left: -1.6em;
-
   &::before {
     transform: rotateZ(45deg);
   }
@@ -145,12 +140,6 @@
 }
 
 @media (max-width: 750px) {
-
-  .next,
-  .prev {
-    display: none;
-  }
-
   .btn_t2 {
     margin: 0 auto;
   }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 import AliceCarousel from 'react-alice-carousel';
@@ -11,9 +11,11 @@ import Svg from '../../assets/Svg';
 import LoadingImage from '../../components/LoadImage';
 import { mockCards } from '../../service/mockCards';
 import calcPercentage from '../../service/calcPercentage';
+import { BtnPrevNext } from '../../components/Buttons';
 
 function productId() {
   const router = useRouter();
+  const slideRefProductImg = createRef<AliceCarousel>();
   const [itemdrag, setItemDrag] = useState(false);
 
   useEffect(() => {
@@ -32,11 +34,16 @@ function productId() {
   return (
     <div className={ style.product }>
       <div className={ style.slide }>
+        <div className={ style.buttons }>
+          <BtnPrevNext typePrevOrNext="prev" reference={ slideRefProductImg } />
+          <BtnPrevNext typePrevOrNext="next" reference={ slideRefProductImg } />
+        </div>
         <AliceCarousel
           autoWidth
           infinite
           disableButtonsControls
           disableDotsControls
+          ref={ slideRefProductImg }
         >
           { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
             <div key={ imgid } className={ style.contentpanel }>
