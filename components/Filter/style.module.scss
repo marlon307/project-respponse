@@ -44,8 +44,8 @@
 }
 
 .optionsfilter {
-  padding: 2em;
-  max-width: 700px;
+  padding: 2em 1em 0 0;
+  max-width: 300px;
   width: max-content;
   border-radius: 1em;
   background: var(--maincolor);
@@ -115,6 +115,10 @@
     fill: #6f6f6f;
     transform: rotate(-90deg);
   }
+}
+
+.barfilter {
+  position: relative;
 }
 
 @media (max-width: 790px) {
