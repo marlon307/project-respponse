@@ -13,30 +13,38 @@
 .next,
 .prev {
   position: absolute;
-  background: #fff;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
   border-radius: 50%;
   z-index: 7777;
-  cursor: pointer;
 
-  svg {
-    height: 42px;
-    fill: #333333;
+  &::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    border-left: 3px solid #bebebe;
+    border-bottom: 3px solid #bebebe;
   }
 }
 
 .next {
-  right: 0;
-  box-shadow: -2px 0px 5px 3px #f6f6f6;
+  right: -1.6em;
+
+  &::before {
+    transform: rotateZ(225deg);
+  }
 }
 
 .prev {
-  left: -36px;
-  box-shadow: 2px 0px 5px 3px #f6f6f6;
+  left: -1.6em;
+
+  &::before {
+    transform: rotateZ(45deg);
+  }
 }
 
 .redirect {
