@@ -1,5 +1,6 @@
 .category {
   position: relative;
+  display: flex;
   margin: 110px 6% 0;
 }
 
@@ -15,7 +16,7 @@
 
 .categorycont {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   flex-wrap: wrap;
   margin: 3em 0;

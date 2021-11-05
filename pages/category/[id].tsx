@@ -7,22 +7,18 @@ const items = [0, 1, 2, 3, 4];
 
 function categoryId() {
   return (
-    <>
-      <div className={ style.filter }>
-        <BarFilter />
+    <div className={ style.category }>
+      <BarFilter />
+      <div className={ style.categorycont }>
+        {
+          items.map((qtd) => (
+            <div key={ qtd } className={ style.card }>
+              <CardProduct id={ qtd } />
+            </div>
+          ))
+        }
       </div>
-      <div className={ style.category }>
-        <div className={ style.categorycont }>
-          {
-            items.map((qtd) => (
-              <div key={ qtd } className={ style.card }>
-                <CardProduct id={ qtd } />
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 
