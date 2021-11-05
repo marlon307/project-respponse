@@ -192,4 +192,32 @@ export const mockminObjectCards = [{
     colorName: 'Jeans Claro',
     color: '#8297af',
   }],
+}, {
+  id: 5,
+  title: 'Next station',
+  type: 'Jaqueta',
+  mainImg: image5,
+  price: 36.00,
+  discount: 10,
+  options: [{
+    colorName: 'Jeans',
+    color: '#38516d',
+  }, {
+    colorName: 'Jeans Claro',
+    color: '#8297af',
+  }],
+}, {
+  id: 6,
+  title: 'Next station',
+  type: 'Jaqueta',
+  mainImg: image5,
+  price: 36.00,
+  discount: 10,
+  options: [{
+    colorName: 'Jeans',
+    color: '#38516d',
+  }, {
+    colorName: 'Jeans Claro',
+    color: '#8297af',
+  }],
 }];
