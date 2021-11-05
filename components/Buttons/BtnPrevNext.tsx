@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import style from './style.module.scss';
-import Svg from '../../assets/Svg';
 
 type PBtnPrevNext = {
   typePrevOrNext: String;
@@ -28,11 +27,7 @@ function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrevNext) {
       aria-label={
         typePrevOrNext === 'next' ? 'Próximo' : 'Voltar'
       }
-    >
-      { typePrevOrNext === 'next'
-        ? <Svg icoName="setRight" />
-        : <Svg icoName="setLeft" /> }
-    </button>
+    />
   );
 }
 
