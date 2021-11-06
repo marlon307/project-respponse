@@ -1,6 +1,8 @@
 .category {
   position: relative;
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   margin: 110px 6% 0;
 }
 
@@ -16,11 +18,10 @@
 
 .categorycont {
   display: flex;
-  align-items: baseline;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9em;
   margin: 3em 0;
-  gap: 1em;
 }
 
 
