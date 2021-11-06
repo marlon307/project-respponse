@@ -1,14 +1,12 @@
 // Style Card producsts
 .productcard {
   position: relative;
-  display: flex;
-  width: 300px;
-  height: 450px;
+  max-width: 250px;
+  min-width: 100px;
 
   figure {
-    position: relative;
-    width: 300px;
-    height: 450px;
+    width: 250px;
+    height: 100%;
     border-radius: 22px;
     overflow: hidden;
   }

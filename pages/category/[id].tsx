@@ -12,9 +12,7 @@ function categoryId() {
       <div className={ style.categorycont }>
         {
           items.map((qtd) => (
-            <div key={ qtd } className={ style.card }>
-              <CardProduct id={ qtd } />
-            </div>
+            <CardProduct key={ qtd } id={ qtd } />
           ))
         }
       </div>

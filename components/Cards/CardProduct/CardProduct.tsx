@@ -23,8 +23,6 @@ function CardProduct({ id }: PCardP) {
         <figure>
           <LoadingImage
             url={ mainImg }
-            width={ 300 }
-            height={ 450 }
             quality={ 85 }
             alt={ title }
           />
