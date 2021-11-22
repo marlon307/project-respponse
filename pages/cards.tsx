@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -30,9 +30,9 @@ function cards() {
   }, [logged]);
 
   const [openModal, setOpenModal] = useState(false);
-  function openModalCard() {
+  const openModalCard = useCallback(() => {
     setOpenModal(true);
-  }
+  }, []);
 
   return (
     <section className={ style.section }>

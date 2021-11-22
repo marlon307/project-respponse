@@ -14,7 +14,7 @@ const SearchBar = function SearchBar({ setSearchopen, searchopen }: Props) {
   }
 
   return (
-    !searchopen && (
+    !searchopen ? (
       <div className={ style.searchBar }>
         <a
           href="/"
@@ -24,7 +24,7 @@ const SearchBar = function SearchBar({ setSearchopen, searchopen }: Props) {
           <Svg icoName="search" />
         </a>
       </div>
-    )
+    ) : <div />
   );
 };
 

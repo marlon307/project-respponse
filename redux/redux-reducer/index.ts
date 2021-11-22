@@ -16,7 +16,7 @@ const initialUserState = {
 };
 
 // TIMER REDUCER
-const userReducer = ({ type, payload }: IUserAction, state = initialUserState) => {
+const userReducer = (state = initialUserState, { type, payload }: IUserAction) => {
   switch (type) {
     case types.LOGIN:
       return {
@@ -44,7 +44,7 @@ const intialStateApp = {
   filter: [],
 };
 
-const application = ({ type, payload }: IAppAction, state = intialStateApp) => {
+const application = (state = intialStateApp, { type, payload }: IAppAction) => {
   switch (type) {
     case types.ADDFILTER:
       return {

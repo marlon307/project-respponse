@@ -25,9 +25,9 @@ function bag() {
     setCupomText(value);
   }, []);
 
-  function openModalEdit() {
+  const openModalEdit = useCallback(() => {
     setOpenModal('edit');
-  }
+  }, []);
 
   return (
     <>

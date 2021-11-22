@@ -41,13 +41,13 @@ function login() {
   }, [stateLogin]);
 
   const [loadingLogin, setLoadingLogin] = useState(false);
-  function clickLogin() {
+  const clickLogin = useCallback(() => {
     const { lemail, lpsw } = stateLogin;
     if (validEmail.test(lemail) && validpsw.test(lpsw) && !loadingLogin) {
       dispatch(actionLogin());
       setLoadingLogin(true);
     }
-  }
+  }, []);
 
   // Function Register
   const [stateRegister, setStateRegister] = useState({
