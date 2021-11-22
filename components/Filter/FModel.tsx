@@ -5,7 +5,7 @@ type PGen = {
   model: string;
 }
 
-function FModel({ model }: PGen) {
+const FModel = function FModel({ model }: PGen) {
   return (
     <label htmlFor={ model } className={ style.itemfilter }>
       <input type="checkbox" name="filter" id={ model } />
@@ -14,6 +14,6 @@ function FModel({ model }: PGen) {
       </div>
     </label>
   );
-}
+};
 
 export default FModel;

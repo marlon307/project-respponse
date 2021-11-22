@@ -3,7 +3,7 @@ import cx from 'classnames';
 import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 
-function AddBag() {
+const AddBag = function AddBag() {
   return (
     <button
       className={ cx('button1', style.btn_t2) }
@@ -13,6 +13,6 @@ function AddBag() {
       <Svg icoName="bag" />
     </button>
   );
-}
+};
 
 export default AddBag;

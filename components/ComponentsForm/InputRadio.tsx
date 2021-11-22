@@ -7,7 +7,7 @@ type PInputRadio = {
   family: string;
 }
 
-function InputRadio({ name, id, family }: PInputRadio) {
+const InputRadio = function InputRadio({ name, id, family }: PInputRadio) {
   return (
     <div className={ style.inputRadio }>
       <label htmlFor={ id }>
@@ -16,6 +16,6 @@ function InputRadio({ name, id, family }: PInputRadio) {
       </label>
     </div>
   );
-}
+};
 
 export default InputRadio;

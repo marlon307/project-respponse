@@ -8,8 +8,10 @@ import style from './style.module.scss';
 import Loading from '../components/Loading/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
-const AddCard = dynamic(() => import('../components/Add/add-card'),
-  { loading: () => <Loading /> });
+const AddCard = dynamic(
+  () => import('../components/Add/add-card'),
+  { loading: () => <Loading /> },
+);
 
 interface IUser {
   user: {

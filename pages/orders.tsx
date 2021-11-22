@@ -7,8 +7,10 @@ import style from './style.module.scss';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading/Loading';
 
-const OrderId = dynamic(() => import('../components/Order/OrderId'),
-  { loading: () => <Loading /> });
+const OrderId = dynamic(
+  () => import('../components/Order/OrderId'),
+  { loading: () => <Loading /> },
+);
 
 interface IUser {
   user: {

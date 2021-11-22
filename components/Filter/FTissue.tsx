@@ -5,7 +5,7 @@ type PFTissue = {
   tecid: string;
 }
 
-function FTissue({ tecid }: PFTissue) {
+const FTissue = function FTissue({ tecid }: PFTissue) {
   return (
     <label htmlFor={ tecid } className={ style.itemfilter }>
       <input type="checkbox" name="filter" id={ tecid } />
@@ -14,6 +14,6 @@ function FTissue({ tecid }: PFTissue) {
       </div>
     </label>
   );
-}
+};
 
 export default FTissue;

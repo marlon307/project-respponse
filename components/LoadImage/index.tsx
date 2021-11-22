@@ -11,7 +11,7 @@ export interface PLoadImg {
   alt: string;
 }
 
-function LoadingImage({
+const LoadingImage = function LoadingImage({
   url, width, height, quality, alt,
 }: PLoadImg) {
   const [isloading, setIsLoading] = useState(false);
@@ -41,6 +41,6 @@ function LoadingImage({
       ) }
     </div>
   );
-}
+};
 
 export default LoadingImage;

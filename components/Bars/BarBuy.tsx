@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { BuyFinishBtn } from '../Buttons';
 import style from './style.module.scss';
 
-function BarBuy() {
+const BarBuy = function BarBuy() {
   const [openInfo, setOpenInfo] = useState(false);
 
   function openBarMenu(event: { preventDefault: () => void; }) {
@@ -42,6 +42,6 @@ function BarBuy() {
       <a href="/" onClick={ openBarMenu }> </a>
     </section>
   );
-}
+};
 
 export default BarBuy;

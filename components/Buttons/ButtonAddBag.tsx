@@ -1,11 +1,11 @@
 import React from 'react';
 
-function ButtonAddBag() {
+const ButtonAddBag = function ButtonAddBag() {
   return (
     <div>
       Adicionar a sacola
     </div>
   );
-}
+};
 
 export default ButtonAddBag;

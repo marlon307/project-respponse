@@ -10,13 +10,13 @@ const Filter = dynamic(() => import('./Filter'), {
 //   loading: () => <Loading />,
 // });
 
-function BarFilter() {
+const BarFilter = function BarFilter() {
   return (
     <div className={ style.barfilter }>
       {/* <OrderFilter /> */ }
       <Filter />
     </div>
   );
-}
+};
 
 export default BarFilter;

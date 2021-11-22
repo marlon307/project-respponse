@@ -9,7 +9,7 @@ type PCardP = {
   id: number;
 }
 
-function CardProduct({ id }: PCardP) {
+const CardProduct = function CardProduct({ id }: PCardP) {
   const {
     type, title, mainImg, price, options, discount,
   } = mockminObjectCards[id];
@@ -39,6 +39,6 @@ function CardProduct({ id }: PCardP) {
       </a>
     </Link>
   );
-}
+};
 
 export default CardProduct;

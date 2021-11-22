@@ -10,7 +10,7 @@ type PBarColors = {
   array: Array<IObjectsColor>
 }
 
-function BarColors({ array }: PBarColors) {
+const BarColors = function BarColors({ array }: PBarColors) {
   return (
     <div className={ style.barcolor } title="Cores">
       { array !== undefined
@@ -28,6 +28,6 @@ function BarColors({ array }: PBarColors) {
         )) }
     </div>
   );
-}
+};
 
 export default BarColors;

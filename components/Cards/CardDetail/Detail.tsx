@@ -2,7 +2,7 @@ import React from 'react';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
 
-function Detail({ branch, details, gender }: any) {
+const Detail = function Detail({ branch, details, gender }: any) {
   return (
     <div className={ style.detail }>
       <h3>
@@ -78,6 +78,6 @@ function Detail({ branch, details, gender }: any) {
       ) }
     </div>
   );
-}
+};
 
 export default Detail;

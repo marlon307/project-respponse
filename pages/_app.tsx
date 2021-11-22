@@ -12,7 +12,7 @@ import Head from '../components/Head/Head';
 import GetInfos from '../hooks/getInfos';
 import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -56,6 +56,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Footer />
     </Provider>
   );
-}
+};
 
 export default MyApp;

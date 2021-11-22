@@ -12,7 +12,7 @@ type PCardAdderess = {
   zipcode: string;
 }
 
-function CardAdderess({
+const CardAdderess = function CardAdderess({
   name, road, district, number, uf, city, zipcode,
 }: PCardAdderess) {
   return (
@@ -57,6 +57,6 @@ function CardAdderess({
       </div>
     </div>
   );
-}
+};
 
 export default CardAdderess;
