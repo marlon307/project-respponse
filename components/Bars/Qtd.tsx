@@ -7,7 +7,7 @@ type TQtdChange = {
   }
 }
 
-function Qtd() {
+const Qtd = function Qtd() {
   const [quantity, setQuantity] = useState(1);
   const maxLimit = 50;
 
@@ -38,6 +38,6 @@ function Qtd() {
       <button type="button" onClick={ qtdIncrement }>+</button>
     </div>
   );
-}
+};
 
 export default Qtd;

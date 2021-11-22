@@ -10,7 +10,7 @@ type TInfoProps = {
   colors: Array<Object>;
 }
 
-function CardInfo({
+const CardInfo = function CardInfo({
   title, type, price, colors, discount,
 }: TInfoProps) {
   return (
@@ -39,24 +39,28 @@ function CardInfo({
           { discount > 0 && (
             <span>
               { (price - Number(calcPercentage(discount, price)))
-                .toLocaleString('pt-br',
+                .toLocaleString(
+                  'pt-br',
                   {
                     style: 'currency',
                     currency: 'BRL',
-                  }) }
+                  },
+                ) }
             </span>
           ) }
           <span>
-            { price.toLocaleString('pt-br',
+            { price.toLocaleString(
+              'pt-br',
               {
                 style: 'currency',
                 currency: 'BRL',
-              }) }
+              },
+            ) }
           </span>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default CardInfo;

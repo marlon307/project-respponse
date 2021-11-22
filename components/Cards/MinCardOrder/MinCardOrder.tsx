@@ -8,7 +8,7 @@ type PMinCardOrder = {
   openOrderId: Function;
 }
 
-function MinCardOrder({
+const MinCardOrder = function MinCardOrder({
   idOrder, openOrderId, date, status,
 }: PMinCardOrder) {
   function orderIdOpen(event: { preventDefault: () => void; }) {
@@ -27,6 +27,6 @@ function MinCardOrder({
       <span>{ status }</span>
     </a>
   );
-}
+};
 
 export default MinCardOrder;

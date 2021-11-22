@@ -10,8 +10,10 @@ import ContentModal from '../../Modal/ContentModal';
 import Loading from '../../Loading/Loading';
 import { actionLogOut } from '../../../redux/redux-actions';
 
-const LoginRegister = dynamic(() => import('../../../pages/login-register'),
-  { loading: () => <Loading /> });
+const LoginRegister = dynamic(
+  () => import('../../../pages/login-register'),
+  { loading: () => <Loading /> },
+);
 
 type PropsMNUser = {
   setMenuDropdown: Function;
@@ -23,7 +25,7 @@ interface IUser {
   }
 }
 
-function MenuUser({ setMenuDropdown }: PropsMNUser) {
+const MenuUser = function MenuUser({ setMenuDropdown }: PropsMNUser) {
   const dipatch = useDispatch();
   const { logged } = useSelector(({ user }: IUser) => user);
 
@@ -130,6 +132,6 @@ function MenuUser({ setMenuDropdown }: PropsMNUser) {
       </ContentModal>
     </div>
   );
-}
+};
 
 export default MenuUser;

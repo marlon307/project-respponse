@@ -10,7 +10,7 @@ type PBtnIco = {
   actionLiberate: boolean;
 }
 
-function BtnIco({
+const BtnIco = function BtnIco({
   textBtn, icoName, action, actionLiberate,
 }: PBtnIco) {
   function handleClick() {
@@ -29,6 +29,6 @@ function BtnIco({
       { actionLiberate ? ' ...' : <Svg icoName={ icoName } /> }
     </button>
   );
-}
+};
 
 export default BtnIco;

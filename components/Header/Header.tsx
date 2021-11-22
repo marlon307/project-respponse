@@ -9,7 +9,7 @@ import Bar from '../SearchBar/Bar';
 import useScroll from '../../hooks/useScroll';
 import Svg from '../../assets/Svg';
 
-function Header() {
+const Header = function Header() {
   const [width] = useWindowSize();
   const scrollY = useScroll();
 
@@ -50,6 +50,6 @@ function Header() {
       <MenuMobile />
     </header>
   );
-}
+};
 
 export default Header;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -8,8 +8,10 @@ import style from './style.module.scss';
 import Loading from '../components/Loading/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
-const Addaderess = dynamic(() => import('../components/Add/add-address'),
-  { loading: () => <Loading /> });
+const Addaderess = dynamic(
+  () => import('../components/Add/add-address'),
+  { loading: () => <Loading /> },
+);
 
 interface IUser {
   user: {
@@ -28,9 +30,9 @@ function address() {
   }, [logged]);
 
   const [openModal, setOpenModal] = useState(false);
-  function openModalAddAdress() {
+  const openModalAddAdress = useCallback(() => {
     setOpenModal(true);
-  }
+  }, []);
 
   return (
     <section className={ style.section }>

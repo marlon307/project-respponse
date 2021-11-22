@@ -9,7 +9,7 @@ import mockModel from '../../service/mockModel';
 import mockSize from '../../service/mockSize';
 import style from './style.module.scss';
 
-function Filter() {
+const Filter = function Filter() {
   return (
     <section className={ style.optionsfilter }>
       <h1>Filtro</h1>
@@ -72,6 +72,6 @@ function Filter() {
       </div>
     </section>
   );
-}
+};
 
 export default Filter;

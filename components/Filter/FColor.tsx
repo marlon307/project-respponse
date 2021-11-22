@@ -8,7 +8,7 @@ export type PFColor = {
   color: string;
 }
 
-function FColor({ cName, color }: PFColor) {
+const FColor = function FColor({ cName, color }: PFColor) {
   const dispatch = useDispatch();
 
   const handleClick = useCallback(() => {
@@ -31,6 +31,6 @@ function FColor({ cName, color }: PFColor) {
       </div>
     </label>
   );
-}
+};
 
 export default FColor;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -7,8 +7,10 @@ import style from './style.module.scss';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading/Loading';
 
-const OrderId = dynamic(() => import('../components/Order/OrderId'),
-  { loading: () => <Loading /> });
+const OrderId = dynamic(
+  () => import('../components/Order/OrderId'),
+  { loading: () => <Loading /> },
+);
 
 interface IUser {
   user: {
@@ -27,9 +29,10 @@ function order() {
   }, [logged]);
 
   const [openModalOrder, setOpenModalOrder] = useState(false);
-  function openOrder() {
+
+  const openOrder = useCallback(() => {
     setOpenModalOrder(true);
-  }
+  }, []);
 
   return (
     <section className={ style.section }>

@@ -23,7 +23,7 @@ export interface PSmallCard {
   eventModal?: Function
 }
 
-function SmallCard({
+const SmallCard = function SmallCard({
   objectID, removable, editable, eventModal,
 }: PSmallCard) {
   const {
@@ -96,6 +96,6 @@ function SmallCard({
       ) }
     </div>
   );
-}
+};
 
 export default SmallCard;

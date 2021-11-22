@@ -5,7 +5,7 @@ type PFSize = {
   size: string;
 }
 
-function FSize({ size }: PFSize) {
+const FSize = function FSize({ size }: PFSize) {
   return (
     <label htmlFor={ size } className={ style.itemfilter }>
       <input type="checkbox" name="filter" id={ size } />
@@ -14,6 +14,6 @@ function FSize({ size }: PFSize) {
       </div>
     </label>
   );
-}
+};
 
 export default FSize;

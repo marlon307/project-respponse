@@ -8,7 +8,7 @@ type PBtnR = {
   path: string
 }
 
-function BtnRedirect({ path }: PBtnR) {
+const BtnRedirect = function BtnRedirect({ path }: PBtnR) {
   return (
     <div className={ cx('button1', style.redirect) }>
       <Link href={ path }>
@@ -17,6 +17,6 @@ function BtnRedirect({ path }: PBtnR) {
       <Svg icoName="indication" />
     </div>
   );
-}
+};
 
 export default BtnRedirect;

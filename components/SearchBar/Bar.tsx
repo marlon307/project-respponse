@@ -8,7 +8,7 @@ export type IProps = {
   searchopen?: boolean;
 }
 
-function Bar({ setSearchopen, searchopen }: IProps) {
+const Bar = function Bar({ setSearchopen, searchopen }: IProps) {
   const ref = useRef(null);
   useOutsideClick(ref, () => searchopen && setSearchopen!(false));
 
@@ -32,6 +32,6 @@ function Bar({ setSearchopen, searchopen }: IProps) {
       </div>
     </div>
   );
-}
+};
 
 export default Bar;

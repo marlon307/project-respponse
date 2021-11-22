@@ -11,7 +11,7 @@ type PropsMNBag = {
   setMenuDropdown: Function;
 }
 
-function MenuBag({ setMenuDropdown }: PropsMNBag) {
+const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
   const [enable, setEnable] = useState(false);
   const ref = useRef(null);
@@ -75,6 +75,6 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
       </div>
     </div>
   );
-}
+};
 
 export default MenuBag;

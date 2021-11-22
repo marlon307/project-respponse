@@ -14,7 +14,7 @@ export interface Props {
   msgError?: string;
 }
 
-function Input({
+const Input = function Input({
   id, type, name, placeHolder, autoComplete, inputValue, ivalue, regexValidator, msgError,
 }: Props) {
   const [statusValid, setSatusValid] = useState(false);
@@ -59,6 +59,6 @@ function Input({
       </span>
     </label>
   );
-}
+};
 
 export default Input;

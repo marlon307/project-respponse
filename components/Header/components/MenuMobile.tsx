@@ -13,7 +13,7 @@ interface IUser {
   }
 }
 
-function MenuMobile() {
+const MenuMobile = function MenuMobile() {
   const dipatch = useDispatch();
   const { logged } = useSelector(({ user }: IUser) => user);
 
@@ -117,6 +117,6 @@ function MenuMobile() {
       </div>
     </div>
   );
-}
+};
 
 export default MenuMobile;

@@ -7,7 +7,7 @@ import mockColors from '../../../service/colorsMock';
 import LoadingImage from '../../LoadImage';
 import img from '../../../assets/img/brian-lawson-e9o9sAy5PL4-unsplash_1-removebg-preview.png';
 
-function CardEdit() {
+const CardEdit = function CardEdit() {
   return (
     <div className={ style.edit }>
       <div className={ style.visualcont }>
@@ -26,6 +26,6 @@ function CardEdit() {
       </div>
     </div>
   );
-}
+};
 
 export default CardEdit;

@@ -7,27 +7,25 @@ type Props = {
   searchopen: boolean
 }
 
-function SearchBar({ setSearchopen, searchopen }: Props) {
+const SearchBar = function SearchBar({ setSearchopen, searchopen }: Props) {
   function openSearchBar(event: { preventDefault: () => void; }) {
     event.preventDefault();
     setSearchopen(!searchopen);
   }
 
   return (
-    <>
-      { !searchopen && (
-        <div className={ style.searchBar }>
-          <a
-            href="/"
-            onClick={ openSearchBar }
-            aria-label="Pesquisar Produtos"
-          >
-            <Svg icoName="search" />
-          </a>
-        </div>
-      ) }
-    </>
+    !searchopen ? (
+      <div className={ style.searchBar }>
+        <a
+          href="/"
+          onClick={ openSearchBar }
+          aria-label="Pesquisar Produtos"
+        >
+          <Svg icoName="search" />
+        </a>
+      </div>
+    ) : <div />
   );
-}
+};
 
 export default SearchBar;

@@ -4,7 +4,7 @@ import mockBag from '../../service/mockBag';
 import { SmallCard } from '../Cards';
 import style from './style.module.scss';
 
-function OrderId() {
+const OrderId = function OrderId() {
   function copyCode(event: { preventDefault: () => void; }) {
     event.preventDefault();
     // https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
@@ -98,6 +98,6 @@ function OrderId() {
       </div>
     </div>
   );
-}
+};
 
 export default OrderId;

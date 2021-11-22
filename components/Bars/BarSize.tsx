@@ -11,7 +11,7 @@ type TProps = {
   colorName: string;
 }
 
-function BarSize({ array, colorName }: TProps) {
+const BarSize = function BarSize({ array, colorName }: TProps) {
   const { size } = array.find((object) => object.colorName === colorName)!;
   const arraySize = Object.keys(size);
 
@@ -25,6 +25,6 @@ function BarSize({ array, colorName }: TProps) {
       )) }
     </div>
   );
-}
+};
 
 export default BarSize;

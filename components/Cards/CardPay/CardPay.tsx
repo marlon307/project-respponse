@@ -9,7 +9,7 @@ interface PCardPay {
   flag: string;
 }
 
-function CardPay({
+const CardPay = function CardPay({
   name, cardValidate, endNumber, flag,
 }: PCardPay) {
   return (
@@ -32,6 +32,6 @@ function CardPay({
       </div>
     </div>
   );
-}
+};
 
 export default CardPay;

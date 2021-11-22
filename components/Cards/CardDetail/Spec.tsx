@@ -2,7 +2,7 @@ import React from 'react';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
 
-function Spec({ specification }: any) {
+const Spec = function Spec({ specification }: any) {
   return (
     <div className={ style.detail }>
       <h3>
@@ -35,6 +35,6 @@ function Spec({ specification }: any) {
       ) }
     </div>
   );
-}
+};
 
 export default Spec;
