@@ -8,12 +8,6 @@ import BtnIco from '../components/Buttons/BtnIco';
 import Svg from '../assets/Svg';
 import { actionLogin } from '../redux/redux-actions';
 
-// https://emailregex.com/
-// eslint-disable-next-line
-const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-// https://www.w3schools.com/howto/howto_js_password_validation.asp
-const validpsw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-
 interface IUser {
   user: {
     logged: boolean;
@@ -25,6 +19,9 @@ function login() {
   const { logged } = useSelector(({ user }: IUser) => user);
   const router = useRouter();
   const [sectionTab, setSectionTab] = useState(true);
+
+  const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
+  const validPsw = new RegExp(process.env.VALIDATION_PSW!);
 
   // Functions Login
   const [stateLogin, setStateLogin] = useState({
@@ -41,13 +38,14 @@ function login() {
   }, [stateLogin]);
 
   const [loadingLogin, setLoadingLogin] = useState(false);
-  const clickLogin = useCallback(() => {
+  const clickLogin = () => {
     const { lemail, lpsw } = stateLogin;
-    if (validEmail.test(lemail) && validpsw.test(lpsw) && !loadingLogin) {
+
+    if (validEmail.test(lemail) && validPsw.test(lpsw) && !loadingLogin) {
       dispatch(actionLogin());
       setLoadingLogin(true);
     }
-  }, []);
+  };
 
   // Function Register
   const [stateRegister, setStateRegister] = useState({
@@ -123,7 +121,7 @@ function login() {
             autoComplete="current-password"
             ivalue={ stateLogin.lpsw }
             inputValue={ actionUserLogin }
-            regexValidator={ validpsw }
+            regexValidator={ validPsw }
             placeHolder="Senha"
             msgError="Senha invalida!"
           />
@@ -181,7 +179,7 @@ function login() {
             placeHolder="Senha"
             inputValue={ actionRegister }
             ivalue={ stateRegister.rpsw }
-            regexValidator={ validpsw }
+            regexValidator={ validPsw }
             msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres"
           />
         </div>
