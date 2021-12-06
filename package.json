@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/eslint-plugin-next": "^12.0.7",
     "@types/next-redux-wrapper": "^3.0.0",
     "@types/react-redux": "^7.1.18",
     "axios": "^0.24.0",
@@ -21,7 +22,6 @@
     "react-alice-carousel": "^2.5.1",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
-    "react-responsive-carousel": "^3.2.22",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
@@ -36,11 +36,11 @@
     "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.3.0",
     "eslint-config-airbnb": "^19.0.0",
-    "eslint-config-next": "^12.0.4",
+    "eslint-config-next": "^12.0.7",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "sass": "^1.43.4"
+    "sass": "^1.44.0"
   }
 }
