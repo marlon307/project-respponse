@@ -20,19 +20,6 @@
   img {
     object-fit: cover;
   }
-
-  &:after {
-    content: '';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 9em;
-    position: absolute;
-    bottom: 0;
-    z-index: 98898;
-    box-shadow: inset 0px -90px 58px -52px #0000008c;
-  }
 }
 
 .titleproduct {
