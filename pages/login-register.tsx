@@ -19,6 +19,7 @@ function login() {
   const { logged } = useSelector(({ user }: IUser) => user);
   const router = useRouter();
   const [sectionTab, setSectionTab] = useState(true);
+  const [loadingLogin, setLoadingLogin] = useState(false);
 
   const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
   const validPsw = new RegExp(process.env.VALIDATION_PSW!);
@@ -37,7 +38,6 @@ function login() {
     });
   }, [stateLogin]);
 
-  const [loadingLogin, setLoadingLogin] = useState(false);
   const clickLogin = () => {
     const { lemail, lpsw } = stateLogin;
 
