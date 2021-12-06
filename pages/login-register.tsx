@@ -20,16 +20,20 @@ function login() {
   const router = useRouter();
   const [sectionTab, setSectionTab] = useState(true);
   const [loadingLogin, setLoadingLogin] = useState(false);
+  const [stateLogin, setStateLogin] = useState({
+    lemail: '',
+    lpsw: '',
+  });
+  const [stateRegister, setStateRegister] = useState({
+    rname: '',
+    remail: '',
+    rpsw: '',
+  });
 
   const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
   const validPsw = new RegExp(process.env.VALIDATION_PSW!);
 
   // Functions Login
-  const [stateLogin, setStateLogin] = useState({
-    lemail: '',
-    lpsw: '',
-  });
-
   const actionUserLogin = useCallback((target) => {
     const { name, value } = target;
     setStateLogin({
@@ -40,7 +44,6 @@ function login() {
 
   const clickLogin = () => {
     const { lemail, lpsw } = stateLogin;
-
     if (validEmail.test(lemail) && validPsw.test(lpsw) && !loadingLogin) {
       dispatch(actionLogin());
       setLoadingLogin(true);
@@ -48,12 +51,6 @@ function login() {
   };
 
   // Function Register
-  const [stateRegister, setStateRegister] = useState({
-    rname: '',
-    remail: '',
-    rpsw: '',
-  });
-
   const actionRegister = useCallback((target) => {
     const { name, value } = target;
     setStateRegister({
@@ -61,6 +58,7 @@ function login() {
       [name]: value,
     });
   }, [stateRegister]);
+
   // Tabs Login
   function tabSectionLogin(event: { preventDefault: () => void; }) {
     event.preventDefault();
