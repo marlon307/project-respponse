@@ -119,11 +119,18 @@
 
 .barfilter {
   position: relative;
+
+  button {
+    padding: 0.8em 1em;
+    background: transparent;
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 790px) {
   .optionsfilter {
-    width: 500px;
+    max-width: 600px;
+    padding: max(1em, 2em);
   }
 }
 
