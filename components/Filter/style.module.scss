@@ -124,6 +124,16 @@
     padding: 0.8em 1em;
     background: transparent;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #3d3d3d;
+
+    svg {
+      width: 1.3em;
+      fill: #3d3d3d;
+    }
   }
 }
 
@@ -144,9 +154,7 @@
   .optionsfilter {
     width: auto;
   }
-}
 
-@media (max-width: 470px) {
   .contentorder {
     justify-content: center;
     gap: 2em;

@@ -4,6 +4,7 @@ import Loading from '../Loading/Loading';
 import style from './style.module.scss';
 import useWindowSize from '../../hooks/useWindowSize';
 import ContentModal from '../Modal/ContentModal';
+import Svg from '../../assets/Svg';
 
 const Filter = dynamic(() => import('./Filter'), {
   loading: () => <Loading />,
@@ -37,6 +38,7 @@ const BarFilter = function BarFilter() {
             type="button"
             onClick={ handleClick }
           >
+            <Svg icoName="filter" />
             <h3>Filtro</h3>
           </button>
         ) }
