@@ -93,7 +93,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   .primaryline {
     font-size: 1.2ch;
   }
@@ -110,6 +110,7 @@
     span {
       width: 0.46em;
       height: 0.46em;
+      margin-right: 4px;
     }
   }
 
@@ -120,5 +121,11 @@
       bottom: 1.2em;
       font-size: 0.8em;
     }
+  }
+}
+
+@media (max-width: 320px) {
+  .thirdline {
+    margin-top: 4px;
   }
 }
