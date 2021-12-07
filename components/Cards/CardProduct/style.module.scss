@@ -133,3 +133,29 @@
     top: 0.3em;
   }
 }
+
+@media (max-width: 415px) {
+  .productcard {
+    figure {
+      width: 150px;
+      height: 100%;
+      border-radius: 1em;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .productcard {
+    figure {
+      width: 130px;
+    }
+  }
+}
+
+@media (max-width: 280px) {
+  .productcard {
+    figure {
+      width: 200px;
+    }
+  }
+}

@@ -24,6 +24,16 @@
   margin: 3em 0;
 }
 
+@media (max-width: 790px) {
+  .category {
+    flex-direction: column;
+  }
+
+  .categorycont {
+    margin: 1em 0 3em;
+  }
+}
+
 @media (max-width: 750px) {
   .category {
     position: relative;
