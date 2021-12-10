@@ -14,7 +14,7 @@ const initialUserState = {
   authenticated: '',
   logged: false,
   adderessSelected: {
-    name: 'Entregar para ---',
+    name: 'Entregar para',
     road: '---',
     district: '---',
     number: '---',

@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import Loading from '../Loading/Loading';
 import style from './style.module.scss';
 import useWindowSize from '../../hooks/useWindowSize';
 import ContentModal from '../Modal/ContentModal';
 import Svg from '../../assets/Svg';
-
-const Filter = dynamic(() => import('./Filter'), {
-  loading: () => <Loading />,
-});
-// const OrderFilter = dynamic(() => import('./Order'), {
-//   loading: () => <Loading />,
-// });
+import Filter from './Filter';
 
 const BarFilter = function BarFilter() {
   const [sizeWidth] = useWindowSize();
