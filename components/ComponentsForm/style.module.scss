@@ -45,7 +45,10 @@
 }
 
 .inputRadio {
+  position: relative;
+
   label {
+    cursor: pointer;
     margin: 16px 0;
   }
 

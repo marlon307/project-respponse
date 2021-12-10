@@ -12,15 +12,12 @@ import Checkout from '../components/Bag';
 const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), {
   loading: () => <Loading />,
 });
-
 const RenderAdderess = dynamic(import('../components/Bag/RenderAdderess'), {
   loading: () => <Loading />,
 });
-
 const Addaddress = dynamic(import('../components/Add/add-address'), {
   loading: () => <Loading />,
 });
-
 const Addacard = dynamic(import('../components/Add/add-card'), {
   loading: () => <Loading />,
 });
