@@ -13,6 +13,7 @@ interface IUserAction {
 const initialUserState = {
   authenticated: '',
   logged: false,
+  adderessSelected: {},
 };
 
 // USER REDUCER
@@ -20,13 +21,20 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
   switch (type) {
     case types.LOGIN:
       return {
+        ...state,
         authenticated: payload.auth,
         logged: payload.log,
       };
     case types.LOGOUT:
       return {
+        ...state,
         authenticated: payload.auth,
         logged: payload.log,
+      };
+    case types.SELECT_ADDERESS:
+      return {
+        ...state,
+        adderessSelected: payload,
       };
     default:
       return state;

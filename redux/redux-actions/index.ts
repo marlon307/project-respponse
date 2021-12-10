@@ -27,13 +27,10 @@ export const actionLogOut = () => (dispatch: Function) => {
   });
 };
 
-export const actionSlecteAdderess = () => (dispatch: Function) => {
+export const actionSlecteAdderess = (objectAddres: Object) => (dispatch: Function) => {
   dispatch({
     type: types.SELECT_ADDERESS,
-    payload: {
-      auth: '',
-      log: false,
-    },
+    payload: objectAddres,
   });
 };
 
