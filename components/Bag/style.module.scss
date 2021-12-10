@@ -48,6 +48,17 @@
   }
 }
 
+.add {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  .cont {
+    cursor: pointer;
+  }
+}
+
 @media (max-width: 750px) {
   .checkout {
     margin: 0 1em 12vh;

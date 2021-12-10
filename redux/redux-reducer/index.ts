@@ -15,7 +15,7 @@ const initialUserState = {
   logged: false,
 };
 
-// TIMER REDUCER
+// USER REDUCER
 const userReducer = (state = initialUserState, { type, payload }: IUserAction) => {
   switch (type) {
     case types.LOGIN:
