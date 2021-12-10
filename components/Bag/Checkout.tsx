@@ -95,6 +95,16 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
           <InputRadio name="PayPal" id="paypal" family="payment" />
           <InputRadio name="Pix" id="pix" family="payment" />
         </div>
+        <a
+          href="/"
+          className="link"
+          onClick={ (event) => {
+            event.preventDefault();
+            setOpenModal('addcard');
+          } }
+        >
+          Adicionar Cartão
+        </a>
       </div>
       <div className={ style.contcheckout }>
         <div className={ style.select }>

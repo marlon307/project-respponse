@@ -17,7 +17,11 @@ const RenderAdderess = dynamic(import('../components/Bag/RenderAdderess'), {
   loading: () => <Loading />,
 });
 
-const Addaderess = dynamic(import('../components/Add/add-address'), {
+const Addaddress = dynamic(import('../components/Add/add-address'), {
+  loading: () => <Loading />,
+});
+
+const Addacard = dynamic(import('../components/Add/add-card'), {
   loading: () => <Loading />,
 });
 
@@ -57,12 +61,14 @@ function bag() {
           openModal === 'edit'
           || openModal === 'address'
           || openModal === 'addaddress'
+          || openModal === 'addcard'
         }
         openModal={ setOpenModal }
       >
         { openModal === 'edit' && <CardEdit /> }
         { openModal === 'address' && <RenderAdderess /> }
-        { openModal === 'addaddress' && <Addaderess /> }
+        { openModal === 'addaddress' && <Addaddress /> }
+        { openModal === 'addcard' && <Addacard /> }
       </ContentModal>
     </>
   );
