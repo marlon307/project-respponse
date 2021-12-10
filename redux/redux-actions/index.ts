@@ -27,6 +27,16 @@ export const actionLogOut = () => (dispatch: Function) => {
   });
 };
 
+export const actionSlecteAdderess = () => (dispatch: Function) => {
+  dispatch({
+    type: types.SELECT_ADDERESS,
+    payload: {
+      auth: '',
+      log: false,
+    },
+  });
+};
+
 export const addFilter = (object: Object) => (dispatch: Function) => {
   dispatch({
     type: types.ADDFILTER,

@@ -4,7 +4,11 @@ import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import style from './style.module.scss';
 
-const Checkout = function Checkout() {
+type PropsCheckout = {
+  setOpenModal: Function
+}
+
+const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
   const [cupomText, setCupomText] = useState('');
 
   const hadleCupom = useCallback(({ value }) => {
@@ -20,7 +24,7 @@ const Checkout = function Checkout() {
           className={ style.select }
           onClick={ (event) => {
             event.preventDefault();
-            // setOpenModal('address');
+            setOpenModal('address');
           } }
         >
           <h3>
