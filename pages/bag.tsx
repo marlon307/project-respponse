@@ -8,9 +8,17 @@ import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading/Loading';
 import mockBag from '../service/mockBag';
 import Checkout from '../components/Bag';
-import RenderAdderess from '../components/Bag/RenderAdderess';
 
 const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), {
+  loading: () => <Loading />,
+});
+const RenderAdderess = dynamic(import('../components/Bag/RenderAdderess'), {
+  loading: () => <Loading />,
+});
+const Addaddress = dynamic(import('../components/Add/add-address'), {
+  loading: () => <Loading />,
+});
+const Addacard = dynamic(import('../components/Add/add-card'), {
   loading: () => <Loading />,
 });
 
@@ -46,11 +54,18 @@ function bag() {
       </div>
       <BarBuy />
       <ContentModal
-        isOpen={ openModal === 'edit' || openModal === 'address' }
+        isOpen={
+          openModal === 'edit'
+          || openModal === 'address'
+          || openModal === 'addaddress'
+          || openModal === 'addcard'
+        }
         openModal={ setOpenModal }
       >
         { openModal === 'edit' && <CardEdit /> }
         { openModal === 'address' && <RenderAdderess /> }
+        { openModal === 'addaddress' && <Addaddress /> }
+        { openModal === 'addcard' && <Addacard /> }
       </ContentModal>
     </>
   );
