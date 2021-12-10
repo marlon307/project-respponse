@@ -335,8 +335,9 @@
   margin: 110px auto 2em;
   max-width: 1200px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 3%;
 
   .title {
     margin: 0 6% 22px;
@@ -352,87 +353,31 @@
   }
 
   li {
-    margin: 0 6% 42px;
+    margin-bottom: 42px;
   }
 }
 
 .list {
-  width: 60%;
+  width: 50%;
 
   ul {
     padding-top: 16px;
   }
 }
 
-.checkout {
-  margin-left: 4%;
-  width: 35%;
-
-  h3 {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    color: #505050;
-    font-weight: 600;
-  }
-}
-
-.contcheckout {
-  label {
-    display: flex;
-    margin: 16px 0;
-  }
-}
-
-
-.options {
-  padding: 2px 12px;
-  margin: 0 auto 0;
-  border: 1px solid var(--bordercolor);
-  border-radius: 20px;
-
-  .descount {
-    display: flex;
-    margin: 16px 8px;
-    color: #585858;
-  }
-}
-
-.select {
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin: 18px 0;
-
-  span {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-top: 3px solid #333;
-    border-right: 3px solid #333;
-    border-radius: 3px;
-    transform: rotate(135deg);
-    right: 12px;
-  }
-}
-
 @media (max-width: 750px) {
   .bag {
     margin-top: 70px;
+    gap: 0;
   }
 
   .list {
     width: 100%;
-  }
-
-  .checkout {
-    margin: 0 6% 12vh;
-    width: 100%;
+    padding: 0 1em;
   }
 }
 
 //-----------------Fim Style Bag-------------------
-
 //----------------------Account------------------------------------------------
 .section {
   margin: 110px auto;
