@@ -26,7 +26,6 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
   const {
     name, road, district, number, uf, city, zipcode,
   } = useSelector(({ user }: TypUserObjAderes) => user.adderessSelected);
-
   const [cupomText, setCupomText] = useState('');
 
   const hadleCupom = useCallback(({ value }) => {
@@ -60,6 +59,16 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
           zipcode={ zipcode }
           district={ district }
         />
+        <a
+          href="/"
+          className="link"
+          onClick={ (event) => {
+            event.preventDefault();
+            setOpenModal('addaddress');
+          } }
+        >
+          Adicionar endereço
+        </a>
       </div>
       <div className={ style.contcheckout }>
         <div className={ style.select }>

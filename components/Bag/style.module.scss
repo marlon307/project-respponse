@@ -11,9 +11,17 @@
 }
 
 .contcheckout {
+  position: relative;
+
   label {
     display: flex;
     margin: 16px 0;
+  }
+
+  a:nth-child(3) {
+    font-size: 0.9em;
+    position: absolute;
+    right: 0;
   }
 }
 
