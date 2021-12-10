@@ -8,7 +8,7 @@ export const actionLogin = () => (dispatch: Function) => {
   dispatch({
     type: types.LOGIN,
     payload: {
-      auth: Date.now(),
+      auth: new Date(),
       log: true,
     },
   });
