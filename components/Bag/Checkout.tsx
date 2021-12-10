@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import Svg from '../../assets/Svg';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
@@ -7,8 +8,25 @@ import style from './style.module.scss';
 type PropsCheckout = {
   setOpenModal: Function
 }
+type TypUserObjAderes = {
+  user: {
+    adderessSelected: {
+      name: string;
+      road: string;
+      district: string;
+      number: string;
+      uf: string;
+      city: string;
+      zipcode: string;
+    }
+  }
+}
 
 const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
+  const {
+    name, road, district, number, uf, city, zipcode,
+  } = useSelector(({ user }: TypUserObjAderes) => user.adderessSelected);
+
   const [cupomText, setCupomText] = useState('');
 
   const hadleCupom = useCallback(({ value }) => {
@@ -34,13 +52,13 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
           <span />
         </a>
         <CardAdderess
-          name="Name Teste"
-          road="Fernando de noronha"
-          number="123"
-          city="Ipatinga"
-          uf="MG"
-          zipcode="12345-67"
-          district="Alterosas"
+          name={ name }
+          road={ road }
+          number={ number }
+          city={ city }
+          uf={ uf }
+          zipcode={ zipcode }
+          district={ district }
         />
       </div>
       <div className={ style.contcheckout }>

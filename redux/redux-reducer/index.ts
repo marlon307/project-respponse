@@ -13,7 +13,15 @@ interface IUserAction {
 const initialUserState = {
   authenticated: '',
   logged: false,
-  adderessSelected: {},
+  adderessSelected: {
+    name: 'Entregar para ---',
+    road: '---',
+    district: '---',
+    number: '---',
+    uf: '---',
+    city: '---',
+    zipcode: '---',
+  },
 };
 
 // USER REDUCER
