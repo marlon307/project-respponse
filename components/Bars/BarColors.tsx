@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import style from './style.module.scss';
 
 interface IObjectsColor {
@@ -11,20 +11,32 @@ type PBarColors = {
 }
 
 const BarColors = function BarColors({ array }: PBarColors) {
+  const handleClick = useCallback((color) => {
+    const qwert = color;
+    return qwert;
+  }, []);
+
   return (
     <div className={ style.barcolor } title="Cores">
       { array !== undefined
         && array.map(({ colorName, color }) => (
-          <label htmlFor={ colorName } key={ color }>
-            <input id={ colorName } type="radio" name="color" />
-            <span
-              title={ colorName }
-              style={ {
-                background: color,
-                borderColor: color,
-              } }
-            />
-          </label>
+          <button type="button" key={ color }>
+            <label htmlFor={ colorName }>
+              <input
+                id={ colorName }
+                onClick={ () => handleClick(color) }
+                type="radio"
+                name="color"
+              />
+              <span
+                title={ colorName }
+                style={ {
+                  background: color,
+                  borderColor: color,
+                } }
+              />
+            </label>
+          </button>
         )) }
     </div>
   );

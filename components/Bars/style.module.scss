@@ -17,6 +17,16 @@
   z-index: 5555;
   box-shadow: 0 0 4px var(--boxshadowcolor);
 
+  button {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+
   input {
     display: none;
   }
