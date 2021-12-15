@@ -46,48 +46,7 @@ Atualmente eu @_marlon307 trabalho no projeto sozinho esta sendo divertido, pois
 
 <h2 align="center">Progresso de produção do site</h2>
 
-### Home page
 
-- [x] Interface 98%
-- [ ] BackEnd 0%
+- Font End 92%
+- BackEnd 0%
 
-### Pagina de categorias
-
-- [x] Interface 98%
-- [ ] BackEnd 0%
-
-### Pagina do Produto
-
-- [x] Interface 98%
-- [ ] BackEnd 0%
-
-### Pagina de Login
-
-- [x] Interface 98%
-- [ ] BackEnd 0%
-
-### Pagina configurações do usuário
-
-- [x] Interface 98%
-- [ ] BackEnd 0%
-
-### Pagina favoritos compras
-
-- [x] Interface 98%
-- [ ] BackEnd 0%
-
-### Pagina Checkout/Sacola de compras
-
-- [x] Interface 98%
-- [ ] BackEnd 0%
-
-### Header/Footer
-
-- [x] Interface 98%
-- [ ] BackEnd 0%
-
-### BackEnd
-
-- [ ] Rotas 0%
-- [ ] Modelos 0%
-- [ ] Validaçoes 0%
