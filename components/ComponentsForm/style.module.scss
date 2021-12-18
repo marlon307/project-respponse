@@ -20,7 +20,7 @@
 
   input:not(:placeholder-shown)~.ph,
   input:focus~.ph {
-    top: -26px;
+    transform: translateY(-40px);
   }
 }
 
@@ -29,7 +29,6 @@
   position: absolute;
   color: #9791E4;
   transition: 0.3s;
-  top: 14px;
   width: 88%;
   overflow: hidden;
   white-space: nowrap;
