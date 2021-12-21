@@ -13,7 +13,7 @@ import { mockCards } from '../../service/mockCards';
 import calcPercentage from '../../service/calcPercentage';
 import { BtnPrevNext } from '../../components/Buttons';
 
-type TplotOptions = {
+type TypeObject = {
   [key: string]: string | number;
 }
 
@@ -41,14 +41,27 @@ function productId() {
     const index = options.findIndex(({ color }) => color === colorChecked);
 
     if (index !== -1) {
-      const disableOptionSize = document.getElementById(sizeChecked)!;
-      const typingObject: TplotOptions = options[index].size;
+      const typingObject: TypeObject = options[index].size;
 
-      if (typingObject[sizeChecked] < 1) {
-        disableOptionSize.setAttribute('disabled', 'disabled');
-      }
+      // Ira habilitar os inputs se conter no array
+      const getSizeAvailable = Object.keys(options[index].size)
+        .filter((element) => typingObject[element] > 0);
+
+      getSizeAvailable.forEach((sizeAvailable) => {
+        const disableOptionSize = document.getElementById(sizeAvailable)!;
+        disableOptionSize.removeAttribute('disabled');
+      });
+
+      // Ira desbilitar os inputs se não conter no array
+      const getNotSizeAvailable = Object.keys(options[index].size)
+        .filter((element) => typingObject[element] < 1);
+
+      getNotSizeAvailable.forEach((sizeAvailable) => {
+        const disableOptionSize = document.getElementById(sizeAvailable)!;
+        disableOptionSize.setAttribute('disabled', '');
+      });
     }
-  }, [colorChecked]);
+  }, [colorChecked, sizeChecked]);
 
   return (
     <div className={ style.product }>

@@ -49,7 +49,7 @@ export const mockCards = [{
       PP: 30,
       GG: 50,
       G: 40,
-      M: 20,
+      M: 0,
     },
     imgs: [{
       imgid: 0,

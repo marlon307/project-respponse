@@ -14,9 +14,9 @@ const CardEdit = function CardEdit() {
         <div className={ style.contimg }>
           <LoadingImage url={ img } alt="title" />
         </div>
-        <BarColors array={ mockColors } />
+        <BarColors array={ mockColors } execFunction={ () => { } } />
       </div>
-      <BarSize array={ mockColors } colorName="Laranja" />
+      <BarSize array={ mockColors } colorName="Laranja" execFunction={ () => { } } />
       <div className={ style.secondline }>
         <Qtd />
         <div className={ style.titles }>
