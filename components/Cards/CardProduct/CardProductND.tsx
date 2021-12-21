@@ -18,7 +18,7 @@ const CardProductND = function CardProductND({ id }: PCardND) {
       href={ `/product/${id.toString()}` }
       as={ `/product/${id.toString()}` }
     >
-      <a className={ style.productcardND }>
+      <a className={ style.productcardND } aria-label={ `${type} ${title}` }>
         <figure>
           <LoadingImage
             url={ mainImg }

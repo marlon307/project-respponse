@@ -61,7 +61,6 @@ function index() {
               { mockCategory.map(({ categoryId, imgCategory, categoryName }) => (
                 <CardCategory
                   key={ categoryId }
-                  id={ categoryId }
                   image={ imgCategory }
                   ctgName={ categoryName }
                 />

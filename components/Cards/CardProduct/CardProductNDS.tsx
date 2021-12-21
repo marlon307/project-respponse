@@ -19,7 +19,7 @@ const CardProductNDS = function CardProductNDS({ id }: TCardNDS) {
       href={ `/product/${id.toString()}` }
       as={ `/product/${id.toString()}` }
     >
-      <a className={ style.productcardNDS }>
+      <a className={ style.productcardNDS } aria-label={ `${type} ${title}` }>
         <figure>
           <LoadingImage
             url={ mainImg }

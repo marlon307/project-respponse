@@ -4,16 +4,15 @@ import style from './style.module.scss';
 import LoadingImage from '../../LoadImage';
 
 type PCardCategory = {
-  id: string;
   image: any;
   ctgName: string;
 }
 
-const CardCategory = function CardCategory({ id, image, ctgName }: PCardCategory) {
+const CardCategory = function CardCategory({ image, ctgName }: PCardCategory) {
   return (
     <div className={ style.itencategory }>
       <Link href={ `/category/${ctgName}` }>
-        <a id={ id }>
+        <a>
           <figure className={ style.imgctg }>
             <LoadingImage
               url={ image }
