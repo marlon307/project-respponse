@@ -25,7 +25,7 @@ function index() {
           animationDuration={ 900 }
         >
           { mockCarousel.map(({
-            id, urlImg, url, title, priority,
+            id, category, urlImg, url, title, priority,
           }) => (
             <figure key={ id }>
               <Image
@@ -38,7 +38,7 @@ function index() {
               />
               <div className={ style.titleproduct }>
                 <h1>{ title }</h1>
-                <BtnRedirect path={ url } />
+                <BtnRedirect path={ url } titleBtn={ `Veja ${category}` } />
               </div>
             </figure>
           )) }
@@ -77,14 +77,14 @@ function index() {
           </div>
           <div className={ style.cont2 }>
             <h1>Óculos de varias marcas e modelos</h1>
-            <BtnRedirect path="/category/oculos" />
+            <BtnRedirect path="/category/oculos" titleBtn="Óculos" />
           </div>
         </div>
       </section>
       <section className={ style.produinitial }>
         <div className={ style.contentcards }>
           <div className={ style.column }>
-            <BtnRedirect path="/category/relogios" />
+            <BtnRedirect path="/category/relogios" titleBtn="Lançamentos" />
           </div>
           <div className={ style.column }>
             <h1>Veja as últimas novidades</h1>

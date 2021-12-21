@@ -51,12 +51,11 @@
   font-weight: 600;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 100%;
 
   a {
-    width: 100%;
-    padding: 18px 24px;
+    padding: 18px 0 18px 24px;
     color: #006bef;
   }
 
@@ -69,15 +68,13 @@
   }
 
   svg {
-    position: absolute;
     fill: #006bef;
-    transform: translateX(-3em);
     transition: transform 0.2s ease-in-out;
   }
 
   &:hover svg {
     fill: #fff;
-    transform: translateX(-1em);
+    transform: translateX(1em);
   }
 }
 

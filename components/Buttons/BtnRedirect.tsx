@@ -5,14 +5,15 @@ import Svg from '../../assets/Svg';
 import style from './style.module.scss';
 
 type PBtnR = {
-  path: string
+  path: string;
+  titleBtn: string;
 }
 
-const BtnRedirect = function BtnRedirect({ path }: PBtnR) {
+const BtnRedirect = function BtnRedirect({ path, titleBtn }: PBtnR) {
   return (
     <div className={ cx('button1', style.redirect) }>
       <Link href={ path }>
-        <a>Veja Mais</a>
+        <a>{ titleBtn }</a>
       </Link>
       <Svg icoName="indication" />
     </div>
