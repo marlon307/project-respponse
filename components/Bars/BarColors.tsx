@@ -7,13 +7,13 @@ interface IObjectsColor {
 }
 
 type PBarColors = {
-  array: Array<IObjectsColor>
+  array: Array<IObjectsColor>;
+  execFunction: Function
 }
 
-const BarColors = function BarColors({ array }: PBarColors) {
-  const handleClick = useCallback((color) => {
-    const qwert = color;
-    return qwert;
+const BarColors = function BarColors({ array, execFunction }: PBarColors) {
+  const handleClick = useCallback((color: String) => {
+    execFunction(color);
   }, []);
 
   return (

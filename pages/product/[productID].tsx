@@ -13,10 +13,16 @@ import { mockCards } from '../../service/mockCards';
 import calcPercentage from '../../service/calcPercentage';
 import { BtnPrevNext } from '../../components/Buttons';
 
+type TplotOptions = {
+  [key: string]: string | number;
+}
+
 function productId() {
   const router = useRouter();
   const slideRefProductImg = createRef<AliceCarousel>();
   const [itemdrag, setItemDrag] = useState(false);
+  const [sizeChecked, setSizeChecked] = useState('');
+  const [colorChecked, setColorChecked] = useState('');
 
   useEffect(() => {
     const { productID } = router.query;
@@ -30,6 +36,19 @@ function productId() {
     title, type, price, descrtion, branch, gender, discount,
     details, specification, options,
   } = mockCards[0];
+
+  useEffect(() => {
+    const index = options.findIndex(({ color }) => color === colorChecked);
+
+    if (index !== -1) {
+      const disableOptionSize = document.getElementById(sizeChecked)!;
+      const typingObject: TplotOptions = options[index].size;
+
+      if (typingObject[sizeChecked] < 1) {
+        disableOptionSize.setAttribute('disabled', 'disabled');
+      }
+    }
+  }, [colorChecked]);
 
   return (
     <div className={ style.product }>
@@ -58,7 +77,10 @@ function productId() {
           )) }
         </AliceCarousel>
         <div className={ style.barcolor }>
-          <BarColors array={ options } />
+          <BarColors
+            array={ options }
+            execFunction={ setColorChecked }
+          />
         </div>
       </div>
       <div className={ style.maincontentinfo }>
@@ -99,7 +121,11 @@ function productId() {
               </div>
             </div>
             <div className={ style.secondline }>
-              <BarSize array={ options } colorName="Branco" />
+              <BarSize
+                array={ options }
+                colorName="Branco"
+                execFunction={ setSizeChecked }
+              />
             </div>
             <AddBag />
           </div>
