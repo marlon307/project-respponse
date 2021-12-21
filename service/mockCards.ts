@@ -45,7 +45,7 @@ export const mockCards = [{
     colorName: 'Branco',
     color: '#fff',
     size: {
-      P: 28,
+      P: 0,
       PP: 30,
       GG: 50,
       G: 40,
