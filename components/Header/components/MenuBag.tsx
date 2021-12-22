@@ -6,6 +6,7 @@ import style from './style.module.scss';
 import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
+import calcPercentage from '../../../service/calcPercentage';
 
 type PropsMNBag = {
   setMenuDropdown: Function;
@@ -78,7 +79,21 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
           <div className={ style.baginfo }>
             <div>
               <span>Total:</span>
-              <span>R$ 554,00</span>
+              <span>
+                { bagItems.reduce((
+                  accumulator,
+                  { quantity, price, discount },
+                ) => {
+                  let acc = accumulator;
+                  const valueCalc = (acc += quantity)
+                    * price - calcPercentage(discount, price);
+                  return valueCalc;
+                }, 0)
+                  .toLocaleString('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }) }
+              </span>
             </div>
             <button
               type="button"

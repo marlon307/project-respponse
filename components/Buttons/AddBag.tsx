@@ -44,7 +44,7 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
 
     const { colorName }: any = options.find(({ color }) => color === colorSelected);
 
-    const checkItembag: any = bagItems.findIndex(
+    const index: any = bagItems.findIndex(
       (object: any) => object.id === id
         && object.color === colorSelected
         && object.size === sizeSelected,
@@ -52,8 +52,8 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
 
     let newArray = [];
 
-    if (checkItembag >= 0) {
-      bagItems[checkItembag].quantity += 1;
+    if (index >= 0) {
+      bagItems[index].quantity += 1;
 
       newArray = [...bagItems];
     } else {
