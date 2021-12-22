@@ -70,12 +70,12 @@ export const mockCards = [{
   }, {
     idc: 'grey002',
     colorName: 'Cinza Escuro',
-    color: '#333',
+    color: '#868686',
     size: {
       P: 28,
       PP: 30,
       GG: 50,
-      G: 40,
+      G: 0,
       M: 20,
     },
     imgs: [{
@@ -90,7 +90,7 @@ export const mockCards = [{
     colorName: 'Preto',
     color: '#000',
     size: {
-      P: 28,
+      P: 0,
       PP: 30,
       GG: 50,
       G: 40,
