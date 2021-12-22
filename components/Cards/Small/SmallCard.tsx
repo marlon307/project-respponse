@@ -2,7 +2,7 @@ import React from 'react';
 import style from './style.module.scss';
 import Svg from '../../../assets/Svg';
 import LoadingImage from '../../LoadImage';
-import calcPercentage from '../../../service/calcPercentage';
+import { calcPercentage } from '../../../hooks/useCalcs';
 
 type ObjectId = {
   title: string;
