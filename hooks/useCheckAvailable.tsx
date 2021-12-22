@@ -5,7 +5,7 @@ type ObjectType = {
 }
 
 type TypeObject = {
-  [key: string]: string | number;
+  [key: string]: any;
 }
 
 function checkSizeAvailable(options: Array<ObjectType>, value: string) {
@@ -35,12 +35,8 @@ function checkSizeAvailable(options: Array<ObjectType>, value: string) {
   }
 }
 
-type TObject = {
-  [key: string]: any
-}
-
 function checkColorAvailable(options: Array<ObjectType>, value: string) {
-  const getColorInput = options.filter(({ size }: TObject) => size[value] > 0);
+  const getColorInput = options.filter(({ size }: TypeObject) => size[value] > 0);
   const getColorAvaliable = getColorInput.map(({ idc }) => idc);
 
   getColorAvaliable.forEach((colorid) => {
@@ -48,7 +44,7 @@ function checkColorAvailable(options: Array<ObjectType>, value: string) {
     disableOptionColor.removeAttribute('disabled');
   });
 
-  const getSizes = options.filter(({ size }: TObject) => size[value] < 1);
+  const getSizes = options.filter(({ size }: TypeObject) => size[value] < 1);
   const getSizesColorAvaliable = getSizes.map(({ idc }) => idc);
 
   getSizesColorAvaliable.forEach((colorid) => {
