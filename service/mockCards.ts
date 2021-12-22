@@ -39,7 +39,6 @@ export const mockCards = [{
     model: 'New Era NEI18MOL026',
     occasion: 'de uso Casual',
     typeshipping: 'Leve',
-
   },
   options: [{
     colorName: 'Branco',
@@ -47,9 +46,9 @@ export const mockCards = [{
     size: {
       P: 0,
       PP: 30,
-      GG: 50,
+      GG: 0,
       G: 40,
-      M: 0,
+      M: 20,
     },
     imgs: [{
       imgid: 0,
@@ -101,8 +100,7 @@ export const mockCards = [{
       imgid: 1,
       urlImg: cleanImage2,
     }],
-  },
-  ],
+  }],
 }];
 
 export const mockminObjectCards = [{

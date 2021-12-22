@@ -12,10 +12,7 @@ import LoadingImage from '../../components/LoadImage';
 import { mockCards } from '../../service/mockCards';
 import calcPercentage from '../../service/calcPercentage';
 import { BtnPrevNext } from '../../components/Buttons';
-
-type TypeObject = {
-  [key: string]: string | number;
-}
+import useCheckAvailable from '../../hooks/useCheckAvailable';
 
 function productId() {
   const router = useRouter();
@@ -38,30 +35,12 @@ function productId() {
   } = mockCards[0];
 
   useEffect(() => {
-    const index = options.findIndex(({ color }) => color === colorChecked);
-
-    if (index !== -1) {
-      const typingObject: TypeObject = options[index].size;
-
-      // Ira habilitar os inputs se conter no array
-      const getSizeAvailable = Object.keys(options[index].size)
-        .filter((element) => typingObject[element] > 0);
-
-      getSizeAvailable.forEach((sizeAvailable) => {
-        const disableOptionSize = document.getElementById(sizeAvailable)!;
-        disableOptionSize.removeAttribute('disabled');
-      });
-
-      // Ira desbilitar os inputs se não conter no array
-      const getNotSizeAvailable = Object.keys(options[index].size)
-        .filter((element) => typingObject[element] < 1);
-
-      getNotSizeAvailable.forEach((sizeAvailable) => {
-        const disableOptionSize = document.getElementById(sizeAvailable)!;
-        disableOptionSize.setAttribute('disabled', '');
-      });
-    }
+    useCheckAvailable(options, colorChecked);
   }, [colorChecked, sizeChecked]);
+
+  useEffect(() => {
+
+  }, [sizeChecked, options]);
 
   return (
     <div className={ style.product }>
