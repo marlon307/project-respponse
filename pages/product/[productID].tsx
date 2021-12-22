@@ -10,7 +10,7 @@ import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
 import LoadingImage from '../../components/LoadImage';
 import { mockCards } from '../../service/mockCards';
-import calcPercentage from '../../service/calcPercentage';
+import { calcPercentage } from '../../hooks/useCalcs';
 import { BtnPrevNext } from '../../components/Buttons';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 

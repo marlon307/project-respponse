@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
@@ -6,7 +6,7 @@ import style from './style.module.scss';
 import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
-import calcPercentage from '../../../service/calcPercentage';
+import { calcAllValuesArray } from '../../../hooks/useCalcs';
 
 type PropsMNBag = {
   setMenuDropdown: Function;
@@ -33,6 +33,7 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
   const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
   const [enable, setEnable] = useState(false);
+  const [valueTotalProducts, setValueTotalProducts] = useState('');
   const ref = useRef(null);
 
   useOutsideClick(ref, () => {
@@ -47,6 +48,10 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
     setEnable(!enable);
     setMenuDropdown('bag');
   }
+
+  useEffect(() => {
+    setValueTotalProducts(calcAllValuesArray(bagItems));
+  }, [bagItems]);
 
   return (
     <div className={ style.bag }>
@@ -80,19 +85,7 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
             <div>
               <span>Total:</span>
               <span>
-                { bagItems.reduce((
-                  accumulator,
-                  { quantity, price, discount },
-                ) => {
-                  let acc = accumulator;
-                  const valueCalc = (acc += quantity)
-                    * price - calcPercentage(discount, price);
-                  return valueCalc;
-                }, 0)
-                  .toLocaleString('pt-br', {
-                    style: 'currency',
-                    currency: 'BRL',
-                  }) }
+                { valueTotalProducts }
               </span>
             </div>
             <button

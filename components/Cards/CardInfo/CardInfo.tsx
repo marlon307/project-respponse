@@ -1,5 +1,5 @@
 import React from 'react';
-import calcPercentage from '../../../service/calcPercentage';
+import { calcPercentage } from '../../../hooks/useCalcs';
 import style from './style.module.scss';
 
 type TInfoProps = {
