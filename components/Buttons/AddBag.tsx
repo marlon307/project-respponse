@@ -25,7 +25,9 @@ type PBtnAddBag = {
 
 type TObjectUserBag = {
   user: {
-    bagItems: Array<Object>
+    bagItems: Array<{
+      quantity: number;
+    }>
   }
 }
 
@@ -42,35 +44,21 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
 
     const { colorName }: any = options.find(({ color }) => color === colorSelected);
 
-    const checkItembag: any = bagItems.find(
+    const checkItembag: any = bagItems.findIndex(
       (object: any) => object.id === id
         && object.color === colorSelected
         && object.size === sizeSelected,
     );
-    const removeItenId = bagItems.filter(
-      (object: any) => object.id !== id
-        && object.color !== colorSelected
-        && object.size !== sizeSelected,
-    );
+
     let newArray = [];
 
-    if (checkItembag) {
-      newArray = [
-        ...removeItenId, {
-          id,
-          title,
-          type,
-          mainImg,
-          colorName,
-          color: colorSelected,
-          size: sizeSelected,
-          price,
-          discount,
-          quantity: checkItembag.quantity += 1,
-        }];
+    if (checkItembag >= 0) {
+      bagItems[checkItembag].quantity += 1;
+
+      newArray = [...bagItems];
     } else {
       newArray = [
-        ...removeItenId, {
+        ...bagItems, {
           id,
           title,
           type,
