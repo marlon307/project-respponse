@@ -36,19 +36,36 @@ const testemockCards = [{
     occasion: 'de uso Casual',
     typeshipping: 'Leve',
   },
-  options: [{
-    P: 28,
-    colors: [{
+  options: {
+    P: [{
+      quantity: 8,
       colorName: 'Preto',
       color: '#000',
     }, {
-      colorName: 'Branco',
-      color: '#fff',
-    }, {
+      quantity: 50,
       colorName: 'Azul',
       color: '#2e9cc3',
-    },
-    ],
+    }],
+    PP: [{
+      quantity: 8,
+      colorName: 'Preto',
+      color: '#000',
+    }],
+    GG: [{
+      quantity: 8,
+      colorName: 'Preto',
+      color: '#000',
+    }],
+    G: [{
+      quantity: 8,
+      colorName: 'Branco',
+      color: '#fff',
+    }],
+    M: [{
+      quantity: 8,
+      colorName: 'Azul',
+      color: '#2e9cc3',
+    }],
     imgs: [{
       imgid: 0,
       urlImg: cleanImage1,
@@ -65,10 +82,7 @@ const testemockCards = [{
       imgid: 4,
       urlImg: cleanImage3,
     }],
-  }],
+  },
 }];
-
-// colorName: 'Preto',
-// color: '#000',
 
 export default testemockCards;

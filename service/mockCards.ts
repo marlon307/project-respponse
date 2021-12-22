@@ -39,17 +39,17 @@ export const mockCards = [{
     model: 'New Era NEI18MOL026',
     occasion: 'de uso Casual',
     typeshipping: 'Leve',
-
   },
   options: [{
+    idc: 'white001',
     colorName: 'Branco',
     color: '#fff',
     size: {
       P: 0,
       PP: 30,
-      GG: 50,
+      GG: 0,
       G: 40,
-      M: 0,
+      M: 20,
     },
     imgs: [{
       imgid: 0,
@@ -68,13 +68,14 @@ export const mockCards = [{
       urlImg: cleanImage3,
     }],
   }, {
+    idc: 'grey002',
     colorName: 'Cinza Escuro',
-    color: '#333',
+    color: '#868686',
     size: {
       P: 28,
       PP: 30,
       GG: 50,
-      G: 40,
+      G: 0,
       M: 20,
     },
     imgs: [{
@@ -85,10 +86,11 @@ export const mockCards = [{
       urlImg: cleanImage2,
     }],
   }, {
+    idc: 'black003',
     colorName: 'Preto',
     color: '#000',
     size: {
-      P: 28,
+      P: 0,
       PP: 30,
       GG: 50,
       G: 40,
@@ -101,8 +103,7 @@ export const mockCards = [{
       imgid: 1,
       urlImg: cleanImage2,
     }],
-  },
-  ],
+  }],
 }];
 
 export const mockminObjectCards = [{

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import style from './style.module.scss';
 
 interface IObjectsColor {
+  idc: string;
   colorName: string;
   color: string;
 }
@@ -19,11 +20,11 @@ const BarColors = function BarColors({ array, execFunction }: PBarColors) {
   return (
     <div className={ style.barcolor } title="Cores">
       { array !== undefined
-        && array.map(({ colorName, color }) => (
+        && array.map(({ idc, colorName, color }) => (
           <button type="button" key={ color }>
-            <label htmlFor={ colorName }>
+            <label htmlFor={ idc }>
               <input
-                id={ colorName }
+                id={ idc }
                 onClick={ () => handleClick(color) }
                 type="radio"
                 name="color"
