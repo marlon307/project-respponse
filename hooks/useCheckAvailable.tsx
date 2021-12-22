@@ -1,4 +1,5 @@
 type ObjectType = {
+  idc: string;
   color: string;
   size: {};
 }
@@ -7,7 +8,7 @@ type TypeObject = {
   [key: string]: string | number;
 }
 
-function useCheckAvailable(options: Array<ObjectType>, value: string) {
+function checkSizeAvailable(options: Array<ObjectType>, value: string) {
   if (!options) return;
   const index = options.findIndex(({ color }) => color === value)!;
 
@@ -34,4 +35,25 @@ function useCheckAvailable(options: Array<ObjectType>, value: string) {
   }
 }
 
-export default useCheckAvailable;
+function checkColorAvailable(options: Array<ObjectType>, value: string) {
+  const getColorInput = options.filter(({ size }) => size[value] > 0);
+  const getColorAvaliable = getColorInput.map(({ idc }) => idc);
+
+  getColorAvaliable.forEach((colorid) => {
+    const disableOptionColor = document.getElementById(colorid)!;
+    disableOptionColor.removeAttribute('disabled');
+  });
+
+  const getSizes = options.filter(({ size }) => size[value] < 1);
+  const getSizesColorAvaliable = getSizes.map(({ idc }) => idc);
+
+  getSizesColorAvaliable.forEach((colorid) => {
+    const disableOptionColor = document.getElementById(colorid)!;
+    disableOptionColor.setAttribute('disabled', '');
+  });
+}
+
+export {
+  checkColorAvailable,
+  checkSizeAvailable,
+};

@@ -41,6 +41,7 @@ export const mockCards = [{
     typeshipping: 'Leve',
   },
   options: [{
+    idc: 'white001',
     colorName: 'Branco',
     color: '#fff',
     size: {
@@ -67,6 +68,7 @@ export const mockCards = [{
       urlImg: cleanImage3,
     }],
   }, {
+    idc: 'grey002',
     colorName: 'Cinza Escuro',
     color: '#333',
     size: {
@@ -84,6 +86,7 @@ export const mockCards = [{
       urlImg: cleanImage2,
     }],
   }, {
+    idc: 'black003',
     colorName: 'Preto',
     color: '#000',
     size: {

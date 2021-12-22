@@ -12,7 +12,7 @@ import LoadingImage from '../../components/LoadImage';
 import { mockCards } from '../../service/mockCards';
 import calcPercentage from '../../service/calcPercentage';
 import { BtnPrevNext } from '../../components/Buttons';
-import useCheckAvailable from '../../hooks/useCheckAvailable';
+import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 
 function productId() {
   const router = useRouter();
@@ -35,12 +35,12 @@ function productId() {
   } = mockCards[0];
 
   useEffect(() => {
-    useCheckAvailable(options, colorChecked);
-  }, [colorChecked, sizeChecked]);
+    checkSizeAvailable(options, colorChecked);
+  }, [colorChecked]);
 
   useEffect(() => {
-
-  }, [sizeChecked, options]);
+    checkColorAvailable(options, sizeChecked);
+  }, [sizeChecked]);
 
   return (
     <div className={ style.product }>

@@ -1,4 +1,5 @@
 const colorsMock = [{
+  idc: 'pink001',
   colorName: 'Rosa',
   color: '#cf49cf',
   size: {
@@ -11,6 +12,7 @@ const colorsMock = [{
   img: ['url', 'url'],
 },
 {
+  idc: 'orange003',
   colorName: 'Laranja',
   color: '#cf9149',
   size: {
@@ -23,6 +25,7 @@ const colorsMock = [{
   img: ['url', 'url'],
 },
 {
+  idc: 'blue002',
   colorName: 'Azul',
   color: '#496dcf',
   size: {
@@ -35,6 +38,7 @@ const colorsMock = [{
   img: ['url', 'url'],
 },
 {
+  idc: 'green004',
   colorName: 'Verde Claro',
   color: '#49cfbd',
   size: {
