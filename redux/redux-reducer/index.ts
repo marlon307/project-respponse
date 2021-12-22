@@ -22,6 +22,7 @@ const initialUserState = {
     city: '---',
     zipcode: '---',
   },
+  bagItems: [],
 };
 
 // USER REDUCER
@@ -43,6 +44,11 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
       return {
         ...state,
         adderessSelected: payload,
+      };
+    case types.ADD_BAG:
+      return {
+        ...state,
+        bagItems: payload,
       };
     default:
       return state;

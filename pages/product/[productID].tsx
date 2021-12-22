@@ -119,7 +119,11 @@ function productId() {
                 execFunction={ setSizeChecked }
               />
             </div>
-            <AddBag />
+            <AddBag
+              productId={ mockCards[0] }
+              colorSelected={ colorChecked }
+              sizeSelected={ sizeChecked }
+            />
           </div>
         </div>
         <div className={ style.options }>

@@ -1,13 +1,30 @@
 import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
+import { useSelector } from 'react-redux';
 import { SmallCard } from '../components/Cards';
 import style from './style.module.scss';
 import BarBuy from '../components/Bars/BarBuy';
 import Svg from '../assets/Svg';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading/Loading';
-import mockBag from '../service/mockBag';
 import Checkout from '../components/Bag';
+
+type TObjectUserBag = {
+  user: {
+    bagItems: Array<{
+      id: number;
+      title: string;
+      type: string;
+      mainImg: string | any;
+      price: number;
+      colorName: string;
+      color: string;
+      size: string;
+      quantity: number;
+      discount: number
+    }>
+  }
+}
 
 const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), {
   loading: () => <Loading />,
@@ -24,6 +41,7 @@ const Addacard = dynamic(import('../components/Add/add-card'), {
 
 function bag() {
   const [openModal, setOpenModal] = useState<String>('');
+  const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
 
   const openModalEdit = useCallback(() => {
     setOpenModal('edit');
@@ -38,7 +56,7 @@ function bag() {
             Sacola
           </h1>
           <ul>
-            { mockBag.map((object) => (
+            { bagItems.map((object) => (
               <li key={ object.id }>
                 <SmallCard
                   objectID={ object }
