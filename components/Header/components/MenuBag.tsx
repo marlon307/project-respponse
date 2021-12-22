@@ -85,9 +85,9 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
                   { quantity, price, discount },
                 ) => {
                   let acc = accumulator;
-                  const valueCalc = (acc += quantity)
-                    * price - calcPercentage(discount, price);
-                  return valueCalc;
+                  const valueCalc = (acc += quantity) * price;
+                  const caltDescount = valueCalc - calcPercentage(discount, valueCalc);
+                  return caltDescount;
                 }, 0)
                   .toLocaleString('pt-br', {
                     style: 'currency',
