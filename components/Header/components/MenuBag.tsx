@@ -1,18 +1,36 @@
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
+import { useSelector } from 'react-redux';
 import style from './style.module.scss';
 import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
-import mockBag from '../../../service/mockBag';
 
 type PropsMNBag = {
   setMenuDropdown: Function;
 }
 
+type TObjectUserBag = {
+  user: {
+    bagItems: Array<{
+      id: number;
+      title: string;
+      type: string;
+      mainImg: string | any;
+      price: number;
+      colorName: string;
+      color: string;
+      size: string;
+      quantity: number;
+      discount: number
+    }>
+  }
+}
+
 const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
+  const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
   const [enable, setEnable] = useState(false);
   const ref = useRef(null);
 
@@ -48,7 +66,7 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
         <div className={ style.containBag }>
           <h2 className={ style.titlemenu }>Sacola</h2>
           <ul>
-            { mockBag.map((object) => (
+            { bagItems.map((object) => (
               <li key={ object.id }>
                 <SmallCard
                   objectID={ object }

@@ -40,3 +40,10 @@ export const addFilter = (object: Object) => (dispatch: Function) => {
     payload: object,
   });
 };
+
+export const addBag = (object: Object) => (dispatch: Function) => {
+  dispatch({
+    type: types.ADD_BAG,
+    payload: object,
+  });
+};
