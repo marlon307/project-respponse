@@ -42,13 +42,13 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
 
     const { colorName }: any = options.find(({ color }) => color === colorSelected);
 
-    const checkItembag = bagItems.find(
-      (object) => object.id === id
+    const checkItembag: any = bagItems.find(
+      (object: any) => object.id === id
         && object.color === colorSelected
         && object.size === sizeSelected,
     );
     const removeItenId = bagItems.filter(
-      (object) => object.id !== id
+      (object: any) => object.id !== id
         && object.color !== colorSelected
         && object.size !== sizeSelected,
     );
