@@ -13,12 +13,13 @@ export const mockCards = [{
   title: 'Nike F.C',
   type: 'Futebol',
   keyDesc: 'Nike Futebol',
-  price: 68.98,
   categoryId: 0,
   descrtion: 'Do mesmo modo, a consulta aos diversos militantes desafia a capacidade de equalização de todos os recursos funcionais envolvidos.',
   branch: 'Nike',
   gender: 'Maculino',
+  price: 57.25,
   discount: 17,
+  oldPrice: 68.98,
   shipping: false,
   mainImg: image0,
   details: {
@@ -111,7 +112,8 @@ export const mockminObjectCards = [{
   title: 'Jérsei de Algodão Pima',
   type: 'Jérsei',
   mainImg: image0,
-  price: 75.00,
+  price: 69,
+  oldPrice: 75.0,
   discount: 6,
   options: [{
     colorName: 'Branco',
@@ -130,6 +132,7 @@ export const mockminObjectCards = [{
   type: 'Terno',
   mainImg: image1,
   price: 150.90,
+  oldPrice: 150.90,
   discount: 0,
   options: [{
     colorName: 'Branco',
@@ -151,6 +154,7 @@ export const mockminObjectCards = [{
   type: 'Relogio',
   mainImg: image3,
   price: 150.90,
+  oldPrice: 150.90,
   discount: 0,
   options: [{
     colorName: 'Dourado',
@@ -168,6 +172,7 @@ export const mockminObjectCards = [{
   type: 'Camisa',
   mainImg: image4,
   price: 36.00,
+  oldPrice: 36.00,
   discount: 0,
   options: [{
     colorName: 'Preto',
@@ -184,7 +189,8 @@ export const mockminObjectCards = [{
   title: 'Next station',
   type: 'Jaqueta',
   mainImg: image5,
-  price: 36.00,
+  price: 32.4,
+  oldPrice: 36,
   discount: 10,
   options: [{
     colorName: 'Jeans',
@@ -198,7 +204,8 @@ export const mockminObjectCards = [{
   title: 'Next station',
   type: 'Jaqueta',
   mainImg: image5,
-  price: 36.00,
+  price: 32.4,
+  oldPrice: 36,
   discount: 10,
   options: [{
     colorName: 'Jeans',
@@ -212,7 +219,8 @@ export const mockminObjectCards = [{
   title: 'Next station',
   type: 'Jaqueta',
   mainImg: image5,
-  price: 36.00,
+  price: 32.4,
+  oldPrice: 36,
   discount: 10,
   options: [{
     colorName: 'Jeans',

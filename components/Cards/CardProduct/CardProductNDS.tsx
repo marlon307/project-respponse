@@ -11,7 +11,7 @@ type TCardNDS = {
 
 const CardProductNDS = function CardProductNDS({ id }: TCardNDS) {
   const {
-    type, title, mainImg, price, options, discount,
+    type, title, mainImg, price, options, discount, oldPrice,
   } = mockminObjectCards[id];
 
   return (
@@ -36,6 +36,7 @@ const CardProductNDS = function CardProductNDS({ id }: TCardNDS) {
             price={ price }
             colors={ options }
             discount={ discount }
+            oldPrice={ oldPrice }
           />
         </div>
       </a>

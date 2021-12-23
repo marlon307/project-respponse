@@ -10,7 +10,6 @@ import { DetailsCard, Spec } from '../../components/Cards';
 import Svg from '../../assets/Svg';
 import LoadingImage from '../../components/LoadImage';
 import { mockCards } from '../../service/mockCards';
-import { calcPercentage } from '../../hooks/useCalcs';
 import { BtnPrevNext } from '../../components/Buttons';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 
@@ -31,7 +30,7 @@ function productId() {
 
   const {
     title, type, price, descrtion, branch, gender, discount,
-    details, specification, options,
+    oldPrice, details, specification, options,
   } = mockCards[0];
 
   useEffect(() => {
@@ -92,7 +91,7 @@ function productId() {
                 <div>
                   { discount > 0 && <span>de </span> }
                   <span>
-                    { price.toLocaleString('pt-br', {
+                    { oldPrice.toLocaleString('pt-br', {
                       style: 'currency',
                       currency: 'BRL',
                     }) }
@@ -102,11 +101,10 @@ function productId() {
                   <div>
                     <span>por </span>
                     <span>
-                      { (Number(price) - Number(calcPercentage(discount, price)))
-                        .toLocaleString('pt-br', {
-                          style: 'currency',
-                          currency: 'BRL',
-                        }) }
+                      { price.toLocaleString('pt-br', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      }) }
                     </span>
                   </div>
                 ) }

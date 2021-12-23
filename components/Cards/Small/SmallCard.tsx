@@ -2,13 +2,13 @@ import React from 'react';
 import style from './style.module.scss';
 import Svg from '../../../assets/Svg';
 import LoadingImage from '../../LoadImage';
-import { calcPercentage } from '../../../hooks/useCalcs';
 
 type ObjectId = {
   title: string;
   type: string;
   mainImg: string | any;
   price: number;
+  oldPrice: number;
   colorName: string;
   color: string;
   size: string;
@@ -27,7 +27,8 @@ const SmallCard = function SmallCard({
   objectID, removable, editable, eventModal,
 }: PSmallCard) {
   const {
-    title, type, mainImg, price, colorName, color, size, quantity, discount,
+    title, type, mainImg, price, colorName, color, size,
+    quantity, discount, oldPrice,
   } = objectID;
   function handleClick(event: { preventDefault: () => void; }) {
     event.preventDefault();
@@ -70,17 +71,16 @@ const SmallCard = function SmallCard({
           </div>
           <div className={ style.price }>
             { discount > 0 && (
-              <span>
-                { (Number(price) - Number(calcPercentage(discount, price)))
-                  .toLocaleString('pt-br', {
-                    style: 'currency',
-                    currency: 'BRL',
-                  }) }
+              <span title={ `Valor da unidade ${price}` }>
+                { price.toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }) }
               </span>
             ) }
-            <span title={ `Valor da unidade ${price}` }>
+            <span title={ `Valor anterior ${oldPrice}` }>
               {
-                price.toLocaleString('pt-br', {
+                oldPrice.toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL',
                 })
