@@ -1,18 +1,18 @@
 import React from 'react';
 import style from './style.module.scss';
 
-type PInputRadio = {
+export type PInputRadio = {
   name: string;
   id: string;
   family: string;
-  execFunction: Function;
+  execFunction?: Function;
 }
 
 const InputRadio = function InputRadio({
   name, id, family, execFunction,
 }: PInputRadio) {
   function handleClick(idName: string, nameCompany: string) {
-    execFunction(idName, nameCompany);
+    execFunction!(idName, nameCompany);
   }
 
   return (
