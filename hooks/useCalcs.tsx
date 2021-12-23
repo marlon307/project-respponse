@@ -18,11 +18,14 @@ const calcAllValuesArray = (array: ArrObj) => {
     const valueCalc = (acc += quantity) * price;
     const caltDescount = valueCalc - calcPercentage(discount, valueCalc);
     return caltDescount;
-  }, 0.0).toLocaleString('pt-br', {
+  }, 0);
+
+  const format = value.toLocaleString('pt-br', {
     style: 'currency',
     currency: 'BRL',
   });
-  return value;
+
+  return format;
 };
 
 export {
