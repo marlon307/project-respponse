@@ -1,7 +1,6 @@
 const calcPercentage = (discount: number, price: number) => {
-  const calc = (discount * price) / 100;
-  const result = Number(calc.toFixed(2));
-  return result;
+  const calc = (price * discount) / 100;
+  return calc;
 };
 
 type ArrObj = Array<{
@@ -16,8 +15,7 @@ const calcAllValuesArray = (array: ArrObj) => {
     { quantity, price, discount },
   ) => {
     let acc = accumulator;
-    const valueCalc = Number((price * quantity).toFixed(2));
-    // const caltDescount = (valueCalc - calcPercentage(discount, valueCalc)).toPrecision(4);
+    const valueCalc = price * quantity;
     const caltDescount = valueCalc - calcPercentage(discount, valueCalc);
     acc += caltDescount;
     return acc;
