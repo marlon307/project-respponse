@@ -19,12 +19,27 @@ type TObjectUserBag = {
       size: string;
       quantity: number;
       discount: number
-    }>
+    }>;
+    checkout: {
+      formatPay: {
+        formatPayment: string;
+        division: string;
+      };
+      shipping: {
+        shippingCompany: string;
+        valueShipping: number;
+      };
+      cupomAplicate: {
+        code: string;
+        descountCupom: number;
+      };
+    };
   }
 }
 
 const BarBuy = function BarBuy() {
-  const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
+  const { bagItems, checkout } = useSelector(({ user }: TObjectUserBag) => user);
+  const { formatPay, shipping, cupomAplicate } = checkout;
   const [openInfo, setOpenInfo] = useState(false);
   const [valueBag, setValueBag] = useState('');
 
@@ -46,15 +61,28 @@ const BarBuy = function BarBuy() {
         <div className={ style.calc }>
           <div>
             <span>Frete:</span>
-            <span>R$ 15,00</span>
+            <span>
+              { shipping.valueShipping.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
+            </span>
           </div>
           <div>
             <span>Descontos:</span>
-            <span>R$ 0,00</span>
+            <span>
+              { cupomAplicate.descountCupom.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
+            </span>
           </div>
           <div>
-            <span>Cartão de credito:</span>
-            <span>8x R$ 50,00</span>
+            <span title="Forma de pagamento">
+              { formatPay.formatPayment }
+              :
+            </span>
+            <span>{ formatPay.division }</span>
           </div>
         </div>
         <div className={ style.calcfinish }>

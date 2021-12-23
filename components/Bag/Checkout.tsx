@@ -10,14 +10,16 @@ type PropsCheckout = {
 }
 type TypUserObjAderes = {
   user: {
-    adderessSelected: {
-      name: string;
-      road: string;
-      district: string;
-      number: string;
-      uf: string;
-      city: string;
-      zipcode: string;
+    checkout: {
+      adderessSelected: {
+        name: string;
+        road: string;
+        district: string;
+        number: string;
+        uf: string;
+        city: string;
+        zipcode: string;
+      }
     }
   }
 }
@@ -25,7 +27,7 @@ type TypUserObjAderes = {
 const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
   const {
     name, road, district, number, uf, city, zipcode,
-  } = useSelector(({ user }: TypUserObjAderes) => user.adderessSelected);
+  } = useSelector(({ user }: TypUserObjAderes) => user.checkout.adderessSelected);
   const [cupomText, setCupomText] = useState('');
 
   const hadleCupom = useCallback(({ value }) => {

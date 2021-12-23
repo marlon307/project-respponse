@@ -13,16 +13,31 @@ interface IUserAction {
 const initialUserState = {
   authenticated: '',
   logged: false,
-  adderessSelected: {
-    name: 'Entregar para',
-    road: '---',
-    district: '---',
-    number: '---',
-    uf: '---',
-    city: '---',
-    zipcode: '---',
-  },
   bagItems: [],
+  checkout: {
+    adderessSelected: {
+      name: 'Entregar para',
+      road: '---',
+      district: '---',
+      number: '---',
+      uf: '---',
+      city: '---',
+      zipcode: '---',
+    },
+    shipping: {
+      shippingCompany: '',
+      valueShipping: 0,
+    },
+    formatPay: {
+      formatPayment: 'Forma de pagamento',
+      value: '',
+      division: '--',
+    },
+    cupomAplicate: {
+      code: '',
+      descountCupom: 0,
+    },
+  },
 };
 
 // USER REDUCER
