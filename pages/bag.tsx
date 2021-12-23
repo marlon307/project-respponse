@@ -16,6 +16,7 @@ type TObjectUserBag = {
       title: string;
       type: string;
       mainImg: string | any;
+      oldPrice: number;
       price: number;
       colorName: string;
       color: string;
