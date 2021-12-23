@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
+import { useSelector } from 'react-redux';
 import { BuyFinishBtn } from '../Buttons';
 import style from './style.module.scss';
+import calcAllValuesArray from '../../hooks/useCalcs';
+
+type TObjectUserBag = {
+  user: {
+    bagItems: Array<{
+      id: number;
+      title: string;
+      type: string;
+      mainImg: string | any;
+      price: number;
+      oldPrice: number;
+      colorName: string;
+      color: string;
+      size: string;
+      quantity: number;
+      discount: number
+    }>
+  }
+}
 
 const BarBuy = function BarBuy() {
+  const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
   const [openInfo, setOpenInfo] = useState(false);
+  const [valueBag, setValueBag] = useState('');
 
   function openBarMenu(event: { preventDefault: () => void; }) {
     event.preventDefault();
     setOpenInfo(!openInfo);
   }
+
+  useEffect(() => {
+    setValueBag(calcAllValuesArray(bagItems));
+  }, [bagItems]);
 
   return (
     <section className={
@@ -34,7 +60,7 @@ const BarBuy = function BarBuy() {
         <div className={ style.calcfinish }>
           <div>
             <span>Valor Total:</span>
-            <span>R$ 400,00</span>
+            <span>{ valueBag }</span>
           </div>
           <BuyFinishBtn />
         </div>
