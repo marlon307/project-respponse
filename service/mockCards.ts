@@ -113,6 +113,7 @@ export const mockminObjectCards = [{
   type: 'Jérsei',
   mainImg: image0,
   price: 75.00,
+  oldPrice: 75.0,
   discount: 6,
   options: [{
     colorName: 'Branco',
@@ -131,6 +132,7 @@ export const mockminObjectCards = [{
   type: 'Terno',
   mainImg: image1,
   price: 150.90,
+  oldPrice: 150.90,
   discount: 0,
   options: [{
     colorName: 'Branco',
@@ -152,6 +154,7 @@ export const mockminObjectCards = [{
   type: 'Relogio',
   mainImg: image3,
   price: 150.90,
+  oldPrice: 150.90,
   discount: 0,
   options: [{
     colorName: 'Dourado',
@@ -169,6 +172,7 @@ export const mockminObjectCards = [{
   type: 'Camisa',
   mainImg: image4,
   price: 36.00,
+  oldPrice: 36.00,
   discount: 0,
   options: [{
     colorName: 'Preto',
@@ -186,6 +190,7 @@ export const mockminObjectCards = [{
   type: 'Jaqueta',
   mainImg: image5,
   price: 36.00,
+  oldPrice: 75.0,
   discount: 10,
   options: [{
     colorName: 'Jeans',
@@ -200,6 +205,7 @@ export const mockminObjectCards = [{
   type: 'Jaqueta',
   mainImg: image5,
   price: 36.00,
+  oldPrice: 75.0,
   discount: 10,
   options: [{
     colorName: 'Jeans',
@@ -214,6 +220,7 @@ export const mockminObjectCards = [{
   type: 'Jaqueta',
   mainImg: image5,
   price: 36.00,
+  oldPrice: 75.0,
   discount: 10,
   options: [{
     colorName: 'Jeans',

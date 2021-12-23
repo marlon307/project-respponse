@@ -38,7 +38,7 @@ const CardInfo = function CardInfo({
         <div className={ style.price }>
           { discount > 0 && (
             <span>
-              { price.toLocaleString('pt-br', {
+              { oldPrice.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }

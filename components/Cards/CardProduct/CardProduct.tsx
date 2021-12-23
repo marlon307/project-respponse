@@ -11,7 +11,7 @@ type PCardP = {
 
 const CardProduct = function CardProduct({ id }: PCardP) {
   const {
-    type, title, mainImg, price, options, discount,
+    type, title, mainImg, price, options, discount, oldPrice,
   } = mockminObjectCards[id];
 
   return (
@@ -34,6 +34,7 @@ const CardProduct = function CardProduct({ id }: PCardP) {
             price={ price }
             colors={ options }
             discount={ discount }
+            oldPrice={ oldPrice }
           />
         </div>
       </a>
