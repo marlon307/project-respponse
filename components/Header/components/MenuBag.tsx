@@ -73,7 +73,7 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
           <h2 className={ style.titlemenu }>Sacola</h2>
           <ul>
             { bagItems.map((object) => (
-              <li key={ object.id }>
+              <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
                   removable

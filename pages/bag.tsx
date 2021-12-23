@@ -57,7 +57,7 @@ function bag() {
           </h1>
           <ul>
             { bagItems.map((object) => (
-              <li key={ object.id }>
+              <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
                   removable
