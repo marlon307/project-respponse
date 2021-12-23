@@ -136,6 +136,7 @@
   margin-bottom: 6px;
   font-weight: 700;
   color: #525252;
+  min-width: 250px;
 
   span:nth-child(2) {
     font-weight: 500;
@@ -218,7 +219,7 @@
       align-items: flex-start;
       justify-content: flex-start;
       flex-direction: column;
-      width: 280px;
+      width: 250px;
     }
 
     a {
