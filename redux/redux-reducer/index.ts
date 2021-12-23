@@ -13,16 +13,31 @@ interface IUserAction {
 const initialUserState = {
   authenticated: '',
   logged: false,
-  adderessSelected: {
-    name: 'Entregar para',
-    road: '---',
-    district: '---',
-    number: '---',
-    uf: '---',
-    city: '---',
-    zipcode: '---',
-  },
   bagItems: [],
+  checkout: {
+    adderessSelected: {
+      name: 'Entregar para',
+      road: '---',
+      district: '---',
+      number: '---',
+      uf: '---',
+      city: '---',
+      zipcode: '---',
+    },
+    shipping: {
+      shippingCompany: '',
+      valueShipping: 0,
+    },
+    formatPay: {
+      formatPayment: 'Forma de pagamento',
+      value: '',
+      division: '--',
+    },
+    cupomAplicate: {
+      code: '',
+      descountCupom: 0,
+    },
+  },
 };
 
 // USER REDUCER
@@ -43,7 +58,26 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
     case types.SELECT_ADDERESS:
       return {
         ...state,
-        adderessSelected: payload,
+        checkout: {
+          ...state.checkout,
+          adderessSelected: payload,
+        },
+      };
+    case types.SELECT_SHIPPING:
+      return {
+        ...state,
+        checkout: {
+          ...state.checkout,
+          shipping: payload,
+        },
+      };
+    case types.SELECT_PAYMENT:
+      return {
+        ...state,
+        checkout: {
+          ...state.checkout,
+          formatPay: payload,
+        },
       };
     case types.ADD_BAG:
       return {

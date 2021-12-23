@@ -92,6 +92,7 @@ main {
 
 // Animate Buttons
 .button1 {
+  position: relative;
   transition: transform 0.2s ease-in-out;
 
   &:hover {
@@ -100,6 +101,13 @@ main {
 
   &:active {
     transform: scale3d(0.98, 0.98, 0.98);
+  }
+
+  span {
+    position: absolute;
+    top: -24px;
+    font-size: 0.8em;
+    color: #db1818;
   }
 }
 
