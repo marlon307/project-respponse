@@ -58,7 +58,26 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
     case types.SELECT_ADDERESS:
       return {
         ...state,
-        adderessSelected: payload,
+        checkout: {
+          ...state.checkout,
+          adderessSelected: payload,
+        },
+      };
+    case types.SELECT_SHIPPING:
+      return {
+        ...state,
+        checkout: {
+          ...state.checkout,
+          shipping: payload,
+        },
+      };
+    case types.SELECT_PAYMENT:
+      return {
+        ...state,
+        checkout: {
+          ...state.checkout,
+          formatPay: payload,
+        },
       };
     case types.ADD_BAG:
       return {

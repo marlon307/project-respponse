@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Svg from '../../assets/Svg';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import style from './style.module.scss';
+import { actionSlecteShipping, actionSlectePayment } from '../../redux/redux-actions';
 
 type PropsCheckout = {
   setOpenModal: Function
@@ -28,10 +29,27 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
   const {
     name, road, district, number, uf, city, zipcode,
   } = useSelector(({ user }: TypUserObjAderes) => user.checkout.adderessSelected);
+  const dipatch = useDispatch();
+
   const [cupomText, setCupomText] = useState('');
 
   const hadleCupom = useCallback(({ value }) => {
     setCupomText(value);
+  }, []);
+
+  const handleSipping = useCallback((idName: string, nameCompany: string) => {
+    dipatch(actionSlecteShipping({
+      shippingCompany: idName + nameCompany,
+      valueShipping: 15,
+    }));
+  }, []);
+
+  const handlePayment = useCallback((idName: string, nameCompany: string) => {
+    dipatch(actionSlectePayment({
+      formatPayment: nameCompany,
+      value: '',
+      division: '1x',
+    }));
   }, []);
 
   return (
@@ -80,9 +98,24 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
           </h3>
         </div>
         <div className={ style.options }>
-          <InputRadio name="Correios - R$ 25,00 - 2 dias uteis" id="correios" family="shippe" />
-          <InputRadio name="Pac - R$ 10,00 - 5 dias uteis" id="pac" family="shippe" />
-          <InputRadio name="Fedex - R$ 15,00 - 3 dias uteis" id="fedex" family="shippe" />
+          <InputRadio
+            name="Correios - R$ 25,00 - 2 dias uteis"
+            id="correios"
+            family="shippe"
+            execFunction={ handleSipping }
+          />
+          <InputRadio
+            name="Pac - R$ 10,00 - 5 dias uteis"
+            id="pac"
+            family="shippe"
+            execFunction={ handleSipping }
+          />
+          <InputRadio
+            name="Fedex - R$ 15,00 - 3 dias uteis"
+            id="fedex"
+            family="shippe"
+            execFunction={ handleSipping }
+          />
         </div>
       </div>
       <div className={ style.contcheckout }>
@@ -93,9 +126,24 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
           </h3>
         </div>
         <div className={ style.options }>
-          <InputRadio name="Cartão de Credito" id="credit" family="payment" />
-          <InputRadio name="PayPal" id="paypal" family="payment" />
-          <InputRadio name="Pix" id="pix" family="payment" />
+          <InputRadio
+            name="Cartão de Credito"
+            id="credit"
+            family="payment"
+            execFunction={ handlePayment }
+          />
+          <InputRadio
+            name="PayPal"
+            id="paypal"
+            family="payment"
+            execFunction={ handlePayment }
+          />
+          <InputRadio
+            name="Pix"
+            id="pix"
+            family="payment"
+            execFunction={ handlePayment }
+          />
         </div>
         <a
           href="/"

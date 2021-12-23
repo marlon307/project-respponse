@@ -34,6 +34,20 @@ export const actionSlecteAdderess = (objectAddres: Object) => (dispatch: Functio
   });
 };
 
+export const actionSlecteShipping = (objectShipping: Object) => (dispatch: Function) => {
+  dispatch({
+    type: types.SELECT_SHIPPING,
+    payload: objectShipping,
+  });
+};
+
+export const actionSlectePayment = (objectPayment: Object) => (dispatch: Function) => {
+  dispatch({
+    type: types.SELECT_PAYMENT,
+    payload: objectPayment,
+  });
+};
+
 export const addFilter = (object: Object) => (dispatch: Function) => {
   dispatch({
     type: types.ADDFILTER,
