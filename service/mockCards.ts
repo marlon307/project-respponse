@@ -112,7 +112,7 @@ export const mockminObjectCards = [{
   title: 'Jérsei de Algodão Pima',
   type: 'Jérsei',
   mainImg: image0,
-  price: 75.00,
+  price: 69,
   oldPrice: 75.0,
   discount: 6,
   options: [{
@@ -189,8 +189,8 @@ export const mockminObjectCards = [{
   title: 'Next station',
   type: 'Jaqueta',
   mainImg: image5,
-  price: 36.00,
-  oldPrice: 75.0,
+  price: 32.4,
+  oldPrice: 36,
   discount: 10,
   options: [{
     colorName: 'Jeans',
@@ -204,8 +204,8 @@ export const mockminObjectCards = [{
   title: 'Next station',
   type: 'Jaqueta',
   mainImg: image5,
-  price: 36.00,
-  oldPrice: 75.0,
+  price: 32.4,
+  oldPrice: 36,
   discount: 10,
   options: [{
     colorName: 'Jeans',
@@ -219,8 +219,8 @@ export const mockminObjectCards = [{
   title: 'Next station',
   type: 'Jaqueta',
   mainImg: image5,
-  price: 36.00,
-  oldPrice: 75.0,
+  price: 32.4,
+  oldPrice: 36,
   discount: 10,
   options: [{
     colorName: 'Jeans',
