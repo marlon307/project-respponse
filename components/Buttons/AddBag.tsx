@@ -37,6 +37,8 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
   const dispatch = useDispatch();
 
   function handleClick() {
+    if (!colorSelected || !sizeSelected) return;
+
     const {
       id, title, type,
       mainImg, price, oldPrice,
