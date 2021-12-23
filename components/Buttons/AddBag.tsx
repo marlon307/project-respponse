@@ -36,9 +36,13 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
   const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
   const [buttonActive, setbutonActive] = useState(false);
+  const [activeMsg, setActiveMsg] = useState(false);
 
   function handleClick() {
-    if (!buttonActive) return;
+    if (!buttonActive) {
+      setActiveMsg(true);
+      return;
+    }
 
     const {
       id, title, type,
@@ -81,15 +85,11 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
   }
 
   useEffect(() => {
-    if (!colorSelected) {
-      //
-    }
-    if (!sizeSelected) {
-      //
-    }
-
     if (colorSelected && sizeSelected) {
       setbutonActive(true);
+    }
+    if (colorSelected && sizeSelected && activeMsg) {
+      setActiveMsg(false);
     }
   }, [colorSelected, sizeSelected]);
 
@@ -101,7 +101,7 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
     >
       Adicionar a sacola
       <Svg icoName="bag" />
-      { !buttonActive && <span>Selecione uma cor e tamanho</span> }
+      { activeMsg && <span>Selecione uma cor e tamanho</span> }
     </button>
   );
 };
