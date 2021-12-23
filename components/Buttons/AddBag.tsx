@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import style from './style.module.scss';
@@ -35,9 +35,10 @@ type TObjectUserBag = {
 const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
+  const [buttonActive, setbutonActive] = useState(false);
 
   function handleClick() {
-    if (!colorSelected || !sizeSelected) return;
+    if (!buttonActive) return;
 
     const {
       id, title, type,
@@ -79,6 +80,19 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
     dispatch(addBag(newArray));
   }
 
+  useEffect(() => {
+    if (!colorSelected) {
+      //
+    }
+    if (!sizeSelected) {
+      //
+    }
+
+    if (colorSelected && sizeSelected) {
+      setbutonActive(true);
+    }
+  }, [colorSelected, sizeSelected]);
+
   return (
     <button
       className={ cx('button1', style.btn_t2) }
@@ -87,6 +101,7 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
     >
       Adicionar a sacola
       <Svg icoName="bag" />
+      { !buttonActive && <span>Selecione uma cor e tamanho</span> }
     </button>
   );
 };
