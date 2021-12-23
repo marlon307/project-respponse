@@ -6,7 +6,7 @@ import style from './style.module.scss';
 import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
-import { calcAllValuesArray } from '../../../hooks/useCalcs';
+import calcAllValuesArray from '../../../hooks/useCalcs';
 
 type PropsMNBag = {
   setMenuDropdown: Function;
@@ -20,6 +20,7 @@ type TObjectUserBag = {
       type: string;
       mainImg: string | any;
       price: number;
+      oldPrice: number;
       colorName: string;
       color: string;
       size: string;

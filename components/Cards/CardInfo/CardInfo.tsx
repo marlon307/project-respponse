@@ -1,5 +1,4 @@
 import React from 'react';
-import { calcPercentage } from '../../../hooks/useCalcs';
 import style from './style.module.scss';
 
 type TInfoProps = {
@@ -7,11 +6,12 @@ type TInfoProps = {
   title: string;
   price: number;
   discount: number;
+  oldPrice: number;
   colors: Array<Object>;
 }
 
 const CardInfo = function CardInfo({
-  title, type, price, colors, discount,
+  title, type, price, colors, discount, oldPrice,
 }: TInfoProps) {
   return (
     <div className={ style.info }>
@@ -38,14 +38,10 @@ const CardInfo = function CardInfo({
         <div className={ style.price }>
           { discount > 0 && (
             <span>
-              { (price - Number(calcPercentage(discount, price)))
-                .toLocaleString(
-                  'pt-br',
-                  {
-                    style: 'currency',
-                    currency: 'BRL',
-                  },
-                ) }
+              { price.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
             </span>
           ) }
           <span>

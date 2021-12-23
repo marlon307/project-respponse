@@ -12,6 +12,7 @@ type TObjectProduct = {
   mainImg: any;
   price: number;
   discount: number;
+  oldPrice: number;
   options: Array<{
     color: string;
   }>
@@ -38,7 +39,7 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
   function handleClick() {
     const {
       id, title, type,
-      mainImg, price,
+      mainImg, price, oldPrice,
       discount, options,
     } = productId!;
 
@@ -68,6 +69,7 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
           size: sizeSelected,
           price,
           discount,
+          oldPrice,
           quantity: 1,
         }];
     }
