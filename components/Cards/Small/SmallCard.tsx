@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import style from './style.module.scss';
 import Svg from '../../../assets/Svg';
 import LoadingImage from '../../LoadImage';
+import { removeBag } from '../../../redux/redux-actions';
 
 type ObjectId = {
+  id: number;
   title: string;
   type: string;
   mainImg: string | any;
@@ -13,27 +16,34 @@ type ObjectId = {
   color: string;
   size: string;
   quantity: number;
-  discount: number
+  discount: number;
 }
 
 export interface PSmallCard {
   objectID: ObjectId;
-  removable?: boolean
-  editable?: boolean
-  eventModal?: Function
+  removable?: boolean;
+  editable?: boolean;
+  eventModal?: Function;
+  identifyBag?: string;
 }
 
 const SmallCard = function SmallCard({
-  objectID, removable, editable, eventModal,
+  objectID, removable, editable, eventModal, identifyBag,
 }: PSmallCard) {
+  const dipatch = useDispatch();
   const {
     title, type, mainImg, price, colorName, color, size,
     quantity, discount, oldPrice,
   } = objectID;
+
   function handleClick(event: { preventDefault: () => void; }) {
     event.preventDefault();
     eventModal!(true);
   }
+
+  const handleClickDelete = useCallback(() => {
+    dipatch(removeBag(identifyBag!));
+  }, []);
 
   return (
     <div className={ style.smallcard }>
@@ -90,9 +100,14 @@ const SmallCard = function SmallCard({
         </div>
       </div>
       { removable && (
-        <div className="action" title="Excluir">
+        <button
+          type="button"
+          className="action"
+          title="Excluir"
+          onClick={ handleClickDelete }
+        >
           <Svg icoName="trash" />
-        </div>
+        </button>
       ) }
     </div>
   );

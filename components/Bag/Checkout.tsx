@@ -127,7 +127,7 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
         </div>
         <div className={ style.options }>
           <InputRadio
-            name="Cartão de Credito"
+            name="Cartão de Crédito"
             id="credit"
             family="payment"
             execFunction={ handlePayment }
