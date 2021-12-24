@@ -14,6 +14,7 @@ type TObjectProduct = {
   discount: number;
   oldPrice: number;
   options: Array<{
+    colorName: string;
     color: string;
   }>
 }
@@ -27,6 +28,9 @@ type PBtnAddBag = {
 type TObjectUserBag = {
   user: {
     bagItems: Array<{
+      id: number;
+      color: string;
+      size: string;
       quantity: number;
     }>
   }
@@ -48,12 +52,12 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
       id, title, type,
       mainImg, price, oldPrice,
       discount, options,
-    } = productId!;
+    } = productId;
 
-    const { colorName }: any = options.find(({ color }) => color === colorSelected);
+    const { colorName } = options.find(({ color }) => color === colorSelected)!;
 
-    const index: any = bagItems.findIndex(
-      (object: any) => object.id === id
+    const index = bagItems.findIndex(
+      (object) => object.id === id
         && object.color === colorSelected
         && object.size === sizeSelected,
     );
