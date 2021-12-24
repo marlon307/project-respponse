@@ -64,6 +64,7 @@ function bag() {
                   removable
                   editable
                   eventModal={ openModalEdit }
+                  identifyBag={ object.id + object.color + object.size }
                 />
               </li>
             )) }
