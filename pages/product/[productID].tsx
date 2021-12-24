@@ -19,19 +19,22 @@ function productId() {
   const [itemdrag, setItemDrag] = useState(false);
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState('');
+  const [pgProductId, setPgProductId] = useState(0);
 
   useEffect(() => {
     const { productID } = router.query;
 
-    if (mockCards[0].id !== Number(productID)) {
-      // router.push('/404');
+    if (!mockCards[Number(productID)]) {
+      router.push('/404');
+    } else {
+      setPgProductId(Number(productID));
     }
   }, []);
 
   const {
     title, type, price, descrtion, branch, gender, discount,
     oldPrice, details, specification, options,
-  } = mockCards[0];
+  } = mockCards[pgProductId];
 
   useEffect(() => {
     checkSizeAvailable(options, colorChecked);
@@ -118,7 +121,7 @@ function productId() {
               />
             </div>
             <AddBag
-              productId={ mockCards[0] }
+              productId={ mockCards[pgProductId] }
               colorSelected={ colorChecked }
               sizeSelected={ sizeChecked }
             />
