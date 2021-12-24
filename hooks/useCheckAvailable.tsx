@@ -21,7 +21,8 @@ function checkSizeAvailable(options: Array<ObjectType>, value: string) {
 
     getSizeAvailable.forEach((sizeAvailable) => {
       const disableOptionSize = document.getElementById(sizeAvailable)!;
-      disableOptionSize.removeAttribute('disabled');
+      if (!disableOptionSize) return;
+      disableOptionSize.removeAttribute('disabled')!;
     });
 
     // Ira desbilitar os inputs se não conter no array
@@ -30,7 +31,8 @@ function checkSizeAvailable(options: Array<ObjectType>, value: string) {
 
     getNotSizeAvailable.forEach((sizeAvailable) => {
       const disableOptionSize = document.getElementById(sizeAvailable)!;
-      disableOptionSize.setAttribute('disabled', '');
+      if (!disableOptionSize) return;
+      disableOptionSize.setAttribute('disabled', '')!;
     });
   }
 }
@@ -41,7 +43,8 @@ function checkColorAvailable(options: Array<ObjectType>, value: string) {
 
   getColorAvaliable.forEach((colorid) => {
     const disableOptionColor = document.getElementById(colorid)!;
-    disableOptionColor.removeAttribute('disabled');
+    if (!disableOptionColor) return;
+    disableOptionColor.removeAttribute!('disabled');
   });
 
   const getSizes = options.filter(({ size }: TypeObject) => size[value] < 1);
@@ -49,7 +52,8 @@ function checkColorAvailable(options: Array<ObjectType>, value: string) {
 
   getSizesColorAvaliable.forEach((colorid) => {
     const disableOptionColor = document.getElementById(colorid)!;
-    disableOptionColor.setAttribute('disabled', '');
+    if (!disableOptionColor) return;
+    disableOptionColor.setAttribute('disabled', '')!;
   });
 }
 
