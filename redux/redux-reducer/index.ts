@@ -84,6 +84,14 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
         ...state,
         bagItems: payload,
       };
+    case types.REMOVE_BAG: {
+      const newArray = state.bagItems.filter(({ identifyBag }) => identifyBag !== payload);
+
+      return {
+        ...state,
+        bagItems: newArray,
+      };
+    }
     default:
       return state;
   }

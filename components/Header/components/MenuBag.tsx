@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {
+  useState, useRef, useEffect,
+} from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
@@ -77,6 +79,7 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
+                  identifyBag={ object.id + object.color + object.size }
                   removable
                 />
               </li>

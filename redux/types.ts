@@ -6,3 +6,4 @@ export const SELECT_ADDERESS = 'SELECT_ADDERESS';
 export const ADD_BAG = 'ADD_BAG';
 export const SELECT_SHIPPING = 'SELECT_SHIPPING';
 export const SELECT_PAYMENT = 'SELECT_PAYMENT';
+export const REMOVE_BAG = 'REMOVE_BAG';

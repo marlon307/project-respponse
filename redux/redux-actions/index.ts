@@ -61,3 +61,10 @@ export const addBag = (object: Object) => (dispatch: Function) => {
     payload: object,
   });
 };
+
+export const removeBag = (object: Object) => (dispatch: Function) => {
+  dispatch({
+    type: types.REMOVE_BAG,
+    payload: object,
+  });
+};

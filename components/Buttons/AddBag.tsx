@@ -78,6 +78,7 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
           discount,
           oldPrice,
           quantity: 1,
+          identifyBag: id + colorSelected + sizeSelected,
         }];
     }
 
