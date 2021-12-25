@@ -1,4 +1,6 @@
 .bag {
+  position: relative;
+
   svg {
     width: 28px;
     height: 28px;
@@ -7,6 +9,19 @@
     cursor: pointer;
     align-items: center;
     justify-content: center;
+  }
+}
+
+.contb {
+  &::after {
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    bottom: -1px;
+    left: 1px;
+    background: #E77D23;
+    border-radius: 50%;
   }
 }
 
@@ -148,6 +163,11 @@
 .mobile {
   position: relative;
   margin-right: 6%;
+
+  &:after {
+    bottom: 4px;
+    left: 0;
+  }
 }
 
 .dromn {
@@ -170,6 +190,7 @@
         padding: 22px;
 
         a {
+          position: relative;
           display: flex;
           align-items: center;
           cursor: pointer;

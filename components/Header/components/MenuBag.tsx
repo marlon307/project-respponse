@@ -57,7 +57,10 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
   }, [bagItems]);
 
   return (
-    <div className={ style.bag }>
+    <div className={ cx(style.bag, {
+      [style.contb]: bagItems.length,
+    }) }
+    >
       <a
         href="/bag"
         onClick={ (event) => clickBag(event) }
