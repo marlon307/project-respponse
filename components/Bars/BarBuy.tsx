@@ -41,7 +41,7 @@ const BarBuy = function BarBuy() {
   const { bagItems, checkout } = useSelector(({ user }: TObjectUserBag) => user);
   const { formatPay, shipping, cupomAplicate } = checkout;
   const [openInfo, setOpenInfo] = useState(false);
-  const [valueBag, setValueBag] = useState('');
+  const [valueBag, setValueBag] = useState(0);
 
   function openBarMenu(event: { preventDefault: () => void; }) {
     event.preventDefault();
@@ -49,8 +49,10 @@ const BarBuy = function BarBuy() {
   }
 
   useEffect(() => {
-    setValueBag(calcAllValuesArray(bagItems));
-  }, [bagItems]);
+    const calc = shipping.valueShipping
+      + calcAllValuesArray(bagItems) - cupomAplicate.descountCupom;
+    setValueBag(calc);
+  }, [bagItems, shipping.valueShipping, cupomAplicate.descountCupom]);
 
   return (
     <section className={
@@ -88,7 +90,12 @@ const BarBuy = function BarBuy() {
         <div className={ style.calcfinish }>
           <div>
             <span>Valor Total:</span>
-            <span>{ valueBag }</span>
+            <span>
+              { valueBag.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
+            </span>
           </div>
           <BuyFinishBtn />
         </div>
