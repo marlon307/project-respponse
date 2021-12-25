@@ -16,7 +16,7 @@ const CardEdit = function CardEdit() {
         </div>
         <BarColors array={ mockColors } execFunction={ () => { } } />
       </div>
-      <BarSize array={ mockColors } colorName="Laranja" execFunction={ () => { } } />
+      <BarSize array={ mockColors } color="Laranja" execFunction={ () => { } } />
       <div className={ style.secondline }>
         <Qtd />
         <div className={ style.titles }>
