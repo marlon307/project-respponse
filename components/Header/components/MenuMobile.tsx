@@ -92,8 +92,14 @@ const MenuMobile = function MenuMobile() {
               </li>
             ) }
             <li>
-              <Link href="/bag" passHref>
+              <Link
+                href="/bag"
+                passHref
+              >
                 <CustomLink
+                  className={
+                    cx({ [style.contb]: bagItems.length })
+                  }
                   ariaLabel="Sacola"
                   onClick={ closeMenu! }
                 >
