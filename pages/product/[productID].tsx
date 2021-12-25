@@ -116,6 +116,7 @@ function productId() {
             <div className={ style.secondline }>
               <BarSize
                 array={ options }
+                // colorName={ colorChecked === '' ? options[0].colorName : colorChecked }
                 colorName="Branco"
                 execFunction={ setSizeChecked }
               />

@@ -141,15 +141,15 @@ export const mockCards = [{
     typeshipping: 'Leve',
   },
   options: [{
-    idc: 'white001',
+    idc: 'bluewhite001',
     colorName: 'Branco',
     color: '#00b6ef',
     size: {
-      P: 0,
+      P: 5,
       PP: 30,
-      GG: 0,
-      G: 40,
-      M: 20,
+      GG: 2,
+      G: 70,
+      M: 0,
     },
     imgs: [{
       imgid: 0,
@@ -173,9 +173,9 @@ export const mockCards = [{
     color: '#868686',
     size: {
       P: 28,
-      PP: 30,
-      GG: 50,
-      G: 0,
+      PP: 0,
+      GG: 10,
+      G: 3,
       M: 20,
     },
     imgs: [{
@@ -193,8 +193,26 @@ export const mockCards = [{
       P: 0,
       PP: 30,
       GG: 50,
-      G: 40,
-      M: 20,
+      G: 0,
+      M: 0,
+    },
+    imgs: [{
+      imgid: 0,
+      urlImg: cleanImage1,
+    }, {
+      imgid: 1,
+      urlImg: cleanImage1,
+    }],
+  }, {
+    idc: 'pink003',
+    colorName: 'Rosa',
+    color: '#f99dff',
+    size: {
+      P: 0,
+      PP: 30,
+      GG: 50,
+      G: 0,
+      M: 0,
     },
     imgs: [{
       imgid: 0,
