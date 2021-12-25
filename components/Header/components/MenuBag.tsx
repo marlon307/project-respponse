@@ -36,7 +36,7 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
   const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
   const [enable, setEnable] = useState(false);
-  const [valueTotalProducts, setValueTotalProducts] = useState('');
+  const [valueTotalProducts, setValueTotalProducts] = useState(0);
   const ref = useRef(null);
 
   useOutsideClick(ref, () => {
@@ -76,7 +76,11 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
       >
         <span className={ style.set } />
         <div className={ style.containBag }>
-          <h2 className={ style.titlemenu }>Sacola</h2>
+          <h2 className={ style.titlemenu }>
+            {
+              bagItems.length ? 'Sacola' : 'Sacola Vazia'
+            }
+          </h2>
           <ul>
             { bagItems.map((object) => (
               <li key={ object.id + object.color + object.size }>
@@ -92,7 +96,10 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
             <div>
               <span>Total:</span>
               <span>
-                { valueTotalProducts }
+                { valueTotalProducts.toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }) }
               </span>
             </div>
             <button

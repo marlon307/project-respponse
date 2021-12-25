@@ -15,12 +15,7 @@ const calcAllValuesArray = (array: ArrObj) => {
     return acc;
   }, 0);
 
-  const format = value.toLocaleString('pt-br', {
-    style: 'currency',
-    currency: 'BRL',
-  });
-
-  return format;
+  return value;
 };
 
 export default calcAllValuesArray;
