@@ -10,12 +10,13 @@ import { actionLogOut } from '../../../redux/redux-actions';
 interface IUser {
   user: {
     logged: boolean;
+    bagItems: Array<Object>;
   }
 }
 
 const MenuMobile = function MenuMobile() {
   const dipatch = useDispatch();
-  const { logged } = useSelector(({ user }: IUser) => user);
+  const { logged, bagItems } = useSelector(({ user }: IUser) => user);
 
   const [dropMnMobile, setDropMnMobile] = useState(false);
 
@@ -31,7 +32,10 @@ const MenuMobile = function MenuMobile() {
   }
 
   return (
-    <div className={ style.mobile }>
+    <div className={ cx(style.mobile, {
+      [style.contb]: bagItems.length && !dropMnMobile,
+    }) }
+    >
       <a
         href="/"
         onClick={ (event) => openMenu(event) }
@@ -76,7 +80,7 @@ const MenuMobile = function MenuMobile() {
             ) }
             <li>
               <Link href="/bag">
-                <a>
+                <a className={ cx({ [style.contb]: bagItems.length }) }>
                   <Svg icoName="bag" />
                   Sacola
                 </a>
