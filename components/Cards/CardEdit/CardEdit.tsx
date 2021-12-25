@@ -46,12 +46,12 @@ const CardEdit = function CardEdit() {
     identifyBag: itemEditBag.identifyBag,
   });
 
-  function updateState(object: Object) {
-    setInfoBagitem({
-      ...infoBagItem,
-      ...object,
-    });
-  }
+  // function updateState(object: Object) {
+  //   setInfoBagitem({
+  //     ...infoBagItem,
+  //     ...object,
+  //   });
+  // }
 
   useEffect(() => {
     const findItemBag = bagItems
@@ -69,13 +69,13 @@ const CardEdit = function CardEdit() {
         <div className={ style.contimg }>
           <LoadingImage url={ mockColors[0].imgs[0].urlImg } alt="title" />
         </div>
-        <BarColors array={ mockColors } execFunction={ updateState! } />
+        <BarColors array={ mockColors } execFunction={ () => { } } />
       </div>
-      <BarSize array={ mockColors } color="#fff" execFunction={ updateState! } />
+      <BarSize array={ mockColors } color="#fff" execFunction={ () => { } } />
       <div className={ style.secondline }>
         <Qtd
           quantityProduct={ infoBagItem.quantity }
-          execFunction={ updateState! }
+          execFunction={ () => { } }
         />
         <div className={ style.titles }>
           <h1>{ infoBagItem.type }</h1>
