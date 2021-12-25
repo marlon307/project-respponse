@@ -6,6 +6,7 @@ import style from './style.module.scss';
 import Bar from '../../SearchBar/Bar';
 import Svg from '../../../assets/Svg';
 import { actionLogOut } from '../../../redux/redux-actions';
+import CustomLink from '../../CustomLink';
 
 interface IUser {
   user: {
@@ -17,10 +18,10 @@ interface IUser {
 const MenuMobile = function MenuMobile() {
   const dipatch = useDispatch();
   const { logged, bagItems } = useSelector(({ user }: IUser) => user);
-
   const [dropMnMobile, setDropMnMobile] = useState(false);
 
   function handleClickLogOutUser() {
+    setDropMnMobile(!dropMnMobile);
     if (logged) {
       dipatch(actionLogOut());
     }
@@ -28,6 +29,9 @@ const MenuMobile = function MenuMobile() {
 
   function openMenu(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
+    setDropMnMobile(!dropMnMobile);
+  }
+  function closeMenu() {
     setDropMnMobile(!dropMnMobile);
   }
 
@@ -51,39 +55,51 @@ const MenuMobile = function MenuMobile() {
           <Bar />
           <ul>
             <li>
-              <Link href="/help">
-                <a aria-label="Ajuda">
+              <Link href="/help" passHref>
+                <CustomLink
+                  ariaLabel="Ajuda"
+                  onClick={ closeMenu! }
+                >
                   <Svg icoName="question" />
                   Ajuda
-                </a>
+                </CustomLink>
               </Link>
             </li>
             { logged && (
               <li>
-                <Link href="/account">
-                  <a aria-label="Conta">
+                <Link href="/account" passHref>
+                  <CustomLink
+                    ariaLabel="Conta"
+                    onClick={ closeMenu! }
+                  >
                     <Svg icoName="setting" />
                     Conta
-                  </a>
+                  </CustomLink>
                 </Link>
               </li>
             ) }
             { logged && (
               <li>
-                <Link href="/favorite">
-                  <a aria-label="Favoritos">
+                <Link href="/favorite" passHref>
+                  <CustomLink
+                    ariaLabel="Favoritos"
+                    onClick={ closeMenu! }
+                  >
                     <Svg icoName="healt" />
                     Favoritos
-                  </a>
+                  </CustomLink>
                 </Link>
               </li>
             ) }
             <li>
-              <Link href="/bag">
-                <a className={ cx({ [style.contb]: bagItems.length }) }>
+              <Link href="/bag" passHref>
+                <CustomLink
+                  ariaLabel="Sacola"
+                  onClick={ closeMenu! }
+                >
                   <Svg icoName="bag" />
                   Sacola
-                </a>
+                </CustomLink>
               </Link>
             </li>
             <li>
@@ -97,11 +113,14 @@ const MenuMobile = function MenuMobile() {
                   Logout
                 </a>
               ) : (
-                <Link href="/login-register">
-                  <a aria-label="Login">
+                <Link href="/login-register" passHref>
+                  <CustomLink
+                    ariaLabel="Login"
+                    onClick={ closeMenu! }
+                  >
                     <Svg icoName="singin" />
                     Login
-                  </a>
+                  </CustomLink>
                 </Link>
               ) }
             </li>
