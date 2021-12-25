@@ -14,6 +14,7 @@ const initialUserState = {
   authenticated: '',
   logged: false,
   bagItems: [],
+  itemEditBag: {},
   checkout: {
     adderessSelected: {
       name: 'Entregar para',
@@ -92,6 +93,11 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
         bagItems: newArray,
       };
     }
+    case types.EDIT_ITEMBAG:
+      return {
+        ...state,
+        itemEditBag: payload,
+      };
     default:
       return state;
   }

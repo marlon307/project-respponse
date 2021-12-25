@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import style from './style.module.scss';
 import Svg from '../../../assets/Svg';
 import LoadingImage from '../../LoadImage';
-import { removeBag } from '../../../redux/redux-actions';
+import { removeBag, editItemBag } from '../../../redux/redux-actions';
 
 type ObjectId = {
   id: number;
@@ -30,19 +30,24 @@ export interface PSmallCard {
 const SmallCard = function SmallCard({
   objectID, removable, editable, eventModal, identifyBag,
 }: PSmallCard) {
-  const dipatch = useDispatch();
+  const dispatch = useDispatch();
   const {
-    title, type, mainImg, price, colorName, color, size,
-    quantity, discount, oldPrice,
+
+    id, title, type, mainImg, price, colorName, color,
+    size, quantity, discount, oldPrice,
   } = objectID;
 
-  function handleClick(event: { preventDefault: () => void; }) {
+  const handleClick = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    eventModal!(true);
-  }
+    dispatch(editItemBag({
+      id,
+      identifyBag: identifyBag!,
+    }));
+    eventModal!();
+  }, []);
 
   const handleClickDelete = useCallback(() => {
-    dipatch(removeBag(identifyBag!));
+    dispatch(removeBag(identifyBag!));
   }, []);
 
   return (
@@ -89,12 +94,10 @@ const SmallCard = function SmallCard({
               </span>
             ) }
             <span title={ `Valor anterior ${oldPrice}` }>
-              {
-                oldPrice.toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })
-              }
+              { oldPrice.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
             </span>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './style.module.scss';
 
 type TQtdChange = {
@@ -7,8 +7,12 @@ type TQtdChange = {
   }
 }
 
-const Qtd = function Qtd() {
-  const [quantity, setQuantity] = useState(1);
+type TProdpQtd = {
+  quantityProduct: number;
+}
+
+const Qtd = function Qtd({ quantityProduct }: TProdpQtd) {
+  const [quantity, setQuantity] = useState(0);
   const maxLimit = 50;
 
   function qtdDecrement() {
@@ -30,6 +34,10 @@ const Qtd = function Qtd() {
       setQuantity(convertValue);
     }
   }
+
+  useEffect(() => {
+    setQuantity(quantityProduct);
+  }, [quantityProduct]);
 
   return (
     <div className={ style.qtd }>
