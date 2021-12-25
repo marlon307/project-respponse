@@ -25,7 +25,7 @@ function productId() {
     const { productID } = router.query;
 
     if (!mockCards[Number(productID)]) {
-      router.push('/404');
+      // router.push('/404');
     } else {
       setPgProductId(Number(productID));
     }
@@ -116,8 +116,7 @@ function productId() {
             <div className={ style.secondline }>
               <BarSize
                 array={ options }
-                // colorName={ colorChecked === '' ? options[0].colorName : colorChecked }
-                colorName="Branco"
+                color={ colorChecked === '' ? options[0].color : colorChecked }
                 execFunction={ setSizeChecked }
               />
             </div>
