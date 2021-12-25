@@ -93,10 +93,15 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
         bagItems: newArray,
       };
     }
-    case types.EDIT_ITEMBAG:
+    case types.GET_EDITITEMBAG:
       return {
         ...state,
         itemEditBag: payload,
+      };
+    case types.EDIT_ITEMBAG:
+      return {
+        ...state,
+        // bagItems: payload,
       };
     default:
       return state;

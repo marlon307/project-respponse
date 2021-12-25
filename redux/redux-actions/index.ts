@@ -62,7 +62,14 @@ export const addBag = (object: Object) => (dispatch: Function) => {
   });
 };
 
-export const editItemBag = (object: Object) => (dispatch: Function) => {
+export const getInfoBagEdit = (object: Object) => (dispatch: Function) => {
+  dispatch({
+    type: types.GET_EDITITEMBAG,
+    payload: object,
+  });
+};
+
+export const itemBagEdit = (object: Object) => (dispatch: Function) => {
   dispatch({
     type: types.EDIT_ITEMBAG,
     payload: object,
