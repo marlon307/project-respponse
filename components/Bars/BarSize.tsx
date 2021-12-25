@@ -3,17 +3,17 @@ import style from './style.module.scss';
 
 interface IObject {
   size: Object;
-  colorName: string;
+  color: string;
 }
 
 type TProps = {
   array: Array<IObject>;
-  colorName: string;
+  color: string;
   execFunction: Function;
 }
 
-const BarSize = function BarSize({ array, colorName, execFunction }: TProps) {
-  const { size } = array.find((object) => object.colorName === colorName)!;
+const BarSize = function BarSize({ array, color, execFunction }: TProps) {
+  const { size } = array.find((object) => object.color === color)!;
   const arraySize = Object.keys(size);
 
   const handleClick = useCallback((sizeSelected: string) => {

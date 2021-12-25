@@ -142,7 +142,7 @@ export const mockCards = [{
   },
   options: [{
     idc: 'bluewhite001',
-    colorName: 'Branco',
+    colorName: 'Azul Claro',
     color: '#00b6ef',
     size: {
       P: 5,
