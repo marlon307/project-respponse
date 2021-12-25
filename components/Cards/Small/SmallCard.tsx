@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import style from './style.module.scss';
 import Svg from '../../../assets/Svg';
 import LoadingImage from '../../LoadImage';
-import { removeBag, editItemBag } from '../../../redux/redux-actions';
+import { removeBag, getInfoBagEdit } from '../../../redux/redux-actions';
 
 type ObjectId = {
   id: number;
@@ -39,7 +39,7 @@ const SmallCard = function SmallCard({
 
   const handleClick = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    dispatch(editItemBag({
+    dispatch(getInfoBagEdit({
       id,
       identifyBag: identifyBag!,
     }));
