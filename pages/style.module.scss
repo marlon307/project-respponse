@@ -469,7 +469,13 @@
 .account {
   max-width: 800px;
   margin: 110px auto;
+  scroll-behavior: smooth !important;
+
+  [id] {
+    scroll-margin-top: 6em;
+  }
 }
+
 
 .container {
   margin: 2em 6%;
@@ -518,6 +524,10 @@
 
   .account {
     margin-top: 70px;
+
+    [id] {
+      scroll-margin-top: 3.5em;
+    }
   }
 }
 
