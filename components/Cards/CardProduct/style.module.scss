@@ -143,10 +143,10 @@
   }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 500px) {
   .productcard {
     figure {
-      width: 150px;
+      width: 42.5vw;
       height: 100%;
       border-radius: 1em;
     }
@@ -154,7 +154,7 @@
 
   .productcardNDS {
     figure {
-      width: 150px;
+      width: 42.5vw;
       height: 100%;
       border-radius: 1em;
     }
@@ -162,29 +162,9 @@
 
   .productcardND {
     figure {
-      width: 150px;
+      width: 42.5vw;
       height: 100%;
       border-radius: 1em;
-    }
-  }
-}
-
-@media (max-width: 320px) {
-  .productcard {
-    figure {
-      width: 130px;
-    }
-  }
-
-  .productcardNDS {
-    figure {
-      width: 130px;
-    }
-  }
-
-  .productcardND {
-    figure {
-      width: 130px;
     }
   }
 }
@@ -192,19 +172,19 @@
 @media (max-width: 280px) {
   .productcard {
     figure {
-      width: 200px;
+      width: 90vw;
     }
   }
 
   .productcardNDS {
     figure {
-      width: 200px;
+      width: 44vw;
     }
   }
 
   .productcardND {
     figure {
-      width: 200px;
+      width: 44vw;
     }
   }
 }
