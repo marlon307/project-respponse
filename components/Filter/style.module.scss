@@ -121,7 +121,7 @@
   position: relative;
 
   button {
-    padding: 0.8em 1em;
+    padding: 0.8em 0;
     background: transparent;
     cursor: pointer;
     display: flex;
@@ -131,8 +131,12 @@
     color: #3d3d3d;
 
     svg {
-      width: 1.3em;
+      width: 1.5em;
       fill: #3d3d3d;
+    }
+
+    h3 {
+      font-size: 1.45em;
     }
   }
 }
