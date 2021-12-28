@@ -27,17 +27,13 @@ function account() {
   }, [logged]);
 
   const [dropOption, setDropOption] = useState('');
-  function openMenu(event: any, menuName: string) {
-    event.preventDefault();
-    setDropOption(menuName);
-  }
 
   return (
     <div className={ style.account }>
-      <div className={ style.container }>
+      <div className={ style.container } id="user">
         <a
-          href="/usercfg"
-          onClick={ (event) => openMenu(event, 'usercfg') }
+          href="#user"
+          onClick={ () => setDropOption('usercfg') }
           className={ cx(style.dropOption, {
             [style.open]: dropOption === 'usercfg',
           }) }
@@ -49,10 +45,10 @@ function account() {
           <Usercfg />
         </div>
       </div>
-      <div className={ style.container }>
+      <div className={ style.container } id="orders">
         <a
-          href="/order"
-          onClick={ (event) => openMenu(event, 'order') }
+          href="#orders"
+          onClick={ () => setDropOption('order') }
           className={ cx(style.dropOption, {
             [style.open]: dropOption === 'order',
           }) }
@@ -64,10 +60,10 @@ function account() {
           <Order />
         </div>
       </div>
-      <div className={ style.container }>
+      <div className={ style.container } id="address">
         <a
-          href="/address"
-          onClick={ (event) => openMenu(event, 'address') }
+          href="#address"
+          onClick={ () => setDropOption('address') }
           className={ cx(style.dropOption, {
             [style.open]: dropOption === 'address',
           }) }
@@ -79,10 +75,10 @@ function account() {
           <Address />
         </div>
       </div>
-      <div className={ style.container }>
+      <div className={ style.container } id="cards">
         <a
-          href="/cards"
-          onClick={ (event) => openMenu(event, 'cards') }
+          href="#cards"
+          onClick={ () => setDropOption('cards') }
           className={ cx(style.dropOption, {
             [style.open]: dropOption === 'cards',
           }) }
@@ -94,10 +90,10 @@ function account() {
           <Cards />
         </div>
       </div>
-      <div className={ style.container }>
+      <div className={ style.container } id="help">
         <a
-          href="/help"
-          onClick={ (event) => openMenu(event, 'help') }
+          href="#help"
+          onClick={ () => setDropOption('help') }
           className={ cx(style.dropOption, {
             [style.open]: dropOption === 'help',
           }) }
