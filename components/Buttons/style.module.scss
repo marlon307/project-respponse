@@ -54,16 +54,20 @@
   justify-content: flex-start;
   width: 100%;
 
-  a {
+  span {
+    position: relative;
+    top: auto;
     padding: 18px 0 18px 24px;
     color: #006bef;
+    font-weight: 600;
+    font-size: 0.96em;
   }
 
   &:hover {
     background: #006bef;
   }
 
-  &:hover a {
+  &:hover span {
     color: #fff;
   }
 
