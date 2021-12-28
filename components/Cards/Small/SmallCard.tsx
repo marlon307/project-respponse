@@ -32,17 +32,13 @@ const SmallCard = function SmallCard({
 }: PSmallCard) {
   const dispatch = useDispatch();
   const {
-
-    id, title, type, mainImg, price, colorName, color,
+    title, type, mainImg, price, colorName, color,
     size, quantity, discount, oldPrice,
   } = objectID;
 
   const handleClick = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    dispatch(getInfoBagEdit({
-      id,
-      identifyBag: identifyBag!,
-    }));
+    dispatch(getInfoBagEdit({ ...objectID }));
     eventModal!();
   }, []);
 
