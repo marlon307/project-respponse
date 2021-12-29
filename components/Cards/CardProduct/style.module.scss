@@ -87,7 +87,7 @@
 @media (max-width: 1300px) {
   .productcard {
     figure {
-      width: 250px;
+      width: min(27.5vw, 30vw);
       height: 100%;
       border-radius: 1em;
     }
@@ -114,7 +114,7 @@
     height: 100%;
 
     figure {
-      width: 200px;
+      width: min(28vw, 30vw);
     }
   }
 
@@ -140,6 +140,14 @@
 
   .infocont {
     top: 0.3em;
+  }
+}
+
+@media (max-width: 600px) {
+  .productcard {
+    figure {
+      width: 42.5vw;
+    }
   }
 }
 
