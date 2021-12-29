@@ -564,3 +564,24 @@
 }
 
 //------------Fim Style Account-------------------
+
+//-----------------404-------------------
+
+.notfound {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 12em;
+    color: #505050;
+  }
+
+  h3 {
+    margin-bottom: 3em;
+    color: #505050;
+  }
+}
