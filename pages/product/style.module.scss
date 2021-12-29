@@ -75,6 +75,10 @@
 .price {
   position: relative;
 
+  div {
+    display: flex;
+  }
+
   div:first-child {
     span:first-child {
       font-size: 1em;
