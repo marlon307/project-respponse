@@ -87,7 +87,7 @@
 @media (max-width: 1300px) {
   .productcard {
     figure {
-      width: min(27.5vw, 30vw);
+      width: 24.5vw;
       height: 100%;
       border-radius: 1em;
     }
@@ -105,6 +105,14 @@
     figure {
       width: 250px;
       border-radius: 1em;
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .productcard {
+    figure {
+      width: min(22vw, 28vw);
     }
   }
 }
