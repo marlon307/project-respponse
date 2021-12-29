@@ -17,7 +17,7 @@
 - [Figma](<https://www.figma.com/file/iQODOgouFLNUlYJvySj7ln/Untitled?node-id=57%3A21>)
 
 </br>
-Com designe minimalista e melhor visualização dos produtos para que o usuário se sentir mais próximo do que ele procura.
+Com designe minimalista e melhor visualização dos produtos para que o usuário se sentir mais próximo.
 Atualmente eu @_marlon307 trabalho no projeto sozinho esta sendo divertido, pois, quanto mais ideias tenho para colocar mais desafios me aparece claro estou curtindo muito fazer esse projeto, então não tem nada melhor colocar ideias em código onde vejo a mágica acontecer. De onde tirei esse designe? Ok, vou deixar aqui links onde me inspirei para fazer o site.
 </br>
 </br>
