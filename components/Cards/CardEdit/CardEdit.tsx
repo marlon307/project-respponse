@@ -4,10 +4,10 @@ import BarColors from '../../Bars/BarColors';
 import Qtd from '../../Bars/Qtd';
 import style from './style.module.scss';
 import BarSize from '../../Bars/BarSize';
-import mockColors from '../../../service/mockColor';
 import { mockCards } from '../../../service/mockCards';
 import LoadingImage from '../../LoadImage';
 import { itemBagEdit } from '../../../redux/redux-actions';
+import { checkColorAvailable, checkSizeAvailable } from '../../../hooks/useCheckAvailable';
 
 type TObjectUserBag = {
   user: {
@@ -41,9 +41,10 @@ type TObjectUserBag = {
 const CardEdit = function CardEdit() {
   const { bagItems, itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
-  const [colorupdate, setColorupdate] = useState({});
+  const [colorupdate, setColorupdate] = useState<any>({});
   const [sizeupdate, setSizeupdate] = useState('');
   const [qauntityupdate, setQauntity] = useState(0);
+  // const [urlImage, setUrlimg] = useState({});
   const [infoBagItem, setInfoBagitem] = useState({
     ...itemEditBag,
   });
@@ -67,12 +68,30 @@ const CardEdit = function CardEdit() {
     };
   }, []);
 
+  useEffect(() => {
+    const array = mockCards[itemEditBag.id].options;
+    checkSizeAvailable(array, colorupdate.color);
+
+    // const getImgage = array.find((object) => object.color === colorupdate.color)!;
+
+    // if (!getImgage) {
+    //   setUrlimg(getImgage.imgs[0].urlImg);
+    // } else {
+    //   setUrlimg(mockCards[itemEditBag.id].options[0].imgs[1].urlImg);
+    // }
+    // setUrlimg(imgs[0].urlImg);
+  }, [colorupdate]);
+
+  useEffect(() => {
+    checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
+  }, [sizeupdate]);
+
   return (
     <div className={ style.edit }>
       <div className={ style.visualcont }>
         <div className={ style.contimg }>
           <LoadingImage
-            url={ mockColors[0].imgs[0].urlImg }
+            url={ mockCards[itemEditBag.id].options[0].imgs[1].urlImg }
             alt="title"
           />
         </div>
