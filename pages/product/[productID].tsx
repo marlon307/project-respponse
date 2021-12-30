@@ -41,11 +41,8 @@ function productId() {
 
   useEffect(() => {
     checkSizeAvailable(options, colorChecked.color);
-  }, [colorChecked]);
-
-  useEffect(() => {
     checkColorAvailable(options, sizeChecked);
-  }, [sizeChecked]);
+  }, [colorChecked, sizeChecked]);
 
   return (
     <div className={ style.product }>
