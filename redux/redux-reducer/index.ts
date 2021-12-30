@@ -4,10 +4,7 @@ import * as types from '../types';
 // INITIAL TIMER STATE
 interface IUserAction {
   type: string,
-  payload: {
-    auth: string;
-    log: boolean;
-  },
+  payload: any,
 }
 
 const initialUserState = {
@@ -98,11 +95,15 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
         ...state,
         itemEditBag: payload,
       };
-    case types.EDIT_ITEMBAG:
-      return {
-        ...state,
-        // bagItems: payload,
+    case types.EDIT_ITEMBAG: {
+      const index = state.bagItems
+        .findIndex(({ identifyBag }) => identifyBag === payload.identifyBag);
+
+      state.bagItems[index] = {
+        ...payload,
       };
+      return state;
+    }
     default:
       return state;
   }

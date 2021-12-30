@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import BarColors from '../../Bars/BarColors';
 import Qtd from '../../Bars/Qtd';
-import style from './style.module.scss';
 import BarSize from '../../Bars/BarSize';
+import style from './style.module.scss';
 import { mockCards } from '../../../service/mockCards';
 import LoadingImage from '../../LoadImage';
 import { itemBagEdit } from '../../../redux/redux-actions';
@@ -15,7 +15,7 @@ type TObjectUserBag = {
       id: number;
       title: string;
       type: string;
-      mainImg: string | any;
+      mainImg: Object;
       price: number;
       oldPrice: number;
       colorName: string;
@@ -41,71 +41,77 @@ type TObjectUserBag = {
 const CardEdit = function CardEdit() {
   const { bagItems, itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
-  const [colorupdate, setColorupdate] = useState<any>({});
-  const [sizeupdate, setSizeupdate] = useState('');
-  const [qauntityupdate, setQauntity] = useState(0);
+  const [colorupdate, setColorUpdate] = useState<any>({});
+  const [sizeupdate, setSizeUpdate] = useState('');
+  const [qauntityupdate, setQauntityUpdate] = useState(0);
   const [urlImage, setUrlimg] = useState<any>({});
   const [infoBagItem, setInfoBagitem] = useState({
     ...itemEditBag,
   });
 
   useEffect(() => {
-    setInfoBagitem({
-      ...infoBagItem,
-      quantity: qauntityupdate,
-      ...colorupdate,
-      size: sizeupdate,
-    });
-  }, [colorupdate, sizeupdate, qauntityupdate]);
-
-  useEffect(() => {
     const findItemBag = bagItems
       .find(({ identifyBag }) => identifyBag === itemEditBag.identifyBag)!;
-    setInfoBagitem(findItemBag);
 
-    return () => {
-      dispatch(itemBagEdit(infoBagItem));
-    };
+    setInfoBagitem(findItemBag);
+    setSizeUpdate(findItemBag.size);
+    setQauntityUpdate(findItemBag.quantity);
+    setColorUpdate({
+      color: findItemBag.color,
+      colorName: findItemBag.colorName,
+    });
   }, []);
 
   useEffect(() => {
     const array = mockCards[itemEditBag.id].options;
     checkSizeAvailable(array, colorupdate.color);
+
     const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
     setUrlimg(imgs[0].urlImg);
-  }, [colorupdate]);
+    checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
+  }, [colorupdate, sizeupdate, qauntityupdate]);
 
   useEffect(() => {
-    checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
-  }, [sizeupdate]);
+    if (colorupdate.color !== undefined && qauntityupdate > 0 && sizeupdate !== '') {
+      setInfoBagitem({
+        ...infoBagItem,
+        quantity: qauntityupdate,
+        ...colorupdate,
+        size: sizeupdate,
+      });
+    }
+    return () => {
+      dispatch(itemBagEdit(infoBagItem));
+    };
+  }, [infoBagItem]);
 
   return (
     <div className={ style.edit }>
       <div className={ style.visualcont }>
         <div className={ style.contimg }>
           <LoadingImage
+            alt="title"
             url={
               urlImage.src === undefined
-                ? mockCards[itemEditBag.id].options[0].imgs[1].urlImg
+                ? mockCards[itemEditBag.id].options[0].imgs[0].urlImg
                 : urlImage
             }
-            alt="title"
           />
         </div>
         <BarColors
           array={ mockCards[itemEditBag.id].options }
-          execFunction={ setColorupdate }
+          execFunction={ setColorUpdate }
         />
       </div>
       <BarSize
         array={ mockCards[itemEditBag.id].options }
         color={ itemEditBag.color }
-        execFunction={ setSizeupdate }
+        execFunction={ setSizeUpdate }
       />
       <div className={ style.secondline }>
         <Qtd
-          quantityProduct={ infoBagItem.quantity }
-          execFunction={ setQauntity }
+          quantityProduct={ qauntityupdate }
+          execFunction={ setQauntityUpdate }
         />
         <div className={ style.titles }>
           <h1>{ infoBagItem.type }</h1>
