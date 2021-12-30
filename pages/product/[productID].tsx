@@ -123,7 +123,7 @@ function productId() {
             </div>
             <AddBag
               productId={ mockCards[pgProductId] }
-              colorSelected={ colorChecked.color }
+              colorSelected={ colorChecked }
               sizeSelected={ sizeChecked }
             />
           </div>

@@ -62,9 +62,15 @@ const CardEdit = function CardEdit() {
     <div className={ style.edit }>
       <div className={ style.visualcont }>
         <div className={ style.contimg }>
-          <LoadingImage url={ mockColors[0].imgs[0].urlImg } alt="title" />
+          <LoadingImage
+            url={ mockColors[0].imgs[0].urlImg }
+            alt="title"
+          />
         </div>
-        <BarColors array={ mockCards[itemEditBag.id].options } execFunction={ () => { } } />
+        <BarColors
+          array={ mockCards[itemEditBag.id].options }
+          execFunction={ () => { } }
+        />
       </div>
       <BarSize
         array={ mockCards[itemEditBag.id].options }
