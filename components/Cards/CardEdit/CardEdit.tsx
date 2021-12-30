@@ -72,12 +72,14 @@ const CardEdit = function CardEdit() {
   }, [colorupdate, sizeupdate]);
 
   useEffect(() => {
-    setInfoBagitem({
-      ...infoBagItem,
-      quantity: qauntityupdate,
-      ...colorupdate,
-      size: sizeupdate,
-    });
+    if (colorupdate.color !== undefined && sizeupdate !== '' && qauntityupdate > 0) {
+      setInfoBagitem({
+        ...infoBagItem,
+        quantity: qauntityupdate,
+        ...colorupdate,
+        size: sizeupdate,
+      });
+    }
   }, [colorupdate, sizeupdate, qauntityupdate]);
 
   useEffect(() => () => {
