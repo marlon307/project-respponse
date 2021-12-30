@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import style from './style.module.scss';
 
 type TQtdChange = {
@@ -13,20 +13,17 @@ type TProdpQtd = {
 }
 
 const Qtd = function Qtd({ quantityProduct, execFunction }: TProdpQtd) {
-  const [quantity, setQuantity] = useState(0);
   const maxLimit = 50;
 
   function qtdDecrement() {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-      execFunction({ quantity });
+    if (quantityProduct > 1) {
+      execFunction(quantityProduct - 1);
     }
   }
 
   function qtdIncrement() {
-    if (quantity < maxLimit) {
-      setQuantity(quantity + 1);
-      execFunction({ quantity });
+    if (quantityProduct < maxLimit) {
+      execFunction(quantityProduct + 1);
     }
   }
 
@@ -34,19 +31,18 @@ const Qtd = function Qtd({ quantityProduct, execFunction }: TProdpQtd) {
     const { value } = target;
     const convertValue = Number(value);
     if (convertValue > 0 && convertValue < maxLimit) {
-      setQuantity(convertValue);
-      execFunction({ quantity: convertValue });
+      execFunction(convertValue);
     }
   }
 
   useEffect(() => {
-    setQuantity(quantityProduct);
+    execFunction(quantityProduct);
   }, [quantityProduct]);
 
   return (
     <div className={ style.qtd }>
       <button type="button" onClick={ qtdDecrement }>-</button>
-      <input type="text" onChange={ changQtd } value={ quantity } min={ 1 } />
+      <input type="text" onChange={ changQtd } value={ quantityProduct } min={ 1 } />
       <button type="button" onClick={ qtdIncrement }>+</button>
     </div>
   );

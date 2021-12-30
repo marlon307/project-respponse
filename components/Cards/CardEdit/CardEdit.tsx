@@ -5,6 +5,7 @@ import Qtd from '../../Bars/Qtd';
 import style from './style.module.scss';
 import BarSize from '../../Bars/BarSize';
 import mockColors from '../../../service/mockColor';
+import { mockCards } from '../../../service/mockCards';
 import LoadingImage from '../../LoadImage';
 import { itemBagEdit } from '../../../redux/redux-actions';
 
@@ -26,7 +27,13 @@ type TObjectUserBag = {
     }>
     itemEditBag: {
       id: number;
+      type: string;
+      title: string;
+      quantity: number;
       identifyBag: string;
+      colorName: string;
+      color: string;
+      size: string;
     }
   };
 }
@@ -34,24 +41,21 @@ type TObjectUserBag = {
 const CardEdit = function CardEdit() {
   const { bagItems, itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
-
+  const [colorupdate, setColorupdate] = useState({});
+  const [sizeupdate, setSizeupdate] = useState('');
+  const [qauntityupdate, setQauntity] = useState(0);
   const [infoBagItem, setInfoBagitem] = useState({
-    id: itemEditBag.id,
-    type: '',
-    title: '',
-    quantity: 0,
-    colorName: '',
-    color: '',
-    size: '',
-    identifyBag: itemEditBag.identifyBag,
+    ...itemEditBag,
   });
 
-  // function updateState(object: Object) {
-  //   setInfoBagitem({
-  //     ...infoBagItem,
-  //     ...object,
-  //   });
-  // }
+  useEffect(() => {
+    setInfoBagitem({
+      ...infoBagItem,
+      quantity: qauntityupdate,
+      ...colorupdate,
+      size: sizeupdate,
+    });
+  }, [colorupdate, sizeupdate, qauntityupdate]);
 
   useEffect(() => {
     const findItemBag = bagItems
@@ -67,15 +71,25 @@ const CardEdit = function CardEdit() {
     <div className={ style.edit }>
       <div className={ style.visualcont }>
         <div className={ style.contimg }>
-          <LoadingImage url={ mockColors[0].imgs[0].urlImg } alt="title" />
+          <LoadingImage
+            url={ mockColors[0].imgs[0].urlImg }
+            alt="title"
+          />
         </div>
-        <BarColors array={ mockColors } execFunction={ () => { } } />
+        <BarColors
+          array={ mockCards[itemEditBag.id].options }
+          execFunction={ setColorupdate }
+        />
       </div>
-      <BarSize array={ mockColors } color="#fff" execFunction={ () => { } } />
+      <BarSize
+        array={ mockCards[itemEditBag.id].options }
+        color={ itemEditBag.color }
+        execFunction={ setSizeupdate }
+      />
       <div className={ style.secondline }>
         <Qtd
           quantityProduct={ infoBagItem.quantity }
-          execFunction={ () => { } }
+          execFunction={ setQauntity }
         />
         <div className={ style.titles }>
           <h1>{ infoBagItem.type }</h1>

@@ -21,7 +21,7 @@ type TObjectProduct = {
 
 type PBtnAddBag = {
   productId: TObjectProduct;
-  colorSelected: string;
+  colorSelected: { color: string; };
   sizeSelected: string;
 }
 
@@ -51,14 +51,12 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
     const {
       id, title, type,
       mainImg, price, oldPrice,
-      discount, options,
+      discount,
     } = productId;
-
-    const { colorName } = options.find(({ color }) => color === colorSelected)!;
 
     const index = bagItems.findIndex(
       (object) => object.id === id
-        && object.color === colorSelected
+        && object.color === colorSelected.color
         && object.size === sizeSelected,
     );
 
@@ -75,14 +73,13 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
           title,
           type,
           mainImg,
-          colorName,
-          color: colorSelected,
+          ...colorSelected,
           size: sizeSelected,
           price,
           discount,
           oldPrice,
           quantity: 1,
-          identifyBag: id + colorSelected + sizeSelected,
+          identifyBag: id + colorSelected.color + sizeSelected,
         }];
     }
 

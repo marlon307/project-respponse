@@ -18,8 +18,11 @@ function productId() {
   const slideRefProductImg = createRef<AliceCarousel>();
   const [itemdrag, setItemDrag] = useState(false);
   const [sizeChecked, setSizeChecked] = useState('');
-  const [colorChecked, setColorChecked] = useState('');
   const [pgProductId, setPgProductId] = useState(0);
+  const [colorChecked, setColorChecked] = useState({
+    color: '',
+    colorName: '',
+  });
 
   useEffect(() => {
     const { productID } = router.query;
@@ -37,7 +40,7 @@ function productId() {
   } = mockCards[pgProductId];
 
   useEffect(() => {
-    checkSizeAvailable(options, colorChecked);
+    checkSizeAvailable(options, colorChecked.color);
   }, [colorChecked]);
 
   useEffect(() => {
@@ -114,7 +117,7 @@ function productId() {
             <div className={ style.secondline }>
               <BarSize
                 array={ options }
-                color={ colorChecked === '' ? options[0].color : colorChecked }
+                color={ colorChecked.color === '' ? options[0].color : colorChecked.color }
                 execFunction={ setSizeChecked }
               />
             </div>
