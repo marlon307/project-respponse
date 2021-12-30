@@ -96,10 +96,11 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
         itemEditBag: payload,
       };
     case types.EDIT_ITEMBAG: {
+      const newObj = state;
       const index = state.bagItems
         .findIndex(({ identifyBag }) => identifyBag === payload.identifyBag);
 
-      state.bagItems[index] = {
+      (newObj.bagItems[index] as Object) = {
         ...payload,
       };
       return state;
@@ -109,6 +110,10 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
   }
 };
 
+// return {
+//   ...state,
+//   // bagItems: payload,
+// };
 interface IAppAction {
   type: string,
   payload: {
