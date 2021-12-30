@@ -44,7 +44,7 @@ const CardEdit = function CardEdit() {
   const [colorupdate, setColorupdate] = useState<any>({});
   const [sizeupdate, setSizeupdate] = useState('');
   const [qauntityupdate, setQauntity] = useState(0);
-  // const [urlImage, setUrlimg] = useState({});
+  const [urlImage, setUrlimg] = useState<any>({});
   const [infoBagItem, setInfoBagitem] = useState({
     ...itemEditBag,
   });
@@ -71,15 +71,8 @@ const CardEdit = function CardEdit() {
   useEffect(() => {
     const array = mockCards[itemEditBag.id].options;
     checkSizeAvailable(array, colorupdate.color);
-
-    // const getImgage = array.find((object) => object.color === colorupdate.color)!;
-
-    // if (!getImgage) {
-    //   setUrlimg(getImgage.imgs[0].urlImg);
-    // } else {
-    //   setUrlimg(mockCards[itemEditBag.id].options[0].imgs[1].urlImg);
-    // }
-    // setUrlimg(imgs[0].urlImg);
+    const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
+    setUrlimg(imgs[0].urlImg);
   }, [colorupdate]);
 
   useEffect(() => {
@@ -91,7 +84,11 @@ const CardEdit = function CardEdit() {
       <div className={ style.visualcont }>
         <div className={ style.contimg }>
           <LoadingImage
-            url={ mockCards[itemEditBag.id].options[0].imgs[1].urlImg }
+            url={
+              urlImage.src === undefined
+                ? mockCards[itemEditBag.id].options[0].imgs[1].urlImg
+                : urlImage
+            }
             alt="title"
           />
         </div>
