@@ -100,7 +100,7 @@ const BarBuy = function BarBuy() {
           <BuyFinishBtn />
         </div>
       </div>
-      <a href="/" onClick={ openBarMenu }> </a>
+      <a href="/" aria-label="Mais Informações" onClick={ openBarMenu }> </a>
     </section>
   );
 };

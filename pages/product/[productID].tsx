@@ -92,7 +92,6 @@ function productId() {
               </div>
               <div className={ cx(discount && style.price) }>
                 <div>
-                  { discount > 0 && <span>de </span> }
                   <span>
                     { oldPrice.toLocaleString('pt-br', {
                       style: 'currency',
@@ -102,7 +101,6 @@ function productId() {
                 </div>
                 { discount > 0 && (
                   <div>
-                    <span>por </span>
                     <span>
                       { price.toLocaleString('pt-br', {
                         style: 'currency',
