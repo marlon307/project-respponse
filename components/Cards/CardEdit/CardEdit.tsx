@@ -5,6 +5,7 @@ import Qtd from '../../Bars/Qtd';
 import style from './style.module.scss';
 import BarSize from '../../Bars/BarSize';
 import mockColors from '../../../service/mockColor';
+import { mockCards } from '../../../service/mockCards';
 import LoadingImage from '../../LoadImage';
 import { itemBagEdit } from '../../../redux/redux-actions';
 
@@ -27,6 +28,7 @@ type TObjectUserBag = {
     itemEditBag: {
       id: number;
       identifyBag: string;
+      color: string;
     }
   };
 }
@@ -46,13 +48,6 @@ const CardEdit = function CardEdit() {
     identifyBag: itemEditBag.identifyBag,
   });
 
-  // function updateState(object: Object) {
-  //   setInfoBagitem({
-  //     ...infoBagItem,
-  //     ...object,
-  //   });
-  // }
-
   useEffect(() => {
     const findItemBag = bagItems
       .find(({ identifyBag }) => identifyBag === itemEditBag.identifyBag)!;
@@ -69,9 +64,13 @@ const CardEdit = function CardEdit() {
         <div className={ style.contimg }>
           <LoadingImage url={ mockColors[0].imgs[0].urlImg } alt="title" />
         </div>
-        <BarColors array={ mockColors } execFunction={ () => { } } />
+        <BarColors array={ mockCards[itemEditBag.id].options } execFunction={ () => { } } />
       </div>
-      <BarSize array={ mockColors } color="#fff" execFunction={ () => { } } />
+      <BarSize
+        array={ mockCards[itemEditBag.id].options }
+        color={ itemEditBag.color }
+        execFunction={ () => { } }
+      />
       <div className={ style.secondline }>
         <Qtd
           quantityProduct={ infoBagItem.quantity }
