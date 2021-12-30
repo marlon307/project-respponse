@@ -13,8 +13,8 @@ type PBarColors = {
 }
 
 const BarColors = function BarColors({ array, execFunction }: PBarColors) {
-  const handleClick = useCallback((color: String) => {
-    execFunction(color);
+  const handleClick = useCallback((object: Object) => {
+    execFunction(object);
   }, []);
 
   return (
@@ -25,7 +25,7 @@ const BarColors = function BarColors({ array, execFunction }: PBarColors) {
             <label htmlFor={ idc }>
               <input
                 id={ idc }
-                onClick={ () => handleClick(color) }
+                onClick={ () => handleClick({ color, colorName }) }
                 type="radio"
                 name="color"
               />
