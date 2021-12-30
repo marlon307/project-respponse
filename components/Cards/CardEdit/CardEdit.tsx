@@ -27,8 +27,13 @@ type TObjectUserBag = {
     }>
     itemEditBag: {
       id: number;
+      type: string;
+      title: string;
+      quantity: number;
       identifyBag: string;
+      colorName: string;
       color: string;
+      size: string;
     }
   };
 }
@@ -36,17 +41,21 @@ type TObjectUserBag = {
 const CardEdit = function CardEdit() {
   const { bagItems, itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
-
+  const [colorupdate, setColorupdate] = useState({});
+  const [sizeupdate, setSizeupdate] = useState('');
+  const [qauntityupdate, setQauntity] = useState(0);
   const [infoBagItem, setInfoBagitem] = useState({
-    id: itemEditBag.id,
-    type: '',
-    title: '',
-    quantity: 0,
-    colorName: '',
-    color: '',
-    size: '',
-    identifyBag: itemEditBag.identifyBag,
+    ...itemEditBag,
   });
+
+  useEffect(() => {
+    setInfoBagitem({
+      ...infoBagItem,
+      quantity: qauntityupdate,
+      ...colorupdate,
+      size: sizeupdate,
+    });
+  }, [colorupdate, sizeupdate, qauntityupdate]);
 
   useEffect(() => {
     const findItemBag = bagItems
@@ -69,18 +78,18 @@ const CardEdit = function CardEdit() {
         </div>
         <BarColors
           array={ mockCards[itemEditBag.id].options }
-          execFunction={ () => { } }
+          execFunction={ setColorupdate }
         />
       </div>
       <BarSize
         array={ mockCards[itemEditBag.id].options }
         color={ itemEditBag.color }
-        execFunction={ () => { } }
+        execFunction={ setSizeupdate }
       />
       <div className={ style.secondline }>
         <Qtd
           quantityProduct={ infoBagItem.quantity }
-          execFunction={ () => { } }
+          execFunction={ setQauntity }
         />
         <div className={ style.titles }>
           <h1>{ infoBagItem.type }</h1>
