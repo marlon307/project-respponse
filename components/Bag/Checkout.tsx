@@ -159,19 +159,21 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
       <div className={ style.contcheckout }>
         <div className={ style.select }>
           <h3>
-            <Svg icoName="map" />
+            <Svg icoName="tag" />
             Cupom de Desconto
           </h3>
         </div>
         <div className={ style.options }>
-          <Input
-            id="cupom"
-            type="text"
-            name="cupom"
-            placeHolder=""
-            ivalue={ cupomText }
-            inputValue={ hadleCupom }
-          />
+          <div className={ style.cpm }>
+            <Input
+              id="cupom"
+              type="text"
+              name="cupom"
+              placeHolder="Insira aqui o cupom"
+              ivalue={ cupomText }
+              inputValue={ hadleCupom }
+            />
+          </div>
           <span className={ style.descount }>Desconto - R$ 0,00</span>
         </div>
       </div>
