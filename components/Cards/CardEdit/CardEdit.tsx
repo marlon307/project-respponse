@@ -65,7 +65,7 @@ const CardEdit = function CardEdit() {
       size: sizeupdate,
       quantity: qauntityupdate,
     }));
-  }, [colorupdate, sizeupdate, qauntityupdate]);
+  });
 
   return (
     <div className={ style.edit }>
