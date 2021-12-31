@@ -97,28 +97,12 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
       };
     case types.EDIT_ITEMBAG: {
       type T = { bagItems: Array<{ quantity: number; }> };
-
       const newObj: T = state;
-      const identifyCardProd = payload.id + payload.color + payload.size;
 
       const index = state.bagItems
-        .findIndex(({ identifyBag }) => identifyBag === identifyCardProd);
+        .findIndex(({ identifyBag }) => identifyBag === payload.identifyBag);
 
-      if (identifyCardProd === payload.identifyBag) {
-        newObj.bagItems[index] = payload;
-      }
-
-      // if (index < 0) {
-      //   const getIndex = state.bagItems
-      //     .findIndex(({ identifyBag }) => identifyBag === identifyCardProd
-      //       || identifyBag === payload.identifyBag);
-
-      //   newObj.bagItems[getIndex] = {
-      //     ...payload,
-      //     identifyBag: identifyCardProd,
-      //   };
-      // }
-
+      newObj.bagItems[index] = payload;
       return state;
     }
     default:

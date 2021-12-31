@@ -58,14 +58,14 @@ const CardEdit = function CardEdit() {
     checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
   }, [colorupdate, sizeupdate]);
 
-  useEffect(() => {
+  useEffect(() => () => {
     dispatch(itemBagEdit({
       ...itemEditBag,
       ...colorupdate,
       size: sizeupdate,
       quantity: qauntityupdate,
     }));
-  });
+  }, []);
 
   return (
     <div className={ style.edit }>
