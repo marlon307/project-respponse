@@ -100,9 +100,7 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
       const index = state.bagItems
         .findIndex(({ identifyBag }) => identifyBag === payload.identifyBag);
 
-      (newObj.bagItems[index] as Object) = {
-        ...payload,
-      };
+      (newObj.bagItems[index] as Object) = payload;
       return state;
     }
     default:
@@ -110,10 +108,6 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
   }
 };
 
-// return {
-//   ...state,
-//   // bagItems: payload,
-// };
 interface IAppAction {
   type: string,
   payload: {

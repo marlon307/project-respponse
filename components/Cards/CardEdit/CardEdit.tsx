@@ -39,28 +39,15 @@ type TObjectUserBag = {
 }
 
 const CardEdit = function CardEdit() {
-  const { bagItems, itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
+  const { itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
-  const [colorupdate, setColorUpdate] = useState<any>({});
-  const [sizeupdate, setSizeUpdate] = useState('');
-  const [qauntityupdate, setQauntityUpdate] = useState(0);
-  const [urlImage, setUrlimg] = useState<any>({});
-  const [infoBagItem, setInfoBagitem] = useState({
-    ...itemEditBag,
+  const [colorupdate, setColorUpdate] = useState({
+    color: itemEditBag.color,
+    colorName: itemEditBag.colorName,
   });
-
-  useEffect(() => {
-    const findItemBag = bagItems
-      .find(({ identifyBag }) => identifyBag === itemEditBag.identifyBag)!;
-
-    setInfoBagitem(findItemBag);
-    setSizeUpdate(findItemBag.size);
-    setQauntityUpdate(findItemBag.quantity);
-    setColorUpdate({
-      color: findItemBag.color,
-      colorName: findItemBag.colorName,
-    });
-  }, []);
+  const [sizeupdate, setSizeUpdate] = useState(itemEditBag.size);
+  const [qauntityupdate, setQauntityUpdate] = useState(itemEditBag.quantity);
+  const [urlImage, setUrlimg] = useState<any>({});
 
   useEffect(() => {
     const array = mockCards[itemEditBag.id].options;
@@ -72,19 +59,13 @@ const CardEdit = function CardEdit() {
   }, [colorupdate, sizeupdate]);
 
   useEffect(() => {
-    if (colorupdate.color !== undefined && sizeupdate !== '' && qauntityupdate > 0) {
-      setInfoBagitem({
-        ...infoBagItem,
-        quantity: qauntityupdate,
-        ...colorupdate,
-        size: sizeupdate,
-      });
-    }
+    dispatch(itemBagEdit({
+      ...itemEditBag,
+      ...colorupdate,
+      size: sizeupdate,
+      quantity: qauntityupdate,
+    }));
   }, [colorupdate, sizeupdate, qauntityupdate]);
-
-  useEffect(() => () => {
-    dispatch(itemBagEdit(infoBagItem));
-  }, [infoBagItem]);
 
   return (
     <div className={ style.edit }>
@@ -115,8 +96,8 @@ const CardEdit = function CardEdit() {
           execFunction={ setQauntityUpdate }
         />
         <div className={ style.titles }>
-          <h1>{ infoBagItem.type }</h1>
-          <h2>{ infoBagItem.title }</h2>
+          <h1>{ itemEditBag.type }</h1>
+          <h2>{ itemEditBag.title }</h2>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import style from './style.module.scss';
 
 type TQtdChange = {
@@ -35,9 +35,9 @@ const Qtd = function Qtd({ quantityProduct, execFunction }: TProdpQtd) {
     }
   }
 
-  useEffect(() => {
-    execFunction(quantityProduct);
-  }, [quantityProduct]);
+  // useEffect(() => {
+  //   execFunction(quantityProduct);
+  // }, [quantityProduct]);
 
   return (
     <div className={ style.qtd }>
