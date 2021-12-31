@@ -108,10 +108,6 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
   }
 };
 
-// return {
-//   ...state,
-//   // bagItems: payload,
-// };
 interface IAppAction {
   type: string,
   payload: {

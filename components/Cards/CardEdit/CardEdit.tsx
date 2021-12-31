@@ -41,11 +41,13 @@ type TObjectUserBag = {
 const CardEdit = function CardEdit() {
   const { itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
-  const [colorupdate, setColorUpdate] = useState<any>({});
+  const [colorupdate, setColorUpdate] = useState({
+    color: itemEditBag.color,
+    colorName: itemEditBag.colorName,
+  });
   const [sizeupdate, setSizeUpdate] = useState(itemEditBag.size);
   const [qauntityupdate, setQauntityUpdate] = useState(itemEditBag.quantity);
   const [urlImage, setUrlimg] = useState<any>({});
-  const [infoBagItem, setInfoBagitem] = useState(itemEditBag);
 
   useEffect(() => {
     const array = mockCards[itemEditBag.id].options;
@@ -57,17 +59,13 @@ const CardEdit = function CardEdit() {
   }, [colorupdate, sizeupdate]);
 
   useEffect(() => {
-    setInfoBagitem({
-      ...infoBagItem,
-      quantity: qauntityupdate,
+    dispatch(itemBagEdit({
+      ...itemEditBag,
       ...colorupdate,
       size: sizeupdate,
-    });
+      quantity: qauntityupdate,
+    }));
   }, [colorupdate, sizeupdate, qauntityupdate]);
-
-  useEffect(() => () => {
-    dispatch(itemBagEdit(infoBagItem));
-  }, [infoBagItem]);
 
   return (
     <div className={ style.edit }>
@@ -98,8 +96,8 @@ const CardEdit = function CardEdit() {
           execFunction={ setQauntityUpdate }
         />
         <div className={ style.titles }>
-          <h1>{ infoBagItem.type }</h1>
-          <h2>{ infoBagItem.title }</h2>
+          <h1>{ itemEditBag.type }</h1>
+          <h2>{ itemEditBag.title }</h2>
         </div>
       </div>
     </div>

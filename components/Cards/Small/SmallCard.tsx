@@ -36,15 +36,15 @@ const SmallCard = function SmallCard({
     size, quantity, discount, oldPrice,
   } = objectID;
 
-  const handleClick = useCallback((event: { preventDefault: () => void; }) => {
+  const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    dispatch(getInfoBagEdit({ ...objectID }));
+    dispatch(getInfoBagEdit(objectID));
     eventModal!();
-  }, []);
+  }, [objectID]);
 
   const handleClickDelete = useCallback(() => {
     dispatch(removeBag(identifyBag!));
-  }, []);
+  }, [identifyBag]);
 
   return (
     <div className={ style.smallcard }>
@@ -74,7 +74,7 @@ const SmallCard = function SmallCard({
                 href="/"
                 aria-label="Editar cor, tamanho e quantidade."
                 title="Editar cor, tamanho e quantidade."
-                onClick={ handleClick }
+                onClick={ handleClickEdit }
               >
                 <Svg icoName="edit" />
               </a>
