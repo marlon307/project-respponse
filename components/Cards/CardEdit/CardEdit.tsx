@@ -39,28 +39,13 @@ type TObjectUserBag = {
 }
 
 const CardEdit = function CardEdit() {
-  const { bagItems, itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
+  const { itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
   const [colorupdate, setColorUpdate] = useState<any>({});
-  const [sizeupdate, setSizeUpdate] = useState('');
-  const [qauntityupdate, setQauntityUpdate] = useState(0);
+  const [sizeupdate, setSizeUpdate] = useState(itemEditBag.size);
+  const [qauntityupdate, setQauntityUpdate] = useState(itemEditBag.quantity);
   const [urlImage, setUrlimg] = useState<any>({});
-  const [infoBagItem, setInfoBagitem] = useState({
-    ...itemEditBag,
-  });
-
-  useEffect(() => {
-    const findItemBag = bagItems
-      .find(({ identifyBag }) => identifyBag === itemEditBag.identifyBag)!;
-
-    setInfoBagitem(findItemBag);
-    setSizeUpdate(findItemBag.size);
-    setQauntityUpdate(findItemBag.quantity);
-    setColorUpdate({
-      color: findItemBag.color,
-      colorName: findItemBag.colorName,
-    });
-  }, []);
+  const [infoBagItem, setInfoBagitem] = useState(itemEditBag);
 
   useEffect(() => {
     const array = mockCards[itemEditBag.id].options;
@@ -72,14 +57,12 @@ const CardEdit = function CardEdit() {
   }, [colorupdate, sizeupdate]);
 
   useEffect(() => {
-    if (colorupdate.color !== undefined && sizeupdate !== '' && qauntityupdate > 0) {
-      setInfoBagitem({
-        ...infoBagItem,
-        quantity: qauntityupdate,
-        ...colorupdate,
-        size: sizeupdate,
-      });
-    }
+    setInfoBagitem({
+      ...infoBagItem,
+      quantity: qauntityupdate,
+      ...colorupdate,
+      size: sizeupdate,
+    });
   }, [colorupdate, sizeupdate, qauntityupdate]);
 
   useEffect(() => () => {
