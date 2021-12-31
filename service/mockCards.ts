@@ -83,7 +83,7 @@ export const mockCards = [{
     },
     imgs: [{
       imgid: 0,
-      urlImg: cleanImage1,
+      urlImg: cleanImage2,
     }, {
       imgid: 1,
       urlImg: cleanImage2,
