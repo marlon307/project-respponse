@@ -6,7 +6,7 @@ import BarSize from '../../Bars/BarSize';
 import style from './style.module.scss';
 import { mockCards } from '../../../service/mockCards';
 import LoadingImage from '../../LoadImage';
-import { itemBagEdit } from '../../../redux/redux-actions';
+import { itemBagEdit, finishItemBagEdit } from '../../../redux/redux-actions';
 import { checkColorAvailable, checkSizeAvailable } from '../../../hooks/useCheckAvailable';
 
 type TObjectUserBag = {
@@ -66,6 +66,10 @@ const CardEdit = function CardEdit() {
       quantity: qauntityupdate,
     }));
   });
+
+  useEffect(() => () => {
+    dispatch(finishItemBagEdit());
+  }, []);
 
   return (
     <div className={ style.edit }>
