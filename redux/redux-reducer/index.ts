@@ -125,6 +125,7 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
       type TO = {
         identifyBag: string;
       }
+
       const newState: T = state;
       const {
         id, color, size, identifyBag,
