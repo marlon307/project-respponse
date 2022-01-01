@@ -11,7 +11,19 @@ const initialUserState = {
   authenticated: '',
   logged: false,
   bagItems: [],
-  itemEditBag: {},
+  itemEditBag: {
+    id: 0,
+    title: '',
+    type: '',
+    color: '',
+    colorName: '',
+    size: '',
+    price: '',
+    discount: '',
+    oldPrice: '',
+    quantity: 0,
+    identifyBag: '',
+  },
   checkout: {
     adderessSelected: {
       name: 'Entregar para',
@@ -96,14 +108,48 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
         itemEditBag: payload,
       };
     case types.EDIT_ITEMBAG: {
-      type T = { bagItems: Array<{ quantity: number; }> };
-      const newObj: T = state;
+      const newObj = state;
+      newObj.itemEditBag = payload;
+      return state;
+    }
+    case types.FINISHEDIT_ITEMBAG: {
+      type T = {
+        bagItems: Array<Object>;
+        itemEditBag: {
+          id: number,
+          color: string;
+          size: string;
+          identifyBag: string;
+        };
+      };
+      type TO = {
+        identifyBag: string;
+      }
+      const newState: T = state;
+      const {
+        id, color, size, identifyBag,
+      } = newState.itemEditBag;
+      const newIdItemBag = id + color + size;
 
       const index = state.bagItems
-        .findIndex(({ identifyBag }) => identifyBag === payload.identifyBag);
+        .findIndex((object: TO) => object.identifyBag === newIdItemBag);
 
-      newObj.bagItems[index] = payload;
-      return state;
+      if (index >= 0) {
+        newState.bagItems[index] = {
+          ...state.itemEditBag,
+          identifyBag: newIdItemBag,
+        };
+      } else {
+        const newIndex = state.bagItems
+          .findIndex((object: TO) => object.identifyBag === identifyBag);
+
+        newState.bagItems[newIndex] = {
+          ...state.itemEditBag,
+          identifyBag: newIdItemBag,
+        };
+      }
+
+      return { ...newState };
     }
     default:
       return state;

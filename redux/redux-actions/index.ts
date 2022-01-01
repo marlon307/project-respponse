@@ -76,6 +76,12 @@ export const itemBagEdit = (object: Object) => (dispatch: Function) => {
   });
 };
 
+export const finishItemBagEdit = () => (dispatch: Function) => {
+  dispatch({
+    type: types.FINISHEDIT_ITEMBAG,
+  });
+};
+
 export const removeBag = (object: Object) => (dispatch: Function) => {
   dispatch({
     type: types.REMOVE_BAG,
