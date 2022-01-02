@@ -150,7 +150,10 @@ const userReducer = (state = initialUserState, { type, payload }: IUserAction) =
         };
       }
 
-      return { ...newState };
+      return {
+        ...state,
+        bagItems: [...newState.bagItems],
+      };
     }
     default:
       return state;
