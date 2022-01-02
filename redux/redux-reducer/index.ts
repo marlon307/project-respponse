@@ -40,7 +40,6 @@ const initialUserState = {
     },
     formatPay: {
       formatPayment: 'Forma de pagamento',
-      value: '',
       division: '--',
     },
     cupomAplicate: {

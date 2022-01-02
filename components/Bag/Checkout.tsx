@@ -4,6 +4,7 @@ import Svg from '../../assets/Svg';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import style from './style.module.scss';
+import { mockShipping, mockPayment } from '../../service/mockCheckout';
 import { actionSlecteShipping, actionSlectePayment } from '../../redux/redux-actions';
 
 type PropsCheckout = {
@@ -20,15 +21,26 @@ type TypUserObjAderes = {
         uf: string;
         city: string;
         zipcode: string;
+      };
+      shipping: {
+        shippingCompany: string;
+      };
+      formatPay: {
+        formatPayment: string;
       }
     }
   }
 }
 
 const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
+  const { adderessSelected, shipping, formatPay } = useSelector(
+    ({ user }: TypUserObjAderes) => user.checkout,
+  );
   const {
     name, road, district, number, uf, city, zipcode,
-  } = useSelector(({ user }: TypUserObjAderes) => user.checkout.adderessSelected);
+  } = adderessSelected;
+  const { shippingCompany } = shipping;
+
   const dipatch = useDispatch();
 
   const [cupomText, setCupomText] = useState('');
@@ -37,17 +49,16 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
     setCupomText(value);
   }, []);
 
-  const handleSipping = useCallback((idName: string, nameCompany: string) => {
+  const handleSipping = useCallback((idInput, value) => {
     dipatch(actionSlecteShipping({
-      shippingCompany: idName + nameCompany,
-      valueShipping: 15,
+      shippingCompany: idInput,
+      valueShipping: value,
     }));
   }, []);
 
-  const handlePayment = useCallback((idName: string, nameCompany: string) => {
+  const handlePayment = useCallback((idName: string) => {
     dipatch(actionSlectePayment({
-      formatPayment: nameCompany,
-      value: '',
+      formatPayment: idName,
       division: '1x',
     }));
   }, []);
@@ -98,24 +109,20 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
           </h3>
         </div>
         <div className={ style.options }>
-          <InputRadio
-            name="Correios - R$ 25,00 - 2 dias uteis"
-            id="correios"
-            family="shippe"
-            execFunction={ handleSipping }
-          />
-          <InputRadio
-            name="Pac - R$ 10,00 - 5 dias uteis"
-            id="pac"
-            family="shippe"
-            execFunction={ handleSipping }
-          />
-          <InputRadio
-            name="Fedex - R$ 15,00 - 3 dias uteis"
-            id="fedex"
-            family="shippe"
-            execFunction={ handleSipping }
-          />
+          { mockShipping.map((object) => (
+            <InputRadio
+              checked={ shippingCompany === object.name }
+              key={ object.id }
+              name={ `${object.name} - ${object.price.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              })} - ${object.toDate}` }
+              id={ object.name }
+              family="shipping"
+              execFunction={ handleSipping }
+              value={ object.price }
+            />
+          )) }
         </div>
       </div>
       <div className={ style.contcheckout }>
@@ -126,24 +133,16 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
           </h3>
         </div>
         <div className={ style.options }>
-          <InputRadio
-            name="Cartão de Crédito"
-            id="credit"
-            family="payment"
-            execFunction={ handlePayment }
-          />
-          <InputRadio
-            name="PayPal"
-            id="paypal"
-            family="payment"
-            execFunction={ handlePayment }
-          />
-          <InputRadio
-            name="Pix"
-            id="pix"
-            family="payment"
-            execFunction={ handlePayment }
-          />
+          { mockPayment.map((object) => (
+            <InputRadio
+              key={ object.id }
+              checked={ formatPay.formatPayment === object.name }
+              name={ object.name }
+              id={ object.name }
+              family="payment"
+              execFunction={ handlePayment }
+            />
+          )) }
         </div>
         <a
           href="/"

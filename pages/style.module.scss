@@ -129,6 +129,7 @@
 
 .produinitial {
   margin: 152px 6%;
+  width: auto;
 }
 
 .contentcards {
@@ -136,7 +137,8 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8vh;
+  width: 100%;
+  gap: 4%;
 }
 
 .column {

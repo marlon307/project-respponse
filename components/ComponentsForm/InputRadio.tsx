@@ -5,20 +5,28 @@ export type PInputRadio = {
   name: string;
   id: string;
   family: string;
+  value?: number;
   execFunction?: Function;
+  checked: boolean
 }
 
 const InputRadio = function InputRadio({
-  name, id, family, execFunction,
+  id, name, family, value, execFunction, checked,
 }: PInputRadio) {
-  function handleClick(idName: string, nameCompany: string) {
-    execFunction!(idName, nameCompany);
+  function handleClick(idInput: string, price: number) {
+    execFunction!(idInput, price);
   }
 
   return (
     <div className={ style.inputRadio }>
       <label htmlFor={ id }>
-        <input id={ id } type="radio" name={ family } onClick={ () => handleClick(id, name) } />
+        <input
+          id={ id }
+          type="radio"
+          name={ family }
+          onClick={ () => handleClick(id, value!) }
+          defaultChecked={ checked }
+        />
         <span>{ name }</span>
       </label>
     </div>
