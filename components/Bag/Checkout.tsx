@@ -4,6 +4,7 @@ import Svg from '../../assets/Svg';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import style from './style.module.scss';
+import mockShipping from '../../service/mockShipping';
 import { actionSlecteShipping, actionSlectePayment } from '../../redux/redux-actions';
 
 type PropsCheckout = {
@@ -37,10 +38,10 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
     setCupomText(value);
   }, []);
 
-  const handleSipping = useCallback((idName: string, nameCompany: string) => {
+  const handleSipping = useCallback((idName, nameCompany, value) => {
     dipatch(actionSlecteShipping({
       shippingCompany: idName + nameCompany,
-      valueShipping: 15,
+      valueShipping: value,
     }));
   }, []);
 
@@ -98,24 +99,19 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
           </h3>
         </div>
         <div className={ style.options }>
-          <InputRadio
-            name="Correios - R$ 25,00 - 2 dias uteis"
-            id="correios"
-            family="shippe"
-            execFunction={ handleSipping }
-          />
-          <InputRadio
-            name="Pac - R$ 10,00 - 5 dias uteis"
-            id="pac"
-            family="shippe"
-            execFunction={ handleSipping }
-          />
-          <InputRadio
-            name="Fedex - R$ 15,00 - 3 dias uteis"
-            id="fedex"
-            family="shippe"
-            execFunction={ handleSipping }
-          />
+          { mockShipping.map((object) => (
+            <InputRadio
+              key={ object.id }
+              name={ `${object.name} - ${object.price.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              })} - ${object.toDate}` }
+              id={ object.name }
+              family="shipping"
+              execFunction={ handleSipping }
+              value={ object.price }
+            />
+          )) }
         </div>
       </div>
       <div className={ style.contcheckout }>
