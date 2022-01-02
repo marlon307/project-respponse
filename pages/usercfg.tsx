@@ -91,9 +91,24 @@ function usercfg() {
             <div className={ style.genere }>
               <span>Sexo</span>
               <div>
-                <InputRadio id="men" name="Masculino" family="grnere" />
-                <InputRadio id="female" name="Femenino" family="grnere" />
-                <InputRadio id="undefined" name="Não informar" family="grnere" />
+                <InputRadio
+                  checked={ false }
+                  id="men"
+                  name="Masculino"
+                  family="grnere"
+                />
+                <InputRadio
+                  checked={ false }
+                  id="female"
+                  name="Femenino"
+                  family="grnere"
+                />
+                <InputRadio
+                  checked={ false }
+                  id="undefined"
+                  name="Não informar"
+                  family="grnere"
+                />
               </div>
             </div>
             <div className={ style.contact }>
