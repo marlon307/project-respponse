@@ -21,15 +21,21 @@ type TypUserObjAderes = {
         uf: string;
         city: string;
         zipcode: string;
+      };
+      shipping: {
+        shippingCompany: string;
       }
     }
   }
 }
 
 const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
+  const { adderessSelected, shipping } = useSelector(({ user }: TypUserObjAderes) => user.checkout);
   const {
     name, road, district, number, uf, city, zipcode,
-  } = useSelector(({ user }: TypUserObjAderes) => user.checkout.adderessSelected);
+  } = adderessSelected;
+  const { shippingCompany } = shipping;
+
   const dipatch = useDispatch();
 
   const [cupomText, setCupomText] = useState('');
@@ -38,9 +44,9 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
     setCupomText(value);
   }, []);
 
-  const handleSipping = useCallback((idName, nameCompany, value) => {
+  const handleSipping = useCallback((idInput, value) => {
     dipatch(actionSlecteShipping({
-      shippingCompany: idName + nameCompany,
+      shippingCompany: idInput,
       valueShipping: value,
     }));
   }, []);
@@ -101,6 +107,7 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
         <div className={ style.options }>
           { mockShipping.map((object) => (
             <InputRadio
+              checked={ shippingCompany === object.name }
               key={ object.id }
               name={ `${object.name} - ${object.price.toLocaleString('pt-br', {
                 style: 'currency',
@@ -123,18 +130,21 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
         </div>
         <div className={ style.options }>
           <InputRadio
+            checked={ false }
             name="Cartão de Crédito"
             id="credit"
             family="payment"
             execFunction={ handlePayment }
           />
           <InputRadio
+            checked={ false }
             name="PayPal"
             id="paypal"
             family="payment"
             execFunction={ handlePayment }
           />
           <InputRadio
+            checked={ false }
             name="Pix"
             id="pix"
             family="payment"
