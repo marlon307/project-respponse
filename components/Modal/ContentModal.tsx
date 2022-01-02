@@ -27,6 +27,10 @@ const ContentModal = function ContentModal({ children, isOpen, openModal }: PMod
       getModal.classList.remove(style.open);
       document.body.removeAttribute('class');
     }
+    return () => {
+      getModal.classList.remove(style.open);
+      document.body.removeAttribute('class');
+    };
   }, [children]);
 
   function contetModal() {
