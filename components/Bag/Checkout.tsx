@@ -4,7 +4,7 @@ import Svg from '../../assets/Svg';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import style from './style.module.scss';
-import mockShipping from '../../service/mockShipping';
+import { mockShipping, mockPayment } from '../../service/mockCheckout';
 import { actionSlecteShipping, actionSlectePayment } from '../../redux/redux-actions';
 
 type PropsCheckout = {
@@ -24,13 +24,18 @@ type TypUserObjAderes = {
       };
       shipping: {
         shippingCompany: string;
+      };
+      formatPay: {
+        formatPayment: string;
       }
     }
   }
 }
 
 const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
-  const { adderessSelected, shipping } = useSelector(({ user }: TypUserObjAderes) => user.checkout);
+  const { adderessSelected, shipping, formatPay } = useSelector(
+    ({ user }: TypUserObjAderes) => user.checkout,
+  );
   const {
     name, road, district, number, uf, city, zipcode,
   } = adderessSelected;
@@ -51,10 +56,9 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
     }));
   }, []);
 
-  const handlePayment = useCallback((idName: string, nameCompany: string) => {
+  const handlePayment = useCallback((idName: string) => {
     dipatch(actionSlectePayment({
-      formatPayment: nameCompany,
-      value: '',
+      formatPayment: idName,
       division: '1x',
     }));
   }, []);
@@ -129,27 +133,16 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
           </h3>
         </div>
         <div className={ style.options }>
-          <InputRadio
-            checked={ false }
-            name="Cartão de Crédito"
-            id="credit"
-            family="payment"
-            execFunction={ handlePayment }
-          />
-          <InputRadio
-            checked={ false }
-            name="PayPal"
-            id="paypal"
-            family="payment"
-            execFunction={ handlePayment }
-          />
-          <InputRadio
-            checked={ false }
-            name="Pix"
-            id="pix"
-            family="payment"
-            execFunction={ handlePayment }
-          />
+          { mockPayment.map((object) => (
+            <InputRadio
+              key={ object.id }
+              checked={ formatPay.formatPayment === object.name }
+              name={ object.name }
+              id={ object.name }
+              family="payment"
+              execFunction={ handlePayment }
+            />
+          )) }
         </div>
         <a
           href="/"

@@ -18,7 +18,6 @@ const InputRadio = function InputRadio({
   }
 
   return (
-
     <div className={ style.inputRadio }>
       <label htmlFor={ id }>
         <input
