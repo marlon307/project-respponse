@@ -34,6 +34,7 @@ const LoadingImage = function LoadingImage({
           width={ width }
           height={ height }
           onLoadingComplete={ finishLoading }
+          priority
         />
       </div>
       { !isloading && (
