@@ -226,6 +226,47 @@ export const mockCards = [{
   }],
 }];
 
+export const mockminObjectCards2 = [{
+  id: 0,
+  title: 'Jérsei de Algodão Pima',
+  type: 'Jérsei',
+  mainImg: image0,
+  price: 69,
+  oldPrice: 75.0,
+  discount: 6,
+  options: [{
+    colorName: 'Branco',
+    color: '#000',
+  }, {
+    colorName: 'Azul',
+    color: '#74bcf7',
+  }, {
+    colorName: 'Rosa',
+    color: '#f5a7ff',
+  }],
+}, {
+  id: 1,
+  title: 'Secrect state',
+  type: 'Terno',
+  mainImg: image1,
+  price: 150.90,
+  oldPrice: 150.90,
+  discount: 0,
+  options: [{
+    colorName: 'Branco',
+    color: '#fff',
+  }, {
+    colorName: 'Azul meia noite',
+    color: '#2a4f6c',
+  }, {
+    colorName: 'Laranja',
+    color: '#f5b04aef',
+  }, {
+    colorName: 'Rosa',
+    color: '#f5a7ff',
+  }],
+}];
+
 export const mockminObjectCards = [{
   id: 0,
   title: 'Jérsei de Algodão Pima',
@@ -265,8 +306,7 @@ export const mockminObjectCards = [{
     colorName: 'Rosa',
     color: '#f5a7ff',
   }],
-},
-{
+}, {
   id: 2,
   title: 'Prisma time',
   type: 'Relogio',

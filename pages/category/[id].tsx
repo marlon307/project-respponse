@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardProduct } from '../../components/Cards/CardProduct';
 import { BarFilter } from '../../components/Filter';
-import { mockminObjectCards } from '../../service/mockCards';
+import { mockminObjectCards2 } from '../../service/mockCards';
 import mockCategory from '../../service/mockCategory';
 import style from './style.module.scss';
 
@@ -11,7 +11,7 @@ function categoryId() {
       <BarFilter />
       <div className={ style.categorycont }>
         {
-          mockminObjectCards.map((object) => (
+          mockminObjectCards2.map((object) => (
             <CardProduct key={ object.id } id={ object.id } />
           ))
         }
