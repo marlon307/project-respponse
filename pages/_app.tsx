@@ -8,17 +8,23 @@ import Footer from '../components/Footer/Footer';
 import Modal from '../components/Modal/Modal';
 import Loading from '../components/Loading/Loading';
 import { useStore } from '../redux/redux-store';
-import Head from '../components/Head/Head';
 import GetInfos from '../hooks/getInfos';
 import 'react-alice-carousel/lib/scss/alice-carousel.scss';
+import Seo from '../components/Head/Head';
 
 const MyApp = function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
+  const [urlPg, setUrlPg] = useState('');
   const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = () => setLoading(false);
-    const routeChangeComplete = () => setLoading(true);
+    const handleRouteChange = (url: string) => setUrlPg(url);
+
+    const routeChangeComplete = (url: string) => {
+      setLoading(true);
+      setUrlPg(url);
+    };
+
     if (router.pathname) setLoading(true);
 
     router.events.on('routeChangeStart', handleRouteChange);
@@ -35,7 +41,7 @@ const MyApp = function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={ store }>
       <GetInfos />
-      <Head />
+      <Seo props={ pageProps } url={ urlPg } />
       <Header />
       <main>
         {

@@ -23,16 +23,17 @@ function categoryId() {
 export default categoryId;
 
 export async function getStaticProps({ params }: any) {
-  const category = await params.id;
-
+  const pgProps = await mockCategory.find(({ path }) => path === params.id);
   return {
-    props: { category },
+    props: { pgProps },
   };
 }
 
 export async function getStaticPaths() {
   const paths = await mockCategory
-    .map(({ path }) => ({ params: { id: path } }));
+    .map(({ path }) => ({
+      params: { id: path },
+    }));
 
   return {
     paths,

@@ -1,10 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
-const Seo = function Seo() {
+const Seo = function Seo({ props, url }: any) {
+  const [pgtitle, setPgTitle] = useState('');
+
+  useEffect(() => {
+    if (props.pgProps !== undefined) {
+      setPgTitle(props.pgProps.subTitle);
+    } else {
+      let format = url.split('/').slice(-1)[0];
+      switch (format) {
+        case 'help':
+          format = 'Ajuda';
+          break;
+        case 'account':
+          format = 'Conta';
+          break;
+        case 'favorite':
+          format = 'Favoritos';
+          break;
+        case 'bag':
+          format = 'Sacola';
+          break;
+        case 'resetpsw':
+          format = 'Recuperar Senha';
+          break;
+        case 'support':
+          format = 'Suporte';
+          break;
+        case 'login-register':
+          format = 'Login - Registrar';
+          break;
+        default:
+          break;
+      }
+      setPgTitle(format);
+    }
+  }, [url]);
+
   return (
     <Head>
-      <title>Respponse</title>
+      <title>
+        { pgtitle !== '' ? `${pgtitle} | Respponse` : 'Respponse' }
+      </title>
       <link rel="icon" href="/favico.ico" />
       <link rel="canonical" href="https://respponse.com" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />

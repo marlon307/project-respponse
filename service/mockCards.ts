@@ -13,6 +13,7 @@ import cleanImage3 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash_1-remov
 export const mockCards = [{
   id: 0,
   title: 'Nike F.C',
+  subTitle: 'Futebol - Nike F.C',
   type: 'Futebol',
   keyDesc: 'Nike Futebol',
   categoryId: 0,
@@ -110,6 +111,7 @@ export const mockCards = [{
 }, {
   id: 1,
   title: 'Adidas',
+  subTitle: 'Adidas - Caminhada',
   type: 'Caminhada',
   keyDesc: 'Adidas Natação',
   categoryId: 0,
