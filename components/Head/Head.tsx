@@ -43,6 +43,7 @@ const Seo = function Seo({ props, url }: any) {
       <title>
         { pgtitle !== '' ? `${pgtitle} | Respponse` : 'Respponse' }
       </title>
+      <meta name="title" content={ pgtitle !== '' ? `${pgtitle} | Respponse` : 'Respponse' } />
       <link rel="icon" href="/favico.ico" />
       <link rel="canonical" href="https://respponse.com" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,13 +53,13 @@ const Seo = function Seo({ props, url }: any) {
       <meta name="application-name" content="Respponse" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="apple-mobile-web-app-title" content="Respponse" />
+      <meta name="apple-mobile-web-app-title" content={ pgtitle !== '' ? `${pgtitle} | Respponse` : 'Respponse' } />
       <meta name="format-detection" content="telephone=no" />
       <link rel="icon" href="/favico.ico" />
       <link rel="apple-touch-icon" href="/favico.ico" />
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover" />
       <meta property="og:type" content="Respponse" />
-      <meta property="og:title" content="Respponse" />
+      <meta property="og:title" content={ pgtitle !== '' ? `${pgtitle}` : 'Respponse' } />
       <meta property="og:description" content="Respponse" />
       <meta property="og:site_name" content="Respponse" />
       <meta property="og:url" content="https://respponse.com" />
