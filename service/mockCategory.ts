@@ -39,23 +39,23 @@ const mockCategory = [
   }, {
     ctgID: 7,
     imgCategory: imgRelogios,
-    categoryName: 'Relógios',
-    path: 'relogios',
+    categoryName: 'Tênis',
+    path: 'tenis',
   }, {
     ctgID: 8,
     imgCategory: imgRelogios,
-    categoryName: 'Relógios',
-    path: 'relogios',
+    categoryName: 'Óculos',
+    path: 'oculos',
   }, {
     ctgID: 9,
     imgCategory: imgRelogios,
-    categoryName: 'Relógios',
-    path: 'relogios',
+    categoryName: 'Lançamento',
+    path: 'lancamentos',
   }, {
     ctgID: 10,
     imgCategory: imgRelogios,
-    categoryName: 'Relógios',
-    path: 'relogios',
+    categoryName: 'Calças',
+    path: 'calcas',
   }, {
     ctgID: 11,
     imgCategory: imgRelogios,
