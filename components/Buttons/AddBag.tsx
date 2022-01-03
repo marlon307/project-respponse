@@ -95,13 +95,13 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
   }
 
   useEffect(() => {
-    if (colorSelected && sizeSelected) {
+    if (colorSelected.color && sizeSelected) {
       setbutonActive(true);
     }
-    if (colorSelected && sizeSelected && activeMsg) {
+    if (colorSelected.color && sizeSelected && activeMsg) {
       setActiveMsg(false);
     }
-  }, [colorSelected, sizeSelected]);
+  }, [colorSelected.color, sizeSelected]);
 
   return (
     <button

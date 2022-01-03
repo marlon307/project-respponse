@@ -6,12 +6,13 @@ import LoadingImage from '../../LoadImage';
 type PCardCategory = {
   image: any;
   ctgName: string;
+  path: string;
 }
 
-const CardCategory = function CardCategory({ image, ctgName }: PCardCategory) {
+const CardCategory = function CardCategory({ image, ctgName, path }: PCardCategory) {
   return (
     <div className={ style.itencategory }>
-      <Link href={ `/category/${ctgName}` }>
+      <Link href={ `/category/${path}` }>
         <a>
           <figure className={ style.imgctg }>
             <LoadingImage

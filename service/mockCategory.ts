@@ -7,104 +7,105 @@ import imgRelogios from '../assets/img/andrew-vincentio-6o2Zx7ytgwo-unsplash 1.p
 
 const mockCategory = [
   {
-    categoryId: '0',
+    ctgID: 0,
     imgCategory: imgFemenino,
     categoryName: 'Femenino',
-  },
-  {
-    categoryId: '1',
+    path: 'femenino',
+  }, {
+    ctgID: 1,
     imgCategory: imgMasculino,
     categoryName: 'Masculino',
-  },
-  {
-    categoryId: '2',
+    path: 'masculino',
+  }, {
+    ctgID: 2,
     imgCategory: imgCriança,
     categoryName: 'Criança',
-  },
-  {
-    categoryId: '4',
+    path: 'crianca',
+  }, {
+    ctgID: 4,
     imgCategory: imgBolsa,
     categoryName: 'Bolsa',
-  },
-  {
-    categoryId: '5',
+    path: 'bolsa',
+  }, {
+    ctgID: 5,
     imgCategory: imgPerfumes,
     categoryName: 'Perfumes',
-  },
-  {
-    categoryId: '6',
+    path: 'perfumes',
+  }, {
+    ctgID: 6,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '7',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 7,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '8',
+    categoryName: 'Tênis',
+    path: 'tenis',
+  }, {
+    ctgID: 8,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '9',
+    categoryName: 'Óculos',
+    path: 'oculos',
+  }, {
+    ctgID: 9,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '10',
+    categoryName: 'Lançamento',
+    path: 'lancamentos',
+  }, {
+    ctgID: 10,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '11',
+    categoryName: 'Calças',
+    path: 'calcas',
+  }, {
+    ctgID: 11,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '12',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 12,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '13',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 13,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '14',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 14,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '15',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 15,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '16',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 16,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '17',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 17,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '18',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 18,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '19',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 19,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
-  },
-  {
-    categoryId: '20',
+    categoryName: 'Relógios',
+    path: 'relogios',
+  }, {
+    ctgID: 20,
     imgCategory: imgRelogios,
-    categoryName: 'Relogios',
+    categoryName: 'Relógios',
+    path: 'relogios',
   },
 ];
 

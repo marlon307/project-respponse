@@ -58,11 +58,14 @@ function index() {
               disableDotsControls
               ref={ buttonPrevNext }
             >
-              { mockCategory.map(({ categoryId, imgCategory, categoryName }) => (
+              { mockCategory.map(({
+                ctgID, imgCategory, categoryName, path,
+              }) => (
                 <CardCategory
-                  key={ categoryId }
+                  key={ ctgID }
                   image={ imgCategory }
                   ctgName={ categoryName }
+                  path={ path }
                 />
               )) }
             </AliceCarousel>
@@ -84,7 +87,7 @@ function index() {
       <section className={ style.produinitial }>
         <div className={ style.contentcards }>
           <div className={ style.column }>
-            <BtnRedirect path="/category/relogios" titleBtn="Lançamentos" />
+            <BtnRedirect path="/category/lancamentos" titleBtn="Lançamentos" />
           </div>
           <div className={ style.column }>
             <h1>Veja as últimas novidades</h1>

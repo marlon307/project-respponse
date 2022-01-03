@@ -242,8 +242,7 @@ export const mockminObjectCards = [{
     colorName: 'Rosa',
     color: '#f5a7ff',
   }],
-},
-{
+}, {
   id: 1,
   title: 'Secrect state',
   type: 'Terno',
