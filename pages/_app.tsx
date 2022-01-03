@@ -18,12 +18,12 @@ const MyApp = function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = (url: string) => setUrlPg(url);
-
+    const handleRouteChange = () => setLoading(false);
     const routeChangeComplete = (url: string) => {
       setLoading(true);
       setUrlPg(url);
     };
+    setUrlPg(router.pathname);
 
     if (router.pathname) setLoading(true);
 
