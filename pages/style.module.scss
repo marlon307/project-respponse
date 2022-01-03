@@ -508,6 +508,16 @@
     display: none;
   }
 
+  .dropcontainer {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+  }
+
+  .open+.dropcontainer {
+    height: auto;
+  }
+
   .open+.dropcontainer section {
     display: block;
     border: none;
