@@ -13,7 +13,7 @@ import { BtnPrevNext } from '../../components/Buttons';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 
 type TPopsPg = {
-  propsProductId: {
+  pgProps: {
     id: Number;
     title: string;
     type: string;
@@ -36,7 +36,7 @@ type TPopsPg = {
   };
 }
 
-function productId({ propsProductId }: TPopsPg) {
+function productId({ pgProps }: TPopsPg) {
   const slideRefProductImg = createRef<AliceCarousel>();
   const [itemdrag, setItemDrag] = useState(false);
   const [sizeChecked, setSizeChecked] = useState('');
@@ -48,7 +48,7 @@ function productId({ propsProductId }: TPopsPg) {
   const {
     title, type, price, descrtion, branch, gender, discount,
     oldPrice, details, specification, options,
-  } = propsProductId;
+  } = pgProps;
 
   useEffect(() => {
     checkSizeAvailable(options, colorChecked.color);
@@ -130,7 +130,7 @@ function productId({ propsProductId }: TPopsPg) {
               />
             </div>
             <AddBag
-              productId={ propsProductId }
+              productId={ pgProps }
               colorSelected={ colorChecked }
               sizeSelected={ sizeChecked }
             />
@@ -182,10 +182,10 @@ export default productId;
 export async function getStaticProps({ params }: any) {
   const index = Number(params.id);
 
-  const propsProductId = await mockCards[index];
+  const pgProps = await mockCards[index];
 
   return {
-    props: { propsProductId },
+    props: { pgProps },
   };
 }
 
