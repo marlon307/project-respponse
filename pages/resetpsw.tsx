@@ -1,10 +1,18 @@
 import React, { useState, useCallback } from 'react';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 import Input from '../components/ComponentsForm/Input';
 import style from './style.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
 
+type TUser = {
+  user: {
+    logged: boolean
+  }
+}
+
 function resetpsw() {
+  const { logged } = useSelector(({ user }: TUser) => user);
   const [email, setEmail] = useState('');
 
   const restPsw = useCallback(({ value }) => {
@@ -27,11 +35,13 @@ function resetpsw() {
           />
         </div>
         <div className={ style.action }>
-          <Link href="/login-register">
-            <a className="link">
-              Fazer Login
-            </a>
-          </Link>
+          { !logged && (
+            <Link href="/login-register">
+              <a className="link">
+                Fazer Login
+              </a>
+            </Link>
+          ) }
           <BtnIco
             textBtn="Enviar Email"
             icoName="email"
