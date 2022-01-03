@@ -101,7 +101,7 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
     if (colorSelected.color && sizeSelected && activeMsg) {
       setActiveMsg(false);
     }
-  }, [colorSelected, sizeSelected]);
+  }, [colorSelected.color, sizeSelected]);
 
   return (
     <button
