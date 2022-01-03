@@ -245,6 +245,7 @@
   background: var(--maincolor);
   padding: 2em max(2em, 6%);
   border-radius: 1em;
+  margin: 72px auto;
 }
 
 .sectiontab {
@@ -301,6 +302,12 @@
   label {
     margin-right: 12px;
     color: #858585;
+  }
+}
+
+@media (max-width: 500px) {
+  .contlogin {
+    margin-top: 2.6em;
   }
 }
 
@@ -432,8 +439,15 @@
 }
 
 .inp {
+  position: relative;
   display: flex;
   gap: 2em;
+
+  a {
+    position: absolute;
+    bottom: -1em;
+    right: 0;
+  }
 
   label {
     width: 50%;
@@ -569,6 +583,10 @@
   .inp {
     flex-direction: column;
     gap: 0;
+
+    a {
+      bottom: -2em;
+    }
 
     label {
       width: 100%;

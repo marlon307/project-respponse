@@ -82,6 +82,15 @@ function usercfg() {
                 ivalue={ stateIfonUser.doc }
                 inputValue={ userCfgInfo }
               />
+              <a
+                href="/resetpsw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                Trocar Senha
+
+              </a>
             </div>
             <div className={ style.genere }>
               <span>Sexo</span>
