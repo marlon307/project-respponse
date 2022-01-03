@@ -304,8 +304,9 @@
   }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 500px) {
   .contlogin {
+    margin-top: 2.6em;
     width: auto;
   }
 }
@@ -432,8 +433,15 @@
 }
 
 .inp {
+  position: relative;
   display: flex;
   gap: 2em;
+
+  a {
+    position: absolute;
+    bottom: -1em;
+    right: 0;
+  }
 
   label {
     width: 50%;
@@ -569,6 +577,10 @@
   .inp {
     flex-direction: column;
     gap: 0;
+
+    a {
+      bottom: -2em;
+    }
 
     label {
       width: 100%;
