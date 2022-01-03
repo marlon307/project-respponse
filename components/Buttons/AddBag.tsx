@@ -6,16 +6,24 @@ import Svg from '../../assets/Svg';
 import { addBag } from '../../redux/redux-actions';
 
 type TObjectProduct = {
-  id: number;
+  id: Number;
   title: string;
   type: string;
-  mainImg: any;
-  price: number;
-  discount: number;
-  oldPrice: number;
+  price: Number;
+  descrtion: string;
+  branch: string;
+  gender: string;
+  mainImg: Object;
+  discount: Number;
+  oldPrice: Number;
+  details: Object;
+  specification: Object;
   options: Array<{
+    idc: string;
     colorName: string;
     color: string;
+    size: Object;
+    imgs: Array<Object>;
   }>
 }
 

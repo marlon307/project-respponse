@@ -21,6 +21,7 @@ type TPopsPg = {
     descrtion: string;
     branch: string;
     gender: string;
+    mainImg: Object;
     discount: Number;
     oldPrice: Number;
     details: Object;
