@@ -7,7 +7,7 @@ import style from './style.module.scss';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';
-import Loading from '../../Loading/Loading';
+import Loading from '../../Loading';
 import { actionLogOut } from '../../../redux/redux-actions';
 
 const LoginRegister = dynamic(

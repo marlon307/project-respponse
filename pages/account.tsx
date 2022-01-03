@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import style from './style.module.scss';
-import Usercfg from './usercfg';
-import Order from './orders';
-import Cards from './cards';
-import Address from './address';
 import Help from './help';
 import Svg from '../assets/Svg';
+import Loading from '../components/Loading';
+
+const Usercfg = dynamic(() => import('./usercfg'), { loading: () => <Loading /> });
+const Order = dynamic(() => import('./orders'), { loading: () => <Loading /> });
+const Cards = dynamic(() => import('./cards'), { loading: () => <Loading /> });
+const Address = dynamic(() => import('./address'), { loading: () => <Loading /> });
 
 interface IUser {
   user: {
