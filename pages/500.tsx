@@ -2,11 +2,11 @@ import React from 'react';
 import style from './style.module.scss';
 import { BtnRedirect } from '../components/Buttons';
 
-function notFound404() {
+function notFound500() {
   return (
     <div className={ style.notfound }>
-      <h1>404</h1>
-      <h3>Ops! Não encontramos o que você está procurando.</h3>
+      <h1>500</h1>
+      <h3>Ops! Algo deu errado.</h3>
       <BtnRedirect
         path="/"
         titleBtn="Página inicial"
@@ -15,4 +15,4 @@ function notFound404() {
   );
 }
 
-export default notFound404;
+export default notFound500;
