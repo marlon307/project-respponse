@@ -58,11 +58,14 @@ function index() {
               disableDotsControls
               ref={ buttonPrevNext }
             >
-              { mockCategory.map(({ categoryId, imgCategory, categoryName }) => (
+              { mockCategory.map(({
+                ctgID, imgCategory, categoryName, path,
+              }) => (
                 <CardCategory
-                  key={ categoryId }
+                  key={ ctgID }
                   image={ imgCategory }
                   ctgName={ categoryName }
+                  path={ path }
                 />
               )) }
             </AliceCarousel>

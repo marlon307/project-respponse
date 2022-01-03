@@ -1,9 +1,9 @@
 import React from 'react';
 import { CardProduct } from '../../components/Cards/CardProduct';
 import { BarFilter } from '../../components/Filter';
+import { mockminObjectCards } from '../../service/mockCards';
+import mockCategory from '../../service/mockCategory';
 import style from './style.module.scss';
-
-const items = [0, 1, 3, 4, 5, 6, 2];
 
 function categoryId() {
   return (
@@ -11,8 +11,8 @@ function categoryId() {
       <BarFilter />
       <div className={ style.categorycont }>
         {
-          items.map((qtd) => (
-            <CardProduct key={ qtd } id={ qtd } />
+          mockminObjectCards.map((object) => (
+            <CardProduct key={ object.id } id={ object.id } />
           ))
         }
       </div>
@@ -21,3 +21,21 @@ function categoryId() {
 }
 
 export default categoryId;
+
+export async function getStaticProps({ params }: any) {
+  const category = await params.id;
+
+  return {
+    props: { category },
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = await mockCategory
+    .map(({ path }) => ({ params: { id: path } }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
