@@ -6,7 +6,7 @@ import style from './style.module.scss';
 import BarBuy from '../components/Bars/BarBuy';
 import Svg from '../assets/Svg';
 import ContentModal from '../components/Modal/ContentModal';
-import Loading from '../components/Loading/Loading';
+import Loading from '../components/Loading';
 import Checkout from '../components/Bag';
 
 type TObjectUserBag = {

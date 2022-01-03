@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { CardPay } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import style from './style.module.scss';
-import Loading from '../components/Loading/Loading';
+import Loading from '../components/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
 const AddCard = dynamic(
