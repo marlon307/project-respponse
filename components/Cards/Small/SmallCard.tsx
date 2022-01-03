@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import Link from 'next/link';
 import style from './style.module.scss';
 import Svg from '../../../assets/Svg';
 import LoadingImage from '../../LoadImage';
@@ -32,7 +33,7 @@ const SmallCard = function SmallCard({
 }: PSmallCard) {
   const dispatch = useDispatch();
   const {
-    title, type, mainImg, price, colorName, color,
+    id, title, type, mainImg, price, colorName, color,
     size, quantity, discount, oldPrice,
   } = objectID;
 
@@ -59,8 +60,12 @@ const SmallCard = function SmallCard({
         </figure>
       </div>
       <div className={ style.desc }>
-        <h2>{ type }</h2>
-        <h3>{ title }</h3>
+        <Link href={ `/product/${id}` }>
+          <a>
+            <h2>{ type }</h2>
+            <h3>{ title }</h3>
+          </a>
+        </Link>
         <div className={ style.infos }>
           <div className={ style.setting }>
             <span title={ `${colorName}` } style={ { background: `${color}` } } />
