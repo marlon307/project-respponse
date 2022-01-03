@@ -1,5 +1,4 @@
 import React, { useState, useEffect, createRef } from 'react';
-import { useRouter } from 'next/router';
 import cx from 'classnames';
 import AliceCarousel from 'react-alice-carousel';
 import BarColors from '../../components/Bars/BarColors';
@@ -13,31 +12,42 @@ import { mockCards } from '../../service/mockCards';
 import { BtnPrevNext } from '../../components/Buttons';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 
-function productId() {
-  const router = useRouter();
+type TPopsPg = {
+  propsProductId: {
+    id: Number;
+    title: string;
+    type: string;
+    price: Number;
+    descrtion: string;
+    branch: string;
+    gender: string;
+    discount: Number;
+    oldPrice: Number;
+    details: Object;
+    specification: Object;
+    options: Array<{
+      idc: string;
+      colorName: string;
+      color: string;
+      size: Object;
+      imgs: Array<Object>;
+    }>
+  };
+}
+
+function productId({ propsProductId }: TPopsPg) {
   const slideRefProductImg = createRef<AliceCarousel>();
   const [itemdrag, setItemDrag] = useState(false);
   const [sizeChecked, setSizeChecked] = useState('');
-  const [pgProductId, setPgProductId] = useState(0);
   const [colorChecked, setColorChecked] = useState({
     color: '',
     colorName: '',
   });
 
-  useEffect(() => {
-    const { productID } = router.query;
-
-    if (!mockCards[Number(productID)]) {
-      // router.push('/404');
-    } else {
-      setPgProductId(Number(productID));
-    }
-  }, []);
-
   const {
     title, type, price, descrtion, branch, gender, discount,
     oldPrice, details, specification, options,
-  } = mockCards[pgProductId];
+  } = propsProductId;
 
   useEffect(() => {
     checkSizeAvailable(options, colorChecked.color);
@@ -119,7 +129,7 @@ function productId() {
               />
             </div>
             <AddBag
-              productId={ mockCards[pgProductId] }
+              productId={ propsProductId }
               colorSelected={ colorChecked }
               sizeSelected={ sizeChecked }
             />
@@ -167,3 +177,20 @@ function productId() {
 }
 
 export default productId;
+
+export async function getStaticProps({ params }: any) {
+  const index = Number(params.id);
+
+  const propsProductId = await mockCards[index];
+  return {
+    props: { propsProductId },
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = await mockCards.map(({ id }) => ({ params: { id: id.toString() } }));
+  return {
+    paths,
+    fallback: false,
+  };
+}
