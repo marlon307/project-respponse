@@ -183,6 +183,7 @@ export async function getStaticProps({ params }: any) {
   const index = Number(params.id);
 
   const propsProductId = await mockCards[index];
+
   return {
     props: { propsProductId },
   };
