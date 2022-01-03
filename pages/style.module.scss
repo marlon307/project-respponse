@@ -427,11 +427,23 @@
 }
 
 .contaienrsection {
-  max-width: 400px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
+.inp {
+  display: flex;
+  gap: 2em;
+
+  label {
+    width: 50%;
+  }
+}
+
 .genere {
+  position: relative;
+  margin-top: 1.2em;
+
   div {
     display: flex;
     flex-wrap: wrap;
@@ -549,6 +561,17 @@
 
     [id] {
       scroll-margin-top: 3.5em;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .inp {
+    flex-direction: column;
+    gap: 0;
+
+    label {
+      width: 100%;
     }
   }
 }
