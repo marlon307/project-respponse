@@ -86,16 +86,16 @@ const SmallCard = function SmallCard({
             ) }
           </div>
           <div className={ style.price }>
-            { discount > 0 && (
-              <span title={ `Valor da unidade ${price}` }>
-                { price.toLocaleString('pt-br', {
+            <span
+              data-oldprice={
+                discount > 0 ? oldPrice.toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL',
-                }) }
-              </span>
-            ) }
-            <span title={ `Valor anterior ${oldPrice}` }>
-              { oldPrice.toLocaleString('pt-br', {
+                }) : ''
+              }
+              title={ `Valor anterior ${oldPrice}` }
+            >
+              { price.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }
