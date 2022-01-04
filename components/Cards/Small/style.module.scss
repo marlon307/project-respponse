@@ -114,19 +114,20 @@
 .price {
   position: relative;
 
-  span:nth-child(2n) {
-    position: absolute;
-    bottom: 1.4em;
-    left: 0;
-    text-decoration: line-through;
-    color: #bfbfbf;
-    font-size: 0.8em;
-  }
-
   span {
     font-weight: 700;
     color: #6b6b6b;
     margin-right: 20px;
+
+    &::before {
+      content: attr(data-oldprice);
+      position: absolute;
+      top: -1.2em;
+      left: 0;
+      text-decoration: line-through;
+      color: #bfbfbf;
+      font-size: 0.82em;
+    }
   }
 }
 
@@ -137,15 +138,22 @@
 }
 
 @media (max-width: 400px) {
+  .infos {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .price {
-    span:nth-child(2n) {
-      position: relative;
-      bottom: 0;
-    }
-
     span {
-      margin-right: 6%;
+
+      &:before {
+        position: relative;
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-right: 6px;
+      }
     }
   }
 }
