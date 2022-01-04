@@ -93,7 +93,12 @@ const SmallCard = function SmallCard({
                   currency: 'BRL',
                 }) : ''
               }
-              title={ `Valor anterior ${oldPrice}` }
+              title={
+                `Valor unitário ${price.toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}`
+              }
             >
               { price.toLocaleString('pt-br', {
                 style: 'currency',
