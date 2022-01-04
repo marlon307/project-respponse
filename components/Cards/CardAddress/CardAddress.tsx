@@ -2,7 +2,7 @@ import React from 'react';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
 
-type PCardAdderess = {
+export type PCardAdderess = {
   name: string;
   road: string;
   district: string;
@@ -10,10 +10,11 @@ type PCardAdderess = {
   uf: string;
   city: string;
   zipcode: string;
+  removable?: boolean;
 }
 
 const CardAdderess = function CardAdderess({
-  name, road, district, number, uf, city, zipcode,
+  name, road, district, number, uf, city, zipcode, removable,
 }: PCardAdderess) {
   return (
     <div className={ style.cardadderess }>
@@ -52,9 +53,11 @@ const CardAdderess = function CardAdderess({
         { ' ' }
         { zipcode }
       </span>
-      <div className="action" title="Excluir Endereço">
-        <Svg icoName="trash" />
-      </div>
+      { removable && (
+        <div className="action" title="Excluir Endereço">
+          <Svg icoName="trash" />
+        </div>
+      ) }
     </div>
   );
 };

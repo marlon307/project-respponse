@@ -43,13 +43,11 @@ const MyApp = function MyApp({ Component, pageProps }: AppProps) {
       <GetInfos />
       <Seo props={ pageProps } url={ urlPg } />
       <Header />
-      <main>
+      <main className="maincontent">
         {
           loading
             ? (
-              <div className="maincontent">
-                <Component { ...pageProps } />
-              </div>
+              <Component { ...pageProps } />
             )
             : (
               <div className="loading">
