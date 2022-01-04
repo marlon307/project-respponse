@@ -55,8 +55,8 @@ const MyApp = function MyApp({ Component, pageProps }: AppProps) {
               </div>
             )
         }
-        <Modal />
       </main>
+      <Modal />
       <Footer />
     </Provider>
   );
