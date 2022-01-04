@@ -2,15 +2,16 @@ import React from 'react';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
 
-interface PCardPay {
+export interface PCardPay {
   name: string;
   cardValidate: string;
   endNumber: string;
   flag: string;
+  removable?: boolean;
 }
 
 const CardPay = function CardPay({
-  name, cardValidate, endNumber, flag,
+  name, cardValidate, endNumber, flag, removable,
 }: PCardPay) {
   return (
     <div className={ style.card }>
@@ -26,9 +27,11 @@ const CardPay = function CardPay({
             { endNumber }
           </p>
         </div>
-        <div className="action" title="Excluir Cartão">
-          <Svg icoName="trash" />
-        </div>
+        { removable && (
+          <div className="action" title="Excluir Cartão">
+            <Svg icoName="trash" />
+          </div>
+        ) }
       </div>
     </div>
   );

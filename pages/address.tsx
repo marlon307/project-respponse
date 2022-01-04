@@ -47,6 +47,7 @@ function address() {
             uf="MG"
             zipcode="12345-67"
             district="Alterosas"
+            removable
           />
         </div>
         <div className={ style.optionadd }>
@@ -58,6 +59,7 @@ function address() {
             uf="MG"
             zipcode="12345-67"
             district="Alterosas"
+            removable
           />
         </div>
       </div>

@@ -56,7 +56,7 @@ function productId({ pgProps }: TPopsPg) {
   }, [colorChecked, sizeChecked]);
 
   return (
-    <div className={ style.product }>
+    <>
       <div className={ style.slide }>
         <div className={ style.buttons }>
           <BtnPrevNext typePrevOrNext="prev" reference={ slideRefProductImg } />
@@ -173,7 +173,7 @@ function productId({ pgProps }: TPopsPg) {
           </AliceCarousel>
         </section>
       </div>
-    </div>
+    </>
   );
 }
 

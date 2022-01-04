@@ -30,8 +30,9 @@ html {
   scroll-behavior: smooth !important;
 }
 
-main {
-  min-height: 70vh;
+.maincontent {
+  width: 100vw;
+  height: 100vh;
 }
 
 .inputs {
@@ -113,35 +114,6 @@ main {
     top: -24px;
     font-size: 0.8em;
     color: #db1818;
-  }
-}
-
-.maincontent {
-  animation: finish 0.6s ease-in-out;
-  -webkit-animation: finish 0.6s ease-in-out;
-}
-
-@-webkit-keyframes finish {
-  from {
-    opacity: 0;
-    transform: translateY(3em);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes finish {
-  from {
-    opacity: 0;
-    transform: translateY(3em);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
