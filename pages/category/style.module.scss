@@ -46,3 +46,9 @@
     margin: 0 0 0 5%;
   }
 }
+
+@media (max-width: 500px) {
+  .categorycont {
+    gap: 0.3em;
+  }
+}
