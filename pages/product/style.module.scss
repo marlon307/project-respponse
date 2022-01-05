@@ -39,7 +39,7 @@
   box-shadow: 0 0 30px var(--boxshadowcolor);
   transition: 0.3s;
   width: 500px;
-  height: auto;
+  min-height: 150px;
   flex: none;
 }
 
