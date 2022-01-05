@@ -44,9 +44,13 @@ html {
 .action {
   position: absolute;
   cursor: pointer;
-  right: 12px;
-  top: 12px;
+  right: 13px;
+  top: 13px;
   background: transparent;
+  overflow: hidden;
+  border-radius: 20px;
+  display: inline-block;
+  display: flex;
 
   svg {
     width: 22px !important;
@@ -158,6 +162,15 @@ html {
   .inputs {
     label {
       margin-bottom: 0;
+    }
+  }
+
+  .action {
+    right: 0px;
+    top: 0px;
+
+    svg {
+      padding: 13px;
     }
   }
 }
