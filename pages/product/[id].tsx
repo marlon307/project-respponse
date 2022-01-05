@@ -103,11 +103,14 @@ function productId({ pgProps }: TPopsPg) {
               </div>
               <div className={ cx(discount && style.price) }>
                 <div>
-                  <span>
-                    { oldPrice.toLocaleString('pt-br', {
+                  <span data-oldprice={
+                    discount ? oldPrice.toLocaleString('pt-br', {
                       style: 'currency',
                       currency: 'BRL',
-                    }) }
+                    }) : ''
+                  }
+                  >
+                    de
                   </span>
                 </div>
                 { discount > 0 && (
