@@ -11,6 +11,7 @@ function initStore(initialState: any) {
     reducers,
     initialState,
     composeWithDevTools(applyMiddleware(thunkMiddleware)),
+
   );
 }
 
