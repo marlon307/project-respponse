@@ -99,15 +99,15 @@
     span:first-child {
       font-size: 1em;
       font-weight: 600;
-      color: #525252;
+      text-decoration: line-through;
+      color: #bfbfbf;
 
-      &::after {
-        content: attr(data-oldprice);
+      &::before {
+        content: 'de';
         display: inline-block;
-        text-decoration: line-through;
-        color: #bfbfbf;
         font-size: 0.9em;
-        margin-left: 4px;
+        margin-right: 4px;
+        color: #525252;
       }
     }
   }
