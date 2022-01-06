@@ -20,7 +20,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.9em;
+  gap: 1em;
   margin: 3em 0;
   width: 100%;
 }
@@ -49,6 +49,6 @@
 
 @media (max-width: 500px) {
   .categorycont {
-    gap: 0.3em;
+    gap: 1em;
   }
 }
