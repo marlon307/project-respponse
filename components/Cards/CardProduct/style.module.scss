@@ -37,11 +37,6 @@
   img {
     object-fit: cover;
   }
-
-  &:hover .infocontND {
-    visibility: visible;
-    opacity: 1;
-  }
 }
 
 .productcardND {
@@ -71,7 +66,7 @@
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  top: 2%;
+  bottom: 2%;
   width: 100%;
   z-index: 44444;
   transition: 0.3s;
@@ -79,7 +74,7 @@
 
 .infocont {
   position: absolute;
-  top: 2%;
+  bottom: 2%;
   width: 100%;
   z-index: 44444;
 }
@@ -154,10 +149,6 @@
       width: min(28vw, 30vw);
     }
   }
-
-  .infocont {
-    top: 0.3em;
-  }
 }
 
 @media (max-width: 600px) {
@@ -187,7 +178,7 @@
 @media (max-width: 500px) {
   .productcard {
     figure {
-      width: 43vw;
+      width: 42.5vw;
       height: 100%;
       border-radius: 1em;
     }

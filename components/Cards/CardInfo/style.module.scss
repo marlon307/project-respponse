@@ -20,7 +20,7 @@
 }
 
 .primaryline {
-  font-size: 2ch;
+  font-size: 1.2em;
   font-weight: 700;
 }
 
@@ -73,12 +73,12 @@
 
   .primaryline {
     margin-bottom: -0.3em;
-    font-size: 1.6ch;
+    font-size: 1em;
   }
 
   .secondline {
     margin-top: 0.4em;
-    font-size: 1.3ch;
+    font-size: 0.85em;
   }
 
   .colors {
@@ -100,15 +100,11 @@
 
 @media (max-width: 415px) {
   .primaryline {
-    font-size: 1.2ch;
+    font-size: 0.9em;
   }
 
   .secondline {
-    font-size: 1ch;
-  }
-
-  .thirdline {
-    margin-top: 4%;
+    font-size: 0.75em;
   }
 
   .colors {
@@ -120,17 +116,10 @@
   }
 
   .price {
-    font-size: 1.2ch;
+    font-size: 0.9em;
 
-    span {
-      bottom: 1.2em;
-      font-size: 1em;
+    &::before {
+      font-size: 0.7em;
     }
-  }
-}
-
-@media (max-width: 320px) {
-  .thirdline {
-    margin-top: 4px;
   }
 }
