@@ -1,11 +1,12 @@
 // Style card category
 .itencategory {
-  margin: 0 22px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 150px;
+  height: 150px;
+  margin: 0 0.6em;
 
   .imgctg {
     width: 130px;
@@ -36,8 +37,8 @@
 
 @media (max-width: 750px) {
   .itencategory {
-    margin: 0 12px;
-    width: 110px;
+    width: 120px;
+    height: 120px;
 
     .imgctg {
       width: 100px;

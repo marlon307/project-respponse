@@ -33,6 +33,8 @@ const LoadingImage = function LoadingImage({
           layout="responsive"
           width={ width }
           height={ height }
+          sizes="100vw"
+          placeholder="blur"
           onLoadingComplete={ finishLoading }
           priority
         />

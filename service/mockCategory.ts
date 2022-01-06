@@ -96,35 +96,6 @@ const mockCategory = [
     categoryName: 'Relógios',
     subTitle: 'Relógios',
     path: 'relogios',
-  }, {
-    ctgID: 16,
-    imgCategory: imgRelogios,
-    categoryName: 'Relógios',
-    subTitle: 'Relógios',
-    path: 'relogios',
-  }, {
-    ctgID: 17,
-    imgCategory: imgRelogios,
-    categoryName: 'Relógios',
-    subTitle: 'Relógios',
-    path: 'relogios',
-  }, {
-    ctgID: 18,
-    imgCategory: imgRelogios,
-    categoryName: 'Relógios',
-    subTitle: 'Relógios',
-    path: 'relogios',
-  }, {
-    ctgID: 19,
-    imgCategory: imgRelogios,
-    categoryName: 'Relógios',
-    subTitle: 'Relógios',
-    path: 'relogios',
-  }, {
-    ctgID: 20,
-    imgCategory: imgRelogios,
-    categoryName: 'Relógios',
-    path: 'relogios',
   },
 ];
 
