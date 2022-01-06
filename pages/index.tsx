@@ -38,9 +38,7 @@ function index() {
               />
               <div className={ style.titleproduct }>
                 <h1>{ title }</h1>
-
                 <BtnRedirect path={ url } titleBtn={ `Veja ${category}` } />
-
               </div>
             </figure>
           )) }
