@@ -7,7 +7,7 @@ import mockCategory from '../service/mockCategory';
 import { BtnPrevNext, BtnRedirect } from '../components/Buttons';
 import mockCarousel from '../service/mockCarousel';
 import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
-import { CardProduct, CardProductNDS, CardProductND } from '../components/Cards/CardProduct';
+import { CardProductNDS, CardProductND } from '../components/Cards/CardProduct';
 import Svg from '../assets/Svg';
 import LoadingImage from '../components/LoadImage';
 
@@ -104,7 +104,9 @@ function index() {
             />
           </div>
           <div className={ style.column }>
-            <CardProduct id={ 0 } />
+            <CardProductNDS
+              id={ 0 }
+            />
           </div>
         </div>
       </section>
