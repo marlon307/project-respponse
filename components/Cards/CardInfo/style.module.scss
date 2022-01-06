@@ -1,7 +1,5 @@
 //Card info
 .info {
-  background: var(--maincolormenu);
-  backdrop-filter: saturate(100%) blur(5px);
   padding: 8px 0;
   border-radius: 1em;
   margin: 0 3%;
@@ -66,11 +64,6 @@
 }
 
 @media (max-width: 750px) {
-  .info {
-    border-radius: 0.8em;
-    padding: 6px 8px;
-  }
-
   .primaryline {
     margin-bottom: -0.3em;
     font-size: 1em;
