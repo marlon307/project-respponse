@@ -7,7 +7,7 @@ const mockCarousel = [
     id: '0',
     urlImg: TesteSlide1,
     url: '/category/tenis',
-    title: 'Tenis AllStars',
+    title: 'Tênis AllStars',
     category: 'Tênis',
     priority: true,
   },
