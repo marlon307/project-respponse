@@ -82,11 +82,12 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2em;
+  min-height: 140px;
 }
 
 @media (max-width:500px) {
   .category {
-    width: 95vw;
+    width: 94vw;
 
     button {
       display: none;
@@ -97,6 +98,7 @@
 .advertising {
   position: relative;
   margin: 6em 6%;
+  min-height: 150px;
 
   img {
     border-radius: 2rem;
