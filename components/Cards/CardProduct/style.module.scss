@@ -1,12 +1,11 @@
 // Style Card producsts
 .productcard {
   position: relative;
-  max-width: 300px;
+  max-width: 350px;
   min-width: 100px;
 
   figure {
-    width: 300px;
-    height: 100%;
+    width: 350px;
     border-radius: 22px;
     overflow: hidden;
   }
@@ -66,24 +65,19 @@
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  bottom: 2%;
   width: 100%;
   z-index: 44444;
   transition: 0.3s;
 }
 
 .infocont {
-  position: absolute;
-  bottom: 2%;
   width: 100%;
-  z-index: 44444;
 }
 
 @media (max-width: 1300px) {
   .productcard {
     figure {
       width: 24.5vw;
-      height: 100%;
       border-radius: 1em;
     }
   }

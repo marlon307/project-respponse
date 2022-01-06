@@ -25,6 +25,8 @@ const CardProduct = function CardProduct({ id }: PCardP) {
             url={ mainImg }
             quality={ 85 }
             alt={ title }
+            width={ 350 }
+            height={ 400 }
           />
         </figure>
         <div className={ style.infocont }>
