@@ -7,22 +7,21 @@
 
 .slide {
   width: 62%;
-  height: 90vh;
+  height: 100vh;
   min-height: 250px;
 
   figure {
-    width: 61ch;
+    width: 100%;
     height: 100vh;
     margin: 0 auto;
+    max-width: 800px;
+    min-width: 400px;
+    min-height: 250px;
   }
-}
 
-.contentpanel {
-  width: 100%;
-  max-width: 700px;
-  min-width: 400px;
-  height: 100vh;
-  min-height: 250px;
+  img {
+    object-fit: contain;
+  }
 }
 
 .maincontentinfo {
@@ -126,18 +125,13 @@
 
   .slide {
     width: 100%;
-    height: 70vh;
+    height: 60vh;
 
     figure {
-      width: 70%;
+      width: 100%;
       height: 100%;
       margin: 0 auto;
     }
-  }
-
-  .contentpanel {
-    width: 100%;
-    height: auto;
   }
 
   .maincontentinfo {
@@ -155,15 +149,15 @@
     margin-top: 60px;
   }
 
-  .slide {
-    width: 100%;
-    height: 100%;
+  // .slide {
+  //   width: 100%;
+  //   height: 100%;
 
-    figure {
-      width: 70%;
-      margin: 0 auto;
-    }
-  }
+  //   figure {
+  //     width: 70%;
+  //     margin: 0 auto;
+  //   }
+  // }
 
   .infodesc {
     padding: 1.4em;
