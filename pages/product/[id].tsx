@@ -75,6 +75,7 @@ function productId({ pgProps }: TPopsPg) {
                 alt={ title }
                 width={ 100 }
                 height={ 100 }
+                size="100vw"
               />
             </figure>
           )) }
