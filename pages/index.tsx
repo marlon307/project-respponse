@@ -35,6 +35,8 @@ function index() {
                 placeholder="blur"
                 alt={ title }
                 quality={ 90 }
+                width={ 130 }
+                height={ 130 }
               />
               <div className={ style.titleproduct }>
                 <h1>{ title }</h1>
