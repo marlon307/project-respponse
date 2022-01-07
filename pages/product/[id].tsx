@@ -68,15 +68,15 @@ function productId({ pgProps }: TPopsPg) {
           ref={ slideRefProductImg }
         >
           { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
-            <div key={ imgid } className={ style.contentpanel }>
-              <figure>
-                <LoadingImage
-                  url={ urlImg }
-                  quality={ 90 }
-                  alt={ title }
-                />
-              </figure>
-            </div>
+            <figure key={ imgid }>
+              <LoadingImage
+                url={ urlImg }
+                quality={ 90 }
+                alt={ title }
+                width={ 100 }
+                height={ 100 }
+              />
+            </figure>
           )) }
         </AliceCarousel>
       </div>
