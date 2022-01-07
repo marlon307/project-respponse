@@ -82,86 +82,84 @@ function productId({ pgProps }: TPopsPg) {
       </div>
       <div className={ style.maincontentinfo }>
         <div className={ style.infodesc }>
-          <div className={ style.infos }>
-            <div className={ style.primaryline }>
-              <div className={ style.titles }>
-                <h1>{ type }</h1>
-                <h2>{ title }</h2>
-              </div>
-              <div className={ style.price }>
-                <span data-oldprice={
-                  discount ? oldPrice.toLocaleString('pt-br', {
+          <div className={ style.primaryline }>
+            <div className={ style.titles }>
+              <h1>{ type }</h1>
+              <h2>{ title }</h2>
+            </div>
+            <div className={ style.price }>
+              <span data-oldprice={
+                discount ? oldPrice.toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }) : ''
+              }
+              >
+                de
+              </span>
+              { discount > 0 && (
+                <h4>
+                  { price.toLocaleString('pt-br', {
                     style: 'currency',
                     currency: 'BRL',
-                  }) : ''
-                }
-                >
-                  de
-                </span>
-                { discount > 0 && (
-                  <h4>
-                    { price.toLocaleString('pt-br', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    }) }
-                  </h4>
-                ) }
-              </div>
+                  }) }
+                </h4>
+              ) }
             </div>
-            <div className={ style.barcolor }>
-              <BarColors
-                array={ options }
-                execFunction={ setColorChecked }
-              />
-            </div>
-            <div className={ style.mindetail }>
-              <p>
-                { descrtion }
-              </p>
-            </div>
-            <div className={ style.secondline }>
-              <BarSize
-                array={ options }
-                color={ colorChecked.color === '' ? options[0].color : colorChecked.color }
-                execFunction={ setSizeChecked }
-              />
-            </div>
-            <AddBag
-              productId={ pgProps }
-              colorSelected={ colorChecked }
-              sizeSelected={ sizeChecked }
+          </div>
+          <div className={ style.barcolor }>
+            <BarColors
+              array={ options }
+              execFunction={ setColorChecked }
             />
           </div>
-          <div className={ style.more }>
-            <div className={ style.moreoptions }>
-              <button
-                aria-hidden={ itemdrag === 'detail' }
-                type="button"
-                onClick={ () => setItemDrag('detail') }
-              >
-                Detalhes
-              </button>
-              <button
-                aria-hidden={ itemdrag === 'similarprod' }
-                type="button"
-                onClick={ () => setItemDrag('similarprod') }
-              >
-                Produtos Similares
-              </button>
-            </div>
-            <AliceCarousel
-              autoWidth
-              disableButtonsControls
-              disableDotsControls
-            >
-              <DetailsCard
-                gender={ gender }
-                branch={ branch }
-                details={ details }
-              />
-              <Spec specification={ specification } />
-            </AliceCarousel>
+          <div className={ style.mindetail }>
+            <p>
+              { descrtion }
+            </p>
           </div>
+          <div className={ style.secondline }>
+            <BarSize
+              array={ options }
+              color={ colorChecked.color === '' ? options[0].color : colorChecked.color }
+              execFunction={ setSizeChecked }
+            />
+          </div>
+          <AddBag
+            productId={ pgProps }
+            colorSelected={ colorChecked }
+            sizeSelected={ sizeChecked }
+          />
+        </div>
+        <div className={ style.more }>
+          <div className={ style.moreoptions }>
+            <button
+              aria-hidden={ itemdrag === 'detail' }
+              type="button"
+              onClick={ () => setItemDrag('detail') }
+            >
+              Detalhes
+            </button>
+            <button
+              aria-hidden={ itemdrag === 'similarprod' }
+              type="button"
+              onClick={ () => setItemDrag('similarprod') }
+            >
+              Produtos Similares
+            </button>
+          </div>
+          <AliceCarousel
+            autoWidth
+            disableButtonsControls
+            disableDotsControls
+          >
+            <DetailsCard
+              gender={ gender }
+              branch={ branch }
+              details={ details }
+            />
+            <Spec specification={ specification } />
+          </AliceCarousel>
         </div>
       </div>
     </div>
