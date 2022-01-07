@@ -11,8 +11,8 @@ const NextConfig = { // Next Config
     defaultLocale: 'pt-br',
   },
   images: {
-    deviceSizes: [280, 375, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    deviceSizes: [100, 130, 280, 375, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [4, 16, 32, 48, 64, 96, 128, 256, 384, 1080, 1920],
   },
   env: {
     VALIDATION_EMAIL: process.env.VALIDATION_EMAIL,
