@@ -113,7 +113,7 @@
     }
   }
 
-  button[aria-hidden|=true]::after {
+  button[aria-expanded|=true]::after {
     width: 30%;
   }
 }

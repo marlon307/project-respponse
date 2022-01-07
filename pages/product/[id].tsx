@@ -134,14 +134,14 @@ function productId({ pgProps }: TPopsPg) {
         <div className={ style.more }>
           <div className={ style.moreoptions }>
             <button
-              aria-hidden={ itemdrag === 'detail' }
+              aria-expanded={ itemdrag === 'detail' }
               type="button"
               onClick={ () => setItemDrag('detail') }
             >
               Detalhes
             </button>
             <button
-              aria-hidden={ itemdrag === 'similarprod' }
+              aria-expanded={ itemdrag === 'similarprod' }
               type="button"
               onClick={ () => setItemDrag('similarprod') }
             >
