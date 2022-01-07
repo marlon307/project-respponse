@@ -1,15 +1,13 @@
 import React, { useState, useEffect, createRef } from 'react';
-import cx from 'classnames';
 import AliceCarousel from 'react-alice-carousel';
 import BarColors from '../../components/Bars/BarColors';
 import style from './style.module.scss';
 import BarSize from '../../components/Bars/BarSize';
 import AddBag from '../../components/Buttons/AddBag';
 import { DetailsCard, Spec } from '../../components/Cards';
-import Svg from '../../assets/Svg';
 import LoadingImage from '../../components/LoadImage';
 import { mockCards } from '../../service/mockCards';
-import { BtnPrevNext } from '../../components/Buttons';
+// import { BtnPrevNext } from '../../components/Buttons';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 
 type TPopsPg = {
@@ -38,7 +36,7 @@ type TPopsPg = {
 
 function productId({ pgProps }: TPopsPg) {
   const slideRefProductImg = createRef<AliceCarousel>();
-  const [itemdrag, setItemDrag] = useState(false);
+  const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
     color: '',
@@ -56,12 +54,12 @@ function productId({ pgProps }: TPopsPg) {
   }, [colorChecked, sizeChecked]);
 
   return (
-    <>
+    <div className={ style.contprod }>
       <div className={ style.slide }>
-        <div className={ style.buttons }>
+        {/* <div className={ style.buttons }>
           <BtnPrevNext typePrevOrNext="prev" reference={ slideRefProductImg } />
           <BtnPrevNext typePrevOrNext="next" reference={ slideRefProductImg } />
-        </div>
+        </div> */}
         <AliceCarousel
           autoWidth
           infinite
@@ -81,49 +79,45 @@ function productId({ pgProps }: TPopsPg) {
             </div>
           )) }
         </AliceCarousel>
-        <div className={ style.barcolor }>
-          <BarColors
-            array={ options }
-            execFunction={ setColorChecked }
-          />
-        </div>
       </div>
       <div className={ style.maincontentinfo }>
         <div className={ style.infodesc }>
-          <div className={ style.mindetail }>
-            <p>
-              { descrtion }
-            </p>
-          </div>
           <div className={ style.infos }>
             <div className={ style.primaryline }>
               <div className={ style.titles }>
                 <h1>{ type }</h1>
                 <h2>{ title }</h2>
               </div>
-              <div className={ cx(discount && style.price) }>
-                <div>
-                  <span data-oldprice={
-                    discount ? oldPrice.toLocaleString('pt-br', {
+              <div className={ style.price }>
+                <span data-oldprice={
+                  discount ? oldPrice.toLocaleString('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }) : ''
+                }
+                >
+                  de
+                </span>
+                { discount > 0 && (
+                  <h4>
+                    { price.toLocaleString('pt-br', {
                       style: 'currency',
                       currency: 'BRL',
-                    }) : ''
-                  }
-                  >
-                    de
-                  </span>
-                </div>
-                { discount > 0 && (
-                  <div>
-                    <span>
-                      { price.toLocaleString('pt-br', {
-                        style: 'currency',
-                        currency: 'BRL',
-                      }) }
-                    </span>
-                  </div>
+                    }) }
+                  </h4>
                 ) }
               </div>
+            </div>
+            <div className={ style.barcolor }>
+              <BarColors
+                array={ options }
+                execFunction={ setColorChecked }
+              />
+            </div>
+            <div className={ style.mindetail }>
+              <p>
+                { descrtion }
+              </p>
             </div>
             <div className={ style.secondline }>
               <BarSize
@@ -138,45 +132,39 @@ function productId({ pgProps }: TPopsPg) {
               sizeSelected={ sizeChecked }
             />
           </div>
+          <div className={ style.more }>
+            <div className={ style.moreoptions }>
+              <button
+                aria-hidden={ itemdrag === 'detail' }
+                type="button"
+                onClick={ () => setItemDrag('detail') }
+              >
+                Detalhes
+              </button>
+              <button
+                aria-hidden={ itemdrag === 'similarprod' }
+                type="button"
+                onClick={ () => setItemDrag('similarprod') }
+              >
+                Produtos Similares
+              </button>
+            </div>
+            <AliceCarousel
+              autoWidth
+              disableButtonsControls
+              disableDotsControls
+            >
+              <DetailsCard
+                gender={ gender }
+                branch={ branch }
+                details={ details }
+              />
+              <Spec specification={ specification } />
+            </AliceCarousel>
+          </div>
         </div>
-        <div className={ style.options }>
-          <label htmlFor="detail">
-            <input
-              type="radio"
-              name="dragoption"
-              id="detail"
-              onClick={ () => setItemDrag(itemdrag) }
-            />
-            <Svg icoName="spec" />
-            Detalhes
-          </label>
-          <label htmlFor="recomendation">
-            <input
-              type="radio"
-              name="dragoption"
-              id="recomendation"
-              onClick={ () => setItemDrag(true) }
-            />
-            <Svg icoName="similar" />
-            <span>Produos Similares</span>
-          </label>
-        </div>
-        <section className={ style.slideinfo }>
-          <AliceCarousel
-            autoWidth
-            disableButtonsControls
-            disableDotsControls
-          >
-            <DetailsCard
-              gender={ gender }
-              branch={ branch }
-              details={ details }
-            />
-            <Spec specification={ specification } />
-          </AliceCarousel>
-        </section>
       </div>
-    </>
+    </div>
   );
 }
 

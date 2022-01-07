@@ -8,7 +8,6 @@ import image6 from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 1.png';
 // import clean image
 import cleanImage1 from '../assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
 import cleanImage2 from '../assets/img/brian-lawson-e9o9sAy5PL4-unsplash_1-removebg-preview.png';
-import cleanImage3 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash_1-removebg-preview.png';
 
 export const mockCards = [{
   id: 0,
@@ -63,13 +62,13 @@ export const mockCards = [{
       urlImg: cleanImage2,
     }, {
       imgid: 2,
-      urlImg: cleanImage3,
+      urlImg: cleanImage1,
     }, {
       imgid: 3,
       urlImg: cleanImage1,
     }, {
       imgid: 4,
-      urlImg: cleanImage3,
+      urlImg: cleanImage2,
     }],
   }, {
     idc: 'grey002',
