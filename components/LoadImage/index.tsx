@@ -9,11 +9,10 @@ export interface PLoadImg {
   height?: number;
   quality?: number;
   alt: string;
-  size?: string;
 }
 
 const LoadingImage = function LoadingImage({
-  url, width, height, quality, alt, size,
+  url, width, height, quality, alt,
 }: PLoadImg) {
   const [isloading, setIsLoading] = useState(false);
 
@@ -34,7 +33,6 @@ const LoadingImage = function LoadingImage({
           layout="responsive"
           width={ width }
           height={ height }
-          sizes={ size }
           placeholder="blur"
           onLoadingComplete={ finishLoading }
           priority
