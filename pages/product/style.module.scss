@@ -1,253 +1,146 @@
-.slide {
-  position: relative;
-  width: 100%;
-  height: 80ch;
+.contprod {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.contentpanel {
-  width: 70ch;
-  height: 80ch;
+.slide {
+  width: 62%;
+  height: 90vh;
+  margin-top: 100px;
+  min-height: 250px;
 
   figure {
-    width: 50ch;
-    height: 80ch;
+    width: 61ch;
+    height: 90vh;
     margin: 0 auto;
   }
 }
 
-.barcolor {
-  margin-left: 6%;
+.contentpanel {
+  width: 50%;
+  min-width: 600px;
+  height: 100%;
 }
 
-.buttons {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  width: -webkit-fill-available;
-  justify-content: space-between;
-  bottom: 48%;
-  padding: 0 4%;
-}
-
-.infos {
-  position: relative;
-  margin-top: -170px;
-  padding: max(1em, 2em);
-  z-index: 9998;
+.maincontentinfo {
+  margin-top: 80px;
+  width: 38%;
   background: var(--maincolor);
-  border-radius: 1em;
-  box-shadow: 0 0 30px var(--boxshadowcolor);
-  transition: 0.3s;
-  width: 500px;
-  min-height: 150px;
-  flex: none;
 }
 
 .infodesc {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 42px 6%;
+  padding: 2em;
+  max-width: 500px;
 }
 
-.mindetail {
-  width: 250px;
-  flex: none;
-  margin: 0 auto;
-}
-
-.primaryline {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 42px;
-  line-height: 1.1;
-
-  h1,
-  span {
+.titles {
+  h1 {
     color: #525252;
-    font-weight: 700;
-    font-size: 1.7em;
+    font-size: 2em;
   }
 
   h2 {
     color: #707070;
-    font-size: 1em;
+    font-size: 1.2em;
   }
 }
 
-.titles {
-  position: relative;
+.mindetail {
+  margin-top: 32px;
+  text-align: start;
+  max-width: 400px;
+}
+
+.primaryline {
   display: flex;
   align-items: flex-start;
-  justify-content: inherit;
-  flex-direction: column;
-
-  h1,
-  h2 {
-    line-height: 1;
-  }
+  justify-content: space-between;
 }
 
 .price {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: inherit;
-  flex-direction: column;
 
-  div:first-child {
-    span:first-child {
-      font-size: 1em;
-      font-weight: 600;
-      color: #525252;
-
-      &::after {
-        content: attr(data-oldprice);
-        display: inline-block;
-        text-decoration: line-through;
-        color: #bfbfbf;
-        font-size: .9em;
-        margin-left: 4px;
-      }
-    }
+  span::after {
+    content: attr(data-oldprice);
+    margin-left: 8px;
+    display: inline-block;
+    text-decoration: line-through;
+    color: #bfbfbf;
   }
 
-  div:last-child {
-    span:first-child {
-      font-size: 1.7em;
-      font-weight: 700;
-
-      &::before {
-        content: 'por';
-        display: inline-block;
-        font-size: 0.6em;
-        margin-right: 4px;
-        color: #525252;
-        font-weight: 600;
-      }
-    }
+  h4 {
+    color: #525252;
+    font-size: 2em;
   }
+}
+
+.barcolor {
+  margin: 52px 0 32px;
 }
 
 .secondline {
-  margin-bottom: 42px;
+  margin: 32px 0;
 }
 
-.options {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6%;
-  margin-bottom: 28px;
+.more {
+  margin-top: 42px;
+}
 
-  label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+.moreoptions {
+  margin-bottom: 18px;
+
+  button {
+    position: relative;
+    background: transparent;
+    color: #525252;
+    margin-right: 12px;
+    font-weight: 700;
+    font-size: 1em;
     cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 4px;
+      background: #333;
+      left: 0;
+      border-radius: 6px;
+      bottom: -5px;
+      transition: width 0.3s ease;
+    }
   }
 
-  input {
-    display: none;
+  button[aria-hidden|=true]::after {
+    width: 30%;
   }
 }
 
-.slideinfo {
-  position: relative;
-  max-width: 98vh;
-  padding: 0 6%;
-  margin: 0 auto 3em;
-}
-
-.maincontentinfo {
-  width: 100%;
-  height: auto;
-}
-
-@media (max-width: 950px) {
-  .infodesc {
+@media (max-width: 1000px) {
+  .contprod {
     flex-direction: column;
-  }
-
-  .mindetail {
-    margin: 1.6em auto;
-    order: 2;
-  }
-}
-
-@media (max-width: 750px) {
-  .maincontentinfo {
-    box-shadow: 0 -38px 28px var(--boxshadowcolor);
-    border-radius: 1em;
-    margin-top: -4em;
-  }
-
-  .infodesc {
-    margin: 0 auto;
-  }
-
-  .infos {
-    margin-top: 0;
-    box-shadow: none;
-    width: -webkit-fill-available;
-    padding: 2em 6%;
   }
 
   .slide {
     width: 100%;
-    height: 60ch;
+    height: 60vh;
+    margin-top: 60px;
+
+    figure {
+      width: 64.4vw;
+      height: auto;
+      margin: 0 auto;
+    }
   }
 
   .contentpanel {
-    width: 38.5ch;
-    height: 60ch;
-
-    figure {
-      width: 40ch;
-      height: 60ch;
-    }
+    width: 100%;
   }
 
-  .buttons {
-    bottom: 28%;
-  }
-
-  .primaryline {
-
-    h1,
-    span {
-      font-size: 1.2em;
-    }
-
-    h2 {
-      font-size: 0.8em;
-    }
-  }
-
-  .price {
-    position: relative;
-
-    div:first-child {
-      span:first-child {
-        font-size: 0.8em;
-      }
-
-      span:last-child {
-        font-size: 0.8em;
-      }
-    }
-
-    div:last-child {
-      span:first-child {
-        font-size: 1.2em;
-      }
-    }
-  }
-
-  .slideinfo {
-    width: auto;
-    margin-left: 6%;
-    padding: 0;
+  .maincontentinfo {
+    margin-top: 0;
+    width: 100%;
+    z-index: 5;
   }
 }
