@@ -56,10 +56,12 @@ const CardEdit = function CardEdit() {
             }
           />
         </div>
-        <BarColors
-          array={ mockCards[itemEditBag.id].options }
-          execFunction={ setColorUpdate }
-        />
+        <div className={ style.colors }>
+          <BarColors
+            array={ mockCards[itemEditBag.id].options }
+            execFunction={ setColorUpdate }
+          />
+        </div>
       </div>
       <BarSize
         array={ mockCards[itemEditBag.id].options }
