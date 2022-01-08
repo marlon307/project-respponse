@@ -10,7 +10,6 @@ import { mockCards } from '../../service/mockCards';
 // import { BtnPrevNext } from '../../components/Buttons';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import type { typeProduct } from '../../types/typeProduct';
-// import type { TDetail, TSpecification } from '../../components/Cards/CardDetail/types';
 
 function productId({ pgProps }: typeProduct) {
   const slideRefProductImg = createRef<AliceCarousel>();

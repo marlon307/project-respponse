@@ -1,3 +1,5 @@
+import type { TDetail, TSpecification } from '../../components/Cards/CardDetail/types';
+
 export type typeProduct = {
   pgProps: {
     id: Number;
@@ -10,8 +12,8 @@ export type typeProduct = {
     mainImg: Object;
     discount: Number;
     oldPrice: Number;
-    details: Object;
-    specification: Object;
+    details: TDetail;
+    specification: TSpecification;
     options: Array<{
       idc: string;
       colorName: string;
