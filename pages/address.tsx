@@ -7,20 +7,15 @@ import ContentModal from '../components/Modal/ContentModal';
 import style from './style.module.scss';
 import Loading from '../components/Loading';
 import BtnAdd from '../components/Buttons/BtnAdd';
+import type { ReduxUser } from '../types/typesUserRedux';
 
 const Addaderess = dynamic(
   () => import('../components/Add/add-address'),
   { loading: () => <Loading /> },
 );
 
-interface IUser {
-  user: {
-    logged: boolean;
-  }
-}
-
 function address() {
-  const { logged } = useSelector(({ user }: IUser) => user);
+  const { logged } = useSelector(({ user }: ReduxUser) => user);
   const router = useRouter();
 
   useEffect(() => {

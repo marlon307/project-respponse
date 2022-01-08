@@ -1,8 +1,9 @@
 import React from 'react';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
+import type { TSpecification } from './types';
 
-const Spec = function Spec({ specification }: any) {
+const Spec = function Spec({ specification }: TSpecification) {
   return (
     <div className={ style.detail }>
       <h3>

@@ -8,38 +8,10 @@ import { mockCards } from '../../../service/mockCards';
 import LoadingImage from '../../LoadImage';
 import { itemBagEdit, finishItemBagEdit } from '../../../redux/redux-actions';
 import { checkColorAvailable, checkSizeAvailable } from '../../../hooks/useCheckAvailable';
-
-type TObjectUserBag = {
-  user: {
-    bagItems: Array<{
-      id: number;
-      title: string;
-      type: string;
-      mainImg: Object;
-      price: number;
-      oldPrice: number;
-      colorName: string;
-      color: string;
-      size: string;
-      quantity: number;
-      discount: number
-      identifyBag: string;
-    }>
-    itemEditBag: {
-      id: number;
-      type: string;
-      title: string;
-      quantity: number;
-      identifyBag: string;
-      colorName: string;
-      color: string;
-      size: string;
-    }
-  };
-}
+import type { ReduxUser } from '../../../types/typesUserRedux';
 
 const CardEdit = function CardEdit() {
-  const { itemEditBag } = useSelector(({ user }: TObjectUserBag) => user);
+  const { itemEditBag } = useSelector(({ user }: ReduxUser) => user);
   const dispatch = useDispatch();
   const [colorupdate, setColorUpdate] = useState({
     color: itemEditBag.color,

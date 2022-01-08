@@ -5,28 +5,7 @@ import style from './style.module.scss';
 import Svg from '../../../assets/Svg';
 import LoadingImage from '../../LoadImage';
 import { removeBag, getInfoBagEdit } from '../../../redux/redux-actions';
-
-type ObjectId = {
-  id: number;
-  title: string;
-  type: string;
-  mainImg: string | any;
-  price: number;
-  oldPrice: number;
-  colorName: string;
-  color: string;
-  size: string;
-  quantity: number;
-  discount: number;
-}
-
-export interface PSmallCard {
-  objectID: ObjectId;
-  removable?: boolean;
-  editable?: boolean;
-  eventModal?: Function;
-  identifyBag?: string;
-}
+import type { PSmallCard } from './type';
 
 const SmallCard = function SmallCard({
   objectID, removable, editable, eventModal, identifyBag,

@@ -7,17 +7,11 @@ import Bar from '../../SearchBar/Bar';
 import Svg from '../../../assets/Svg';
 import { actionLogOut } from '../../../redux/redux-actions';
 import CustomLink from '../../CustomLink';
-
-interface IUser {
-  user: {
-    logged: boolean;
-    bagItems: Array<Object>;
-  }
-}
+import type { ReduxUser } from '../../../types/typesUserRedux';
 
 const MenuMobile = function MenuMobile() {
   const dipatch = useDispatch();
-  const { logged, bagItems } = useSelector(({ user }: IUser) => user);
+  const { logged, bagItems } = useSelector(({ user }: ReduxUser) => user);
   const [dropMnMobile, setDropMnMobile] = useState(false);
 
   function handleClickLogOutUser() {

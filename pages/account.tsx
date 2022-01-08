@@ -7,20 +7,15 @@ import style from './style.module.scss';
 import Help from './help';
 import Svg from '../assets/Svg';
 import Loading from '../components/Loading';
+import type { ReduxUser } from '../types/typesUserRedux';
 
 const Usercfg = dynamic(() => import('./usercfg'), { loading: () => <Loading /> });
 const Order = dynamic(() => import('./orders'), { loading: () => <Loading /> });
 const Cards = dynamic(() => import('./cards'), { loading: () => <Loading /> });
 const Address = dynamic(() => import('./address'), { loading: () => <Loading /> });
 
-interface IUser {
-  user: {
-    logged: boolean;
-  }
-}
-
 function account() {
-  const { logged } = useSelector(({ user }: IUser) => user);
+  const { logged } = useSelector(({ user }: ReduxUser) => user);
   const router = useRouter();
 
   useEffect(() => {

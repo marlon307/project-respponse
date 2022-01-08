@@ -1,8 +1,9 @@
 import React from 'react';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
+import type { TDetail } from './types';
 
-const Detail = function Detail({ branch, details, gender }: any) {
+const Detail = function Detail({ branch, details, gender }: TDetail) {
   return (
     <div className={ style.detail }>
       <h3>

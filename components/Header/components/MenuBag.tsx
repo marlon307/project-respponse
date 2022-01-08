@@ -9,32 +9,15 @@ import { SmallCard } from '../../Cards';
 import useOutsideClick from '../../../hooks/useOutSide';
 import Svg from '../../../assets/Svg';
 import calcAllValuesArray from '../../../hooks/useCalcs';
+import type { ReduxUser } from '../../../types/typesUserRedux';
 
 type PropsMNBag = {
   setMenuDropdown: Function;
 }
 
-type TObjectUserBag = {
-  user: {
-    bagItems: Array<{
-      id: number;
-      title: string;
-      type: string;
-      mainImg: string | any;
-      price: number;
-      oldPrice: number;
-      colorName: string;
-      color: string;
-      size: string;
-      quantity: number;
-      discount: number
-    }>
-  }
-}
-
 const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
-  const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
+  const { bagItems } = useSelector(({ user }: ReduxUser) => user);
   const [enable, setEnable] = useState(false);
   const [valueTotalProducts, setValueTotalProducts] = useState(0);
   const ref = useRef(null);

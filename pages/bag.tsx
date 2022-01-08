@@ -8,24 +8,7 @@ import Svg from '../assets/Svg';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading';
 import Checkout from '../components/Bag';
-
-type TObjectUserBag = {
-  user: {
-    bagItems: Array<{
-      id: number;
-      title: string;
-      type: string;
-      mainImg: string | any;
-      oldPrice: number;
-      price: number;
-      colorName: string;
-      color: string;
-      size: string;
-      quantity: number;
-      discount: number
-    }>
-  }
-}
+import type { ReduxUser } from '../types/typesUserRedux';
 
 const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), {
   loading: () => <Loading />,
@@ -42,7 +25,7 @@ const Addacard = dynamic(import('../components/Add/add-card'), {
 
 function bag() {
   const [openModal, setOpenModal] = useState<String>('');
-  const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
+  const { bagItems } = useSelector(({ user }: ReduxUser) => user);
 
   const openModalEdit = useCallback(() => {
     setOpenModal('edit');

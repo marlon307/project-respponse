@@ -19,8 +19,8 @@ const CardCategory = function CardCategory({ image, ctgName, path }: PCardCatego
               url={ image }
               quality={ 60 }
               alt={ ctgName }
-              width={ 130 }
-              height={ 130 }
+              width={ 100 }
+              height={ 100 }
             />
           </figure>
           <span>{ ctgName }</span>

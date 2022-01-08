@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
 import style from './style.module.scss';
-
-export interface Props {
-  id: string;
-  type: string;
-  name: string;
-  placeHolder: string;
-  autoComplete?: string;
-  ivalue: string;
-  inputValue: Function;
-  regexValidator?: RegExp;
-  msgError?: string;
-}
+import type { PInputText } from './type';
 
 const Input = function Input({
   id, type, name, placeHolder, autoComplete, inputValue, ivalue, regexValidator, msgError,
-}: Props) {
+}: PInputText) {
   const [statusValid, setSatusValid] = useState(false);
 
   function handleChange({ target }: any) {

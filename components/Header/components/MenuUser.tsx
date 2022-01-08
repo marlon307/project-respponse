@@ -9,6 +9,7 @@ import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';
 import Loading from '../../Loading';
 import { actionLogOut } from '../../../redux/redux-actions';
+import type { ReduxUser } from '../../../types/typesUserRedux';
 
 const LoginRegister = dynamic(
   () => import('../../../pages/login-register'),
@@ -19,15 +20,9 @@ type PropsMNUser = {
   setMenuDropdown: Function;
 }
 
-interface IUser {
-  user: {
-    logged: boolean;
-  }
-}
-
 const MenuUser = function MenuUser({ setMenuDropdown }: PropsMNUser) {
   const dipatch = useDispatch();
-  const { logged } = useSelector(({ user }: IUser) => user);
+  const { logged } = useSelector(({ user }: ReduxUser) => user);
 
   const [outsideClick, setTutsideClicl] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
