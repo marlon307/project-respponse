@@ -6,20 +6,15 @@ import { MinCardOrder } from '../components/Cards';
 import style from './style.module.scss';
 import ContentModal from '../components/Modal/ContentModal';
 import Loading from '../components/Loading';
+import type { ReduxUser } from '../types/typesUserRedux';
 
 const OrderId = dynamic(
   () => import('../components/Order/OrderId'),
   { loading: () => <Loading /> },
 );
 
-interface IUser {
-  user: {
-    logged: boolean;
-  }
-}
-
 function order() {
-  const { logged } = useSelector(({ user }: IUser) => user);
+  const { logged } = useSelector(({ user }: ReduxUser) => user);
   const router = useRouter();
 
   useEffect(() => {

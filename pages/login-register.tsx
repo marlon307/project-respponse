@@ -7,16 +7,11 @@ import style from './style.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
 import Svg from '../assets/Svg';
 import { actionLogin } from '../redux/redux-actions';
-
-interface IUser {
-  user: {
-    logged: boolean;
-  }
-}
+import type { ReduxUser } from '../types/typesUserRedux';
 
 function login() {
   const dispatch = useDispatch();
-  const { logged } = useSelector(({ user }: IUser) => user);
+  const { logged } = useSelector(({ user }: ReduxUser) => user);
   const router = useRouter();
   const [sectionTab, setSectionTab] = useState(true);
   const [loadingLogin, setLoadingLogin] = useState(false);

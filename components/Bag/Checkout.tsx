@@ -6,35 +6,15 @@ import { Input, InputRadio } from '../ComponentsForm';
 import style from './style.module.scss';
 import { mockShipping, mockPayment } from '../../service/mockCheckout';
 import { actionSlecteShipping, actionSlectePayment } from '../../redux/redux-actions';
+import type { ReduxUser } from '../../types/typesUserRedux';
 
 type PropsCheckout = {
   setOpenModal: Function
 }
-type TypUserObjAderes = {
-  user: {
-    checkout: {
-      adderessSelected: {
-        name: string;
-        road: string;
-        district: string;
-        number: string;
-        uf: string;
-        city: string;
-        zipcode: string;
-      };
-      shipping: {
-        shippingCompany: string;
-      };
-      formatPay: {
-        formatPayment: string;
-      }
-    }
-  }
-}
 
 const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
   const { adderessSelected, shipping, formatPay } = useSelector(
-    ({ user }: TypUserObjAderes) => user.checkout,
+    ({ user }: ReduxUser) => user.checkout,
   );
   const {
     name, road, district, number, uf, city, zipcode,

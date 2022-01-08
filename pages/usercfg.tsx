@@ -4,15 +4,10 @@ import { useSelector } from 'react-redux';
 import style from './style.module.scss';
 import Input from '../components/ComponentsForm/Input';
 import { InputRadio } from '../components/ComponentsForm';
-
-interface IUser {
-  user: {
-    logged: boolean;
-  }
-}
+import type { ReduxUser } from '../types/typesUserRedux';
 
 function usercfg() {
-  const { logged } = useSelector(({ user }: IUser) => user);
+  const { logged } = useSelector(({ user }: ReduxUser) => user);
   const router = useRouter();
 
   const [stateIfonUser, setStateIfoUser] = useState({

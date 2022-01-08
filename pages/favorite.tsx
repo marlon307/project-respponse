@@ -5,15 +5,10 @@ import { SmallCard } from '../components/Cards';
 import style from './style.module.scss';
 import Svg from '../assets/Svg';
 import mockBag from '../service/mockBag';
-
-interface IUser {
-  user: {
-    logged: boolean;
-  }
-}
+import type { ReduxUser } from '../types/typesUserRedux';
 
 function favorite() {
-  const { logged } = useSelector(({ user }: IUser) => user);
+  const { logged } = useSelector(({ user }: ReduxUser) => user);
   const router = useRouter();
 
   useEffect(() => {

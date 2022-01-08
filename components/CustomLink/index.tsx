@@ -1,8 +1,16 @@
 import React, { forwardRef } from 'react';
 
+export type TObjProps = {
+  children: React.ReactNode;
+  className?: string;
+  href?: string;
+  ariaLabel: string;
+  onClick: React.ReactEventHandler;
+}
+
 const CustomLink = forwardRef(({
   children, className, href, ariaLabel, onClick,
-}: any, ref: any) => (
+}: TObjProps, ref: any) => (
   <a
     href={ href }
     className={ className }

@@ -1,14 +1,6 @@
 import React from 'react';
 import style from './style.module.scss';
-
-export type PInputRadio = {
-  name: string;
-  id: string;
-  family: string;
-  value?: number;
-  execFunction?: Function;
-  checked: boolean
-}
+import type { PInputRadio } from './type';
 
 const InputRadio = function InputRadio({
   id, name, family, value, execFunction, checked,

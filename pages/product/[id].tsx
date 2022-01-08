@@ -9,32 +9,9 @@ import LoadingImage from '../../components/LoadImage';
 import { mockCards } from '../../service/mockCards';
 // import { BtnPrevNext } from '../../components/Buttons';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
+import type { typeProduct } from '../../types/typeProduct';
 
-type TPopsPg = {
-  pgProps: {
-    id: Number;
-    title: string;
-    type: string;
-    price: Number;
-    descrtion: string;
-    branch: string;
-    gender: string;
-    mainImg: Object;
-    discount: Number;
-    oldPrice: Number;
-    details: Object;
-    specification: Object;
-    options: Array<{
-      idc: string;
-      colorName: string;
-      color: string;
-      size: Object;
-      imgs: Array<Object>;
-    }>
-  };
-}
-
-function productId({ pgProps }: TPopsPg) {
+function productId({ pgProps }: typeProduct) {
   const slideRefProductImg = createRef<AliceCarousel>();
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');

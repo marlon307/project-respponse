@@ -4,15 +4,10 @@ import { useSelector } from 'react-redux';
 import Input from '../components/ComponentsForm/Input';
 import style from './style.module.scss';
 import BtnIco from '../components/Buttons/BtnIco';
-
-type TUser = {
-  user: {
-    logged: boolean
-  }
-}
+import type { ReduxUser } from '../types/typesUserRedux';
 
 function resetpsw() {
-  const { logged } = useSelector(({ user }: TUser) => user);
+  const { logged } = useSelector(({ user }: ReduxUser) => user);
   const [email, setEmail] = useState('');
 
   const restPsw = useCallback(({ value }) => {

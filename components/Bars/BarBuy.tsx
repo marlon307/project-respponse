@@ -4,41 +4,10 @@ import { useSelector } from 'react-redux';
 import { BuyFinishBtn } from '../Buttons';
 import style from './style.module.scss';
 import calcAllValuesArray from '../../hooks/useCalcs';
-
-type TObjectUserBag = {
-  user: {
-    bagItems: Array<{
-      id: number;
-      title: string;
-      type: string;
-      mainImg: string | any;
-      price: number;
-      oldPrice: number;
-      colorName: string;
-      color: string;
-      size: string;
-      quantity: number;
-      discount: number
-    }>;
-    checkout: {
-      formatPay: {
-        formatPayment: string;
-        division: string;
-      };
-      shipping: {
-        shippingCompany: string;
-        valueShipping: number;
-      };
-      cupomAplicate: {
-        code: string;
-        descountCupom: number;
-      };
-    };
-  }
-}
+import type { ReduxUser } from '../../types/typesUserRedux';
 
 const BarBuy = function BarBuy() {
-  const { bagItems, checkout } = useSelector(({ user }: TObjectUserBag) => user);
+  const { bagItems, checkout } = useSelector(({ user }: ReduxUser) => user);
   const { formatPay, shipping, cupomAplicate } = checkout;
   const [openInfo, setOpenInfo] = useState(false);
   const [valueBag, setValueBag] = useState(0);
