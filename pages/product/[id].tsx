@@ -1,5 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react';
-import AliceCarousel from 'react-alice-carousel';
+import React, { useState, useEffect } from 'react';
 import BarColors from '../../components/Bars/BarColors';
 import style from './style.module.scss';
 import BarSize from '../../components/Bars/BarSize';
@@ -12,7 +11,6 @@ import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAva
 import type { typeProduct } from '../../types/typeProduct';
 
 function productId({ pgProps }: typeProduct) {
-  const slideRefProductImg = createRef<AliceCarousel>();
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
