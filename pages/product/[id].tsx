@@ -1,5 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react';
-import AliceCarousel from 'react-alice-carousel';
+import React, { useState, useEffect } from 'react';
 import BarColors from '../../components/Bars/BarColors';
 import style from './style.module.scss';
 import BarSize from '../../components/Bars/BarSize';
@@ -12,7 +11,6 @@ import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAva
 import type { typeProduct } from '../../types/typeProduct';
 
 function productId({ pgProps }: typeProduct) {
-  const slideRefProductImg = createRef<AliceCarousel>();
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
@@ -33,19 +31,9 @@ function productId({ pgProps }: typeProduct) {
   return (
     <div className={ style.contprod }>
       <div className={ style.slide }>
-        {/* <div className={ style.buttons }>
-          <BtnPrevNext typePrevOrNext="prev" reference={ slideRefProductImg } />
-          <BtnPrevNext typePrevOrNext="next" reference={ slideRefProductImg } />
-        </div> */}
-        <AliceCarousel
-          autoWidth
-          infinite
-          disableButtonsControls
-          disableDotsControls
-          ref={ slideRefProductImg }
-        >
-          { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
-            <figure key={ imgid }>
+        { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
+          <div key={ imgid } className={ style.constimg }>
+            <figure>
               <LoadingImage
                 url={ urlImg }
                 quality={ 90 }
@@ -54,8 +42,8 @@ function productId({ pgProps }: typeProduct) {
                 height={ 100 }
               />
             </figure>
-          )) }
-        </AliceCarousel>
+          </div>
+        )) }
       </div>
       <div className={ style.maincontentinfo }>
         <div className={ style.infodesc }>
