@@ -125,18 +125,15 @@ function productId({ pgProps }: typeProduct) {
               Produtos Similares
             </button>
           </div>
-          <AliceCarousel
-            autoWidth
-            disableButtonsControls
-            disableDotsControls
-          >
+
+          <div className={ style.detailsCarosel }>
             <DetailsCard
               gender={ gender }
               branch={ branch }
               details={ details }
             />
             <Spec specification={ specification } />
-          </AliceCarousel>
+          </div>
         </div>
       </div>
     </div>

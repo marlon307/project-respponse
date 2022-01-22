@@ -122,6 +122,11 @@
   }
 }
 
+.detailsCarosel {
+  display: flex;
+  overflow: hidden;
+}
+
 @media (max-width: 1000px) {
   .contprod {
     flex-direction: column;
