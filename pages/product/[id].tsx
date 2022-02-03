@@ -54,10 +54,10 @@ function productId({ pgProps }: typeProduct) {
             </div>
             <div className={ style.price }>
               <span data-oldprice={
-                discount ? oldPrice.toLocaleString('pt-br', {
+                discount && oldPrice.toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL',
-                }) : ''
+                })
               }
               >
                 de
