@@ -22,11 +22,11 @@ function usercfg() {
 
   const userCfgInfo = useCallback((target) => {
     const { name, value } = target;
-    setStateIfoUser({
-      ...stateIfonUser,
+    setStateIfoUser((state) => ({
+      ...state,
       [name]: value,
-    });
-  }, [stateIfonUser]);
+    }));
+  }, []);
 
   useEffect(() => {
     if (!logged) {

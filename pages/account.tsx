@@ -17,14 +17,13 @@ const Address = dynamic(() => import('./address'), { loading: () => <Loading /> 
 function account() {
   const { logged } = useSelector(({ user }: ReduxUser) => user);
   const router = useRouter();
+  const [dropOption, setDropOption] = useState('');
 
   useEffect(() => {
     if (!logged) {
       router.push('/');
     }
   }, [logged]);
-
-  const [dropOption, setDropOption] = useState('');
 
   return (
     <div className={ style.account }>
