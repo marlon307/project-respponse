@@ -17,11 +17,11 @@ function address() {
 
   const hadleChange = useCallback((target) => {
     const { name, value } = target;
-    setAddressForm({
-      ...addressForm,
+    setAddressForm((state) => ({
+      ...state,
       [name]: value,
-    });
-  }, [addressForm]);
+    }));
+  }, []);
 
   return (
     <section className={ style.sectionadd }>

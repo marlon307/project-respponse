@@ -31,11 +31,11 @@ function login() {
   // Functions Login
   const actionUserLogin = useCallback((target) => {
     const { name, value } = target;
-    setStateLogin({
-      ...stateLogin,
+    setStateLogin((state) => ({
+      ...state,
       [name]: value,
-    });
-  }, [stateLogin]);
+    }));
+  }, []);
 
   const clickLogin = () => {
     const { lemail, lpsw } = stateLogin;
@@ -48,11 +48,11 @@ function login() {
   // Function Register
   const actionRegister = useCallback((target) => {
     const { name, value } = target;
-    setStateRegister({
-      ...stateRegister,
+    setStateRegister((state) => ({
+      ...state,
       [name]: value,
-    });
-  }, [stateRegister]);
+    }));
+  }, []);
 
   // Tabs Login
   function tabSectionLogin(event: { preventDefault: () => void; }) {

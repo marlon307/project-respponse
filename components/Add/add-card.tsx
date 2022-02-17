@@ -15,11 +15,11 @@ function addcard() {
 
   const hadleChange = useCallback((target) => {
     const { name, value } = target;
-    setAddCardState({
-      ...addCardState,
+    setAddCardState((state) => ({
+      ...state,
       [name]: value,
-    });
-  }, [addCardState]);
+    }));
+  }, []);
 
   return (
     <section className={ style.sectionadd }>
