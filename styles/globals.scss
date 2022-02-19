@@ -107,7 +107,6 @@ html {
 .button1 {
   position: relative;
   transition: transform 0.2s ease-in-out;
-  margin: 0 auto;
 
   &:hover {
     transform: scale3d(1.01, 1.01, 1.01);
@@ -121,10 +120,8 @@ html {
 .msdErr {
   position: absolute;
   bottom: -1.6em;
-  width: 100%;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
+  padding: 0 16%;
   font-size: 1em;
   color: #db1818;
 }

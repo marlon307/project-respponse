@@ -4,45 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 import { addBag } from '../../redux/redux-actions';
-
-type TObjectProduct = {
-  id: Number;
-  title: string;
-  type: string;
-  price: Number;
-  descrtion: string;
-  branch: string;
-  gender: string;
-  mainImg: Object;
-  discount: Number;
-  oldPrice: Number;
-  details: Object;
-  specification: Object;
-  options: Array<{
-    idc: string;
-    colorName: string;
-    color: string;
-    size: Object;
-    imgs: Array<Object>;
-  }>
-}
-
-type PBtnAddBag = {
-  productId: TObjectProduct;
-  colorSelected: { color: string; };
-  sizeSelected: string;
-}
-
-type TObjectUserBag = {
-  user: {
-    bagItems: Array<{
-      id: number;
-      color: string;
-      size: string;
-      quantity: number;
-    }>
-  }
-}
+import type { PBtnAddBag, TObjectUserBag } from './types';
 
 const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
