@@ -104,15 +104,17 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
   }, [colorSelected.color, sizeSelected]);
 
   return (
-    <button
-      className={ cx('button1', style.btn_t2) }
-      type="button"
-      onClick={ handleClick }
-    >
-      Adicionar a sacola
-      <Svg icoName="bag" />
-      { activeMsg && <span>Selecione uma cor e tamanho</span> }
-    </button>
+    <div className="contBtn">
+      { activeMsg && <span className="msdErr">Selecione uma cor e tamanho!</span> }
+      <button
+        className={ cx('button1', style.btn_t2) }
+        type="button"
+        onClick={ handleClick }
+      >
+        Adicionar a sacola
+        <Svg icoName="bag" />
+      </button>
+    </div>
   );
 };
 

@@ -99,9 +99,15 @@ html {
 }
 
 // Animate Buttons
+.contBtn {
+  // width: 100%;
+  position: relative;
+}
+
 .button1 {
   position: relative;
   transition: transform 0.2s ease-in-out;
+  margin: 0 auto;
 
   &:hover {
     transform: scale3d(1.01, 1.01, 1.01);
@@ -110,13 +116,17 @@ html {
   &:active {
     transform: scale3d(0.98, 0.98, 0.98);
   }
+}
 
-  span {
-    position: absolute;
-    top: -24px;
-    font-size: 0.8em;
-    color: #db1818;
-  }
+.msdErr {
+  position: absolute;
+  bottom: -1.6em;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 1em;
+  color: #db1818;
 }
 
 .loading {
