@@ -3,8 +3,11 @@ import cx from 'classnames';
 import style from './style.module.scss';
 import type { PInputText } from './type';
 
+const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
+const validPsw = new RegExp(process.env.VALIDATION_PSW!);
+
 const Input = function Input({
-  id, type, name, placeHolder, autoComplete, inputValue, ivalue, regexValidator, msgError,
+  id, type, name, placeHolder, autoComplete, inputValue, ivalue, msgError,
 }: PInputText) {
   const [statusValid, setSatusValid] = useState(false);
 
@@ -13,7 +16,20 @@ const Input = function Input({
   }
 
   function validInput() {
-    if (regexValidator?.test(ivalue)) {
+    let validates:RegExp = /0/;
+
+    switch (type) {
+      case 'email':
+        validates = validEmail;
+        break;
+      case 'password':
+        validates = validPsw;
+        break;
+      default:
+        break;
+    }
+
+    if (validates.test(ivalue)) {
       setSatusValid(false);
     } else {
       setSatusValid(true);
@@ -23,7 +39,7 @@ const Input = function Input({
   return (
     <label
       className={ cx(style.input, {
-        [style.err]: regexValidator && statusValid,
+        [style.err]: statusValid,
       }) }
       htmlFor={ id }
     >
@@ -41,10 +57,7 @@ const Input = function Input({
         className={ style.ph }
         title={ statusValid ? msgError : placeHolder }
       >
-        {
-          regexValidator && statusValid
-            ? msgError : placeHolder
-        }
+        { statusValid ? msgError : placeHolder }
       </span>
     </label>
   );

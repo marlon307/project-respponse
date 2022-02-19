@@ -9,6 +9,9 @@ import Svg from '../assets/Svg';
 import { actionLogin } from '../redux/redux-actions';
 import type { ReduxUser } from '../types/typesUserRedux';
 
+const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
+const validPsw = new RegExp(process.env.VALIDATION_PSW!);
+
 function login() {
   const dispatch = useDispatch();
   const { logged } = useSelector(({ user }: ReduxUser) => user);
@@ -24,9 +27,6 @@ function login() {
     remail: '',
     rpsw: '',
   });
-
-  const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
-  const validPsw = new RegExp(process.env.VALIDATION_PSW!);
 
   // Functions Login
   const actionUserLogin = useCallback((target) => {
@@ -103,7 +103,6 @@ function login() {
             autoComplete="email"
             ivalue={ stateLogin.lemail }
             inputValue={ actionUserLogin }
-            regexValidator={ validEmail }
             placeHolder="E-mail"
             msgError="Email invalido!"
           />
@@ -114,7 +113,6 @@ function login() {
             autoComplete="current-password"
             ivalue={ stateLogin.lpsw }
             inputValue={ actionUserLogin }
-            regexValidator={ validPsw }
             placeHolder="Senha"
             msgError="Senha invalida!"
           />
@@ -162,7 +160,6 @@ function login() {
             autoComplete="email"
             inputValue={ actionRegister }
             ivalue={ stateRegister.remail }
-            regexValidator={ validEmail }
             msgError="E-mail invalido!"
           />
           <Input
@@ -172,7 +169,6 @@ function login() {
             placeHolder="Senha"
             inputValue={ actionRegister }
             ivalue={ stateRegister.rpsw }
-            regexValidator={ validPsw }
             msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres"
           />
         </div>
