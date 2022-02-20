@@ -23,3 +23,13 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .card {
+    width: -webkit-fill-available;
+  }
+
+  .infos {
+    margin-top: 30%;
+  }
+}

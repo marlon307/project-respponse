@@ -5,6 +5,7 @@
   border-radius: 20px;
   color: #333;
   background: #fff;
+  width: -webkit-fill-available;
 
   .line {
     display: flex;
@@ -19,6 +20,11 @@
   }
 }
 
+.address {
+  max-width: 348px;
+  width: 100%;
+}
+
 @media (max-width: 750px) {
   .cardadderess {
     span {
@@ -27,4 +33,8 @@
   }
 }
 
-@media (max-width: 395px) {}
+@media (max-width: 500px) {
+  .address {
+    max-width: 450px;
+  }
+}
