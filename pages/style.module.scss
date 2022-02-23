@@ -439,22 +439,6 @@
   margin: 0 auto;
 }
 
-.inp {
-  position: relative;
-  display: flex;
-  gap: 2em;
-
-  a {
-    position: absolute;
-    bottom: -1em;
-    right: 0;
-  }
-
-  label {
-    width: 50%;
-  }
-}
-
 // Tabela de pedidos
 .table {
   width: 100%;
