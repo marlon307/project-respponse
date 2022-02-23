@@ -33,10 +33,11 @@ function addcard() {
             id="namecard"
             type="text"
             name="namecard"
-            placeHolder="Nome do cartão de credito"
+            placeHolder="Nome do cartão de crédito"
             autoComplete="cc-name"
             ivalue={ addCardState.namecard }
             inputValue={ hadleChange }
+            msgError="Insira o nome do cartão de crédito."
           />
           <Input
             id="cardvalidate"
@@ -46,24 +47,27 @@ function addcard() {
             autoComplete="cc-exp"
             ivalue={ addCardState.cardvalidate }
             inputValue={ hadleChange }
+            msgError="Insira a data de vencimento."
           />
           <Input
             id="numbercard"
             type="text"
             name="numbercard"
-            placeHolder="Numero do cartão"
+            placeHolder="Número do cartão"
             autoComplete="cc-number"
             ivalue={ addCardState.numbercard }
             inputValue={ hadleChange }
+            msgError="Insira o número."
           />
           <Input
             id="codev"
             type="text"
             name="codev"
-            placeHolder="Codigo de segurança"
+            placeHolder="Código de segurança"
             autoComplete="off"
             ivalue={ addCardState.codev }
             inputValue={ hadleChange }
+            msgError="Insira o código de segurança (CVV)."
           />
         </div>
         <BtnAdd eventBtn={ () => { } } />

@@ -46,6 +46,7 @@ function Index() {
                 type="name"
                 name="name"
                 placeHolder="Nome e Sobrenome"
+                msgError="Preencha Nome e Sobrenome"
                 autoComplete="name"
                 ivalue={ stateIfonUser.name }
                 inputValue={ userCfgInfo }
@@ -58,6 +59,7 @@ function Index() {
                 autoComplete="email"
                 ivalue={ stateIfonUser.email }
                 inputValue={ userCfgInfo }
+                msgError="E-mail Inválido"
               />
               <a
                 href="/resetpsw"
@@ -76,6 +78,7 @@ function Index() {
                 placeHolder="Data"
                 ivalue={ stateIfonUser.date }
                 inputValue={ userCfgInfo }
+                msgError="Selecione uma data"
               />
               <Input
                 id="doc"
@@ -84,6 +87,7 @@ function Index() {
                 placeHolder="CPF"
                 ivalue={ stateIfonUser.doc }
                 inputValue={ userCfgInfo }
+                msgError="CPF Inválido"
               />
             </div>
             <div className={ style.genere }>
@@ -94,18 +98,21 @@ function Index() {
                   id="men"
                   name="Masculino"
                   family="grnere"
+                  execFunction={ () => { } }
                 />
                 <InputRadio
                   checked={ false }
                   id="female"
                   name="Femenino"
                   family="grnere"
+                  execFunction={ () => { } }
                 />
                 <InputRadio
                   checked={ false }
                   id="undefined"
                   name="Não informar"
                   family="grnere"
+                  execFunction={ () => { } }
                 />
               </div>
             </div>
@@ -120,6 +127,7 @@ function Index() {
                   autoComplete="tel"
                   ivalue={ stateIfonUser.tel }
                   inputValue={ userCfgInfo }
+                  msgError="Insira um telefone"
                 />
                 <Input
                   id="cel"
@@ -129,6 +137,7 @@ function Index() {
                   autoComplete="tel"
                   ivalue={ stateIfonUser.cel }
                   inputValue={ userCfgInfo }
+                  msgError="Insira um telefone"
                 />
               </div>
             </div>

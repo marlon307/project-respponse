@@ -16,7 +16,7 @@ const Input = function Input({
   }
 
   function validInput() {
-    let validates:RegExp = /0/;
+    let validates: RegExp = /0/;
 
     switch (type) {
       case 'email':
@@ -26,6 +26,7 @@ const Input = function Input({
         validates = validPsw;
         break;
       default:
+        validates = /(?!\s*$)/;
         break;
     }
 
