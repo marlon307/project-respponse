@@ -2,11 +2,11 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import style from './style.module.scss';
-import Input from '../components/ComponentsForm/Input';
-import { InputRadio } from '../components/ComponentsForm';
-import type { ReduxUser } from '../types/typesUserRedux';
+import Input from '../ComponentsForm/Input';
+import { InputRadio } from '../ComponentsForm';
+import type { ReduxUser } from '../../types/typesUserRedux';
 
-function usercfg() {
+function Index() {
   const { logged } = useSelector(({ user }: ReduxUser) => user);
   const router = useRouter();
 
@@ -45,7 +45,7 @@ function usercfg() {
                 id="name"
                 type="name"
                 name="name"
-                placeHolder="Nome"
+                placeHolder="Nome e Sobrenome"
                 autoComplete="name"
                 ivalue={ stateIfonUser.name }
                 inputValue={ userCfgInfo }
@@ -59,6 +59,14 @@ function usercfg() {
                 ivalue={ stateIfonUser.email }
                 inputValue={ userCfgInfo }
               />
+              <a
+                href="/resetpsw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                Trocar Senha
+              </a>
             </div>
             <div className={ style.inp }>
               <Input
@@ -77,19 +85,10 @@ function usercfg() {
                 ivalue={ stateIfonUser.doc }
                 inputValue={ userCfgInfo }
               />
-              <a
-                href="/resetpsw"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link"
-              >
-                Trocar Senha
-
-              </a>
             </div>
             <div className={ style.genere }>
-              <span>Sexo</span>
-              <div>
+              <h5>Sexo</h5>
+              <div className={ style.inp }>
                 <InputRadio
                   checked={ false }
                   id="men"
@@ -111,7 +110,7 @@ function usercfg() {
               </div>
             </div>
             <div className={ style.contact }>
-              <span>Contato</span>
+              <h5>Contato</h5>
               <div className={ style.inp }>
                 <Input
                   id="tel"
@@ -140,4 +139,4 @@ function usercfg() {
   );
 }
 
-export default usercfg;
+export default Index;

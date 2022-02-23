@@ -455,17 +455,6 @@
   }
 }
 
-.genere {
-  position: relative;
-  margin-top: 1.2em;
-
-  div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-}
-
 // Tabela de pedidos
 .table {
   width: 100%;
@@ -573,21 +562,6 @@
 
     [id] {
       scroll-margin-top: 3.5em;
-    }
-  }
-}
-
-@media (max-width: 550px) {
-  .inp {
-    flex-direction: column;
-    gap: 0;
-
-    a {
-      bottom: -2em;
-    }
-
-    label {
-      width: 100%;
     }
   }
 }

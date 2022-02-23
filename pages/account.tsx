@@ -11,7 +11,7 @@ import type { ReduxUser } from '../types/typesUserRedux';
 import ContentModal from '../components/Modal/ContentModal';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
-const Usercfg = dynamic(() => import('./usercfg'), { loading: () => <Loading /> });
+const Usercfg = dynamic(() => import('../components/UserCfg'), { loading: () => <Loading /> });
 const Order = dynamic(() => import('./orders'), { loading: () => <Loading /> });
 const Cards = dynamic(() => import('../components/Cards/Cards'), { loading: () => <Loading /> });
 const Address = dynamic(() => import('../components/Cards/Address'), { loading: () => <Loading /> });
