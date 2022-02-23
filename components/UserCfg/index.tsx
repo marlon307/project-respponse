@@ -59,7 +59,7 @@ function Index() {
                 autoComplete="email"
                 ivalue={ stateIfonUser.email }
                 inputValue={ userCfgInfo }
-                msgError="E-mail Inválido"
+                msgError="E-mail inválido"
               />
               <a
                 href="/resetpsw"
@@ -87,7 +87,7 @@ function Index() {
                 placeHolder="CPF"
                 ivalue={ stateIfonUser.doc }
                 inputValue={ userCfgInfo }
-                msgError="CPF Inválido"
+                msgError="CPF inválido"
               />
             </div>
             <div className={ style.genere }>

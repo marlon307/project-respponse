@@ -27,6 +27,7 @@ function resetpsw() {
             autoComplete="email"
             ivalue={ email }
             inputValue={ restPsw }
+            msgError="Email inválido!"
           />
         </div>
         <div className={ style.action }>

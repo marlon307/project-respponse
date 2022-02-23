@@ -104,7 +104,7 @@ function login() {
             ivalue={ stateLogin.lemail }
             inputValue={ actionUserLogin }
             placeHolder="E-mail"
-            msgError="Email invalido!"
+            msgError="Email inválido!"
           />
           <Input
             id="lpsw"
@@ -161,7 +161,7 @@ function login() {
             autoComplete="email"
             inputValue={ actionRegister }
             ivalue={ stateRegister.remail }
-            msgError="E-mail invalido!"
+            msgError="E-mail inválido!"
           />
           <Input
             id="rpsw"
