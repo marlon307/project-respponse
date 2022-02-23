@@ -151,6 +151,7 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
               placeHolder="Insira aqui o cupom"
               ivalue={ cupomText }
               inputValue={ hadleCupom }
+              msgError="Cupom Inválido"
             />
           </div>
           <span className={ style.descount }>Desconto - R$ 0,00</span>

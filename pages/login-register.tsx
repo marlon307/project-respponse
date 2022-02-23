@@ -151,6 +151,7 @@ function login() {
             autoComplete="name"
             inputValue={ actionRegister }
             ivalue={ stateRegister.rname }
+            msgError="Preencha Nome e Sobrenome"
           />
           <Input
             id="remail"
