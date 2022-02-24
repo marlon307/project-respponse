@@ -13,7 +13,7 @@ const MinCardOrder = function MinCardOrder({
 }: PMinCardOrder) {
   function orderIdOpen(event: { preventDefault: () => void; }) {
     event.preventDefault();
-    openOrderId();
+    openOrderId(idOrder);
   }
 
   return (

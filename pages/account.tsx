@@ -12,7 +12,8 @@ import ContentModal from '../components/Modal/ContentModal';
 import BtnAdd from '../components/Buttons/BtnAdd';
 
 const Usercfg = dynamic(() => import('../components/UserCfg'), { loading: () => <Loading /> });
-const Order = dynamic(() => import('./orders'), { loading: () => <Loading /> });
+const Order = dynamic(() => import('../components/Order/orders'), { loading: () => <Loading /> });
+const OrderId = dynamic(() => import('../components/Order'), { loading: () => <Loading /> });
 const Cards = dynamic(() => import('../components/Cards/Cards'), { loading: () => <Loading /> });
 const Address = dynamic(() => import('../components/Cards/Address'), { loading: () => <Loading /> });
 const AddCard = dynamic(() => import('../components/Add/add-card'), { loading: () => <Loading /> });
@@ -28,6 +29,12 @@ function account() {
   const functionOpenModal = useCallback((type) => {
     setOpenModal(true);
     setTypeModal(type);
+  }, []);
+
+  const openOrderId = useCallback(() => {
+    // (id) =>
+    setOpenModal(true);
+    setTypeModal('order');
   }, []);
 
   useEffect(() => {
@@ -66,7 +73,7 @@ function account() {
             <span>Pedidos</span>
           </a>
           <div className={ style.dropcontainer }>
-            <Order />
+            <Order execFunction={ openOrderId } />
           </div>
         </div>
         <div className={ style.container } id="address">
@@ -127,6 +134,7 @@ function account() {
         isOpen={ openModal }
         openModal={ setOpenModal }
       >
+        { (openModal && typeModal === 'order') && <OrderId /> }
         { (openModal && typeModal === 'cards') && <AddCard /> }
         { (openModal && typeModal === 'address') && <Addaderess /> }
       </ContentModal>
