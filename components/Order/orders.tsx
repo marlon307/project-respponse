@@ -2,18 +2,18 @@ import React, { useState, useEffect, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { MinCardOrder } from '../components/Cards';
+import { MinCardOrder } from '../Cards';
 import style from './style.module.scss';
-import ContentModal from '../components/Modal/ContentModal';
-import Loading from '../components/Loading';
-import type { ReduxUser } from '../types/typesUserRedux';
+import ContentModal from '../Modal/ContentModal';
+import Loading from '../Loading';
+import type { ReduxUser } from '../../types/typesUserRedux';
 
 const OrderId = dynamic(
-  () => import('../components/Order/OrderId'),
+  () => import('.'),
   { loading: () => <Loading /> },
 );
 
-function order() {
+function Index() {
   const { logged } = useSelector(({ user }: ReduxUser) => user);
   const router = useRouter();
 
@@ -68,4 +68,4 @@ function order() {
   );
 }
 
-export default order;
+export default Index;
