@@ -32,29 +32,27 @@ function bag() {
   }, []);
 
   return (
-    <>
-      <div className={ style.bag }>
-        <section className={ style.list }>
-          <h1 className={ style.title } title="Sacola">
-            <Svg icoName="bag" />
-            Sacola
-          </h1>
-          <ul>
-            { bagItems.map((object) => (
-              <li key={ object.id + object.color + object.size }>
-                <SmallCard
-                  objectID={ object }
-                  removable
-                  editable
-                  eventModal={ openModalEdit }
-                  identifyBag={ object.id + object.color + object.size }
-                />
-              </li>
-            )) }
-          </ul>
-        </section>
-        <Checkout setOpenModal={ setOpenModal } />
-      </div>
+    <div className={ style.bag }>
+      <section className={ style.list }>
+        <h1 className={ style.title } title="Sacola">
+          <Svg icoName="bag" />
+          Sacola
+        </h1>
+        <ul>
+          { bagItems.map((object) => (
+            <li key={ object.id + object.color + object.size }>
+              <SmallCard
+                objectID={ object }
+                removable
+                editable
+                eventModal={ openModalEdit }
+                identifyBag={ object.id + object.color + object.size }
+              />
+            </li>
+          )) }
+        </ul>
+      </section>
+      <Checkout setOpenModal={ setOpenModal } />
       <BarBuy />
       <ContentModal
         isOpen={
@@ -70,7 +68,7 @@ function bag() {
         { openModal === 'addaddress' && <Addaddress /> }
         { openModal === 'addcard' && <Addacard /> }
       </ContentModal>
-    </>
+    </div>
   );
 }
 
