@@ -24,8 +24,8 @@ const Addacard = dynamic(import('../components/Add/add-card'), {
 });
 
 function bag() {
-  const [openModal, setOpenModal] = useState<String>('');
   const { bagItems } = useSelector(({ user }: ReduxUser) => user);
+  const [openModal, setOpenModal] = useState<String>('');
 
   const openModalEdit = useCallback(() => {
     setOpenModal('edit');
