@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 import style from './style.module.scss';
@@ -101,4 +101,4 @@ const SmallCard = function SmallCard({
   );
 };
 
-export default SmallCard;
+export default memo(SmallCard);

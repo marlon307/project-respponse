@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Svg from '../../assets/Svg';
 import { CardAdderess } from '../Cards';
@@ -161,4 +161,4 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
   );
 };
 
-export default Checkout;
+export default memo(Checkout);

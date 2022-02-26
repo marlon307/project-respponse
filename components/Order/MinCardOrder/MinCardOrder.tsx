@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import style from './style.module.scss';
 
 type PMinCardOrder = {
@@ -29,4 +29,4 @@ const MinCardOrder = function MinCardOrder({
   );
 };
 
-export default MinCardOrder;
+export default memo(MinCardOrder);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Link from 'next/link';
 import style from './style.module.scss';
 import CardInfo from '../CardInfo/CardInfo';
@@ -44,4 +44,4 @@ const CardProduct = function CardProduct({ id }: PCardP) {
   );
 };
 
-export default CardProduct;
+export default memo(CardProduct);

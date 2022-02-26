@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import style from './style.module.scss';
 
 type PFTissue = {
@@ -16,4 +16,4 @@ const FTissue = function FTissue({ tecid }: PFTissue) {
   );
 };
 
-export default FTissue;
+export default memo(FTissue);
