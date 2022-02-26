@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
 
@@ -62,4 +62,4 @@ const CardAdderess = function CardAdderess({
   );
 };
 
-export default CardAdderess;
+export default memo(CardAdderess);

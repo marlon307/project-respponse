@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import style from './style.module.scss';
 
 type PBSearch = {
@@ -16,4 +16,4 @@ const FBranch = function FBranch({ branch }: PBSearch) {
   );
 };
 
-export default FBranch;
+export default memo(FBranch);

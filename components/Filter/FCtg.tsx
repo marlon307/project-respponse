@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import style from './style.module.scss';
 
 type PCtg = {
@@ -16,4 +16,4 @@ const FCtg = function FCtg({ ctg }: PCtg) {
   );
 };
 
-export default FCtg;
+export default memo(FCtg);

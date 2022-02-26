@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import style from './style.module.scss';
 import { addFilter } from '../../redux/redux-actions';
@@ -33,4 +33,4 @@ const FColor = function FColor({ cName, color }: PFColor) {
   );
 };
 
-export default FColor;
+export default memo(FColor);

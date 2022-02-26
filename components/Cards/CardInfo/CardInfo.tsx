@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import style from './style.module.scss';
 
 type TInfoProps = {
@@ -58,4 +58,4 @@ const CardInfo = function CardInfo({
   );
 };
 
-export default CardInfo;
+export default memo(CardInfo);

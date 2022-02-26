@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import style from './style.module.scss';
 
 type PFSize = {
@@ -16,4 +16,4 @@ const FSize = function FSize({ size }: PFSize) {
   );
 };
 
-export default FSize;
+export default memo(FSize);

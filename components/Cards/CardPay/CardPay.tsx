@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
 
@@ -37,4 +37,4 @@ const CardPay = function CardPay({
   );
 };
 
-export default CardPay;
+export default memo(CardPay);

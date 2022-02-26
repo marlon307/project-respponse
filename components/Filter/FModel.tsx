@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import style from './style.module.scss';
 
 type PGen = {
@@ -16,4 +16,4 @@ const FModel = function FModel({ model }: PGen) {
   );
 };
 
-export default FModel;
+export default memo(FModel);
