@@ -4,7 +4,7 @@ type Props = {
   icoName: string
 }
 
-function svg({ icoName }: Props) {
+function Svg({ icoName }: Props) {
   switch (icoName) {
     case 'trash':
       return (
@@ -246,4 +246,4 @@ function svg({ icoName }: Props) {
   }
 }
 
-export default svg;
+export default Svg;

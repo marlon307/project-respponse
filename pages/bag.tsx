@@ -10,18 +10,10 @@ import Loading from '../components/Loading';
 import Checkout from '../components/Bag';
 import type { ReduxUser } from '../types/typesUserRedux';
 
-const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), {
-  loading: () => <Loading />,
-});
-const RenderAdderess = dynamic(import('../components/Bag/RenderAdderess'), {
-  loading: () => <Loading />,
-});
-const Addaddress = dynamic(import('../components/Add/add-address'), {
-  loading: () => <Loading />,
-});
-const Addacard = dynamic(import('../components/Add/add-card'), {
-  loading: () => <Loading />,
-});
+const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), { loading: () => <Loading /> });
+const RenderAdderess = dynamic(import('../components/Bag/RenderAdderess'), { loading: () => <Loading /> });
+const Addaddress = dynamic(import('../components/Add/add-address'), { loading: () => <Loading /> });
+const Addacard = dynamic(import('../components/Add/add-card'), { loading: () => <Loading /> });
 
 function bag() {
   const { bagItems } = useSelector(({ user }: ReduxUser) => user);
