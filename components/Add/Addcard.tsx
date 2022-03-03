@@ -4,7 +4,7 @@ import BtnAdd from '../Buttons/BtnAdd';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
-function addcard() {
+function Addcard() {
   const [addCardState, setAddCardState] = useState({
     namecard: '',
     numbercard: '',
@@ -76,4 +76,4 @@ function addcard() {
   );
 }
 
-export default addcard;
+export default Addcard;
