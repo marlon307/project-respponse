@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import style from './style.module.scss';
 import useOutsideClick from 'hooks/useOutSide';
 import Svg from 'assets/Svg';
+import style from './style.module.scss';
 
 export type IProps = {
   setSearchopen?: Function;

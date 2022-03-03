@@ -1,6 +1,6 @@
 import React from 'react';
-import style from './style.module.scss';
 import Svg from 'assets/Svg';
+import style from './style.module.scss';
 
 type Props = {
   setSearchopen: Function
