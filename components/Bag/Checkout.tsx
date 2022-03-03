@@ -1,12 +1,12 @@
 import React, { useState, useCallback, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Svg from '../../assets/Svg';
+import Svg from 'assets/Svg';
+import { mockShipping, mockPayment } from 'service/mockCheckout';
+import { actionSlecteShipping, actionSlectePayment } from 'redux/redux-actions';
+import type { ReduxUser } from 'types/typesUserRedux';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import style from './style.module.scss';
-import { mockShipping, mockPayment } from '../../service/mockCheckout';
-import { actionSlecteShipping, actionSlectePayment } from '../../redux/redux-actions';
-import type { ReduxUser } from '../../types/typesUserRedux';
 
 type PropsCheckout = {
   setOpenModal: Function

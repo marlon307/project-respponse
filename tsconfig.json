@@ -3,8 +3,7 @@
     "target": "es6",
     "baseUrl": ".",
     "paths": {
-      // "svg/*": ["src/svg/*"],
-      "components/*": ["./components/*"]
+      "@/components/*": ["components/*"]
     },
     "lib": [
       "dom",

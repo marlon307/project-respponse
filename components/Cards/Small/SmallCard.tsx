@@ -1,10 +1,10 @@
 import React, { useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
-import style from './style.module.scss';
-import Svg from '../../../assets/Svg';
+import Svg from 'assets/Svg';
+import { removeBag, getInfoBagEdit } from 'redux/redux-actions';
 import LoadingImage from '../../LoadImage';
-import { removeBag, getInfoBagEdit } from '../../../redux/redux-actions';
+import style from './style.module.scss';
 import type { PSmallCard } from './type';
 
 const SmallCard = function SmallCard({

@@ -1,13 +1,13 @@
-import image0 from '../assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
-import image1 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash 1.png';
-import image3 from '../assets/img/kimiya-oveisi-7qis_qyDK4g-unsplash 1.png';
-import image4 from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 12.png';
-import image5 from '../assets/img/jonas-jaeken-31upv631160-unsplash 4.png';
-import image6 from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 1.png';
+import image0 from 'assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
+import image1 from 'assets/img/nojan-namdar-a3RhaDG_pNM-unsplash 1.png';
+import image3 from 'assets/img/kimiya-oveisi-7qis_qyDK4g-unsplash 1.png';
+import image4 from 'assets/img/ian-dooley-iGh7qbW9kUM-unsplash 12.png';
+import image5 from 'assets/img/jonas-jaeken-31upv631160-unsplash 4.png';
+import image6 from 'assets/img/ian-dooley-iGh7qbW9kUM-unsplash 1.png';
 
 // import clean image
-import cleanImage1 from '../assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
-import cleanImage2 from '../assets/img/brian-lawson-e9o9sAy5PL4-unsplash_1-removebg-preview.png';
+import cleanImage1 from 'assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
+import cleanImage2 from 'assets/img/brian-lawson-e9o9sAy5PL4-unsplash_1-removebg-preview.png';
 
 export const mockCards = [{
   id: 0,

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Svg from '../../assets/Svg';
+import Svg from 'assets/Svg';
 import style from './style.module.scss';
 
 const Footer = function Footer() {

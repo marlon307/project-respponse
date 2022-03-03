@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import cx from 'classnames';
-import style from './style.module.scss';
-import Bar from '../../SearchBar/Bar';
-import Svg from '../../../assets/Svg';
-import { actionLogOut } from '../../../redux/redux-actions';
+import Svg from 'assets/Svg';
+import { actionLogOut } from 'redux/redux-actions';
+import type { ReduxUser } from 'types/typesUserRedux';
 import CustomLink from '../../CustomLink';
-import type { ReduxUser } from '../../../types/typesUserRedux';
+import Bar from '../../SearchBar/Bar';
+import style from './style.module.scss';
 
 const MenuMobile = function MenuMobile() {
   const dipatch = useDispatch();

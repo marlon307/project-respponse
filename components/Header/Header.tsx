@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
-import style from './style.module.scss';
-import useWindowSize from '../../hooks/useWindowSize';
-import MenuDescktop from './components/MenuDescktop';
-import MenuMobile from './components/MenuMobile';
+import useWindowSize from 'hooks/useWindowSize';
+import useScroll from 'hooks/useScroll';
+import Svg from 'assets/Svg';
 import Bar from '../SearchBar/Bar';
-import useScroll from '../../hooks/useScroll';
-import Svg from '../../assets/Svg';
+import MenuMobile from './components/MenuMobile';
+import MenuDescktop from './components/MenuDescktop';
+import style from './style.module.scss';
 
 const Header = function Header() {
   const [width] = useWindowSize();

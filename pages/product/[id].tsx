@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import BarColors from '../../components/Bars/BarColors';
+import BarColors from 'components/Bars/BarColors';
+import BarSize from 'components/Bars/BarSize';
+import AddBag from 'components/Buttons/AddBag';
+import { DetailsCard, Spec } from 'components/Cards';
+import LoadingImage from 'components/LoadImage';
+import { mockCards } from 'service/mockCards';
+// import { BtnPrevNext } from 'components/Buttons';
+import { checkColorAvailable, checkSizeAvailable } from 'hooks/useCheckAvailable';
+import type { typeProduct } from 'types/typeProduct';
 import style from './style.module.scss';
-import BarSize from '../../components/Bars/BarSize';
-import AddBag from '../../components/Buttons/AddBag';
-import { DetailsCard, Spec } from '../../components/Cards';
-import LoadingImage from '../../components/LoadImage';
-import { mockCards } from '../../service/mockCards';
-// import { BtnPrevNext } from '../../components/Buttons';
-import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
-import type { typeProduct } from '../../types/typeProduct';
 
 function productId({ pgProps }: typeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');

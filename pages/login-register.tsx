@@ -2,12 +2,12 @@ import React, { useState, useCallback, useEffect } from 'react';
 import cx from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import Input from '../components/ComponentsForm/Input';
+import Input from 'components/ComponentsForm/Input';
 import style from './style.module.scss';
-import BtnIco from '../components/Buttons/BtnIco';
-import Svg from '../assets/Svg';
-import { actionLogin } from '../redux/redux-actions';
-import type { ReduxUser } from '../types/typesUserRedux';
+import BtnIco from 'components/Buttons/BtnIco';
+import Svg from 'assets/Svg';
+import { actionLogin } from 'redux/redux-actions';
+import type { ReduxUser } from 'types/typesUserRedux';
 
 const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
 const validPsw = new RegExp(process.env.VALIDATION_PSW!);

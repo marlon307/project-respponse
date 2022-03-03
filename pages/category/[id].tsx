@@ -1,8 +1,8 @@
 import React from 'react';
-import { CardProduct } from '../../components/Cards/CardProduct';
-import { BarFilter } from '../../components/Filter';
-import { mockminObjectCards2 } from '../../service/mockCards';
-import mockCategory from '../../service/mockCategory';
+import { CardProduct } from 'components/Cards/CardProduct';
+import { BarFilter } from 'components/Filter';
+import { mockminObjectCards2 } from 'service/mockCards';
+import mockCategory from 'service/mockCategory';
 import style from './style.module.scss';
 
 function categoryId() {

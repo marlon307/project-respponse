@@ -3,16 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import cx from 'classnames';
-import style from './style.module.scss';
-import useOutsideClick from '../../../hooks/useOutSide';
-import Svg from '../../../assets/Svg';
-import ContentModal from '../../Modal/ContentModal';
+import useOutsideClick from 'hooks/useOutSide';
+import Svg from 'assets/Svg';
+import { actionLogOut } from 'redux/redux-actions';
+import type { ReduxUser } from 'types/typesUserRedux';
 import Loading from '../../Loading';
-import { actionLogOut } from '../../../redux/redux-actions';
-import type { ReduxUser } from '../../../types/typesUserRedux';
+import ContentModal from '../../Modal/ContentModal';
+import style from './style.module.scss';
 
 const LoginRegister = dynamic(
-  () => import('../../../pages/login-register'),
+  () => import('pages/login-register'),
   { loading: () => <Loading /> },
 );
 

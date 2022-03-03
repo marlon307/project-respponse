@@ -1,12 +1,12 @@
 import React from 'react';
+import mockBranch from 'service/mockBranch';
+import mockColor from 'service/mockColor';
+import mockCtg from 'service/mockCtg';
+import mockModel from 'service/mockModel';
+import mockSize from 'service/mockSize';
 import {
   FBranch, FColor, FSize, FGen, FCtg, FModel,
 } from '.';
-import mockBranch from '../../service/mockBranch';
-import mockColor from '../../service/mockColor';
-import mockCtg from '../../service/mockCtg';
-import mockModel from '../../service/mockModel';
-import mockSize from '../../service/mockSize';
 import style from './style.module.scss';
 
 const Filter = function Filter() {

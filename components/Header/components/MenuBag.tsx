@@ -4,12 +4,12 @@ import React, {
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
-import style from './style.module.scss';
+import useOutsideClick from 'hooks/useOutSide';
+import Svg from 'assets/Svg';
+import calcAllValuesArray from 'hooks/useCalcs';
+import type { ReduxUser } from 'types/typesUserRedux';
 import { SmallCard } from '../../Cards';
-import useOutsideClick from '../../../hooks/useOutSide';
-import Svg from '../../../assets/Svg';
-import calcAllValuesArray from '../../../hooks/useCalcs';
-import type { ReduxUser } from '../../../types/typesUserRedux';
+import style from './style.module.scss';
 
 type PropsMNBag = {
   setMenuDropdown: Function;

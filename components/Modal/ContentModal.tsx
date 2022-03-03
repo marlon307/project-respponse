@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import useOutsideClick from '../../hooks/useOutSide';
+import useOutsideClick from 'hooks/useOutSide';
 import style from './style.module.scss';
 
 type PModal = {

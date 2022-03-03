@@ -1,6 +1,6 @@
 import React from 'react';
-import Svg from '../../assets/Svg';
-import mockBag from '../../service/mockBag';
+import Svg from 'assets/Svg';
+import mockBag from 'service/mockBag';
 import { SmallCard } from '../Cards';
 import style from './style.module.scss';
 

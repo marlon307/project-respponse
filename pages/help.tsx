@@ -1,5 +1,5 @@
 import React from 'react';
-import Help from '../components/Help';
+import Help from 'components/Help';
 import style from './style.module.scss';
 
 function help() {
