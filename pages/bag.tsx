@@ -2,13 +2,13 @@ import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
 import { SmallCard } from 'components/Cards';
-import style from './style.module.scss';
 import BarBuy from 'components/Bars/BarBuy';
 import Svg from 'assets/Svg';
 import ContentModal from 'components/Modal/ContentModal';
 import Loading from 'components/Loading';
 import Checkout from 'components/Bag';
 import type { ReduxUser } from 'types/typesUserRedux';
+import style from './style.module.scss';
 
 const CardEdit = dynamic(import('components/Cards/CardEdit/CardEdit'), { loading: () => <Loading /> });
 const RenderAdderess = dynamic(import('components/Bag/RenderAdderess'), { loading: () => <Loading /> });

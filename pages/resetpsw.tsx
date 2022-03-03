@@ -2,9 +2,9 @@ import React, { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import Input from 'components/ComponentsForm/Input';
-import style from './style.module.scss';
 import BtnIco from 'components/Buttons/BtnIco';
 import type { ReduxUser } from 'types/typesUserRedux';
+import style from './style.module.scss';
 
 function resetpsw() {
   const { logged } = useSelector(({ user }: ReduxUser) => user);

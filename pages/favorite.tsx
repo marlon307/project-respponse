@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { SmallCard } from 'components/Cards';
-import style from './style.module.scss';
 import Svg from 'assets/Svg';
 import mockBag from 'service/mockBag';
 import type { ReduxUser } from 'types/typesUserRedux';
+import style from './style.module.scss';
 
 function favorite() {
   const { logged } = useSelector(({ user }: ReduxUser) => user);
