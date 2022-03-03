@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import Svg from '../../assets/Svg';
+import Svg from 'assets/Svg';
 import BtnAdd from '../Buttons/BtnAdd';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';

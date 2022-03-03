@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { actionLogin } from '../redux/redux-actions';
+import { actionLogin } from 'redux/redux-actions';
 
 function getInfos() {
   const dispatch = useDispatch();

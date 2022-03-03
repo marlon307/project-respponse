@@ -1,9 +1,9 @@
-import imgFemenino from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 1.png';
-import imgMasculino from '../assets/img/jonas-jaeken-31upv631160-unsplash 2.png';
-import imgCriança from '../assets/img/kiana-bosman-GvleXr4tIPk-unsplash 1.png';
-import imgBolsa from '../assets/img/he-s-her-lobster-9b6UhV4nLZs-unsplash 1.png';
-import imgPerfumes from '../assets/img/klim-musalimov-gizyWV5IV3g-unsplash 1.png';
-import imgRelogios from '../assets/img/andrew-vincentio-6o2Zx7ytgwo-unsplash 1.png';
+import imgFemenino from 'assets/img/ian-dooley-iGh7qbW9kUM-unsplash 1.png';
+import imgMasculino from 'assets/img/jonas-jaeken-31upv631160-unsplash 2.png';
+import imgCriança from 'assets/img/kiana-bosman-GvleXr4tIPk-unsplash 1.png';
+import imgBolsa from 'assets/img/he-s-her-lobster-9b6UhV4nLZs-unsplash 1.png';
+import imgPerfumes from 'assets/img/klim-musalimov-gizyWV5IV3g-unsplash 1.png';
+import imgRelogios from 'assets/img/andrew-vincentio-6o2Zx7ytgwo-unsplash 1.png';
 
 const mockCategory = [
   {

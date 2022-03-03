@@ -1,7 +1,7 @@
 import React, { useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
+import { addFilter } from 'redux/redux-actions';
 import style from './style.module.scss';
-import { addFilter } from '../../redux/redux-actions';
 
 export type PFColor = {
   cName: string;

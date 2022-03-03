@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import mockAdderes from '../../service/mockAdderes';
+import mockAdderes from 'service/mockAdderes';
+import { actionSlecteAdderess } from 'redux/redux-actions';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
-import { actionSlecteAdderess } from '../../redux/redux-actions';
 
 const RenderAdderess = function RenderAdderess() {
   const dispatch = useDispatch();

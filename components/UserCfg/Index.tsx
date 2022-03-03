@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import style from './style.module.scss';
-import Input from '../ComponentsForm/Input';
+import type { ReduxUser } from 'types/typesUserRedux';
 import { InputRadio } from '../ComponentsForm';
-import type { ReduxUser } from '../../types/typesUserRedux';
+import Input from '../ComponentsForm/Input';
+import style from './style.module.scss';
 
 function Index() {
   const { logged } = useSelector(({ user }: ReduxUser) => user);

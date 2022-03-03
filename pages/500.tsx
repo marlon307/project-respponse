@@ -1,6 +1,6 @@
 import React from 'react';
+import { BtnRedirect } from 'components/Buttons';
 import style from './style.module.scss';
-import { BtnRedirect } from '../components/Buttons';
 
 function notFound500() {
   return (

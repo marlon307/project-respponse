@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
-import style from './style.module.scss';
-import CardInfo from '../CardInfo/CardInfo';
+import { mockminObjectCards } from 'service/mockCards';
 import LoadingImage from '../../LoadImage';
-import { mockminObjectCards } from '../../../service/mockCards';
+import CardInfo from '../CardInfo/CardInfo';
+import style from './style.module.scss';
 
 type PCardP = {
   id: number;

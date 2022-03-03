@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { mockCards } from 'service/mockCards';
+import { itemBagEdit, finishItemBagEdit } from 'redux/redux-actions';
+import { checkColorAvailable, checkSizeAvailable } from 'hooks/useCheckAvailable';
+import type { ReduxUser } from 'types/typesUserRedux';
 import BarColors from '../../Bars/BarColors';
 import Qtd from '../../Bars/Qtd';
 import BarSize from '../../Bars/BarSize';
-import style from './style.module.scss';
-import { mockCards } from '../../../service/mockCards';
 import LoadingImage from '../../LoadImage';
-import { itemBagEdit, finishItemBagEdit } from '../../../redux/redux-actions';
-import { checkColorAvailable, checkSizeAvailable } from '../../../hooks/useCheckAvailable';
-import type { ReduxUser } from '../../../types/typesUserRedux';
+import style from './style.module.scss';
 
 const CardEdit = function CardEdit() {
   const { itemEditBag } = useSelector(({ user }: ReduxUser) => user);

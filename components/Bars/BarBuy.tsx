@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
+import calcAllValuesArray from 'hooks/useCalcs';
+import type { ReduxUser } from 'types/typesUserRedux';
 import { BuyFinishBtn } from '../Buttons';
 import style from './style.module.scss';
-import calcAllValuesArray from '../../hooks/useCalcs';
-import type { ReduxUser } from '../../types/typesUserRedux';
 
 const BarBuy = function BarBuy() {
   const { bagItems, checkout } = useSelector(({ user }: ReduxUser) => user);

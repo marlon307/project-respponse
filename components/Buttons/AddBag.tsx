@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
+import Svg from 'assets/Svg';
+import { addBag } from 'redux/redux-actions';
 import style from './style.module.scss';
-import Svg from '../../assets/Svg';
-import { addBag } from '../../redux/redux-actions';
 import type { PBtnAddBag, TObjectUserBag } from './types';
 
 const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {

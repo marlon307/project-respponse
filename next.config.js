@@ -1,5 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const withPWA = require('next-pwa');
+const path = require('path');
 
 // https://emailregex.com/
 // https://www.w3schools.com/howto/howto_js_password_validation.asp
@@ -18,6 +19,11 @@ const NextConfig = { // Next Config
   env: {
     VALIDATION_EMAIL: process.env.VALIDATION_EMAIL,
     VALIDATION_PSW: process.env.VALIDATION_PSW,
+  },
+  webpack: (config) => {
+    config.resolve.modules.push(path.resolve('./'));
+
+    return config;
   },
 };
 

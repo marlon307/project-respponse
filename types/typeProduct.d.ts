@@ -1,4 +1,4 @@
-import type { TDetail, TSpecification } from '../../components/Cards/CardDetail/types';
+import type { TDetail, TSpecification } from './components/Cards/CardDetail/types';
 
 export type typeProduct = {
   pgProps: {

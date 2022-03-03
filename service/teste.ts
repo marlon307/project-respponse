@@ -1,8 +1,8 @@
-import cleanImage1 from '../assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
-import cleanImage2 from '../assets/img/brian-lawson-e9o9sAy5PL4-unsplash_1-removebg-preview.png';
-import cleanImage3 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash_1-removebg-preview.png';
+import cleanImage1 from 'assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
+import cleanImage2 from 'assets/img/brian-lawson-e9o9sAy5PL4-unsplash_1-removebg-preview.png';
+import cleanImage3 from 'assets/img/nojan-namdar-a3RhaDG_pNM-unsplash_1-removebg-preview.png';
 
-import image0 from '../assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
+import image0 from 'assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
 
 const testemockCards = [{
   id: 0,

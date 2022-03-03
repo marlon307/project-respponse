@@ -3,21 +3,21 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import style from './style.module.scss';
+import Svg from 'assets/Svg';
+import Loading from 'components/Loading';
+import type { ReduxUser } from 'types/typesUserRedux';
+import ContentModal from 'components/Modal/ContentModal';
+import BtnAdd from 'components/Buttons/BtnAdd';
 import Help from './help';
-import Svg from '../assets/Svg';
-import Loading from '../components/Loading';
-import type { ReduxUser } from '../types/typesUserRedux';
-import ContentModal from '../components/Modal/ContentModal';
-import BtnAdd from '../components/Buttons/BtnAdd';
+import style from './style.module.scss';
 
-const Usercfg = dynamic(() => import('../components/UserCfg/Index'), { loading: () => <Loading /> });
-const Order = dynamic(() => import('../components/Order/Orders'), { loading: () => <Loading /> });
-const OrderId = dynamic(() => import('../components/Order/OrderId'), { loading: () => <Loading /> });
-const Cards = dynamic(() => import('../components/Cards/Cards'), { loading: () => <Loading /> });
-const Address = dynamic(() => import('../components/Cards/Address'), { loading: () => <Loading /> });
-const AddCard = dynamic(() => import('../components/Add/Addcard'), { loading: () => <Loading /> });
-const Addaderess = dynamic(() => import('../components/Add/Address'), { loading: () => <Loading /> });
+const Usercfg = dynamic(() => import('components/UserCfg/Index'), { loading: () => <Loading /> });
+const Order = dynamic(() => import('components/Order/Orders'), { loading: () => <Loading /> });
+const OrderId = dynamic(() => import('components/Order/OrderId'), { loading: () => <Loading /> });
+const Cards = dynamic(() => import('components/Cards/Cards'), { loading: () => <Loading /> });
+const Address = dynamic(() => import('components/Cards/Address'), { loading: () => <Loading /> });
+const AddCard = dynamic(() => import('components/Add/Addcard'), { loading: () => <Loading /> });
+const Addaderess = dynamic(() => import('components/Add/Address'), { loading: () => <Loading /> });
 
 function account() {
   const { logged } = useSelector(({ user }: ReduxUser) => user);

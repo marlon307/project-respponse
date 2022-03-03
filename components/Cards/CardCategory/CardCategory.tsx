@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import style from './style.module.scss';
 import LoadingImage from '../../LoadImage';
+import style from './style.module.scss';
 
 type PCardCategory = {
   image: any;

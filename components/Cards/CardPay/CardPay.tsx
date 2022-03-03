@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import Svg from '../../../assets/Svg';
+import Svg from 'assets/Svg';
 import style from './style.module.scss';
 
 export interface PCardPay {

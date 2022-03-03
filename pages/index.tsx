@@ -1,15 +1,15 @@
 import React, { createRef } from 'react';
 import Image from 'next/image';
 import AliceCarousel from 'react-alice-carousel';
+import { CardCategory } from 'components/Cards';
+import mockCategory from 'service/mockCategory';
+import { BtnPrevNext, BtnRedirect } from 'components/Buttons';
+import mockCarousel from 'service/mockCarousel';
+import teste from 'assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
+import { CardProductNDS, CardProductND } from 'components/Cards/CardProduct';
+import Svg from 'assets/Svg';
+import LoadingImage from 'components/LoadImage';
 import style from './style.module.scss';
-import { CardCategory } from '../components/Cards';
-import mockCategory from '../service/mockCategory';
-import { BtnPrevNext, BtnRedirect } from '../components/Buttons';
-import mockCarousel from '../service/mockCarousel';
-import teste from '../assets/img/lensabl-0GfPlommtxM-unsplash 1.png';
-import { CardProductNDS, CardProductND } from '../components/Cards/CardProduct';
-import Svg from '../assets/Svg';
-import LoadingImage from '../components/LoadImage';
 
 function index() {
   const buttonPrevNext = createRef<AliceCarousel>();
