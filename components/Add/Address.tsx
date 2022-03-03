@@ -4,7 +4,7 @@ import BtnAdd from '../Buttons/BtnAdd';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
-function address() {
+function Address() {
   const [addressForm, setAddressForm] = useState({
     namedest: '',
     zipcode: '',
@@ -107,4 +107,4 @@ function address() {
   );
 }
 
-export default address;
+export default Address;

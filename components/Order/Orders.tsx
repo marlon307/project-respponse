@@ -6,7 +6,7 @@ type TPropsOrders = {
   execFunction: Function
 }
 
-function Index({ execFunction }: TPropsOrders) {
+function Orders({ execFunction }: TPropsOrders) {
   return (
     <section className={ style.section }>
       <div className={ style.table }>
@@ -40,4 +40,4 @@ function Index({ execFunction }: TPropsOrders) {
   );
 }
 
-export default Index;
+export default Orders;
