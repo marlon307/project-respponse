@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import BarColors from 'components/Bars/BarColors';
 import BarSize from 'components/Bars/BarSize';
 import AddBag from 'components/Buttons/AddBag';
@@ -130,7 +131,7 @@ function productId({ pgProps }: typeProduct) {
 
 export default productId;
 
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const index = Number(params.id);
 
   const pgProps = await mockCards[index];
@@ -138,12 +139,12 @@ export async function getStaticProps({ params }: any) {
   return {
     props: { pgProps },
   };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await mockCards.map(({ id }) => ({ params: { id: id.toString() } }));
   return {
     paths,
     fallback: false,
   };
-}
+};
