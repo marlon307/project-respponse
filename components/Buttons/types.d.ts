@@ -18,7 +18,7 @@ export type TObjectProduct = {
     size: Object;
     imgs: Array<Object>;
   }>
-}
+};
 
 export type PBtnAddBag = {
   productId: TObjectProduct;
@@ -26,7 +26,7 @@ export type PBtnAddBag = {
     color: string;
   };
   sizeSelected: string;
-}
+};
 
 export type TObjectUserBag = {
   user: {
@@ -37,4 +37,4 @@ export type TObjectUserBag = {
       quantity: number;
     }>
   }
-}
+};

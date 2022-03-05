@@ -6,7 +6,7 @@ import style from './style.module.scss';
 export type IProps = {
   setSearchopen?: Function;
   searchopen?: boolean;
-}
+};
 
 function Bar({ setSearchopen, searchopen }: IProps) {
   const ref = useRef(null);

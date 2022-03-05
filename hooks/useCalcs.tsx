@@ -2,7 +2,7 @@ type ArrObj = Array<{
   quantity: number;
   price: number;
   discount: number
-}>
+}>;
 
 const calcAllValuesArray = (array: ArrObj) => {
   const value = array.reduce((

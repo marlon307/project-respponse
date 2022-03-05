@@ -6,7 +6,7 @@ type PMinCardOrder = {
   date: string;
   status: string;
   openOrderId: Function;
-}
+};
 
 function MinCardOrder({
   idOrder, openOrderId, date, status,

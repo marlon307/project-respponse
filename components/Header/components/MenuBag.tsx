@@ -13,7 +13,7 @@ import style from './style.module.scss';
 
 type PropsMNBag = {
   setMenuDropdown: Function;
-}
+};
 
 function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();

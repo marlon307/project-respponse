@@ -10,7 +10,7 @@ interface IObjectsColor {
 type PBarColors = {
   array: Array<IObjectsColor>;
   execFunction: Function
-}
+};
 
 function BarColors({ array, execFunction }: PBarColors) {
   const handleClick = useCallback((object: Object) => {

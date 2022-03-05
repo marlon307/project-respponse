@@ -1,6 +1,6 @@
 import type { TDetail, TSpecification } from './components/Cards/CardDetail/types';
 
-export type typeProduct = {
+export type TypeProduct = {
   pgProps: {
     id: Number;
     title: string;
@@ -22,4 +22,4 @@ export type typeProduct = {
       imgs: Array<Object>;
     }>
   };
-}
+};

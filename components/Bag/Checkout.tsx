@@ -10,7 +10,7 @@ import style from './style.module.scss';
 
 type PropsCheckout = {
   setOpenModal: Function
-}
+};
 
 function Checkout({ setOpenModal }: PropsCheckout) {
   const { adderessSelected, shipping, formatPay } = useSelector(

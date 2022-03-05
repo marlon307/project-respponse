@@ -10,7 +10,7 @@ type ObjectId = {
   size: string;
   quantity: number;
   discount: number;
-}
+};
 
 export interface PSmallCard {
   objectID: ObjectId;

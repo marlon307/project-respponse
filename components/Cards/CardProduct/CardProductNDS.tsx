@@ -7,7 +7,7 @@ import style from './style.module.scss';
 
 type TCardNDS = {
   id: number;
-}
+};
 
 function CardProductNDS({ id }: TCardNDS) {
   const {

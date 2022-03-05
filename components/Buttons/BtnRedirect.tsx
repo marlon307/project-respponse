@@ -7,7 +7,7 @@ import style from './style.module.scss';
 type PBtnR = {
   path: string;
   titleBtn: string;
-}
+};
 
 function BtnRedirect({ path, titleBtn }: PBtnR) {
   return (

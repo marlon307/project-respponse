@@ -3,7 +3,7 @@ import style from './style.module.scss';
 
 type PBSearch = {
   branch: string;
-}
+};
 
 function FBranch({ branch }: PBSearch) {
   return (

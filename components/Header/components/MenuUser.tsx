@@ -18,7 +18,7 @@ const LoginRegister = dynamic(
 
 type PropsMNUser = {
   setMenuDropdown: Function;
-}
+};
 
 function MenuUser({ setMenuDropdown }: PropsMNUser) {
   const dipatch = useDispatch();

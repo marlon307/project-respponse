@@ -7,7 +7,7 @@ type PModal = {
   children: any,
   isOpen: boolean;
   openModal: Function;
-}
+};
 
 function ContentModal({ children, isOpen, openModal }: PModal) {
   if (typeof window === 'undefined') return null;

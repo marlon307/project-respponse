@@ -8,7 +8,7 @@ type PBtnIco = {
   icoName: string;
   action: Function;
   actionLiberate: boolean;
-}
+};
 
 function BtnIco({
   textBtn, icoName, action, actionLiberate,

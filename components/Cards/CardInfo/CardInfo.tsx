@@ -8,7 +8,7 @@ type TInfoProps = {
   discount: number;
   oldPrice: number;
   colors: Array<Object>;
-}
+};
 
 function CardInfo({
   title, type, price, colors, discount, oldPrice,

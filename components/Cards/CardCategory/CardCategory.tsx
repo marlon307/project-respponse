@@ -7,7 +7,7 @@ type PCardCategory = {
   image: any;
   ctgName: string;
   path: string;
-}
+};
 
 function CardCategory({ image, ctgName, path }: PCardCategory) {
   return (

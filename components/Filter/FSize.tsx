@@ -3,7 +3,7 @@ import style from './style.module.scss';
 
 type PFSize = {
   size: string;
-}
+};
 
 function FSize({ size }: PFSize) {
   return (

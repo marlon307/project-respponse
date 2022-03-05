@@ -3,7 +3,7 @@ import style from './style.module.scss';
 
 type PCtg = {
   ctg: string;
-}
+};
 
 function FCtg({ ctg }: PCtg) {
   return (
