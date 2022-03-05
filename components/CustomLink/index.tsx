@@ -6,7 +6,7 @@ export type TObjProps = {
   href?: string;
   ariaLabel: string;
   onClick: React.ReactEventHandler;
-}
+};
 
 const CustomLink = forwardRef(({
   children, className, href, ariaLabel, onClick,

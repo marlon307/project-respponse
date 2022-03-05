@@ -5,7 +5,7 @@ export type PInputRadio = {
   value?: number;
   execFunction?: Function;
   checked: boolean
-}
+};
 
 export interface PInputText {
   id: string;

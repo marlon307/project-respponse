@@ -3,7 +3,7 @@ import style from './style.module.scss';
 
 type PGen = {
   gen: string;
-}
+};
 
 function FGen({ gen }: PGen) {
   return (

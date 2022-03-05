@@ -3,7 +3,7 @@ import style from './style.module.scss';
 
 type PFTissue = {
   tecid: string;
-}
+};
 
 function FTissue({ tecid }: PFTissue) {
   return (

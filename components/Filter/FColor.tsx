@@ -6,7 +6,7 @@ import style from './style.module.scss';
 export type PFColor = {
   cName: string;
   color: string;
-}
+};
 
 function FColor({ cName, color }: PFColor) {
   const dispatch = useDispatch();

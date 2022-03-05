@@ -5,7 +5,7 @@ import style from './style.module.scss';
 type Props = {
   setSearchopen: Function
   searchopen: boolean
-}
+};
 
 function SearchBar({ setSearchopen, searchopen }: Props) {
   function openSearchBar(event: { preventDefault: () => void; }) {

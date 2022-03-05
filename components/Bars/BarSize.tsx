@@ -10,7 +10,7 @@ type TProps = {
   array: Array<IObject>;
   color: string;
   execFunction: Function;
-}
+};
 
 function BarSize({ array, color, execFunction }: TProps) {
   const { size } = array.find((object) => object.color === color)!;

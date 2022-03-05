@@ -4,7 +4,7 @@ import style from './style.module.scss';
 
 type TPropsOrders = {
   execFunction: Function
-}
+};
 
 function Orders({ execFunction }: TPropsOrders) {
   return (

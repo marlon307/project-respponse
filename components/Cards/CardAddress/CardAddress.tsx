@@ -11,7 +11,7 @@ export type PCardAdderess = {
   city: string;
   zipcode: string;
   removable?: boolean;
-}
+};
 
 function CardAdderess({
   name, road, district, number, uf, city, zipcode, removable,

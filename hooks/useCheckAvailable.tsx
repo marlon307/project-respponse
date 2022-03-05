@@ -2,11 +2,11 @@ type ObjectType = {
   idc: string;
   color: string;
   size: {};
-}
+};
 
 type TypeObject = {
   [key: string]: any;
-}
+};
 
 function checkSizeAvailable(options: Array<ObjectType>, value: string) {
   if (!options) return;

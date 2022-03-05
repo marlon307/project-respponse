@@ -4,7 +4,7 @@ import style from './style.module.scss';
 
 type PBtnAdd = {
   eventBtn: Function,
-}
+};
 
 function BtnAdd({ eventBtn }: PBtnAdd) {
   function eventButtonAdd() {

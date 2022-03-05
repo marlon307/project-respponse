@@ -15,7 +15,7 @@ export type TDetail = {
     length: string;
   };
   gender: string;
-}
+};
 
 export type TSpecification = {
   specification: {
@@ -24,4 +24,4 @@ export type TSpecification = {
     occasion: string;
     typeshipping: string;
   }
-}
+};

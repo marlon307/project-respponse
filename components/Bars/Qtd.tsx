@@ -5,12 +5,12 @@ type TQtdChange = {
   target: {
     value: string;
   }
-}
+};
 
 type TProdpQtd = {
   execFunction: Function;
   quantityProduct: number;
-}
+};
 
 function Qtd({ quantityProduct, execFunction }: TProdpQtd) {
   const maxLimit = 50;

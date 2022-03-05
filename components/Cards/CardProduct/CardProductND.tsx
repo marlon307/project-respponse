@@ -7,7 +7,7 @@ import style from './style.module.scss';
 
 type PCardND = {
   id: number;
-}
+};
 
 function CardProductND({ id }: PCardND) {
   const {

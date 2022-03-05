@@ -5,7 +5,7 @@ import style from './style.module.scss';
 type PBtnPrevNext = {
   typePrevOrNext: string;
   reference: any;
-}
+};
 
 function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrevNext) {
   async function btnPrevNext() {

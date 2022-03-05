@@ -8,7 +8,7 @@ type PMnDescktop = {
   setSearchopen: Function
   setMenuDropdown: Function;
   searchopen: boolean
-}
+};
 
 function MenuDescktop(
   { setSearchopen, searchopen, setMenuDropdown }: PMnDescktop,
