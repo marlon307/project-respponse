@@ -6,8 +6,8 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb"
-    // "airbnb-typescript"
+    "airbnb",
+    "airbnb-typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
