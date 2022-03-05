@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Svg from 'assets/Svg';
 import style from './style.module.scss';
 
-const Footer = function Footer() {
+function Footer() {
   return (
     <footer className={ style.footer }>
       <div className={ style.footercolumn }>
@@ -72,6 +72,6 @@ const Footer = function Footer() {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

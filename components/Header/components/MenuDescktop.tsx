@@ -10,7 +10,7 @@ type PMnDescktop = {
   searchopen: boolean
 }
 
-const MenuDescktop = function MenuDescktop(
+function MenuDescktop(
   { setSearchopen, searchopen, setMenuDropdown }: PMnDescktop,
 ) {
   return (
@@ -23,6 +23,6 @@ const MenuDescktop = function MenuDescktop(
       <MenuUser setMenuDropdown={ setMenuDropdown } />
     </nav>
   );
-};
+}
 
 export default MenuDescktop;

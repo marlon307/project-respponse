@@ -12,7 +12,7 @@ type TProdpQtd = {
   quantityProduct: number;
 }
 
-const Qtd = function Qtd({ quantityProduct, execFunction }: TProdpQtd) {
+function Qtd({ quantityProduct, execFunction }: TProdpQtd) {
   const maxLimit = 50;
 
   function qtdDecrement() {
@@ -46,6 +46,6 @@ const Qtd = function Qtd({ quantityProduct, execFunction }: TProdpQtd) {
       <button type="button" onClick={ qtdIncrement }>+</button>
     </div>
   );
-};
+}
 
 export default Qtd;

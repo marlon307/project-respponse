@@ -13,7 +13,7 @@ export type PCardAdderess = {
   removable?: boolean;
 }
 
-const CardAdderess = function CardAdderess({
+function CardAdderess({
   name, road, district, number, uf, city, zipcode, removable,
 }: PCardAdderess) {
   return (
@@ -60,6 +60,6 @@ const CardAdderess = function CardAdderess({
       ) }
     </div>
   );
-};
+}
 
 export default memo(CardAdderess);

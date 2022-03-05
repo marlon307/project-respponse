@@ -5,7 +5,7 @@ import { actionSlecteAdderess } from 'redux/redux-actions';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 
-const RenderAdderess = function RenderAdderess() {
+function RenderAdderess() {
   const dispatch = useDispatch();
 
   function handleClick(adderess: Object) {
@@ -38,6 +38,6 @@ const RenderAdderess = function RenderAdderess() {
       )) }
     </div>
   );
-};
+}
 
 export default RenderAdderess;

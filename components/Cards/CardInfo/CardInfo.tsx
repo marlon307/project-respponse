@@ -10,7 +10,7 @@ type TInfoProps = {
   colors: Array<Object>;
 }
 
-const CardInfo = function CardInfo({
+function CardInfo({
   title, type, price, colors, discount, oldPrice,
 }: TInfoProps) {
   return (
@@ -56,6 +56,6 @@ const CardInfo = function CardInfo({
       </div>
     </div>
   );
-};
+}
 
 export default memo(CardInfo);

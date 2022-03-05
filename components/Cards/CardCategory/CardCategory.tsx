@@ -9,7 +9,7 @@ type PCardCategory = {
   path: string;
 }
 
-const CardCategory = function CardCategory({ image, ctgName, path }: PCardCategory) {
+function CardCategory({ image, ctgName, path }: PCardCategory) {
   return (
     <div className={ style.itencategory }>
       <Link href={ `/category/${path}` }>
@@ -28,6 +28,6 @@ const CardCategory = function CardCategory({ image, ctgName, path }: PCardCatego
       </Link>
     </div>
   );
-};
+}
 
 export default CardCategory;

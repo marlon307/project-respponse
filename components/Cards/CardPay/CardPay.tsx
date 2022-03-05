@@ -10,7 +10,7 @@ export interface PCardPay {
   removable?: boolean;
 }
 
-const CardPay = function CardPay({
+function CardPay({
   name, cardValidate, endNumber, flag, removable,
 }: PCardPay) {
   return (
@@ -35,6 +35,6 @@ const CardPay = function CardPay({
       </div>
     </div>
   );
-};
+}
 
 export default memo(CardPay);

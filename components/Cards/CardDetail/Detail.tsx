@@ -3,7 +3,7 @@ import Svg from 'assets/Svg';
 import style from './style.module.scss';
 import type { TDetail } from './types';
 
-const Detail = function Detail({ branch, details, gender }: TDetail) {
+function Detail({ branch, details, gender }: TDetail) {
   return (
     <div className={ style.detail }>
       <h3>
@@ -79,6 +79,6 @@ const Detail = function Detail({ branch, details, gender }: TDetail) {
       ) }
     </div>
   );
-};
+}
 
 export default Detail;

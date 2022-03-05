@@ -10,7 +10,7 @@ import BarSize from '../../Bars/BarSize';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
 
-const CardEdit = function CardEdit() {
+function CardEdit() {
   const { itemEditBag } = useSelector(({ user }: ReduxUser) => user);
   const dispatch = useDispatch();
   const [colorupdate, setColorUpdate] = useState({
@@ -80,6 +80,6 @@ const CardEdit = function CardEdit() {
       </div>
     </div>
   );
-};
+}
 
 export default CardEdit;

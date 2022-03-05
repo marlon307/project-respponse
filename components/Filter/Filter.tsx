@@ -9,7 +9,7 @@ import {
 } from '.';
 import style from './style.module.scss';
 
-const Filter = function Filter() {
+function Filter() {
   return (
     <section className={ style.optionsfilter }>
       <h1>Filtro</h1>
@@ -72,6 +72,6 @@ const Filter = function Filter() {
       </div>
     </section>
   );
-};
+}
 
 export default Filter;

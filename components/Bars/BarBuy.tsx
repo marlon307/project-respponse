@@ -6,7 +6,7 @@ import type { ReduxUser } from 'types/typesUserRedux';
 import { BuyFinishBtn } from '../Buttons';
 import style from './style.module.scss';
 
-const BarBuy = function BarBuy() {
+function BarBuy() {
   const { bagItems, checkout } = useSelector(({ user }: ReduxUser) => user);
   const { formatPay, shipping, cupomAplicate } = checkout;
   const [openInfo, setOpenInfo] = useState(false);
@@ -72,6 +72,6 @@ const BarBuy = function BarBuy() {
       <a href="/" aria-label="Mais Informações" onClick={ openBarMenu }> </a>
     </section>
   );
-};
+}
 
 export default BarBuy;

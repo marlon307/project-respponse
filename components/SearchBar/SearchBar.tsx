@@ -7,7 +7,7 @@ type Props = {
   searchopen: boolean
 }
 
-const SearchBar = function SearchBar({ setSearchopen, searchopen }: Props) {
+function SearchBar({ setSearchopen, searchopen }: Props) {
   function openSearchBar(event: { preventDefault: () => void; }) {
     event.preventDefault();
     setSearchopen(!searchopen);
@@ -26,6 +26,6 @@ const SearchBar = function SearchBar({ setSearchopen, searchopen }: Props) {
       </div>
     ) : <div />
   );
-};
+}
 
 export default SearchBar;

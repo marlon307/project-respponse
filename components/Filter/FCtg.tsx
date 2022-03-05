@@ -5,7 +5,7 @@ type PCtg = {
   ctg: string;
 }
 
-const FCtg = function FCtg({ ctg }: PCtg) {
+function FCtg({ ctg }: PCtg) {
   return (
     <label htmlFor={ ctg } className={ style.itemfilter }>
       <input type="checkbox" name="filter" id={ ctg } />
@@ -14,6 +14,6 @@ const FCtg = function FCtg({ ctg }: PCtg) {
       </div>
     </label>
   );
-};
+}
 
 export default memo(FCtg);

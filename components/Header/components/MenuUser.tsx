@@ -20,7 +20,7 @@ type PropsMNUser = {
   setMenuDropdown: Function;
 }
 
-const MenuUser = function MenuUser({ setMenuDropdown }: PropsMNUser) {
+function MenuUser({ setMenuDropdown }: PropsMNUser) {
   const dipatch = useDispatch();
   const { logged } = useSelector(({ user }: ReduxUser) => user);
 
@@ -127,6 +127,6 @@ const MenuUser = function MenuUser({ setMenuDropdown }: PropsMNUser) {
       </ContentModal>
     </div>
   );
-};
+}
 
 export default MenuUser;

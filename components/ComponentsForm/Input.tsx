@@ -6,7 +6,7 @@ import type { PInputText } from './type';
 const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
 const validPsw = new RegExp(process.env.VALIDATION_PSW!);
 
-const Input = function Input({
+function Input({
   id, type, name, placeHolder, autoComplete, inputValue, ivalue, msgError,
 }: PInputText) {
   const [statusValid, setSatusValid] = useState(false);
@@ -62,6 +62,6 @@ const Input = function Input({
       </span>
     </label>
   );
-};
+}
 
 export default Input;
