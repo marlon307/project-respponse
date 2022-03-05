@@ -8,7 +8,7 @@ import style from './style.module.scss';
 
 const Filter = dynamic(() => import('./Filter'), { loading: () => <Loading /> });
 
-const BarFilter = function BarFilter() {
+function BarFilter() {
   const [sizeWidth] = useWindowSize();
   const [modalFilter, setModalFilter] = useState(false);
 
@@ -45,6 +45,6 @@ const BarFilter = function BarFilter() {
       </ContentModal>
     </div>
   );
-};
+}
 
 export default BarFilter;

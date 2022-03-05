@@ -7,7 +7,7 @@ type PBtnPrevNext = {
   reference: any;
 }
 
-const BtnPrevNext = function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrevNext) {
+function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrevNext) {
   async function btnPrevNext() {
     const { current } = reference;
     if (typePrevOrNext === 'next') {
@@ -29,6 +29,6 @@ const BtnPrevNext = function BtnPrevNext({ reference, typePrevOrNext }: PBtnPrev
       }
     />
   );
-};
+}
 
 export default BtnPrevNext;

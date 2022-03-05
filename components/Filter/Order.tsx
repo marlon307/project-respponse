@@ -2,7 +2,7 @@ import React from 'react';
 import Svg from 'assets/Svg';
 import style from './style.module.scss';
 
-const FOrder = function FOrder() {
+function FOrder() {
   return (
     <section className={ style.optionsfilter }>
       <h1>Ordenar por</h1>
@@ -31,6 +31,6 @@ const FOrder = function FOrder() {
       </div>
     </section>
   );
-};
+}
 
 export default FOrder;

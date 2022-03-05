@@ -6,7 +6,7 @@ import { addBag } from 'redux/redux-actions';
 import style from './style.module.scss';
 import type { PBtnAddBag, TObjectUserBag } from './types';
 
-const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
+function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
   const dispatch = useDispatch();
   const [buttonActive, setbutonActive] = useState(false);
@@ -78,6 +78,6 @@ const AddBag = function AddBag({ productId, colorSelected, sizeSelected }: PBtnA
       </button>
     </div>
   );
-};
+}
 
 export default AddBag;

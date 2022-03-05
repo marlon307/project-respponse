@@ -12,7 +12,7 @@ import GetInfos from 'hooks/getInfos';
 import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 import Seo from 'components/Head/Head';
 
-const MyApp = function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
   const [urlPg, setUrlPg] = useState('');
   const router = useRouter();
@@ -60,6 +60,6 @@ const MyApp = function MyApp({ Component, pageProps }: AppProps) {
       <Footer />
     </Provider>
   );
-};
+}
 
 export default MyApp;

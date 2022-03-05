@@ -15,7 +15,7 @@ type PropsMNBag = {
   setMenuDropdown: Function;
 }
 
-const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
+function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
   const { bagItems } = useSelector(({ user }: ReduxUser) => user);
   const [enable, setEnable] = useState(false);
@@ -98,6 +98,6 @@ const MenuBag = function MenuBag({ setMenuDropdown }: PropsMNBag) {
       </div>
     </div>
   );
-};
+}
 
 export default MenuBag;

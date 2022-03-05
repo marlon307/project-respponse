@@ -5,7 +5,7 @@ type PGen = {
   gen: string;
 }
 
-const FGen = function FGen({ gen }: PGen) {
+function FGen({ gen }: PGen) {
   return (
     <label htmlFor={ gen } className={ style.itemfilter }>
       <input type="checkbox" name="filter" id={ gen } />
@@ -14,6 +14,6 @@ const FGen = function FGen({ gen }: PGen) {
       </div>
     </label>
   );
-};
+}
 
 export default memo(FGen);

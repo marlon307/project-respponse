@@ -5,7 +5,7 @@ type PBSearch = {
   branch: string;
 }
 
-const FBranch = function FBranch({ branch }: PBSearch) {
+function FBranch({ branch }: PBSearch) {
   return (
     <label htmlFor={ branch } className={ style.itemfilter }>
       <input type="checkbox" name="filter" id={ branch } />
@@ -14,6 +14,6 @@ const FBranch = function FBranch({ branch }: PBSearch) {
       </div>
     </label>
   );
-};
+}
 
 export default memo(FBranch);

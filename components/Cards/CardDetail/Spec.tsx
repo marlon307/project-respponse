@@ -3,7 +3,7 @@ import Svg from 'assets/Svg';
 import style from './style.module.scss';
 import type { TSpecification } from './types';
 
-const Spec = function Spec({ specification }: TSpecification) {
+function Spec({ specification }: TSpecification) {
   return (
     <div className={ style.detail }>
       <h3>
@@ -36,6 +36,6 @@ const Spec = function Spec({ specification }: TSpecification) {
       ) }
     </div>
   );
-};
+}
 
 export default Spec;

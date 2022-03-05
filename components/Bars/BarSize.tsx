@@ -12,7 +12,7 @@ type TProps = {
   execFunction: Function;
 }
 
-const BarSize = function BarSize({ array, color, execFunction }: TProps) {
+function BarSize({ array, color, execFunction }: TProps) {
   const { size } = array.find((object) => object.color === color)!;
   const arraySize = Object.keys(size);
 
@@ -35,6 +35,6 @@ const BarSize = function BarSize({ array, color, execFunction }: TProps) {
       )) }
     </div>
   );
-};
+}
 
 export default BarSize;

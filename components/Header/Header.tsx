@@ -9,7 +9,7 @@ import MenuMobile from './components/MenuMobile';
 import MenuDescktop from './components/MenuDescktop';
 import style from './style.module.scss';
 
-const Header = function Header() {
+function Header() {
   const [width] = useWindowSize();
   const scrollY = useScroll();
 
@@ -50,6 +50,6 @@ const Header = function Header() {
       <MenuMobile />
     </header>
   );
-};
+}
 
 export default Header;

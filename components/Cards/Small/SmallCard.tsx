@@ -7,7 +7,7 @@ import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
 import type { PSmallCard } from './type';
 
-const SmallCard = function SmallCard({
+function SmallCard({
   objectID, removable, editable, eventModal, identifyBag,
 }: PSmallCard) {
   const dispatch = useDispatch();
@@ -99,6 +99,6 @@ const SmallCard = function SmallCard({
       ) }
     </div>
   );
-};
+}
 
 export default memo(SmallCard);

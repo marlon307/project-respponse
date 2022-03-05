@@ -9,7 +9,7 @@ type PBtnR = {
   titleBtn: string;
 }
 
-const BtnRedirect = function BtnRedirect({ path, titleBtn }: PBtnR) {
+function BtnRedirect({ path, titleBtn }: PBtnR) {
   return (
     <Link href={ path }>
       <a className={ cx('button1', style.redirect) }>
@@ -18,6 +18,6 @@ const BtnRedirect = function BtnRedirect({ path, titleBtn }: PBtnR) {
       </a>
     </Link>
   );
-};
+}
 
 export default BtnRedirect;

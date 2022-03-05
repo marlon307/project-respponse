@@ -12,7 +12,7 @@ type PBarColors = {
   execFunction: Function
 }
 
-const BarColors = function BarColors({ array, execFunction }: PBarColors) {
+function BarColors({ array, execFunction }: PBarColors) {
   const handleClick = useCallback((object: Object) => {
     execFunction(object);
   }, []);
@@ -41,6 +41,6 @@ const BarColors = function BarColors({ array, execFunction }: PBarColors) {
         )) }
     </div>
   );
-};
+}
 
 export default BarColors;

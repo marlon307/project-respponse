@@ -6,7 +6,7 @@ type PBtnAdd = {
   eventBtn: Function,
 }
 
-const BtnAdd = function BtnAdd({ eventBtn }: PBtnAdd) {
+function BtnAdd({ eventBtn }: PBtnAdd) {
   function eventButtonAdd() {
     eventBtn();
   }
@@ -20,6 +20,6 @@ const BtnAdd = function BtnAdd({ eventBtn }: PBtnAdd) {
       Adicionar
     </button>
   );
-};
+}
 
 export default BtnAdd;

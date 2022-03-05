@@ -12,7 +12,7 @@ type PropsCheckout = {
   setOpenModal: Function
 }
 
-const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
+function Checkout({ setOpenModal }: PropsCheckout) {
   const { adderessSelected, shipping, formatPay } = useSelector(
     ({ user }: ReduxUser) => user.checkout,
   );
@@ -159,6 +159,6 @@ const Checkout = function Checkout({ setOpenModal }: PropsCheckout) {
       </div>
     </section>
   );
-};
+}
 
 export default memo(Checkout);

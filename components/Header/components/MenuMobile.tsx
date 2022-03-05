@@ -9,7 +9,7 @@ import CustomLink from '../../CustomLink';
 import Bar from '../../SearchBar/Bar';
 import style from './style.module.scss';
 
-const MenuMobile = function MenuMobile() {
+function MenuMobile() {
   const dipatch = useDispatch();
   const { logged, bagItems } = useSelector(({ user }: ReduxUser) => user);
   const [dropMnMobile, setDropMnMobile] = useState(false);
@@ -140,6 +140,6 @@ const MenuMobile = function MenuMobile() {
       </div>
     </div>
   );
-};
+}
 
 export default MenuMobile;

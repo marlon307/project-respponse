@@ -9,7 +9,7 @@ type PModal = {
   openModal: Function;
 }
 
-const ContentModal = function ContentModal({ children, isOpen, openModal }: PModal) {
+function ContentModal({ children, isOpen, openModal }: PModal) {
   if (typeof window === 'undefined') return null;
 
   const getModal = document.getElementById('modal')!;
@@ -51,6 +51,6 @@ const ContentModal = function ContentModal({ children, isOpen, openModal }: PMod
       contetModal(),
       getModal,
     ) : null;
-};
+}
 
 export default ContentModal;

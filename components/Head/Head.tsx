@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
-const Seo = function Seo({ props, url }: any) {
+function Seo({ props, url }: any) {
   const [pgtitle, setPgTitle] = useState('');
 
   useEffect(() => {
@@ -65,6 +65,6 @@ const Seo = function Seo({ props, url }: any) {
       <meta property="og:url" content="https://respponse.com" />
     </Head>
   );
-};
+}
 
 export default Seo;
