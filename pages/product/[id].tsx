@@ -8,10 +8,10 @@ import LoadingImage from 'components/LoadImage';
 import { mockCards } from 'service/mockCards';
 // import { BtnPrevNext } from 'components/Buttons';
 import { checkColorAvailable, checkSizeAvailable } from 'hooks/useCheckAvailable';
-import type { typeProduct } from 'types/typeProduct';
+import type { TypeProduct } from 'types/typeProduct';
 import style from './style.module.scss';
 
-function productId({ pgProps }: typeProduct) {
+function productId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
