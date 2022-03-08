@@ -4,6 +4,7 @@ import { mockCards } from 'service/mockCards';
 import { itemBagEdit, finishItemBagEdit } from 'redux/redux-actions';
 import { checkColorAvailable, checkSizeAvailable } from 'hooks/useCheckAvailable';
 import type { ReduxUser } from 'types/typesUserRedux';
+import { ImageProps } from "next/image";
 import BarColors from '../../Bars/BarColors';
 import Qtd from '../../Bars/Qtd';
 import BarSize from '../../Bars/BarSize';
@@ -19,7 +20,7 @@ function CardEdit() {
   });
   const [sizeupdate, setSizeUpdate] = useState(itemEditBag.size);
   const [qauntityupdate, setQauntityUpdate] = useState(itemEditBag.quantity);
-  const [urlImage, setUrlimg] = useState({ src: '' });
+  const [urlImage, setUrlimg] = useState<any>({});
 
   useEffect(() => {
     const array = mockCards[itemEditBag.id].options;
