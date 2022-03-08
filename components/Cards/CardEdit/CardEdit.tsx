@@ -4,6 +4,7 @@ import { mockCards } from 'service/mockCards';
 import { itemBagEdit, finishItemBagEdit } from 'redux/redux-actions';
 import { checkColorAvailable, checkSizeAvailable } from 'hooks/useCheckAvailable';
 import type { ReduxUser } from 'types/typesUserRedux';
+import { ImageProps } from "next/image";
 import BarColors from '../../Bars/BarColors';
 import Qtd from '../../Bars/Qtd';
 import BarSize from '../../Bars/BarSize';
