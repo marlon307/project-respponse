@@ -19,7 +19,7 @@ function CardEdit() {
   });
   const [sizeupdate, setSizeUpdate] = useState(itemEditBag.size);
   const [qauntityupdate, setQauntityUpdate] = useState(itemEditBag.quantity);
-  const [urlImage, setUrlimg] = useState<any>({});
+  const [urlImage, setUrlimg] = useState({ src: '' });
 
   useEffect(() => {
     const array = mockCards[itemEditBag.id].options;
