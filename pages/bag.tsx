@@ -1,12 +1,12 @@
-import React, { useState, useCallback } from 'react';
-import dynamic from 'next/dynamic';
-import { useSelector } from 'react-redux';
-import { SmallCard } from 'components/Cards';
-import BarBuy from 'components/Bars/BarBuy';
 import Svg from 'assets/Svg';
-import ContentModal from 'components/Modal/ContentModal';
-import Loading from 'components/Loading';
 import Checkout from 'components/Bag';
+import BarBuy from 'components/Bars/BarBuy';
+import { SmallCard } from 'components/Cards';
+import Loading from 'components/Loading';
+import ContentModal from 'components/Modal/ContentModal';
+import dynamic from 'next/dynamic';
+import { useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 import type { ReduxUser } from 'types/typesUserRedux';
 import style from './style.module.scss';
 

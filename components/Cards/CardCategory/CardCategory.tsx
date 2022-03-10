@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';

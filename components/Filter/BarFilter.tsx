@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import useWindowSize from 'hooks/useWindowSize';
 import Svg from 'assets/Svg';
+import useWindowSize from 'hooks/useWindowSize';
+import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import ContentModal from '../Modal/ContentModal';
 import style from './style.module.scss';
