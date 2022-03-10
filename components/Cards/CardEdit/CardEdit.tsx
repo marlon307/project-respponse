@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { mockCards } from 'service/mockCards';
-import { itemBagEdit, finishItemBagEdit } from 'redux/redux-actions';
 import { checkColorAvailable, checkSizeAvailable } from 'hooks/useCheckAvailable';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { finishItemBagEdit, itemBagEdit } from 'redux/redux-actions';
+import { mockCards } from 'service/mockCards';
 import type { ReduxUser } from 'types/typesUserRedux';
-import { ImageProps } from "next/image";
 import BarColors from '../../Bars/BarColors';
-import Qtd from '../../Bars/Qtd';
 import BarSize from '../../Bars/BarSize';
+import Qtd from '../../Bars/Qtd';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
 

@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import Footer from 'components/Footer/Footer';
+import Seo from 'components/Head/Head';
+import Header from 'components/Header';
+import Loading from 'components/Loading';
+import Modal from 'components/Modal/Modal';
+import GetInfos from 'hooks/getInfos';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { Provider } from 'react-redux';
-import Header from 'components/Header';
-import 'styles/globals.scss';
-import Footer from 'components/Footer/Footer';
-import Modal from 'components/Modal/Modal';
-import Loading from 'components/Loading';
-import { useStore } from 'redux/redux-store';
-import GetInfos from 'hooks/getInfos';
+import { useEffect, useState } from 'react';
 import 'react-alice-carousel/lib/scss/alice-carousel.scss';
-import Seo from 'components/Head/Head';
+import { Provider } from 'react-redux';
+import { useStore } from 'redux/redux-store';
+import 'styles/globals.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
