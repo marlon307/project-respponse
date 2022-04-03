@@ -1,0 +1,51 @@
+// Style card category
+.itencategory {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+
+  .imgctg {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      will-change: transform;
+      border-radius: 50%;
+      transition: 0.2s;
+      transform: scale3d(0.96, 0.96, 0.96);
+    }
+  }
+
+  span {
+    font-weight: 700;
+    color: #747474;
+  }
+
+  &:hover {
+
+    img {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .itencategory {
+    width: 120px;
+    height: 120px;
+
+    .imgctg {
+      width: 100px;
+      height: 100px;
+
+      img {
+        transform: scale3d(1, 1, 1);
+      }
+    }
+  }
+}

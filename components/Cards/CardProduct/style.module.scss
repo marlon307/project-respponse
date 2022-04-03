@@ -1,0 +1,167 @@
+// Style Card producsts
+.productcard {
+  position: relative;
+  max-width: 350px;
+  min-width: 100px;
+
+  figure {
+    width: 350px;
+    border-radius: 1.4em;
+    overflow: hidden;
+  }
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.infocontND {
+  background: var(--maincolormenu);
+  backdrop-filter: saturate(100%) blur(5px);
+  position: absolute;
+  visibility: hidden;
+  bottom: 2%;
+  opacity: 0;
+  width: 90%;
+  z-index: 44444;
+  border-radius: 1em;
+  transition: 0.3s;
+  padding: 0 2%;
+  margin: 0 3%;
+}
+
+.productcardNDS {
+  position: relative;
+  max-width: 350px;
+  min-width: 100px;
+
+  figure {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  &:hover .infocontND {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.productcardND {
+  position: relative;
+  max-width: 350px;
+  min-width: 100px;
+
+  figure {
+    position: relative;
+    width: 350px;
+    height: 100%;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  &:hover .infocontND {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.infocont {
+  width: 100%;
+}
+
+@media (max-width: 1300px) {
+  .productcard {
+    figure {
+      width: 24.5vw;
+    }
+  }
+
+  .productcardNDS {
+    figure {
+      width: 24.5vw;
+      height: 100%;
+      border-radius: 1em;
+    }
+  }
+
+  .productcardND {
+    figure {
+      width: 24.5vw;
+      height: 100%;
+      border-radius: 1em;
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .productcard {
+    figure {
+      width: min(22vw, 28vw);
+    }
+  }
+
+  .productcardNDS {
+    width: 100%;
+    height: 100%;
+
+    figure {
+      width: 100%;
+    }
+  }
+
+  .productcardND {
+    width: 100%;
+    height: 100%;
+
+    figure {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .productcard {
+    height: 100%;
+
+    figure {
+      width: min(28vw, 30vw);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .productcard {
+    figure {
+      width: 42.5vw;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .productcard {
+    figure {
+      width: 42.5vw;
+      height: 100%;
+      border-radius: 1em;
+    }
+  }
+}
+
+@media (max-width: 280px) {
+  .productcard {
+    figure {
+      width: 90vw;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+.contentimg {
+  position: relative;
+}
+
+.image {
+  visibility: visible;
+}
+
+.loading {
+  visibility: hidden;
+}
+
+// https://uxdesign.cc/using-css-design-a-simple-skeleton-loader-57d884cd3547
+.statusloading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: linear-gradient(to right,
+      #ffffff00,
+      #ffffff80 50%,
+      #ffffff00 80%),
+    #f1f1f1;
+  background-repeat: repeat-y;
+  background-size: 30% 100%;
+  background-position: -10% 0;
+  animation: loading 1.5s infinite;
+  border-radius: 1em;
+}
+
+@keyframes loading {
+  to {
+    background-position: 150% 0;
+  }
+}

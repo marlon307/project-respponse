@@ -1,0 +1,174 @@
+.smallcard {
+  position: relative;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  height: 140px;
+  border: 1px solid var(--bordercolor);
+
+  .img {
+    top: -12px;
+    left: 0;
+    position: absolute;
+    border-radius: 20px;
+
+    figure {
+      width: 130px;
+      height: 165px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    img {
+      border-radius: 20px;
+      object-fit: cover;
+    }
+  }
+
+  &:hover .delete {
+    display: block;
+  }
+}
+
+.desc {
+  width: 100%;
+  margin-left: 150px;
+  overflow: hidden;
+
+  a {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2 {
+    color: #525252;
+    font-size: 1em;
+    font-weight: 700;
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  h3 {
+    color: #585858;
+    font-size: 0.8em;
+    font-weight: 600;
+    width: 94%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+
+.infos {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  svg {
+    fill: #c2c2c2;
+
+    &:hover {
+      fill: var(--hovericon);
+    }
+  }
+
+}
+
+.setting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    color: #747474;
+  }
+
+  span:first-child {
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--bordercolor);
+  }
+}
+
+.price {
+  position: relative;
+
+  span {
+    font-weight: 700;
+    color: #6b6b6b;
+    margin-right: 20px;
+
+    &::before {
+      content: attr(data-oldprice);
+      position: absolute;
+      top: -1.2em;
+      left: 0;
+      text-decoration: line-through;
+      color: #bfbfbf;
+      font-size: 0.82em;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .desc {
+    margin-left: 140px;
+  }
+}
+
+@media (max-width: 400px) {
+  .infos {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price {
+    span {
+
+      &:before {
+        position: relative;
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
+@media (max-width: 321px) {
+  .setting {
+    gap: 6px;
+  }
+
+  .infos {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .price {
+    margin-top: 6px;
+  }
+}

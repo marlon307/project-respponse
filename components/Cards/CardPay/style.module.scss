@@ -1,0 +1,35 @@
+.card {
+  position: relative;
+  width: 310px;
+  height: 18%;
+  border: 1px solid var(--bordercolor);
+  border-radius: 20px;
+  padding: 18px;
+  color: #303030;
+}
+
+.infos {
+  color: #585858;
+  margin-top: 39%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 750px) {
+  .card {
+    p {
+      font-size: 0.82rem;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    width: -webkit-fill-available;
+  }
+
+  .infos {
+    margin-top: 30%;
+  }
+}

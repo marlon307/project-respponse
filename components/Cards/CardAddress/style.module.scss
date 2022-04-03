@@ -1,0 +1,40 @@
+.cardadderess {
+  position: relative;
+  padding: 18px;
+  border: 1px solid var(--bordercolor);
+  border-radius: 20px;
+  color: #333;
+  background: #fff;
+  width: -webkit-fill-available;
+
+  .line {
+    display: flex;
+    margin-top: 12px;
+    color: #585858;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.address {
+  max-width: 348px;
+  width: 100%;
+}
+
+@media (max-width: 750px) {
+  .cardadderess {
+    span {
+      font-size: 0.82rem;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .address {
+    max-width: 450px;
+  }
+}

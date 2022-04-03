@@ -1,0 +1,293 @@
+.order {
+  width: 700px;
+  padding: 2em;
+  border-radius: 1em;
+  background: var(--maincolor);
+
+  span {
+    color: #464646;
+  }
+}
+
+.topline {
+  div {
+    display: flex;
+    margin-bottom: 16px;
+    justify-content: space-between;
+  }
+
+  b {
+    color: #464646;
+  }
+}
+
+.status {
+  margin: 1.6em 0;
+
+  h2 {
+    color: #464646;
+  }
+}
+
+.progressbar {
+  margin: 3em 6%;
+  width: auto;
+  border: 1px solid var(--bordercolor);
+  border-radius: 1em;
+
+  div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 12px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      border-radius: 1em;
+      height: 12px;
+      width: 0;
+      transition: 2s width cubic-bezier(0.39, 0.58, 0.57, 1);
+    }
+  }
+
+  div[data-status='2'] {
+    &:before {
+      width: 25%;
+      background: linear-gradient(to right, #96A9EC, #A2B5D8);
+    }
+  }
+
+  div[data-status='3'] {
+    &:before {
+      width: 50%;
+      background: linear-gradient(to right, #96A9EC, #A2B5D8, #8ECEAB);
+    }
+  }
+
+  div[data-status='4'] {
+    &:before {
+      width: 75%;
+      background: linear-gradient(to right, #96A9EC, #A2B5D8, #8ECEAB, #93E1A0);
+    }
+  }
+
+  div[data-status='5'] {
+    &:before {
+      width: 100%;
+      background: linear-gradient(to right, #96A9EC, #A2B5D8, #8ECEAB, #93E1A0, #ADEEB0);
+    }
+  }
+
+  span {
+    position: relative;
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      position: absolute;
+      top: 2em;
+      content: attr(title);
+      text-align: center;
+    }
+  }
+
+  span:nth-child(1) {
+    background: #96A9EC;
+  }
+
+  span:nth-child(2) {
+    background: #A2B5D8;
+  }
+
+  span:nth-child(3) {
+    background: #8ECEAB;
+  }
+
+  span:nth-child(4) {
+    background: #93E1A0;
+  }
+
+  span:nth-child(5) {
+    background: #ADEEB0;
+  }
+}
+
+.orderadders {
+  margin: 6em 0 3em;
+  display: flex;
+  justify-content: space-between;
+
+  h3 {
+    color: #464646;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+  }
+
+  div:last-child {
+    align-items: center;
+  }
+
+  a {
+    color: var(--colorlink);
+  }
+}
+
+.shippingcompany {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+
+  svg {
+    fill: #616161;
+  }
+
+  svg:active {
+    transition: transform 0.1s ease-in-out;
+    transform: scale3d(0.85, 0.85, 0.85);
+  }
+}
+
+.orderitems {
+  display: flex;
+  flex-direction: column;
+
+  ul {
+    padding: 16px 0;
+
+    li {
+      margin-bottom: 36px;
+    }
+  }
+}
+
+.footerTotal {
+  margin: 3em 0 0;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+
+    span:first-child {
+      font-weight: 600;
+      color: #464646;
+    }
+  }
+}
+
+.toptable {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  h4:nth-child(1) {
+    margin: 0 26px;
+    width: 31.6%;
+  }
+
+  h4:nth-child(2) {
+    margin: 0 26px;
+    width: 31.6%;
+  }
+}
+
+@media (max-width: 771px) {
+  .order {
+    width: 600px;
+  }
+}
+
+@media (max-width: 670px) {
+  .order {
+    width: 500px;
+  }
+}
+
+@media (max-width: 550px) {
+  .order {
+    width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .order {
+    padding: 1.3em;
+  }
+
+  .progressbar {
+    margin: 3em 1%;
+
+    *span {
+      &::after {
+        content: '';
+      }
+    }
+
+    [data-status='1']span:nth-child(1) {
+      &::after {
+        content: attr(title);
+      }
+    }
+
+    [data-status='2']span:nth-child(2) {
+      &::after {
+        content: attr(title);
+      }
+    }
+
+    [data-status='3']span:nth-child(3) {
+      &::after {
+        content: attr(title);
+      }
+    }
+
+    [data-status='4']span:nth-child(4) {
+      &::after {
+        content: attr(title);
+      }
+    }
+
+    [data-status='5']span:nth-child(5) {
+      &::after {
+        content: attr(title);
+        right: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 470px) {
+  .order {
+    width: auto;
+  }
+}
+
+@media (max-width: 411px) {
+  .toptable {
+    font-size: 0.8rem;
+
+    h4:nth-child(1) {
+      margin: 0 9px;
+      width: 31.6%;
+    }
+
+    h4:nth-child(2) {
+      margin: 0 9px;
+      width: 31.6%;
+    }
+  }
+}
