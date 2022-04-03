@@ -1,0 +1,46 @@
+$size: 750px;
+
+.header {
+  grid-area: header;
+  position: sticky;
+  z-index: 99998;
+  display: flex;
+  top: 0;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 1rem 1rem;
+  padding: 0 6%;
+
+  .searchdrop {
+    width: 0;
+    height: 0;
+    transition: 0.3s;
+  }
+
+  .drop.searchdrop {
+    width: 40%;
+    height: 100%;
+  }
+}
+
+.container {
+  display: inline-block;
+  
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  svg {
+    display: flex;
+    cursor: pointer;
+    width: 10em;
+  }
+}
+
+.active {
+  background: var(--maincolormenu);
+  backdrop-filter: saturate(100%) blur(5px);
+  box-shadow: inset 0 -1px 0 0 var(--bordercolor);
+}
