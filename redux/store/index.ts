@@ -1,12 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
-// ...
 
 export const store = configureStore({
   reducer: {
     user(state, { payload }) {
+      console.log(state);
+
       return {
         ...state,
         logged: payload,
+      };
+    },
+    bag() {
+      return {
+        items: [],
       };
     },
   },

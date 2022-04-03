@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBar from '../../SearchBar';
+import MenuBag from './MenuBag';
 // import MenuBag from './MenuBag';
 import MenuUser from './MenuUser';
 // import SearchBar from '../../SearchBar';
@@ -19,7 +20,7 @@ function MenuDescktop({ setSearchopen, searchopen }: MnDescktop) {
         searchopen={ searchopen }
         setSearchopen={ setSearchopen }
       />
-      {/* <MenuBag setMenuDropdown={ setMenuDropdown } /> */ }
+      <MenuBag />
       <MenuUser />
     </nav>
   );

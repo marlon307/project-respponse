@@ -3,12 +3,10 @@ import React, {
 } from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
-import { useSelector } from 'react-redux';
-import useOutsideClick from 'hooks/useOutSide';
-import Svg from 'assets/Svg';
-import calcAllValuesArray from 'hooks/useCalcs';
-import type { ReduxUser } from 'types/typesUserRedux';
+// import calcAllValuesArray from 'hooks/useCalcs';
+// import type { ReduxUser } from 'types/typesUserRedux';
 import { SmallCard } from '../../Cards';
+import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
 
 type PropsMNBag = {
@@ -17,17 +15,16 @@ type PropsMNBag = {
 
 function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
-  const { bagItems } = useSelector(({ user }: ReduxUser) => user);
   const [enable, setEnable] = useState(false);
   const [valueTotalProducts, setValueTotalProducts] = useState(0);
   const ref = useRef(null);
 
-  useOutsideClick(ref, () => {
-    if (enable) {
-      setEnable(false);
-      setMenuDropdown(null);
-    }
-  });
+  // useOutsideClick(ref, () => {
+  //   if (enable) {
+  //     setEnable(false);
+  //     setMenuDropdown(null);
+  //   }
+  // });
 
   function clickBag(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
@@ -36,12 +33,12 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
   }
 
   useEffect(() => {
-    setValueTotalProducts(calcAllValuesArray(bagItems));
-  }, [bagItems]);
+    // setValueTotalProducts(calcAllValuesArray(bagItems));
+  }, [/* bagItems */]);
 
   return (
     <div className={ cx(style.bag, {
-      [style.contb]: bagItems.length,
+      [style.contb]: false, // bagItems.length,
     }) }
     >
       <a
@@ -61,19 +58,23 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
         <div className={ style.containBag }>
           <h2 className={ style.titlemenu }>
             {
-              bagItems.length ? 'Sacola' : 'Sacola Vazia'
+              // bagItems.length ? 'Sacola' : 'Sacola Vazia'
+              [].length ? 'Sacola' : 'Sacola Vazia'
             }
           </h2>
           <ul>
-            { bagItems.map((object) => (
-              <li key={ object.id + object.color + object.size }>
-                <SmallCard
-                  objectID={ object }
-                  identifyBag={ object.id + object.color + object.size }
-                  removable
-                />
-              </li>
-            )) }
+            {
+              // bagItems.map((object) => (
+              [].map((object) => (
+                <li key={ object.id + object.color + object.size }>
+                  <SmallCard
+                    objectID={ object }
+                    identifyBag={ object.id + object.color + object.size }
+                    removable
+                  />
+                </li>
+              ))
+            }
           </ul>
           <div className={ style.baginfo }>
             <div>

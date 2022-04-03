@@ -6,6 +6,9 @@ interface CounterState {
   userInfos: {
     name: string;
     logged: boolean;
+    bag: {
+      items: Array<Object>;
+    };
   };
 }
 
@@ -14,6 +17,9 @@ const initialState: CounterState = {
   userInfos: {
     name: 'Nome',
     logged: false,
+    bag: {
+      items: [],
+    },
   },
 };
 
@@ -25,14 +31,13 @@ export const counterSlice = createSlice({
     loginUser: (state, { payload }: PayloadAction<boolean>) => {
       state.userInfos.logged = payload;
     },
-    // Use the PayloadAction type to declare the contents of `action.payload`
-    // incrementByAmount: (state, action: PayloadAction<number>) => {
-    //   state.value += action.payload;
-    // },
+    removeItemBag: (state, { payload }: PayloadAction<boolean>) => {
+      state.userInfos.logged = payload;
+    },
   },
 });
 
-export const { loginUser } = counterSlice.actions;
+export const { loginUser, removeItemBag } = counterSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectUserLogged = (state: RootState) => state.stateLogin;
