@@ -2,19 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import contentSlice from '../actions';
 
 export const store = configureStore({
-  reducer: {
-    user(state, { payload }) {
-      return {
-        ...state,
-        logged: payload,
-      };
-    },
-    bag() {
-      return {
-        items: [],
-      };
-    },
-  },
+  reducer: contentSlice,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

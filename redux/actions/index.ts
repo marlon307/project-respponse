@@ -3,43 +3,41 @@ import type { RootState } from '../store';
 
 // Define a type for the slice state
 interface CounterState {
-  userInfos: {
+  user: {
     name: string;
     logged: boolean;
-    bag: {
-      items: Array<Object>;
-    };
+  }
+  bag: {
+    items: Array<Object>;
   };
 }
 
 // Define the initial state using that type
 const initialState: CounterState = {
-  userInfos: {
+  user: {
     name: 'Nome',
     logged: false,
-    bag: {
-      items: [],
-    },
+  },
+  bag: {
+    items: [],
   },
 };
 
 export const counterSlice = createSlice({
   name: 'store',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     loginUser: (state, { payload }: PayloadAction<boolean>) => {
-      state.userInfos.logged = payload;
+      state.user.logged = payload;
     },
-    removeItemBag: (state, { payload }: PayloadAction<boolean>) => {
-      state.userInfos.logged = payload;
+    removeItemBag: (state, { payload }: PayloadAction<Array<Object>>) => {
+      state.bag.items.push(payload);
     },
   },
 });
 
 export const { loginUser, removeItemBag } = counterSlice.actions;
 
-// Other code such as selectors can use the imported `RootState` type
-export const selectUserLogged = (state: RootState) => state.userInfos;
+export const selectUserLogged = (state: RootState) => state;
 
 export default counterSlice.reducer;
