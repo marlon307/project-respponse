@@ -1,45 +1,35 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
+import { stateUser, LOGIN_USER } from './user';
+import { stateBag, ADD_BAG_ITEMS } from './bag';
 
-// Define a type for the slice state
-interface CounterState {
-  user: {
-    name: string;
-    logged: boolean;
-  }
-  bag: {
-    items: Array<Object>;
-    value: Number;
-  };
-}
-
-// Define the initial state using that type
-const initialState: CounterState = {
-  user: {
-    name: 'Nome',
-    logged: false,
-  },
-  bag: {
-    items: [],
-    value: 0,
-  },
+const initialState = {
+  ...stateUser,
 };
 
 export const counterSlice = createSlice({
-  name: 'store',
+  name: 'user',
   initialState,
   reducers: {
-    loginUser: (state, { payload }: PayloadAction<boolean>) => {
-      state.user.logged = payload;
-    },
-    removeItemBag: (state, { payload }: PayloadAction<Array<Object>>) => {
-      state.bag.items.push(payload);
-    },
+    ACTION_LOGIN_USER: LOGIN_USER,
   },
 });
 
-export const { loginUser, removeItemBag } = counterSlice.actions;
+export const bagSlice = createSlice({
+  name: 'bag',
+  initialState: stateBag,
+  reducers: {
+    ACTION_ADD_BAG_ITEMS: ADD_BAG_ITEMS,
+  },
+});
+
+export const { ACTION_LOGIN_USER } = counterSlice.actions;
+
+export const { ACTION_ADD_BAG_ITEMS } = bagSlice.actions;
 
 export const selectUserLogged = (state: RootState) => state;
 
-export default counterSlice.reducer;
+export default {
+  user: counterSlice.reducer,
+  bag: bagSlice.reducer,
+};

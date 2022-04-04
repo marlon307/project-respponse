@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useRouter } from 'next/router';
 import Svg from '../assets/Svg';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
-import { loginUser } from '../redux/actions';
+import { ACTION_LOGIN_USER } from '../redux/actions';
 import BtnIco from '../components/Buttons/BtnIco';
 import style from '../Sass/style.module.scss';
 
@@ -41,7 +41,7 @@ function Login() {
   const clickLogin = () => {
     const { lemail, lpsw } = stateLogin;
     if (validEmail.test(lemail) && validPsw.test(lpsw) && !loadingLogin) {
-      dispatch(loginUser(true));
+      dispatch(ACTION_LOGIN_USER(true));
       setLoadingLogin(true);
     }
   };

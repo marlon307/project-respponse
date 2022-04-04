@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import contentSlice from '../actions';
+import itemsSlice from '../actions';
 
 export const store = configureStore({
   devTools: process.env.NODE_ENV === 'development',
-  reducer: contentSlice,
+  reducer: itemsSlice,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

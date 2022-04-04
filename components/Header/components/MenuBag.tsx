@@ -3,8 +3,7 @@ import React, {
 } from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
-// import calcAllValuesArray from 'hooks/useCalcs';
-// import type { ReduxUser } from 'types/typesUserRedux';
+import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import { SmallCard } from '../../Cards';
 import Svg from '../../../assets/Svg';
 import style from './style.module.scss';
@@ -17,6 +16,7 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
   const [enable, setEnable] = useState(false);
   const [valueTotalProducts, setValueTotalProducts] = useState(0);
+  const { bagItems } = useAppSelector(({ bag }) => bag.bag);
   const ref = useRef(null);
 
   // useOutsideClick(ref, () => {
@@ -38,7 +38,7 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
 
   return (
     <div className={ cx(style.bag, {
-      [style.contb]: false, // bagItems.length,
+      [style.contb]: bagItems.length,
     }) }
     >
       <a
@@ -59,13 +59,12 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
           <h2 className={ style.titlemenu }>
             {
               // bagItems.length ? 'Sacola' : 'Sacola Vazia'
-              [].length ? 'Sacola' : 'Sacola Vazia'
+              bagItems.length ? 'Sacola' : 'Sacola Vazia'
             }
           </h2>
           <ul>
             {
-              // bagItems.map((object) => (
-              [].map((object) => (
+              bagItems.map((object) => (
                 <li key={ object.id + object.color + object.size }>
                   <SmallCard
                     objectID={ object }
