@@ -6,7 +6,7 @@ import MenuUser from './MenuUser';
 // import SearchBar from '../../SearchBar';
 // import MenuBag from './MenuBag';
 // import MenuUser from './MenuUser';
-import style from './style.module.scss';
+import style from './styles/style.module.scss';
 
 type MnDescktop = {
   setSearchopen: Function;

@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
-import { loginUser } from '../../../redux/actions';
+import { ACTION_LOGIN_USER } from '../../../redux/actions';
 // import Loading from '../../Loading';
 // import ContentModal from '../../Modal/ContentModal';
-import style from './style.module.scss';
 import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';
 import CustomLink from '../../CustomLink';
+import style from './styles/style.module.scss';
 
 const LoginRegister = dynamic(
   () => import('../../../pages/login-register'),
@@ -34,7 +34,7 @@ function MenuUser() {
     if (!logged) {
       setOpenLogin(true);
     } else {
-      dispatch(loginUser(false));
+      dispatch(ACTION_LOGIN_USER(false));
     }
   }
   // Fechar modal apos login

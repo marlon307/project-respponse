@@ -2,13 +2,13 @@ import { PayloadAction } from '@reduxjs/toolkit';
 
 interface CounterState {
   bagItems: Array<Object>;
-  value: Number;
+  valueBag: Number;
 }
 
 // Define the initial state using that type
 const stateBag: CounterState = {
   bagItems: [],
-  value: 0,
+  valueBag: 0,
 };
 
 const ADD_BAG_ITEMS = (state: CounterState, { payload }: PayloadAction<Object>) => {

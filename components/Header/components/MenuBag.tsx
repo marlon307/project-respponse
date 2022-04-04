@@ -6,7 +6,7 @@ import cx from 'classnames';
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import { SmallCard } from '../../Cards';
 import Svg from '../../../assets/Svg';
-import style from './style.module.scss';
+import style from './styles/style.module.scss';
 
 type PropsMNBag = {
   setMenuDropdown: Function;
@@ -16,7 +16,7 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
   const [enable, setEnable] = useState(false);
   const [valueTotalProducts, setValueTotalProducts] = useState(0);
-  const { bagItems } = useAppSelector(({ bag }) => bag);
+  const { bagItems, valueBag } = useAppSelector(({ bag }) => bag);
   const ref = useRef(null);
 
   // useOutsideClick(ref, () => {
@@ -46,13 +46,12 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
         onClick={ (event) => clickBag(event) }
         aria-label="Sacola"
       >
+        {/* Link Custon pls */ }
         <Svg icoName="bag" />
       </a>
       <div
         ref={ ref }
-        className={ cx(style.dropBag, {
-          [style.drop]: enable,
-        }) }
+        className={ style.dropBag }
       >
         <span className={ style.set } />
         <div className={ style.containBag }>
@@ -79,7 +78,7 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
             <div>
               <span>Total:</span>
               <span>
-                { valueTotalProducts.toLocaleString('pt-br', {
+                { valueBag.toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL',
                 }) }

@@ -19,11 +19,15 @@ export const bagSlice = createSlice({
   },
 });
 
-export const { ACTION_LOGIN_USER } = counterSlice.actions;
+export const {
+  ACTION_LOGIN_USER,
+} = counterSlice.actions;
 
-export const { ACTION_ADD_BAG_ITEMS } = bagSlice.actions;
+export const {
+  ACTION_ADD_BAG_ITEMS,
+} = bagSlice.actions;
 
-export const selectUserLogged = (state: RootState) => state;
+export const selecRootState = (state: RootState) => state;
 
 export default {
   user: counterSlice.reducer,
