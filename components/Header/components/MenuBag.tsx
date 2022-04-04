@@ -16,7 +16,7 @@ function MenuBag({ setMenuDropdown }: PropsMNBag) {
   const router = useRouter();
   const [enable, setEnable] = useState(false);
   const [valueTotalProducts, setValueTotalProducts] = useState(0);
-  const { bagItems } = useAppSelector(({ bag }) => bag.bag);
+  const { bagItems } = useAppSelector(({ bag }) => bag);
   const ref = useRef(null);
 
   // useOutsideClick(ref, () => {

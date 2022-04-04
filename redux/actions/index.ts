@@ -3,13 +3,9 @@ import type { RootState } from '../store';
 import { stateUser, LOGIN_USER } from './user';
 import { stateBag, ADD_BAG_ITEMS } from './bag';
 
-const initialState = {
-  ...stateUser,
-};
-
 export const counterSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState: stateUser,
   reducers: {
     ACTION_LOGIN_USER: LOGIN_USER,
   },
