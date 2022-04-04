@@ -40,6 +40,6 @@ export const counterSlice = createSlice({
 export const { loginUser, removeItemBag } = counterSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectUserLogged = (state: RootState) => state.stateLogin;
+export const selectUserLogged = (state: RootState) => state.userInfos;
 
 export default counterSlice.reducer;

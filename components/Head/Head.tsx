@@ -1,50 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
+import React, { useState/* , useEffect */ } from 'react';
 
 interface Types {
-  url: string,
   props: any
 }
 
-function Seo({ props, url }: Types) {
+function Seo({ props }: Types) {
   const [pgtitle, setPgTitle] = useState('');
 
-  useEffect(() => {
-    if (props.pgProps !== undefined) {
-      setPgTitle(props.pgProps.subTitle);
-    } else {
-      let format = url.split('/').slice(-1)[0];
-      switch (format) {
-        case 'help':
-          format = 'Ajuda';
-          break;
-        case 'account':
-          format = 'Conta';
-          break;
-        case 'favorite':
-          format = 'Favoritos';
-          break;
-        case 'bag':
-          format = 'Sacola';
-          break;
-        case 'resetpsw':
-          format = 'Recuperar Senha';
-          break;
-        case 'support':
-          format = 'Suporte';
-          break;
-        case 'login-register':
-          format = 'Login - Registrar';
-          break;
-        default:
-          break;
-      }
-      setPgTitle(format);
-    }
-  }, [url, props.pgProps]);
+  // useEffect(() => {
+  //   if (props.pgProps !== undefined) {
+  //     setPgTitle(props.pgProps.subTitle);
+  //   } else {
+  //     let format = url.split('/').slice(-1)[0];
+  //     switch (format) {
+  //       case 'help':
+  //         format = 'Ajuda';
+  //         break;
+  //       case 'account':
+  //         format = 'Conta';
+  //         break;
+  //       case 'favorite':
+  //         format = 'Favoritos';
+  //         break;
+  //       case 'bag':
+  //         format = 'Sacola';
+  //         break;
+  //       case 'resetpsw':
+  //         format = 'Recuperar Senha';
+  //         break;
+  //       case 'support':
+  //         format = 'Suporte';
+  //         break;
+  //       case 'login-register':
+  //         format = 'Login - Registrar';
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //     setPgTitle(format);
+  //   }
+  // }, [url]);
 
   return (
-    <Head>
+    <>
       <title>
         { pgtitle !== '' ? `${pgtitle} | Respponse` : 'Respponse' }
       </title>
@@ -68,7 +66,7 @@ function Seo({ props, url }: Types) {
       <meta property="og:description" content="Respponse" />
       <meta property="og:site_name" content="Respponse" />
       <meta property="og:url" content="https://respponse.com" />
-    </Head>
+    </>
   );
 }
 

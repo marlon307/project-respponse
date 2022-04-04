@@ -1,10 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+import contentSlice from '../actions';
 
 export const store = configureStore({
   reducer: {
     user(state, { payload }) {
-      console.log(state);
-
       return {
         ...state,
         logged: payload,
