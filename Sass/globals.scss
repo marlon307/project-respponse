@@ -30,10 +30,10 @@ html {
 
 #__next {
   display: grid;
-  grid-template-areas: 
-  'header'
-  'main'
-  'footer';
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
   grid-template-rows: 90px 80vh 300px;
   grid-template-columns: 100%;
 }

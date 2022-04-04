@@ -1,4 +1,4 @@
-.nav{
+.nav {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-  }  
+  }
 }
 
 .login {
@@ -93,14 +93,14 @@
 .usermneu {
   position: relative;
   padding-bottom: 1em;
-  margin-top: 1em; 
+  margin-top: 1em;
 }
 
 .usermneu:hover .dropmenu {
   opacity: 1;
   transform: translateY(-1rem);
   pointer-events: all;
-  
+
   ul {
     opacity: 1;
     transition: 0.3s;
