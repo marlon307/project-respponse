@@ -5,9 +5,13 @@
   gap: 2em;
 }
 
-.usermneu,.bag {
+.usermneu,
+.bag {
   cursor: pointer;
-  
+  position: relative;
+  padding-bottom: 1em;
+  margin-top: 1em;
+
   svg {
     width: 28px;
     height: 28px;
