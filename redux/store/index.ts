@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import contentSlice from '../actions';
 
 export const store = configureStore({
+  devTools: process.env.NODE_ENV === 'development',
   reducer: contentSlice,
 });
 

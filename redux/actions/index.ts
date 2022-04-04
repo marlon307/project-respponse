@@ -9,6 +9,7 @@ interface CounterState {
   }
   bag: {
     items: Array<Object>;
+    value: Number;
   };
 }
 
@@ -20,6 +21,7 @@ const initialState: CounterState = {
   },
   bag: {
     items: [],
+    value: 0,
   },
 };
 
