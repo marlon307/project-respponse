@@ -9,8 +9,8 @@ import style from '../Sass/style.module.scss';
 
 import { Input } from '../components/ComponentsForm';
 
-const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
-const validPsw = new RegExp(process.env.VALIDATION_PSW!);
+const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
+const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`);
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -40,6 +40,7 @@ function Login() {
 
   const clickLogin = () => {
     const { lemail, lpsw } = stateLogin;
+
     if (validEmail.test(lemail) && validPsw.test(lpsw) && !loadingLogin) {
       dispatch(LOGIN_USER(true));
       setLoadingLogin(true);
