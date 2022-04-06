@@ -1,3 +1,6 @@
+@import './bag.scss';
+@import './mnmobile.scss';
+
 .nav {
   display: flex;
   align-items: center;
@@ -6,7 +9,8 @@
 }
 
 .usermneu,
-.bag {
+.bag,
+.mobile {
   cursor: pointer;
   position: relative;
   padding-bottom: 1em;
@@ -107,4 +111,21 @@
   }
 }
 
-@import './bag.scss';
+@media (max-width: 700px) {
+  .nav {
+    gap: 1.4em;
+  }
+
+  .usermneu,
+  .bag {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .mobile {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+}

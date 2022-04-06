@@ -1,14 +1,10 @@
 import React from 'react';
 import SearchBar from '../../SearchBar';
 import MenuBag from './MenuBag';
-// import MenuBag from './MenuBag';
 import MenuUser from './MenuUser';
 import { useAppSelector } from '../../../redux/hooks';
-
-// import SearchBar from '../../SearchBar';
-// import MenuBag from './MenuBag';
-// import MenuUser from './MenuUser';
 import style from './styles/style.module.scss';
+import MenuMobile from './MenuMobile';
 
 type MnDescktop = {
   setSearchopen: Function;
@@ -26,6 +22,7 @@ function MenuDescktop({ setSearchopen, searchopen }: MnDescktop) {
       />
       { logged && <MenuBag /> }
       <MenuUser />
+      <MenuMobile />
     </nav>
   );
 }

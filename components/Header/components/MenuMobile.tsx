@@ -4,7 +4,6 @@ import cx from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { LOGIN_USER } from '../../../redux/actions';
 import CustomLink from '../../CustomLink';
-import Bar from '../../SearchBar/Bar';
 import style from './styles/style.module.scss';
 import Svg from '../../../assets/Svg';
 
@@ -48,7 +47,6 @@ function MenuMobile() {
       }) }
       >
         <nav className={ style.dropmobile }>
-          <Bar />
           <ul>
             <li>
               <Link href="/help" passHref>
