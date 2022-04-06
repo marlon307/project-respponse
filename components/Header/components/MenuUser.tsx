@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
-import { ACTION_LOGIN_USER } from '../../../redux/actions';
+import { LOGIN_USER } from '../../../redux/actions';
 // import Loading from '../../Loading';
 // import ContentModal from '../../Modal/ContentModal';
 import Svg from '../../../assets/Svg';
@@ -34,7 +34,7 @@ function MenuUser() {
     if (!logged) {
       setOpenLogin(true);
     } else {
-      dispatch(ACTION_LOGIN_USER(false));
+      dispatch(LOGIN_USER(false));
     }
   }
   // Fechar modal apos login

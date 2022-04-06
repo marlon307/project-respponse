@@ -1,18 +1,18 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 
-interface CounterState {
+interface StateBagType {
   bagItems: Array<Object>;
   valueBag: Number;
 }
 
 // Define the initial state using that type
-const stateBag: CounterState = {
+const stateBag: StateBagType = {
   bagItems: [],
   valueBag: 0,
 };
 
-const ADD_BAG_ITEMS = (state: CounterState, { payload }: PayloadAction<Object>) => {
+const ACTION_ADD_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<Object>) => {
   state.bagItems.unshift(payload);
 };
 
-export { stateBag, ADD_BAG_ITEMS };
+export { stateBag, ACTION_ADD_BAG_ITEMS };
