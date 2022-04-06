@@ -10,7 +10,7 @@ import style from '../Sass/style.module.scss';
 import { Input } from '../components/ComponentsForm';
 
 const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
-const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`);
+const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
 
 function Login() {
   const dispatch = useAppDispatch();

@@ -4,7 +4,7 @@ import style from './style.module.scss';
 import type { PInputText } from './type';
 
 const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
-const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`);
+const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
 
 function Input({
   id, type, name, placeHolder, autoComplete, inputValue, ivalue, msgError,
