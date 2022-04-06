@@ -5,6 +5,7 @@ import Svg from '../../assets/Svg';
 import style from './style.module.scss';
 import MenuDescktop from './components/MenuDescktop';
 import Bar from '../SearchBar/Bar';
+import MenuMobile from './components/MenuMobile';
 
 function Header() {
   const [searchopen, setSearchopen] = useState(false);
@@ -32,6 +33,7 @@ function Header() {
           setSearchopen={ setSearchopen }
           searchopen={ searchopen }
         />
+        <MenuMobile />
       </div>
     </header>
   );

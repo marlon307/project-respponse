@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import cx from 'classnames';
-import { actionLogOut } from 'redux/redux-actions';
-import type { ReduxUser } from 'types/typesUserRedux';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { LOGIN_USER } from '../../../redux/actions';
 import CustomLink from '../../CustomLink';
 import Bar from '../../SearchBar/Bar';
-import style from './style.module.scss';
+import style from './styles/style.module.scss';
 import Svg from '../../../assets/Svg';
 
 function MenuMobile() {
-  const dipatch = useDispatch();
-  const { logged, bagItems } = useSelector(({ user }: ReduxUser) => user);
+  const dipatch = useAppDispatch();
+  const { user, bag } = useAppSelector((states) => states);
+  const { bagItems } = bag;
+  const { logged } = user;
   const [dropMnMobile, setDropMnMobile] = useState(false);
 
   function handleClickLogOutUser() {
     setDropMnMobile(!dropMnMobile);
     if (logged) {
-      dipatch(actionLogOut());
+      dipatch(LOGIN_USER(false));
     }
   }
 
@@ -105,14 +106,15 @@ function MenuMobile() {
             </li>
             <li>
               { logged ? (
-                <a
-                  aria-label="Logout"
-                  aria-hidden="true"
-                  onClick={ handleClickLogOutUser }
-                >
-                  <Svg icoName="singout" />
-                  Logout
-                </a>
+                <Link href="/" passHref>
+                  <CustomLink
+                    ariaLabel="Logout"
+                    onClick={ handleClickLogOutUser! }
+                  >
+                    <Svg icoName="singout" />
+                    Logout
+                  </CustomLink>
+                </Link>
               ) : (
                 <Link href="/login-register" passHref>
                   <CustomLink
