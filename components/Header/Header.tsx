@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
-import style from './style.module.scss';
 import Svg from '../../assets/Svg';
+import style from './style.module.scss';
 import MenuDescktop from './components/MenuDescktop';
 import Bar from '../SearchBar/Bar';
 
