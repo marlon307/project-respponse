@@ -12,6 +12,10 @@ const nextConfig = {
     locales: ['pt-br'],
     defaultLocale: 'pt-br',
   },
+  env: {
+    VALIDATION_EMAIL: process.env.VALIDATION_EMAIL,
+    VALIDATION_PSW: process.env.VALIDATION_PSW,
+  },
 };
 
 module.exports = nextConfig;
