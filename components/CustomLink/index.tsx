@@ -5,7 +5,7 @@ export type TObjProps = {
   className?: string;
   href?: string;
   ariaLabel: string;
-  onClick: React.ReactEventHandler;
+  onClick?: React.ReactEventHandler;
 };
 
 const CustomLink = forwardRef(({
@@ -25,6 +25,7 @@ const CustomLink = forwardRef(({
 CustomLink.defaultProps = {
   href: undefined,
   className: undefined,
+  onClick: undefined,
 };
 
 export default CustomLink;

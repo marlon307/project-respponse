@@ -17,17 +17,9 @@ const LoginRegister = dynamic(
 
 function MenuUser() {
   const dispatch = useAppDispatch();
-  const ref = useRef(null);
   const { logged } = useAppSelector(({ user }) => user);
-
+  const ref = useRef(null);
   const [openLogin, setOpenLogin] = useState(false);
-  const [openMnUser, setOpenMnUser] = useState(false);
-
-  function clickUser(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-    event.preventDefault();
-
-    setOpenMnUser(!openMnUser);
-  }
 
   function openModalLogin(event: { preventDefault: () => void; }) {
     event.preventDefault();
@@ -48,9 +40,14 @@ function MenuUser() {
     <div className={ style.usermneu }>
       { logged ? (
         <>
-          <a href="/account" className={ style.mnuser } aria-label="Usuário" onClick={ clickUser }>
-            <Svg icoName="user" />
-          </a>
+          <Link href="/account" passHref>
+            <CustomLink
+              ariaLabel="Conta"
+              className={ style.mnuser }
+            >
+              <Svg icoName="user" />
+            </CustomLink>
+          </Link>
           <div
             ref={ ref }
             className={ style.dropmenu }
@@ -82,7 +79,7 @@ function MenuUser() {
                 </Link>
               </li>
               <li>
-                <Link href="/help" passHref>
+                <Link href="/login-register" passHref>
                   <CustomLink
                     ariaLabel="Logout"
                     onClick={ openModalLogin! }
@@ -96,9 +93,15 @@ function MenuUser() {
           </div>
         </>
       ) : (
-        <a href="/account" className={ style.login } aria-label="Usuário" onClick={ openModalLogin }>
-          Entrar
-        </a>
+        <Link href="/login-register" passHref>
+          <CustomLink
+            ariaLabel="Entrar"
+            className={ style.login }
+            onClick={ openModalLogin! }
+          >
+            Entrar
+          </CustomLink>
+        </Link>
       ) }
 
       <ContentModal isOpen={ openLogin } openModal={ setOpenLogin }>
