@@ -1,7 +1,13 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 
+interface TypeAddBagInfos {
+  id: number;
+  size: string;
+  color: string;
+}
+
 interface StateBagType {
-  bagItems: Array<Object>;
+  bagItems: Array<TypeAddBagInfos>;
   valueBag: Number;
 }
 
@@ -11,7 +17,7 @@ const stateBag: StateBagType = {
   valueBag: 0,
 };
 
-const ACTION_ADD_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<Object>) => {
+const ACTION_ADD_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<TypeAddBagInfos>) => {
   state.bagItems.unshift(payload);
 };
 
