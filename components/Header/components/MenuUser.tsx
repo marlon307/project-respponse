@@ -3,8 +3,6 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import { LOGIN_USER } from '../../../redux/actions';
-// import Loading from '../../Loading';
-// import ContentModal from '../../Modal/ContentModal';
 import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';
 import CustomLink from '../../CustomLink';

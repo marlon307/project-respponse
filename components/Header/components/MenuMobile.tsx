@@ -61,48 +61,48 @@ function MenuMobile() {
               </Link>
             </li>
             { logged && (
-              <li>
-                <Link href="/account" passHref>
-                  <CustomLink
-                    ariaLabel="Conta"
-                    onClick={ closeMenu! }
+              <>
+                <li>
+                  <Link href="/account" passHref>
+                    <CustomLink
+                      ariaLabel="Conta"
+                      onClick={ closeMenu! }
+                    >
+                      <Svg icoName="setting" />
+                      Conta
+                    </CustomLink>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/favorite" passHref>
+                    <CustomLink
+                      ariaLabel="Favoritos"
+                      onClick={ closeMenu! }
+                    >
+                      <Svg icoName="healt" />
+                      Favoritos
+                    </CustomLink>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/bag"
+                    passHref
                   >
-                    <Svg icoName="setting" />
-                    Conta
-                  </CustomLink>
-                </Link>
-              </li>
+                    <CustomLink
+                      className={
+                        cx({ [style.contb]: bagItems.length })
+                      }
+                      ariaLabel="Sacola"
+                      onClick={ closeMenu! }
+                    >
+                      <Svg icoName="bag" />
+                      Sacola
+                    </CustomLink>
+                  </Link>
+                </li>
+              </>
             ) }
-            { logged && (
-              <li>
-                <Link href="/favorite" passHref>
-                  <CustomLink
-                    ariaLabel="Favoritos"
-                    onClick={ closeMenu! }
-                  >
-                    <Svg icoName="healt" />
-                    Favoritos
-                  </CustomLink>
-                </Link>
-              </li>
-            ) }
-            <li>
-              <Link
-                href="/bag"
-                passHref
-              >
-                <CustomLink
-                  className={
-                    cx({ [style.contb]: bagItems.length })
-                  }
-                  ariaLabel="Sacola"
-                  onClick={ closeMenu! }
-                >
-                  <Svg icoName="bag" />
-                  Sacola
-                </CustomLink>
-              </Link>
-            </li>
             <li>
               { logged ? (
                 <Link href="/" passHref>

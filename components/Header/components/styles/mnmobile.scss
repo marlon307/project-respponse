@@ -6,7 +6,7 @@
 
 @media (max-width: 700px) {
   .dromn {
-    display: none;
+    display: block;
   }
 
   .dropmobile {
@@ -19,6 +19,8 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    transform: translateX(100%);
+    transition: 0.6s;
 
     ul {
       width: 80%;
@@ -37,6 +39,9 @@
   }
 
   .drop {
-    display: block;
+    .dropmobile {
+      transform: translateX(0);
+      box-shadow: -5px 0px 20px 0px #e5e5e5;
+    }
   }
 }
