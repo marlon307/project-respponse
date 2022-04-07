@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
-import Svg from 'assets/Svg';
-import { addBag } from 'redux/redux-actions';
 import style from './style.module.scss';
-import type { PBtnAddBag, TObjectUserBag } from './types';
+import type { PBtnAddBag } from './types';
+import Svg from '../../assets/Svg';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
-  const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
-  const dispatch = useDispatch();
+  const { bagItems } = useAppSelector(({ bag }) => bag);
+  const dispatch = useAppDispatch();
   const [buttonActive, setbutonActive] = useState(false);
   const [activeMsg, setActiveMsg] = useState(false);
 
@@ -53,7 +52,7 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
         }];
     }
 
-    dispatch(addBag(newArray));
+    // dispatch(addBag(newArray));
   }
 
   useEffect(() => {
@@ -63,7 +62,7 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
     if (colorSelected.color && sizeSelected && activeMsg) {
       setActiveMsg(false);
     }
-  }, [colorSelected.color, sizeSelected]);
+  }, [activeMsg, colorSelected.color, sizeSelected]);
 
   return (
     <div className="contBtn">
