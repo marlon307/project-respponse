@@ -22,6 +22,7 @@ interface StateBagType {
     title: string;
     quantity: number;
     identifyBag: string;
+    mainImg: ImageProps;
     colorName: string;
     color: string;
     size: string;
@@ -60,6 +61,9 @@ const stateBag: StateBagType = {
     title: '',
     type: '',
     color: '',
+    mainImg: {
+      src: '',
+    },
     colorName: '',
     size: '',
     quantity: 0,
@@ -99,8 +103,17 @@ const ACTION_ADD_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<Ty
   }
 };
 
-const ACTION_RM_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<string>) => {
+const ACTION_RM_BAG_ITEM = (state: StateBagType, { payload }: PayloadAction<string>) => {
   state.bagItems = state.bagItems.filter(({ identifyBag }) => identifyBag !== payload);
 };
 
-export { stateBag, ACTION_ADD_BAG_ITEMS, ACTION_RM_BAG_ITEMS };
+const ACTION_EDIT_BAG_ITEM = (state: StateBagType, { payload }: PayloadAction<TypeAddBagInfos>) => {
+  state.itemEditBag = payload;
+};
+
+export {
+  stateBag,
+  ACTION_ADD_BAG_ITEMS,
+  ACTION_RM_BAG_ITEM,
+  ACTION_EDIT_BAG_ITEM,
+};

@@ -13,8 +13,8 @@ type TProps = {
 };
 
 function BarSize({ array, color, execFunction }: TProps) {
-  const { size } = array.find((object) => object.color === color)!;
-  const arraySize = Object.keys(size);
+  const itemSizes = array.find((object) => object.color === color)!;
+  const arraySize = itemSizes && Object.keys(itemSizes.size);
 
   const handleClick = useCallback((sizeSelected: string) => {
     execFunction(sizeSelected);
@@ -22,7 +22,7 @@ function BarSize({ array, color, execFunction }: TProps) {
 
   return (
     <div className={ style.barsize }>
-      { arraySize.map((sizeName) => (
+      { arraySize?.map((sizeName) => (
         <label htmlFor={ sizeName } key={ sizeName }>
           <input
             type="radio"

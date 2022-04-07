@@ -1,41 +1,43 @@
 import React, { useEffect, useState } from 'react';
-// import { finishItemBagEdit, itemBagEdit } from 'redux/redux-actions';
-import { mockCards } from '../../../service/mockCards';
+import type { ImageProps } from 'next/image';
 import { checkColorAvailable, checkSizeAvailable } from '../../../hooks/useCheckAvailable';
 import BarColors from '../../Bars/BarColors';
 import BarSize from '../../Bars/BarSize';
 import Qtd from '../../Bars/Qtd';
 import LoadingImage from '../../LoadImage';
-import style from './style.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { mockCards } from '../../../service/mockCards';
+import style from './style.module.scss';
+import { EDIT_BAG_ITEM } from '../../../redux/actions';
 
 function CardEdit() {
   const { itemEditBag } = useAppSelector(({ bag }) => bag);
   const dispatch = useAppDispatch();
+
   const [colorupdate, setColorUpdate] = useState({
     color: itemEditBag.color,
     colorName: itemEditBag.colorName,
   });
   const [sizeupdate, setSizeUpdate] = useState(itemEditBag.size);
   const [qauntityupdate, setQauntityUpdate] = useState(itemEditBag.quantity);
-  const [urlImage, setUrlimg] = useState<any>({});
+  const [urlImage, setUrlimg] = useState<ImageProps>();
 
   useEffect(() => {
-    // const array = mockCards[itemEditBag.id].options;
-    // checkSizeAvailable(array, colorupdate.color);
+    const array = mockCards[itemEditBag.id].options;
+    checkSizeAvailable(array, colorupdate.color);
 
-    // const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
-    // setUrlimg(imgs[0].urlImg);
-    // checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
-  }, [colorupdate, sizeupdate]);
+    const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
+    setUrlimg(imgs[0].urlImg);
+    checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
+  }, [colorupdate, itemEditBag.color, itemEditBag.id, sizeupdate]);
 
   useEffect(() => {
-    // dispatch(itemBagEdit({
-    //   ...itemEditBag,
-    //   ...colorupdate,
-    //   size: sizeupdate,
-    //   quantity: qauntityupdate,
-    // }));
+    dispatch(EDIT_BAG_ITEM({
+      ...itemEditBag,
+      ...colorupdate,
+      size: sizeupdate,
+      quantity: qauntityupdate,
+    }));
   });
 
   useEffect(() => () => {
@@ -49,7 +51,7 @@ function CardEdit() {
           <LoadingImage
             alt="title"
             url={
-              urlImage.src === undefined
+              urlImage?.src === undefined
                 ? mockCards[itemEditBag.id].options[0].imgs[0].urlImg
                 : urlImage
             }
