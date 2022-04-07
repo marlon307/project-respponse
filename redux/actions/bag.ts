@@ -99,7 +99,7 @@ const ACTION_ADD_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<Ty
   }
 };
 
-const ACTION_RM_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<String>) => {
+const ACTION_RM_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<string>) => {
   state.bagItems = state.bagItems.filter(({ identifyBag }) => identifyBag !== payload);
 };
 

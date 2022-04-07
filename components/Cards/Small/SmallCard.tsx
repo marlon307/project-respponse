@@ -56,6 +56,7 @@ function SmallCard({
             </span>
             { editable && (
               <button
+                className={ style.edit }
                 type="button"
                 aria-label="Editar cor, tamanho e quantidade."
                 title="Editar cor, tamanho e quantidade."
@@ -91,7 +92,7 @@ function SmallCard({
       { removable && (
         <button
           type="button"
-          className="action"
+          className={ style.delete }
           title="Excluir"
           onClick={ handleClickDelete }
         >
