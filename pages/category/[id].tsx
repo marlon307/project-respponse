@@ -4,7 +4,7 @@ import mockCategory from '../../service/mockCategory';
 import { mockminObjectCards2 } from '../../service/mockCards';
 import { CardProduct } from '../../components/Cards/CardProduct';
 import style from './style.module.scss';
-import { BarFilter } from '../../components/Filter';
+import BarFilter from '../../components/Filter/BarFilter';
 
 function categoryId() {
   return (

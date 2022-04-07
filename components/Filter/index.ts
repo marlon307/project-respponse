@@ -1,4 +1,4 @@
-import BarFilter from './BarFilter';
+// import BarFilter from './BarFilter';
 import FBranch from './FBranch';
 import FColor from './FColor';
 import FTissue from './FTissue';
@@ -8,7 +8,7 @@ import FCtg from './FCtg';
 import FModel from './FModel';
 
 export {
-  BarFilter,
+  // BarFilter,
   FBranch,
   FColor,
   FTissue,
