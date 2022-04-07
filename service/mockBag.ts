@@ -15,6 +15,7 @@ const mockBag = [{
   quantity: 2,
   discount: 5,
   identifyBag: '0#74bcf7M',
+  code: '3SFA469',
 }, {
   id: 1,
   title: 'Secrect state',
@@ -28,6 +29,7 @@ const mockBag = [{
   quantity: 1,
   discount: 0,
   identifyBag: '1#2a4f6cP',
+  code: 'XTFA469',
 }, {
   id: 2,
   title: 'Next station',
@@ -41,6 +43,7 @@ const mockBag = [{
   quantity: 1,
   discount: 8,
   identifyBag: '2#8297afG',
+  code: 'XT7A4D9',
 }];
 
 export default mockBag;

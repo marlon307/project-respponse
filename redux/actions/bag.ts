@@ -26,6 +26,7 @@ interface StateBagType {
     colorName: string;
     color: string;
     size: string;
+    code: string;
   };
   checkout: {
     adderessSelected: {
@@ -68,6 +69,7 @@ const stateBag: StateBagType = {
     size: '',
     quantity: 0,
     identifyBag: '',
+    code: '',
   },
   checkout: {
     adderessSelected: {

@@ -5,7 +5,7 @@ import style from './style.module.scss';
 import { useAppDispatch } from '../../../redux/hooks';
 import type { PSmallCard } from './type';
 import Svg from '../../../assets/Svg';
-import { RM_BAG_ITEM } from '../../../redux/actions';
+import { EDIT_BAG_ITEM, RM_BAG_ITEM } from '../../../redux/actions';
 
 function SmallCard({
   objectID, removable, editable, eventModal, identifyBag,
@@ -19,9 +19,9 @@ function SmallCard({
 
   const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    // dispatch(getInfoBagEdit(objectID));
+    dispatch(EDIT_BAG_ITEM(objectID));
     eventModal!();
-  }, [eventModal]);
+  }, [dispatch, eventModal, objectID]);
 
   const handleClickDelete = useCallback(() => {
     dispatch(RM_BAG_ITEM(identifyBag));

@@ -10,7 +10,11 @@ import { mockCards } from '../../../service/mockCards';
 import style from './style.module.scss';
 import { EDIT_BAG_ITEM } from '../../../redux/actions';
 
-function CardEdit() {
+type PropsCardEdit = {
+  inEdition: boolean;
+};
+
+function CardEdit({ inEdition }: PropsCardEdit) {
   const { itemEditBag } = useAppSelector(({ bag }) => bag);
   const dispatch = useAppDispatch();
 
@@ -29,20 +33,36 @@ function CardEdit() {
     const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
     setUrlimg(imgs[0].urlImg);
     checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
-  }, [colorupdate, itemEditBag.color, itemEditBag.id, sizeupdate]);
+  }, [colorupdate, sizeupdate, itemEditBag.color, itemEditBag.id]);
 
   useEffect(() => {
-    dispatch(EDIT_BAG_ITEM({
-      ...itemEditBag,
-      ...colorupdate,
-      size: sizeupdate,
-      quantity: qauntityupdate,
-    }));
-  });
+    if (!itemEditBag.color) {
+      dispatch(EDIT_BAG_ITEM({
+        ...itemEditBag,
+        ...colorupdate,
+        size: sizeupdate,
+        quantity: qauntityupdate,
+      }));
+    }
+  }, [colorupdate, dispatch, itemEditBag, qauntityupdate, sizeupdate]);
 
-  useEffect(() => () => {
-    // dispatch(finishItemBagEdit());
-  }, []);
+  useEffect(() => {
+    if (!inEdition) {
+      dispatch(EDIT_BAG_ITEM({
+        id: 0,
+        title: '',
+        type: '',
+        color: '',
+        mainImg: {
+          src: '',
+        },
+        colorName: '',
+        size: '',
+        quantity: 0,
+        identifyBag: '',
+      }));
+    }
+  }, [dispatch, inEdition]);
 
   return (
     <div className={ style.edit }>
