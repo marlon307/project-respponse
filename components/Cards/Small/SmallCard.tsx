@@ -2,14 +2,16 @@ import React, { useCallback, memo } from 'react';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
-import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
+import { useAppDispatch } from '../../../redux/hooks';
 import type { PSmallCard } from './type';
 import Svg from '../../../assets/Svg';
+import { RM_BAG_ITEM } from '../../../redux/actions';
 
 function SmallCard({
   objectID, removable, editable, eventModal, identifyBag,
 }: PSmallCard) {
   const dispatch = useAppDispatch();
+
   const {
     id, title, type, mainImg, price, colorName, color,
     size, quantity, discount, oldPrice,
@@ -22,8 +24,8 @@ function SmallCard({
   }, [eventModal]);
 
   const handleClickDelete = useCallback(() => {
-    // dispatch(removeItemBag(identifyBag!));
-  }, []);
+    dispatch(RM_BAG_ITEM(identifyBag));
+  }, [dispatch, identifyBag]);
 
   return (
     <div className={ style.smallcard }>

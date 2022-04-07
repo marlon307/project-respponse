@@ -17,24 +17,12 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
       return;
     }
 
-    const {
-      id, title, type,
-      mainImg, price, oldPrice,
-      discount,
-    } = productId;
-
     dispatch(ADD_BAG_ITEMS({
-      id,
-      title,
-      type,
-      mainImg,
-      price,
-      oldPrice,
-      discount,
+      ...productId,
       quantity: 1,
       ...colorSelected,
       size: sizeSelected,
-      identifyBag: id + colorSelected.color + sizeSelected,
+      identifyBag: productId.id + colorSelected.color + sizeSelected,
     }));
   }
 
