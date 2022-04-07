@@ -10,8 +10,10 @@ type PModal = {
 };
 
 function ContentModal({ children, isOpen, openModal }: PModal) {
-  const getModal = children && document.getElementById('modal')!;
+  // console.log(document);
+
   const modalRef = useRef!(null);
+  const getModal = children && isOpen && document.getElementById('modal');
 
   // useOutsideClick(modalRef, () => {
   //   if (isOpen) openModal(false);
@@ -21,13 +23,14 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
     if (isOpen) {
       getModal.classList.add(style.open);
       document.body.classList.add('hidden');
-    } else if (children) {
-      getModal.classList.remove(style.open);
-      document.body.removeAttribute('class');
     }
+    // else if (children) {
+    //   getModal.classList.remove(style.open);
+    //   document.body.removeAttribute('class');
+    // }
 
     return () => {
-      if (children) {
+      if (children && isOpen) {
         getModal.classList.remove(style.open);
         document.body.removeAttribute('class');
       }
@@ -47,7 +50,7 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
     );
   }
 
-  return children && createPortal(
+  return children && isOpen && createPortal(
     contetModal(),
     getModal,
   );

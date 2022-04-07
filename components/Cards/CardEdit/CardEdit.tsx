@@ -1,9 +1,9 @@
-import { checkColorAvailable, checkSizeAvailable } from 'hooks/useCheckAvailable';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { finishItemBagEdit, itemBagEdit } from 'redux/redux-actions';
-import { mockCards } from 'service/mockCards';
-import type { ReduxUser } from 'types/typesUserRedux';
+// import { finishItemBagEdit, itemBagEdit } from 'redux/redux-actions';
+// import type { ReduxUser } from 'types/typesUserRedux';
+import { mockCards } from '../../../service/mockCards';
+import { checkColorAvailable, checkSizeAvailable } from '../../../hooks/useCheckAvailable';
 import BarColors from '../../Bars/BarColors';
 import BarSize from '../../Bars/BarSize';
 import Qtd from '../../Bars/Qtd';
@@ -22,25 +22,25 @@ function CardEdit() {
   const [urlImage, setUrlimg] = useState<any>({});
 
   useEffect(() => {
-    const array = mockCards[itemEditBag.id].options;
-    checkSizeAvailable(array, colorupdate.color);
+    // const array = mockCards[itemEditBag.id].options;
+    // checkSizeAvailable(array, colorupdate.color);
 
-    const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
-    setUrlimg(imgs[0].urlImg);
-    checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
+    // const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
+    // setUrlimg(imgs[0].urlImg);
+    // checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
   }, [colorupdate, sizeupdate]);
 
   useEffect(() => {
-    dispatch(itemBagEdit({
-      ...itemEditBag,
-      ...colorupdate,
-      size: sizeupdate,
-      quantity: qauntityupdate,
-    }));
+    // dispatch(itemBagEdit({
+    //   ...itemEditBag,
+    //   ...colorupdate,
+    //   size: sizeupdate,
+    //   quantity: qauntityupdate,
+    // }));
   });
 
   useEffect(() => () => {
-    dispatch(finishItemBagEdit());
+    // dispatch(finishItemBagEdit());
   }, []);
 
   return (

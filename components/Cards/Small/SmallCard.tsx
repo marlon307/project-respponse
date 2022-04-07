@@ -3,7 +3,6 @@ import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
-import { removeItemBag } from '../../../redux/actions';
 import type { PSmallCard } from './type';
 import Svg from '../../../assets/Svg';
 
@@ -18,13 +17,13 @@ function SmallCard({
 
   const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    dispatch(getInfoBagEdit(objectID));
+    // dispatch(getInfoBagEdit(objectID));
     eventModal!();
-  }, [objectID]);
+  }, [eventModal]);
 
   const handleClickDelete = useCallback(() => {
-    dispatch(removeItemBag(identifyBag!));
-  }, [identifyBag]);
+    // dispatch(removeItemBag(identifyBag!));
+  }, []);
 
   return (
     <div className={ style.smallcard }>

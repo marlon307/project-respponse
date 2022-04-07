@@ -1,0 +1,33 @@
+.bag {
+  display: grid;
+  grid-template-areas:
+    'bagitems checkout'
+  ;
+  grid-template-columns: minmax(400px, 800px) 400px;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 6%;
+}
+
+.list {
+  max-height: 70vh;
+  min-height: 4em;
+
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 750px) {
+  .bag {
+    grid-template-areas:
+      'bagitems'
+      'checkout'
+    ;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+}

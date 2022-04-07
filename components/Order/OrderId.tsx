@@ -1,7 +1,9 @@
+import Link from 'next/link';
 import React from 'react';
-import Svg from 'assets/Svg';
-import mockBag from 'service/mockBag';
+import mockBag from '../../service/mockBag';
+import Svg from '../../assets/Svg';
 import { SmallCard } from '../Cards';
+import CustomLink from '../CustomLink';
 import style from './style.module.scss';
 
 function OrderId() {
@@ -55,14 +57,15 @@ function OrderId() {
           <h3>Correios</h3>
           <span className={ style.shippingcompany }>
             <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">QF000000000BR</a>
-            <a
-              href="/"
-              aria-label="Copiar"
-              title="Copiar"
-              onClick={ copyCode }
-            >
-              <Svg icoName="copy" />
-            </a>
+
+            <Link href="/" passHref>
+              <CustomLink
+                onClick={ copyCode! }
+                ariaLabel="Copiar"
+              >
+                <Svg icoName="copy" />
+              </CustomLink>
+            </Link>
           </span>
         </div>
       </div>

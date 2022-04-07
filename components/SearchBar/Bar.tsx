@@ -4,10 +4,9 @@ import Svg from '../../assets/Svg';
 
 export type IProps = {
   setSearchopen?: Function;
-  searchopen?: boolean;
 };
 
-function Bar({ setSearchopen, searchopen }: IProps) {
+function Bar({ setSearchopen }: IProps) {
   const ref = useRef(null);
 
   return (
@@ -33,7 +32,6 @@ function Bar({ setSearchopen, searchopen }: IProps) {
 }
 
 Bar.defaultProps = {
-  searchopen: false,
   setSearchopen: undefined,
 };
 
