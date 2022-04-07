@@ -15,6 +15,7 @@ function Header() {
         <Link href="/">
           <a
             aria-label="Respponse"
+            className={ style.logo }
           >
             <Svg icoName="logo" />
           </a>
