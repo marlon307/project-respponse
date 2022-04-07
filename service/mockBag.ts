@@ -1,6 +1,6 @@
-import image0 from 'assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
-import image1 from 'assets/img/nojan-namdar-a3RhaDG_pNM-unsplash 1.png';
-import image3 from 'assets/img/jonas-jaeken-31upv631160-unsplash 4.png';
+import image1 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash 1.png';
+import image3 from '../assets/img/jonas-jaeken-31upv631160-unsplash 4.png';
+import image0 from '../assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
 
 const mockBag = [{
   id: 0,

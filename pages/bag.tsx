@@ -31,7 +31,7 @@ function Bag() {
             Sacola
           </h1>
           <ul>
-            { bagItems.map((object) => (
+            { bagItems.length ? bagItems.map((object) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
@@ -41,7 +41,8 @@ function Bag() {
                   identifyBag={ object.id + object.color + object.size }
                 />
               </li>
-            )) }
+            ))
+              : <li className={ style.empty }>Sacola Vazia</li> }
           </ul>
         </section>
         <Checkout setOpenModal={ setOpenModal } />

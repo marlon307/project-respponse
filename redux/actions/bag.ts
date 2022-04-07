@@ -9,6 +9,16 @@ interface TypeAddBagInfos {
 interface StateBagType {
   bagItems: Array<TypeAddBagInfos>;
   valueBag: Number;
+  itemEditBag: {
+    id: number;
+    type: string;
+    title: string;
+    quantity: number;
+    identifyBag: string;
+    colorName: string;
+    color: string;
+    size: string;
+  };
   checkout: {
     adderessSelected: {
       name: string;
@@ -38,6 +48,16 @@ interface StateBagType {
 const stateBag: StateBagType = {
   bagItems: [],
   valueBag: 0,
+  itemEditBag: {
+    id: 0,
+    title: '',
+    type: '',
+    color: '',
+    colorName: '',
+    size: '',
+    quantity: 0,
+    identifyBag: '',
+  },
   checkout: {
     adderessSelected: {
       name: 'Entregar para',

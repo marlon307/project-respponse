@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 // import { finishItemBagEdit, itemBagEdit } from 'redux/redux-actions';
-// import type { ReduxUser } from 'types/typesUserRedux';
 import { mockCards } from '../../../service/mockCards';
 import { checkColorAvailable, checkSizeAvailable } from '../../../hooks/useCheckAvailable';
 import BarColors from '../../Bars/BarColors';
@@ -9,10 +7,11 @@ import BarSize from '../../Bars/BarSize';
 import Qtd from '../../Bars/Qtd';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 
 function CardEdit() {
-  const { itemEditBag } = useSelector(({ user }: ReduxUser) => user);
-  const dispatch = useDispatch();
+  const { itemEditBag } = useAppSelector(({ bag }) => bag);
+  const dispatch = useAppDispatch();
   const [colorupdate, setColorUpdate] = useState({
     color: itemEditBag.color,
     colorName: itemEditBag.colorName,

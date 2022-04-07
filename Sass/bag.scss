@@ -21,6 +21,13 @@
   }
 }
 
+.empty {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 18px 0;
+  color: #585858;
+}
+
 @media (max-width: 750px) {
   .bag {
     grid-template-areas:
