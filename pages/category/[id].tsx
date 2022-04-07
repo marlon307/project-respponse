@@ -1,10 +1,10 @@
 import React from 'react';
-import { CardProduct } from 'components/Cards/CardProduct';
-import { BarFilter } from 'components/Filter';
-import { mockminObjectCards2 } from 'service/mockCards';
-import mockCategory from 'service/mockCategory';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import mockCategory from '../../service/mockCategory';
+import { mockminObjectCards2 } from '../../service/mockCards';
+import { CardProduct } from '../../components/Cards/CardProduct';
 import style from './style.module.scss';
+import { BarFilter } from '../../components/Filter';
 
 function categoryId() {
   return (
