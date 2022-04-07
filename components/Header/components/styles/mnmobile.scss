@@ -5,19 +5,38 @@
 }
 
 @media (max-width: 700px) {
+  .dromn {
+    display: none;
+  }
+
   .dropmobile {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgb(151, 129, 129);
-    inset: 0 0 0 0;
+    background: var(--maincolor);
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+
+    ul {
+      width: 80%;
+      padding: 3em 0;
+    }
+
+    a {
+      padding: 1em;
+      gap: 1em;
+      color: #333;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
-  .dromn {
-    display: none;
+  .drop {
+    display: block;
   }
 }

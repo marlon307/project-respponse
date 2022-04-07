@@ -25,6 +25,7 @@ function MenuMobile() {
     event.preventDefault();
     setDropMnMobile(!dropMnMobile);
   }
+
   function closeMenu() {
     setDropMnMobile(!dropMnMobile);
   }
@@ -37,7 +38,7 @@ function MenuMobile() {
       <Link href="/" passHref>
         <CustomLink
           ariaLabel="Menu"
-          onClick={ (event: any) => openMenu(event) }
+          onClick={ openMenu! }
         >
           <Svg icoName="menu" />
         </CustomLink>
