@@ -1,0 +1,139 @@
+.account {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+  grid-area: main;
+
+  [id] {
+    scroll-margin-top: 6em;
+  }
+}
+
+.section {
+  margin: 110px auto;
+  background: var(--maincolor);
+  padding: 2em;
+  border-radius: 1em;
+
+  h1 {
+    color: #333;
+  }
+
+  // Pagina Help
+  ol {
+    padding: 0 2em;
+    margin: 0 auto;
+
+    li {
+      color: var(--colorlink);
+      list-style: decimal;
+      margin-bottom: 12px;
+    }
+
+    a {
+      color: var(--colorlink);
+      font-size: 1.2em;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Fim pagina Help
+
+.contaienrsection {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+// Tabela de pedidos
+.table {
+  width: 100%;
+}
+
+.bodytable {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+// Content Address and Card
+.contentoption {
+  margin-top: 1em;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.container {
+  margin: 2em 6%;
+  width: auto;
+
+  .dropOption {
+    display: flex;
+    padding: 28px;
+    align-items: center;
+    gap: 18px;
+    cursor: pointer;
+    color: #333;
+    border: 1px solid var(--bordercolor);
+    border-radius: 1em;
+    transition: padding 0.3s ease-in-out;
+  }
+
+  section {
+    display: none;
+  }
+
+  .dropcontainer {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+  }
+
+  .open+.dropcontainer {
+    height: auto;
+  }
+
+  .open+.dropcontainer section {
+    display: block;
+    border: none;
+  }
+
+  .dropOption.open {
+    padding: 28px 0;
+    border: none;
+  }
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .section {
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+@media (max-width: 750px) {
+  .container {
+    margin: 1.4em 5%;
+  }
+
+  .account {
+    margin-top: 70px;
+
+    [id] {
+      scroll-margin-top: 3.5em;
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .contentoption {
+    justify-content: center;
+  }
+}
