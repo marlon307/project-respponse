@@ -43,7 +43,7 @@ function Account() {
   }, [logged, router]);
 
   return (
-    <main className={ style.account }>
+    <main className={ style.main }>
       <div className={ style.container } id="user">
         <a
           href="#user"
