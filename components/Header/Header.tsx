@@ -27,7 +27,6 @@ function Header() {
       >
         <Bar
           setSearchopen={ setSearchopen }
-          searchopen={ searchopen }
         />
       </div>
       <div className={ style.container }>

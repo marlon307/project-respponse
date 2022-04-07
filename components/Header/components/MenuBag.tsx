@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
+import Link from 'next/link';
 import { useAppSelector } from '../../../redux/hooks';
 import { SmallCard } from '../../Cards';
 import Svg from '../../../assets/Svg';
@@ -16,13 +17,11 @@ function MenuBag() {
       [style.contb]: bagItems.length,
     }) }
     >
-      <a
-        href="/bag"
-        aria-label="Sacola"
-      >
-        {/* Link Custon pls */ }
-        <Svg icoName="bag" />
-      </a>
+      <Link href="/bag">
+        <a aria-label="Sacola">
+          <Svg icoName="bag" />
+        </a>
+      </Link>
       <div
         ref={ ref }
         className={ style.dropBag }

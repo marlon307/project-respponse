@@ -1,0 +1,174 @@
+.itemfilter {
+  display: flex;
+  color: #6f6f6f;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    display: none;
+  }
+
+  input:checked+div {
+    color: currentColor;
+    border-color: currentColor;
+  }
+}
+
+.filtername {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 3px 16px;
+  border-radius: 26px;
+  border: 1px solid var(--bordercolor);
+  background: transparent;
+  color: #6f6f6f;
+  font-size: 1em;
+
+  span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 8px;
+    border: 1px solid var(--bordercolor);
+  }
+
+  svg {
+    margin-left: 6px;
+    fill: #7c7c7c;
+    width: 1.2em;
+    transform: rotate(-90deg);
+  }
+}
+
+.optionsfilter {
+  padding: 2em 0;
+  max-width: 300px;
+  width: max-content;
+  border-radius: 1em;
+  margin-left: 5%;
+  background: var(--maincolor);
+
+  h1 {
+    font-size: 1.3em;
+    color: #3d3d3d;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1em;
+    color: #505050;
+    margin: 16px 0;
+  }
+
+  label {
+    flex: none;
+  }
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5em 0.2em;
+}
+
+.contentorder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 0;
+  gap: 1em;
+
+  input {
+    display: none;
+  }
+
+  input:checked~.order {
+    color: currentColor;
+    border-color: currentColor;
+
+    svg {
+      fill: currentColor;
+    }
+  }
+}
+
+.order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
+  border: 1px solid var(--bordercolor);
+  line-height: 2;
+  font-weight: 600;
+  cursor: pointer;
+  color: #6f6f6f;
+  margin: 0 auto;
+
+  svg {
+    fill: #6f6f6f;
+    transform: rotate(-90deg);
+  }
+}
+
+.barfilter {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+
+  button {
+    padding: 0.8em 0;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #3d3d3d;
+
+    svg {
+      width: 1.5em;
+      fill: #3d3d3d;
+    }
+
+    h3 {
+      font-size: 1.45em;
+    }
+  }
+}
+
+@media (max-width: 790px) {
+  .optionsfilter {
+    max-width: 600px;
+    padding: max(1em, 2em);
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .optionsfilter {
+    width: 400px;
+  }
+}
+
+@media (max-width: 470px) {
+  .optionsfilter {
+    width: auto;
+  }
+
+  .contentorder {
+    justify-content: center;
+    gap: 2em;
+  }
+
+  .order {
+    font-size: 0.65em;
+  }
+}
