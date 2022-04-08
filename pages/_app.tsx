@@ -6,7 +6,7 @@ import '../Sass/globals.scss';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header';
 import Modal from '../components/Modal/Modal';
-
+// Main
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={ store }>
