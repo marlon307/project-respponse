@@ -41,7 +41,7 @@ function CardEdit() {
       }));
     }
   }, [colorupdate, dispatch, itemEditBag, qauntityupdate, sizeupdate]);
-
+  
   // useEffect(() => {
   //   dispatch(EDIT_BAG_ITEM({
   //     id: 0,
@@ -57,6 +57,7 @@ function CardEdit() {
   //     identifyBag: '',
   //   }));
   // });
+
 
   return (
     <div className={ style.edit }>
