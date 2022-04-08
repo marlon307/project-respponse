@@ -10,7 +10,7 @@ import calcAllValuesArray from 'hooks/useCalcs';
 import type { ReduxUser } from 'types/typesUserRedux';
 import { SmallCard } from '../../Cards';
 import style from './style.module.scss';
-
+// git 
 type PropsMNBag = {
   setMenuDropdown: Function;
 };
