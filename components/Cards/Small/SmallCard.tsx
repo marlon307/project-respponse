@@ -20,7 +20,17 @@ function SmallCard({
   const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
 
-    dispatch(EDIT_BAG_ITEM(objectID));
+    dispatch(EDIT_BAG_ITEM({
+      id: objectID.id,
+      title: objectID.title,
+      type: objectID.type,
+      mainImg: objectID.mainImg,
+      color: objectID.color,
+      colorName: objectID.colorName,
+      size: objectID.size,
+      quantity: objectID.quantity,
+      identifyBag: objectID.identifyBag,
+    }));
     eventModal!();
   }, [dispatch, eventModal, objectID]);
 

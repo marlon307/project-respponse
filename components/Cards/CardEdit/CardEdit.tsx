@@ -7,10 +7,10 @@ import Qtd from '../../Bars/Qtd';
 import LoadingImage from '../../LoadImage';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { mockCards } from '../../../service/mockCards';
+import { EDIT_BAG_ITEM, FINISH_EDIT_BAG_ITEM } from '../../../redux/actions';
 import style from './style.module.scss';
-import { EDIT_BAG_ITEM } from '../../../redux/actions';
 
-function CardEdit() {
+function CardEdit({ inEdit }: any) {
   const { itemEditBag } = useAppSelector(({ bag }) => bag);
   const dispatch = useAppDispatch();
 
@@ -32,15 +32,26 @@ function CardEdit() {
   }, [colorupdate, sizeupdate, itemEditBag.color, itemEditBag.id]);
 
   useEffect(() => {
-    if (itemEditBag.color !== colorupdate.color || sizeupdate !== itemEditBag.size) {
+    const {
+      id, title, mainImg, color, size, type,
+    } = itemEditBag;
+
+    if (color !== colorupdate.color || sizeupdate !== size) {
       dispatch(EDIT_BAG_ITEM({
-        ...itemEditBag,
+        id,
+        title,
+        mainImg,
+        type,
         ...colorupdate,
         size: sizeupdate,
         quantity: qauntityupdate,
       }));
     }
   }, [colorupdate, dispatch, itemEditBag, qauntityupdate, sizeupdate]);
+
+  useEffect(() => () => {
+    dispatch(FINISH_EDIT_BAG_ITEM(itemEditBag));
+  }, []);
 
   return (
     <div className={ style.edit }>
