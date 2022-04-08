@@ -41,23 +41,23 @@ function CardEdit() {
       }));
     }
   }, [colorupdate, dispatch, itemEditBag, qauntityupdate, sizeupdate]);
+  
+  // useEffect(() => {
+  //   dispatch(EDIT_BAG_ITEM({
+  //     id: 0,
+  //     title: '',
+  //     type: '',
+  //     color: '',
+  //     mainImg: {
+  //       src: '',
+  //     },
+  //     colorName: '',
+  //     size: '',
+  //     quantity: 0,
+  //     identifyBag: '',
+  //   }));
+  // });
 
-  useEffect(() => {
-    //
-    dispatch(EDIT_BAG_ITEM({
-      id: 0,
-      title: '',
-      type: '',
-      color: '',
-      mainImg: {
-        src: '',
-      },
-      colorName: '',
-      size: '',
-      quantity: 0,
-      identifyBag: '',
-    }));
-  });
 
   return (
     <div className={ style.edit }>
