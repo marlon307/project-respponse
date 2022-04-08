@@ -1,0 +1,50 @@
+.bag {
+  display: grid;
+  grid-template-areas:
+    'bagitems checkout'
+  ;
+  grid-template-columns: minmax(400px, 800px) 400px;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 6%;
+  gap: 3em;
+}
+
+.list {
+  max-height: 70vh;
+  min-height: 4em;
+
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  ul {
+    padding-top: 3em;
+  }
+}
+
+.empty {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 18px 0;
+  color: #585858;
+}
+
+@media (max-width: 750px) {
+  .bag {
+    grid-template-areas:
+      'bagitems'
+      'checkout'
+    ;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+}

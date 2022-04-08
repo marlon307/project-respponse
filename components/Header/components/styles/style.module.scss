@@ -1,0 +1,131 @@
+@import './bag.scss';
+@import './mnmobile.scss';
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2em;
+}
+
+.usermneu,
+.bag,
+.mobile {
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 1em;
+  margin-top: 1em;
+
+  svg {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+.login {
+  padding: 0.8em 1em;
+  background: #333333;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+
+.set {
+  position: absolute;
+  width: 20px;
+  height: 8px;
+  top: 23px;
+  right: 3.1px;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    left: 50%;
+    border: 1px solid var(--bordercolor);
+    background: var(--maincolor);
+    position: absolute;
+    top: -0.5px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    transform-origin: 0% 0;
+    z-index: 1;
+  }
+}
+
+.dropmenu {
+  position: relative;
+  opacity: 0;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+
+  ul {
+    position: absolute;
+    width: 230px;
+    right: -20px;
+    border-radius: 12px;
+    top: 30px;
+    border: 1px solid var(--bordercolor);
+    background: var(--maincolor);
+  }
+
+  li {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    padding: 22px;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+      color: #333333;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.usermneu {
+  position: relative;
+  padding-bottom: 1em;
+  margin-top: 1em;
+}
+
+.usermneu:hover .dropmenu {
+  opacity: 1;
+  transform: translateY(-1rem);
+  pointer-events: all;
+
+  ul {
+    opacity: 1;
+    transition: 0.3s;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav {
+    gap: 1.4em;
+  }
+
+  .usermneu,
+  .bag {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .mobile {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+}
