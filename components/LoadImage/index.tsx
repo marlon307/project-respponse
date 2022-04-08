@@ -18,7 +18,7 @@ function LoadingImage({
 
   const finishLoading = useCallback(() => setIsLoading(true), []);
 
-  useEffect(() => () => finishLoading(), []);
+  useEffect(() => () => finishLoading(), [finishLoading]);
 
   return (
     <div className={ style.contentimg }>
@@ -44,5 +44,11 @@ function LoadingImage({
     </div>
   );
 }
+
+LoadingImage.defaultProps = {
+  width: undefined,
+  height: undefined,
+  quality: undefined,
+};
 
 export default LoadingImage;

@@ -10,11 +10,7 @@ import { mockCards } from '../../../service/mockCards';
 import style from './style.module.scss';
 import { EDIT_BAG_ITEM } from '../../../redux/actions';
 
-type PropsCardEdit = {
-  inEdition: boolean;
-};
-
-function CardEdit({ inEdition }: PropsCardEdit) {
+function CardEdit() {
   const { itemEditBag } = useAppSelector(({ bag }) => bag);
   const dispatch = useAppDispatch();
 
@@ -46,23 +42,23 @@ function CardEdit({ inEdition }: PropsCardEdit) {
     }
   }, [colorupdate, dispatch, itemEditBag, qauntityupdate, sizeupdate]);
 
-  useEffect(() => {
-    if (!inEdition) {
-      dispatch(EDIT_BAG_ITEM({
-        id: 0,
-        title: '',
-        type: '',
-        color: '',
-        mainImg: {
-          src: '',
-        },
-        colorName: '',
-        size: '',
-        quantity: 0,
-        identifyBag: '',
-      }));
-    }
-  }, [dispatch, inEdition]);
+  // useEffect(() => {
+  //   if (!inEdition) {
+  //     dispatch(EDIT_BAG_ITEM({
+  //       id: 0,
+  //       title: '',
+  //       type: '',
+  //       color: '',
+  //       mainImg: {
+  //         src: '',
+  //       },
+  //       colorName: '',
+  //       size: '',
+  //       quantity: 0,
+  //       identifyBag: '',
+  //     }));
+  //   }
+  // }, [dispatch, inEdition]);
 
   return (
     <div className={ style.edit }>

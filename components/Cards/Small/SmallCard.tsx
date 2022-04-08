@@ -19,6 +19,7 @@ function SmallCard({
 
   const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
+
     dispatch(EDIT_BAG_ITEM(objectID));
     eventModal!();
   }, [dispatch, eventModal, objectID]);

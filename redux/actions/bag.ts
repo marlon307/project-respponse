@@ -113,9 +113,17 @@ const ACTION_EDIT_BAG_ITEM = (state: StateBagType, { payload }: PayloadAction<Ty
   state.itemEditBag = payload;
 };
 
+const ACTION_FINISH_EDIT_BAG_ITEM = (
+  state: StateBagType,
+  { payload }: PayloadAction<TypeAddBagInfos>,
+) => {
+  state.itemEditBag = payload;
+};
+
 export {
   stateBag,
   ACTION_ADD_BAG_ITEMS,
   ACTION_RM_BAG_ITEM,
   ACTION_EDIT_BAG_ITEM,
+  ACTION_FINISH_EDIT_BAG_ITEM,
 };
