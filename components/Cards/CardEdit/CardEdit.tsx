@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import type { ImageProps } from 'next/image';
 import { checkColorAvailable, checkSizeAvailable } from '../../../hooks/useCheckAvailable';
 import BarColors from '../../Bars/BarColors';
@@ -42,21 +42,25 @@ function CardEdit() {
     }
   }, [colorupdate, dispatch, itemEditBag, qauntityupdate, sizeupdate]);
 
-  // useEffect(() => {
-  //   dispatch(EDIT_BAG_ITEM({
-  //     id: 0,
-  //     title: '',
-  //     type: '',
-  //     color: '',
-  //     mainImg: {
-  //       src: '',
-  //     },
-  //     colorName: '',
-  //     size: '',
-  //     quantity: 0,
-  //     identifyBag: '',
-  //   }));
-  // });
+  useEffect(() => {
+    console.log('ok');
+
+    return () => {
+      dispatch(EDIT_BAG_ITEM({
+        id: 0,
+        title: '',
+        type: '',
+        color: '',
+        mainImg: {
+          src: '',
+        },
+        colorName: '',
+        size: '',
+        quantity: 0,
+        identifyBag: '',
+      }));
+    };
+  }, []);
 
   return (
     <div className={ style.edit }>
@@ -97,4 +101,4 @@ function CardEdit() {
   );
 }
 
-export default CardEdit;
+export default memo(CardEdit);
