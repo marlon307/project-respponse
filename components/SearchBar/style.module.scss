@@ -5,9 +5,10 @@
   justify-content: center;
   cursor: pointer;
 
-  a {
+  button {
     width: 28px;
     height: 28px;
+    background: transparent;
   }
 
   svg {
@@ -27,6 +28,7 @@
   svg {
     width: 28px;
     cursor: pointer;
+    flex: none;
   }
 
   input {
@@ -50,14 +52,14 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 700px) {
   .bar {
-    height: 100px;
+    width: 100%;
     border-bottom: 1px solid var(--bodercolor);
-    margin: 0 6%;
-  }
+    margin: 0 auto;
 
-  .close {
-    display: none;
+    input {
+      padding: 0 12px;
+    }
   }
 }

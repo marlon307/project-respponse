@@ -1,5 +1,6 @@
 import React from 'react';
-import Svg from 'assets/Svg';
+import Svg from '../../../assets/Svg';
+
 import style from './style.module.scss';
 import type { TDetail } from './types';
 

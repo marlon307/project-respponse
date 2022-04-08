@@ -1,52 +1,30 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import cx from 'classnames';
-import useOutsideClick from 'hooks/useOutSide';
-import Svg from 'assets/Svg';
-import { actionLogOut } from 'redux/redux-actions';
-import type { ReduxUser } from 'types/typesUserRedux';
-import Loading from '../../Loading';
+import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
+import { LOGIN_USER } from '../../../redux/actions';
+import Svg from '../../../assets/Svg';
 import ContentModal from '../../Modal/ContentModal';
-import style from './style.module.scss';
+import CustomLink from '../../CustomLink';
+import style from './styles/style.module.scss';
 
 const LoginRegister = dynamic(
-  () => import('pages/login-register'),
-  { loading: () => <Loading /> },
+  () => import('../../../pages/login-register'),
+  { loading: () => <div>sdsd</div> },
 );
 
-type PropsMNUser = {
-  setMenuDropdown: Function;
-};
-
-function MenuUser({ setMenuDropdown }: PropsMNUser) {
-  const dipatch = useDispatch();
-  const { logged } = useSelector(({ user }: ReduxUser) => user);
-
-  const [outsideClick, setTutsideClicl] = useState(false);
-  const [openLogin, setOpenLogin] = useState(false);
+function MenuUser() {
+  const dispatch = useAppDispatch();
+  const { logged } = useAppSelector(({ user }) => user);
   const ref = useRef(null);
-
-  useOutsideClick(ref, () => {
-    if (outsideClick) {
-      setTutsideClicl(false);
-      setMenuDropdown(null);
-    }
-  });
-
-  function clickUser(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-    event.preventDefault();
-    setTutsideClicl(!outsideClick);
-    setMenuDropdown('mnuser');
-  }
+  const [openLogin, setOpenLogin] = useState(false);
 
   function openModalLogin(event: { preventDefault: () => void; }) {
     event.preventDefault();
     if (!logged) {
       setOpenLogin(true);
     } else {
-      dipatch(actionLogOut());
+      dispatch(LOGIN_USER(false));
     }
   }
   // Fechar modal apos login
@@ -57,71 +35,73 @@ function MenuUser({ setMenuDropdown }: PropsMNUser) {
   }, [logged]);
 
   return (
-    <div className={ style.menuUser }>
-      <a href="/account" aria-label="Usuário" onClick={ (e) => clickUser(e) }>
-        <Svg icoName="user" />
-      </a>
-      <div
-        ref={ ref }
-        className={
-          cx(style.dropmenu, {
-            [style.drop]: outsideClick,
-          })
-        }
-      >
-        <span className={ style.set } />
-        <ul>
-          <li>
-            <Link href="/help">
-              <a aria-label="Ajuda">
-                <Svg icoName="question" />
-                Ajuda
-              </a>
-            </Link>
-          </li>
-          { logged && (
-            <li>
-              <Link href="/account">
-                <a aria-label="Conta">
-                  <Svg icoName="setting" />
-                  Conta
-                </a>
-              </Link>
-            </li>
-          ) }
-          { logged && (
-            <li>
-              <Link href="/favorite">
-                <a aria-label="Favoritos">
-                  <Svg icoName="healt" />
-                  Favoritos
-                </a>
-              </Link>
-            </li>
-          ) }
-          <li>
-            { logged ? (
-              <a
-                href="/login-register"
-                aria-label="Logout"
-                onClick={ openModalLogin }
-              >
-                <Svg icoName="singout" />
-                Logout
-              </a>
-            ) : (
-              <a
-                href="/login-register"
-                aria-label="Login"
-                onClick={ openModalLogin }
-              >
-                <Svg icoName="singin" />
-                Login
-              </a>
-            ) }
-          </li>
-        </ul>
-      </div>
+    <div className={ style.usermneu }>
+      { logged ? (
+        <>
+          <Link href="/account" passHref>
+            <CustomLink
+              ariaLabel="Conta"
+              className={ style.mnuser }
+            >
+              <Svg icoName="user" />
+            </CustomLink>
+          </Link>
+          <div
+            ref={ ref }
+            className={ style.dropmenu }
+          >
+            <span className={ style.set } />
+            <ul>
+              <li>
+                <Link href="/help">
+                  <a aria-label="Ajuda">
+                    <Svg icoName="question" />
+                    Ajuda
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/account">
+                  <a aria-label="Conta">
+                    <Svg icoName="setting" />
+                    Conta
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/favorite">
+                  <a aria-label="Favoritos">
+                    <Svg icoName="healt" />
+                    Favoritos
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/login-register" passHref>
+                  <CustomLink
+                    ariaLabel="Logout"
+                    onClick={ openModalLogin! }
+                  >
+                    <Svg icoName="singout" />
+                    Logout
+                  </CustomLink>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </>
+      ) : (
+        <Link href="/login-register" passHref>
+          <CustomLink
+            ariaLabel="Entrar"
+            className={ style.login }
+            onClick={ openModalLogin! }
+          >
+            Entrar
+          </CustomLink>
+        </Link>
+      ) }
+
       <ContentModal isOpen={ openLogin } openModal={ setOpenLogin }>
         { openLogin && <LoginRegister /> }
       </ContentModal>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Svg from 'assets/Svg';
+import Svg from '../../assets/Svg';
 import style from './style.module.scss';
 
 type Props = {
@@ -16,15 +16,15 @@ function SearchBar({ setSearchopen, searchopen }: Props) {
   return (
     !searchopen ? (
       <div className={ style.searchBar }>
-        <a
-          href="/"
+        <button
+          type="button"
           onClick={ openSearchBar }
           aria-label="Pesquisar Produtos"
         >
           <Svg icoName="search" />
-        </a>
+        </button>
       </div>
-    ) : <div />
+    ) : null
   );
 }
 

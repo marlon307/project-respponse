@@ -15,7 +15,7 @@ type PBarColors = {
 function BarColors({ array, execFunction }: PBarColors) {
   const handleClick = useCallback((object: Object) => {
     execFunction(object);
-  }, []);
+  }, [execFunction]);
 
   return (
     <div className={ style.barcolor } title="Cores">

@@ -2,7 +2,7 @@ import React from 'react';
 
 type Props = {
   icoName: string
-}
+};
 
 function Svg({ icoName }: Props) {
   switch (icoName) {

@@ -1,32 +1,22 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
-import useWindowSize from 'hooks/useWindowSize';
-import useScroll from 'hooks/useScroll';
-import Svg from 'assets/Svg';
-import Bar from '../SearchBar/Bar';
-import MenuMobile from './components/MenuMobile';
-import MenuDescktop from './components/MenuDescktop';
+import Svg from '../../assets/Svg';
 import style from './style.module.scss';
+import MenuDescktop from './components/MenuDescktop';
+import Bar from '../SearchBar/Bar';
 
 function Header() {
-  const [width] = useWindowSize();
-  const scrollY = useScroll();
-
   const [searchopen, setSearchopen] = useState(false);
-  const [menuDropdown, setMenuDropdown] = useState(null);
 
   return (
-    <header className={ cx(style.header, {
-      [style.active]:
-        scrollY > 60
-        || searchopen
-        || menuDropdown,
-    }) }
-    >
+    <header className={ style.header }>
       <div className={ style.container }>
         <Link href="/">
-          <a aria-label="Respponse">
+          <a
+            aria-label="Respponse"
+            className={ style.logo }
+          >
             <Svg icoName="logo" />
           </a>
         </Link>
@@ -35,19 +25,16 @@ function Header() {
         [style.drop]: searchopen,
       }) }
       >
-        { width > 750 && (
-          <Bar
-            setSearchopen={ setSearchopen }
-            searchopen={ searchopen }
-          />
-        ) }
+        <Bar
+          setSearchopen={ setSearchopen }
+        />
       </div>
-      <MenuDescktop
-        setSearchopen={ setSearchopen }
-        searchopen={ searchopen }
-        setMenuDropdown={ setMenuDropdown }
-      />
-      <MenuMobile />
+      <div className={ style.container }>
+        <MenuDescktop
+          setSearchopen={ setSearchopen }
+          searchopen={ searchopen }
+        />
+      </div>
     </header>
   );
 }

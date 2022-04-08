@@ -1,6 +1,7 @@
-import Svg from 'assets/Svg';
+import React from 'react';
 import cx from 'classnames';
 import Link from 'next/link';
+import Svg from '../../assets/Svg';
 import style from './style.module.scss';
 
 type PBtnR = {

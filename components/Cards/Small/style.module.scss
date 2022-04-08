@@ -30,6 +30,31 @@
   }
 }
 
+.delete {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+
+
+}
+
+.edit,
+.delete {
+  background: transparent;
+  cursor: pointer;
+
+  svg {
+    width: 22px !important;
+    height: 22px !important;
+    fill: #c2c2c2;
+
+    &:hover {
+      fill: var(--hovericon);
+    }
+  }
+}
+
 .desc {
   width: 100%;
   margin-left: 150px;

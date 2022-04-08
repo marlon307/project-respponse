@@ -1,6 +1,5 @@
 import React, { useCallback, memo } from 'react';
-import { useDispatch } from 'react-redux';
-import { addFilter } from 'redux/redux-actions';
+import { useAppDispatch } from '../../redux/hooks';
 import style from './style.module.scss';
 
 export type PFColor = {
@@ -9,10 +8,10 @@ export type PFColor = {
 };
 
 function FColor({ cName, color }: PFColor) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleClick = useCallback(() => {
-    dispatch(addFilter({ cName, color }));
+    // dispatch(addFilter({ cName, color }));
   }, []);
 
   // useEffect(() => handleClick(), []);

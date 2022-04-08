@@ -1,8 +1,9 @@
 import React from 'react';
-import { BtnRedirect } from 'components/Buttons';
-import style from './style.module.scss';
+import { BtnRedirect } from '../components/Buttons';
 
-function notFound500() {
+import style from '../Sass/style.module.scss';
+
+function NotFound500() {
   return (
     <div className={ style.notfound }>
       <h1>500</h1>
@@ -15,4 +16,4 @@ function notFound500() {
   );
 }
 
-export default notFound500;
+export default NotFound500;

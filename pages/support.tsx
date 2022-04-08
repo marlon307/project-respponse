@@ -1,6 +1,6 @@
 import React from 'react';
 
-function support() {
+function Support() {
   return (
     <div>
       Suporte
@@ -8,4 +8,4 @@ function support() {
   );
 }
 
-export default support;
+export default Support;

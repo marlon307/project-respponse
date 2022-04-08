@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
-import Svg from 'assets/Svg';
+import Svg from '../../../assets/Svg';
+
 import style from './style.module.scss';
 
 export type PCardAdderess = {
@@ -61,5 +62,9 @@ function CardAdderess({
     </div>
   );
 }
+
+CardAdderess.defaultProps = {
+  removable: false,
+};
 
 export default memo(CardAdderess);

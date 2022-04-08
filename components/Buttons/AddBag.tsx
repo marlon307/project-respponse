@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
-import Svg from 'assets/Svg';
-import { addBag } from 'redux/redux-actions';
 import style from './style.module.scss';
-import type { PBtnAddBag, TObjectUserBag } from './types';
+import type { PBtnAddBag } from './types';
+import Svg from '../../assets/Svg';
+import { useAppDispatch } from '../../redux/hooks';
+import { ADD_BAG_ITEMS } from '../../redux/actions';
 
 function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
-  const { bagItems } = useSelector(({ user }: TObjectUserBag) => user);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [buttonActive, setbutonActive] = useState(false);
   const [activeMsg, setActiveMsg] = useState(false);
 
@@ -18,42 +17,13 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
       return;
     }
 
-    const {
-      id, title, type,
-      mainImg, price, oldPrice,
-      discount,
-    } = productId;
-
-    const index = bagItems.findIndex(
-      (object) => object.id === id
-        && object.color === colorSelected.color
-        && object.size === sizeSelected,
-    );
-
-    let newArray = [];
-
-    if (index >= 0) {
-      bagItems[index].quantity += 1;
-
-      newArray = [...bagItems];
-    } else {
-      newArray = [
-        ...bagItems, {
-          id,
-          title,
-          type,
-          mainImg,
-          ...colorSelected,
-          size: sizeSelected,
-          price,
-          discount,
-          oldPrice,
-          quantity: 1,
-          identifyBag: id + colorSelected.color + sizeSelected,
-        }];
-    }
-
-    dispatch(addBag(newArray));
+    dispatch(ADD_BAG_ITEMS({
+      ...productId,
+      quantity: 1,
+      ...colorSelected,
+      size: sizeSelected,
+      identifyBag: productId.id + colorSelected.color + sizeSelected,
+    }));
   }
 
   useEffect(() => {
@@ -63,7 +33,7 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
     if (colorSelected.color && sizeSelected && activeMsg) {
       setActiveMsg(false);
     }
-  }, [colorSelected.color, sizeSelected]);
+  }, [activeMsg, colorSelected.color, sizeSelected]);
 
   return (
     <div className="contBtn">

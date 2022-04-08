@@ -1,10 +1,10 @@
-import Svg from 'assets/Svg';
-import useWindowSize from 'hooks/useWindowSize';
+import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import ContentModal from '../Modal/ContentModal';
 import style from './style.module.scss';
+import useWindowSize from '../../hooks/useWindowSize';
+import Svg from '../../assets/Svg';
 
 const Filter = dynamic(() => import('./Filter'), { loading: () => <Loading /> });
 

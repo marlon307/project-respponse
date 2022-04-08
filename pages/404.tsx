@@ -1,7 +1,8 @@
-import { BtnRedirect } from 'components/Buttons';
-import style from './style.module.scss';
+import React from 'react';
+import { BtnRedirect } from '../components/Buttons';
+import style from '../Sass/style.module.scss';
 
-function notFound404() {
+function NotFound404() {
   return (
     <div className={ style.notfound }>
       <h1>404</h1>
@@ -14,4 +15,4 @@ function notFound404() {
   );
 }
 
-export default notFound404;
+export default NotFound404;

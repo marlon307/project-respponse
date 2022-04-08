@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { SmallCard } from 'components/Cards';
-import Svg from 'assets/Svg';
-import mockBag from 'service/mockBag';
-import type { ReduxUser } from 'types/typesUserRedux';
-import style from './style.module.scss';
+import { useAppSelector } from '../redux/hooks';
+import Svg from '../assets/Svg';
+import { SmallCard } from '../components/Cards';
+import style from '../Sass/style.module.scss';
+import mockBag from '../service/mockBag';
 
-function favorite() {
-  const { logged } = useSelector(({ user }: ReduxUser) => user);
+function Favorite() {
+  const { logged } = useAppSelector(({ user }) => user);
   const router = useRouter();
 
   useEffect(() => {
     if (!logged) {
       router.push('/');
     }
-  }, [logged]);
+  }, [logged, router]);
 
   return (
     <section className={ style.favorites }>
@@ -37,4 +36,4 @@ function favorite() {
   );
 }
 
-export default favorite;
+export default Favorite;

@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import BarColors from 'components/Bars/BarColors';
-import BarSize from 'components/Bars/BarSize';
-import AddBag from 'components/Buttons/AddBag';
-import { DetailsCard, Spec } from 'components/Cards';
-import LoadingImage from 'components/LoadImage';
-import { mockCards } from 'service/mockCards';
-// import { BtnPrevNext } from 'components/Buttons';
-import { checkColorAvailable, checkSizeAvailable } from 'hooks/useCheckAvailable';
-import type { TypeProduct } from 'types/typeProduct';
+import LoadingImage from '../../components/LoadImage';
+import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
+import { DetailsCard, Spec } from '../../components/Cards';
 import style from './style.module.scss';
+import { mockCards } from '../../service/mockCards';
+import AddBag from '../../components/Buttons/AddBag';
+import BarSize from '../../components/Bars/BarSize';
+import BarColors from '../../components/Bars/BarColors';
+import { TypeProduct } from './product';
 
-function productId({ pgProps }: TypeProduct) {
+function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
@@ -27,7 +26,7 @@ function productId({ pgProps }: TypeProduct) {
   useEffect(() => {
     checkSizeAvailable(options, colorChecked.color);
     checkColorAvailable(options, sizeChecked);
-  }, [colorChecked, sizeChecked]);
+  }, [colorChecked, options, sizeChecked]);
 
   return (
     <div className={ style.contprod }>
@@ -129,7 +128,7 @@ function productId({ pgProps }: TypeProduct) {
   );
 }
 
-export default productId;
+export default ProductId;
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const index = Number(params.id);

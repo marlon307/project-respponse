@@ -1,5 +1,5 @@
 .checkout {
-  width: 35%;
+  grid-area: checkout;
 
   h3 {
     display: flex;
@@ -18,11 +18,12 @@
     margin: 16px 0;
   }
 
-  a:nth-child(3) {
+  button:nth-child(3) {
     font-size: 0.9em;
     position: absolute;
     right: 0;
     bottom: -1.4em;
+    background: transparent;
   }
 }
 
@@ -48,6 +49,9 @@
   align-items: center;
   position: relative;
   margin: 18px 0;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
 
   span {
     position: absolute;
@@ -75,10 +79,9 @@
 
 @media (max-width: 750px) {
   .checkout {
-    margin: 0 1em 0.7em;
     width: 100%;
+    margin-bottom: 2em;
   }
-
 }
 
 @media (max-width: 415px) {

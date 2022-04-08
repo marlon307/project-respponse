@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
-import Svg from 'assets/Svg';
+import Svg from '../../../assets/Svg';
+
 import style from './style.module.scss';
 
 export interface PCardPay {
@@ -36,5 +37,9 @@ function CardPay({
     </div>
   );
 }
+
+CardPay.defaultProps = {
+  removable: false,
+};
 
 export default memo(CardPay);

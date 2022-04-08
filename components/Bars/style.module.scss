@@ -99,6 +99,7 @@
 //-------------------buy bar--------------------
 .buybar {
   position: sticky;
+  grid-area: reserved;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -163,7 +164,6 @@
 
 @media (max-width: 750px) {
   .buybar {
-    max-height: 40vh;
     overflow: hidden;
     height: auto;
 

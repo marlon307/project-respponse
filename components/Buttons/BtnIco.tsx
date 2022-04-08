@@ -1,7 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
-import Svg from 'assets/Svg';
+
 import style from './style.module.scss';
+import Svg from '../../assets/Svg';
 
 type PBtnIco = {
   textBtn: string;

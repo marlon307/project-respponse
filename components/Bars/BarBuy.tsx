@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import { useSelector } from 'react-redux';
-import calcAllValuesArray from 'hooks/useCalcs';
-import type { ReduxUser } from 'types/typesUserRedux';
+import calcAllValuesArray from '../../hooks/useCalcs';
 import { BuyFinishBtn } from '../Buttons';
 import style from './style.module.scss';
+import { useAppSelector } from '../../redux/hooks';
 
 function BarBuy() {
-  const { bagItems, checkout } = useSelector(({ user }: ReduxUser) => user);
+  const { bagItems, checkout } = useAppSelector(({ bag }) => bag);
   const { formatPay, shipping, cupomAplicate } = checkout;
   const [openInfo, setOpenInfo] = useState(false);
   const [valueBag, setValueBag] = useState(0);
@@ -69,7 +68,7 @@ function BarBuy() {
           <BuyFinishBtn />
         </div>
       </div>
-      <a href="/" aria-label="Mais Informações" onClick={ openBarMenu }> </a>
+      <a href="/" aria-label="Mais Informações" onClick={ openBarMenu } />
     </section>
   );
 }

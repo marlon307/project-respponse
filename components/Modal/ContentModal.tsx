@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
-import useOutsideClick from 'hooks/useOutSide';
+import { createPortal } from 'react-dom';
+import useOutsideClick from '../../hooks/useOutSide';
+// import useOutsideClick from 'hooks/useOutSide';
 import style from './style.module.scss';
 
 type PModal = {
@@ -10,28 +11,28 @@ type PModal = {
 };
 
 function ContentModal({ children, isOpen, openModal }: PModal) {
-  if (typeof window === 'undefined') return null;
+  const modalRef = useRef<HTMLDivElement>(null);
+  const getModal = children && isOpen && document.getElementById('modal');
 
-  const getModal = document.getElementById('modal')!;
-  const modalRef = useRef(null);
-
-  useOutsideClick(modalRef, () => {
-    if (isOpen) openModal(false);
-  });
+  useOutsideClick(modalRef, () => isOpen && openModal(false));
 
   useEffect(() => {
     if (isOpen) {
       getModal.classList.add(style.open);
       document.body.classList.add('hidden');
-    } else {
-      getModal.classList.remove(style.open);
-      document.body.removeAttribute('class');
     }
+    // else if (children) {
+    //   getModal.classList.remove(style.open);
+    //   document.body.removeAttribute('class');
+    // }
+
     return () => {
-      getModal.classList.remove(style.open);
-      document.body.removeAttribute('class');
+      if (children && isOpen) {
+        getModal.classList.remove(style.open);
+        document.body.removeAttribute('class');
+      }
     };
-  }, [children]);
+  }, [children, getModal.classList, isOpen]);
 
   function contetModal() {
     return (
@@ -46,11 +47,10 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
     );
   }
 
-  return getModal
-    ? ReactDOM.createPortal(
-      contetModal(),
-      getModal,
-    ) : null;
+  return children && isOpen && createPortal(
+    contetModal(),
+    getModal,
+  );
 }
 
 export default ContentModal;

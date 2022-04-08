@@ -1,22 +1,21 @@
-import Svg from 'assets/Svg';
-import Checkout from 'components/Bag';
-import BarBuy from 'components/Bars/BarBuy';
-import { SmallCard } from 'components/Cards';
-import Loading from 'components/Loading';
-import ContentModal from 'components/Modal/ContentModal';
+import React, { useCallback, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { useCallback, useState } from 'react';
-import { useSelector } from 'react-redux';
-import type { ReduxUser } from 'types/typesUserRedux';
-import style from './style.module.scss';
+import Svg from '../assets/Svg';
+import BarBuy from '../components/Bars/BarBuy';
+import { SmallCard } from '../components/Cards';
+import Loading from '../components/Loading';
+import ContentModal from '../components/Modal/ContentModal';
+import Checkout from '../components/Bag';
+import { useAppSelector } from '../redux/hooks';
+import style from '../Sass/style.module.scss';
 
-const CardEdit = dynamic(import('components/Cards/CardEdit/CardEdit'), { loading: () => <Loading /> });
-const RenderAdderess = dynamic(import('components/Bag/RenderAdderess'), { loading: () => <Loading /> });
-const Addaddress = dynamic(import('components/Add/Address'), { loading: () => <Loading /> });
-const Addacard = dynamic(import('components/Add/Addcard'), { loading: () => <Loading /> });
+const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), { loading: () => <Loading /> });
+const RenderAdderess = dynamic(import('../components/Bag/RenderAdderess'), { loading: () => <Loading /> });
+const Addaddress = dynamic(import('../components/Add/Address'), { loading: () => <Loading /> });
+const Addacard = dynamic(import('../components/Add/Addcard'), { loading: () => <Loading /> });
 
-function bag() {
-  const { bagItems } = useSelector(({ user }: ReduxUser) => user);
+function Bag() {
+  const { bagItems } = useAppSelector(({ bag }) => bag);
   const [openModal, setOpenModal] = useState<String>('');
 
   const openModalEdit = useCallback(() => {
@@ -32,7 +31,7 @@ function bag() {
             Sacola
           </h1>
           <ul>
-            { bagItems.map((object) => (
+            { bagItems.length ? bagItems.map((object) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
@@ -42,7 +41,8 @@ function bag() {
                   identifyBag={ object.id + object.color + object.size }
                 />
               </li>
-            )) }
+            ))
+              : <li className={ style.empty }>Sacola Vazia</li> }
           </ul>
         </section>
         <Checkout setOpenModal={ setOpenModal } />
@@ -66,4 +66,4 @@ function bag() {
   );
 }
 
-export default bag;
+export default Bag;

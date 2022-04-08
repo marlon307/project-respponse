@@ -1,11 +1,9 @@
 import React, { useState, useCallback, memo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Svg from 'assets/Svg';
-import { mockShipping, mockPayment } from 'service/mockCheckout';
-import { actionSlecteShipping, actionSlectePayment } from 'redux/redux-actions';
-import type { ReduxUser } from 'types/typesUserRedux';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { mockShipping, mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
+import Svg from '../../assets/Svg';
 import style from './style.module.scss';
 
 type PropsCheckout = {
@@ -13,15 +11,15 @@ type PropsCheckout = {
 };
 
 function Checkout({ setOpenModal }: PropsCheckout) {
-  const { adderessSelected, shipping, formatPay } = useSelector(
-    ({ user }: ReduxUser) => user.checkout,
+  const { adderessSelected, shipping, formatPay } = useAppSelector(
+    ({ bag }) => bag.checkout,
   );
   const {
     name, road, district, number, uf, city, zipcode,
   } = adderessSelected;
   const { shippingCompany } = shipping;
 
-  const dipatch = useDispatch();
+  // const dipatch = useAppDispatch();
 
   const [cupomText, setCupomText] = useState('');
 
@@ -30,25 +28,25 @@ function Checkout({ setOpenModal }: PropsCheckout) {
   }, []);
 
   const handleSipping = useCallback((idInput, value) => {
-    dipatch(actionSlecteShipping({
-      shippingCompany: idInput,
-      valueShipping: value,
-    }));
+    // dipatch(actionSlecteShipping({
+    //   shippingCompany: idInput,
+    //   valueShipping: value,
+    // }));
   }, []);
 
   const handlePayment = useCallback((idName: string) => {
-    dipatch(actionSlectePayment({
-      formatPayment: idName,
-      division: '1x',
-    }));
+    // dipatch(actionSlectePayment({
+    //   formatPayment: idName,
+    //   division: '1x',
+    // }));
   }, []);
 
   return (
     <section className={ style.checkout }>
       <h2>Checkout</h2>
       <div className={ style.contcheckout }>
-        <a
-          href="/"
+        <button
+          type="button"
           className={ style.select }
           onClick={ (event) => {
             event.preventDefault();
@@ -60,7 +58,7 @@ function Checkout({ setOpenModal }: PropsCheckout) {
             Endereço de entrega
           </h3>
           <span />
-        </a>
+        </button>
         <CardAdderess
           name={ name }
           road={ road }
@@ -70,8 +68,8 @@ function Checkout({ setOpenModal }: PropsCheckout) {
           zipcode={ zipcode }
           district={ district }
         />
-        <a
-          href="/"
+        <button
+          type="button"
           className="link"
           onClick={ (event) => {
             event.preventDefault();
@@ -79,7 +77,7 @@ function Checkout({ setOpenModal }: PropsCheckout) {
           } }
         >
           Adicionar endereço
-        </a>
+        </button>
       </div>
       <div className={ style.contcheckout }>
         <div className={ style.select }>
@@ -124,8 +122,8 @@ function Checkout({ setOpenModal }: PropsCheckout) {
             />
           )) }
         </div>
-        <a
-          href="/"
+        <button
+          type="button"
           className="link"
           onClick={ (event) => {
             event.preventDefault();
@@ -133,7 +131,7 @@ function Checkout({ setOpenModal }: PropsCheckout) {
           } }
         >
           Adicionar Cartão
-        </a>
+        </button>
       </div>
       <div className={ style.contcheckout }>
         <div className={ style.select }>

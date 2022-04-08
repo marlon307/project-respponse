@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import mockAdderes from 'service/mockAdderes';
-import { actionSlecteAdderess } from 'redux/redux-actions';
+import mockAdderes from '../../service/mockAdderes';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 
@@ -9,7 +8,7 @@ function RenderAdderess() {
   const dispatch = useDispatch();
 
   function handleClick(adderess: Object) {
-    dispatch(actionSlecteAdderess(adderess));
+    // dispatch(actionSlecteAdderess(adderess));
   }
   // id, name, road, district, number, uf, city, zipcode,
 

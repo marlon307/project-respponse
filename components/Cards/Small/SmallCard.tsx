@@ -1,16 +1,17 @@
 import React, { useCallback, memo } from 'react';
-import { useDispatch } from 'react-redux';
 import Link from 'next/link';
-import Svg from 'assets/Svg';
-import { removeBag, getInfoBagEdit } from 'redux/redux-actions';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
+import { useAppDispatch } from '../../../redux/hooks';
 import type { PSmallCard } from './type';
+import Svg from '../../../assets/Svg';
+import { EDIT_BAG_ITEM, RM_BAG_ITEM } from '../../../redux/actions';
 
 function SmallCard({
   objectID, removable, editable, eventModal, identifyBag,
 }: PSmallCard) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
   const {
     id, title, type, mainImg, price, colorName, color,
     size, quantity, discount, oldPrice,
@@ -18,13 +19,14 @@ function SmallCard({
 
   const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    dispatch(getInfoBagEdit(objectID));
+
+    dispatch(EDIT_BAG_ITEM(objectID));
     eventModal!();
-  }, [objectID]);
+  }, [dispatch, eventModal, objectID]);
 
   const handleClickDelete = useCallback(() => {
-    dispatch(removeBag(identifyBag!));
-  }, [identifyBag]);
+    dispatch(RM_BAG_ITEM(identifyBag));
+  }, [dispatch, identifyBag]);
 
   return (
     <div className={ style.smallcard }>
@@ -54,14 +56,15 @@ function SmallCard({
               x
             </span>
             { editable && (
-              <a
-                href="/"
+              <button
+                className={ style.edit }
+                type="button"
                 aria-label="Editar cor, tamanho e quantidade."
                 title="Editar cor, tamanho e quantidade."
                 onClick={ handleClickEdit }
               >
                 <Svg icoName="edit" />
-              </a>
+              </button>
             ) }
           </div>
           <div className={ style.price }>
@@ -90,7 +93,7 @@ function SmallCard({
       { removable && (
         <button
           type="button"
-          className="action"
+          className={ style.delete }
           title="Excluir"
           onClick={ handleClickDelete }
         >

@@ -1,16 +1,13 @@
 import React, { useRef } from 'react';
-import useOutsideClick from 'hooks/useOutSide';
-import Svg from 'assets/Svg';
 import style from './style.module.scss';
+import Svg from '../../assets/Svg';
 
 export type IProps = {
   setSearchopen?: Function;
-  searchopen?: boolean;
 };
 
-function Bar({ setSearchopen, searchopen }: IProps) {
+function Bar({ setSearchopen }: IProps) {
   const ref = useRef(null);
-  useOutsideClick(ref, () => searchopen && setSearchopen!(false));
 
   return (
     <div ref={ ref } className={ style.bar }>
@@ -33,5 +30,9 @@ function Bar({ setSearchopen, searchopen }: IProps) {
     </div>
   );
 }
+
+Bar.defaultProps = {
+  setSearchopen: undefined,
+};
 
 export default Bar;

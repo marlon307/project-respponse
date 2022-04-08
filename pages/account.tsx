@@ -1,26 +1,25 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import cx from 'classnames';
-import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import Svg from 'assets/Svg';
-import Loading from 'components/Loading';
-import type { ReduxUser } from 'types/typesUserRedux';
-import ContentModal from 'components/Modal/ContentModal';
-import BtnAdd from 'components/Buttons/BtnAdd';
+import { useAppSelector } from '../redux/hooks';
+import Svg from '../assets/Svg';
+import Loading from '../components/Loading';
+import ContentModal from '../components/Modal/ContentModal';
+import BtnAdd from '../components/Buttons/BtnAdd';
 import Help from './help';
-import style from './style.module.scss';
+import style from '../Sass/style.module.scss';
 
-const Usercfg = dynamic(() => import('components/UserCfg/Index'), { loading: () => <Loading /> });
-const Order = dynamic(() => import('components/Order/Orders'), { loading: () => <Loading /> });
-const OrderId = dynamic(() => import('components/Order/OrderId'), { loading: () => <Loading /> });
-const Cards = dynamic(() => import('components/Cards/Cards'), { loading: () => <Loading /> });
-const Address = dynamic(() => import('components/Cards/Address'), { loading: () => <Loading /> });
-const AddCard = dynamic(() => import('components/Add/Addcard'), { loading: () => <Loading /> });
-const Addaderess = dynamic(() => import('components/Add/Address'), { loading: () => <Loading /> });
+const Usercfg = dynamic(() => import('../components/UserCfg/Index'), { loading: () => <Loading /> });
+const Order = dynamic(() => import('../components/Order/Orders'), { loading: () => <Loading /> });
+const OrderId = dynamic(() => import('../components/Order/OrderId'), { loading: () => <Loading /> });
+const Cards = dynamic(() => import('../components/Cards/Cards'), { loading: () => <Loading /> });
+const Address = dynamic(() => import('../components/Cards/Address'), { loading: () => <Loading /> });
+const AddCard = dynamic(() => import('../components/Add/Addcard'), { loading: () => <Loading /> });
+const Addaderess = dynamic(() => import('../components/Add/Address'), { loading: () => <Loading /> });
 
-function account() {
-  const { logged } = useSelector(({ user }: ReduxUser) => user);
+function Account() {
+  const { logged } = useAppSelector(({ user }) => user);
   const router = useRouter();
   const [dropOption, setDropOption] = useState('');
   const [openModal, setOpenModal] = useState(false);
@@ -41,10 +40,10 @@ function account() {
     if (!logged) {
       router.push('/');
     }
-  }, [logged]);
+  }, [logged, router]);
 
   return (
-    <div className={ style.account }>
+    <main className={ style.main }>
       <div className={ style.container } id="user">
         <a
           href="#user"
@@ -136,8 +135,8 @@ function account() {
         { (openModal && typeModal === 'cards') && <AddCard /> }
         { (openModal && typeModal === 'address') && <Addaderess /> }
       </ContentModal>
-    </div>
+    </main>
   );
 }
 
-export default account;
+export default Account;

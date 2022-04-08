@@ -2,25 +2,27 @@ import React from 'react';
 import SearchBar from '../../SearchBar';
 import MenuBag from './MenuBag';
 import MenuUser from './MenuUser';
-import style from './style.module.scss';
+import { useAppSelector } from '../../../redux/hooks';
+import style from './styles/style.module.scss';
+import MenuMobile from './MenuMobile';
 
-type PMnDescktop = {
-  setSearchopen: Function
-  setMenuDropdown: Function;
+type MnDescktop = {
+  setSearchopen: Function;
   searchopen: boolean
 };
 
-function MenuDescktop(
-  { setSearchopen, searchopen, setMenuDropdown }: PMnDescktop,
-) {
+function MenuDescktop({ setSearchopen, searchopen }: MnDescktop) {
+  const { logged } = useAppSelector(({ user }) => user);
+
   return (
-    <nav className={ style.menuDescktop }>
+    <nav className={ style.nav }>
       <SearchBar
         searchopen={ searchopen }
         setSearchopen={ setSearchopen }
       />
-      <MenuBag setMenuDropdown={ setMenuDropdown } />
-      <MenuUser setMenuDropdown={ setMenuDropdown } />
+      { logged && <MenuBag /> }
+      <MenuUser />
+      <MenuMobile />
     </nav>
   );
 }

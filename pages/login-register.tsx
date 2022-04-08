@@ -1,20 +1,20 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import Input from 'components/ComponentsForm/Input';
-import BtnIco from 'components/Buttons/BtnIco';
-import Svg from 'assets/Svg';
-import { actionLogin } from 'redux/redux-actions';
-import type { ReduxUser } from 'types/typesUserRedux';
-import style from './style.module.scss';
+import Svg from '../assets/Svg';
+import { useAppSelector, useAppDispatch } from '../redux/hooks';
+import { LOGIN_USER } from '../redux/actions';
+import BtnIco from '../components/Buttons/BtnIco';
+import style from '../Sass/style.module.scss';
 
-const validEmail = new RegExp(process.env.VALIDATION_EMAIL!);
-const validPsw = new RegExp(process.env.VALIDATION_PSW!);
+import { Input } from '../components/ComponentsForm';
 
-function login() {
-  const dispatch = useDispatch();
-  const { logged } = useSelector(({ user }: ReduxUser) => user);
+const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
+const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
+
+function Login() {
+  const dispatch = useAppDispatch();
+  const { logged } = useAppSelector(({ user }) => user);
   const router = useRouter();
   const [sectionTab, setSectionTab] = useState(true);
   const [loadingLogin, setLoadingLogin] = useState(false);
@@ -29,30 +29,32 @@ function login() {
   });
 
   // Functions Login
-  const actionUserLogin = useCallback((target) => {
+  const actionUserLogin = (target: { name: string; value: string; }) => {
     const { name, value } = target;
+
     setStateLogin((state) => ({
       ...state,
       [name]: value,
     }));
-  }, []);
+  };
 
   const clickLogin = () => {
     const { lemail, lpsw } = stateLogin;
+
     if (validEmail.test(lemail) && validPsw.test(lpsw) && !loadingLogin) {
-      dispatch(actionLogin());
+      dispatch(LOGIN_USER(true));
       setLoadingLogin(true);
     }
   };
 
   // Function Register
-  const actionRegister = useCallback((target) => {
+  const actionRegister = (target: { name: any; value: any; }) => {
     const { name, value } = target;
     setStateRegister((state) => ({
       ...state,
       [name]: value,
     }));
-  }, []);
+  };
 
   // Tabs Login
   function tabSectionLogin(event: { preventDefault: () => void; }) {
@@ -69,7 +71,7 @@ function login() {
     if (router.asPath === '/login-register' && logged) {
       router.push('/');
     }
-  }, [logged]);
+  }, [logged, router]);
 
   return (
     <section className={ style.contlogin }>
@@ -77,22 +79,22 @@ function login() {
         <Svg icoName="logo" />
       </div>
       <div className={ style.sectiontab }>
-        <a
-          href="/login-register"
+        <button
+          type="button"
           aria-label="Login"
           onClick={ tabSectionLogin }
           className={ cx(style.tablog, { [style.active]: sectionTab }) }
         >
           <h1>Entrar</h1>
-        </a>
-        <a
-          href="/login-register"
+        </button>
+        <button
+          type="button"
           aria-label="Registre-se"
           onClick={ tabSectionRegister }
           className={ cx(style.tablog, { [style.active]: !sectionTab }) }
         >
           <h1>Registre-se</h1>
-        </a>
+        </button>
       </div>
       <form className={ cx(style.tab, { [style.active]: sectionTab }) }>
         <div className="inputs">
@@ -170,7 +172,7 @@ function login() {
             placeHolder="Senha"
             inputValue={ actionRegister }
             ivalue={ stateRegister.rpsw }
-            msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres"
+            msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
           />
         </div>
         <div className={ style.action }>
@@ -186,4 +188,4 @@ function login() {
   );
 }
 
-export default login;
+export default Login;

@@ -1,61 +1,41 @@
 $size: 750px;
 
 .header {
-  width: 100%;
-  height: 100px;
-  background: transparent;
-  position: fixed;
+  grid-area: header;
+  position: sticky;
   z-index: 99998;
-  transition: 0.1s;
   display: flex;
   top: 0;
   align-items: center;
   justify-content: space-between;
   border-radius: 0 0 1rem 1rem;
+  padding: 0 6%;
+}
 
-  &:hover {
-    background: var(--maincolormenu);
-    backdrop-filter: saturate(100%) blur(5px);
-    box-shadow: inset 0 -1px 0 0 var(--bordercolor);
-  }
+.searchdrop {
+  width: 0;
+  height: 0;
+  transition: 0.3s;
+}
 
-  .container {
-    margin-left: 6%;
-    display: flex;
-    width: 190px;
+.drop.searchdrop {
+  width: 40%;
+  height: 100%;
+}
+
+.container {
+  display: inline-block;
+
+  a {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
-  .container svg {
+  svg {
+    display: flex;
     cursor: pointer;
     width: 10em;
-    margin-top: 3px;
-  }
-
-  .searchdrop {
-    width: 0;
-    height: 0;
-    transition: 0.3s;
-  }
-
-  .drop.searchdrop {
-    width: 40%;
-    height: 100%;
-  }
-
-  @media screen and (max-width: $size) {
-    height: 60px;
-
-    .container {
-      width: 6em;
-    }
-
-    .container svg {
-      width: 6em;
-      height: 50px;
-    }
   }
 }
 
@@ -63,4 +43,17 @@ $size: 750px;
   background: var(--maincolormenu);
   backdrop-filter: saturate(100%) blur(5px);
   box-shadow: inset 0 -1px 0 0 var(--bordercolor);
+}
+
+@media (max-width: 700px) {
+  .logo {
+    width: 120px;
+  }
+
+  .drop.searchdrop {
+    width: 88%;
+    position: absolute;
+    z-index: 565656;
+    background: var(--maincolor);
+  }
 }
