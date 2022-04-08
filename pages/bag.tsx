@@ -57,7 +57,7 @@ function Bag() {
           || openModal === 'addcard'
         }
       >
-        { openModal === 'edit' && <CardEdit /> }
+        { openModal === 'edit' && <CardEdit inEdit={ openModal === 'edit' } /> }
         { openModal === 'address' && <RenderAdderess /> }
         { openModal === 'addaddress' && <Addaddress /> }
         { openModal === 'addcard' && <Addacard /> }

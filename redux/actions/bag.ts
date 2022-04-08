@@ -117,7 +117,7 @@ const ACTION_FINISH_EDIT_BAG_ITEM = (
   state: StateBagType,
   { payload }: PayloadAction<TypeAddBagInfos>,
 ) => {
-  state.itemEditBag = payload;
+  console.log(payload);
 };
 
 export {
