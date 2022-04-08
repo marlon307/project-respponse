@@ -2,20 +2,24 @@ import { useEffect } from 'react';
 
 // https://medium.com/@kevinfelisilda/click-outside-element-event-using-react-hooks-2c540814b661
 
-const useOutsideClick = (ref: any, callback: Function) => {
-  const handleClick = ({ target }: any) => {
-    if (ref.current && !ref.current.contains(target)) {
-      callback();
-    }
-  };
+// https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
+// https://bobbyhadz.com/blog/react-property-does-not-exist-on-type-never
 
+const useOutsideClick = (ref: any, callback: Function) => {
   useEffect(() => {
-    document.addEventListener('click', handleClick);
+    const handleClick = (event: { target: any; }) => {
+      const contentModal = ref.current?.contains(event.target);
+
+      if (ref.current && !contentModal) {
+        callback(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
 
     return () => {
-      document.removeEventListener('click', handleClick);
+      document.removeEventListener('mousedown', handleClick);
     };
-  });
+  }, [callback, ref]);
 };
 
 export default useOutsideClick;

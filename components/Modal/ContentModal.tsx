@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import useOutsideClick from '../../hooks/useOutSide';
 // import useOutsideClick from 'hooks/useOutSide';
 import style from './style.module.scss';
 
@@ -10,14 +11,10 @@ type PModal = {
 };
 
 function ContentModal({ children, isOpen, openModal }: PModal) {
-  // console.log(document);
-
-  const modalRef = useRef!(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const getModal = children && isOpen && document.getElementById('modal');
 
-  // useOutsideClick(modalRef, () => {
-  //   if (isOpen) openModal(false);
-  // });
+  useOutsideClick(modalRef, () => isOpen && openModal(false));
 
   useEffect(() => {
     if (isOpen) {
