@@ -9,7 +9,7 @@ import BarSize from '../../Bars/BarSize';
 import Qtd from '../../Bars/Qtd';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
-
+// ds
 function CardEdit() {
   const { itemEditBag } = useSelector(({ user }: ReduxUser) => user);
   const dispatch = useDispatch();
