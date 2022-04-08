@@ -6,7 +6,7 @@ import { useAppSelector } from '../../../redux/hooks';
 import { SmallCard } from '../../Cards';
 import Svg from '../../../assets/Svg';
 import style from './styles/style.module.scss';
-
+// sd
 function MenuBag() {
   const router = useRouter();
   const { bagItems, valueBag } = useAppSelector(({ bag }) => bag);
