@@ -2,14 +2,13 @@ import React from 'react';
 import {
   Html, Head, Main, NextScript,
 } from 'next/document';
-import type { AppProps } from 'next/app';
 import Seo from '../components/Head/Head';
 
-function Document(props: AppProps) {
+function Document() {
   return (
     <Html>
       <Head>
-        <Seo props={ props } />
+        <Seo />
       </Head>
       <body>
         <Main />

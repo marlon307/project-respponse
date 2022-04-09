@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
 import Svg from '../../assets/Svg';
-import style from './style.module.scss';
 import MenuDescktop from './components/MenuDescktop';
 import Bar from '../SearchBar/Bar';
+import style from './style.module.scss';
 
 function Header() {
   const [searchopen, setSearchopen] = useState(false);
