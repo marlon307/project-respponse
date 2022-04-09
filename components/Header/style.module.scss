@@ -28,7 +28,7 @@ $size: 750px;
 
   a {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
   }
 
@@ -48,6 +48,12 @@ $size: 750px;
 @media (max-width: 700px) {
   .logo {
     width: 120px;
+  }
+
+  .container {
+    a {
+      align-items: center;
+    }
   }
 
   .drop.searchdrop {
