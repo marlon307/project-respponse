@@ -10,7 +10,7 @@ function Resetpsw() {
   const { logged } = useAppSelector(({ user }) => user);
   const [email, setEmail] = useState('');
 
-  const restPsw = useCallback(({ value }) => {
+  const restPsw = useCallback(({ value }: any) => {
     setEmail(value);
   }, []);
 

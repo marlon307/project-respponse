@@ -15,7 +15,7 @@ function Address() {
     city: '',
   });
 
-  const hadleChange = useCallback((target) => {
+  const hadleChange = useCallback((target: { name: string; value: string; }) => {
     const { name, value } = target;
     setAddressForm((state) => ({
       ...state,

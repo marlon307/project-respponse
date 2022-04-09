@@ -13,7 +13,7 @@ function Addcard() {
     codev: '',
   });
 
-  const hadleChange = useCallback((target) => {
+  const hadleChange = useCallback((target: { name: string; value: string; }) => {
     const { name, value } = target;
     setAddCardState((state) => ({
       ...state,

@@ -23,7 +23,7 @@ function Checkout({ setOpenModal }: PropsCheckout) {
 
   const [cupomText, setCupomText] = useState('');
 
-  const hadleCupom = useCallback(({ value }) => {
+  const hadleCupom = useCallback(({ value }: any) => {
     setCupomText(value);
   }, []);
 
