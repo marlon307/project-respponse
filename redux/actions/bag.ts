@@ -1,5 +1,4 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import type { ImageProps } from 'next/image';
 
 interface TypeAddBagInfos {
   id: number;
@@ -7,7 +6,7 @@ interface TypeAddBagInfos {
   title: string;
   quantity: number;
   identifyBag: string;
-  mainImg: ImageProps;
+  mainImg: any;
   colorName: string;
   color: string;
   size: string;
@@ -101,11 +100,9 @@ const ACTION_EDIT_BAG_ITEM = (state: StateBagType, { payload }: PayloadAction<Ty
   state.itemEditBag = payload;
 };
 
-const ACTION_FINISH_EDIT_BAG_ITEM = (
-  state: StateBagType,
-  { payload }: PayloadAction<TypeAddBagInfos>,
-) => {
-  const index = state.bagItems.findIndex(({ identifyBag }) => identifyBag === payload.identifyBag);
+const ACTION_FINISH_EDIT_BAG_ITEM = (state: StateBagType) => {
+  const newId = state.itemEditBag.id + state.itemEditBag.color + state.itemEditBag.size;
+  const index = state.bagItems.findIndex(({ identifyBag }) => identifyBag === newId);
 
   state.bagItems[index] = {
     ...state.bagItems[index],

@@ -29,7 +29,7 @@ function CardEdit() {
     const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
     setUrlimg(imgs[0].urlImg);
     checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
-  }, [colorupdate, sizeupdate, itemEditBag.color, itemEditBag.id]);
+  }, [colorupdate, sizeupdate]);
 
   useEffect(() => {
     const {
@@ -45,12 +45,13 @@ function CardEdit() {
         ...colorupdate,
         size: sizeupdate,
         quantity: qauntityupdate,
+        identifyBag: itemEditBag.identifyBag,
       }));
     }
   }, [colorupdate, qauntityupdate, sizeupdate]);
 
   useEffect(() => () => {
-    dispatch(FINISH_EDIT_BAG_ITEM(itemEditBag));
+    dispatch(FINISH_EDIT_BAG_ITEM());
   }, []);
 
   return (
