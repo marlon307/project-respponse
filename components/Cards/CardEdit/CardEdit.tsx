@@ -33,10 +33,10 @@ function CardEdit() {
 
   useEffect(() => {
     const {
-      id, title, mainImg, color, size, type,
+      id, title, mainImg, color, size, type, quantity,
     } = itemEditBag;
 
-    if (color !== colorupdate.color || sizeupdate !== size) {
+    if (color !== colorupdate.color || sizeupdate !== size || qauntityupdate !== quantity) {
       dispatch(EDIT_BAG_ITEM({
         id,
         title,
@@ -47,7 +47,7 @@ function CardEdit() {
         quantity: qauntityupdate,
       }));
     }
-  }, [colorupdate, dispatch, itemEditBag, qauntityupdate, sizeupdate]);
+  }, [colorupdate, qauntityupdate, sizeupdate]);
 
   useEffect(() => () => {
     dispatch(FINISH_EDIT_BAG_ITEM(itemEditBag));

@@ -2,7 +2,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import type { ImageProps } from 'next/image';
 
 interface TypeAddBagInfos {
-  id: Number;
+  id: number;
   type: string;
   title: string;
   quantity: number;
@@ -15,19 +15,8 @@ interface TypeAddBagInfos {
 
 interface StateBagType {
   bagItems: Array<TypeAddBagInfos>;
-  valueBag: Number;
-  itemEditBag: {
-    id: number;
-    type: string;
-    title: string;
-    quantity: number;
-    identifyBag: string;
-    mainImg: ImageProps;
-    colorName: string;
-    color: string;
-    size: string;
-    code: string;
-  };
+  valueBag: number;
+  itemEditBag: TypeAddBagInfos;
   checkout: {
     adderessSelected: {
       name: string;
@@ -69,7 +58,6 @@ const stateBag: StateBagType = {
     size: '',
     quantity: 0,
     identifyBag: '',
-    code: '',
   },
   checkout: {
     adderessSelected: {
@@ -117,7 +105,12 @@ const ACTION_FINISH_EDIT_BAG_ITEM = (
   state: StateBagType,
   { payload }: PayloadAction<TypeAddBagInfos>,
 ) => {
-  console.log(payload);
+  const index = state.bagItems.findIndex(({ identifyBag }) => identifyBag === payload.identifyBag);
+
+  state.bagItems[index] = {
+    ...state.bagItems[index],
+    ...state.itemEditBag,
+  };
 };
 
 export {
