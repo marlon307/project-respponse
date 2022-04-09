@@ -7,9 +7,9 @@
 "extends": [
   "next/core-web-vitals",
   "plugin:react/recommended",
+  "plugin:react-hooks/recommended",
   "airbnb",
-  "airbnb-typescript",
-  "plugin:react-hooks/recommended"
+  "airbnb-typescript"
 ],
 "plugins": ["react", "@typescript-eslint", "react-hooks"],
 "parser": "@typescript-eslint/parser",
@@ -30,8 +30,8 @@
   "react/prop-types": 0,
   "jsx-a11y/anchor-is-valid": 0,
   "no-use-before-define": "off",
-  "react-hooks/rules-of-hooks": "error",
-  "react-hooks/exhaustive-deps": "warn",
+  // "react-hooks/rules-of-hooks": "error",
+  // "react-hooks/exhaustive-deps": "warn",
   // "@typescript-eslint/no-use-before-define": ["error"],
   "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
   "react/jsx-props-no-spreading": "off",

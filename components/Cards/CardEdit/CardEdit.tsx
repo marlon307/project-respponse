@@ -10,7 +10,7 @@ import { mockCards } from '../../../service/mockCards';
 import { EDIT_BAG_ITEM, FINISH_EDIT_BAG_ITEM } from '../../../redux/actions';
 import style from './style.module.scss';
 
-function CardEdit({ inEdit }: any) {
+function CardEdit() {
   const { itemEditBag } = useAppSelector(({ bag }) => bag);
   const dispatch = useAppDispatch();
 
