@@ -25,7 +25,7 @@ function Account() {
   const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
 
-  const functionOpenModal = useCallback((type) => {
+  const functionOpenModal = useCallback((type: React.SetStateAction<string>) => {
     setOpenModal(true);
     setTypeModal(type);
   }, []);

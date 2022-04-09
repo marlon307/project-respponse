@@ -6,7 +6,7 @@ import {
   ACTION_EDIT_BAG_ITEM, ACTION_FINISH_EDIT_BAG_ITEM,
 } from './bag';
 
-export const counterSlice = createSlice({
+export const userSlice = createSlice({
   name: 'USER',
   initialState: stateUser,
   reducers: {
@@ -27,7 +27,7 @@ export const bagSlice = createSlice({
 
 export const {
   LOGIN_USER,
-} = counterSlice.actions;
+} = userSlice.actions;
 
 export const {
   ADD_BAG_ITEMS,
@@ -39,6 +39,6 @@ export const {
 export const selecRootState = (state: RootState) => state;
 
 export default {
-  user: counterSlice.reducer,
+  user: userSlice.reducer,
   bag: bagSlice.reducer,
 };
