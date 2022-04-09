@@ -29,14 +29,14 @@ function CardEdit() {
     const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
     setUrlimg(imgs[0].urlImg);
     checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
-  }, [colorupdate, sizeupdate, itemEditBag.color, itemEditBag.id]);
+  }, [colorupdate, sizeupdate]);
 
   useEffect(() => {
     const {
-      id, title, mainImg, color, size, type,
+      id, title, mainImg, color, size, type, quantity,
     } = itemEditBag;
 
-    if (color !== colorupdate.color || sizeupdate !== size) {
+    if (color !== colorupdate.color || sizeupdate !== size || qauntityupdate !== quantity) {
       dispatch(EDIT_BAG_ITEM({
         id,
         title,
@@ -45,12 +45,13 @@ function CardEdit() {
         ...colorupdate,
         size: sizeupdate,
         quantity: qauntityupdate,
+        identifyBag: itemEditBag.identifyBag,
       }));
     }
-  }, [colorupdate, dispatch, itemEditBag, qauntityupdate, sizeupdate]);
+  }, [colorupdate, qauntityupdate, sizeupdate]);
 
   useEffect(() => () => {
-    dispatch(FINISH_EDIT_BAG_ITEM(itemEditBag));
+    dispatch(FINISH_EDIT_BAG_ITEM());
   }, []);
 
   return (

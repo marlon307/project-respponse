@@ -7,11 +7,15 @@
 "extends": [
   "next/core-web-vitals",
   "plugin:react/recommended",
-  "plugin:react-hooks/recommended",
+  // "plugin:react-hooks/recommended",
   "airbnb",
   "airbnb-typescript"
 ],
-"plugins": ["react", "@typescript-eslint", "react-hooks"],
+"plugins": [
+  "react",
+  // "react-hooks",
+  "@typescript-eslint"
+],
 "parser": "@typescript-eslint/parser",
 "parserOptions": {
   "project": "./tsconfig.json"
@@ -32,6 +36,7 @@
   "no-use-before-define": "off",
   // "react-hooks/rules-of-hooks": "error",
   // "react-hooks/exhaustive-deps": "warn",
+  "react-hooks/exhaustive-deps": 0,
   // "@typescript-eslint/no-use-before-define": ["error"],
   "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
   "react/jsx-props-no-spreading": "off",

@@ -1,13 +1,12 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import type { ImageProps } from 'next/image';
 
 interface TypeAddBagInfos {
-  id: Number;
+  id: number;
   type: string;
   title: string;
   quantity: number;
   identifyBag: string;
-  mainImg: ImageProps;
+  mainImg: any;
   colorName: string;
   color: string;
   size: string;
@@ -15,19 +14,8 @@ interface TypeAddBagInfos {
 
 interface StateBagType {
   bagItems: Array<TypeAddBagInfos>;
-  valueBag: Number;
-  itemEditBag: {
-    id: number;
-    type: string;
-    title: string;
-    quantity: number;
-    identifyBag: string;
-    mainImg: ImageProps;
-    colorName: string;
-    color: string;
-    size: string;
-    code: string;
-  };
+  valueBag: number;
+  itemEditBag: TypeAddBagInfos;
   checkout: {
     adderessSelected: {
       name: string;
@@ -69,7 +57,6 @@ const stateBag: StateBagType = {
     size: '',
     quantity: 0,
     identifyBag: '',
-    code: '',
   },
   checkout: {
     adderessSelected: {
@@ -113,11 +100,14 @@ const ACTION_EDIT_BAG_ITEM = (state: StateBagType, { payload }: PayloadAction<Ty
   state.itemEditBag = payload;
 };
 
-const ACTION_FINISH_EDIT_BAG_ITEM = (
-  state: StateBagType,
-  { payload }: PayloadAction<TypeAddBagInfos>,
-) => {
-  console.log(payload);
+const ACTION_FINISH_EDIT_BAG_ITEM = (state: StateBagType) => {
+  const newId = state.itemEditBag.id + state.itemEditBag.color + state.itemEditBag.size;
+  const index = state.bagItems.findIndex(({ identifyBag }) => identifyBag === newId);
+
+  state.bagItems[index] = {
+    ...state.bagItems[index],
+    ...state.itemEditBag,
+  };
 };
 
 export {
