@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { actionLogin } from 'redux/redux-actions';
+import { LOGIN_USER } from '../redux/actions';
+import { useAppDispatch } from '../redux/hooks';
 
-function getInfos() {
-  const dispatch = useDispatch();
+function GetInfos() {
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const getLocalStorage = localStorage.getItem('data_user')!;
@@ -11,7 +11,7 @@ function getInfos() {
     const getUserData = () => {
       if (getLocalStorage !== null) {
         const { logged } = JSON.parse(getLocalStorage);
-        if (logged) dispatch(actionLogin());
+        if (logged) dispatch(LOGIN_USER(true));
       } else {
         localStorage.setItem('data_user', JSON.stringify({
           logged: false,
@@ -24,4 +24,4 @@ function getInfos() {
   return null;
 }
 
-export default getInfos;
+export default GetInfos;

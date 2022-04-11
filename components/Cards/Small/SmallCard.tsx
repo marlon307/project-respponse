@@ -35,7 +35,7 @@ function SmallCard({
   }, [dispatch, eventModal, objectID]);
 
   const handleClickDelete = useCallback(() => {
-    dispatch(RM_BAG_ITEM(identifyBag));
+    dispatch(RM_BAG_ITEM(identifyBag!));
   }, [identifyBag]);
 
   return (
