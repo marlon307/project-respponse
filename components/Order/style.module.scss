@@ -221,14 +221,14 @@
 
     tr {
       cursor: pointer;
-      width: 100%;
+      width: -webkit-fill-available;
       display: table;
       table-layout: fixed;
       color: #9791e4;
       border-radius: 1em;
       padding: 0.6em 0;
       background: #f4f4f4;
-      // border: 1px solid var(--bordercolor);
+      border: 1px solid var(--bordercolor);
       margin-bottom: 1em;
     }
 
