@@ -264,6 +264,27 @@ export const mockminObjectCards2 = [{
     colorName: 'Rosa',
     color: '#f5a7ff',
   }],
+}, {
+  id: 2,
+  title: 'Secrect state',
+  type: 'Terno',
+  mainImg: image1,
+  price: 150.90,
+  oldPrice: 150.90,
+  discount: 0,
+  options: [{
+    colorName: 'Branco',
+    color: '#fff',
+  }, {
+    colorName: 'Azul meia noite',
+    color: '#2a4f6c',
+  }, {
+    colorName: 'Laranja',
+    color: '#f5b04aef',
+  }, {
+    colorName: 'Rosa',
+    color: '#f5a7ff',
+  }],
 }];
 
 export const mockminObjectCards = [{
