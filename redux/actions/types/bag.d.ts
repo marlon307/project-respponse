@@ -1,4 +1,4 @@
-export interface TypeAddBagInfos {
+export interface TypeEditBagInfos {
   id: number;
   type: string;
   title: string;
@@ -10,10 +10,17 @@ export interface TypeAddBagInfos {
   size: string;
 }
 
+export interface TypeAddBagInfos extends TypeEditBagInfos {
+  id: number;
+  discount: number;
+  oldPrice: number;
+  price: number;
+}
+
 export interface StateBagType {
   bagItems: Array<TypeAddBagInfos>;
   valueBag: number;
-  itemEditBag: TypeAddBagInfos;
+  itemEditBag: TypeEditBagInfos;
   checkout: {
     adderessSelected: {
       name: string;

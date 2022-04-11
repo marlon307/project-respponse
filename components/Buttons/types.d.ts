@@ -1,14 +1,14 @@
 export type TObjectProduct = {
-  id: Number;
+  id: number;
   title: string;
   type: string;
-  price: Number;
+  price: number;
   descrtion: string;
   branch: string;
   gender: string;
   mainImg: Object;
-  discount: Number;
-  oldPrice: Number;
+  discount: number;
+  oldPrice: number;
   details: Object;
   specification: Object;
   options: Array<{
@@ -24,6 +24,7 @@ export type PBtnAddBag = {
   productId: TObjectProduct;
   colorSelected: {
     color: string;
+    colorName: string;
   };
   sizeSelected: string;
 };

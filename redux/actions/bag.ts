@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import type { StateBagType, TypeAddBagInfos } from './types/bag';
+import type { StateBagType, TypeAddBagInfos, TypeEditBagInfos } from './types/bag';
 // Define the initial state using that type
 const stateBag: StateBagType = {
   bagItems: [],
@@ -9,10 +9,10 @@ const stateBag: StateBagType = {
     title: '',
     type: '',
     color: '',
+    colorName: '',
     mainImg: {
       src: '',
     },
-    colorName: '',
     size: '',
     quantity: 0,
     identifyBag: '',
@@ -55,7 +55,10 @@ const ACTION_RM_BAG_ITEM = (state: StateBagType, { payload }: PayloadAction<stri
   state.bagItems = state.bagItems.filter(({ identifyBag }) => identifyBag !== payload);
 };
 
-const ACTION_EDIT_BAG_ITEM = (state: StateBagType, { payload }: PayloadAction<TypeAddBagInfos>) => {
+const ACTION_EDIT_BAG_ITEM = (
+  state: StateBagType,
+  { payload }: PayloadAction<TypeEditBagInfos>,
+) => {
   state.itemEditBag = payload;
 };
 
