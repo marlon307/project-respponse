@@ -27,20 +27,22 @@ export interface TFormatPay {
   division: number;
 }
 
+export interface TAddress {
+  name: string;
+  road: string;
+  district: string;
+  number: string;
+  uf: string;
+  city: string;
+  zipcode: string;
+}
+
 export interface StateBagType {
   bagItems: Array<TypeAddBagInfos>;
   valueBag: number;
   itemEditBag: TypeEditBagInfos;
   checkout: {
-    adderessSelected: {
-      name: string;
-      road: string;
-      district: string;
-      number: string;
-      uf: string;
-      city: string;
-      zipcode: string;
-    };
+    adderessSelected: TAddress;
     shipping: Shipping;
     formatPay: TFormatPay;
     cupomAplicate: {
