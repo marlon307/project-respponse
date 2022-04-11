@@ -23,7 +23,7 @@ function Orders({ execFunction }: TPropsOrders) {
         <tr onClick={ () => orderIdOpen('00003') }>
           <td>0003</td>
           <td>11/04/22</td>
-          <td>Pag. Pedente</td>
+          <td>Pag. Pendente</td>
         </tr>
         <tr onClick={ () => orderIdOpen('00002') }>
           <td>0002</td>
