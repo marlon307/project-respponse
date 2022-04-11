@@ -32,10 +32,12 @@ $size: 750px;
     justify-content: flex-start;
   }
 
-  svg {
-    display: flex;
-    cursor: pointer;
-    width: 10em;
+  .logo {
+    svg {
+      display: flex;
+      cursor: pointer;
+      width: 10em;
+    }
   }
 }
 
