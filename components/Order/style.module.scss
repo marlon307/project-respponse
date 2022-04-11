@@ -201,7 +201,7 @@
 
     th {
       text-align: left;
-      padding: 1.66em 2em 1em;
+      padding: 0 2em 1em;
       font-size: 1.2em;
     }
   }
@@ -221,15 +221,22 @@
 
     tr {
       cursor: pointer;
-      width: -webkit-fill-available;
+      width: 100%;
       display: table;
       table-layout: fixed;
       color: #9791e4;
       border-radius: 1em;
       padding: 0.6em 0;
       background: #f4f4f4;
-      border: 1px solid var(--bordercolor);
+      box-shadow: inset 0 0 0 1px var(--bordercolor);
       margin-bottom: 1em;
+
+      td:last-child {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: auto;
+      }
     }
 
     tr:last-child {
