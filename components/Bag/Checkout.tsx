@@ -5,7 +5,7 @@ import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import Svg from '../../assets/Svg';
 import style from './style.module.scss';
-import { SELECT_SHIPPING } from '../../redux/actions';
+import { SELECT_PAYMENT, SELECT_SHIPPING } from '../../redux/actions';
 
 type PropsCheckout = {
   setOpenModal: Function
@@ -20,7 +20,6 @@ function Checkout({ setOpenModal }: PropsCheckout) {
     name, road, district, number, uf, city, zipcode,
   } = adderessSelected;
   const { shippingCompany } = shipping;
-
   const [cupomText, setCupomText] = useState('');
 
   const hadleCupom = useCallback(({ value }: any) => {
@@ -35,10 +34,10 @@ function Checkout({ setOpenModal }: PropsCheckout) {
   }, []);
 
   const handlePayment = useCallback((idName: string) => {
-    // dipatch(actionSlectePayment({
-    //   formatPayment: idName,
-    //   division: '1x',
-    // }));
+    dipatch(SELECT_PAYMENT({
+      formatPayment: idName,
+      division: 1,
+    }));
   }, []);
 
   return (

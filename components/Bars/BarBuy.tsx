@@ -52,7 +52,7 @@ function BarBuy() {
               { formatPay.formatPayment }
               :
             </span>
-            <span>{ formatPay.division }</span>
+            <span>{ `${formatPay.division}x` }</span>
           </div>
         </div>
         <div className={ style.calcfinish }>
@@ -68,7 +68,12 @@ function BarBuy() {
           <BuyFinishBtn />
         </div>
       </div>
-      <a href="/" aria-label="Mais Informações" onClick={ openBarMenu } />
+      <button
+        className={ style.expand }
+        type="button"
+        aria-label="Mais Informações"
+        onClick={ openBarMenu }
+      />
     </section>
   );
 }

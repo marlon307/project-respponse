@@ -22,6 +22,11 @@ export interface TShipping {
   valueShipping: number;
 }
 
+export interface TFormatPay {
+  formatPayment: string;
+  division: number;
+}
+
 export interface StateBagType {
   bagItems: Array<TypeAddBagInfos>;
   valueBag: number;
@@ -36,11 +41,8 @@ export interface StateBagType {
       city: string;
       zipcode: string;
     };
-    shipping: Shipping,
-    formatPay: {
-      formatPayment: string;
-      division: number;
-    };
+    shipping: Shipping;
+    formatPay: TFormatPay;
     cupomAplicate: {
       code: string;
       descountCupom: number;
