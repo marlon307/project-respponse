@@ -4,6 +4,7 @@ import { stateUser, ACTION_LOGIN_USER } from './user';
 import {
   stateBag, ACTION_ADD_BAG_ITEMS, ACTION_RM_BAG_ITEM,
   ACTION_EDIT_BAG_ITEM, ACTION_FINISH_EDIT_BAG_ITEM,
+  ACTION_SELECT_SHIPPING,
 } from './bag';
 
 export const userSlice = createSlice({
@@ -22,6 +23,7 @@ export const bagSlice = createSlice({
     RM_BAG_ITEM: ACTION_RM_BAG_ITEM,
     EDIT_BAG_ITEM: ACTION_EDIT_BAG_ITEM,
     FINISH_EDIT_BAG_ITEM: ACTION_FINISH_EDIT_BAG_ITEM,
+    SELECT_SHIPPING: ACTION_SELECT_SHIPPING,
   },
 });
 
@@ -34,6 +36,7 @@ export const {
   RM_BAG_ITEM,
   EDIT_BAG_ITEM,
   FINISH_EDIT_BAG_ITEM,
+  SELECT_SHIPPING,
 } = bagSlice.actions;
 
 export const selecRootState = (state: RootState) => state;

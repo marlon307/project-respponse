@@ -17,6 +17,11 @@ export interface TypeAddBagInfos extends TypeEditBagInfos {
   price: number;
 }
 
+export interface TShipping {
+  shippingCompany: string;
+  valueShipping: number;
+}
+
 export interface StateBagType {
   bagItems: Array<TypeAddBagInfos>;
   valueBag: number;
@@ -31,10 +36,7 @@ export interface StateBagType {
       city: string;
       zipcode: string;
     };
-    shipping: {
-      shippingCompany: string;
-      valueShipping: number;
-    };
+    shipping: Shipping,
     formatPay: {
       formatPayment: string;
       division: number;

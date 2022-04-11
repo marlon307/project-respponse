@@ -1,5 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import type { StateBagType, TypeAddBagInfos, TypeEditBagInfos } from './types/bag';
+import type {
+  StateBagType, TypeAddBagInfos, TypeEditBagInfos, TShipping,
+} from './types/bag';
 // Define the initial state using that type
 const stateBag: StateBagType = {
   bagItems: [],
@@ -72,10 +74,15 @@ const ACTION_FINISH_EDIT_BAG_ITEM = (state: StateBagType) => {
   };
 };
 
+const ACTION_SELECT_SHIPPING = (state: StateBagType, { payload }: PayloadAction<TShipping>) => {
+  state.checkout.shipping = payload;
+};
+
 export {
   stateBag,
   ACTION_ADD_BAG_ITEMS,
   ACTION_RM_BAG_ITEM,
   ACTION_EDIT_BAG_ITEM,
   ACTION_FINISH_EDIT_BAG_ITEM,
+  ACTION_SELECT_SHIPPING,
 };

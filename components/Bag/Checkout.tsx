@@ -5,12 +5,14 @@ import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import Svg from '../../assets/Svg';
 import style from './style.module.scss';
+import { SELECT_SHIPPING } from '../../redux/actions';
 
 type PropsCheckout = {
   setOpenModal: Function
 };
 
 function Checkout({ setOpenModal }: PropsCheckout) {
+  const dipatch = useAppDispatch();
   const { adderessSelected, shipping, formatPay } = useAppSelector(
     ({ bag }) => bag.checkout,
   );
@@ -19,19 +21,17 @@ function Checkout({ setOpenModal }: PropsCheckout) {
   } = adderessSelected;
   const { shippingCompany } = shipping;
 
-  // const dipatch = useAppDispatch();
-
   const [cupomText, setCupomText] = useState('');
 
   const hadleCupom = useCallback(({ value }: any) => {
     setCupomText(value);
   }, []);
 
-  const handleSipping = useCallback((idInput, value) => {
-    // dipatch(actionSlecteShipping({
-    //   shippingCompany: idInput,
-    //   valueShipping: value,
-    // }));
+  const handleSipping = useCallback((idInput: string, value: number) => {
+    dipatch(SELECT_SHIPPING({
+      shippingCompany: idInput,
+      valueShipping: value,
+    }));
   }, []);
 
   const handlePayment = useCallback((idName: string) => {
