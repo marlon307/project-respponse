@@ -6,7 +6,7 @@ import styles from '../Sass/style.module.scss';
 function Home() {
   return (
     <main className={ styles.main }>
-      <Link href="/category/tenis">Categorai tenis</Link>
+      <Link href="/category/tenis">Categoria tenis</Link>
     </main>
   );
 }
