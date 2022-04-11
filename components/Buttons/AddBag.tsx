@@ -16,9 +16,17 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
       setActiveMsg(true);
       return;
     }
-
+    const {
+      id, title, type, price, mainImg, discount, oldPrice,
+    } = productId;
     dispatch(ADD_BAG_ITEMS({
-      ...productId,
+      id,
+      title,
+      discount,
+      oldPrice,
+      type,
+      price,
+      mainImg,
       quantity: 1,
       ...colorSelected,
       size: sizeSelected,

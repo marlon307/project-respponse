@@ -7,22 +7,19 @@ import style from './style.module.scss';
 function RenderAdderess() {
   const dispatch = useDispatch();
 
-  function handleClick(adderess: Object) {
+  const handleClick = useCallback((adderess: Object) => {
     // dispatch(actionSlecteAdderess(adderess));
-  }
+  }, []);
   // id, name, road, district, number, uf, city, zipcode,
 
   return (
     <div className={ style.add }>
       { mockAdderes.map((adderess) => (
-        <a
+        <button
+          type="button"
           key={ adderess.id }
-          href="/"
           className={ style.cont }
-          onClick={ useCallback((event) => {
-            event.preventDefault();
-            handleClick(adderess);
-          }, []) }
+          onClick={ () => handleClick(adderess) }
         >
           <CardAdderess
             name={ adderess.name }
@@ -33,7 +30,7 @@ function RenderAdderess() {
             zipcode={ adderess.zipcode }
             district={ adderess.district }
           />
-        </a>
+        </button>
       )) }
     </div>
   );
