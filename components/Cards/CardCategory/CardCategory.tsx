@@ -1,4 +1,6 @@
+import React from 'react';
 import Link from 'next/link';
+import CustomLink from '../../CustomLink';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
 
@@ -11,8 +13,8 @@ type PCardCategory = {
 function CardCategory({ image, ctgName, path }: PCardCategory) {
   return (
     <div className={ style.itencategory }>
-      <Link href={ `/category/${path}` }>
-        <a>
+      <Link href={ `/category/${path}` } passHref>
+        <CustomLink ariaLabel={ ctgName }>
           <figure className={ style.imgctg }>
             <LoadingImage
               url={ image }
@@ -23,7 +25,7 @@ function CardCategory({ image, ctgName, path }: PCardCategory) {
             />
           </figure>
           <span>{ ctgName }</span>
-        </a>
+        </CustomLink>
       </Link>
     </div>
   );

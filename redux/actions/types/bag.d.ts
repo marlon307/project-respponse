@@ -17,28 +17,34 @@ export interface TypeAddBagInfos extends TypeEditBagInfos {
   price: number;
 }
 
+export interface TShipping {
+  shippingCompany: string;
+  valueShipping: number;
+}
+
+export interface TFormatPay {
+  formatPayment: string;
+  division: number;
+}
+
+export interface TAddress {
+  name: string;
+  road: string;
+  district: string;
+  number: string;
+  uf: string;
+  city: string;
+  zipcode: string;
+}
+
 export interface StateBagType {
   bagItems: Array<TypeAddBagInfos>;
   valueBag: number;
   itemEditBag: TypeEditBagInfos;
   checkout: {
-    adderessSelected: {
-      name: string;
-      road: string;
-      district: string;
-      number: string;
-      uf: string;
-      city: string;
-      zipcode: string;
-    };
-    shipping: {
-      shippingCompany: string;
-      valueShipping: number;
-    };
-    formatPay: {
-      formatPayment: string;
-      division: number;
-    };
+    adderessSelected: TAddress;
+    shipping: Shipping;
+    formatPay: TFormatPay;
     cupomAplicate: {
       code: string;
       descountCupom: number;
