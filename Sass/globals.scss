@@ -47,6 +47,7 @@ html {
 
 .link {
   color: var(--colorlink);
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;
