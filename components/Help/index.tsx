@@ -5,16 +5,16 @@ function Index() {
   return (
     <ol>
       <li>
-        <a href="/">Politica de Privacidade</a>
+        <Link href="/">Politica de Privacidade</Link>
       </li>
       <li>
-        <a href="/">Troca e Devolução</a>
+        <Link href="/">Troca e Devolução</Link>
       </li>
       <li>
-        <a href="/">Pagamentos</a>
+        <Link href="/">Pagamentos</Link>
       </li>
       <li>
-        <a href="/">Envios</a>
+        <Link href="/">Envios</Link>
       </li>
       <li>
         <Link href="/support">Suporte</Link>
