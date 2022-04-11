@@ -76,6 +76,7 @@ function OrderId() {
               <SmallCard
                 removable={ false }
                 objectID={ object }
+                identifyBag={ object.id + object.color + object.size }
               />
             </li>
           )) }

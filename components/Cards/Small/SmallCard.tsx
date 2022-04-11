@@ -36,7 +36,7 @@ function SmallCard({
 
   const handleClickDelete = useCallback(() => {
     dispatch(RM_BAG_ITEM(identifyBag));
-  }, [dispatch, identifyBag]);
+  }, [identifyBag]);
 
   return (
     <div className={ style.smallcard }>

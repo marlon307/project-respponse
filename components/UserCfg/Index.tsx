@@ -1,13 +1,17 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import type { ReduxUser } from 'types/typesUserRedux';
+import { useAppSelector } from '../../redux/hooks';
 import { InputRadio } from '../ComponentsForm';
 import Input from '../ComponentsForm/Input';
 import style from './style.module.scss';
 
+type TEvent = {
+  name: string;
+  value: string;
+};
+
 function Index() {
-  const { logged } = useSelector(({ user }: ReduxUser) => user);
+  const { logged } = useAppSelector(({ user }) => user);
   const router = useRouter();
 
   const [stateIfonUser, setStateIfoUser] = useState({
@@ -20,7 +24,7 @@ function Index() {
     cel: '',
   });
 
-  const userCfgInfo = useCallback((target) => {
+  const userCfgInfo = useCallback((target: TEvent) => {
     const { name, value } = target;
     setStateIfoUser((state) => ({
       ...state,
