@@ -19,12 +19,13 @@
 
 .categorycont {
   grid-area: products;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1em;
-  margin: 3em 0;
-  width: 100%;
+  display: grid;
+  grid-template-areas: 'coln1 coln2';
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1em;
+  grid-template-rows: max-content;
+  row-gap: 1em;
+  align-items: start;
 }
 
 @media (max-width: 790px) {
