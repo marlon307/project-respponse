@@ -3,7 +3,7 @@
   grid-template-areas:
     'bagitems checkout'
   ;
-  grid-template-columns: minmax(400px, 800px) 400px;
+  grid-template-columns: minmax(400px, 800px) minmax(300px, 400px);
   align-items: flex-start;
   justify-content: center;
   margin: 0 6%;
@@ -38,7 +38,7 @@
 .empty {
   font-size: 1.2em;
   text-align: center;
-  margin: 18px 0;
+  margin: 3em 0;
   color: #585858;
 }
 
@@ -50,5 +50,9 @@
     ;
     grid-template-columns: 100%;
     grid-template-rows: auto;
+  }
+
+  .empty {
+    margin: 0.6em 0 !important;
   }
 }
