@@ -119,8 +119,7 @@
 
 .barfilter {
   position: relative;
-  width: 100%;
-  max-width: 300px;
+  max-width: 100px;
 
   button {
     padding: 0.8em 0;
@@ -129,16 +128,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 8px;
     color: #3d3d3d;
 
     svg {
-      width: 1.5em;
+      width: 1.7em;
+      height: 1.7em;
       fill: #3d3d3d;
     }
 
-    h3 {
-      font-size: 1.45em;
+    span {
+      font-size: 1.4em;
+      font-weight: 600;
     }
   }
 }
