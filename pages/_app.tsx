@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import store from '../redux';
@@ -8,6 +8,13 @@ import Modal from '../components/Modal/Modal';
 import '../Sass/globals.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    window.screen.orientation.lock('portrait').then(
+      () => { }, // success
+      () => { }, // failure
+    );
+  }, []);
+
   return (
     <Provider store={ store }>
       <Header />
