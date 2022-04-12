@@ -20,6 +20,33 @@
   margin-bottom: 3em;
 }
 
+.filter {
+  grid-area: filter;
+  display: grid;
+  grid-template-areas: 'btn listfilter';
+  grid-template-columns: 78px auto;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2em;
+  margin-bottom: 1em;
+}
+
+.listfilter {
+  grid-area: listfilter;
+  display: flex;
+  gap: 0.6em;
+  max-width: initial;
+  overflow: auto;
+
+  label {
+    flex: none;
+  }
+}
+
+.listfilter::-webkit-scrollbar {
+  display: none;
+}
+
 @media (max-width: 1800px) {
   .categorycont {
     grid-template-areas: '. . . . .';
@@ -43,5 +70,9 @@
 @media (max-width: 500px) {
   .categorycont {
     grid-template-areas: '. .';
+  }
+
+  .filter {
+    gap: 1em;
   }
 }

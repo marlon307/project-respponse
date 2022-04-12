@@ -81,6 +81,13 @@ const mockApiFilterUsed = [
     id: 19,
     tecid: 'Jeans Escuro',
   },
+  {
+    id: 20,
+    model: 'Retro',
+  }, {
+    id: 21,
+    model: 'Teste Model',
+  },
 ];
 
 export default mockApiFilterUsed;
