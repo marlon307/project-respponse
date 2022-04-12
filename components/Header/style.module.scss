@@ -12,14 +12,16 @@
 }
 
 .searchdrop {
-  width: 0;
-  height: 0;
-  transition: 0.3s;
+  position: absolute;
+  transition: transform 0.3s ease;
+  width: 40%;
+  left: 50%;
+  transform: translate3d(-50%, -5.42em, 0);
+  max-width: 1080px;
 }
 
 .drop.searchdrop {
-  width: 40%;
-  height: 100%;
+  transform: translate3d(-50%, 0, 0);
 }
 
 .container {
@@ -67,10 +69,15 @@
     }
   }
 
-  .drop.searchdrop {
-    width: 94%;
-    position: absolute;
-    z-index: 565656;
+  .searchdrop {
+    width: 100%;
+    transform: translate3d(-50%, -5.4em, 0);
+    height: 5.4em;
     background: var(--maincolor);
+    z-index: 565656;
+  }
+
+  .drop.searchdrop {
+    transform: translate3d(-50%, 18px, 0);
   }
 }
