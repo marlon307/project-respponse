@@ -30,7 +30,7 @@ function BarFilter() {
         onClick={ handleClick }
       >
         <Svg icoName="filter" />
-        <h3>Filtro</h3>
+        <span>Filtro</span>
       </button>
       <ContentModal
         isOpen={ modalFilter }

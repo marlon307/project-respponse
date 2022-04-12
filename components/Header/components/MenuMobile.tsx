@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
@@ -29,6 +29,14 @@ function MenuMobile() {
   function closeMenu() {
     setDropMnMobile(!dropMnMobile);
   }
+
+  useEffect(() => {
+    if (dropMnMobile) {
+      document.body.classList.add('hidden');
+    } else {
+      document.body.removeAttribute('class');
+    }
+  }, [dropMnMobile]);
 
   return (
     <div className={ cx(style.mobile, {
