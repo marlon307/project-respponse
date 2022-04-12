@@ -43,14 +43,26 @@ function MenuMobile() {
       [style.contb]: bagItems.length && !dropMnMobile,
     }) }
     >
-      <Link href="/" passHref>
-        <CustomLink
-          ariaLabel="Menu"
-          onClick={ openMenu! }
-        >
-          <Svg icoName="menu" />
-        </CustomLink>
-      </Link>
+      { logged ? (
+        <Link href="/" passHref>
+          <CustomLink
+            ariaLabel="Menu"
+            onClick={ openMenu! }
+          >
+            <Svg icoName="menu" />
+          </CustomLink>
+        </Link>
+      ) : (
+        <Link href="/login-register" passHref>
+          <CustomLink
+            ariaLabel="Entrar"
+            className={ style.login }
+          >
+            Entrar
+          </CustomLink>
+        </Link>
+      ) }
+
       <div className={ cx(style.dromn, {
         [style.drop]: dropMnMobile,
       }) }
