@@ -24,19 +24,14 @@ function BarFilter() {
 
   return (
     <div className={ style.barfilter }>
-      {/* <OrderFilter /> */ }
-      { sizeWidth > 790
-        ? <Filter />
-        : (
-          <button
-            aria-label="Filtro"
-            type="button"
-            onClick={ handleClick }
-          >
-            <Svg icoName="filter" />
-            <h3>Filtro</h3>
-          </button>
-        ) }
+      <button
+        aria-label="Filtro"
+        type="button"
+        onClick={ handleClick }
+      >
+        <Svg icoName="filter" />
+        <h3>Filtro</h3>
+      </button>
       <ContentModal
         isOpen={ modalFilter }
         openModal={ setModalFilter }

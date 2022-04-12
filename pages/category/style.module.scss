@@ -1,8 +1,10 @@
 .category {
   position: relative;
   display: grid;
-  grid-template-areas: 'filter products';
-  grid-template-columns: minmax(250px, 400px) auto;
+  grid-template-areas:
+    'filter'
+    'products';
+  grid-template-columns: auto;
   margin: 0 6%;
 }
 
@@ -21,7 +23,7 @@
   grid-area: products;
   display: grid;
   grid-auto-columns: 1fr;
-  grid-template-areas: "coln1 coln2 coln3 coln3 coln4 coln5";
+  grid-template-areas: ". . . . .";
   grid-column-gap: 1em;
   grid-template-rows: max-content;
   row-gap: 1em;
@@ -30,7 +32,7 @@
 
 @media (max-width: 1080px) {
   .categorycont {
-    grid-template-areas: 'coln1 coln2';
+    grid-template-areas: '. . . .';
   }
 }
 
