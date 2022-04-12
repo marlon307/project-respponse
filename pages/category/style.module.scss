@@ -29,7 +29,7 @@
   display: grid;
   grid-template-areas: 'btn listfilter';
   grid-template-columns: 78px auto;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   gap: 2em;
   margin-bottom: 1em;
@@ -37,14 +37,20 @@
 
 .listfilter {
   grid-area: listfilter;
-  display: flex;
-  gap: 0.6em;
-  max-width: initial;
-  overflow: auto;
 
   label {
-    flex: none;
+    float: left;
+    margin: 6px 6px 0 0;
   }
+
+  // display: flex;
+  // gap: 0.6em;
+  // max-width: initial;
+  // overflow: auto;
+
+  // label {
+  //   flex: none;
+  // }
 }
 
 .listfilter::-webkit-scrollbar {
@@ -70,12 +76,26 @@
     margin: 0 3%;
   }
 
-  .filte {
+  .filter {
     margin-bottom: 0;
+    align-items: center;
   }
 
   .categorycont {
     margin-top: 12px;
+  }
+
+  .listfilter {
+    display: flex;
+    gap: 0.4em;
+    overflow: auto;
+    float: none;
+
+    label {
+      margin: 0;
+      float: none;
+      flex: none;
+    }
   }
 }
 
