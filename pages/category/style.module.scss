@@ -8,17 +8,6 @@
   margin: 0 6%;
 }
 
-.filter {
-  position: sticky;
-  top: 100px;
-  z-index: 99997;
-  grid-area: filter;
-  margin: 0 6%;
-  background: var(--maincolormenu);
-  backdrop-filter: saturate(100%) blur(5px);
-  padding: 1em 0 1em;
-}
-
 .categorycont {
   grid-area: products;
   display: grid;
@@ -48,13 +37,6 @@
     grid-template-columns: 100%;
     grid-template-rows: 50px auto;
     margin: 0 3%;
-  }
-}
-
-@media (max-width: 750px) {
-  .filter {
-    top: 60px;
-    margin: 0 0 0 5%;
   }
 }
 
