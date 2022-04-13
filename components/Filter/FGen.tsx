@@ -11,8 +11,9 @@ function FGen({ gen, execFunction }: PGen) {
     <label htmlFor={ gen } className={ style.itemfilter }>
       <input
         type="checkbox"
-        name="filter"
+        name="gen"
         id={ gen }
+        value={ gen }
         onClick={ execFunction }
       />
       <div className={ style.filtername }>

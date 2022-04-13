@@ -11,8 +11,9 @@ function FBranch({ branch, execFunction }: PBSearch) {
     <label htmlFor={ branch } className={ style.itemfilter }>
       <input
         type="checkbox"
-        name="filter"
+        name="branch"
         id={ branch }
+        value={ branch }
         onClick={ execFunction }
       />
       <div className={ style.filtername }>

@@ -11,8 +11,9 @@ function FSize({ size, execFunction }: PFSize) {
     <label htmlFor={ size } className={ style.itemfilter }>
       <input
         type="checkbox"
-        name="filter"
+        name="size"
         id={ size }
+        value={ size }
         onClick={ execFunction }
       />
       <div className={ style.filtername }>

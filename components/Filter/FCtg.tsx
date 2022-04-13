@@ -11,8 +11,9 @@ function FCtg({ ctg, execFunction }: PCtg) {
     <label htmlFor={ ctg } className={ style.itemfilter }>
       <input
         type="checkbox"
-        name="filter"
+        name="ctg"
         id={ ctg }
+        value={ ctg }
         onClick={ execFunction }
       />
       <div className={ style.filtername }>

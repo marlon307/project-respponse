@@ -11,8 +11,9 @@ function FModel({ model, execFunction }: PModel) {
     <label htmlFor={ model } className={ style.itemfilter }>
       <input
         type="checkbox"
-        name="filter"
+        name="model"
         id={ model }
+        value={ model }
         onClick={ execFunction }
       />
       <div className={ style.filtername }>

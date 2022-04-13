@@ -13,8 +13,9 @@ function FColor({ cName, color, execFunction }: PFColor) {
     <label htmlFor={ cName } className={ style.itemfilter }>
       <input
         type="checkbox"
-        name="filter"
+        name="color"
         id={ cName }
+        value={ color }
         onClick={ execFunction }
       />
       <div className={ style.filtername }>
