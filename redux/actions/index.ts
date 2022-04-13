@@ -7,6 +7,8 @@ import {
   ACTION_SELECT_SHIPPING, ACTION_SELECT_PAYMENT, ACTION_SELECT_ADDRESS,
 } from './bag';
 
+import { stateSearch, ACTION_TEXT_SEARCH, ACTION_ADD_FILTER_LIST } from './search';
+
 export const userSlice = createSlice({
   name: 'USER',
   initialState: stateUser,
@@ -29,6 +31,15 @@ export const bagSlice = createSlice({
   },
 });
 
+export const searchSlice = createSlice({
+  name: 'SEARCH',
+  initialState: stateSearch,
+  reducers: {
+    TEXT_SEARCH: ACTION_TEXT_SEARCH,
+    ADD_FILTER_LIST: ACTION_ADD_FILTER_LIST,
+  },
+});
+
 export const {
   LOGIN_USER,
 } = userSlice.actions;
@@ -43,9 +54,15 @@ export const {
   SELECT_ADDRESS,
 } = bagSlice.actions;
 
+export const {
+  TEXT_SEARCH,
+  ADD_FILTER_LIST,
+} = searchSlice.actions;
+
 export const selecRootState = (state: RootState) => state;
 
 export default {
   user: userSlice.reducer,
   bag: bagSlice.reducer,
+  search: searchSlice.reducer,
 };
