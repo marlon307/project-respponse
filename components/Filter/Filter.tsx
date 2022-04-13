@@ -90,9 +90,9 @@ function Filter() {
       </div>
       <h2>Genero</h2>
       <div className={ style.block }>
-        <FCtg id={ 33 } name="gen" value="Criança" execFunction={ addListFilter } />
-        <FCtg id={ 34 } name="gen" value="Femenino" execFunction={ addListFilter } />
-        <FCtg id={ 35 } name="gen" value="Masculino" execFunction={ addListFilter } />
+        <FCtg id={ 36 } name="gen" value="Criança" execFunction={ addListFilter } />
+        <FCtg id={ 37 } name="gen" value="Femenino" execFunction={ addListFilter } />
+        <FCtg id={ 38 } name="gen" value="Masculino" execFunction={ addListFilter } />
       </div>
       <h2>Modelo</h2>
       <div className={ style.block }>
