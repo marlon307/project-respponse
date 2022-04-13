@@ -4,9 +4,7 @@ import mockCategory from '../../service/mockCategory';
 import { mockminObjectCards2 } from '../../service/mockCards';
 import { CardProduct } from '../../components/Cards/CardProduct';
 import BarFilter from '../../components/Filter/BarFilter';
-import {
-  FBranch, FColor, FCtg, FGen, FModel, FSize, FTissue,
-} from '../../components/Filter';
+import FCtg from '../../components/Filter/ItemList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ADD_FILTER_LIST } from '../../redux/actions';
 import style from './style.module.scss';
@@ -16,8 +14,8 @@ function CategoryId() {
   const dispatch = useAppDispatch();
 
   const removeListFilter = useCallback(({ target }: any) => {
-    const { name, value } = target;
-    dispatch(ADD_FILTER_LIST({ [name]: value }));
+    const { id } = target;
+    dispatch(ADD_FILTER_LIST({ id }));
   }, []);
 
   return (
@@ -25,73 +23,16 @@ function CategoryId() {
       <div className={ style.filter }>
         <BarFilter />
         <div className={ style.listfilter }>
-          { listFilter.map((item) => {
-            if (item.color) {
-              return (
-                <FColor
-                  key={ item.colorName }
-                  cName={ item.colorName }
-                  color={ item.color }
-                  execFunction={ removeListFilter }
-                />
-              );
-            }
-            if (item.ctg) {
-              return (
-                <FCtg
-                  key={ item.ctg }
-                  ctg={ item.ctg }
-                  execFunction={ removeListFilter }
-                />
-              );
-            }
-            if (item.size) {
-              return (
-                <FSize
-                  key={ item.size }
-                  size={ item.size }
-                  execFunction={ removeListFilter }
-                />
-              );
-            }
-            if (item.tecid) {
-              return (
-                <FTissue
-                  key={ item.tecid }
-                  tecid={ item.tecid }
-                  execFunction={ removeListFilter }
-                />
-              );
-            }
-            if (item.branch) {
-              return (
-                <FBranch
-                  key={ item.branch }
-                  branch={ item.branch }
-                  execFunction={ removeListFilter }
-                />
-              );
-            }
-            if (item.model) {
-              return (
-                <FModel
-                  key={ item.model }
-                  model={ item.model }
-                  execFunction={ removeListFilter }
-                />
-              );
-            }
-            if (item.gen) {
-              return (
-                <FGen
-                  key={ item.gen }
-                  gen={ item.gen }
-                  execFunction={ removeListFilter }
-                />
-              );
-            }
-            return null;
-          }) }
+          { listFilter.map((item) => (
+            <FCtg
+              id={ item.id }
+              name={ item.key }
+              key={ item.id }
+              value={ item.name }
+              color={ item.color }
+              execFunction={ removeListFilter }
+            />
+          )) }
         </div>
       </div>
       <div className={ style.categorycont }>
