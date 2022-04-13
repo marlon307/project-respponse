@@ -134,7 +134,7 @@ const mockItensFilter = [{
   id: 33,
   key: 'color',
   name: 'Preto',
-  color: '#0000',
+  color: '#000',
 }, {
   id: 34,
   key: 'color',
