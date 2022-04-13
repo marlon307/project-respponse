@@ -8,6 +8,9 @@
     cursor: pointer;
     width: 28px;
     height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: transparent;
   }
 
@@ -53,6 +56,19 @@
 }
 
 @media (max-width: 700px) {
+  .searchBar {
+    button {
+      width: auto;
+      height: auto;
+      padding: 1em 1em;
+    }
+
+    svg {
+      width: auto;
+      height: auto;
+    }
+  }
+
   .bar {
     width: 100%;
     border-bottom: 1px solid var(--bodercolor);
