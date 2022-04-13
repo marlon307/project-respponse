@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   FBranch, FColor, FSize, FGen, FCtg, FModel,
 } from '.';
+import { ADD_FILTER_LIST } from '../../redux/actions';
+import { useAppDispatch } from '../../redux/hooks';
 import mockBranch from '../../service/mockBranch';
 import mockColor from '../../service/mockColor';
 import mockCtg from '../../service/mockCtg';
@@ -10,6 +12,12 @@ import mockSize from '../../service/mockSize';
 import style from './style.module.scss';
 
 function Filter() {
+  const dispatch = useAppDispatch();
+
+  const addListFilter = useCallback((itemFilter: any) => {
+    dispatch(ADD_FILTER_LIST(itemFilter));
+  }, []);
+
   return (
     <section className={ style.optionsfilter }>
       <h1>Filtro</h1>
@@ -21,6 +29,7 @@ function Filter() {
               key={ colorName }
               color={ color }
               cName={ colorName }
+              execFunction={ () => addListFilter({ color, colorName }) }
             />
           ))
         }

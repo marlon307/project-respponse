@@ -1,28 +1,21 @@
-import React, { useCallback, memo } from 'react';
+import React, { memo } from 'react';
 // import { useAppDispatch } from '../../redux/hooks';
 import style from './style.module.scss';
 
 export type PFColor = {
   cName: string;
   color: string;
+  execFunction?: React.MouseEventHandler<HTMLInputElement>;
 };
 
-function FColor({ cName, color }: PFColor) {
-  // const dispatch = useAppDispatch();
-
-  const handleClick = useCallback(() => {
-    // dispatch(addFilter({ cName, color }));
-  }, []);
-
-  // useEffect(() => handleClick(), []);
-
+function FColor({ cName, color, execFunction }: PFColor) {
   return (
     <label htmlFor={ cName } className={ style.itemfilter }>
       <input
         type="checkbox"
         name="filter"
         id={ cName }
-        onClick={ handleClick }
+        onClick={ execFunction! }
       />
       <div className={ style.filtername }>
         { cName }
@@ -31,5 +24,9 @@ function FColor({ cName, color }: PFColor) {
     </label>
   );
 }
+
+FColor.defaultProps = {
+  execFunction: undefined,
+};
 
 export default memo(FColor);

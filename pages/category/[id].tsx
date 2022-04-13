@@ -5,20 +5,21 @@ import { mockminObjectCards2 } from '../../service/mockCards';
 import { CardProduct } from '../../components/Cards/CardProduct';
 import style from './style.module.scss';
 import BarFilter from '../../components/Filter/BarFilter';
-import mockFiltermostUsed from '../../service/mockFiltermostUsed';
 import {
   FBranch, FColor, FModel, FSize, FTissue,
 } from '../../components/Filter';
+import { useAppSelector } from '../../redux/hooks';
 
-function categoryId() {
-  // https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll
+function CategoryId() {
+  const { listFilter } = useAppSelector(({ search }) => search);
+
   return (
     <div className={ style.category }>
 
       <div className={ style.filter }>
         <BarFilter />
         <div className={ style.listfilter }>
-          { mockFiltermostUsed.map((item) => {
+          { listFilter.map((item) => {
             if (item.branch) return <FBranch key={ item.branch } branch={ item.branch } />;
             if (item.color) {
               return (
@@ -48,7 +49,7 @@ function categoryId() {
   );
 }
 
-export default categoryId;
+export default CategoryId;
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const pgProps = await mockCategory.find(({ path }) => path === params.id);
