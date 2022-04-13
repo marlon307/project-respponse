@@ -38,7 +38,11 @@ function Filter() {
       <div className={ style.block }>
         {
           mockCtg.map((ctg) => (
-            <FCtg key={ ctg } ctg={ ctg } />
+            <FCtg
+              key={ ctg }
+              ctg={ ctg }
+              execFunction={ () => addListFilter({ ctg }) }
+            />
           ))
         }
       </div>
@@ -49,6 +53,7 @@ function Filter() {
             <FSize
               key={ size }
               size={ size }
+              execFunction={ () => addListFilter({ size }) }
             />
           ))
         }
@@ -59,14 +64,15 @@ function Filter() {
           <FBranch
             key={ branch }
             branch={ branch }
+            execFunction={ () => addListFilter({ branch }) }
           />
         )) }
       </div>
       <h2>Genero</h2>
       <div className={ style.block }>
-        <FGen gen="Femenino" />
-        <FGen gen="Infantil" />
-        <FGen gen="Masculino" />
+        <FGen gen="Femenino" execFunction={ () => addListFilter({ gen: 'Femenino' }) } />
+        <FGen gen="Infantil" execFunction={ () => addListFilter({ gen: 'Infantil' }) } />
+        <FGen gen="Masculino" execFunction={ () => addListFilter({ gen: 'Masculino' }) } />
       </div>
       <h2>Modelo</h2>
       <div className={ style.block }>
@@ -75,6 +81,7 @@ function Filter() {
             <FModel
               key={ model }
               model={ model }
+              execFunction={ () => addListFilter({ model }) }
             />
           ))
         }
