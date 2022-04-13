@@ -13,7 +13,7 @@
 
 .searchdrop {
   position: absolute;
-  transition: opacity transform 0.3s ease;
+  transition: opacity, transform 0.3s ease;
   width: 40%;
   left: 50%;
   transform: translate3d(-50%, -5.42em, 0);
