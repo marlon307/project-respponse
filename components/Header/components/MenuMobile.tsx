@@ -21,7 +21,7 @@ function MenuMobile() {
     }
   }
 
-  function openMenu(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  function openMenu(event: { preventDefault: () => void; }) {
     event.preventDefault();
     setDropMnMobile(!dropMnMobile);
   }
@@ -46,7 +46,7 @@ function MenuMobile() {
       { logged ? (
         <button
           type="button"
-          ariaLabel="Menu"
+          aria-label="Menu"
           onClick={ openMenu }
         >
           <Svg icoName="menu" />
