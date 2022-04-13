@@ -1,21 +1,21 @@
 import React, { useCallback } from 'react';
-import {
-  FBranch, FColor, FSize, FGen, FCtg, FModel,
-} from '.';
+import FCtg from './ItemList';
 import { ADD_FILTER_LIST } from '../../redux/actions';
 import { useAppDispatch } from '../../redux/hooks';
-import mockBranch from '../../service/mockBranch';
-import mockColor from '../../service/mockColor';
-import mockCtg from '../../service/mockCtg';
-import mockModel from '../../service/mockModel';
-import mockSize from '../../service/mockSize';
+import mockItensFilter from '../../service/mockCtg';
 import style from './style.module.scss';
 
 function Filter() {
   const dispatch = useAppDispatch();
 
-  const addListFilter = useCallback((itemFilter: any) => {
-    dispatch(ADD_FILTER_LIST(itemFilter));
+  const addListFilter = useCallback(({ target }: any) => {
+    const {
+      id, name, value, dataset,
+    } = target;
+
+    dispatch(ADD_FILTER_LIST({
+      id, name: value, key: name, color: dataset.color,
+    }));
   }, []);
 
   return (
@@ -24,65 +24,89 @@ function Filter() {
       <h2>Cores</h2>
       <div className={ style.block }>
         {
-          mockColor.map(({ color, colorName }) => (
-            <FColor
-              key={ colorName }
-              color={ color }
-              cName={ colorName }
-              execFunction={ () => addListFilter({ color, colorName }) }
-            />
+          mockItensFilter.map(({
+            id, key, name, color,
+          }) => (
+            key === 'color' && (
+              <FCtg
+                id={ id }
+                name={ key }
+                key={ name }
+                value={ name }
+                color={ color }
+                execFunction={ addListFilter }
+              />
+            )
           ))
         }
       </div>
       <h2>Categoria</h2>
       <div className={ style.block }>
         {
-          mockCtg.map((ctg) => (
-            <FCtg
-              key={ ctg }
-              ctg={ ctg }
-              execFunction={ () => addListFilter({ ctg }) }
-            />
+          mockItensFilter.map(({ id, key, name }) => (
+            key === 'ctg' && (
+              <FCtg
+                id={ id }
+                name={ key }
+                key={ name }
+                value={ name }
+                execFunction={ addListFilter }
+              />
+            )
           ))
         }
       </div>
       <h2>Tamanho</h2>
       <div className={ style.block }>
         {
-          mockSize.map((size) => (
-            <FSize
-              key={ size }
-              size={ size }
-              execFunction={ () => addListFilter({ size }) }
-            />
+          mockItensFilter.map(({ id, key, name }) => (
+            key === 'size' && (
+              <FCtg
+                id={ id }
+                name={ key }
+                key={ name }
+                value={ name }
+                execFunction={ addListFilter }
+              />
+            )
           ))
         }
       </div>
       <h2>Marca</h2>
       <div className={ style.block }>
-        { mockBranch.map((branch) => (
-          <FBranch
-            key={ branch }
-            branch={ branch }
-            execFunction={ () => addListFilter({ branch }) }
-          />
-        )) }
+        {
+          mockItensFilter.map(({ id, key, name }) => (
+            key === 'branch' && (
+              <FCtg
+                id={ id }
+                name={ key }
+                key={ name }
+                value={ name }
+                execFunction={ addListFilter }
+              />
+            )
+          ))
+        }
       </div>
       <h2>Genero</h2>
       <div className={ style.block }>
-        <FGen gen="Femenino" execFunction={ () => addListFilter({ gen: 'Femenino' }) } />
-        <FGen gen="Infantil" execFunction={ () => addListFilter({ gen: 'Infantil' }) } />
-        <FGen gen="Masculino" execFunction={ () => addListFilter({ gen: 'Masculino' }) } />
+        <FCtg id={ 33 } name="gen" value="Criança" execFunction={ addListFilter } />
+        <FCtg id={ 34 } name="gen" value="Femenino" execFunction={ addListFilter } />
+        <FCtg id={ 35 } name="gen" value="Masculino" execFunction={ addListFilter } />
       </div>
       <h2>Modelo</h2>
       <div className={ style.block }>
         {
-          mockModel.map((model) => (
-            <FModel
-              key={ model }
-              model={ model }
-              execFunction={ () => addListFilter({ model }) }
-            />
+          mockItensFilter.map(({ id, key, name }) => (
+            key === 'model' && (
+              <FCtg
+                id={ id }
+                name={ key }
+                key={ name }
+                value={ name }
+                execFunction={ addListFilter }
+              />
+            )
           ))
         }
       </div>
