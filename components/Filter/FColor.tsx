@@ -15,7 +15,7 @@ function FColor({ cName, color, execFunction }: PFColor) {
         type="checkbox"
         name="filter"
         id={ cName }
-        onClick={ execFunction! }
+        onClick={ execFunction }
       />
       <div className={ style.filtername }>
         { cName }

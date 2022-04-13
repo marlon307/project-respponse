@@ -6,7 +6,7 @@ import { CardProduct } from '../../components/Cards/CardProduct';
 import style from './style.module.scss';
 import BarFilter from '../../components/Filter/BarFilter';
 import {
-  FBranch, FColor, FModel, FSize, FTissue,
+  FBranch, FColor, FCtg, FModel, FSize, FTissue,
 } from '../../components/Filter';
 import { useAppSelector } from '../../redux/hooks';
 
@@ -30,10 +30,11 @@ function CategoryId() {
                 />
               );
             }
-
+            if (item.ctg) return <FCtg key={ item.ctg } ctg={ item.ctg } />;
             if (item.size) return <FSize key={ item.size } size={ item.size } />;
             if (item.tecid) return <FTissue key={ item.tecid } tecid={ item.tecid } />;
             if (item.model) return <FModel key={ item.model } model={ item.model } />;
+            if (item.gen) return <FCtg key={ item.gen } ctg={ item.gen } />;
             return null;
           }) }
         </div>
