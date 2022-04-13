@@ -113,7 +113,7 @@
 
 @media (max-width: 700px) {
   .nav {
-    gap: 1.4em;
+    gap: 0;
   }
 
   .usermneu,
@@ -127,5 +127,13 @@
     display: block;
     visibility: visible;
     opacity: 1;
+    margin: 0;
+    padding: 0;
+
+    button {
+      background: transparent;
+      padding: 0.85em 1em;
+      cursor: pointer;
+    }
   }
 }

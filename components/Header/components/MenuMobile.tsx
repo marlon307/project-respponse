@@ -44,14 +44,13 @@ function MenuMobile() {
     }) }
     >
       { logged ? (
-        <Link href="/" passHref>
-          <CustomLink
-            ariaLabel="Menu"
-            onClick={ openMenu! }
-          >
-            <Svg icoName="menu" />
-          </CustomLink>
-        </Link>
+        <button
+          type="button"
+          ariaLabel="Menu"
+          onClick={ openMenu }
+        >
+          <Svg icoName="menu" />
+        </button>
       ) : (
         <Link href="/login-register" passHref>
           <CustomLink
