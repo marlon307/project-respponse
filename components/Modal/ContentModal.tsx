@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, Suspense } from 'react';
+
 import { createPortal } from 'react-dom';
 import useOutsideClick from '../../hooks/useOutSide';
 import Loading from '../Loading';
@@ -35,23 +36,15 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
     };
   }, [children, getModal.classList, isOpen]);
 
-  function contetModal() {
-    return (
-      isOpen && (
-        <div
-          ref={ modalRef }
-          className={ style.content_modal }
-        >
-          <Suspense fallback={ <Loading /> }>
-            { children }
-          </Suspense>
-        </div>
-      )
-    );
-  }
-
   return children && isOpen && createPortal(
-    contetModal(),
+    <div
+      ref={ modalRef }
+      className={ style.content_modal }
+    >
+      <Suspense fallback={ <Loading /> }>
+        { children }
+      </Suspense>
+    </div>,
     getModal,
   );
 }
