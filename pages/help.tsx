@@ -4,9 +4,9 @@ import style from '../Sass/style.module.scss';
 
 function help() {
   return (
-    <section className={ style.section }>
+    <main className={ style.section }>
       <Help />
-    </section>
+    </main>
   );
 }
 

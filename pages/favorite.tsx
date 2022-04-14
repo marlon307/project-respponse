@@ -17,7 +17,7 @@ function Favorite() {
   }, [logged, router]);
 
   return (
-    <section className={ style.favorites }>
+    <main className={ style.favorites }>
       <h1 className={ style.title } title="Favoritos">
         <Svg icoName="healt" />
         Favoritos
@@ -32,7 +32,7 @@ function Favorite() {
           </li>
         )) }
       </ul>
-    </section>
+    </main>
   );
 }
 
