@@ -10,7 +10,7 @@ type TEvent = {
   value: string;
 };
 
-function Index() {
+function CfgUser() {
   const { logged } = useAppSelector(({ user }) => user);
   const router = useRouter();
 
@@ -152,4 +152,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default CfgUser;
