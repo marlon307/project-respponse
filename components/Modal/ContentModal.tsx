@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, Suspense } from 'react';
 import { createPortal } from 'react-dom';
 import useOutsideClick from '../../hooks/useOutSide';
+import Loading from '../Loading';
 // import useOutsideClick from 'hooks/useOutSide';
 import style from './style.module.scss';
 
@@ -41,7 +42,9 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
           ref={ modalRef }
           className={ style.content_modal }
         >
-          { children }
+          <Suspense fallback={ <Loading /> }>
+            { children }
+          </Suspense>
         </div>
       )
     );
