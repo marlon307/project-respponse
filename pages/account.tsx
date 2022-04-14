@@ -9,6 +9,7 @@ import ContentModal from '../components/Modal/ContentModal';
 import BtnAdd from '../components/Buttons/BtnAdd';
 import Help from './help';
 import style from '../Sass/style.module.scss';
+import Loading from '../components/Loading';
 
 const Order = lazy(() => import('../components/Order/Orders'));
 const OrderId = lazy(() => import('../components/Order/OrderId'));
