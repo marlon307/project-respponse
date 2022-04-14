@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {
+  useState, useRef, useEffect, lazy,
+} from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import { LOGIN_USER } from '../../../redux/actions';
 import Svg from '../../../assets/Svg';
@@ -8,10 +9,7 @@ import ContentModal from '../../Modal/ContentModal';
 import CustomLink from '../../CustomLink';
 import style from './styles/style.module.scss';
 
-const LoginRegister = dynamic(
-  () => import('../../../pages/login-register'),
-  { loading: () => <div>sdsd</div> },
-);
+const LoginRegister = lazy(() => import('../../../pages/login-register'));
 
 function MenuUser() {
   const dispatch = useAppDispatch();

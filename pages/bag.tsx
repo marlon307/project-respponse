@@ -1,18 +1,16 @@
-import React, { useCallback, useState } from 'react';
-import dynamic from 'next/dynamic';
+import React, { useCallback, useState, lazy } from 'react';
 import Svg from '../assets/Svg';
 import BarBuy from '../components/Bars/BarBuy';
 import { SmallCard } from '../components/Cards';
-import Loading from '../components/Loading';
 import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
 import { useAppSelector } from '../redux/hooks';
 import style from '../Sass/style.module.scss';
 
-const CardEdit = dynamic(import('../components/Cards/CardEdit/CardEdit'), { loading: () => <Loading /> });
-const RenderAdderess = dynamic(import('../components/Bag/RenderAdderess'), { loading: () => <Loading /> });
-const Addaddress = dynamic(import('../components/Add/Address'), { loading: () => <Loading /> });
-const Addacard = dynamic(import('../components/Add/Addcard'), { loading: () => <Loading /> });
+const CardEdit = lazy(() => import('../components/Cards/CardEdit/CardEdit'));
+const RenderAdderess = lazy(() => import('../components/Bag/RenderAdderess'));
+const Addaddress = lazy(() => import('../components/Add/Address'));
+const Addacard = lazy(() => import('../components/Add/Addcard'));
 
 function Bag() {
   const { bagItems } = useAppSelector(({ bag }) => bag);

@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {
+  useState, useEffect, useCallback, lazy,
+} from 'react';
 import cx from 'classnames';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 import { useAppSelector } from '../redux/hooks';
 import Svg from '../assets/Svg';
-import Loading from '../components/Loading';
 import ContentModal from '../components/Modal/ContentModal';
 import BtnAdd from '../components/Buttons/BtnAdd';
 import Help from './help';
 import style from '../Sass/style.module.scss';
 
-const Usercfg = dynamic(() => import('../components/UserCfg/Index'), { loading: () => <Loading /> });
-const Order = dynamic(() => import('../components/Order/Orders'), { loading: () => <Loading /> });
-const OrderId = dynamic(() => import('../components/Order/OrderId'), { loading: () => <Loading /> });
-const Cards = dynamic(() => import('../components/Cards/Cards'), { loading: () => <Loading /> });
-const Address = dynamic(() => import('../components/Cards/Address'), { loading: () => <Loading /> });
-const AddCard = dynamic(() => import('../components/Add/Addcard'), { loading: () => <Loading /> });
-const Addaderess = dynamic(() => import('../components/Add/Address'), { loading: () => <Loading /> });
+const Order = lazy(() => import('../components/Order/Orders'));
+const OrderId = lazy(() => import('../components/Order/OrderId'));
+const Cards = lazy(() => import('../components/Cards/Cards'));
+const Address = lazy(() => import('../components/Cards/Address'));
+const AddCard = lazy(() => import('../components/Add/Addcard'));
+const Addaderess = lazy(() => import('../components/Add/Address'));
+const Usercfg = lazy(() => import('../components/UserCfg/Index'));
 
 function Account() {
   const { logged } = useAppSelector(({ user }) => user);

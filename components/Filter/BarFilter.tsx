@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import Loading from '../Loading';
+import React, { useEffect, useState, lazy } from 'react';
 import ContentModal from '../Modal/ContentModal';
 import style from './style.module.scss';
 import useWindowSize from '../../hooks/useWindowSize';
 import Svg from '../../assets/Svg';
 
-const Filter = dynamic(() => import('./Filter'), { loading: () => <Loading /> });
+const Filter = lazy(() => import('./Filter'));
 
 function BarFilter() {
   const [sizeWidth] = useWindowSize();
