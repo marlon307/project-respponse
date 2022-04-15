@@ -8,7 +8,7 @@ function Home() {
   return (
     <main className={ styles.main }>
       <br />
-      <CardCategory image={ mockCategory[0].imgCategory } ctgName="Tenis" path="/category/tenis" />
+      <CardCategory image={ mockCategory[0].imgCategory } ctgName="Tenis" path="/tenis" />
     </main>
   );
 }
