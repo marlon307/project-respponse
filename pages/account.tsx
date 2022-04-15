@@ -45,7 +45,7 @@ function Account() {
 
   return (
     <>
-      <main className={ style.main }>
+      <div className={ style.usercfg }>
         <div className={ style.container } id="user">
           <a
             href="#user"
@@ -137,7 +137,7 @@ function Account() {
             <Help />
           </div>
         </div>
-      </main>
+      </div>
       <ContentModal
         isOpen={ openModal }
         openModal={ setOpenModal }

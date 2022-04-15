@@ -8,9 +8,12 @@ type PCardCategory = {
   image: any;
   ctgName: string;
   path: string;
+  color: string;
 };
 
-function CardCategory({ image, ctgName, path }: PCardCategory) {
+function CardCategory({
+  image, ctgName, path, color,
+}: PCardCategory) {
   return (
     <Link href={ `/category/${path}` } passHref>
       <CustomLink ariaLabel={ ctgName } className={ style.itencategory }>
@@ -19,11 +22,11 @@ function CardCategory({ image, ctgName, path }: PCardCategory) {
             url={ image }
             quality={ 60 }
             alt={ ctgName }
-            width={ 100 }
-            height={ 100 }
+            width={ 70 }
+            height={ 70 }
           />
         </figure>
-        <span>{ ctgName }</span>
+        <span style={ { background: `${color}33` } }>{ ctgName }</span>
       </CustomLink>
     </Link>
   );
