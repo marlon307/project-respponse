@@ -1,23 +1,31 @@
 // Style card category
 .itencategory {
   text-align: center;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;
-  height: 150px;
+  padding: 0.6em 0.6em 0.6em 5em;
+  width: fit-content;
+  gap: 1em;
+  background: #ff00000a;
+  border-radius: 1em;
 
   .imgctg {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+    height: 70px;
 
     img {
+      border-radius: none;
       will-change: transform;
-      border-radius: 50%;
+      object-fit: cover;
       transition: 0.2s;
       transform: scale3d(0.96, 0.96, 0.96);
+      filter: drop-shadow(1px 5px 3px rgb(243, 173, 173));
     }
   }
 
@@ -34,18 +42,18 @@
   }
 }
 
-@media (max-width: 750px) {
-  .itencategory {
-    width: 120px;
-    height: 120px;
+// @media (max-width: 750px) {
+//   .itencategory {
+//     width: 120px;
+//     height: 120px;
 
-    .imgctg {
-      width: 100px;
-      height: 100px;
+//     .imgctg {
+//       width: 100px;
+//       height: 100px;
 
-      img {
-        transform: scale3d(1, 1, 1);
-      }
-    }
-  }
-}
+//       img {
+//         transform: scale3d(1, 1, 1);
+//       }
+//     }
+//   }
+// }
