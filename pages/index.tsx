@@ -7,7 +7,6 @@ import mockCategory from '../service/mockCategory';
 function Home() {
   return (
     <main className={ style.main }>
-      <br />
       <div className={ style.listctg }>
         { mockCategory.map(({
           ctgID, imgCategory, categoryName, color, path,
