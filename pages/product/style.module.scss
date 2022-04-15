@@ -8,14 +8,14 @@
 .slide {
   grid-area: slide;
   min-height: 250px;
+  height: calc(100vh - 90px);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 
   figure {
-    max-width: 800px;
-    width: 100%;
+    max-width: calc(100vh - 90px);
     margin: 0 auto;
     min-width: 400px;
     min-height: 250px;
@@ -27,11 +27,8 @@
 }
 
 .constimg {
-  display: flex;
   width: 100%;
   height: 100%;
-  align-items: center;
-  justify-content: center;
   flex: none;
 }
 
