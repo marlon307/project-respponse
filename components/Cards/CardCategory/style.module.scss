@@ -30,7 +30,7 @@
     border-radius: 1em;
     font-weight: 700;
     color: #333;
-    padding: 0.6em 0.6em 0.6em 5em;
+    padding: 0.6em 0.6em 0.6em 4.4em;
   }
 
   &:hover {
@@ -40,19 +40,3 @@
     }
   }
 }
-
-// @media (max-width: 750px) {
-//   .itencategory {
-//     width: 120px;
-//     height: 120px;
-
-//     .imgctg {
-//       width: 100px;
-//       height: 100px;
-
-//       img {
-//         transform: scale3d(1, 1, 1);
-//       }
-//     }
-//   }
-// }
