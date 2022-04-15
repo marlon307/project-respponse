@@ -12,22 +12,20 @@ type PCardCategory = {
 
 function CardCategory({ image, ctgName, path }: PCardCategory) {
   return (
-    <div className={ style.itencategory }>
-      <Link href={ `/category/${path}` } passHref>
-        <CustomLink ariaLabel={ ctgName }>
-          <figure className={ style.imgctg }>
-            <LoadingImage
-              url={ image }
-              quality={ 60 }
-              alt={ ctgName }
-              width={ 100 }
-              height={ 100 }
-            />
-          </figure>
-          <span>{ ctgName }</span>
-        </CustomLink>
-      </Link>
-    </div>
+    <Link href={ `/category/${path}` } passHref>
+      <CustomLink ariaLabel={ ctgName } className={ style.itencategory }>
+        <figure className={ style.imgctg }>
+          <LoadingImage
+            url={ image }
+            quality={ 60 }
+            alt={ ctgName }
+            width={ 100 }
+            height={ 100 }
+          />
+        </figure>
+        <span>{ ctgName }</span>
+      </CustomLink>
+    </Link>
   );
 }
 
