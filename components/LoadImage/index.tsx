@@ -36,6 +36,7 @@ function LoadingImage({
           placeholder="blur"
           onLoadingComplete={ finishLoading }
           priority
+          loading="lazy"
         />
       </div>
       { !isloading && (
