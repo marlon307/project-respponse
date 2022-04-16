@@ -50,7 +50,7 @@ function LoadingImage({
 LoadingImage.defaultProps = {
   width: undefined,
   height: undefined,
-  priority: true,
+  priority: false,
   quality: undefined,
 };
 
