@@ -24,7 +24,6 @@ function CardCategory({
             alt={ ctgName }
             width={ 64 }
             height={ 64 }
-            priority={ false }
           />
         </figure>
         <span style={ { background: `${color}33` } }>{ ctgName }</span>

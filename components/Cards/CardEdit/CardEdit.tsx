@@ -65,6 +65,7 @@ function CardEdit() {
                 ? mockCards[itemEditBag.id].options[0].imgs[0].urlImg
                 : urlImage
             }
+            priority
           />
         </div>
         <div className={ style.colors }>

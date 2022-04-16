@@ -26,6 +26,7 @@ function CardProductND({ id }: PCardND) {
             height={ 450 }
             quality={ 85 }
             alt={ title }
+            priority={ false }
           />
         </figure>
         <div className={ style.infocontND }>

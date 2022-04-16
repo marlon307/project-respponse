@@ -27,6 +27,7 @@ function CardProductNDS({ id }: TCardNDS) {
             height={ 300 }
             quality={ 85 }
             alt={ title }
+            priority={ false }
           />
         </figure>
         <div className={ style.infocontND }>
