@@ -66,6 +66,7 @@ function CardEdit() {
                 : urlImage
             }
             priority
+            loading="eager"
           />
         </div>
         <div className={ style.colors }>

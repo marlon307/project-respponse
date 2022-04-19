@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import Image from 'next/image';
+import Image, { ImageProps } from 'next/image';
 import cx from 'classnames';
 import style from './style.module.scss';
 
@@ -10,10 +10,11 @@ export interface PLoadImg {
   quality?: number;
   alt: string;
   priority?: boolean;
+  loading?: ImageProps['loading'];
 }
 
 function LoadingImage({
-  url, width, height, quality, alt, priority,
+  url, width, height, quality, alt, priority, loading,
 }: PLoadImg) {
   const [isloading, setIsLoading] = useState(false);
 
@@ -37,7 +38,7 @@ function LoadingImage({
           placeholder="blur"
           onLoadingComplete={ finishLoading }
           priority={ priority }
-          loading="lazy"
+          loading={ loading! }
         />
       </div>
       { !isloading && (
@@ -52,6 +53,7 @@ LoadingImage.defaultProps = {
   height: undefined,
   priority: false,
   quality: undefined,
+  loading: 'lazy',
 };
 
 export default LoadingImage;
