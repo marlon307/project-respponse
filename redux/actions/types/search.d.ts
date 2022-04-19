@@ -2,6 +2,8 @@ interface TypesObjecListFilter {
   id: number;
   branch: string;
   colorName: string;
+  key: string;
+  name: string;
   color: string;
   size: string;
   tecid: string;
@@ -11,5 +13,5 @@ interface TypesObjecListFilter {
 
 export interface StateSearchType {
   textSearch: string;
-  listFilter: Array<any>;
+  listFilter: Array<TypesObjecListFilter>;
 }

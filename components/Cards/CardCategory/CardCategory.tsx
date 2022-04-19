@@ -19,7 +19,7 @@ function CardCategory({
       <CustomLink ariaLabel={ ctgName } className={ style.itencategory }>
         <figure className={ style.imgctg }>
           <LoadingImage
-            url={ image }
+            src={ image }
             quality={ 60 }
             alt={ ctgName }
             width={ 64 }

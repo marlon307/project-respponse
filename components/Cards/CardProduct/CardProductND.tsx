@@ -21,7 +21,7 @@ function CardProductND({ id }: PCardND) {
       <a className={ style.productcardND } aria-label={ `${type} ${title}` }>
         <figure>
           <LoadingImage
-            url={ mainImg }
+            src={ mainImg }
             width={ 300 }
             height={ 450 }
             quality={ 85 }

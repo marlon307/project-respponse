@@ -20,7 +20,7 @@ function CardEdit() {
   });
   const [sizeupdate, setSizeUpdate] = useState(itemEditBag.size);
   const [qauntityupdate, setQauntityUpdate] = useState(itemEditBag.quantity);
-  const [urlImage, setUrlimg] = useState<ImageProps>();
+  const [urlImage, setUrlimg] = useState<ImageProps['src']>();
 
   useEffect(() => {
     const array = mockCards[itemEditBag.id].options;
@@ -60,8 +60,8 @@ function CardEdit() {
         <div className={ style.contimg }>
           <LoadingImage
             alt="title"
-            url={
-              urlImage?.src === undefined
+            src={
+              !urlImage
                 ? mockCards[itemEditBag.id].options[0].imgs[0].urlImg
                 : urlImage
             }

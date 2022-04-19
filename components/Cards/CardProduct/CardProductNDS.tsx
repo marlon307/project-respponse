@@ -22,7 +22,7 @@ function CardProductNDS({ id }: TCardNDS) {
       <a className={ style.productcardNDS } aria-label={ `${type} ${title}` }>
         <figure>
           <LoadingImage
-            url={ mainImg }
+            src={ mainImg }
             width={ 300 }
             height={ 300 }
             quality={ 85 }
