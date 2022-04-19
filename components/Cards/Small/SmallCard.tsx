@@ -43,7 +43,7 @@ function SmallCard({
       <div className={ style.img }>
         <figure>
           <LoadingImage
-            url={ mainImg }
+            src={ mainImg }
             width={ 130 }
             height={ 165 }
             alt={ title }

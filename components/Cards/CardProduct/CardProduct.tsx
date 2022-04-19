@@ -22,7 +22,7 @@ function CardProduct({ id }: PCardP) {
       <a className={ style.productcard } aria-label={ `${type} ${title}` }>
         <figure>
           <LoadingImage
-            url={ mainImg }
+            src={ mainImg }
             quality={ 85 }
             alt={ title }
             width={ 350 }

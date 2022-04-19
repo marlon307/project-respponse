@@ -3,19 +3,9 @@ import Image, { ImageProps } from 'next/image';
 import cx from 'classnames';
 import style from './style.module.scss';
 
-export interface PLoadImg {
-  url: string | any;
-  width?: number;
-  height?: number;
-  quality?: number;
-  alt: string;
-  priority?: boolean;
-  loading?: ImageProps['loading'];
-}
-
 function LoadingImage({
-  url, width, height, quality, alt, priority, loading,
-}: PLoadImg) {
+  src, width, height, quality, alt, priority, loading,
+}: ImageProps) {
   const [isloading, setIsLoading] = useState(false);
 
   const finishLoading = useCallback(() => setIsLoading(true), []);
@@ -30,7 +20,7 @@ function LoadingImage({
       >
         <Image
           quality={ quality }
-          src={ url }
+          src={ src }
           alt={ alt }
           layout="responsive"
           width={ width }
@@ -47,13 +37,5 @@ function LoadingImage({
     </div>
   );
 }
-
-LoadingImage.defaultProps = {
-  width: undefined,
-  height: undefined,
-  priority: false,
-  quality: undefined,
-  loading: 'lazy',
-};
 
 export default LoadingImage;

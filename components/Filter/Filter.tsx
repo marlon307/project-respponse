@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import FCtg from './ItemList';
+import ItemList from './ItemList';
 import { ADD_FILTER_LIST } from '../../redux/actions';
 import { useAppDispatch } from '../../redux/hooks';
 import mockItensFilter from '../../service/mockCtg';
@@ -28,7 +28,7 @@ function Filter() {
             id, key, name, color,
           }) => (
             key === 'color' && (
-              <FCtg
+              <ItemList
                 id={ id }
                 name={ key }
                 key={ name }
@@ -45,7 +45,7 @@ function Filter() {
         {
           mockItensFilter.map(({ id, key, name }) => (
             key === 'ctg' && (
-              <FCtg
+              <ItemList
                 id={ id }
                 name={ key }
                 key={ name }
@@ -61,7 +61,7 @@ function Filter() {
         {
           mockItensFilter.map(({ id, key, name }) => (
             key === 'size' && (
-              <FCtg
+              <ItemList
                 id={ id }
                 name={ key }
                 key={ name }
@@ -77,7 +77,7 @@ function Filter() {
         {
           mockItensFilter.map(({ id, key, name }) => (
             key === 'branch' && (
-              <FCtg
+              <ItemList
                 id={ id }
                 name={ key }
                 key={ name }
@@ -90,16 +90,16 @@ function Filter() {
       </div>
       <h2>Genero</h2>
       <div className={ style.block }>
-        <FCtg id={ 36 } name="gen" value="Criança" execFunction={ addListFilter } />
-        <FCtg id={ 37 } name="gen" value="Femenino" execFunction={ addListFilter } />
-        <FCtg id={ 38 } name="gen" value="Masculino" execFunction={ addListFilter } />
+        <ItemList id={ 36 } name="gen" value="Criança" execFunction={ addListFilter } />
+        <ItemList id={ 37 } name="gen" value="Femenino" execFunction={ addListFilter } />
+        <ItemList id={ 38 } name="gen" value="Masculino" execFunction={ addListFilter } />
       </div>
       <h2>Modelo</h2>
       <div className={ style.block }>
         {
           mockItensFilter.map(({ id, key, name }) => (
             key === 'model' && (
-              <FCtg
+              <ItemList
                 id={ id }
                 name={ key }
                 key={ name }

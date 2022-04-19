@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
+import type { ImageProps } from 'next/image';
 import CustomLink from '../../CustomLink';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
 
 type PCardCategory = {
-  image: any;
+  image: ImageProps['src'];
   ctgName: string;
   path: string;
   color: string;
@@ -19,7 +20,7 @@ function CardCategory({
       <CustomLink ariaLabel={ ctgName } className={ style.itencategory }>
         <figure className={ style.imgctg }>
           <LoadingImage
-            url={ image }
+            src={ image }
             quality={ 60 }
             alt={ ctgName }
             width={ 64 }

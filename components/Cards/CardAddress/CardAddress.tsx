@@ -55,7 +55,7 @@ function CardAdderess({
         { zipcode }
       </span>
       { removable && (
-        <div className="action" title="Excluir Endereço">
+        <div className={ style.delete } title="Excluir Endereço">
           <Svg icoName="trash" />
         </div>
       ) }

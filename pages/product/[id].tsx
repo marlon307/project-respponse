@@ -35,7 +35,7 @@ function ProductId({ pgProps }: TypeProduct) {
           <div key={ imgid } className={ style.constimg }>
             <figure>
               <LoadingImage
-                url={ urlImg }
+                src={ urlImg }
                 quality={ 90 }
                 alt={ title }
                 width={ 100 }
