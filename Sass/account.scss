@@ -2,6 +2,9 @@
   margin: 0 auto;
   width: 100%;
   max-width: 800px;
+  [id] {
+    scroll-margin-top: 3.8em;
+  }
 }
 
 .section {
@@ -116,14 +119,6 @@
 @media (max-width: 750px) {
   .container {
     margin: 1.4em 3%;
-  }
-
-  .account {
-    margin-top: 70px;
-
-    [id] {
-      scroll-margin-top: 3.5em;
-    }
   }
 }
 
