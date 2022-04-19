@@ -1,3 +1,4 @@
+import type { ImageProps } from 'next/image';
 import type { TDetail, TSpecification } from './components/Cards/CardDetail/types';
 
 export type TypeProduct = {
@@ -9,7 +10,7 @@ export type TypeProduct = {
     descrtion: string;
     branch: string;
     gender: string;
-    mainImg: Object;
+    mainImg: Object<ImageProps['src']>;
     discount: number;
     oldPrice: number;
     details: TDetail;
