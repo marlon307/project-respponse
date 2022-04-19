@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
+import type { ImageProps } from 'next/image';
 import CustomLink from '../../CustomLink';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
 
 type PCardCategory = {
-  image: any;
+  image: ImageProps['src'];
   ctgName: string;
   path: string;
   color: string;
