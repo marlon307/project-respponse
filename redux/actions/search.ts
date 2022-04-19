@@ -16,7 +16,7 @@ const ACTION_ADD_FILTER_LIST = (state: StateSearchType, { payload }: PayloadActi
   const existItem = state.listFilter.find((element) => element[key] === payload[key]);
 
   if (existItem) {
-    const newList = state.listFilter.filter((element) => element[key] !== payload[key]);
+    const newList = state.listFilter.filter((element: any) => element[key] !== payload[key]);
     state.listFilter = newList;
   } else {
     state.listFilter.unshift(payload);
