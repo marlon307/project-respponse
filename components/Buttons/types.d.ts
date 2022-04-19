@@ -1,3 +1,5 @@
+import type { ImageProps } from 'next/image';
+
 export type TObjectProduct = {
   id: number;
   title: string;
@@ -6,7 +8,7 @@ export type TObjectProduct = {
   descrtion: string;
   branch: string;
   gender: string;
-  mainImg: Object;
+  mainImg: Object<ImageProps['src']>;
   discount: number;
   oldPrice: number;
   details: Object;

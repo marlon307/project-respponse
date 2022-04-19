@@ -1,3 +1,5 @@
+import type { ImageProps } from 'next/image';
+
 export type ReduxUser = {
   user: {
     logged: boolean;
@@ -5,7 +7,7 @@ export type ReduxUser = {
       id: number;
       title: string;
       type: string;
-      mainImg: string | any;
+      mainImg: Object<ImageProps['src']>;
       price: number;
       oldPrice: number;
       colorName: string;
