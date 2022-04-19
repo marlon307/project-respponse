@@ -16,6 +16,24 @@
   justify-content: space-between;
 }
 
+.delete {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  cursor: pointer;
+
+  svg {
+    width: 22px !important;
+    height: 22px !important;
+    fill: #c2c2c2;
+
+    &:hover {
+      fill: var(--hovericon);
+    }
+  }
+}
+
 @media (max-width: 750px) {
   .card {
     p {

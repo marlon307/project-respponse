@@ -29,7 +29,7 @@ function CardPay({
           </p>
         </div>
         { removable && (
-          <div className="action" title="Excluir Cartão">
+          <div className={ style.delete } title="Excluir Cartão">
             <Svg icoName="trash" />
           </div>
         ) }
