@@ -21,11 +21,11 @@ function CardCategory({
         <figure className={ style.imgctg }>
           <LoadingImage
             src={ image }
-            quality={ 60 }
+            quality={ 80 }
             alt={ ctgName }
-            width={ 64 }
-            height={ 64 }
-            sizes="130px"
+            width={ 70 }
+            height={ 70 }
+            sizes="70px"
           />
         </figure>
         <span style={ { background: `${color}33` } }>{ ctgName }</span>
