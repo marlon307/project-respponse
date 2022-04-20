@@ -21,7 +21,7 @@ function CardCategory({
         <figure className={ style.imgctg }>
           <LoadingImage
             src={ image }
-            quality={ 80 }
+            quality={ 70 }
             alt={ ctgName }
             width={ 70 }
             height={ 70 }
