@@ -6,36 +6,29 @@ import style from './style.module.scss';
 function LoadingImage({
   src, width, height, quality, alt, priority, loading, sizes,
 }: ImageProps) {
-  const [isloading, setIsLoading] = useState(false);
+  const [isloading, setIsLoading] = useState(true);
 
-  const finishLoading = useCallback(() => setIsLoading(true), []);
+  const finishLoading = useCallback(() => setIsLoading(false), []);
 
   useEffect(() => () => finishLoading(), [finishLoading]);
 
   return (
-    <div className={ style.contentimg }>
-      <div className={ cx(style.image, {
-        [style.loading]: !isloading,
+    <Image
+      className={ cx({
+        [style.statusloading]: isloading,
       }) }
-      >
-        <Image
-          quality={ quality }
-          src={ src }
-          alt={ alt }
-          layout="responsive"
-          width={ width }
-          height={ height }
-          placeholder="blur"
-          onLoadingComplete={ finishLoading }
-          priority={ priority }
-          loading={ loading! }
-          sizes={ sizes }
-        />
-      </div>
-      { !isloading && (
-        <div className={ style.statusloading } />
-      ) }
-    </div>
+      quality={ quality }
+      src={ src }
+      alt={ alt }
+      layout="responsive"
+      width={ width }
+      height={ height }
+      placeholder="empty"
+      onLoadingComplete={ finishLoading }
+      priority={ priority }
+      loading={ loading! }
+      sizes={ sizes }
+    />
   );
 }
 
