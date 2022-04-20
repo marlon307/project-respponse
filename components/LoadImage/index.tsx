@@ -4,7 +4,7 @@ import cx from 'classnames';
 import style from './style.module.scss';
 
 function LoadingImage({
-  src, width, height, quality, alt, priority, loading,
+  src, width, height, quality, alt, priority, loading, sizes,
 }: ImageProps) {
   const [isloading, setIsLoading] = useState(false);
 
@@ -29,6 +29,7 @@ function LoadingImage({
           onLoadingComplete={ finishLoading }
           priority={ priority }
           loading={ loading! }
+          sizes={ sizes }
         />
       </div>
       { !isloading && (
