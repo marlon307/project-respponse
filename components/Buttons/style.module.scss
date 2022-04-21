@@ -53,6 +53,7 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  transition: transform 0.2s ease;
 
   span {
     position: relative;
@@ -64,6 +65,12 @@
   }
 
   &:hover {
+    animation: example 0.2s;
+    background: #006bef;
+  }
+
+  &:active {
+    transform: scale3d(0.97, 0.97, 0.97);
     background: #006bef;
   }
 
