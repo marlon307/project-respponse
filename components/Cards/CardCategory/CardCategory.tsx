@@ -28,7 +28,7 @@ function CardCategory({
             sizes="70px"
           />
         </figure>
-        <span style={ { background: `${color}33` } }>{ ctgName }</span>
+        <span style={ { background: `${color}1a` } }>{ ctgName }</span>
       </CustomLink>
     </Link>
   );

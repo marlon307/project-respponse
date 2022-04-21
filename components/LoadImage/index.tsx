@@ -4,7 +4,7 @@ import cx from 'classnames';
 import style from './style.module.scss';
 
 function LoadingImage({
-  src, width, height, quality, alt, priority, loading, sizes,
+  src, width, height, quality, alt, priority, loading, sizes, layout,
 }: ImageProps) {
   const [isloading, setIsLoading] = useState(true);
 
@@ -20,7 +20,7 @@ function LoadingImage({
       quality={ quality }
       src={ src }
       alt={ alt }
-      layout="responsive"
+      layout={ layout }
       width={ width }
       height={ height }
       placeholder="empty"
@@ -34,6 +34,7 @@ function LoadingImage({
 
 LoadingImage.defaultProps = {
   priority: false,
+  layout: 'responsive',
 };
 
 export default LoadingImage;
