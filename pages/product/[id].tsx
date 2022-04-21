@@ -38,8 +38,9 @@ function ProductId({ pgProps }: TypeProduct) {
                 src={ urlImg }
                 quality={ 90 }
                 alt={ title }
-                width={ 100 }
-                height={ 100 }
+                width={ 400 }
+                height={ 400 }
+                sizes="(max-width: 400px)"
               />
             </figure>
           </div>

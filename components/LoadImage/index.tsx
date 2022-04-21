@@ -26,10 +26,14 @@ function LoadingImage({
       placeholder="empty"
       onLoadingComplete={ finishLoading }
       priority={ priority }
-      loading={ loading! }
+      loading={ loading }
       sizes={ sizes }
     />
   );
 }
+
+LoadingImage.defaultProps = {
+  priority: false,
+};
 
 export default LoadingImage;
