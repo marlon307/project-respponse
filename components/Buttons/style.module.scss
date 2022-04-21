@@ -65,7 +65,7 @@
   }
 
   &:hover {
-    animation: example 0.2s;
+    transform: scale3d(1.015, 1.015, 1.015);
     background: #006bef;
   }
 
