@@ -13,9 +13,7 @@ function Home() {
         <LoadingImage
           src={ slide }
           quality={ 85 }
-          alt="title"
-          width={ 1080 }
-          height={ 700 }
+          alt="Bnner"
           layout="fill"
         />
       </div>
