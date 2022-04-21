@@ -1,4 +1,5 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
 import CardInfo from '../CardInfo/CardInfo';
@@ -10,9 +11,14 @@ type PCardP = {
 };
 
 function CardProduct({ id }: PCardP) {
+  const router = useRouter();
   const {
     type, title, mainImg, price, options, discount, oldPrice,
   } = mockminObjectCards[id];
+
+  useEffect(() => {
+    router.prefetch(`/product/${id.toString()}`);
+  }, []);
 
   return (
     <Link
