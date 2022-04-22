@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import Image, { ImageProps } from 'next/image';
+import cx from 'classnames';
 import style from './style.module.scss';
 
 function LoadingImage({
@@ -25,8 +26,11 @@ function LoadingImage({
         loading={ loading }
         sizes={ sizes }
       />
-      { isloading
-        && <span className={ style.statusloading } /> }
+      <span className={ cx(
+        style.panelimg,
+        { [style.load]: isloading },
+      ) }
+      />
     </>
   );
 }
