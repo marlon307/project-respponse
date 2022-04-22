@@ -52,7 +52,7 @@ type TRequestProduct = {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data }: TRequestProduct = await api.get(`${process.env.LOCAL_API_HOST}/home`)
+  const { data }: TRequestProduct = await api.get('/home')
     .catch(() => {
       throw new Error('Bad response from server');
     });
