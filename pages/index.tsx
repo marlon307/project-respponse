@@ -15,6 +15,8 @@ function Home() {
           quality={ 85 }
           alt="Bnner"
           layout="fill"
+          loading="eager"
+          priority
         />
       </div>
       <div className={ style.listctg }>

@@ -6,7 +6,6 @@ function LoadingImage({
   src, width, height, quality, alt, priority, loading, sizes, layout,
 }: ImageProps) {
   const [isloading, setIsLoading] = useState(true);
-
   const finishLoading = useCallback(() => setIsLoading(false), []);
 
   useEffect(() => () => finishLoading(), [finishLoading]);
