@@ -5,11 +5,11 @@ import { CardCategory } from '../components/Cards';
 // import type { NextPage } from 'next';
 import style from '../Sass/style.module.scss';
 import LoadingImage from '../components/LoadImage';
-import { /* IPropsHome, */ ILoadSlide, ICardCategory } from './types/typesIndex';
-import { categorys, slides } from '../service/mockCategory';
-// import api from '../service/api';
+import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
+// import { categorys, slides } from '../service/mockCategory';
+import api from '../service/api';
 
-function Home({ categorys, slides }: any) {
+function Home({ categorys, slides }: IPropsHome) {
   return (
     <main className={ style.main }>
       <div className={ style.banner }>
@@ -49,18 +49,18 @@ function Home({ categorys, slides }: any) {
 
 export default Home;
 
-// type TRequestProduct = {
-//   data: any
-// };
+type TRequestProduct = {
+  data: any
+};
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const { data }: TRequestProduct = await api.get('/home')
-  //   .catch(() => {
-  //     throw new Error('Bad response from server');
-  //   });
+  const { data }: TRequestProduct = await api.get('/home')
+    .catch(() => {
+      throw new Error('Bad response from server');
+    });
   // const res = await fetch(`${process.env.LOCAL_API_HOST}/home`);
   // const data = await res.json();
-  const data = { categorys, slides };
+  // const data = { categorys, slides };
   return {
     props: data,
   };
