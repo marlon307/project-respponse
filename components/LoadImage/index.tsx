@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import Image, { ImageProps } from 'next/image';
-import cx from 'classnames';
 import style from './style.module.scss';
 
 function LoadingImage({
