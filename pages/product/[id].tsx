@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import axios from 'axios';
 import LoadingImage from '../../components/LoadImage';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
 import style from './style.module.scss';
-import { mockCards } from '../../service/mockCards';
 import AddBag from '../../components/Buttons/AddBag';
 import BarSize from '../../components/Bars/BarSize';
 import BarColors from '../../components/Bars/BarColors';
@@ -131,18 +131,35 @@ function ProductId({ pgProps }: TypeProduct) {
 
 export default ProductId;
 
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const index = Number(params.id);
+type TRequestProduct = {
+  data: {
+    product: Array<any>,
+  }
+};
 
-  const pgProps = await mockCards[index];
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+  const productId = Number(params.id);
+
+  const { data: { product } }: TRequestProduct = await axios.get(`${process.env.LOCAL_API_HOST}/product/${productId}`);
+  const pgProps = product;
 
   return {
     props: { pgProps },
   };
 };
 
+type TRequestArr = {
+  data: {
+    products: Array<{
+      id: number,
+    }>,
+  }
+};
+
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await mockCards.map(({ id }) => ({ params: { id: id.toString() } }));
+  const { data: { products } }: TRequestArr = await axios.get(`${process.env.LOCAL_API_HOST}/products`);
+  const paths = products.map(({ id }) => ({ params: { id: id.toString() } }));
+
   return {
     paths,
     fallback: false,

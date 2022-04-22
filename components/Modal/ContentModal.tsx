@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, Suspense } from 'react';
-
 import { createPortal } from 'react-dom';
 import useOutsideClick from '../../hooks/useOutSide';
 import Loading from '../Loading';
-// import useOutsideClick from 'hooks/useOutSide';
 import style from './style.module.scss';
 
 type PModal = {
@@ -23,10 +21,6 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
       getModal.classList.add(style.open);
       document.body.classList.add('hidden');
     }
-    // else if (children) {
-    //   getModal.classList.remove(style.open);
-    //   document.body.removeAttribute('class');
-    // }
 
     return () => {
       if (children && isOpen) {

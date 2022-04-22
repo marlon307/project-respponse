@@ -5,8 +5,9 @@ import imgPerfumes from '../assets/img/parth-natani-uqJdOfHGb-w-unsplash-removeb
 import imgRelogios from '../assets/img/jess-bailey-DXd6X3wuRA0-unsplash-removebg-preview.png';
 import imgTenis from '../assets/img/revolt-164_6wVEHfI-unsplash-removebg-preview.png';
 import imgFemenino from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash_1-removebg-preview.png';
+import slide from '../assets/img/revolt-164_6wVEHfI-unsplash.jpg';
 
-const mockCategory = [
+const categorys = [
   {
     ctgID: 0,
     imgCategory: imgTenis,
@@ -59,4 +60,14 @@ const mockCategory = [
   },
 ];
 
-export default mockCategory;
+const slides = [{
+  id: 0,
+  srcImg: slide,
+  alt: 'Tênis Nike',
+  priority: true,
+}];
+
+export {
+  categorys,
+  slides,
+};
