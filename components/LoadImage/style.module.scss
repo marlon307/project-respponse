@@ -1,25 +1,20 @@
 // https://uxdesign.cc/using-css-design-a-simple-skeleton-loader-57d884cd3547
 .statusloading {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
   background: linear-gradient(to right,
-      #ffffff00,
-      #ffffff80 50%,
-      #ffffff00 80%),
+      #ffffff00 40%,
+      #ffffff80,
+      #ffffff00 60%),
     #f1f1f1;
-  background-repeat: repeat-y;
-  background-size: 30% 100%;
-  background-position: -10% 0;
-  animation: loading 1.5s infinite;
+  // f1f1f1
+  // background-repeat: repeat-y;
+  background-size: 200% 150%;
+  background-position-x: 125%;
+  animation: loading 1.5s ease-in-out infinite;
   border-radius: 1em;
-  padding: 0 !important;
 }
 
 @keyframes loading {
   to {
-    background-position: 150% 0;
+    background-position-x: -20%;
   }
 }
