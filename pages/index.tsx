@@ -5,7 +5,7 @@ import { CardCategory } from '../components/Cards';
 // import type { NextPage } from 'next';
 import style from '../Sass/style.module.scss';
 import LoadingImage from '../components/LoadImage';
-import { IPropsHome, ICardCategory, ILoadSlide } from './types/typesIndex';
+import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
 
 function Home({ categorys, slides }: IPropsHome) {
   return (
@@ -13,7 +13,7 @@ function Home({ categorys, slides }: IPropsHome) {
       <div className={ style.banner }>
         { slides.map(({
           id, srcImg, alt, priority,
-        }:ILoadSlide) => (
+        }: ILoadSlide) => (
           <LoadingImage
             key={ id }
             src={ srcImg }

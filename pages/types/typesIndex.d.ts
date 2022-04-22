@@ -15,7 +15,7 @@ export interface ILoadSlide {
   priority: ImageProps['priority'],
 }
 
-interface IPropsHome extends ICardCategory extends ILoadSlide {
-  categorys,
-  slides,
-}
+export type IPropsHome = {
+  categorys
+  slides
+};
