@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import mockCategory from '../../service/mockCategory';
+import { categorys } from '../../service/mockCategory';
 import { mockminObjectCards2 } from '../../service/mockCards';
 import { CardProduct } from '../../components/Cards/CardProduct';
 import BarFilter from '../../components/Filter/BarFilter';
@@ -49,14 +49,14 @@ function CategoryId() {
 export default CategoryId;
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const pgProps = await mockCategory.find(({ path }) => path === params.id);
+  const pgProps = await categorys.find(({ path }) => path === params.id);
   return {
     props: { pgProps },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await mockCategory
+  const paths = await categorys
     .map(({ path }) => ({
       params: { id: path },
     }));

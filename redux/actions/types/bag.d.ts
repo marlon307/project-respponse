@@ -13,7 +13,6 @@ export interface TypeEditBagInfos {
 }
 
 export interface TypeAddBagInfos extends TypeEditBagInfos {
-  id: number;
   discount: number;
   oldPrice: number;
   price: number;
