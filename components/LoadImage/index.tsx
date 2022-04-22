@@ -8,7 +8,7 @@ function LoadingImage({
 }: ImageProps) {
   const [isloading, setIsLoading] = useState(true);
 
-  const finishLoading = useCallback(() => setIsLoading(true), []);
+  const finishLoading = useCallback(() => setIsLoading(false), []);
 
   useEffect(() => () => finishLoading(), [finishLoading]);
 
