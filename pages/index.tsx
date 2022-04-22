@@ -1,11 +1,11 @@
 import React from 'react';
-import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { CardCategory } from '../components/Cards';
 // import type { NextPage } from 'next';
 import style from '../Sass/style.module.scss';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
+import api from '../service/api';
 
 function Home({ categorys, slides }: IPropsHome) {
   return (
@@ -52,7 +52,7 @@ type TRequestProduct = {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data }: TRequestProduct = await axios.get(`${process.env.LOCAL_API_HOST}/home`);
+  const { data }: TRequestProduct = await api.get(`${process.env.LOCAL_API_HOST}/home`);
 
   return {
     props: data,

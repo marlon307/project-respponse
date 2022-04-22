@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import axios from 'axios';
 import LoadingImage from '../../components/LoadImage';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
@@ -9,6 +8,7 @@ import AddBag from '../../components/Buttons/AddBag';
 import BarSize from '../../components/Bars/BarSize';
 import BarColors from '../../components/Bars/BarColors';
 import { TypeProduct } from './product';
+import api from '../../service/api';
 
 function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
@@ -140,7 +140,7 @@ type TRequestProduct = {
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const productId = Number(params.id);
 
-  const { data: { product } }: TRequestProduct = await axios.get(`${process.env.LOCAL_API_HOST}/product/${productId}`);
+  const { data: { product } }: TRequestProduct = await api.get(`/product/${productId}`);
   const pgProps = product;
 
   return {
@@ -157,7 +157,7 @@ type TRequestArr = {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: { products } }: TRequestArr = await axios.get(`${process.env.LOCAL_API_HOST}/products`);
+  const { data: { products } }: TRequestArr = await api.get('/products');
   const paths = products.map(({ id }) => ({ params: { id: id.toString() } }));
 
   return {
