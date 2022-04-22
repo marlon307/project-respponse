@@ -8,8 +8,7 @@ import AddBag from '../../components/Buttons/AddBag';
 import BarSize from '../../components/Bars/BarSize';
 import BarColors from '../../components/Bars/BarColors';
 import { TypeProduct } from './product';
-// import api from '../../service/api';
-import { mockCards } from '../../service/mockCards';
+import api from '../../service/api';
 
 function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
@@ -132,24 +131,20 @@ function ProductId({ pgProps }: TypeProduct) {
 
 export default ProductId;
 
-// type TRequestProduct = {
-//   data: {
-//     product: Array<any>,
-//   }
-// };
+type TRequestProduct = {
+  data: {
+    product: Array<any>,
+  }
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const productId = Number(params.id);
 
-  // const {
-  //   data: { product },
-  // }: TRequestProduct = await api.get(`/product/${productId}`).catch(() => {
-  //   throw new Error('Bad response from server');
-  // });
-
-  // const res = await fetch(`${process.env.LOCAL_API_HOST}/product/${productId}`);
-  // const data = await res.json();
-  const product = mockCards.find((findProduct) => findProduct.id === Number(productId));
+  const {
+    data: { product },
+  }: TRequestProduct = await api.get(`/product/${productId}`).catch(() => {
+    throw new Error('Bad response from server');
+  });
 
   const pgProps = product;
 
@@ -158,21 +153,21 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   };
 };
 
-// type TRequestArr = {
-//   data: {
-//     products: Array<{
-//       id: number,
-//     }>,
-//   }
-// };
+type TRequestArr = {
+  data: {
+    products: Array<{
+      id: number,
+    }>,
+  }
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const { data: { products } }: TRequestArr = await api.get('/products');
+  const { data: { products } }: TRequestArr = await api.get('/products')
+    .catch(() => {
+      throw new Error('Bad response from server');
+    });
 
-  // const res = await fetch(`${process.env.LOCAL_API_HOST}/products`);
-  // const data = await res.json();
-
-  const paths = mockCards.map(({ id }: any) => ({ params: { id: id.toString() } }));
+  const paths = products.map(({ id }: any) => ({ params: { id: id.toString() } }));
 
   return {
     paths,
