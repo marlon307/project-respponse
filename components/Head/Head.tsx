@@ -9,7 +9,6 @@ function Seo() {
       <meta name="title" content="Respponse" />
       <link rel="icon" href="/favico.ico" />
       <link rel="canonical" href="https://respponse.com" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
       <meta name="description" content="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
       <link rel="manifest" href="/manifest.json" />
       <meta name="theme-color" content="#FFFFFF" />
