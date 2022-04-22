@@ -3,5 +3,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { mockCards } from '../../service/mockCards';
 
 export default function products(req: NextApiRequest, res: NextApiResponse<any>) {
-  return res.status(200).json({ products: mockCards });
+  if (req.method === 'GET') {
+    return res.status(200).json({ products: mockCards });
+  }
+  return res.status(500).json({ message: 'Not found', status: 500 });
 }
