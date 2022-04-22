@@ -1,5 +1,5 @@
 // https://uxdesign.cc/using-css-design-a-simple-skeleton-loader-57d884cd3547
-.statusloading {
+.panelimg {
   position: absolute;
   inset: 0;
   background: #f1f1f1;
@@ -7,6 +7,8 @@
   padding: 0 !important;
   z-index: 2;
   border-radius: 1em;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
 
   &::before {
     content: '';
@@ -21,6 +23,10 @@
         #ffffff00 50%);
     transform: translateX(-48%);
   }
+}
+
+.load {
+  opacity: 1;
 }
 
 @keyframes loading {
