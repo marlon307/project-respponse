@@ -9,7 +9,6 @@ import BarSize from '../../components/Bars/BarSize';
 import BarColors from '../../components/Bars/BarColors';
 import { TypeProduct } from './product';
 import api from '../../service/api';
-// import { mockCards } from '../../service/mockCards';
 
 function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
@@ -147,10 +146,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     throw new Error('Bad response from server');
   });
 
-  // const res = await fetch(`${process.env.LOCAL_API_HOST}/product/${productId}`);
-  // const data = await res.json();
-  // const product = mockCards.find((findProduct) => findProduct.id === Number(productId));
-
   const pgProps = product;
 
   return {
@@ -167,10 +162,10 @@ type TRequestArr = {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: { products } }: TRequestArr = await api.get('/products');
-
-  // const res = await fetch(`${process.env.LOCAL_API_HOST}/products`);
-  // const data = await res.json();
+  const { data: { products } }: TRequestArr = await api.get('/products')
+    .catch(() => {
+      throw new Error('Bad response from server');
+    });
 
   const paths = products.map(({ id }: any) => ({ params: { id: id.toString() } }));
 

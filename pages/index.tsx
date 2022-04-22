@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
 import { GetStaticProps } from 'next';
 import { CardCategory } from '../components/Cards';
-// import type { NextPage } from 'next';
 import style from '../Sass/style.module.scss';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
-// import { categorys, slides } from '../service/mockCategory';
 import api from '../service/api';
 
 function Home({ categorys, slides }: IPropsHome) {
@@ -58,9 +55,7 @@ export const getStaticProps: GetStaticProps = async () => {
     .catch(() => {
       throw new Error('Bad response from server');
     });
-  // const res = await fetch(`${process.env.LOCAL_API_HOST}/home`);
-  // const data = await res.json();
-  // const data = { categorys, slides };
+
   return {
     props: data,
   };
