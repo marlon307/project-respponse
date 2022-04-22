@@ -8,27 +8,28 @@ function LoadingImage({
 }: ImageProps) {
   const [isloading, setIsLoading] = useState(true);
 
-  const finishLoading = useCallback(() => setIsLoading(false), []);
+  const finishLoading = useCallback(() => setIsLoading(true), []);
 
   useEffect(() => () => finishLoading(), [finishLoading]);
 
   return (
-    <Image
-      className={ cx({
-        [style.statusloading]: isloading,
-      }) }
-      quality={ quality }
-      src={ src }
-      alt={ alt }
-      layout={ layout }
-      width={ width }
-      height={ height }
-      placeholder="empty"
-      onLoadingComplete={ finishLoading }
-      priority={ priority }
-      loading={ loading }
-      sizes={ sizes }
-    />
+    <>
+      <Image
+        quality={ quality }
+        src={ src }
+        alt={ alt }
+        layout={ layout }
+        width={ width }
+        height={ height }
+        placeholder="empty"
+        onLoadingComplete={ finishLoading }
+        priority={ priority }
+        loading={ loading }
+        sizes={ sizes }
+      />
+      { isloading
+        && <span className={ style.statusloading } /> }
+    </>
   );
 }
 
