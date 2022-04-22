@@ -140,7 +140,11 @@ type TRequestProduct = {
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const productId = Number(params.id);
 
-  const { data: { product } }: TRequestProduct = await api.get(`/product/${productId}`);
+  const {
+    data: { product },
+  }: TRequestProduct = await api.get(`/product/${productId}`).catch(() => {
+    throw new Error('Bad response from server');
+  });
   const pgProps = product;
 
   return {
