@@ -5,8 +5,7 @@ const withPWA = require('next-pwa');
 
 module.exports = withPWA({
   images: {
-    // domains: ['https://project-respponse-marlon307.vercel.app/api'],
-    // path: 'https://project-respponse-marlon307.vercel.app/api',
+    domains: ['i.imgur.com'],
     deviceSizes: [280, 350, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [70, 96, 100, 128, 130, 256, 384, 1080, 1920],
   },
@@ -24,5 +23,8 @@ module.exports = withPWA({
     disable: process.env.NODE_ENV !== 'production',
     register: true,
     sw: 'sw.js',
+  },
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname,
   },
 });
