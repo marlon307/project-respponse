@@ -27,6 +27,7 @@ function CardEdit() {
     checkSizeAvailable(array, colorupdate.color);
 
     const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
+
     setUrlimg(imgs[0].urlImg);
     checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
   }, [colorupdate, sizeupdate]);
@@ -60,6 +61,8 @@ function CardEdit() {
         <div className={ style.contimg }>
           <LoadingImage
             alt="title"
+            width={ 200 }
+            height={ 300 }
             src={
               !urlImage
                 ? mockCards[itemEditBag.id].options[0].imgs[0].urlImg
