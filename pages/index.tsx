@@ -52,9 +52,7 @@ type TRequestProduct = {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data }: TRequestProduct = await api.get('/home')
-    .catch(() => {
-      throw new Error('Bad response from server');
-    });
+    .catch((error) => ({ data: error.message }));
 
   return {
     props: data,

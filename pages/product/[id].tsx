@@ -142,9 +142,8 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 
   const {
     data: { product },
-  }: TRequestProduct = await api.get(`/product/${productId}`).catch(() => {
-    throw new Error('Bad response from server');
-  });
+  }: TRequestProduct = await api.get(`/product/${productId}`)
+    .catch((error) => ({ data: error.message }));
 
   const pgProps = product;
 

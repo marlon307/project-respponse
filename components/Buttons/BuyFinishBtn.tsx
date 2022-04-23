@@ -13,7 +13,7 @@ function BuyFinishBtn() {
     const { data } = await api.post(
       '/revalidate',
       { listRevalidate },
-    );
+    ).catch((error) => ({ data: error.message }));
     // eslint-disable-next-line no-console
     console.log(data);
   }
