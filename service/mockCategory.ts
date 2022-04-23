@@ -1,58 +1,49 @@
-import imgMasculino from '../assets/img/jonas-jaeken-31upv631160-unsplash_1-removebg-preview.png';
-import imgCriança from '../assets/img/moses-vega-_YfoApRxd4I-unsplash-removebg-preview.png';
-import imgBolsa from '../assets/img/ugluk-potroshitel-XwjrPFW7xw0-unsplash-removebg-preview.png';
-import imgPerfumes from '../assets/img/parth-natani-uqJdOfHGb-w-unsplash-removebg-preview.png';
-import imgRelogios from '../assets/img/jess-bailey-DXd6X3wuRA0-unsplash-removebg-preview.png';
-import imgTenis from '../assets/img/revolt-164_6wVEHfI-unsplash-removebg-preview.png';
-import imgFemenino from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash_1-removebg-preview.png';
-import slide from '../assets/img/revolt-164_6wVEHfI-unsplash.jpg';
-
 const categorys = [
   {
     ctgID: 0,
-    imgCategory: imgTenis,
+    imgCategory: 'https://i.imgur.com/GtSbsvB.png',
     categoryName: 'Tênis',
     subTitle: 'Tênis',
     path: 'Tênis',
     color: '#f3adad',
   }, {
     ctgID: 1,
-    imgCategory: imgMasculino,
+    imgCategory: 'https://i.imgur.com/NnujKKC.png',
     categoryName: 'Masculino',
     subTitle: 'Masculino',
     path: 'masculino',
     color: '#48ece1',
   }, {
     ctgID: 2,
-    imgCategory: imgCriança,
+    imgCategory: 'https://i.imgur.com/Zx8wcmw.png',
     categoryName: 'Criança',
     subTitle: 'Criança',
     path: 'crianca',
     color: '#a2fe11',
   }, {
     ctgID: 4,
-    imgCategory: imgBolsa,
+    imgCategory: 'https://i.imgur.com/qC0fm27.png',
     categoryName: 'Bolsa',
     subTitle: 'Bolsa',
     path: 'bolsa',
     color: '#ff6100',
   }, {
     ctgID: 5,
-    imgCategory: imgPerfumes,
+    imgCategory: 'https://i.imgur.com/tMXM7g9.png',
     categoryName: 'Perfumes',
     subTitle: 'Perfumes',
     path: 'perfumes',
     color: '#121b38',
   }, {
     ctgID: 6,
-    imgCategory: imgRelogios,
+    imgCategory: 'https://i.imgur.com/hB8PPKw.png',
     categoryName: 'Relógios',
     subTitle: 'Relógios',
     path: 'relogios',
     color: '#5dada0',
   }, {
     ctgID: 7,
-    imgCategory: imgFemenino,
+    imgCategory: 'https://i.imgur.com/q9Fwqyv.png',
     categoryName: 'Femenino',
     subTitle: 'Femenino',
     path: 'femenino',
@@ -62,7 +53,7 @@ const categorys = [
 
 const slides = [{
   id: 0,
-  srcImg: slide,
+  srcImg: 'https://i.imgur.com/5sv5g8u.jpg',
   alt: 'Tênis Nike',
   priority: true,
 }];

@@ -1,14 +1,3 @@
-import cleanImage1 from '../assets/img/brian-lawson-a-mtphgCGo8-unsplash_1-removebg-preview.png';
-import cleanImage2 from '../assets/img/brian-lawson-e9o9sAy5PL4-unsplash_1-removebg-preview.png';
-import image1 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash 1.png';
-import image3 from '../assets/img/kimiya-oveisi-7qis_qyDK4g-unsplash 1.png';
-import image4 from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 12.png';
-import image5 from '../assets/img/jonas-jaeken-31upv631160-unsplash 4.png';
-
-// import clean image
-import image0 from '../assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
-import image6 from '../assets/img/ian-dooley-iGh7qbW9kUM-unsplash 1.png';
-
 export const mockCards = [{
   id: 0,
   title: 'Nike F.C',
@@ -23,7 +12,7 @@ export const mockCards = [{
   discount: 17,
   oldPrice: 68.98,
   shipping: false,
-  mainImg: image0,
+  mainImg: 'https://i.imgur.com/i7NzHA3.png',
   details: {
     model: 'Jaqueta',
     printPattern: 'Outras',
@@ -56,19 +45,19 @@ export const mockCards = [{
     },
     imgs: [{
       imgid: 0,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 1,
-      urlImg: cleanImage2,
+      urlImg: 'https://i.imgur.com/E7fLyju.png',
     }, {
       imgid: 2,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 3,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 4,
-      urlImg: cleanImage2,
+      urlImg: 'https://i.imgur.com/E7fLyju.png',
     }],
   }, {
     idc: 'grey002',
@@ -83,10 +72,10 @@ export const mockCards = [{
     },
     imgs: [{
       imgid: 0,
-      urlImg: cleanImage2,
+      urlImg: 'https://i.imgur.com/E7fLyju.png',
     }, {
       imgid: 1,
-      urlImg: cleanImage2,
+      urlImg: 'https://i.imgur.com/E7fLyju.png',
     }],
   }, {
     idc: 'black003',
@@ -101,10 +90,10 @@ export const mockCards = [{
     },
     imgs: [{
       imgid: 0,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 1,
-      urlImg: cleanImage2,
+      urlImg: 'https://i.imgur.com/E7fLyju.png',
     }],
   }],
 }, {
@@ -121,7 +110,7 @@ export const mockCards = [{
   discount: 17,
   oldPrice: 68.98,
   shipping: false,
-  mainImg: image6,
+  mainImg: 'https://i.imgur.com/5iHoC8H.png',
   details: {
     model: 'Jaqueta',
     printPattern: 'Outras',
@@ -154,19 +143,19 @@ export const mockCards = [{
     },
     imgs: [{
       imgid: 0,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 1,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 2,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 3,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 4,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }],
   }, {
     idc: 'grey002',
@@ -181,10 +170,10 @@ export const mockCards = [{
     },
     imgs: [{
       imgid: 0,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 1,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }],
   }, {
     idc: 'black003',
@@ -199,10 +188,10 @@ export const mockCards = [{
     },
     imgs: [{
       imgid: 0,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 1,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }],
   }, {
     idc: 'pink003',
@@ -217,10 +206,10 @@ export const mockCards = [{
     },
     imgs: [{
       imgid: 0,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }, {
       imgid: 1,
-      urlImg: cleanImage1,
+      urlImg: 'https://i.imgur.com/lcGyLqU.png',
     }],
   }],
 }];
@@ -229,7 +218,7 @@ export const mockminObjectCards2 = [{
   id: 0,
   title: 'Jérsei de Algodão Pima',
   type: 'Jérsei',
-  mainImg: image0,
+  mainImg: 'https://i.imgur.com/i7NzHA3.png',
   price: 69,
   oldPrice: 75.0,
   discount: 6,
@@ -247,7 +236,7 @@ export const mockminObjectCards2 = [{
   id: 1,
   title: 'Secrect state',
   type: 'Terno',
-  mainImg: image1,
+  mainImg: 'https://i.imgur.com/5iHoC8H.png',
   price: 150.90,
   oldPrice: 150.90,
   discount: 0,
@@ -268,7 +257,7 @@ export const mockminObjectCards2 = [{
   id: 2,
   title: 'Secrect state',
   type: 'Terno',
-  mainImg: image1,
+  mainImg: 'https://i.imgur.com/5iHoC8H.png',
   price: 150.90,
   oldPrice: 150.90,
   discount: 0,
@@ -291,7 +280,7 @@ export const mockminObjectCards = [{
   id: 0,
   title: 'Jérsei de Algodão Pima',
   type: 'Jérsei',
-  mainImg: image0,
+  mainImg: 'https://i.imgur.com/i7NzHA3.png',
   price: 69,
   oldPrice: 75.0,
   discount: 6,
@@ -309,7 +298,7 @@ export const mockminObjectCards = [{
   id: 1,
   title: 'Secrect state',
   type: 'Terno',
-  mainImg: image1,
+  mainImg: 'https://i.imgur.com/5iHoC8H.png',
   price: 150.90,
   oldPrice: 150.90,
   discount: 0,
@@ -330,7 +319,7 @@ export const mockminObjectCards = [{
   id: 2,
   title: 'Prisma time',
   type: 'Relogio',
-  mainImg: image3,
+  mainImg: 'https://i.imgur.com/1T7MhK5.png',
   price: 150.90,
   oldPrice: 150.90,
   discount: 0,
@@ -348,7 +337,7 @@ export const mockminObjectCards = [{
   id: 3,
   title: 'Camisa femenina blackout',
   type: 'Camisa',
-  mainImg: image4,
+  mainImg: 'https://i.imgur.com/Wf6UGzO.png',
   price: 36.00,
   oldPrice: 36.00,
   discount: 0,
@@ -366,7 +355,7 @@ export const mockminObjectCards = [{
   id: 4,
   title: 'Next station',
   type: 'Jaqueta',
-  mainImg: image5,
+  mainImg: 'https://i.imgur.com/A7Giyrq.png',
   price: 32.4,
   oldPrice: 36,
   discount: 10,
@@ -381,7 +370,7 @@ export const mockminObjectCards = [{
   id: 5,
   title: 'Next station',
   type: 'Jaqueta',
-  mainImg: image5,
+  mainImg: 'https://i.imgur.com/A7Giyrq.png',
   price: 32.4,
   oldPrice: 36,
   discount: 10,
@@ -396,7 +385,7 @@ export const mockminObjectCards = [{
   id: 6,
   title: 'Next station',
   type: 'Jaqueta',
-  mainImg: image5,
+  mainImg: 'https://i.imgur.com/A7Giyrq.png',
   price: 32.4,
   oldPrice: 36,
   discount: 10,
