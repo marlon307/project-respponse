@@ -150,6 +150,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 
   return {
     props: { pgProps },
+    // revalidated: true,
   };
 };
 
