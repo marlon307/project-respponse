@@ -4,6 +4,7 @@
 const withPWA = require('next-pwa');
 
 module.exports = withPWA({
+  swcMinify: true,
   images: {
     domains: ['i.imgur.com'],
     deviceSizes: [280, 350, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
