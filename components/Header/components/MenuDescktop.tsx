@@ -1,10 +1,11 @@
-import React from 'react';
-import SearchBar from '../../SearchBar';
+import React, { lazy } from 'react';
 import MenuBag from './MenuBag';
 import MenuUser from './MenuUser';
 import { useAppSelector } from '../../../redux/hooks';
 import style from './styles/style.module.scss';
 import MenuMobile from './MenuMobile';
+
+const SearchBar = lazy(() => import('../../SearchBar'));
 
 type MnDescktop = {
   setSearchopen: Function;
