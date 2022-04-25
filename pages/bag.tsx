@@ -22,7 +22,7 @@ function Bag() {
 
   return (
     <>
-      <main className={ style.bag }>
+      <div className={ style.bag }>
         <section className={ style.list }>
           <h1 className={ style.title } title="Sacola">
             <Svg icoName="bag" />
@@ -44,7 +44,7 @@ function Bag() {
           </ul>
         </section>
         <Checkout setOpenModal={ setOpenModal } />
-      </main>
+      </div>
       <BarBuy />
       <ContentModal
         openModal={ setOpenModal }
