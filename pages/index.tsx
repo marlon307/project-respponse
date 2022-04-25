@@ -8,7 +8,7 @@ import api from '../service/api';
 
 function Home({ categorys, slides }: IPropsHome) {
   return (
-    <main className={ style.main }>
+    <>
       <div className={ style.banner }>
         { slides.map(({
           id, srcImg, alt, priority,
@@ -40,7 +40,8 @@ function Home({ categorys, slides }: IPropsHome) {
           )) }
         </div>
       </div>
-    </main>
+    </>
+
   );
 }
 
