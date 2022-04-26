@@ -4,8 +4,8 @@ import cx from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { LOGIN_USER } from '../../../redux/actions';
 import CustomLink from '../../CustomLink';
-import style from './styles/style.module.scss';
 import Svg from '../../../assets/Svg';
+import style from './styles/style.module.scss';
 
 function MenuMobile() {
   const dipatch = useAppDispatch();
