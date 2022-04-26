@@ -3,11 +3,16 @@ import Link from 'next/link';
 import cx from 'classnames';
 import Svg from '../../assets/Svg';
 import style from './style.module.scss';
-import MenuDescktop from './components/MenuDescktop';
 import Bar from '../SearchBar/Bar';
+import SearchBar from '../SearchBar';
+import MenuBag from './components/MenuBag';
+import MenuUser from './components/MenuUser';
+import MenuMobile from './components/MenuMobile';
+import { useAppSelector } from '../../redux/hooks';
 
 function Header() {
   const [searchopen, setSearchopen] = useState(false);
+  const { logged } = useAppSelector(({ user }) => user);
 
   return (
     <header className={ style.header }>
@@ -25,15 +30,18 @@ function Header() {
         [style.drop]: searchopen,
       }) }
       >
-        <Bar
-          setSearchopen={ setSearchopen }
-        />
+        <Bar setSearchopen={ setSearchopen } />
       </div>
       <div className={ style.container }>
-        <MenuDescktop
-          setSearchopen={ setSearchopen }
-          searchopen={ searchopen }
-        />
+        <nav className={ style.nav }>
+          <SearchBar
+            searchopen={ searchopen }
+            setSearchopen={ setSearchopen }
+          />
+          { logged && <MenuBag /> }
+          <MenuUser />
+          <MenuMobile />
+        </nav>
       </div>
     </header>
   );

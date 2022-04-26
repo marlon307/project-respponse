@@ -1,13 +1,6 @@
 @import './bag.scss';
 @import './mnmobile.scss';
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.2em;
-}
-
 .usermneu,
 .bag,
 .mobile {
@@ -112,9 +105,6 @@
 }
 
 @media (max-width: 700px) {
-  .nav {
-    gap: 0;
-  }
 
   .usermneu,
   .bag {

@@ -11,6 +11,13 @@
   background: #ffffffe5;
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2em;
+}
+
 .searchdrop {
   position: absolute;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -59,6 +66,10 @@
 @media (max-width: 700px) {
   .header {
     padding: 0;
+  }
+
+  .nav {
+    gap: 0;
   }
 
   .logo {
