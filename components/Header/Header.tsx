@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
 import Svg from '../../assets/Svg';
 import style from './style.module.scss';
-import Bar from '../SearchBar/Bar';
 import SearchBar from '../SearchBar';
 import MenuBag from './components/MenuBag';
 import MenuUser from './components/MenuUser';
 import MenuMobile from './components/MenuMobile';
 import { useAppSelector } from '../../redux/hooks';
+
+const Bar = lazy(() => import('../SearchBar/Bar'));
 
 function Header() {
   const [searchopen, setSearchopen] = useState(false);
@@ -30,7 +31,9 @@ function Header() {
         [style.drop]: searchopen,
       }) }
       >
-        <Bar setSearchopen={ setSearchopen } />
+        <Suspense fallback={ <>...</> }>
+          <Bar setSearchopen={ setSearchopen } />
+        </Suspense>
       </div>
       <div className={ style.container }>
         <nav className={ style.nav }>
