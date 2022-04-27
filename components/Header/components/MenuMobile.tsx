@@ -53,12 +53,9 @@ function MenuMobile() {
         </button>
       ) : (
         <Link href="/login-register" passHref>
-          <CustomLink
-            ariaLabel="Entrar"
-            className={ style.login }
-          >
+          <a aria-label="Entrar" className={ style.login }>
             Entrar
-          </CustomLink>
+          </a>
         </Link>
       ) }
 
@@ -146,16 +143,13 @@ function MenuMobile() {
               ) }
             </li>
           </ul>
-          <div className={ style.close }>
-            <Link href="/" passHref>
-              <CustomLink
-                ariaLabel="Fechar menu"
-                onClick={ (event: any) => openMenu(event) }
-              >
-                <Svg icoName="close" />
-              </CustomLink>
-            </Link>
-          </div>
+          <button
+            type="button"
+            aria-label="Menu"
+            onClick={ openMenu }
+          >
+            <Svg icoName="close" />
+          </button>
         </nav>
       </div>
     </div>
