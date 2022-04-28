@@ -13,6 +13,10 @@
 .contimg {
   width: 26ch;
   margin: 0 auto 2em;
+
+  img {
+    object-fit: cover;
+  }
 }
 
 .colors {
@@ -23,6 +27,7 @@
   border-radius: 6px;
   background: #ffffff99;
   backdrop-filter: saturate(100%) blur(5px);
+  z-index: 6;
 }
 
 .secondline {
