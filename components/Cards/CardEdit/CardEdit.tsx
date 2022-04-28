@@ -63,11 +63,9 @@ function CardEdit() {
             alt="title"
             width={ 200 }
             height={ 300 }
-            src={
-              !urlImage
-                ? mockCards[itemEditBag.id].options[0].imgs[0].urlImg
-                : urlImage
-            }
+            src={ !urlImage
+              ? mockCards[itemEditBag.id].options[0].imgs[0].urlImg
+              : urlImage }
             priority
             loading="eager"
           />

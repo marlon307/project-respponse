@@ -7,11 +7,11 @@ type TLoadImage = {
   src: ImageProps['src'];
   width: ImageProps['width'];
   height: ImageProps['height'];
-  quality: ImageProps['quality'];
+  quality?: ImageProps['quality'];
   alt: ImageProps['alt'];
   priority?: ImageProps['priority'];
   loading?: ImageProps['loading'];
-  sizes: ImageProps['sizes'];
+  sizes?: ImageProps['sizes'];
   layout?: ImageProps['layout'];
 };
 
@@ -51,6 +51,8 @@ LoadingImage.defaultProps = {
   priority: false,
   layout: 'responsive',
   loading: 'lazy',
+  sizes: undefined,
+  quality: '70',
 };
 
 export default LoadingImage;
