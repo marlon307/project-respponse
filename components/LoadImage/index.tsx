@@ -5,8 +5,8 @@ import style from './style.module.scss';
 
 type TLoadImage = {
   src: ImageProps['src'];
-  width: ImageProps['width'];
-  height: ImageProps['height'];
+  width?: ImageProps['width'];
+  height?: ImageProps['height'];
   quality?: ImageProps['quality'];
   alt: ImageProps['alt'];
   priority?: ImageProps['priority'];
@@ -53,6 +53,8 @@ LoadingImage.defaultProps = {
   loading: 'lazy',
   sizes: undefined,
   quality: '70',
+  width: undefined,
+  height: undefined,
 };
 
 export default LoadingImage;
