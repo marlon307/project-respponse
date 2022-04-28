@@ -44,29 +44,29 @@ function Checkout({ setOpenModal }: PropsCheckout) {
     <section className={ style.checkout }>
       <h2>Checkout</h2>
       <div className={ style.contcheckout }>
+        <div className={ style.select }>
+          <h3>
+            <Svg icoName="map" />
+            Endereço de entrega
+          </h3>
+        </div>
         <button
           type="button"
-          className={ style.select }
           onClick={ (event) => {
             event.preventDefault();
             setOpenModal('address');
           } }
         >
-          <h3>
-            <Svg icoName="map" />
-            Endereço de entrega
-          </h3>
-          <span />
+          <CardAdderess
+            name={ name }
+            road={ road }
+            number={ number }
+            city={ city }
+            uf={ uf }
+            zipcode={ zipcode }
+            district={ district }
+          />
         </button>
-        <CardAdderess
-          name={ name }
-          road={ road }
-          number={ number }
-          city={ city }
-          uf={ uf }
-          zipcode={ zipcode }
-          district={ district }
-        />
         <button
           type="button"
           className="link"
