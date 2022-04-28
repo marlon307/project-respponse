@@ -21,7 +21,7 @@ const stateBag: StateBagType = {
   },
   checkout: {
     adderessSelected: {
-      name: 'Clique para selecionar o endereço. 👇',
+      name: 'Clique aqui ( 👇 ) para selecionar o endereço.',
       road: '---',
       district: '---',
       number: '---',
