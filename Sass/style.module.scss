@@ -108,19 +108,6 @@
   }
 }
 
-.button1 {
-  position: relative;
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale3d(1.01, 1.01, 1.01);
-  }
-
-  &:active {
-    transform: scale3d(0.98, 0.98, 0.98);
-  }
-}
-
 .msdErr {
   position: absolute;
   bottom: -1.6em;

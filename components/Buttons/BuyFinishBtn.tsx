@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import style from './style.module.scss';
 import api from '../../service/api';
 import { useAppSelector } from '../../redux/hooks';
@@ -22,7 +21,7 @@ function BuyFinishBtn() {
     <button
       type="button"
       onClick={ handleClickBuy }
-      className={ cx('button1', style.buyFinish) }
+      className={ style.buyFinish }
     >
       Finalizar Compra
     </button>

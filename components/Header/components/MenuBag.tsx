@@ -1,14 +1,13 @@
 import React, { useRef } from 'react';
-import { useRouter } from 'next/router';
 import cx from 'classnames';
 import Link from 'next/link';
 import { useAppSelector } from '../../../redux/hooks';
 import { SmallCard } from '../../Cards';
 import Svg from '../../../assets/Svg';
 import style from './styles/style.module.scss';
+import { BtnRedirect } from '../../Buttons';
 
 function MenuBag() {
-  const router = useRouter();
   const { bagItems, valueBag } = useAppSelector(({ bag }) => bag);
   const ref = useRef(null);
 
@@ -56,14 +55,7 @@ function MenuBag() {
                 }) }
               </span>
             </div>
-            <button
-              type="button"
-              className={ cx('button1', style.buyButton) }
-              onClick={ () => router.push('/bag') }
-            >
-              Ir para checkout
-              <Svg icoName="indication" />
-            </button>
+            <BtnRedirect path="/bag" titleBtn="Checkout" />
           </div>
         </div>
       </div>
