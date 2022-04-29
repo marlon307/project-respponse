@@ -36,10 +36,13 @@ function ProductId({ pgProps }: TypeProduct) {
             <figure>
               <LoadingImage
                 src={ urlImg }
-                quality={ 90 }
+                quality={ 80 }
                 alt={ title }
                 layout="fill"
-              // sizes="(max-width: 400px)"
+                loading={ imgid === 2 ? 'eager' : 'lazy' }
+                priority={ imgid === 2 }
+              /* loading & priority Esta validando qual imagem esta visivel para o
+              usuario para dar prioridade no carregamento */
               />
             </figure>
           </div>
