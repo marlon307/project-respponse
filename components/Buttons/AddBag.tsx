@@ -46,7 +46,7 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   return (
     <div className={ style.contbtn }>
       <button
-        className={ cx('button1', style.btn_t2, {
+        className={ cx(style.btn_t2, {
           [style.msgerr]: activeMsg,
         }) }
         type="button"
