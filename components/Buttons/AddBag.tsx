@@ -44,14 +44,15 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   }, [activeMsg, colorSelected.color, sizeSelected]);
 
   return (
-    <div className="contBtn">
-      { activeMsg && <span className="msdErr">Selecione uma cor e tamanho!</span> }
+    <div className={ style.contbtn }>
       <button
-        className={ cx('button1', style.btn_t2) }
+        className={ cx('button1', style.btn_t2, {
+          [style.msgerr]: activeMsg,
+        }) }
         type="button"
         onClick={ handleClick }
       >
-        Adicionar a sacola
+        <span>{ activeMsg ? 'Selecione uma cor e tamanho!' : 'Adicionar a sacola' }</span>
         <Svg icoName="bag" />
       </button>
     </div>
