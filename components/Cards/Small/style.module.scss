@@ -33,6 +33,9 @@
 
 .delete {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 12px;
   right: 12px;
 }
@@ -157,6 +160,15 @@
 @media (max-width: 750px) {
   .desc {
     margin-left: 140px;
+  }
+
+  .delete {
+    top: 0;
+    right: 0;
+
+    svg {
+      padding: 13px;
+    }
   }
 }
 

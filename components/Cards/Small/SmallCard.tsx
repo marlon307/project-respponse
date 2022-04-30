@@ -55,7 +55,7 @@ function SmallCard({
       </div>
       <div className={ style.desc }>
         <Link href={ `/product/${id}` }>
-          <a>
+          <a aria-label={ `${type} - ${title}` }>
             <h2>{ type }</h2>
             <h3>{ title }</h3>
           </a>
