@@ -1,8 +1,13 @@
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .smallcard {
   position: relative;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
+  @include flexCenter;
   height: 140px;
   border: 1px solid var(--bordercolor);
 
@@ -33,9 +38,7 @@
 
 .delete {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   top: 12px;
   right: 12px;
 }
@@ -97,9 +100,7 @@
   flex-wrap: wrap;
 
   a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter;
     width: 1.2em;
     height: 1.2em;
   }
@@ -115,15 +116,11 @@
 }
 
 .setting {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   gap: 16px;
 
   span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter;
     width: 16px;
     height: 16px;
     border-radius: 50%;
