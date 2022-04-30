@@ -44,9 +44,12 @@ function SmallCard({
         <figure>
           <LoadingImage
             src={ mainImg }
-            width={ 130 }
-            height={ 165 }
             alt={ title }
+            quality={ 85 }
+            layout="fill"
+            loading="eager"
+            sizes="100%"
+            priority
           />
         </figure>
       </div>
