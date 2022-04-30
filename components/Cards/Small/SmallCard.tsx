@@ -48,7 +48,7 @@ function SmallCard({
             quality={ 85 }
             layout="fill"
             loading="eager"
-            sizes="100%"
+            sizes="130px"
             priority
           />
         </figure>
