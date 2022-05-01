@@ -6,6 +6,7 @@ function Modal() {
     <div
       id="modal"
       className={ style.modal }
+      aria-modal="true"
     />
   );
 }

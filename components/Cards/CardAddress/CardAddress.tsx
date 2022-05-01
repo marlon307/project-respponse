@@ -18,8 +18,8 @@ function CardAdderess({
   name, road, district, number, uf, city, zipcode, removable,
 }: PCardAdderess) {
   return (
-    <div className={ style.cardadderess }>
-      <h4 title="Entregar para">{ name }</h4>
+    <div className={ style.cardaddress }>
+      <h3 title="Entregar para">{ name }</h3>
       <div>
         <span title={ `Rua: ${road}` } className={ style.line }>
           Rua:
