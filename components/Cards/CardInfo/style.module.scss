@@ -75,7 +75,7 @@
   }
 
   .price {
-    font-size: 0.95em;
+    font-size: 0.9em;
     margin-top: 6px;
     gap: 0.7em;
 
@@ -86,14 +86,6 @@
 }
 
 @media (max-width: 415px) {
-  .primaryline {
-    font-size: 0.9em;
-  }
-
-  .secondline {
-    font-size: 0.75em;
-  }
-
   .colors {
     span {
       width: 0.46em;
