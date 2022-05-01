@@ -20,27 +20,21 @@
 .primaryline {
   font-size: 1.2em;
   font-weight: 700;
+  justify-content: space-between;
 }
 
 .secondline {
-  font-size: 1.6ch;
-}
-
-.thirdline {
-  margin-top: 8%;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
+  font-size: 1em;
 }
 
 .price {
-  position: relative;
   font-weight: 700;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 16px;
 
   &::before {
-    position: absolute;
     content: attr(data-oldprice);
-    top: -1em;
     text-decoration: line-through;
     color: #a7a7a7;
   }
@@ -54,8 +48,8 @@
 
 .colors {
   span {
-    width: 0.9em;
-    height: 0.9em;
+    width: 0.6em;
+    height: 0.6em;
     margin-right: 8px;
     border-radius: 50%;
     border: 1px solid var(--bordercolor);
@@ -70,7 +64,7 @@
 
   .secondline {
     margin-top: 0.4em;
-    font-size: 0.85em;
+    font-size: 0.9em;
   }
 
   .colors {
@@ -81,7 +75,9 @@
   }
 
   .price {
-    font-size: 1.6ch;
+    font-size: 0.95em;
+    margin-top: 6px;
+    gap: 0.7em;
 
     span:nth-child(2n) {
       bottom: 1.5em;
