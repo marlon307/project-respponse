@@ -245,45 +245,18 @@
 
 @media (max-width: 771px) {
   .order {
-    width: 600px;
+    max-width: 600px;
   }
 }
 
 @media (max-width: 670px) {
   .order {
-    width: 500px;
-  }
-}
-
-@media (max-width: 550px) {
-  .order {
-    width: 400px;
-  }
-
-  .table {
-    width: 100%;
-
-    thead {
-      th {
-        text-align: left;
-        padding: 0 1em 1em;
-        font-size: 1.2em;
-      }
-    }
-
-    tbody {
-      td {
-        padding: 1em 0 1em 1.2em;
-      }
-    }
+    max-width: 470px;
+    padding: 2em 0.65em;
   }
 }
 
 @media (max-width: 600px) {
-  .order {
-    padding: 1.3em;
-  }
-
   .progressbar {
     margin: 3em 1%;
 
@@ -321,6 +294,26 @@
       &::after {
         content: attr(title);
         right: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .table {
+    width: 100%;
+
+    thead {
+      th {
+        text-align: left;
+        padding: 0 1em 1em;
+        font-size: 1.2em;
+      }
+    }
+
+    tbody {
+      td {
+        padding: 1em 0 1em 1.2em;
       }
     }
   }
