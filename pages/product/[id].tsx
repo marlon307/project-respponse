@@ -62,9 +62,7 @@ function ProductId({ pgProps }: TypeProduct) {
                   currency: 'BRL',
                 })
               }
-              >
-                de
-              </span>
+              />
               { discount > 0 && (
                 <h4>
                   { price.toLocaleString('pt-br', {
