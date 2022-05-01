@@ -17,11 +17,6 @@ function CardInfo({
     <div className={ style.info }>
       <div className={ style.primaryline }>
         <span>{ type }</span>
-      </div>
-      <div className={ style.secondline }>
-        <span>{ title }</span>
-      </div>
-      <div className={ style.thirdline }>
         <div className={ style.colors }>
           { colors!
             && colors.map((_null, index) => {
@@ -35,24 +30,27 @@ function CardInfo({
               );
             }) }
         </div>
-        <div
-          className={ style.price }
-          data-oldprice={
-            discount > 0 ? oldPrice.toLocaleString('pt-br', {
+      </div>
+      <div className={ style.secondline }>
+        <span>{ title }</span>
+      </div>
+      <div
+        className={ style.price }
+        data-oldprice={
+          discount > 0 ? oldPrice.toLocaleString('pt-br', {
+            style: 'currency',
+            currency: 'BRL',
+          }) : ''
+        }
+      >
+        <span>
+          {
+            price.toLocaleString('pt-br', {
               style: 'currency',
               currency: 'BRL',
-            }) : ''
+            })
           }
-        >
-          <span>
-            {
-              price.toLocaleString('pt-br', {
-                style: 'currency',
-                currency: 'BRL',
-              })
-            }
-          </span>
-        </div>
+        </span>
       </div>
     </div>
   );
