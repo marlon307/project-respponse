@@ -61,7 +61,8 @@
 
 .desc {
   width: 100%;
-  margin-left: 150px;
+  margin-left: 140px;
+
   overflow: hidden;
 
   a {
@@ -141,23 +142,19 @@
     font-weight: 700;
     color: #6b6b6b;
     margin-right: 20px;
+  }
 
+  span:not([data-oldprice='false']) {
     &::before {
       content: attr(data-oldprice);
-      position: absolute;
-      top: -1.2em;
-      left: 0;
       text-decoration: line-through;
       color: #a7a7a7;
+      margin-right: 8px;
     }
   }
 }
 
 @media (max-width: 750px) {
-  .desc {
-    margin-left: 140px;
-  }
-
   .delete {
     top: 0;
     right: 0;
