@@ -1,13 +1,13 @@
 import React from 'react';
-import Help from '../components/Help';
+import HelpComponent from '../components/Help';
 import style from '../Sass/style.module.scss';
 
-function help() {
+function Help() {
   return (
-    <main className={ style.section }>
-      <Help />
-    </main>
+    <section className={ style.help }>
+      <HelpComponent />
+    </section>
   );
 }
 
-export default help;
+export default Help;

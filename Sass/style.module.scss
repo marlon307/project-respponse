@@ -10,6 +10,33 @@
   }
 }
 
+.help {
+  h1 {
+    color: #333;
+  }
+
+  // Pagina Help
+  ol {
+    padding: 0 2em;
+    margin: 0 auto;
+
+    li {
+      color: var(--colorlink);
+      list-style: decimal;
+      margin-bottom: 12px;
+    }
+
+    a {
+      color: var(--colorlink);
+      font-size: 1.2em;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 .banner {
   position: relative;
   width: 100%;
