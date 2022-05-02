@@ -83,10 +83,10 @@ function SmallCard({
           <div className={ style.price }>
             <span
               data-oldprice={
-                discount > 0 ? oldPrice.toLocaleString('pt-br', {
+                discount > 0 && oldPrice.toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL',
-                }) : ''
+                })
               }
               title={
                 `Valor unitário ${price.toLocaleString('pt-br', {

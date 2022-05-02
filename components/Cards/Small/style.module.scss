@@ -141,14 +141,14 @@
     font-weight: 700;
     color: #6b6b6b;
     margin-right: 20px;
+  }
 
+  span:not([data-oldprice='false']) {
     &::before {
       content: attr(data-oldprice);
-      position: absolute;
-      top: -1.2em;
-      left: 0;
       text-decoration: line-through;
       color: #a7a7a7;
+      margin-right: 8px;
     }
   }
 }
