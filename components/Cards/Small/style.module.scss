@@ -61,7 +61,8 @@
 
 .desc {
   width: 100%;
-  margin-left: 150px;
+  margin-left: 140px;
+
   overflow: hidden;
 
   a {
@@ -154,10 +155,6 @@
 }
 
 @media (max-width: 750px) {
-  .desc {
-    margin-left: 140px;
-  }
-
   .delete {
     top: 0;
     right: 0;
