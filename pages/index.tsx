@@ -5,9 +5,9 @@ import style from '../Sass/style.module.scss';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
 import api from '../service/api';
-// import { CardProduct } from '../components/Cards/CardProduct';
+import { CardProduct } from '../components/Cards/CardProduct';
 
-function Home({ categorys, slides }: IPropsHome) {
+function Home({ categorys, slides, mockCards }: IPropsHome) {
   return (
     <>
       <div className={ style.banner }>
@@ -44,9 +44,7 @@ function Home({ categorys, slides }: IPropsHome) {
       <div className={ style.highlights }>
         <h2>Destaques</h2>
         <div className={ style.listhighlights }>
-          {/*
-           { mockCards.map((object: any) => (<CardProduct key={ object.id }
-           id={ object.id } />)) } */ }
+          { mockCards.map((object: any) => (<CardProduct key={ object.id } id={ object.id } />)) }
         </div>
       </div>
     </>
