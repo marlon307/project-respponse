@@ -18,4 +18,5 @@ export interface ILoadSlide {
 export type IPropsHome = {
   categorys
   slides
+  mockCards
 };

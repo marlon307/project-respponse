@@ -47,12 +47,6 @@
   display: none;
 }
 
-@media (max-width: 1800px) {
-  .categorycont {
-    grid-template-areas: '. . . . .';
-  }
-}
-
 @media (max-width: 1080px) {
   .categorycont {
     grid-template-areas: '. . .';
