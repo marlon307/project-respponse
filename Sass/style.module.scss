@@ -85,7 +85,6 @@
   grid-template-rows: max-content;
   row-gap: 1em;
   align-items: start;
-  margin-bottom: 3em;
   overflow-x: auto;
 
   &::-webkit-scrollbar {
@@ -100,6 +99,11 @@
 }
 
 @media (max-width: 500px) {
+  .highlights {
+    margin: 2em 0;
+    height: 380px;
+  }
+
   .listhighlights {
     grid-auto-columns: 220px;
   }
