@@ -44,7 +44,9 @@ function Home({ categorys, slides, mockCards }: IPropsHome) {
       <div className={ style.highlights }>
         <h2>Destaques</h2>
         <div className={ style.listhighlights }>
-          { mockCards.map((object: any) => (<CardProduct key={ object.id } id={ object.id } />)) }
+          {/*
+           { mockCards.map((object: any) => (<CardProduct key={ object.id }
+           id={ object.id } />)) } */ }
         </div>
       </div>
     </>
