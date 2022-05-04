@@ -10,6 +10,7 @@ import image1 from '../assets/img/alex-conradt-v-E3Q2fBbAA-unsplash.jpg';
 import image2 from '../assets/img/ivana-cajina-_7LbC5J-jw4-unsplash.jpg';
 import image3 from '../assets/img/jasmin-chew-YE1FYzPLNOs-unsplash.jpg';
 import image4 from '../assets/img/pooja-chaudhary-q29kexdHODM-unsplash.jpg';
+import { BtnRedirect } from '../components/Buttons';
 
 function Home({ categorys, slides, mockCards }: IPropsHome) {
   return (
@@ -62,6 +63,10 @@ function Home({ categorys, slides, mockCards }: IPropsHome) {
               layout="fill"
               loading="eager"
             />
+            <figcaption>
+              <h4>Diversão</h4>
+              <BtnRedirect path="category/masculino" titleBtn="Compre" />
+            </figcaption>
           </figure>
           <figure>
             <LoadingImage
@@ -71,6 +76,10 @@ function Home({ categorys, slides, mockCards }: IPropsHome) {
               layout="fill"
               loading="eager"
             />
+            <figcaption>
+              <h4>Tranquilidade</h4>
+              <BtnRedirect path="category/masculino" titleBtn="Compre" />
+            </figcaption>
           </figure>
           <figure>
             <LoadingImage
@@ -80,6 +89,10 @@ function Home({ categorys, slides, mockCards }: IPropsHome) {
               layout="fill"
               loading="eager"
             />
+            <figcaption>
+              <h4>Liberdade</h4>
+              <BtnRedirect path="category/masculino" titleBtn="Compre" />
+            </figcaption>
           </figure>
           <figure>
             <LoadingImage
@@ -89,6 +102,10 @@ function Home({ categorys, slides, mockCards }: IPropsHome) {
               layout="fill"
               loading="eager"
             />
+            <figcaption>
+              <h4>Suavidade</h4>
+              <BtnRedirect path="category/masculino" titleBtn="Compre" />
+            </figcaption>
           </figure>
         </div>
       </div>
