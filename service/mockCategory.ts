@@ -4,7 +4,7 @@ const categorys = [
     imgCategory: 'https://i.imgur.com/GtSbsvB.png',
     categoryName: 'Tênis',
     subTitle: 'Tênis',
-    path: 'Tênis',
+    path: 'tenis',
     color: '#f3adad',
   }, {
     ctgID: 1,
