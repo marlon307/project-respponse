@@ -114,6 +114,33 @@
     border-radius: 1em;
   }
 
+  figcaption {
+    position: absolute;
+    z-index: 5;
+    left: 3em;
+    bottom: 2em;
+
+    h4 {
+      color: var(--maincolor);
+      font-size: 3em;
+      margin-bottom: 8px;
+    }
+
+    a {
+      width: 8em;
+      border-color: var(--maincolor);
+      background: var(--maincolor);
+    }
+
+    span {
+      color: #333;
+    }
+
+    svg {
+      fill: #333;
+    }
+  }
+
   figure:nth-child(1) {
     grid-area: card;
   }
@@ -290,11 +317,30 @@
 
   .contpromotions {
     grid-template-areas:
-      'card card'
-      'card1 card2'
-      'rigth rigth';
-    grid-template-rows: 200px 250px 250px;
+      'card card2'
+      'card1 rigth'
+    ;
+    grid-auto-columns: 90%;
+    grid-template-rows: 220px 220px;
     grid-gap: 1em;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    figcaption {
+      left: 1em;
+      bottom: 1em;
+
+      h4 {
+        font-size: 2em;
+      }
+
+      span {
+        padding: 12px 0 12px 24px;
+      }
+    }
   }
 }
 
