@@ -52,7 +52,7 @@ function Home({ categorys, slides, mockCards }: IPropsHome) {
         </div>
       </div>
       <div className={ style.promotions }>
-        <h2>Promoçoes</h2>
+        <h2>Promoções</h2>
         <div className={ style.contpromotions }>
           <figure>
             <LoadingImage
