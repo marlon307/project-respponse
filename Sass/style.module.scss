@@ -104,6 +104,7 @@
   grid-template-areas:
     'card card rigth'
     'card1 card2 rigth';
+  grid-auto-columns: auto;
   grid-template-rows: 300px 400px;
   grid-gap: 2em;
 
