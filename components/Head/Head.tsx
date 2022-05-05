@@ -18,7 +18,7 @@ function Seo() {
       <meta name="apple-mobile-web-app-title" content="Respponse" />
       <meta name="format-detection" content="telephone=no" />
       <link rel="icon" href="/favico.ico" />
-      <link rel="apple-touch-icon" href="../../public/icon-256x256.png" />
+      <link rel="apple-touch-icon" href="/icon-256x256.png" />
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover" />
       <meta property="og:type" content="Respponse" />
       <meta property="og:title" content="Respponse" />
