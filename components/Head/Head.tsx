@@ -1,3 +1,4 @@
+/* eslint-disable react/no-invalid-html-attribute */
 import React from 'react';
 
 function Seo() {
@@ -19,6 +20,9 @@ function Seo() {
       <meta name="format-detection" content="telephone=no" />
       <link rel="icon" href="/favico.ico" />
       <link rel="apple-touch-icon" href="/icon-256x256.png" />
+      <link rel="apple-touch-startup-image" href="/icon-256x256.png" />
+
+      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover" />
       <meta property="og:type" content="Respponse" />
       <meta property="og:title" content="Respponse" />
