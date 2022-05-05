@@ -18,13 +18,10 @@ function Seo() {
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content="Respponse" />
       <meta name="apple-touch-fullscreen" content="yes" />
-
       <meta name="format-detection" content="telephone=no" />
-      <link rel="apple-touch-icon" href="/icon-256x256.png" sizes="256x256" />
-
-      <link href="/icon-256x256.png" media="(device-width: 320px)" rel="apple-touch-startup-image" />
-
+      <link rel="apple-touch-icon" href="/favico.ico" sizes="256x256" />
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover" />
+      <link rel="apple-touch-startup-image" media="screen and (device-width: 100px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/favico.ico" />
       <meta property="og:type" content="Respponse" />
       <meta property="og:title" content="Respponse" />
       <meta property="og:description" content="Respponse" />
