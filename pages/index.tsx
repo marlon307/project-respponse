@@ -6,10 +6,11 @@ import LoadingImage from '../components/LoadImage';
 import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
 import api from '../service/api';
 import { CardProduct } from '../components/Cards/CardProduct';
-import { BtnRedirect } from '../components/Buttons';
+// import { BtnRedirect } from '../components/Buttons';
 
 function Home({
-  categorys, slides, mockCards, mockPromotions,
+  categorys, slides, mockCards,
+  // mockPromotions,
 }: IPropsHome) {
   return (
     <>
@@ -53,7 +54,7 @@ function Home({
       <div className={ style.promotions }>
         <h2>Promoções</h2>
         <div className={ style.contpromotions }>
-          { mockPromotions.map(({
+          {/* { mockPromotions.map(({
             id, img, title, path,
           }: any) => (
             <figure key={ id }>
@@ -69,7 +70,7 @@ function Home({
                 <BtnRedirect path={ `/category/${path}` } titleBtn="Compre" />
               </figcaption>
             </figure>
-          )) }
+          )) } */}
         </div>
       </div>
     </>
