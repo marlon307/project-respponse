@@ -72,9 +72,9 @@ const categorys = [
   }, {
     ctgID: 11,
     imgCategory: 'https://i.imgur.com/q9Fwqyv.png',
-    categoryName: 'Liberdades',
-    subTitle: 'Liberdades',
-    path: 'liberdades',
+    categoryName: 'Liberdade',
+    subTitle: 'Liberdade',
+    path: 'liberdade',
     color: '#e724e1',
   },
 ];
