@@ -4,7 +4,7 @@ import { categorys } from '../../service/mockCategory';
 import { mockminObjectCards2 } from '../../service/mockCards';
 import { CardProduct } from '../../components/Cards/CardProduct';
 import BarFilter from '../../components/Filter/BarFilter';
-import FCtg from '../../components/Filter/ItemList';
+import ItemList from '../../components/Filter/ItemList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ADD_FILTER_LIST } from '../../redux/actions';
 import style from './style.module.scss';
@@ -15,7 +15,9 @@ function CategoryId() {
 
   const removeListFilter = useCallback(({ target }: any) => {
     const { id } = target;
-    dispatch(ADD_FILTER_LIST({ id }));
+    const formatId = id.replace('list', '');
+
+    dispatch(ADD_FILTER_LIST({ id: formatId }));
   }, []);
 
   return (
@@ -24,8 +26,8 @@ function CategoryId() {
         <BarFilter />
         <div className={ style.listfilter }>
           { listFilter.map((item) => (
-            <FCtg
-              id={ item.id }
+            <ItemList
+              id={ `list${item.id}` }
               name={ item.key }
               key={ item.id }
               value={ item.name }
