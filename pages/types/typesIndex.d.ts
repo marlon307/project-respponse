@@ -19,4 +19,5 @@ export type IPropsHome = {
   categorys
   slides
   mockCards
+  mockPromotions
 };
