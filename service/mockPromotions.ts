@@ -6,7 +6,7 @@ const mockPromotions = [{
 }, {
   id: 1,
   img: 'https://i.imgur.com/dT1934Y.jpg',
-  title: 'Liberdades',
+  title: 'Liberdade',
   path: 'liberdade',
 }, {
   id: 2,
