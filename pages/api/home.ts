@@ -7,7 +7,10 @@ import mockPromotions from '../../service/mockPromotions';
 export default function home(req: NextApiRequest, res: NextApiResponse<any>) {
   if (req.method === 'GET') {
     return res.status(200).json({
-      categorys, slides, mockCards: mockminObjectCards2, mockPromotions,
+      categorys,
+      slides,
+      mockCards: mockminObjectCards2,
+      mockPromotions,
     });
   }
   return res.status(500).json({ message: 'Not found', status: 500 });
