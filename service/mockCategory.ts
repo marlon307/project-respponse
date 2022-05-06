@@ -48,6 +48,34 @@ const categorys = [
     subTitle: 'Femenino',
     path: 'femenino',
     color: '#e724e1',
+  }, {
+    ctgID: 8,
+    imgCategory: 'https://i.imgur.com/q9Fwqyv.png',
+    categoryName: 'Diversão',
+    subTitle: 'Diversão',
+    path: 'diversao',
+    color: '#e724e1',
+  }, {
+    ctgID: 9,
+    imgCategory: 'https://i.imgur.com/q9Fwqyv.png',
+    categoryName: 'Suave',
+    subTitle: 'Suave',
+    path: 'suave',
+    color: '#e724e1',
+  }, {
+    ctgID: 10,
+    imgCategory: 'https://i.imgur.com/q9Fwqyv.png',
+    categoryName: 'Tranquilidade',
+    subTitle: 'Tranquilidade',
+    path: 'tranquilidade',
+    color: '#e724e1',
+  }, {
+    ctgID: 11,
+    imgCategory: 'https://i.imgur.com/q9Fwqyv.png',
+    categoryName: 'Liberdades',
+    subTitle: 'Liberdades',
+    path: 'liberdades',
+    color: '#e724e1',
   },
 ];
 
