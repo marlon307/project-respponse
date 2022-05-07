@@ -307,7 +307,7 @@
   }
 
   .listhighlights {
-    gap: 0.6em;
+    gap: 0.7em;
     grid-auto-columns: 45%;
   }
 
@@ -322,7 +322,7 @@
     ;
     grid-auto-columns: 90%;
     grid-template-rows: 220px 220px;
-    grid-gap: 1em;
+    grid-gap: 0.7em;
     overflow: auto;
 
     &::-webkit-scrollbar {
