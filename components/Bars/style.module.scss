@@ -1,3 +1,9 @@
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .barcolor {
   height: 30px;
   display: flex;
@@ -12,9 +18,7 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter;
     background: transparent;
   }
 
@@ -31,9 +35,7 @@
   span {
     position: relative;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter;
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -115,12 +117,10 @@
 
 .container {
   width: 90%;
-  display: flex;
   margin: 0 auto;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   padding: 12px 0;
-  gap: 16vh;
+  gap: 30%;
 }
 
 .calc {
@@ -169,11 +169,8 @@
 
   .expand {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter;
     top: -1px;
-    left: 3%;
     border-radius: 0 0 8px 8px;
     width: 28px;
     height: 28px;
@@ -195,8 +192,9 @@
   }
 
   .container {
-    flex-direction: column;
-    gap: 2vh;
+    display: block;
+    width: 70%;
+    max-width: 300px;
   }
 
   .calc {
@@ -208,16 +206,19 @@
 
     .calc {
       display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
       flex-direction: column;
-      width: 250px;
     }
 
-    a {
+    .expand {
       &:before {
         transform: rotate(135deg);
       }
+    }
+  }
+
+  .calcfinish {
+    button {
+      width: 100%;
     }
   }
 }
@@ -236,9 +237,7 @@
 
   span {
     color: #1d1d1d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter;
     border-radius: 0.8em;
     width: 42px;
     height: 42px;
