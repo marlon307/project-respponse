@@ -322,9 +322,8 @@
     ;
     grid-auto-columns: 90%;
     grid-template-rows: 220px 220px;
-    grid-gap: 3%;
+    grid-gap: 0.7em;
     overflow: auto;
-    height: max-content;
 
     &::-webkit-scrollbar {
       display: none;
