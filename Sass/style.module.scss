@@ -313,7 +313,6 @@
 
   .promotions {
     margin: 2em 0;
-    height: 600px;
   }
 
   .contpromotions {
@@ -325,6 +324,7 @@
     grid-template-rows: 220px 220px;
     grid-gap: 3%;
     overflow: auto;
+    height: max-content;
 
     &::-webkit-scrollbar {
       display: none;
