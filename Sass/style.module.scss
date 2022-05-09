@@ -300,6 +300,7 @@
   .highlights {
     margin: 2em 0;
     height: max-content;
+    height: 20em;
 
     h2 {
       font-size: 1.4em;
@@ -309,6 +310,10 @@
   .listhighlights {
     gap: 3%;
     grid-auto-columns: 45%;
+    position: absolute;
+    width: -webkit-fill-available;
+    left: 0;
+    padding: 0 3%;
   }
 
   .promotions {
