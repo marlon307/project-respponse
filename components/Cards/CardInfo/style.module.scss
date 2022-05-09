@@ -46,10 +46,12 @@
 }
 
 .colors {
+  justify-content: center;
+  gap: 6px;
+
   span {
     width: 0.6em;
     height: 0.6em;
-    margin-right: 8px;
     border-radius: 50%;
     border: 1px solid var(--bordercolor);
   }
@@ -67,6 +69,8 @@
   }
 
   .colors {
+    gap: 4px;
+
     span {
       width: 0.62em;
       height: 0.62em;
@@ -89,7 +93,6 @@
     span {
       width: 0.46em;
       height: 0.46em;
-      margin-right: 4px;
     }
   }
 }
