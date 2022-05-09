@@ -2,7 +2,6 @@
 
 .main {
   min-height: 100vh;
-  margin: 0 6%;
   grid-area: main;
 
   [id] {
@@ -39,13 +38,14 @@
 
 .banner {
   position: relative;
-  width: 100%;
+  width: -webkit-fill-available;
   height: 100vh;
   min-height: 300px;
   max-height: 70vh;
   border-radius: 1em;
   overflow: hidden;
   margin-bottom: 4em;
+  margin: 0 6% 4em;
 
   img {
     max-height: 600px;
@@ -55,6 +55,9 @@
 }
 
 .listctg {
+  width: -webkit-fill-available;
+  margin: 4em 6%;
+
   h2 {
     margin-bottom: 16px;
   }
@@ -63,7 +66,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
+    width: -webkit-fill-available;
     height: 70px;
     gap: 1em;
     overflow: hidden;
@@ -71,9 +74,8 @@
 }
 
 .highlights {
-  width: 100%;
-  height: 450px;
-  margin: 4em 0;
+  width: -webkit-fill-available;
+  margin: 4em 6%;
 }
 
 .listhighlights {
@@ -93,8 +95,10 @@
 }
 
 .promotions {
+  position: relative;
   width: 100%;
-  height: 820px;
+  width: -webkit-fill-available;
+  margin: 4em 6%;
 }
 
 .contpromotions {
@@ -244,7 +248,7 @@
 
 .favorites {
   max-width: 800px;
-  width: 100%;
+  width: -webkit-fill-available;
   margin: 0 auto;
 
   h1 {
@@ -270,39 +274,36 @@
     grid-template-areas: '. . .';
   }
 
-  .promotions {
-    height: max-content;
-    margin-bottom: 2em;
-  }
-
   .contpromotions {
     grid-template-rows: 250px 300px;
   }
 }
 
 @media (max-width:700px) {
-  .main {
-    margin: 0 3%;
-  }
-
   .banner {
-    margin-bottom: 2em;
+    margin: 0 3% 2em;
   }
 
   .listctg {
+    margin: 2em 0;
+
     h2 {
       font-size: 1.4em;
       margin-bottom: 8px;
+      padding: 0 3%;
     }
   }
 
+  .list {
+    padding: 0 3%;
+  }
+
   .highlights {
-    margin: 2em 0 0;
     height: max-content;
-    // min-height: 22em;
-    height: 22em;
+    margin: 0;
 
     h2 {
+      margin: 0 3%;
       font-size: 1.4em;
     }
   }
@@ -310,15 +311,15 @@
   .listhighlights {
     gap: 3%;
     grid-auto-columns: 45%;
-    position: absolute;
-    width: -webkit-fill-available;
-    left: 0;
     padding: 0 3%;
   }
 
   .promotions {
-    margin: 0 0 2em;
-    height: 32em;
+    margin: 2em 0;
+
+    h2 {
+      padding: 0 3%;
+    }
   }
 
   .contpromotions {
@@ -330,9 +331,6 @@
     grid-template-rows: 220px 220px;
     grid-gap: 0.7em;
     overflow: auto;
-    position: absolute;
-    width: -webkit-fill-available;
-    left: 0;
     padding: 0 3%;
 
     &::-webkit-scrollbar {
@@ -351,6 +349,10 @@
         padding: 12px 0 12px 24px;
       }
     }
+  }
+
+  .favorites {
+    margin: 0 3%;
   }
 }
 

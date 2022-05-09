@@ -16,7 +16,7 @@
   grid-template-rows: max-content;
   row-gap: 1em;
   align-items: start;
-  margin-bottom: 3em;
+  margin: 0 6% 3em;
 }
 
 .filter {
@@ -31,7 +31,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 2em;
-  margin-bottom: 1em;
+  margin: 0 6% 1em;
 }
 
 .listfilter {
@@ -62,10 +62,11 @@
   .filter {
     margin-bottom: 0;
     align-items: center;
+    margin: 0 3%;
   }
 
   .categorycont {
-    margin-top: 12px;
+    margin: 12px 3%;
   }
 
   .listfilter {
@@ -85,7 +86,7 @@
 @media (max-width: 700px) {
   .filter {
     top: 50px;
-    margin: 0;
+    margin: 0 3%;
   }
 }
 

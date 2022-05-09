@@ -76,8 +76,8 @@
 
 @media (max-width: 750px) {
   .checkout {
-    width: 100%;
-    margin-bottom: 2em;
+    width: -webkit-fill-available;
+    margin: 0 3% 2em;
   }
 }
 
