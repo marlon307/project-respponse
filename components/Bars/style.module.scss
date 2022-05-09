@@ -104,7 +104,7 @@
   grid-area: reserved;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: -webkit-fill-available;
   background: var(--maincolormenu);
   backdrop-filter: saturate(100%) blur(5px);
   border-top: 1px solid var(--bordercolor);
@@ -165,6 +165,7 @@
   .buybar {
     overflow: hidden;
     height: auto;
+    padding: 0 3%;
   }
 
   .expand {
