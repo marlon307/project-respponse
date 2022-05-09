@@ -2,6 +2,7 @@
   display: grid;
   grid-template-areas: 'slide infos';
   grid-template-columns: auto minmax(200px, 400px);
+  margin: 0 6%;
 }
 
 .slide {
@@ -156,6 +157,12 @@
     width: 100%;
     z-index: 5;
     min-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .contprod {
+    margin: 0 3%;
   }
 }
 
