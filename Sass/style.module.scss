@@ -93,7 +93,6 @@
 }
 
 .promotions {
-  position: relative;
   width: 100%;
   height: 820px;
 }
@@ -298,9 +297,10 @@
   }
 
   .highlights {
-    margin: 2em 0;
+    margin: 2em 0 0;
     height: max-content;
-    height: 20em;
+    // min-height: 22em;
+    height: 22em;
 
     h2 {
       font-size: 1.4em;
@@ -317,7 +317,8 @@
   }
 
   .promotions {
-    margin: 2em 0;
+    margin: 0 0 2em;
+    height: 32em;
   }
 
   .contpromotions {
@@ -329,6 +330,10 @@
     grid-template-rows: 220px 220px;
     grid-gap: 0.7em;
     overflow: auto;
+    position: absolute;
+    width: -webkit-fill-available;
+    left: 0;
+    padding: 0 3%;
 
     &::-webkit-scrollbar {
       display: none;
