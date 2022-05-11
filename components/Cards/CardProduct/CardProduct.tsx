@@ -27,6 +27,7 @@ function CardProduct({ id }: PCardP) {
             alt={ title }
             width={ 350 }
             height={ 400 }
+            sizes="(max-width: 700px) 220px, 300px"
           />
         </figure>
         <div className={ style.infocont }>

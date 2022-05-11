@@ -63,6 +63,7 @@ function Home({
                 alt={ title }
                 layout="fill"
                 loading="eager"
+                sizes="100vw"
               />
               <figcaption>
                 <h4>{ title }</h4>
