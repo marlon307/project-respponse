@@ -250,6 +250,7 @@
   max-width: 800px;
   width: -webkit-fill-available;
   margin: 0 auto;
+  padding: 0 6%;
 
   h1 {
     display: flex;
@@ -292,10 +293,6 @@
       margin-bottom: 8px;
       padding: 0 3%;
     }
-  }
-
-  .list {
-    padding: 0 3%;
   }
 
   .highlights {
@@ -353,6 +350,7 @@
 
   .favorites {
     margin: 0 3%;
+    padding: 0;
   }
 }
 
