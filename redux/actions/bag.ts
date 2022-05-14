@@ -68,9 +68,13 @@ const ACTION_FINISH_EDIT_BAG_ITEM = (state: StateBagType) => {
   const newId = state.itemEditBag.id + state.itemEditBag.color + state.itemEditBag.size;
   const index = state.bagItems.findIndex(({ identifyBag }) => identifyBag === newId);
 
-  state.bagItems[index] = {
-    ...state.bagItems[index],
+  const validIndex = index >= 0 ? index
+    : state.bagItems.findIndex(({ identifyBag }) => identifyBag === state.itemEditBag.identifyBag);
+
+  state.bagItems[validIndex] = {
+    ...state.bagItems[validIndex],
     ...state.itemEditBag,
+    identifyBag: newId,
   };
 };
 
