@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
-import CardInfo from '../CardInfo/CardInfo';
 import style from './style.module.scss';
 import { mockminObjectCards } from '../../../service/mockCards';
 
@@ -35,9 +34,9 @@ function CardProduct({ id }: PCardP) {
             <div className={ style.primaryline }>
               <span>{ type }</span>
               <div className={ style.colors }>
-                { colors!
-                  && colors.map((_null, index) => {
-                    const value = Object.values(colors![index]);
+                { options!
+                  && options.map((_null, index) => {
+                    const value = Object.values(options![index]);
                     return (
                       <span
                         key={ value[0] }

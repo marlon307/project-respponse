@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { categorys } from '../../service/mockCategory';
 import { mockminObjectCards2 } from '../../service/mockCards';
-import { CardProduct } from '../../components/Cards/CardProduct';
+import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import BarFilter from '../../components/Filter/BarFilter';
 import ItemList from '../../components/Filter/ItemList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';

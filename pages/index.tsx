@@ -5,7 +5,7 @@ import style from '../Sass/style.module.scss';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
 import api from '../service/api';
-import { CardProduct } from '../components/Cards/CardProduct';
+import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
 
 function Home({
