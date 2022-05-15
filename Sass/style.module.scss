@@ -3,6 +3,7 @@
 .main {
   min-height: 100vh;
   grid-area: main;
+  transition: transform 0.2s ease;
 
   [id] {
     scroll-margin-top: 6em;

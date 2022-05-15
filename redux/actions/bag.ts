@@ -1,4 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
+import calcAllValuesArray from '../../hooks/useCalcs';
 import type {
   StateBagType, TypeAddBagInfos, TypeEditBagInfos, TShipping, TFormatPay, TAddress,
 } from './types/bag';
@@ -51,10 +52,12 @@ const ACTION_ADD_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<Ty
   } else {
     state.bagItems[index].quantity += 1;
   }
+  state.valueBag = calcAllValuesArray(state.bagItems);
 };
 
 const ACTION_RM_BAG_ITEM = (state: StateBagType, { payload }: PayloadAction<string>) => {
   state.bagItems = state.bagItems.filter(({ identifyBag }) => identifyBag !== payload);
+  state.valueBag = calcAllValuesArray(state.bagItems);
 };
 
 const ACTION_EDIT_BAG_ITEM = (

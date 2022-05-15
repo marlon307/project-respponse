@@ -3,14 +3,20 @@ import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import store from '../redux';
 import '../Sass/globals.scss';
-import Layout from '../components/Layout/Layout';
+import style from '../Sass/style.module.scss';
+import Header from '../components/Header';
+import Footer from '../components/Footer/Footer';
+import Modal from '../components/Modal/Modal';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={ store }>
-      <Layout>
+      <Header />
+      <main className={ style.main }>
         <Component { ...pageProps } />
-      </Layout>
+      </main>
+      <Footer />
+      <Modal />
     </Provider>
   );
 }
