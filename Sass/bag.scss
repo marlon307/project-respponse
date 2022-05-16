@@ -8,10 +8,10 @@
   justify-content: center;
   gap: 3em;
   margin: 0 6%;
+  height: 100vh;
 }
 
 .list {
-  max-height: 70vh;
   min-height: 4em;
 
   h1 {
@@ -28,6 +28,8 @@
 
   ul {
     padding-top: 3em;
+    max-height: 96vh;
+    overflow: auto;
   }
 
   li {
@@ -51,6 +53,16 @@
     grid-template-columns: 100%;
     grid-template-rows: auto;
     margin: 0 3%;
+    height: auto;
+  }
+
+  .list {
+    height: 60vh;
+
+    ul {
+      padding-top: 2em;
+      max-height: 94%;
+    }
   }
 
   .empty {
