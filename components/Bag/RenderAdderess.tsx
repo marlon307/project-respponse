@@ -17,11 +17,12 @@ function RenderAdderess() {
   return (
     <div className={ style.add }>
       { mockAdderes.map((adderess) => (
-        <button
-          type="button"
+        <a
+          href=""
+          aria-label="Clique aqui para selecionar este endereço de entrega."
           key={ adderess.id }
           className={ style.cont }
-          onClick={ () => handleClick(adderess) }
+          onClick={ (event) => { event.preventDefault(); handleClick(adderess); } }
         >
           <CardAdderess
             name={ adderess.name }
@@ -32,7 +33,7 @@ function RenderAdderess() {
             zipcode={ adderess.zipcode }
             district={ adderess.district }
           />
-        </button>
+        </a>
       )) }
     </div>
   );

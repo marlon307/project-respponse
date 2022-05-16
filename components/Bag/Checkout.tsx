@@ -50,8 +50,9 @@ function Checkout({ setOpenModal }: PropsCheckout) {
             Endereço de entrega
           </h3>
         </div>
-        <button
-          type="button"
+        <a
+          href=""
+          aria-label="Clique aqui para escolher um endereço de entrega."
           onClick={ (event) => {
             event.preventDefault();
             setOpenModal('address');
@@ -66,7 +67,7 @@ function Checkout({ setOpenModal }: PropsCheckout) {
             zipcode={ zipcode }
             district={ district }
           />
-        </button>
+        </a>
         <button
           type="button"
           className="link"
