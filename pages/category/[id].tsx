@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   return {
     props: {
       pageFilter: pgProps,
-      products: data.products,
+      // products: data.products,
     },
   };
 };
