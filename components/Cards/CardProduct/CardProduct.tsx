@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
-import style from './style.module.scss';
 import type { ICardProduct } from '../../../types/typeCardProduct';
+import style from './style.module.scss';
 
 type TypeTeste = {
   objectProduct: ICardProduct['products'][0]

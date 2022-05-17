@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import CardProduct from '../../components/Cards/CardProduct/CardProduct';
+// import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import BarFilter from '../../components/Filter/BarFilter';
 import ItemList from '../../components/Filter/ItemList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ADD_FILTER_LIST } from '../../redux/actions';
-import style from './style.module.scss';
 import api from '../../service/api';
-import type { ICardProduct } from '../../types/typeCardProduct';
+// import type { ICardProduct } from '../../types/typeCardProduct';
+import style from './style.module.scss';
 
-function CategoryId({ products }: ICardProduct) {
+function CategoryId() {
   const { listFilter } = useAppSelector(({ search }) => search);
   const dispatch = useAppDispatch();
 
@@ -38,14 +38,14 @@ function CategoryId({ products }: ICardProduct) {
         </div>
       </div>
       <div className={ style.categorycont }>
-        {
+        {/* {
           products.map((object) => (
             <CardProduct
               key={ object.id }
               objectProduct={ object }
             />
           ))
-        }
+        } */}
       </div>
     </div>
   );

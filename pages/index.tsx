@@ -1,12 +1,12 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import { CardCategory } from '../components/Cards';
-import style from '../Sass/style.module.scss';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
 import api from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
+import style from '../Sass/style.module.scss';
 
 function Home({
   categorys, slides, mockCards, mockPromotions,
