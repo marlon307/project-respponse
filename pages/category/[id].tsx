@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-// import CardProduct from '../../components/Cards/CardProduct/CardProduct';
+import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import BarFilter from '../../components/Filter/BarFilter';
 import ItemList from '../../components/Filter/ItemList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ADD_FILTER_LIST } from '../../redux/actions';
 import api from '../../service/api';
-// import type { ICardProduct } from '../../types/typeCardProduct';
+import type { ICardProduct } from '../../types/typeCardProduct';
 import style from './style.module.scss';
 
-function CategoryId() {
+function CategoryId({ products }: ICardProduct) {
   const { listFilter } = useAppSelector(({ search }) => search);
   const dispatch = useAppDispatch();
 
@@ -38,14 +38,14 @@ function CategoryId() {
         </div>
       </div>
       <div className={ style.categorycont }>
-        {/* {
+        {
           products.map((object) => (
             <CardProduct
               key={ object.id }
               objectProduct={ object }
             />
           ))
-        } */}
+        }
       </div>
     </div>
   );
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   return {
     props: {
       pageFilter: pgProps,
-      // products: data.products,
+      products: data.products,
     },
   };
 };
@@ -77,6 +77,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
