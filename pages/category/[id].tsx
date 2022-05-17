@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { categorys } from '../../service/mockCategory';
-import { mockminObjectCards2 } from '../../service/mockCards';
 import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import BarFilter from '../../components/Filter/BarFilter';
 import ItemList from '../../components/Filter/ItemList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ADD_FILTER_LIST } from '../../redux/actions';
 import style from './style.module.scss';
+import api from '../../service/api';
+import type { ICardProduct } from '../../types/typeCardProduct';
 
-function CategoryId() {
+function CategoryId({ products }: ICardProduct) {
   const { listFilter } = useAppSelector(({ search }) => search);
   const dispatch = useAppDispatch();
 
@@ -39,8 +39,11 @@ function CategoryId() {
       </div>
       <div className={ style.categorycont }>
         {
-          mockminObjectCards2.map((object) => (
-            <CardProduct key={ object.id } id={ object.id } />
+          products.map((object) => (
+            <CardProduct
+              key={ object.id }
+              objectProduct={ object }
+            />
           ))
         }
       </div>
@@ -50,21 +53,30 @@ function CategoryId() {
 
 export default CategoryId;
 
+type RequestCategoryType = {
+  path: string
+};
+
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const pgProps = await categorys.find(({ path }) => path === params.id);
+  const { data } = await api.get('/categorys');
+  const pgProps = await data.categorys.find(({ path }: RequestCategoryType) => path === params.id);
   return {
-    props: { pgProps },
+    props: {
+      pageFilter: pgProps,
+      products: data.products,
+    },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await categorys
-    .map(({ path }) => ({
-      params: { id: path },
-    }));
+  const { data } = await api.get('/categorys');
+
+  const paths = data.categorys.map(({ path }: RequestCategoryType) => ({
+    params: { id: path },
+  }));
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };

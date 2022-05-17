@@ -47,7 +47,12 @@ function Home({
       <div className={ style.highlights }>
         <h2>Destaques</h2>
         <div className={ style.listhighlights }>
-          { mockCards.map((object: any) => (<CardProduct key={ object.id } id={ object.id } />)) }
+          { mockCards.map((object: any) => (
+            <CardProduct
+              key={ object.id }
+              objectProduct={ object }
+            />
+          )) }
         </div>
       </div>
       <div className={ style.promotions }>
