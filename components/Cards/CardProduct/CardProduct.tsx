@@ -1,17 +1,17 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
+import type { ICardProduct } from '../../../types/typeCardProduct';
 import style from './style.module.scss';
-import { mockminObjectCards } from '../../../service/mockCards';
 
-type PCardP = {
-  id: number;
+type TypeTeste = {
+  objectProduct: ICardProduct['products'][0]
 };
 
-function CardProduct({ id }: PCardP) {
+function CardProduct({ objectProduct }: TypeTeste) {
   const {
-    type, title, mainImg, price, options, discount, oldPrice,
-  } = mockminObjectCards[id];
+    id, type, title, mainImg, price, options, discount, oldPrice,
+  } = objectProduct;
 
   return (
     <Link
@@ -35,7 +35,7 @@ function CardProduct({ id }: PCardP) {
               <span>{ type }</span>
               <div className={ style.colors }>
                 { options!
-                  && options.map((_null, index) => {
+                  && options.map((_, index: number) => {
                     const value = Object.values(options![index]);
                     return (
                       <span
