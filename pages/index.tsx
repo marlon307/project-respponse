@@ -24,7 +24,7 @@ function Home({
               alt={ alt }
               // loading="eager"
               width={ 90 }
-              height={ 70 }
+              height={ 80 }
               sizes="(max-width: 500px) 300px"
             />
           </figure>
