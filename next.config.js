@@ -22,7 +22,7 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
     runtimeCaching,
-    disable: process.env.NODE_ENV !== 'production',
+    disable: true,
     register: true,
     sw: 'sw.js',
   },
