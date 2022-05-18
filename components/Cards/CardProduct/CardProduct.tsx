@@ -19,18 +19,16 @@ function CardProduct({ objectProduct }: TypeTeste) {
       as={ `/product/${id.toString()}` }
     >
       <a className={ style.productcard } aria-label={ `${type} ${title}` }>
-        <div className={ style.contimg }>
-          <figure>
-            <LoadingImage
-              src={ mainImg }
-              quality={ 85 }
-              alt={ title }
-              width={ 350 }
-              height={ 400 }
-              sizes="(max-width: 500px) 230px"
-            />
-          </figure>
-        </div>
+        <figure>
+          <LoadingImage
+            src={ mainImg }
+            quality={ 85 }
+            alt={ title }
+            width={ 350 }
+            height={ 400 }
+            sizes="(max-width: 700px) 220px, 300px"
+          />
+        </figure>
         <div className={ style.infocont }>
           <div className={ style.info }>
             <div className={ style.primaryline }>
