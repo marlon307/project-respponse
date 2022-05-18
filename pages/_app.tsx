@@ -1,5 +1,5 @@
 import React from 'react';
-import type { AppProps } from 'next/app';
+import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { Provider } from 'react-redux';
 import store from '../redux';
 import '../Sass/globals.scss';
@@ -19,6 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Modal />
     </Provider>
   );
+}
+
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  // eslint-disable-next-line no-console
+  console.log(metric);
 }
 
 export default MyApp;
