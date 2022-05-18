@@ -68,7 +68,8 @@ function Home({
                 alt={ title }
                 layout="fill"
                 loading="eager"
-                sizes="600px"
+                // sizes="600px"
+                sizes="(max-width: 500px) 304.56px, 1486.52px"
               />
               <figcaption>
                 <h4>{ title }</h4>
