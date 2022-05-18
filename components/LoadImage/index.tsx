@@ -1,7 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import Image, { ImageProps } from 'next/image';
-import cx from 'classnames';
-import style from './style.module.scss';
 
 type TLoadImage = {
   src: ImageProps['src'];
@@ -14,36 +12,42 @@ type TLoadImage = {
   sizes?: ImageProps['sizes'];
   layout?: ImageProps['layout'];
 };
+// https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stop-color="#ffffff00" offset="20%" />
+      <stop stop-color="#ffffff80" offset="50%" />
+      <stop stop-color="#ffffff00" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#f1f1f1" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+</svg>`;
+
+const toBase64 = (str: string) => (typeof window === 'undefined'
+  ? Buffer.from(str).toString('base64')
+  : window.btoa(str));
 
 function LoadingImage({
   src, width, height, quality, alt, priority, loading, sizes, layout,
 }: TLoadImage) {
-  const [isloading, setIsLoading] = useState(true);
-  const finishLoading = useCallback(() => setIsLoading(false), []);
-
-  useEffect(() => () => finishLoading(), [finishLoading]);
-
   return (
-    <>
-      <Image
-        quality={ quality }
-        src={ src }
-        alt={ alt }
-        layout={ layout }
-        width={ width }
-        height={ height }
-        placeholder="empty"
-        onLoadingComplete={ finishLoading }
-        priority={ priority }
-        loading={ loading }
-        sizes={ sizes }
-      />
-      <span className={ cx(
-        style.panelimg,
-        { [style.load]: isloading },
-      ) }
-      />
-    </>
+    <Image
+      quality={ quality }
+      src={ src }
+      alt={ alt }
+      layout={ layout }
+      width={ width }
+      height={ height }
+      placeholder="blur"
+      priority={ priority }
+      loading={ loading }
+      sizes={ sizes }
+      blurDataURL={ `data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}` }
+    />
   );
 }
 
