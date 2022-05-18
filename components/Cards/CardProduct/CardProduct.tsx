@@ -26,7 +26,7 @@ function CardProduct({ objectProduct }: TypeTeste) {
             alt={ title }
             width={ 350 }
             height={ 400 }
-            sizes="(max-width: 700px) 220px, 300px"
+            sizes="300px"
           />
         </figure>
         <div className={ style.infocont }>
