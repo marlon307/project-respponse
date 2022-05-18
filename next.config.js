@@ -30,4 +30,3 @@ module.exports = withPWA({
     PROJECT_ROOT: __dirname,
   },
 });
- 
