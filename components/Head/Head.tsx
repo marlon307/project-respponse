@@ -3,9 +3,7 @@ import React from 'react';
 function Seo() {
   return (
     <>
-      <title>
-        Respponse
-      </title>
+      <title>Respponse</title>
       <meta name="title" content="Respponse" />
       <link rel="icon" href="/favico.ico" />
       <link rel="apple-touch-icon" href="/favico.ico" sizes="256x256" />
