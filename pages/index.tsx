@@ -15,18 +15,17 @@ function Home({
     <>
       <div className={ style.banner }>
         { slides.map(({
-          id, srcImg, alt,
+          id, srcImg, alt, priority,
         }: ILoadSlide) => (
-          <figure key={ id }>
-            <LoadingImage
-              src={ srcImg }
-              quality={ 85 }
-              alt={ alt }
-              width={ 90 }
-              height={ 80 }
-              sizes="(max-width: 500px) 300px"
-            />
-          </figure>
+          <LoadingImage
+            key={ id }
+            src={ srcImg }
+            quality={ 85 }
+            alt={ alt }
+            layout="fill"
+            loading="eager"
+            priority={ priority }
+          />
         )) }
       </div>
       <div className={ style.listctg }>

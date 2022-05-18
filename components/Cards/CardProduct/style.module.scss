@@ -1,23 +1,17 @@
 // Style Card producsts
 .productcard {
+  position: relative;
   max-width: 350px;
   min-width: 100px;
   width: 100%;
-  height: max-content;
-
-  .contimg {
-    position: relative;
-    border-radius: 1em;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 200px;
-    max-height: 300px;
-  }
+  height: auto;
 
   figure {
-    min-width: 100%;
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 1em;
+    overflow: hidden;
   }
 
   img {
