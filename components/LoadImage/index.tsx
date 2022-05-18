@@ -13,7 +13,8 @@ type TLoadImage = {
   layout?: ImageProps['layout'];
 };
 // https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
-const shimmer = (w: number, h: number) => `
+
+const shimmer = (w: string, h: string) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="g">
@@ -46,7 +47,7 @@ function LoadingImage({
       priority={ priority }
       loading={ loading }
       sizes={ sizes }
-      blurDataURL={ `data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}` }
+      blurDataURL={ `data:image/svg+xml;base64,${toBase64(shimmer('100%', '100%'))}` }
     />
   );
 }
@@ -56,7 +57,7 @@ LoadingImage.defaultProps = {
   layout: 'responsive',
   loading: 'lazy',
   sizes: undefined,
-  quality: '70',
+  quality: 70,
   width: undefined,
   height: undefined,
 };
