@@ -22,7 +22,6 @@ function Home({
               src={ srcImg }
               quality={ 85 }
               alt={ alt }
-              // loading="eager"
               width={ 90 }
               height={ 80 }
               sizes="(max-width: 500px) 300px"
