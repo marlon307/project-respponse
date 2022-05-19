@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from '../redux';
 import '../Sass/globals.scss';
 import style from '../Sass/style.module.scss';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Modal from '../components/Modal/Modal';
 
