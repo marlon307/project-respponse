@@ -6,6 +6,7 @@ import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
 import { useAppSelector } from '../redux/hooks';
 import style from '../Sass/style.module.scss';
+import HeadSEO from '../components/Head/HeadSEO';
 
 const CardEdit = lazy(() => import('../components/Cards/CardEdit/CardEdit'));
 const RenderAdderess = lazy(() => import('../components/Bag/RenderAdderess'));
@@ -22,6 +23,10 @@ function Bag() {
 
   return (
     <>
+      <HeadSEO
+        title="Sacola e Checkout"
+        description="Finalize sua compra"
+      />
       <div className={ style.bag }>
         <section className={ style.list }>
           <h1 className={ style.title } title="Sacola">

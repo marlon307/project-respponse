@@ -3,12 +3,9 @@ import React from 'react';
 function Seo() {
   return (
     <>
-      <title>Respponse</title>
       <meta name="title" content="Respponse" />
       <link rel="icon" href="/favico.ico" />
       <link rel="apple-touch-icon" href="/favico.ico" sizes="256x256" />
-      <link rel="canonical" href="https://respponse.com" />
-      <meta name="description" content="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
       <link rel="manifest" href="/manifest.json" />
       <meta name="theme-color" content="#FFFFFF" />
       <meta name="application-name" content="Respponse" />
@@ -18,11 +15,9 @@ function Seo() {
       <meta name="apple-touch-fullscreen" content="yes" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover" />
-      <meta property="og:type" content="Respponse" />
-      <meta property="og:title" content="Respponse" />
-      <meta property="og:description" content="Respponse" />
+      <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Respponse" />
-      <meta property="og:url" content="https://respponse.com" />
+      <meta property="og:url" content="https://project-respponse-marlon307.vercel.app" />
     </>
   );
 }

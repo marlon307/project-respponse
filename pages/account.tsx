@@ -7,6 +7,7 @@ import { useAppSelector } from '../redux/hooks';
 import BtnAdd from '../components/Buttons/BtnAdd';
 import style from '../Sass/style.module.scss';
 import Loading from '../components/Loading';
+import HeadSEO from '../components/Head/HeadSEO';
 
 const Order = lazy(() => import('../components/Order/Orders'));
 const OrderId = lazy(() => import('../components/Order/OrderId'));
@@ -44,6 +45,7 @@ function Account() {
 
   return (
     <>
+      <HeadSEO title="Conta" description="Conta, pedidos, endereços, cartoes e ajuda." />
       <div className={ style.container } id="user">
         <a
           href="#user"

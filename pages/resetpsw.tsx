@@ -5,6 +5,7 @@ import style from '../Sass/style.module.scss';
 import { useAppSelector } from '../redux/hooks';
 import BtnIco from '../components/Buttons/BtnIco';
 import { Input } from '../components/ComponentsForm';
+import HeadSEO from '../components/Head/HeadSEO';
 
 function Resetpsw() {
   const { logged } = useAppSelector(({ user }) => user);
@@ -15,38 +16,44 @@ function Resetpsw() {
   }, []);
 
   return (
-    <section className={ style.contlogin }>
-      <h1>Recuperar senha</h1>
-      <form>
-        <div className="inputs">
-          <Input
-            id="email"
-            type="email"
-            name="email"
-            placeHolder="E-mail"
-            autoComplete="email"
-            ivalue={ email }
-            inputValue={ restPsw }
-            msgError="Email inválido!"
-          />
-        </div>
-        <div className={ style.action }>
-          { !logged && (
-            <Link href="/login-register">
-              <a className="link">
-                Fazer Login
-              </a>
-            </Link>
-          ) }
-          <BtnIco
-            textBtn="Enviar Email"
-            icoName="email"
-            action={ () => { } }
-            actionLiberate={ false }
-          />
-        </div>
-      </form>
-    </section>
+    <>
+      <HeadSEO
+        title="Recupere sua senha"
+        description="Insira seu e-mail para recuperar sua senha."
+      />
+      <section className={ style.contlogin }>
+        <h1>Recuperar senha</h1>
+        <form>
+          <div className="inputs">
+            <Input
+              id="email"
+              type="email"
+              name="email"
+              placeHolder="E-mail"
+              autoComplete="email"
+              ivalue={ email }
+              inputValue={ restPsw }
+              msgError="Email inválido!"
+            />
+          </div>
+          <div className={ style.action }>
+            { !logged && (
+              <Link href="/login-register">
+                <a className="link">
+                  Fazer Login
+                </a>
+              </Link>
+            ) }
+            <BtnIco
+              textBtn="Enviar Email"
+              icoName="email"
+              action={ () => { } }
+              actionLiberate={ false }
+            />
+          </div>
+        </form>
+      </section>
+    </>
   );
 }
 

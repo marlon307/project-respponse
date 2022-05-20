@@ -8,6 +8,7 @@ import BtnIco from '../components/Buttons/BtnIco';
 import style from '../Sass/style.module.scss';
 
 import { Input } from '../components/ComponentsForm';
+import HeadSEO from '../components/Head/HeadSEO';
 
 const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
 const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
@@ -74,117 +75,123 @@ function Login() {
   }, [logged, router]);
 
   return (
-    <section className={ style.contlogin }>
-      <div className={ style.logo }>
-        <Svg icoName="logo" />
-      </div>
-      <div className={ style.sectiontab }>
-        <button
-          type="button"
-          aria-label="Login"
-          onClick={ tabSectionLogin }
-          className={ cx(style.tablog, { [style.active]: sectionTab }) }
-        >
-          <h1>Entrar</h1>
-        </button>
-        <button
-          type="button"
-          aria-label="Registre-se"
-          onClick={ tabSectionRegister }
-          className={ cx(style.tablog, { [style.active]: !sectionTab }) }
-        >
-          <h1>Registre-se</h1>
-        </button>
-      </div>
-      <form className={ cx(style.tab, { [style.active]: sectionTab }) }>
-        <div className="inputs">
-          <Input
-            id="lemail"
-            type="email"
-            name="lemail"
-            autoComplete="email"
-            ivalue={ stateLogin.lemail }
-            inputValue={ actionUserLogin }
-            placeHolder="E-mail"
-            msgError="Email inválido!"
-          />
-          <Input
-            id="lpsw"
-            type="password"
-            name="lpsw"
-            autoComplete="current-password"
-            ivalue={ stateLogin.lpsw }
-            inputValue={ actionUserLogin }
-            placeHolder="Senha"
-            msgError="Senha invalida!"
-          />
+    <>
+      <HeadSEO
+        title={ sectionTab ? 'Login' : 'Registrar' }
+        description={ `${sectionTab ? 'Faça seu login na' : 'Registre-se na'} respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você.` }
+      />
+      <section className={ style.contlogin }>
+        <div className={ style.logo }>
+          <Svg icoName="logo" />
         </div>
-        <div className={ style.action }>
-          <label htmlFor="remember">
-            <input id="remember" type="checkbox" />
-            { ' ' }
-            Lembrar meus dados.
-          </label>
-          <a
-            href="/resetpsw"
-            className="link"
-            target="_blank"
-            aria-label="Esqueceu a senha?"
+        <div className={ style.sectiontab }>
+          <button
+            type="button"
+            aria-label="Login"
+            onClick={ tabSectionLogin }
+            className={ cx(style.tablog, { [style.active]: sectionTab }) }
           >
-            Esqueceu a senha?
-          </a>
+            <h1>Entrar</h1>
+          </button>
+          <button
+            type="button"
+            aria-label="Registre-se"
+            onClick={ tabSectionRegister }
+            className={ cx(style.tablog, { [style.active]: !sectionTab }) }
+          >
+            <h1>Registre-se</h1>
+          </button>
         </div>
-        <div className={ style.action }>
-          <BtnIco
-            textBtn="Entrar"
-            icoName="singin"
-            action={ clickLogin }
-            actionLiberate={ loadingLogin }
-          />
-        </div>
-      </form>
-      <form className={ cx(style.tab, { [style.active]: !sectionTab }) }>
-        <div className="inputs">
-          <Input
-            id="rname"
-            type="name"
-            name="rname"
-            placeHolder="Nome Sobrenome"
-            autoComplete="name"
-            inputValue={ actionRegister }
-            ivalue={ stateRegister.rname }
-            msgError="Preencha Nome e Sobrenome"
-          />
-          <Input
-            id="remail"
-            type="email"
-            name="remail"
-            placeHolder="E-mail"
-            autoComplete="email"
-            inputValue={ actionRegister }
-            ivalue={ stateRegister.remail }
-            msgError="E-mail inválido!"
-          />
-          <Input
-            id="rpsw"
-            type="password"
-            name="rpsw"
-            placeHolder="Senha"
-            inputValue={ actionRegister }
-            ivalue={ stateRegister.rpsw }
-            msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
-          />
-        </div>
-        <div className={ style.action }>
-          <BtnIco
-            textBtn="Criar Conta"
-            icoName="setRight"
-            action={ () => { } }
-            actionLiberate={ false }
-          />
-        </div>
-      </form>
-    </section>
+        <form className={ cx(style.tab, { [style.active]: sectionTab }) }>
+          <div className="inputs">
+            <Input
+              id="lemail"
+              type="email"
+              name="lemail"
+              autoComplete="email"
+              ivalue={ stateLogin.lemail }
+              inputValue={ actionUserLogin }
+              placeHolder="E-mail"
+              msgError="Email inválido!"
+            />
+            <Input
+              id="lpsw"
+              type="password"
+              name="lpsw"
+              autoComplete="current-password"
+              ivalue={ stateLogin.lpsw }
+              inputValue={ actionUserLogin }
+              placeHolder="Senha"
+              msgError="Senha invalida!"
+            />
+          </div>
+          <div className={ style.action }>
+            <label htmlFor="remember">
+              <input id="remember" type="checkbox" />
+              { ' ' }
+              Lembrar meus dados.
+            </label>
+            <a
+              href="/resetpsw"
+              className="link"
+              target="_blank"
+              aria-label="Esqueceu a senha?"
+            >
+              Esqueceu a senha?
+            </a>
+          </div>
+          <div className={ style.action }>
+            <BtnIco
+              textBtn="Entrar"
+              icoName="singin"
+              action={ clickLogin }
+              actionLiberate={ loadingLogin }
+            />
+          </div>
+        </form>
+        <form className={ cx(style.tab, { [style.active]: !sectionTab }) }>
+          <div className="inputs">
+            <Input
+              id="rname"
+              type="name"
+              name="rname"
+              placeHolder="Nome Sobrenome"
+              autoComplete="name"
+              inputValue={ actionRegister }
+              ivalue={ stateRegister.rname }
+              msgError="Preencha Nome e Sobrenome"
+            />
+            <Input
+              id="remail"
+              type="email"
+              name="remail"
+              placeHolder="E-mail"
+              autoComplete="email"
+              inputValue={ actionRegister }
+              ivalue={ stateRegister.remail }
+              msgError="E-mail inválido!"
+            />
+            <Input
+              id="rpsw"
+              type="password"
+              name="rpsw"
+              placeHolder="Senha"
+              inputValue={ actionRegister }
+              ivalue={ stateRegister.rpsw }
+              msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
+            />
+          </div>
+          <div className={ style.action }>
+            <BtnIco
+              textBtn="Criar Conta"
+              icoName="setRight"
+              action={ () => { } }
+              actionLiberate={ false }
+            />
+          </div>
+        </form>
+      </section>
+    </>
   );
 }
 

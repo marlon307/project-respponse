@@ -1,4 +1,7 @@
 export interface ICardProduct {
+  pageFilter: {
+    categoryName: string;
+  };
   products: Array<{
     id: number;
     type: string;
@@ -11,5 +14,5 @@ export interface ICardProduct {
     }>;
     discount: number;
     oldPrice: number;
-  }>
+  }>;
 }
