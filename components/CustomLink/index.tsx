@@ -12,8 +12,8 @@ const CustomLink = forwardRef(({
   children, className, href, ariaLabel, onClick,
 }: TObjProps, ref: any) => (
   <a
-    href={ href }
     className={ className }
+    href={ href }
     ref={ ref }
     onClick={ onClick }
     aria-label={ ariaLabel }
