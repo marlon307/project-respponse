@@ -8,8 +8,9 @@ import { ADD_FILTER_LIST } from '../../redux/actions';
 import api from '../../service/api';
 import type { ICardProduct } from '../../types/typeCardProduct';
 import style from './style.module.scss';
+import HeadSEO from '../../components/Head/HeadSEO';
 
-function CategoryId({ products }: ICardProduct) {
+function CategoryId({ products, pageFilter }: ICardProduct) {
   const { listFilter } = useAppSelector(({ search }) => search);
   const dispatch = useAppDispatch();
 
@@ -21,33 +22,36 @@ function CategoryId({ products }: ICardProduct) {
   }, []);
 
   return (
-    <div className={ style.category }>
-      <div className={ style.filter }>
-        <BarFilter />
-        <div className={ style.listfilter }>
-          { listFilter.map((item) => (
-            <ItemList
-              id={ `list${item.id}` }
-              name={ item.key }
-              key={ item.id }
-              value={ item.name }
-              color={ item.color }
-              execFunction={ removeListFilter }
-            />
-          )) }
+    <>
+      <HeadSEO title={ `Categoria: ${pageFilter.categoryName}` } description="" />
+      <div className={ style.category }>
+        <div className={ style.filter }>
+          <BarFilter />
+          <div className={ style.listfilter }>
+            { listFilter.map((item) => (
+              <ItemList
+                id={ `list${item.id}` }
+                name={ item.key }
+                key={ item.id }
+                value={ item.name }
+                color={ item.color }
+                execFunction={ removeListFilter }
+              />
+            )) }
+          </div>
+        </div>
+        <div className={ style.categorycont }>
+          {
+            products.map((object) => (
+              <CardProduct
+                key={ object.id }
+                objectProduct={ object }
+              />
+            ))
+          }
         </div>
       </div>
-      <div className={ style.categorycont }>
-        {
-          products.map((object) => (
-            <CardProduct
-              key={ object.id }
-              objectProduct={ object }
-            />
-          ))
-        }
-      </div>
-    </div>
+    </>
   );
 }
 

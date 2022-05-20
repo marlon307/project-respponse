@@ -5,6 +5,7 @@ import Svg from '../assets/Svg';
 import { SmallCard } from '../components/Cards';
 import style from '../Sass/style.module.scss';
 import mockBag from '../service/mockBag';
+import HeadSEO from '../components/Head/HeadSEO';
 
 function Favorite() {
   const { logged } = useAppSelector(({ user }) => user);
@@ -17,22 +18,25 @@ function Favorite() {
   }, [logged, router]);
 
   return (
-    <section className={ style.favorites }>
-      <h1 className={ style.title } title="Favoritos">
-        <Svg icoName="healt" />
-        Favoritos
-      </h1>
-      <ul>
-        { mockBag.map((object) => (
-          <li key={ object.id }>
-            <SmallCard
-              removable
-              objectID={ object }
-            />
-          </li>
-        )) }
-      </ul>
-    </section>
+    <>
+      <HeadSEO title="Favoritos" description="Lista de favoritos." />
+      <section className={ style.favorites }>
+        <h1 className={ style.title } title="Favoritos">
+          <Svg icoName="healt" />
+          Favoritos
+        </h1>
+        <ul>
+          { mockBag.map((object) => (
+            <li key={ object.id }>
+              <SmallCard
+                removable
+                objectID={ object }
+              />
+            </li>
+          )) }
+        </ul>
+      </section>
+    </>
   );
 }
 

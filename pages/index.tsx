@@ -7,12 +7,14 @@ import api from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
 import style from '../Sass/style.module.scss';
+import HeadSEO from '../components/Head/HeadSEO';
 
 function Home({
   categorys, slides, mockCards, mockPromotions,
 }: IPropsHome) {
   return (
     <>
+      <HeadSEO title="" description="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
       <div className={ style.banner }>
         { slides.map(({
           id, srcImg, alt, priority,
