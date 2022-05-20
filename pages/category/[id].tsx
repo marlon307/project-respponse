@@ -23,7 +23,7 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
 
   return (
     <>
-      <HeadSEO title={ `Categoria: ${pageFilter.categoryName}` } description="" />
+      <HeadSEO title={ `Categoria: ${pageFilter.categoryName}` } description={ `Categoria: ${pageFilter.categoryName}` } />
       <div className={ style.category }>
         <div className={ style.filter }>
           <BarFilter />

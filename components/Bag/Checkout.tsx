@@ -6,6 +6,7 @@ import { Input, InputRadio } from '../ComponentsForm';
 import Svg from '../../assets/Svg';
 import style from './style.module.scss';
 import { SELECT_PAYMENT, SELECT_SHIPPING } from '../../redux/actions';
+import CustomLink from '../CustomLink';
 
 type PropsCheckout = {
   setOpenModal: Function
@@ -50,9 +51,9 @@ function Checkout({ setOpenModal }: PropsCheckout) {
             Endereço de entrega
           </h3>
         </div>
-        <a
-          href=""
-          aria-label="Clique aqui para escolher um endereço de entrega."
+        <CustomLink
+          href="/"
+          ariaLabel="Clique aqui para escolher um endereço de entrega."
           onClick={ (event) => {
             event.preventDefault();
             setOpenModal('address');
@@ -67,17 +68,18 @@ function Checkout({ setOpenModal }: PropsCheckout) {
             zipcode={ zipcode }
             district={ district }
           />
-        </a>
-        <button
-          type="button"
+        </CustomLink>
+        <CustomLink
           className="link"
+          href="/"
+          ariaLabel="Adicionar endereço"
           onClick={ (event) => {
             event.preventDefault();
             setOpenModal('addaddress');
           } }
         >
           Adicionar endereço
-        </button>
+        </CustomLink>
       </div>
       <div className={ style.contcheckout }>
         <div className={ style.select }>
@@ -122,16 +124,17 @@ function Checkout({ setOpenModal }: PropsCheckout) {
             />
           )) }
         </div>
-        <button
-          type="button"
+        <CustomLink
+          href="/"
           className="link"
+          ariaLabel="Adicionar Cartão"
           onClick={ (event) => {
             event.preventDefault();
             setOpenModal('addcard');
           } }
         >
           Adicionar Cartão
-        </button>
+        </CustomLink>
       </div>
       <div className={ style.contcheckout }>
         <div className={ style.select }>

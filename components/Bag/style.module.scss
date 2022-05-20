@@ -18,14 +18,7 @@
     margin: 16px 0;
   }
 
-  button {
-    background: transparent;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-  }
-
-  button:nth-child(3) {
+  a:nth-child(3) {
     font-size: 0.9em;
     position: absolute;
     right: 0;
