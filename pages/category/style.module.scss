@@ -37,10 +37,10 @@
 .listfilter {
   grid-area: listfilter;
   display: flex;
-  overflow: overlay;
   height: -webkit-fill-available;
   box-sizing: border-box;
   white-space: nowrap;
+  overflow: hidden;
 
   label {
     float: left;
@@ -48,13 +48,8 @@
     flex: none;
   }
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  &:hover::-webkit-scrollbar {
-    display: block;
-    height: 4px;
+  &:hover {
+    overflow: overlay;
   }
 }
 
@@ -99,9 +94,12 @@
   }
 }
 
+// Detectar dispositivos moveis
 @media only screen and (hover: none) and (pointer: coarse) {
   .listfilter {
-    &:hover::-webkit-scrollbar {
+    overflow: overlay;
+
+    &::-webkit-scrollbar {
       display: none;
     }
   }
