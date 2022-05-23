@@ -305,7 +305,7 @@
     }
 
     .list {
-      padding-left: 3%;
+      padding: 0 3%;
     }
   }
 
@@ -395,5 +395,16 @@
   50% {
     transform: scale(1.0);
     -webkit-transform: scale3d(1.0);
+  }
+}
+
+// Dedectar dispositivos moveis
+@media only screen and (hover: none) and (pointer: coarse) {
+  .listctg {
+    .list {
+      &:hover::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 }

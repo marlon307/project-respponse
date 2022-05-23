@@ -98,3 +98,11 @@
     gap: 0.6em;
   }
 }
+
+@media only screen and (hover: none) and (pointer: coarse) {
+  .listfilter {
+    &:hover::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
