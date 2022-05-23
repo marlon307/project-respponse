@@ -151,6 +151,12 @@
     padding: max(1em, 2em);
     margin: 0;
   }
+
+  .barfilter {
+    button {
+      padding: 0;
+    }
+  }
 }
 
 @media (max-width: 600px) {
