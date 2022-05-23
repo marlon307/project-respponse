@@ -70,15 +70,9 @@
     width: -webkit-fill-available;
     height: 70px;
     gap: 1em;
-    overflow: overlay;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    &:hover::-webkit-scrollbar {
-      display: block;
-      height: 4px;
+    &:hover {
+      overflow: overlay;
     }
   }
 }
@@ -398,11 +392,13 @@
   }
 }
 
-// Dedectar dispositivos moveis
+// Detectar dispositivos moveis
 @media only screen and (hover: none) and (pointer: coarse) {
   .listctg {
     .list {
-      &:hover::-webkit-scrollbar {
+      overflow: overlay;
+
+      &::-webkit-scrollbar {
         display: none;
       }
     }
