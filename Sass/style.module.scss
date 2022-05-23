@@ -70,7 +70,16 @@
     width: -webkit-fill-available;
     height: 70px;
     gap: 1em;
-    overflow: hidden;
+    overflow: overlay;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:hover::-webkit-scrollbar {
+      display: block;
+      height: 4px;
+    }
   }
 }
 
