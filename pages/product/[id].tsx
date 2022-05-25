@@ -52,11 +52,13 @@ function ProductId({ pgProps }: TypeProduct) {
             <button
               type="button"
               aria-label="Prev"
+              data-active={ indexPanel !== 0 }
               onClick={ () => setIndexPanel((stateIndex) => stateIndex - 1) }
             />
             <button
               type="button"
               aria-label="Next"
+              data-active={ indexPanel !== options[0].imgs.length - 1 }
               onClick={ () => setIndexPanel((stateIndex) => stateIndex + 1) }
             />
           </div>
