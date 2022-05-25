@@ -51,13 +51,13 @@ function ProductId({ pgProps }: TypeProduct) {
           <div className={ style.controllbtn }>
             <button
               type="button"
-              aria-label="Next"
-              onClick={ () => setIndexPanel((stateIndex) => stateIndex + 1) }
+              aria-label="Prev"
+              onClick={ () => setIndexPanel((stateIndex) => stateIndex - 1) }
             />
             <button
               type="button"
-              aria-label="Prev"
-              onClick={ () => setIndexPanel((stateIndex) => stateIndex - 1) }
+              aria-label="Next"
+              onClick={ () => setIndexPanel((stateIndex) => stateIndex + 1) }
             />
           </div>
           <div className={ style.panels }>
