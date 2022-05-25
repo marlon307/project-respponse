@@ -14,7 +14,7 @@ import HeadSEO from '../../components/Head/HeadSEO';
 function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
-  // const [indexPanel, setIndexPanel] = useState<number>(0);
+  const [indexPanel, setIndexPanel] = useState<number>(0);
   const [colorChecked, setColorChecked] = useState({
     color: '',
     colorName: '',
@@ -30,10 +30,14 @@ function ProductId({ pgProps }: TypeProduct) {
     checkColorAvailable(options, sizeChecked);
   }, [colorChecked, options, sizeChecked]);
 
-  // useEffect(() => {
-  //   const panelIndex = document.getElementById(`panel${indexPanel}`)!;
-  //   panelIndex.scrollIntoView();
-  // }, [indexPanel]);
+  useEffect(() => {
+    const panelIndex = document.getElementById(`panel${indexPanel}`)!;
+    panelIndex.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    });
+  }, [indexPanel]);
 
   return (
     <>
@@ -44,21 +48,36 @@ function ProductId({ pgProps }: TypeProduct) {
       />
       <div className={ style.contprod }>
         <div className={ style.slide }>
-          { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
-            <div id={ `panel${imgid}` } key={ imgid } className={ style.contsimg }>
-              <figure>
-                <LoadingImage
-                  src={ urlImg }
-                  quality={ 80 }
-                  alt={ title }
-                  layout="fill"
-                  loading={ imgid === 2 ? 'eager' : 'lazy' }
-                  priority={ imgid === 2 }
-                />
-              </figure>
-            </div>
-          )) }
+          <div className={ style.controllbtn }>
+            <button
+              type="button"
+              aria-label="Next"
+              onClick={ () => setIndexPanel((stateIndex) => stateIndex + 1) }
+            />
+            <button
+              type="button"
+              aria-label="Prev"
+              onClick={ () => setIndexPanel((stateIndex) => stateIndex - 1) }
+            />
+          </div>
+          <div className={ style.panels }>
+            { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
+              <div id={ `panel${imgid}` } key={ imgid } className={ style.contsimg }>
+                <figure>
+                  <LoadingImage
+                    src={ urlImg }
+                    quality={ 80 }
+                    alt={ title }
+                    layout="fill"
+                    loading={ imgid === 2 ? 'eager' : 'lazy' }
+                    priority={ imgid === 2 }
+                  />
+                </figure>
+              </div>
+            )) }
+          </div>
         </div>
+
         <div className={ style.maincontentinfo }>
           <div className={ style.infodesc }>
             <div className={ style.primaryline }>
@@ -102,12 +121,6 @@ function ProductId({ pgProps }: TypeProduct) {
                 execFunction={ setSizeChecked }
               />
             </div>
-            {/* <button
-              type="button"
-              onClick={ () => setIndexPanel((stateIndex) => stateIndex + 1) }
-            >
-              Next
-            </button> */}
             <AddBag
               productId={ pgProps }
               colorSelected={ colorChecked }
