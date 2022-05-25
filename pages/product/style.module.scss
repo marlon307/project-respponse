@@ -16,6 +16,7 @@
   scroll-snap-type: x mandatory;
   margin-right: 2em;
   touch-action: manipulation;
+  scroll-behavior: smooth;
 
   figure {
     width: 100%;

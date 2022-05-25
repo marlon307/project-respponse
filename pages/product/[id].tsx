@@ -39,7 +39,7 @@ function ProductId({ pgProps }: TypeProduct) {
       <div className={ style.contprod }>
         <div className={ style.slide }>
           { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
-            <div key={ imgid } className={ style.constimg }>
+            <div id={ imgid } key={ imgid } className={ style.constimg }>
               <figure>
                 <LoadingImage
                   src={ urlImg }
