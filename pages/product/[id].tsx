@@ -14,7 +14,7 @@ import HeadSEO from '../../components/Head/HeadSEO';
 function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
-  // const [indexPanel, setIndexPanel] = useState<number>(0);
+  const [indexPanel, setIndexPanel] = useState<number>(0);
   const [colorChecked, setColorChecked] = useState({
     color: '',
     colorName: '',
@@ -30,10 +30,14 @@ function ProductId({ pgProps }: TypeProduct) {
     checkColorAvailable(options, sizeChecked);
   }, [colorChecked, options, sizeChecked]);
 
-  // useEffect(() => {
-  //   const panelIndex = document.getElementById(`panel${indexPanel}`)!;
-  //   panelIndex.scrollIntoView();
-  // }, [indexPanel]);
+  useEffect(() => {
+    const panelIndex = document.getElementById(`panel${indexPanel}`)!;
+    panelIndex.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    });
+  }, [indexPanel]);
 
   return (
     <>
@@ -102,12 +106,12 @@ function ProductId({ pgProps }: TypeProduct) {
                 execFunction={ setSizeChecked }
               />
             </div>
-            {/* <button
+            <button
               type="button"
               onClick={ () => setIndexPanel((stateIndex) => stateIndex + 1) }
             >
               Next
-            </button> */}
+            </button>
             <AddBag
               productId={ pgProps }
               colorSelected={ colorChecked }
