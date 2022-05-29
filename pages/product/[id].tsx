@@ -14,7 +14,7 @@ import HeadSEO from '../../components/Head/HeadSEO';
 function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
-  const [indexPanel, setIndexPanel] = useState<number>(0);
+  const [indexPanel, setIndexPanel] = useState(0);
   const [colorChecked, setColorChecked] = useState({
     color: '',
     colorName: '',
@@ -32,6 +32,7 @@ function ProductId({ pgProps }: TypeProduct) {
 
   useEffect(() => {
     const panelIndex = document.getElementById(`panel${indexPanel}`)!;
+
     panelIndex.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
@@ -63,7 +64,7 @@ function ProductId({ pgProps }: TypeProduct) {
             />
           </div>
           <div className={ style.panels }>
-            { options !== undefined && options[0].imgs.map(({ urlImg, imgid }: any) => (
+            { options[0].imgs.map(({ urlImg, imgid }: any) => (
               <div id={ `panel${imgid}` } key={ imgid } className={ style.contsimg }>
                 <figure>
                   <LoadingImage
@@ -79,7 +80,6 @@ function ProductId({ pgProps }: TypeProduct) {
             )) }
           </div>
         </div>
-
         <div className={ style.maincontentinfo }>
           <div className={ style.infodesc }>
             <div className={ style.primaryline }>
@@ -146,7 +146,6 @@ function ProductId({ pgProps }: TypeProduct) {
                 Produtos Similares
               </button>
             </div>
-
             <div className={ style.detailsCarosel }>
               <DetailsCard
                 gender={ gender }
