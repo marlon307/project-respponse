@@ -8,6 +8,7 @@ import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
 import style from '../Sass/style.module.scss';
 import HeadSEO from '../components/Head/HeadSEO';
+import Slide from '../components/Slide/Slide';
 
 function Home({
   categorys, slides, mockCards, mockPromotions,
@@ -48,14 +49,15 @@ function Home({
       </div>
       <div className={ style.highlights }>
         <h2>Destaques</h2>
-        <div className={ style.listhighlights }>
-          { mockCards.map((object: any) => (
-            <CardProduct
-              key={ object.id }
-              objectProduct={ object }
-            />
+        <Slide nameClass={ style.listhighlights }>
+          { mockCards.map((object: any, index:any) => (
+            <div id={ `panel-${index}` } key={ object.id }>
+              <CardProduct
+                objectProduct={ object }
+              />
+            </div>
           )) }
-        </div>
+        </Slide>
       </div>
       <div className={ style.promotions }>
         <h2>Promoções</h2>
