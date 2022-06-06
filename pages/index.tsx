@@ -51,7 +51,7 @@ function Home({
         <h2>Destaques</h2>
         <Slide nameClass={ style.listhighlights }>
           { mockCards.map((object: any, index:any) => (
-            <div id={ `panel-${index}` } key={ object.id }>
+            <div className={ style.content } id={ `panel-${index}` } key={ object.id }>
               <CardProduct
                 objectProduct={ object }
               />
