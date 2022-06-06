@@ -99,6 +99,10 @@
   }
 }
 
+.content {
+  scroll-snap-align: center;
+}
+
 .promotions {
   position: relative;
   width: 100%;
