@@ -14,13 +14,25 @@ function Home({
   categorys, slides, mockCards, mockPromotions,
 }: IPropsHome) {
   const [refHighlights] = useKeenSlider<HTMLDivElement>({
+    loop: true,
     slides: {
       perView: 'auto',
+      spacing: 24,
+    },
+    breakpoints: {
+      '(max-width: 700px)': {
+        slides: {
+          perView: 'auto',
+          spacing: 12,
+        },
+      },
     },
   });
   const [refCategory] = useKeenSlider<HTMLDivElement>({
+    loop: true,
     slides: {
       perView: 'auto',
+      spacing: 12,
     },
   });
   const [refPromotions] = useKeenSlider<HTMLDivElement>({

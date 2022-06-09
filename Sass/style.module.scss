@@ -69,7 +69,6 @@
     justify-content: flex-start;
     width: -webkit-fill-available;
     height: 70px;
-    gap: 1em;
     overflow: hidden;
   }
 }
@@ -84,18 +83,8 @@
   display: grid;
   grid-auto-columns: 300px;
   grid-template-areas: ". . . . . . .";
-  grid-column-gap: 2em;
   grid-template-rows: max-content;
-  row-gap: 1em;
-  align-items: start;
   overflow-x: hidden;
-}
-
-.highitemlist{
-  max-width: 350px;
-}
-.content {
-  scroll-snap-align: center;
 }
 
 .promotions {
@@ -314,7 +303,6 @@
   }
 
   .listhighlights {
-    gap: 3%;
     grid-auto-columns: 45%;
     padding: 0 3%;
   }
@@ -393,6 +381,4 @@
 }
 
 // Detectar dispositivos moveis
-@media only screen and (hover: none) and (pointer: coarse) {
-
-}
+@media only screen and (hover: none) and (pointer: coarse) {}
