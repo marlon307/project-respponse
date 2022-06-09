@@ -1,18 +1,31 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
+import { useKeenSlider } from 'keen-slider/react';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
 import api from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
-import style from '../Sass/style.module.scss';
 import HeadSEO from '../components/Head/HeadSEO';
-import Slide from '../components/Slide/Slide';
+import style from '../Sass/style.module.scss';
 
 function Home({
   categorys, slides, mockCards, mockPromotions,
 }: IPropsHome) {
+  const [refHighlights] = useKeenSlider<HTMLDivElement>({
+    slides: {
+      perView: 'auto',
+      spacing: 0,
+    },
+  });
+  const [refCategory] = useKeenSlider<HTMLDivElement>({
+    slides: {
+      perView: 'auto',
+      spacing: 0,
+    },
+  });
+
   return (
     <>
       <HeadSEO title="" description="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
@@ -33,31 +46,33 @@ function Home({
       </div>
       <div className={ style.listctg }>
         <h2>Categorias</h2>
-        <div className={ style.list }>
+        <div className={ `${style.list} keen-slider` } ref={ refCategory }>
           { categorys.map(({
             ctgID, imgCategory, categoryName, color, path,
           }: ICardCategory) => (
-            <CardCategory
-              key={ ctgID }
-              image={ imgCategory }
-              ctgName={ categoryName }
-              path={ path }
-              color={ color! }
-            />
+            <div className="keen-slider__slide" key={ ctgID }>
+              <CardCategory
+                image={ imgCategory }
+                ctgName={ categoryName }
+                path={ path }
+                color={ color! }
+              />
+            </div>
           )) }
         </div>
       </div>
       <div className={ style.highlights }>
         <h2>Destaques</h2>
-        <Slide nameClass={ style.listhighlights }>
-          { mockCards.map((object: any, index:any) => (
-            <div className={ style.content } id={ `panel-${index}` } key={ object.id }>
+        <div className={ `${style.listhighlights} keen-slider` } ref={ refHighlights }>
+          { mockCards.map((object: any) => (
+            <div key={ object.id } className={ `${style.highitemlist} keen-slider__slide` }>
               <CardProduct
+                key={ object.id }
                 objectProduct={ object }
               />
             </div>
           )) }
-        </Slide>
+        </div>
       </div>
       <div className={ style.promotions }>
         <h2>Promoções</h2>
