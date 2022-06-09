@@ -317,11 +317,10 @@
 
   .contpromotions {
     grid-template-areas:
-      'card card2'
-      'card1 rigth'
+      'card card2 card1 rigth'
     ;
     grid-auto-columns: 90%;
-    grid-template-rows: 220px 220px;
+    grid-template-rows: 300px;
     grid-gap: 0.7em;
     overflow: auto;
     padding: 0 3%;
