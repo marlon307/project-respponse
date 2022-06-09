@@ -16,13 +16,22 @@ function Home({
   const [refHighlights] = useKeenSlider<HTMLDivElement>({
     slides: {
       perView: 'auto',
-      spacing: 0,
     },
   });
   const [refCategory] = useKeenSlider<HTMLDivElement>({
     slides: {
       perView: 'auto',
-      spacing: 0,
+    },
+  });
+  const [refPromotions] = useKeenSlider<HTMLDivElement>({
+    disabled: true,
+    breakpoints: {
+      '(max-width: 700px)': {
+        disabled: false,
+        slides: {
+          perView: 'auto',
+        },
+      },
     },
   });
 
@@ -76,18 +85,17 @@ function Home({
       </div>
       <div className={ style.promotions }>
         <h2>Promoções</h2>
-        <div className={ style.contpromotions }>
+        <div className={ `${style.contpromotions} keen-slider` } ref={ refPromotions }>
           { mockPromotions.map(({
             id, img, title, path,
           }: any) => (
-            <figure key={ id }>
+            <figure key={ id } className="keen-slider__slide">
               <LoadingImage
                 src={ img }
                 quality={ 85 }
                 alt={ title }
                 layout="fill"
                 loading="eager"
-                // sizes="600px"
                 sizes="(max-width: 500px) 304.56px, 1486.52px"
               />
               <figcaption>
