@@ -13,6 +13,12 @@ import style from '../Sass/style.module.scss';
 function Home({
   categorys, slides, mockCards, mockPromotions,
 }: IPropsHome) {
+  const [refCategory] = useKeenSlider<HTMLDivElement>({
+    slides: {
+      perView: 'auto',
+      spacing: 12,
+    },
+  });
   const [refHighlights] = useKeenSlider<HTMLDivElement>({
     loop: true,
     slides: {
@@ -26,13 +32,6 @@ function Home({
           spacing: 12,
         },
       },
-    },
-  });
-  const [refCategory] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    slides: {
-      perView: 'auto',
-      spacing: 12,
     },
   });
   const [refPromotions] = useKeenSlider<HTMLDivElement>({
