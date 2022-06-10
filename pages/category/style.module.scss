@@ -37,20 +37,10 @@
 .listfilter {
   grid-area: listfilter;
   display: flex;
-  height: -webkit-fill-available;
+  // float: left;
   box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
-
-  label {
-    float: left;
-    margin: 6px 6px 0 0;
-    flex: none;
-  }
-
-  &:hover {
-    overflow: overlay;
-  }
 }
 
 @media (max-width: 1080px) {
@@ -91,16 +81,5 @@
   .filter {
     grid-template-columns: auto;
     gap: 0.6em;
-  }
-}
-
-// Detectar dispositivos moveis
-@media only screen and (hover: none) and (pointer: coarse) {
-  .listfilter {
-    overflow: overlay;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 }

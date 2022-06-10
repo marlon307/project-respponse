@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { useKeenSlider, KeenSliderPlugin } from 'keen-slider/react';
 import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import BarFilter from '../../components/Filter/BarFilter';
 import ItemList from '../../components/Filter/ItemList';
@@ -21,22 +22,48 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
     dispatch(ADD_FILTER_LIST({ id: formatId }));
   }, []);
 
+  const MutationPlugin: KeenSliderPlugin = (slider) => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach(() => {
+        slider.update();
+      });
+    });
+
+    slider.on('created', () => {
+      observer.observe(slider.container, { childList: true });
+    });
+    slider.on('destroyed', () => {
+      observer.disconnect();
+    });
+  };
+
+  const [refListfilter] = useKeenSlider<HTMLDivElement>(
+    {
+      slides: {
+        perView: 'auto',
+        spacing: 2,
+      },
+    },
+    [MutationPlugin],
+  );
+
   return (
     <>
       <HeadSEO title={ `Categoria: ${pageFilter.categoryName}` } description={ `Categoria: ${pageFilter.categoryName}` } />
       <div className={ style.category }>
         <div className={ style.filter }>
           <BarFilter />
-          <div className={ style.listfilter }>
+          <div className={ `${style.listfilter} keen-slider` } ref={ refListfilter }>
             { listFilter.map((item) => (
-              <ItemList
-                id={ `list${item.id}` }
-                name={ item.key }
-                key={ item.id }
-                value={ item.name }
-                color={ item.color }
-                execFunction={ removeListFilter }
-              />
+              <div className="keen-slider__slide" key={ item.id }>
+                <ItemList
+                  id={ `list${item.id}` }
+                  name={ item.key }
+                  value={ item.name }
+                  color={ item.color }
+                  execFunction={ removeListFilter }
+                />
+              </div>
             )) }
           </div>
         </div>
