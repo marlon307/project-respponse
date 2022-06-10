@@ -14,7 +14,7 @@ function ItemList({
   name, id, value, execFunction, color, checked,
 }: PCtg) {
   return (
-    <label htmlFor={ id } className={ style.itemfilter }>
+    <label htmlFor={ id } className={ `${style.itemfilter} keen-slider__slide` }>
       <input
         type="checkbox"
         name={ name }

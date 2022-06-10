@@ -322,7 +322,7 @@
     grid-auto-columns: 90%;
     grid-template-rows: 300px;
     grid-gap: 0.7em;
-    overflow: auto;
+    overflow: hidden;
     padding: 0 3%;
 
     &::-webkit-scrollbar {
