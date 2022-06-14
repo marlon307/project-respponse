@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { useKeenSlider } from 'keen-slider/react';
 import LoadingImage from '../../components/LoadImage';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
-import style from './style.module.scss';
 import AddBag from '../../components/Buttons/AddBag';
 import BarSize from '../../components/Bars/BarSize';
 import BarColors from '../../components/Bars/BarColors';
 import { TypeProduct } from './product';
 import api from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
+import style from './style.module.scss';
 
 function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
-  const [indexPanel, setIndexPanel] = useState(0);
   const [colorChecked, setColorChecked] = useState({
     color: '',
     colorName: '',
@@ -25,20 +25,18 @@ function ProductId({ pgProps }: TypeProduct) {
     oldPrice, details, specification, options,
   } = pgProps;
 
+  const [refSlideProduct, instanceRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    initial: 0,
+    slides: {
+      perView: 'auto',
+    },
+  });
+
   useEffect(() => {
     checkSizeAvailable(options, colorChecked.color);
     checkColorAvailable(options, sizeChecked);
   }, [colorChecked, options, sizeChecked]);
-
-  useEffect(() => {
-    const panelIndex = document.getElementById(`panel${indexPanel}`)!;
-
-    panelIndex.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest',
-    });
-  }, [indexPanel]);
 
   return (
     <>
@@ -52,28 +50,26 @@ function ProductId({ pgProps }: TypeProduct) {
           <div className={ style.controllbtn }>
             <button
               type="button"
-              aria-label="Prev"
-              data-active={ indexPanel !== 0 }
-              onClick={ () => setIndexPanel((stateIndex) => stateIndex - 1) }
+              aria-label="Next"
+              onClick={ () => instanceRef.current?.next() }
             />
             <button
               type="button"
-              aria-label="Next"
-              data-active={ indexPanel !== options[0].imgs.length - 1 }
-              onClick={ () => setIndexPanel((stateIndex) => stateIndex + 1) }
+              aria-label="Prev"
+              onClick={ () => instanceRef.current?.prev() }
             />
           </div>
-          <div className={ style.panels }>
+          <div className={ `${style.panels} keen-slider` } ref={ refSlideProduct }>
             { options[0].imgs.map(({ urlImg, imgid }: any) => (
-              <div id={ `panel${imgid}` } key={ imgid } className={ style.contsimg }>
+              <div id={ `panel${imgid}` } key={ imgid } className={ `${style.contsimg} keen-slider__slide` }>
                 <figure>
                   <LoadingImage
                     src={ urlImg }
                     quality={ 80 }
                     alt={ title }
                     layout="fill"
-                    loading={ imgid === 2 ? 'eager' : 'lazy' }
-                    priority={ imgid === 2 }
+                    loading={ imgid === 0 ? 'eager' : 'lazy' }
+                    priority={ imgid === 0 }
                   />
                 </figure>
               </div>

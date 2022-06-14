@@ -39,9 +39,9 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
 
   const [refListfilter] = useKeenSlider<HTMLDivElement>(
     {
+      initial: 0,
       slides: {
         perView: 'auto',
-        spacing: 2,
       },
     },
     [MutationPlugin],
