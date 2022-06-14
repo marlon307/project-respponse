@@ -8,6 +8,7 @@
 .slide {
   grid-area: slide;
   position: relative;
+  height: fit-content;
 }
 
 .controllbtn {
@@ -50,7 +51,7 @@
 .panels {
   position: relative;
   min-height: 60vh;
-  height: calc(100vh - 90px);
+  height: calc(95vh - 90px);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -80,6 +81,27 @@
   height: 100%;
   flex: none;
   scroll-snap-align: center;
+}
+
+.dots {
+  z-index: 4;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  bottom: 1em;
+
+  [data-active="true"] {
+    background: #333;
+  }
+
+  button {
+    background: #8a8a8a;
+    height: 4px;
+    width: 16px;
+    margin: 0 4px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
 }
 
 .maincontentinfo {

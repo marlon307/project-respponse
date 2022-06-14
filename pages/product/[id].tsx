@@ -15,6 +15,8 @@ import style from './style.module.scss';
 function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   const [colorChecked, setColorChecked] = useState({
     color: '',
     colorName: '',
@@ -30,6 +32,12 @@ function ProductId({ pgProps }: TypeProduct) {
     initial: 0,
     slides: {
       perView: 'auto',
+    },
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
     },
   });
 
@@ -75,6 +83,21 @@ function ProductId({ pgProps }: TypeProduct) {
               </div>
             )) }
           </div>
+          { loaded && instanceRef.current && (
+            <div className={ style.dots }>
+              { [
+                ...Array(instanceRef.current?.track.details.slides.length).keys(),
+              ].map((idx) => (
+                <button
+                  type="button"
+                  key={ idx }
+                  aria-label="Current slide"
+                  data-active={ idx === currentSlide }
+                  onClick={ () => instanceRef.current?.moveToIdx(idx) }
+                />
+              )) }
+            </div>
+          ) }
         </div>
         <div className={ style.maincontentinfo }>
           <div className={ style.infodesc }>
