@@ -162,14 +162,14 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const productId = Number(params.id);
 
   const {
-    data: { product, similar },
+    data: { product/* , similar */ },
   }: TRequestProduct = await api.get(`/product/${productId}`)
     .catch((error) => ({ data: error.message }));
 
   const pgProps = product;
 
   return {
-    props: { pgProps, similar },
+    props: { pgProps/* , similar */ },
     // revalidated: true,
   };
 };
