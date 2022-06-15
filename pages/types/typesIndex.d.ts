@@ -1,4 +1,5 @@
 import type { ImageProps } from 'next/image';
+import type { ICardProduct } from '../../types/typeCardProduct';
 
 export interface ICardCategory {
   ctgID: number;
@@ -18,6 +19,6 @@ export interface ILoadSlide {
 export type IPropsHome = {
   categorys
   slides
-  mockCards
+  mockCards: ICardProduct['products']
   mockPromotions
 };
