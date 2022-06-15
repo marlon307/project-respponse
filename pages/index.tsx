@@ -83,9 +83,10 @@ function Home({
           modules={ [Lazy] }
           slidesPerView="auto"
           spaceBetween={ 16 }
+          allowTouchMove
           breakpoints={ {
             700: {
-              spaceBetween: 16,
+              allowTouchMove: false,
             },
           } }
         >
