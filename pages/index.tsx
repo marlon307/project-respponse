@@ -10,6 +10,7 @@ import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
 import HeadSEO from '../components/Head/HeadSEO';
 import style from '../Sass/style.module.scss';
+import { SwiperButtonNext, SwiperButtonPrev } from '../components/Buttons/SwiperButton';
 
 function Home({
   categorys, slides, mockCards, mockPromotions,
@@ -43,6 +44,8 @@ function Home({
           lazy
           modules={ [Lazy] }
         >
+          <SwiperButtonNext />
+          <SwiperButtonPrev />
           { categorys.map(({
             ctgID, imgCategory, categoryName, color, path,
           }: ICardCategory) => (
@@ -67,6 +70,8 @@ function Home({
           lazy
           modules={ [Lazy] }
         >
+          <SwiperButtonNext />
+          <SwiperButtonPrev />
           { mockCards.map((object: any) => (
             <SwiperSlide key={ object.id }>
               <CardProduct

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper';
 import LoadingImage from '../../components/LoadImage';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
@@ -10,8 +11,9 @@ import BarColors from '../../components/Bars/BarColors';
 import { TypeProduct } from './product';
 import api from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
-import style from './style.module.scss';
 import CardProduct from '../../components/Cards/CardProduct/CardProduct';
+import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
+import style from './style.module.scss';
 
 function ProductId({ pgProps, similar }: TypeProduct) {
   const [sizeChecked, setSizeChecked] = useState('');
@@ -41,21 +43,27 @@ function ProductId({ pgProps, similar }: TypeProduct) {
         <div className={ style.slide }>
           <Swiper
             className={ style.panels }
+            slideNextClass={ style.next }
             slidesPerView="auto"
             wrapperTag="section"
+            pagination={ {
+              clickable: true,
+            } }
+            navigation
+            modules={ [Pagination, Navigation] }
           >
+            <SwiperButtonNext />
+            <SwiperButtonPrev />
             { options[0].imgs.map(({ urlImg, imgid }: any) => (
-              <SwiperSlide key={ imgid } className={ style.contsimg }>
-                <figure>
-                  <LoadingImage
-                    src={ urlImg }
-                    quality={ 80 }
-                    alt={ title }
-                    layout="fill"
-                    loading={ imgid === 0 ? 'eager' : 'lazy' }
-                    priority={ imgid === 0 }
-                  />
-                </figure>
+              <SwiperSlide key={ imgid } className={ style.contsimg } tag="figure">
+                <LoadingImage
+                  src={ urlImg }
+                  quality={ 80 }
+                  alt={ title }
+                  layout="fill"
+                  loading={ imgid === 0 ? 'eager' : 'lazy' }
+                  priority={ imgid === 0 }
+                />
               </SwiperSlide>
             )) }
           </Swiper>
@@ -67,6 +75,8 @@ function ProductId({ pgProps, similar }: TypeProduct) {
             wrapperTag="section"
             spaceBetween={ 16 }
           >
+            <SwiperButtonNext />
+            <SwiperButtonPrev />
             { similar.map((product: any) => (
               <SwiperSlide key={ product.id }>
                 <CardProduct objectProduct={ product } />
