@@ -1,6 +1,7 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Lazy } from 'swiper';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
@@ -37,6 +38,8 @@ function Home({
           slidesPerView="auto"
           wrapperTag="section"
           spaceBetween={ 16 }
+          lazy
+          modules={ [Lazy] }
         >
           { categorys.map(({
             ctgID, imgCategory, categoryName, color, path,
@@ -59,6 +62,8 @@ function Home({
           slidesPerView="auto"
           wrapperTag="section"
           spaceBetween={ 16 }
+          lazy
+          modules={ [Lazy] }
         >
           { mockCards.map((object: any) => (
             <SwiperSlide key={ object.id }>
@@ -73,18 +78,13 @@ function Home({
       <div className={ style.promotions }>
         <h2>Promoções</h2>
         <Swiper
+          lazy
           wrapperTag="section"
-          noSwiping={ false }
-          allowSlideNext={ false }
-          allowSlidePrev={ false }
-          autoplay={ false }
+          modules={ [Lazy] }
+          slidesPerView="auto"
+          spaceBetween={ 16 }
           breakpoints={ {
             700: {
-              noSwiping: true,
-              allowSlideNext: true,
-              allowSlidePrev: true,
-              autoplay: true,
-              slidesPerView: 'auto',
               spaceBetween: 16,
             },
           } }
