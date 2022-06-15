@@ -1,5 +1,6 @@
 import type { ImageProps } from 'next/image';
 import type { TDetail, TSpecification } from './components/Cards/CardDetail/types';
+import type { ICardProduct } from '../../types/typeCardProduct';
 
 export type TypeProduct = {
   pgProps: {
@@ -23,5 +24,5 @@ export type TypeProduct = {
       imgs: Array<Object>;
     }>
   };
-  similar: any
+  similar: ICardProduct['products']
 };
