@@ -58,33 +58,33 @@
 .listctg {
   width: -webkit-fill-available;
   margin: 4em 6%;
+  overflow: hidden;
 
   h2 {
     margin-bottom: 16px;
   }
 
-  .list {
+  section {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: -webkit-fill-available;
     height: 70px;
-    overflow: hidden;
   }
 }
 
 .highlights {
   width: -webkit-fill-available;
   margin: 4em 6%;
-}
-
-.listhighlights {
-  margin-top: 1em;
-  display: grid;
-  grid-auto-columns: 300px;
-  grid-template-areas: ". . . . . . .";
-  grid-template-rows: max-content;
   overflow-x: hidden;
+
+  section {
+    margin-top: 1em;
+    display: grid;
+    grid-auto-columns: 300px;
+    grid-template-areas: ". . . . . . .";
+    grid-template-rows: max-content;
+  }
 }
 
 .promotions {
@@ -92,69 +92,70 @@
   width: 100%;
   width: -webkit-fill-available;
   margin: 4em 6%;
-}
+  overflow: hidden;
 
-.contpromotions {
-  margin-top: 1em;
-  display: grid;
-  grid-template-areas:
-    'card card rigth'
-    'card1 card2 rigth';
-  grid-auto-columns: auto;
-  grid-template-rows: 300px 400px;
-  grid-gap: 2em;
+  section {
+    margin-top: 1em;
+    display: grid;
+    grid-template-areas:
+      'card card rigth'
+      'card1 card2 rigth';
+    grid-auto-columns: auto;
+    grid-template-rows: 300px 400px;
+    grid-gap: 2em;
 
-  figure {
-    overflow: hidden;
-    position: relative;
-    border-radius: 1em;
-  }
-
-  figcaption {
-    position: absolute;
-    z-index: 5;
-    left: 3em;
-    bottom: 2em;
-
-    h4 {
-      color: var(--maincolor);
-      font-size: 3em;
-      margin-bottom: 8px;
+    [itemid] {
+      overflow: hidden;
+      position: relative;
+      border-radius: 1em;
     }
 
-    a {
-      width: 8em;
-      border-color: var(--maincolor);
-      background: var(--maincolor);
+    figcaption {
+      position: absolute;
+      z-index: 5;
+      left: 3em;
+      bottom: 2em;
+
+      h4 {
+        color: var(--maincolor);
+        font-size: 3em;
+        margin-bottom: 8px;
+      }
+
+      a {
+        width: 8em;
+        border-color: var(--maincolor);
+        background: var(--maincolor);
+      }
+
+      span {
+        color: #333;
+      }
+
+      svg {
+        fill: #333;
+      }
     }
 
-    span {
-      color: #333;
+    [itemid]:nth-child(1) {
+      grid-area: card;
     }
 
-    svg {
-      fill: #333;
+    [itemid]:nth-child(2) {
+      grid-area: rigth;
     }
-  }
 
-  figure:nth-child(1) {
-    grid-area: card;
-  }
+    [itemid]:nth-child(3) {
+      grid-area: card1;
+    }
 
-  figure:nth-child(2) {
-    grid-area: rigth;
-  }
+    [itemid]:nth-child(4) {
+      grid-area: card2;
+    }
 
-  figure:nth-child(3) {
-    grid-area: card1;
-  }
-
-  figure:nth-child(4) {
-    grid-area: card2;
-  }
-
-  img {
-    object-fit: cover;
+    img {
+      object-fit: cover;
+    }
   }
 }
 
@@ -300,11 +301,11 @@
       margin: 0 3%;
       font-size: 1.4em;
     }
-  }
 
-  .listhighlights {
-    grid-auto-columns: 45%;
-    padding: 0 3%;
+    section {
+      grid-auto-columns: 45%;
+      padding: 0 3%;
+    }
   }
 
   .promotions {
@@ -313,32 +314,26 @@
     h2 {
       padding: 0 3%;
     }
-  }
 
-  .contpromotions {
-    grid-template-areas:
-      'card card2 card1 rigth'
-    ;
-    grid-auto-columns: 90%;
-    grid-template-rows: 300px;
-    grid-gap: 0.7em;
-    overflow: hidden;
-    padding: 0 3%;
+    section {
+      grid-template-areas:
+        'card card2 card1 rigth'
+      ;
+      grid-auto-columns: 90%;
+      grid-template-rows: 300px;
+      padding: 0 3%;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+      figcaption {
+        left: 1em;
+        bottom: 1em;
 
-    figcaption {
-      left: 1em;
-      bottom: 1em;
+        h4 {
+          font-size: 2em;
+        }
 
-      h4 {
-        font-size: 2em;
-      }
-
-      span {
-        padding: 12px 0 12px 24px;
+        span {
+          padding: 12px 0 12px 24px;
+        }
       }
     }
   }
