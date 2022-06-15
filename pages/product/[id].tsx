@@ -11,9 +11,9 @@ import { TypeProduct } from './product';
 import api from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 import style from './style.module.scss';
+import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 
-function ProductId({ pgProps }: TypeProduct) {
-  const [itemdrag, setItemDrag] = useState('detail');
+function ProductId({ pgProps, similar }: TypeProduct) {
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
     color: '',
@@ -56,6 +56,20 @@ function ProductId({ pgProps }: TypeProduct) {
                     priority={ imgid === 0 }
                   />
                 </figure>
+              </SwiperSlide>
+            )) }
+          </Swiper>
+        </div>
+        <div className={ style.products_similar }>
+          <h3>Produtos Similares</h3>
+          <Swiper
+            slidesPerView="auto"
+            wrapperTag="section"
+            spaceBetween={ 16 }
+          >
+            { similar.map((product: any) => (
+              <SwiperSlide key={ product.id }>
+                <CardProduct objectProduct={ product } />
               </SwiperSlide>
             )) }
           </Swiper>
@@ -110,22 +124,6 @@ function ProductId({ pgProps }: TypeProduct) {
             />
           </div>
           <div className={ style.more }>
-            <div className={ style.moreoptions }>
-              <button
-                aria-expanded={ itemdrag === 'detail' }
-                type="button"
-                onClick={ () => setItemDrag('detail') }
-              >
-                Detalhes
-              </button>
-              <button
-                aria-expanded={ itemdrag === 'similarprod' }
-                type="button"
-                onClick={ () => setItemDrag('similarprod') }
-              >
-                Produtos Similares
-              </button>
-            </div>
             <div className={ style.detailsCarosel }>
               <DetailsCard
                 gender={ gender }
@@ -146,6 +144,7 @@ export default ProductId;
 type TRequestProduct = {
   data: {
     product: Array<any>,
+    similar: Array<any>,
   }
 };
 
@@ -153,14 +152,14 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const productId = Number(params.id);
 
   const {
-    data: { product },
+    data: { product, similar },
   }: TRequestProduct = await api.get(`/product/${productId}`)
     .catch((error) => ({ data: error.message }));
 
   const pgProps = product;
 
   return {
-    props: { pgProps },
+    props: { pgProps, similar },
     // revalidated: true,
   };
 };
@@ -170,6 +169,7 @@ type TRequestArr = {
     products: Array<{
       id: number,
     }>,
+    similar: any
   }
 };
 

@@ -98,7 +98,7 @@ function Home({
             id, img, title, path,
           }: any) => (
             <SwiperSlide key={ id } itemID={ id }>
-              <figure className="keen-slider__slide">
+              <figure>
                 <LoadingImage
                   src={ img }
                   quality={ 85 }
