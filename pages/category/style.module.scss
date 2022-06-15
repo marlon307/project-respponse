@@ -36,16 +36,19 @@
 
 .listfilter {
   grid-area: listfilter;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: -webkit-fill-available;
-  box-sizing: border-box;
-  white-space: nowrap;
   overflow: hidden;
 
-  label {
-    margin-left: 6px;
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+
+    label {
+      margin-left: 6px;
+    }
   }
 }
 
