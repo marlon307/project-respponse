@@ -11,11 +11,11 @@ import BarColors from '../../components/Bars/BarColors';
 import { TypeProduct } from './product';
 import api from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
-import CardProduct from '../../components/Cards/CardProduct/CardProduct';
+// import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
 import style from './style.module.scss';
 
-function ProductId({ pgProps, similar }: TypeProduct) {
+function ProductId({ pgProps/* , similar */ }: TypeProduct) {
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
     color: '',
@@ -70,7 +70,7 @@ function ProductId({ pgProps, similar }: TypeProduct) {
         </div>
         <div className={ style.products_similar }>
           <h3>Produtos Similares</h3>
-          <Swiper
+          {/* <Swiper
             slidesPerView="auto"
             wrapperTag="section"
             spaceBetween={ 16 }
@@ -82,7 +82,7 @@ function ProductId({ pgProps, similar }: TypeProduct) {
                 <CardProduct objectProduct={ product } />
               </SwiperSlide>
             )) }
-          </Swiper>
+          </Swiper> */}
         </div>
         <div className={ style.maincontentinfo }>
           <div className={ style.infodesc }>
