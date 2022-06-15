@@ -23,4 +23,5 @@ export type TypeProduct = {
       imgs: Array<Object>;
     }>
   };
+  similar: any
 };

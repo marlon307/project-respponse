@@ -10,6 +10,12 @@
   }
 }
 
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .buyFinish {
   position: relative;
   padding: 16px 72px;
@@ -25,21 +31,45 @@
   @include clickBtn;
 }
 
-.next,
-.prev {
+.next {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  padding: 24px;
   background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 50%;
   z-index: 7777;
+  transform: translateY(-50%) rotateZ(-135deg);
+  cursor: pointer;
+  @include center;
 
   &::before {
     content: '';
     width: 18px;
     height: 18px;
     border-radius: 3px;
-    cursor: pointer;
+    border-left: 3px solid #bebebe;
+    border-bottom: 3px solid #bebebe;
+  }
+}
+
+.prev {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  padding: 24px;
+  background: transparent;
+  border-radius: 50%;
+  z-index: 7777;
+  transform: translateY(-50%) rotateZ(45deg);
+  cursor: pointer;
+  @include center;
+
+  &::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
     border-left: 3px solid #bebebe;
     border-bottom: 3px solid #bebebe;
   }
@@ -98,9 +128,7 @@
   font-weight: 600;
   background: #006bef;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center;
   gap: 12px;
   cursor: pointer;
 
@@ -121,9 +149,7 @@
   font-weight: 600;
   border: 2px solid #006bef;
   background: #ffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center;
   gap: 2em;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -169,5 +195,14 @@
 @media (max-width: 750px) {
   .btn_t2 {
     margin: 0 auto;
+  }
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+
+  .prev,
+  .next {
+    display: none;
+    visibility: hidden;
   }
 }

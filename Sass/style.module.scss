@@ -59,12 +59,14 @@
   width: -webkit-fill-available;
   margin: 4em 6%;
   overflow: hidden;
+  position: relative;
 
   h2 {
     margin-bottom: 16px;
   }
 
   section {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -77,6 +79,7 @@
   width: -webkit-fill-available;
   margin: 4em 6%;
   overflow-x: hidden;
+  position: relative;
 
   section {
     margin-top: 1em;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper';
 import LoadingImage from '../../components/LoadImage';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
@@ -10,10 +11,11 @@ import BarColors from '../../components/Bars/BarColors';
 import { TypeProduct } from './product';
 import api from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
+// import CardProduct from '../../components/Cards/CardProduct/CardProduct';
+import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
 import style from './style.module.scss';
 
-function ProductId({ pgProps }: TypeProduct) {
-  const [itemdrag, setItemDrag] = useState('detail');
+function ProductId({ pgProps/* , similar */ }: TypeProduct) {
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
     color: '',
@@ -39,39 +41,48 @@ function ProductId({ pgProps }: TypeProduct) {
       />
       <div className={ style.contprod }>
         <div className={ style.slide }>
-          <div className={ style.controllbtn }>
-            {/* <button
-              type="button"
-              aria-label="Next"
-              onClick={ () => instanceRef.current?.next() }
-            />
-            <button
-              type="button"
-              aria-label="Prev"
-              onClick={ () => instanceRef.current?.prev() }
-            /> */}
-          </div>
-
           <Swiper
             className={ style.panels }
+            slideNextClass={ style.next }
             slidesPerView="auto"
             wrapperTag="section"
+            pagination={ {
+              clickable: true,
+            } }
+            navigation
+            modules={ [Pagination, Navigation] }
           >
+            <SwiperButtonNext />
+            <SwiperButtonPrev />
             { options[0].imgs.map(({ urlImg, imgid }: any) => (
-              <SwiperSlide key={ imgid } className={ style.contsimg }>
-                <figure>
-                  <LoadingImage
-                    src={ urlImg }
-                    quality={ 80 }
-                    alt={ title }
-                    layout="fill"
-                    loading={ imgid === 0 ? 'eager' : 'lazy' }
-                    priority={ imgid === 0 }
-                  />
-                </figure>
+              <SwiperSlide key={ imgid } className={ style.contsimg } tag="figure">
+                <LoadingImage
+                  src={ urlImg }
+                  quality={ 80 }
+                  alt={ title }
+                  layout="fill"
+                  loading={ imgid === 0 ? 'eager' : 'lazy' }
+                  priority={ imgid === 0 }
+                />
               </SwiperSlide>
             )) }
           </Swiper>
+        </div>
+        <div className={ style.products_similar }>
+          <h3>Produtos Similares</h3>
+          {/* <Swiper
+            slidesPerView="auto"
+            wrapperTag="section"
+            spaceBetween={ 16 }
+          >
+            <SwiperButtonNext />
+            <SwiperButtonPrev />
+            { similar.map((product: any) => (
+              <SwiperSlide key={ product.id }>
+                <CardProduct objectProduct={ product } />
+              </SwiperSlide>
+            )) }
+          </Swiper> */}
         </div>
         <div className={ style.maincontentinfo }>
           <div className={ style.infodesc }>
@@ -123,22 +134,6 @@ function ProductId({ pgProps }: TypeProduct) {
             />
           </div>
           <div className={ style.more }>
-            <div className={ style.moreoptions }>
-              <button
-                aria-expanded={ itemdrag === 'detail' }
-                type="button"
-                onClick={ () => setItemDrag('detail') }
-              >
-                Detalhes
-              </button>
-              <button
-                aria-expanded={ itemdrag === 'similarprod' }
-                type="button"
-                onClick={ () => setItemDrag('similarprod') }
-              >
-                Produtos Similares
-              </button>
-            </div>
             <div className={ style.detailsCarosel }>
               <DetailsCard
                 gender={ gender }
@@ -159,6 +154,7 @@ export default ProductId;
 type TRequestProduct = {
   data: {
     product: Array<any>,
+    similar: Array<any>,
   }
 };
 
@@ -166,14 +162,14 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const productId = Number(params.id);
 
   const {
-    data: { product },
+    data: { product/* , similar */ },
   }: TRequestProduct = await api.get(`/product/${productId}`)
     .catch((error) => ({ data: error.message }));
 
   const pgProps = product;
 
   return {
-    props: { pgProps },
+    props: { pgProps/* , similar */ },
     // revalidated: true,
   };
 };
@@ -183,6 +179,7 @@ type TRequestArr = {
     products: Array<{
       id: number,
     }>,
+    similar: any
   }
 };
 
