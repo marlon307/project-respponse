@@ -39,19 +39,6 @@ function ProductId({ pgProps }: TypeProduct) {
       />
       <div className={ style.contprod }>
         <div className={ style.slide }>
-          <div className={ style.controllbtn }>
-            {/* <button
-              type="button"
-              aria-label="Next"
-              onClick={ () => instanceRef.current?.next() }
-            />
-            <button
-              type="button"
-              aria-label="Prev"
-              onClick={ () => instanceRef.current?.prev() }
-            /> */}
-          </div>
-
           <Swiper
             className={ style.panels }
             slidesPerView="auto"

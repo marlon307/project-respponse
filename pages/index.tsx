@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GetStaticProps } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Lazy } from 'swiper';
+import SwiperCore, { Lazy } from 'swiper';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
@@ -14,6 +14,8 @@ import style from '../Sass/style.module.scss';
 function Home({
   categorys, slides, mockCards, mockPromotions,
 }: IPropsHome) {
+  const [swiperInstance, setSwiperInstance] = useState<SwiperCore>();
+
   return (
     <>
       <HeadSEO title="" description="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
@@ -78,12 +80,14 @@ function Home({
       <div className={ style.promotions }>
         <h2>Promoções</h2>
         <Swiper
+          onSwiper={ setSwiperInstance }
           lazy
           wrapperTag="section"
           modules={ [Lazy] }
           slidesPerView="auto"
           spaceBetween={ 16 }
           allowTouchMove
+          onBeforeResize={ ({ width }) => width > 680 && swiperInstance?.slideTo(0) }
           breakpoints={ {
             700: {
               allowTouchMove: false,
@@ -111,6 +115,7 @@ function Home({
             </SwiperSlide>
           )) }
         </Swiper>
+
       </div>
     </>
   );
