@@ -77,7 +77,7 @@ function ProductId({ pgProps, similar }: TypeProduct) {
           >
             <SwiperButtonNext />
             <SwiperButtonPrev />
-            { similar.map((product: any) => (
+            { similar.map((product: TypeProduct['similar'][0]) => (
               <SwiperSlide key={ product.id }>
                 <CardProduct objectProduct={ product } />
               </SwiperSlide>

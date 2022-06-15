@@ -4,11 +4,11 @@ import LoadingImage from '../../LoadImage';
 import type { ICardProduct } from '../../../types/typeCardProduct';
 import style from './style.module.scss';
 
-type TypeTeste = {
+type TypeProduct = {
   objectProduct: ICardProduct['products'][0]
 };
 
-function CardProduct({ objectProduct }: TypeTeste) {
+function CardProduct({ objectProduct }: TypeProduct) {
   const {
     id, type, title, mainImg, price, options, discount, oldPrice,
   } = objectProduct;
