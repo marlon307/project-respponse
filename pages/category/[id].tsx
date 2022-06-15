@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { useKeenSlider, KeenSliderPlugin } from 'keen-slider/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import BarFilter from '../../components/Filter/BarFilter';
 import ItemList from '../../components/Filter/ItemList';
@@ -22,40 +22,19 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
     dispatch(ADD_FILTER_LIST({ id: formatId }));
   }, []);
 
-  const MutationPlugin: KeenSliderPlugin = (slider) => {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach(() => {
-        slider.update();
-      });
-    });
-
-    slider.on('created', () => {
-      observer.observe(slider.container, { childList: true });
-    });
-    slider.on('destroyed', () => {
-      observer.disconnect();
-    });
-  };
-
-  const [refListfilter] = useKeenSlider<HTMLDivElement>(
-    {
-      initial: 0,
-      slides: {
-        perView: 'auto',
-      },
-    },
-    [MutationPlugin],
-  );
-
   return (
     <>
       <HeadSEO title={ `Categoria: ${pageFilter.categoryName}` } description={ `Categoria: ${pageFilter.categoryName}` } />
       <div className={ style.category }>
         <div className={ style.filter }>
           <BarFilter />
-          <div className={ `${style.listfilter} keen-slider` } ref={ refListfilter }>
+          <Swiper
+            slidesPerView="auto"
+            wrapperTag="section"
+            className={ style.listfilter }
+          >
             { listFilter.map((item) => (
-              <div className="keen-slider__slide" key={ item.id }>
+              <SwiperSlide key={ item.id }>
                 <ItemList
                   id={ `list${item.id}` }
                   name={ item.key }
@@ -63,9 +42,9 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
                   color={ item.color }
                   execFunction={ removeListFilter }
                 />
-              </div>
+              </SwiperSlide>
             )) }
-          </div>
+          </Swiper>
         </div>
         <div className={ style.categorycont }>
           {

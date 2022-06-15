@@ -12,7 +12,6 @@
     "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
-    "keen-slider": "^6.6.14",
     "next": "^12.1.6",
     "next-pwa": "^5.5.4",
     "react": "^18.2.0",

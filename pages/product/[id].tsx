@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { useKeenSlider } from 'keen-slider/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import LoadingImage from '../../components/LoadImage';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
@@ -15,8 +15,6 @@ import style from './style.module.scss';
 function ProductId({ pgProps }: TypeProduct) {
   const [itemdrag, setItemDrag] = useState('detail');
   const [sizeChecked, setSizeChecked] = useState('');
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [loaded, setLoaded] = useState(false);
   const [colorChecked, setColorChecked] = useState({
     color: '',
     colorName: '',
@@ -26,20 +24,6 @@ function ProductId({ pgProps }: TypeProduct) {
     title, type, price, descrtion, branch, gender, discount,
     oldPrice, details, specification, options,
   } = pgProps;
-
-  const [refSlideProduct, instanceRef] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    initial: 0,
-    slides: {
-      perView: 'auto',
-    },
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
-    },
-    created() {
-      setLoaded(true);
-    },
-  });
 
   useEffect(() => {
     checkSizeAvailable(options, colorChecked.color);
@@ -56,7 +40,7 @@ function ProductId({ pgProps }: TypeProduct) {
       <div className={ style.contprod }>
         <div className={ style.slide }>
           <div className={ style.controllbtn }>
-            <button
+            {/* <button
               type="button"
               aria-label="Next"
               onClick={ () => instanceRef.current?.next() }
@@ -65,11 +49,16 @@ function ProductId({ pgProps }: TypeProduct) {
               type="button"
               aria-label="Prev"
               onClick={ () => instanceRef.current?.prev() }
-            />
+            /> */}
           </div>
-          <div className={ `${style.panels} keen-slider` } ref={ refSlideProduct }>
+
+          <Swiper
+            className={ style.panels }
+            slidesPerView="auto"
+            wrapperTag="section"
+          >
             { options[0].imgs.map(({ urlImg, imgid }: any) => (
-              <div id={ `panel${imgid}` } key={ imgid } className={ `${style.contsimg} keen-slider__slide` }>
+              <SwiperSlide key={ imgid } className={ style.contsimg }>
                 <figure>
                   <LoadingImage
                     src={ urlImg }
@@ -80,24 +69,9 @@ function ProductId({ pgProps }: TypeProduct) {
                     priority={ imgid === 0 }
                   />
                 </figure>
-              </div>
+              </SwiperSlide>
             )) }
-          </div>
-          { loaded && instanceRef.current && (
-            <div className={ style.dots }>
-              { [
-                ...Array(instanceRef.current?.track.details.slides.length).keys(),
-              ].map((idx) => (
-                <button
-                  type="button"
-                  key={ idx }
-                  aria-label="Current slide"
-                  data-active={ idx === currentSlide }
-                  onClick={ () => instanceRef.current?.moveToIdx(idx) }
-                />
-              )) }
-            </div>
-          ) }
+          </Swiper>
         </div>
         <div className={ style.maincontentinfo }>
           <div className={ style.infodesc }>
