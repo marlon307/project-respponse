@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Lazy } from 'swiper';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
-import { IPropsHome, ILoadSlide, ICardCategory } from './types/typesIndex';
+import { IPropsHome } from './types/typesIndex';
 import api from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
@@ -23,7 +23,7 @@ function Home({
       <div className={ style.banner }>
         { slides.map(({
           id, srcImg, alt, priority,
-        }: ILoadSlide) => (
+        }) => (
           <LoadingImage
             key={ id }
             src={ srcImg }
@@ -49,7 +49,7 @@ function Home({
           <SwiperButtonPrev />
           { categorys.map(({
             ctgID, imgCategory, categoryName, color, path,
-          }: ICardCategory) => (
+          }) => (
             <SwiperSlide key={ ctgID }>
               <CardCategory
                 image={ imgCategory }
@@ -60,7 +60,6 @@ function Home({
             </SwiperSlide>
           )) }
         </Swiper>
-
       </div>
       <div className={ style.highlights }>
         <h2>Destaques</h2>

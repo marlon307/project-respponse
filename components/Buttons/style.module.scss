@@ -6,7 +6,7 @@
 
 @mixin clickBtn {
   &:active {
-    transform: scale3d(1, 1, 1);
+    transform: scale3d(0.97, 0.97, 0.97);
   }
 }
 
@@ -160,9 +160,27 @@
     color: #006bef;
   }
 
+  @include hoverBtn;
+  @include clickBtn;
+}
+
+.btn_t3 {
+  border-radius: 12px;
+  padding: 14px 18px !important;
+  border: 2px solid #006bef;
+  background: #ffff;
+  @include center;
+  gap: 2em;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+
+  span {
+    color: #006bef;
+  }
+
   svg {
-    width: 1.3em;
-    height: 1.3em;
+    width: 1.6em;
+    height: 1.6em;
     flex: none;
   }
 
@@ -178,10 +196,12 @@
   width: 100%;
   position: relative;
   text-align: center;
+  @include center;
+  gap: 1em;
 }
 
 .msgerr {
-  padding: 16px 8%;
+  padding: 16px 4%;
   gap: 1.4em;
   border-color: var(--colorerr);
 
@@ -191,12 +211,6 @@
 
   path {
     fill: var(--colorerr);
-  }
-}
-
-@media (max-width: 750px) {
-  .btn_t2 {
-    margin: 0 auto;
   }
 }
 
