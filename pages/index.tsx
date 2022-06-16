@@ -38,6 +38,7 @@ function Home({
       <div className={ style.listctg }>
         <h2>Categorias</h2>
         <Swiper
+          className={ style.slide_container }
           slidesPerView="auto"
           wrapperTag="section"
           spaceBetween={ 16 }
@@ -64,10 +65,11 @@ function Home({
       <div className={ style.highlights }>
         <h2>Destaques</h2>
         <Swiper
+          className={ style.slide_container }
           slidesPerView="auto"
           wrapperTag="section"
-          spaceBetween={ 16 }
           lazy
+          spaceBetween={ 16 }
           modules={ [Lazy] }
         >
           <SwiperButtonNext />
@@ -85,42 +87,39 @@ function Home({
       <div className={ style.promotions }>
         <h2>Promoções</h2>
         <Swiper
+          className={ style.slide_container }
           onSwiper={ setSwiperInstance }
-          lazy
           wrapperTag="section"
-          modules={ [Lazy] }
           slidesPerView="auto"
-          spaceBetween={ 16 }
           allowTouchMove
+          spaceBetween={ 16 }
           onBeforeResize={ ({ width }) => width > 680 && swiperInstance?.slideTo(0) }
           breakpoints={ {
             700: {
               allowTouchMove: false,
+              spaceBetween: 0,
             },
           } }
         >
           { mockPromotions.map(({
             id, img, title, path,
           }: any) => (
-            <SwiperSlide key={ id } itemID={ id }>
-              <figure>
-                <LoadingImage
-                  src={ img }
-                  quality={ 85 }
-                  alt={ title }
-                  layout="fill"
-                  loading="eager"
-                  sizes="(max-width: 500px) 304.56px, 1486.52px"
-                />
-                <figcaption>
-                  <h4>{ title }</h4>
-                  <BtnRedirect path={ `/category/${path}` } titleBtn="Compre" />
-                </figcaption>
-              </figure>
+            <SwiperSlide key={ id } tag="figure">
+              <LoadingImage
+                src={ img }
+                quality={ 85 }
+                alt={ title }
+                layout="fill"
+                loading="eager"
+                sizes="(max-width: 500px) 304.56px, 1486.52px"
+              />
+              <figcaption>
+                <h4>{ title }</h4>
+                <BtnRedirect path={ `/category/${path}` } titleBtn="Compre" />
+              </figcaption>
             </SwiperSlide>
           )) }
         </Swiper>
-
       </div>
     </>
   );
