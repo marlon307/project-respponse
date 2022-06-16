@@ -81,9 +81,16 @@ const categorys = [
 
 const slides = [{
   id: 0,
-  srcImg: 'https://i.imgur.com/5sv5g8u.jpg',
+  srcImg: 'https://i.imgur.com/PGXoV0M.png',
   alt: 'Tênis Nike',
   priority: true,
+  background: 'linear-gradient(39deg, #3c8555, #01fa321f)',
+}, {
+  id: 1,
+  srcImg: 'https://i.imgur.com/SXDB077.png',
+  alt: 'Moletom',
+  priority: false,
+  background: '#6e90b0',
 }];
 
 export {

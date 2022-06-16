@@ -53,11 +53,51 @@
   overflow: hidden;
   margin-bottom: 4em;
   margin: 0 6% 4em;
+  overflow: hidden;
+
+  section {
+    display: flex;
+    flex-direction: row;
+    width: -webkit-fill-available;
+  }
+
+  figure {
+    border-radius: 1em;
+    position: relative;
+    min-height: 300px;
+    max-height: 70vh;
+    height: 100vh;
+    width: 100%;
+    user-select: none;
+    flex: none;
+  }
 
   img {
     max-height: 600px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: 50% 50%;
+    user-select: none;
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 2em;
+    left: 2em;
+    width: 90%;
+    max-width: 500px;
+    color: #fff;
+
+    h1 {
+      font-size: 3em;
+      font-weight: 800;
+    }
+
+    p {
+      color: #000;
+      font-weight: 500;
+      font-size: 18px;
+      font-weight: 500;
+    }
   }
 }
 
