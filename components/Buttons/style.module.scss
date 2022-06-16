@@ -6,7 +6,7 @@
 
 @mixin clickBtn {
   &:active {
-    transform: scale3d(1, 1, 1);
+    transform: scale3d(0.97, 0.97, 0.97);
   }
 }
 
