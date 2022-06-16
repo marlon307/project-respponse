@@ -86,41 +86,38 @@ function Home({
         <h2>Promoções</h2>
         <Swiper
           onSwiper={ setSwiperInstance }
-          lazy
           wrapperTag="section"
-          modules={ [Lazy] }
           slidesPerView="auto"
-          spaceBetween={ 16 }
+          className={ style.teste }
           allowTouchMove
+          spaceBetween={ 16 }
           onBeforeResize={ ({ width }) => width > 680 && swiperInstance?.slideTo(0) }
           breakpoints={ {
             700: {
               allowTouchMove: false,
+              spaceBetween: 0,
             },
           } }
         >
           { mockPromotions.map(({
             id, img, title, path,
           }: any) => (
-            <SwiperSlide key={ id } itemID={ id }>
-              <figure>
-                <LoadingImage
-                  src={ img }
-                  quality={ 85 }
-                  alt={ title }
-                  layout="fill"
-                  loading="eager"
-                  sizes="(max-width: 500px) 304.56px, 1486.52px"
-                />
-                <figcaption>
-                  <h4>{ title }</h4>
-                  <BtnRedirect path={ `/category/${path}` } titleBtn="Compre" />
-                </figcaption>
-              </figure>
+            <SwiperSlide key={ id } tag="figure">
+              <LoadingImage
+                src={ img }
+                quality={ 85 }
+                alt={ title }
+                layout="fill"
+                loading="eager"
+                sizes="(max-width: 500px) 304.56px, 1486.52px"
+              />
+              <figcaption>
+                <h4>{ title }</h4>
+                <BtnRedirect path={ `/category/${path}` } titleBtn="Compre" />
+              </figcaption>
             </SwiperSlide>
           )) }
         </Swiper>
-
       </div>
     </>
   );
