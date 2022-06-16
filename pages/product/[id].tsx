@@ -15,7 +15,7 @@ import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
 import style from './style.module.scss';
 
-function ProductId({ pgProps, similar }: TypeProduct) {
+function ProductId({ product, similar }: TypeProduct) {
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
     color: '',
@@ -25,7 +25,7 @@ function ProductId({ pgProps, similar }: TypeProduct) {
   const {
     title, type, price, descrtion, branch, gender, discount,
     oldPrice, details, specification, options,
-  } = pgProps;
+  } = product;
 
   useEffect(() => {
     checkSizeAvailable(options, colorChecked.color);
@@ -77,9 +77,9 @@ function ProductId({ pgProps, similar }: TypeProduct) {
           >
             <SwiperButtonNext />
             <SwiperButtonPrev />
-            { similar.map((product: TypeProduct['similar'][0]) => (
-              <SwiperSlide key={ product.id }>
-                <CardProduct objectProduct={ product } />
+            { similar.map((productSimilar: TypeProduct['similar'][0]) => (
+              <SwiperSlide key={ productSimilar.id }>
+                <CardProduct objectProduct={ productSimilar } />
               </SwiperSlide>
             )) }
           </Swiper>
@@ -128,7 +128,7 @@ function ProductId({ pgProps, similar }: TypeProduct) {
               />
             </div>
             <AddBag
-              productId={ pgProps }
+              productId={ product }
               colorSelected={ colorChecked }
               sizeSelected={ sizeChecked }
             />
@@ -153,8 +153,8 @@ export default ProductId;
 
 type TRequestProduct = {
   data: {
-    product: Array<any>,
-    similar: Array<any>,
+    product: TypeProduct['product'],
+    similar: TypeProduct['similar'],
   }
 };
 
@@ -166,10 +166,8 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   }: TRequestProduct = await api.get(`/product/${productId}`)
     .catch((error) => ({ data: error.message }));
 
-  const pgProps = product;
-
   return {
-    props: { pgProps, similar },
+    props: { product, similar },
     // revalidated: true,
   };
 };
@@ -179,7 +177,7 @@ type TRequestArr = {
     products: Array<{
       id: number,
     }>,
-    similar: any
+    similar: TypeProduct['similar']
   }
 };
 
@@ -189,7 +187,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       throw new Error('Bad response from server');
     });
 
-  const paths = products.map(({ id }: any) => ({ params: { id: id.toString() } }));
+  const paths = products.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }));
 
   return {
     paths,

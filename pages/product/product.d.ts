@@ -3,7 +3,7 @@ import type { TDetail, TSpecification } from './components/Cards/CardDetail/type
 import type { ICardProduct } from '../../types/typeCardProduct';
 
 export type TypeProduct = {
-  pgProps: {
+  product: {
     id: number;
     title: string;
     type: string;
