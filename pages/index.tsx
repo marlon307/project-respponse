@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GetStaticProps } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Lazy } from 'swiper';
+import SwiperCore, { Lazy, Autoplay } from 'swiper';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome } from './types/typesIndex';
@@ -21,19 +21,37 @@ function Home({
     <>
       <HeadSEO title="" description="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
       <div className={ style.banner }>
-        { slides.map(({
-          id, srcImg, alt, priority,
-        }) => (
-          <LoadingImage
-            key={ id }
-            src={ srcImg }
-            quality={ 85 }
-            alt={ alt }
-            layout="fill"
-            loading="eager"
-            priority={ priority }
-          />
-        )) }
+        <Swiper
+          slidesPerView="auto"
+          wrapperTag="section"
+          autoplay={ {
+            delay: 15000,
+            disableOnInteraction: false,
+          } }
+          modules={ [Autoplay] }
+        >
+          <SwiperButtonNext />
+          <SwiperButtonPrev />
+          { slides.map(({
+            id, srcImg, alt, background,
+          }) => (
+            <SwiperSlide key={ id } tag="figure" style={ { background: `${background}` } }>
+              <LoadingImage
+                src={ srcImg }
+                quality={ 85 }
+                alt={ alt }
+                layout="fill"
+                loading="lazy"
+              />
+              <figcaption>
+                <h1>{ alt }</h1>
+                <p>
+                  It is a long established fact that a reader will be distracted.
+                </p>
+              </figcaption>
+            </SwiperSlide>
+          )) }
+        </Swiper>
       </div>
       <div className={ style.listctg }>
         <h2>Categorias</h2>
