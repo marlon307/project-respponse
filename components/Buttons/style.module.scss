@@ -193,9 +193,8 @@
 }
 
 .contbtn {
-  width: 100%;
+  width: -webkit-fill-available;
   position: relative;
-  text-align: center;
   @include center;
   gap: 1em;
 }
