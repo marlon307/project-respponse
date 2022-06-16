@@ -37,6 +37,12 @@
   }
 }
 
+.slide_container {
+  position: relative;
+  width: -webkit-fill-available;
+  height: max-content;
+}
+
 .banner {
   position: relative;
   width: -webkit-fill-available;
@@ -166,12 +172,6 @@
   }
 }
 
-.teste {
-  width: -webkit-fill-available;
-  height: max-content;
-  padding: 0 3%;
-}
-
 .notfound {
   width: auto;
   height: 90vh;
@@ -288,6 +288,10 @@
     margin: 0 3% 2em;
   }
 
+  .slide_container {
+    padding: 0 3%;
+  }
+
   .listctg {
     margin: 2em 0;
 
@@ -313,7 +317,6 @@
 
     section {
       grid-auto-columns: 50%;
-      padding: 0 3%;
     }
   }
 

@@ -38,6 +38,7 @@ function Home({
       <div className={ style.listctg }>
         <h2>Categorias</h2>
         <Swiper
+          className={ style.slide_container }
           slidesPerView="auto"
           wrapperTag="section"
           spaceBetween={ 16 }
@@ -64,10 +65,11 @@ function Home({
       <div className={ style.highlights }>
         <h2>Destaques</h2>
         <Swiper
+          className={ style.slide_container }
           slidesPerView="auto"
           wrapperTag="section"
-          spaceBetween={ 16 }
           lazy
+          spaceBetween={ 16 }
           modules={ [Lazy] }
         >
           <SwiperButtonNext />
@@ -85,10 +87,10 @@ function Home({
       <div className={ style.promotions }>
         <h2>Promoções</h2>
         <Swiper
+          className={ style.slide_container }
           onSwiper={ setSwiperInstance }
           wrapperTag="section"
           slidesPerView="auto"
-          className={ style.teste }
           allowTouchMove
           spaceBetween={ 16 }
           onBeforeResize={ ({ width }) => width > 680 && swiperInstance?.slideTo(0) }
