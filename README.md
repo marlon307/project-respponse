@@ -33,7 +33,7 @@ Atualmente eu @_marlon307 trabalho no projeto sozinho esta sendo divertido, pois
 - [TypeScript](https://www.typescriptlang.org/)
 - [Next.Js](https://nextjs.org/)
 - [Sass](https://sass-lang.com/)
-- [Node.js](https://nodejs.org/en/)
+- [Python - Flask](https://flask.palletsprojects.com/)
 - [Mysql](https://www.mysql.com/)
 </br>
 </br>
