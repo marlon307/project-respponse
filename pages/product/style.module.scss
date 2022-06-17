@@ -5,6 +5,7 @@
     'products infos';
   grid-template-columns: auto minmax(200px, 400px);
   margin: 0 6%;
+  width: -webkit-fill-available;
 }
 
 .slide {
