@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Pagination } from 'swiper';
 import LoadingImage from '../../components/LoadImage';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
@@ -39,17 +40,11 @@ function ProductId({ product, similar }: TypeProduct) {
         keywords={ `${type} - ${title}, Roupas claras para caminhadas` }
       />
       <div className={ style.contprod }>
-
         <div className={ style.slide }>
           <Swiper
             className={ style.panels }
-            slideNextClass={ style.next }
             slidesPerView="auto"
             wrapperTag="section"
-            pagination={ {
-              clickable: true,
-            } }
-            navigation
           >
             <SwiperButtonNext />
             <SwiperButtonPrev />
