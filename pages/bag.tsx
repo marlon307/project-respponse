@@ -16,6 +16,7 @@ const Addacard = lazy(() => import('../components/Add/Addcard'));
 function Bag() {
   const { bagItems } = useAppSelector(({ bag }) => bag);
   const [openModal, setOpenModal] = useState<String>('');
+  const [hiddenList, setHiddenList] = useState(false);
 
   const openModalEdit = useCallback(() => {
     setOpenModal('edit');
@@ -29,11 +30,33 @@ function Bag() {
       />
       <div className={ style.bag }>
         <section className={ style.list }>
-          <h1 className={ style.title } title="Sacola">
-            <Svg icoName="bag" />
-            Sacola
-          </h1>
-          <ul>
+          <div className={ style.title }>
+            <h1 title="Sacola">
+              <Svg icoName="bag" />
+              Sacola
+            </h1>
+            { bagItems.length
+              ? (
+                <button
+                  type="button"
+                  aria-label="Ocutar sacola"
+                  aria-hidden={ hiddenList }
+                  onClick={ () => setHiddenList(!hiddenList) }
+                />
+              ) : '' }
+            { hiddenList && (
+              <span>
+                Informações da sua compra
+                { ' ' }
+                (
+                { ' ' }
+                { bagItems.length }
+                { ' ' }
+                )
+              </span>
+            ) }
+          </div>
+          <ul className={ `${hiddenList ? style.hidden : ''}` }>
             { bagItems.length ? bagItems.map((object) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard

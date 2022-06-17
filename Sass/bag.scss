@@ -14,6 +14,22 @@
 .list {
   min-height: 4em;
 
+  ul {
+    padding-top: 3em;
+    max-height: 96vh;
+    overflow: auto;
+  }
+
+  li {
+    margin-bottom: 3em;
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   h1 {
     display: flex;
     align-items: center;
@@ -26,14 +42,9 @@
     height: 32px;
   }
 
-  ul {
-    padding-top: 3em;
-    max-height: 96vh;
-    overflow: auto;
-  }
-
-  li {
-    margin-bottom: 3em;
+  :is(button, span) {
+    display: none;
+    background: transparent;
   }
 }
 
@@ -54,19 +65,75 @@
     grid-template-rows: auto;
     margin: 0 3%;
     height: auto;
+    gap: 0;
   }
 
   .list {
     height: 100%;
     max-height: 60vh;
+    margin-bottom: 3em;
 
     ul {
       padding-top: 2em;
       max-height: 94%;
+      overflow: auto;
     }
   }
 
   .empty {
-    margin: 0.6em 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+  .list {
+    height: auto;
+    max-height: 100%;
+    margin-bottom: 0;
+
+    ul {
+      max-height: 100%;
+      overflow: unset;
+    }
+  }
+
+  .title {
+    flex-wrap: wrap;
+    gap: 8px;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      line-height: 1;
+      transition: 0.2s transform ease;
+      transform: rotateZ(-135deg);
+
+      &:before {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-left: 3px solid #333;
+        border-top: 3px solid #333;
+        border-radius: 2px;
+      }
+    }
+
+    span {
+      display: block;
+      margin: 1em auto 2em auto;
+    }
+
+    [aria-hidden="true"] {
+      transform: rotateZ(45deg);
+    }
+  }
+
+  .hidden {
+    height: 0;
+    overflow: hidden !important;
+    padding: 0 !important;
   }
 }
