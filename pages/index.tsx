@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GetStaticProps } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Lazy, Autoplay } from 'swiper';
+import SwiperCore, { Autoplay } from 'swiper';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome } from './types/typesIndex';
@@ -60,8 +60,6 @@ function Home({
           slidesPerView="auto"
           wrapperTag="section"
           spaceBetween={ 16 }
-          lazy
-          modules={ [Lazy] }
         >
           <SwiperButtonNext />
           <SwiperButtonPrev />
@@ -85,9 +83,7 @@ function Home({
           className={ style.slide_container }
           slidesPerView="auto"
           wrapperTag="section"
-          lazy
           spaceBetween={ 16 }
-          modules={ [Lazy] }
         >
           <SwiperButtonNext />
           <SwiperButtonPrev />
