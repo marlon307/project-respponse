@@ -55,12 +55,14 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
         }) }
         type="button"
         aria-label="Adicionar a sacola e ir para checkout."
+        title="Adicionar a sacola e ir para checkout."
         onClick={ () => handleClick(true) }
       >
         <span>{ activeMsg ? 'Selecione cor e tamanho!' : 'Comprar Agora' }</span>
       </button>
       <button
         type="button"
+        title="Adicionar a sacola."
         className={ cx(style.btn_t3, {
           [style.msgerr]: activeMsg,
         }) }

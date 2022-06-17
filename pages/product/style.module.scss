@@ -74,8 +74,10 @@
 }
 
 .maincontentinfo {
+  position: relative;
   grid-area: infos;
   background: var(--maincolor);
+  z-index: 5;
 }
 
 .infodesc {
@@ -171,12 +173,6 @@
       grid-auto-columns: 200px;
     }
   }
-
-  .maincontentinfo {
-    position: relative;
-    width: 100%;
-    z-index: 5;
-  }
 }
 
 @media (max-width: 700px) {
@@ -184,8 +180,6 @@
     margin: 0;
 
     :is(.panels, .maincontentinfo, .products_similar) {
-      width: -webkit-fill-available;
-      max-width: 100vw;
       padding: 0 3%;
     }
   }
