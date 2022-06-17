@@ -92,7 +92,7 @@ function Home({
           <SwiperButtonNext />
           <SwiperButtonPrev />
           { mockCards.map((object: IPropsHome['mockCards'][0]) => (
-            <SwiperSlide key={ object.id }>
+            <SwiperSlide key={ object.id } className={ style.panel }>
               <CardProduct
                 key={ object.id }
                 objectProduct={ object }

@@ -61,8 +61,6 @@ function ProductId({ product, similar }: TypeProduct) {
                   quality={ 80 }
                   alt={ title }
                   layout="fill"
-                  loading={ imgid === 0 ? 'eager' : 'lazy' }
-                  priority={ imgid === 0 }
                 />
               </SwiperSlide>
             )) }
@@ -78,7 +76,7 @@ function ProductId({ product, similar }: TypeProduct) {
             <SwiperButtonNext />
             <SwiperButtonPrev />
             { similar.map((productSimilar: TypeProduct['similar'][0]) => (
-              <SwiperSlide key={ productSimilar.id }>
+              <SwiperSlide key={ productSimilar.id } className={ style.panel }>
                 <CardProduct objectProduct={ productSimilar } />
               </SwiperSlide>
             )) }
