@@ -170,11 +170,19 @@
     position: relative;
     width: 100%;
     z-index: 5;
-    min-width: 100%;
   }
 }
 
 @media (max-width: 700px) {
+  .contprod {
+    margin: 0;
+
+    :is(.slide section, .panels, .maincontentinfo, .products_similar) {
+      width: -webkit-fill-available;
+      padding: 0 3%;
+    }
+  }
+
   .slide {
     max-height: 70vh;
   }
@@ -183,10 +191,6 @@
     section {
       height: calc(70vh - 50px);
     }
-  }
-
-  .contprod {
-    margin: 0 3%;
   }
 
   .more {
