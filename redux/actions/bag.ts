@@ -47,7 +47,7 @@ const stateBag: StateBagType = {
 
 const ACTION_ADD_BAG_ITEMS = (state: StateBagType, { payload }: PayloadAction<TypeAddBagInfos>) => {
   const index = state.bagItems.findIndex(({ identifyBag }) => identifyBag === payload.identifyBag);
-  if (index) {
+  if (index === -1) {
     state.bagItems.unshift(payload);
   } else {
     state.bagItems[index].quantity += 1;

@@ -416,6 +416,12 @@
   .listctg {
     gap: 0.6em;
   }
+
+  .highlights {
+    section {
+      grid-auto-columns: 55%;
+    }
+  }
 }
 
 // https://tobiasahlin.com/spinkit/
