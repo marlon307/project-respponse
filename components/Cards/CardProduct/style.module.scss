@@ -12,10 +12,11 @@
     height: auto;
     border-radius: 1em;
     overflow: hidden;
+    background: #f7f7f7;
   }
 
   img {
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
