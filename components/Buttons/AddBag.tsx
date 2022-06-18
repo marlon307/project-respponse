@@ -41,7 +41,7 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
     if (colorSelected.color === '' && sizeSelected === '') {
       setbutonActive(false);
     }
-    if (colorSelected.color !== '' && sizeSelected !== '' && activeMsg) {
+    if (colorSelected.color !== '' && sizeSelected !== '') {
       setbutonActive(true);
       setActiveMsg(false);
     }
