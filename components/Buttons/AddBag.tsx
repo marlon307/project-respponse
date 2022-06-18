@@ -17,25 +17,24 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   const [activeMsg, setActiveMsg] = useState(false);
 
   function handleClick(redirect: boolean) {
-    if (!buttonActive) {
+    if (buttonActive) {
+      dispatch(ADD_BAG_ITEMS({
+        id,
+        title,
+        discount,
+        oldPrice,
+        type,
+        price,
+        mainImg,
+        quantity: 1,
+        ...colorSelected,
+        size: sizeSelected,
+        identifyBag: productId.id + colorSelected.color + sizeSelected,
+      }));
+      if (redirect) router.push('/bag');
+    } else {
       setActiveMsg(true);
-      return;
     }
-    dispatch(ADD_BAG_ITEMS({
-      id,
-      title,
-      discount,
-      oldPrice,
-      type,
-      price,
-      mainImg,
-      quantity: 1,
-      ...colorSelected,
-      size: sizeSelected,
-      identifyBag: productId.id + colorSelected.color + sizeSelected,
-    }));
-
-    if (redirect) router.push('/bag');
   }
 
   useEffect(() => {
