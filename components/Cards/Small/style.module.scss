@@ -13,7 +13,7 @@
 
   .img {
     top: -12px;
-    left: 0;
+    left: -1px;
     position: absolute;
     border-radius: 20px;
 
@@ -23,11 +23,13 @@
       border-radius: 20px;
       overflow: hidden;
       position: relative;
+      background: #f7f7f7;
+      border: 1px solid var(--bordercolor);
     }
 
     img {
       border-radius: 20px;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 
