@@ -39,10 +39,11 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   }
 
   useEffect(() => {
-    if (colorSelected.color && sizeSelected) {
-      setbutonActive(true);
+    if (colorSelected.color === '' && sizeSelected === '') {
+      setbutonActive(false);
     }
-    if (colorSelected.color && sizeSelected && activeMsg) {
+    if (colorSelected.color !== '' && sizeSelected !== '' && activeMsg) {
+      setbutonActive(true);
       setActiveMsg(false);
     }
   }, [activeMsg, colorSelected.color, sizeSelected]);

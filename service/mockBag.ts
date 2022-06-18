@@ -1,12 +1,8 @@
-import image1 from '../assets/img/nojan-namdar-a3RhaDG_pNM-unsplash 1.png';
-import image3 from '../assets/img/jonas-jaeken-31upv631160-unsplash 4.png';
-import image0 from '../assets/img/etty-fidele-l5rez6X2m8k-unsplash 1.png';
-
 const mockBag = [{
   id: 0,
   title: 'Algodão Pima',
   type: 'Jérsei',
-  mainImg: image0,
+  mainImg: 'https://i.imgur.com/dDldc4q.png',
   price: 71.25,
   oldPrice: 75.00,
   colorName: 'Azul',
@@ -20,7 +16,7 @@ const mockBag = [{
   id: 1,
   title: 'Secrect state',
   type: 'Terno',
-  mainImg: image1,
+  mainImg: 'https://i.imgur.com/aEmfC0g.png',
   price: 150.00,
   oldPrice: 150.00,
   colorName: 'Azul meia noite',
@@ -34,7 +30,7 @@ const mockBag = [{
   id: 2,
   title: 'Next station',
   type: 'Jaqueta',
-  mainImg: image3,
+  mainImg: 'https://i.imgur.com/aEmfC0g.png',
   price: 33.12,
   colorName: 'Jeans Claro',
   color: '#8297af',

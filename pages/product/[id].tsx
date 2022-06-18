@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Pagination } from 'swiper';
 import LoadingImage from '../../components/LoadImage';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
@@ -31,6 +30,14 @@ function ProductId({ product, similar }: TypeProduct) {
     checkSizeAvailable(options, colorChecked.color);
     checkColorAvailable(options, sizeChecked);
   }, [colorChecked, options, sizeChecked]);
+
+  useEffect(() => {
+    setSizeChecked('');
+    setColorChecked({
+      color: '',
+      colorName: '',
+    });
+  }, [product.id]);
 
   return (
     <>
