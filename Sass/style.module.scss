@@ -81,19 +81,24 @@
 
   figcaption {
     position: absolute;
-    bottom: 2em;
-    left: 2em;
-    width: 90%;
+    margin: 0 6%;
+    padding: clamp(15px, 6%, 1em) 0;
+    height: -webkit-fill-available;
     max-width: 500px;
-    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2em;
+    justify-content: flex-end;
 
     h1 {
+      color: #fff;
       font-size: 3em;
       font-weight: 800;
     }
 
     p {
-      color: #000;
+      color: #161616;
       font-weight: 500;
       font-size: 18px;
       font-weight: 500;
@@ -334,6 +339,10 @@
 @media (max-width:700px) {
   .banner {
     margin: 0 3% 2em;
+
+    figcaption {
+      justify-content: space-between;
+    }
   }
 
   .slide_container {

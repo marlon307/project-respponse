@@ -46,7 +46,8 @@ function Home({
               <figcaption>
                 <h1>{ alt }</h1>
                 <p>
-                  It is a long established fact that a reader will be distracted.
+                  There’s still time to save up to 50% on new markdowns.
+                  Shop now—no promo code needed.
                 </p>
               </figcaption>
             </SwiperSlide>
