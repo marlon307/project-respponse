@@ -12,7 +12,7 @@
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-areas: ". . . . . . .";
-  grid-column-gap: 1em;
+  grid-column-gap: 0.8em;
   grid-template-rows: max-content;
   row-gap: 1em;
   align-items: start;
