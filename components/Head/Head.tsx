@@ -5,7 +5,7 @@ function Seo() {
     <>
       <meta name="title" content="Respponse" />
       <link rel="icon" href="/favico.ico" />
-      <link rel="apple-touch-icon" href="/favico.ico" sizes="256x256" />
+      <link rel="apple-touch-icon" href="/icon-192x192.png" />
       <link rel="manifest" href="/manifest.json" />
       <meta name="theme-color" content="#FFFFFF" />
       <meta name="application-name" content="Respponse" />
