@@ -11,7 +11,7 @@
   grid-area: products;
   display: grid;
   grid-auto-columns: 1fr;
-  grid-template-areas: ". . . . . . .";
+  grid-template-areas: '. . . . . . .';
   grid-column-gap: 0.8em;
   grid-template-rows: max-content;
   row-gap: 1em;

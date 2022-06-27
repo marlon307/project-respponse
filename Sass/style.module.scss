@@ -136,8 +136,7 @@
     margin-top: 1em;
     display: grid;
     grid-auto-columns: 300px;
-    grid-template-areas: ". . . . . . .";
-    grid-template-rows: max-content;
+    grid-auto-flow: column;
     gap: 1em;
   }
 
