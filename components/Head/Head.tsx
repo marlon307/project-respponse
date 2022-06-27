@@ -1,4 +1,3 @@
-/* eslint-disable react/no-invalid-html-attribute */
 import React from 'react';
 
 function Seo() {
@@ -7,7 +6,6 @@ function Seo() {
       <meta name="title" content="Respponse" />
       <link rel="icon" href="/favico.ico" />
       <meta name="mobile-web-app-capable" content="yes" />
-      <link rel="apple-touch-startup-image" href="/icon-192x192.png" />
       <link rel="apple-touch-icon" href="/favico.ico" />
       <link rel="manifest" href="/manifest.json" />
       <meta name="theme-color" content="#FFFFFF" />
