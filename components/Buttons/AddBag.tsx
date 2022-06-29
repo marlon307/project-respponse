@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
-import style from './style.module.scss';
 import type { PBtnAddBag } from './types';
 import { useAppDispatch } from '../../redux/hooks';
 import { ADD_BAG_ITEMS } from '../../redux/actions';
+import style from './style.module.scss';
 
 function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   const dispatch = useAppDispatch();

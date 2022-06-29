@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-
 import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 
