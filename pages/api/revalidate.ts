@@ -6,7 +6,7 @@ export default async function revalidate(req: NextApiRequest, res: NextApiRespon
     if (listRevalidate.length) {
       // https://stackoverflow.com/questions/71807293/how-to-invalidate-array-of-sluges-in-next-js
       await Promise.all(listRevalidate
-        .map(async (url: string) => res.unstable_revalidate(`/product/${url}`)));
+        .map(async (url: string) => res.revalidate(`/product/${url}`)));
 
       return res.json({ revalidated: true });
     }
