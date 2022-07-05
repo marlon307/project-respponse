@@ -10,8 +10,12 @@ function GetInfos() {
 
     const getUserData = () => {
       if (getLocalStorage !== null) {
-        const { logged } = JSON.parse(getLocalStorage);
-        if (logged) dispatch(LOGIN_USER(true));
+        const { user } = JSON.parse(getLocalStorage);
+        if (user) {
+          dispatch(LOGIN_USER({
+            ...user,
+          }));
+        }
       } else {
         localStorage.setItem('data_user', JSON.stringify({
           logged: false,

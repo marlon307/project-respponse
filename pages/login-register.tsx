@@ -15,7 +15,7 @@ const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
 
 function Login() {
   const dispatch = useAppDispatch();
-  const { logged } = useAppSelector(({ user }) => user);
+  const reduxUser = useAppSelector(({ user }) => user);
   const router = useRouter();
   const [sectionTab, setSectionTab] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -51,12 +51,13 @@ function Login() {
       });
 
       const { user } = data;
+
       dispatch(LOGIN_USER({
         name: user.name,
         token: data.token,
         email: user.email,
         logged: true,
-        user_id: user.id,
+        user_id: user.id_user,
       }));
       setIsLoading(false);
     }
@@ -83,10 +84,10 @@ function Login() {
   }
 
   useEffect(() => {
-    if (router.asPath === '/login-register' && logged) {
+    if (router.asPath === '/login-register' && reduxUser.logged) {
       router.push('/');
     }
-  }, [logged, router]);
+  }, [reduxUser.logged, router]);
 
   return (
     <>
@@ -127,7 +128,7 @@ function Login() {
               inputValue={ actionUserLogin }
               placeHolder="E-mail"
               msgError="Email inválido!"
-              disabled={ isLoading || logged }
+              disabled={ isLoading || reduxUser.logged }
             />
             <Input
               id="lpsw"
@@ -138,7 +139,7 @@ function Login() {
               inputValue={ actionUserLogin }
               placeHolder="Senha"
               msgError="Senha invalida!"
-              disabled={ isLoading || logged }
+              disabled={ isLoading || reduxUser.logged }
             />
           </div>
           <div className={ style.action }>
@@ -176,7 +177,7 @@ function Login() {
               inputValue={ actionRegister }
               ivalue={ stateRegister.rname }
               msgError="Preencha Nome e Sobrenome"
-              disabled={ isLoading || logged }
+              disabled={ isLoading || reduxUser.logged }
             />
             <Input
               id="remail"
@@ -187,7 +188,7 @@ function Login() {
               inputValue={ actionRegister }
               ivalue={ stateRegister.remail }
               msgError="E-mail inválido!"
-              disabled={ isLoading || logged }
+              disabled={ isLoading || reduxUser.logged }
             />
             <Input
               id="rpsw"
@@ -197,7 +198,7 @@ function Login() {
               inputValue={ actionRegister }
               ivalue={ stateRegister.rpsw }
               msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
-              disabled={ isLoading || logged }
+              disabled={ isLoading || reduxUser.logged }
             />
           </div>
           <div className={ style.action }>
