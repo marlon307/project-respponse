@@ -17,4 +17,5 @@ export interface PInputText {
   inputValue: Function;
   regexValidator?: RegExp;
   msgError?: string;
+  disabled?: boolean;
 }

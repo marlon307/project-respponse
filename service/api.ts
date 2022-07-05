@@ -4,6 +4,10 @@ const api = axios.create({
   baseURL: process.env.LOCAL_API_HOST,
 });
 
+export const api2 = axios.create({
+  baseURL: 'http://localhost:5000/',
+});
+
 // https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900
 
 api.interceptors.request.use(async (config: AxiosRequestConfig) => {

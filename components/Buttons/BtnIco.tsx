@@ -24,9 +24,21 @@ function BtnIco({
       type="button"
       className={ cx('button1', style.btn_t1) }
       onClick={ handleClick }
+      disabled={ actionLiberate }
     >
-      { textBtn }
-      { actionLiberate ? ' ...' : <Svg icoName={ icoName } /> }
+      { actionLiberate ? (
+        <div className="lds-ellipsis">
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+      ) : (
+        <>
+          { textBtn }
+          <Svg icoName={ icoName } />
+        </>
+      ) }
     </button>
   );
 }
