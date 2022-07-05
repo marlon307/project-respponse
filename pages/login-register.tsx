@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { LOGIN_USER } from '../redux/actions';
 import BtnIco from '../components/Buttons/BtnIco';
 import style from '../Sass/style.module.scss';
-
+import { api2 } from '../service/api';
 import { Input } from '../components/ComponentsForm';
 import HeadSEO from '../components/Head/HeadSEO';
 
@@ -18,7 +18,7 @@ function Login() {
   const { logged } = useAppSelector(({ user }) => user);
   const router = useRouter();
   const [sectionTab, setSectionTab] = useState(true);
-  const [loadingLogin, setLoadingLogin] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [stateLogin, setStateLogin] = useState({
     lemail: '',
     lpsw: '',
@@ -39,12 +39,26 @@ function Login() {
     }));
   };
 
-  const clickLogin = () => {
+  const clickLogin = async () => {
     const { lemail, lpsw } = stateLogin;
 
-    if (validEmail.test(lemail) && validPsw.test(lpsw) && !loadingLogin) {
-      dispatch(LOGIN_USER(true));
-      setLoadingLogin(true);
+    if (validEmail.test(lemail) && validPsw.test(lpsw) && isLoading === false) {
+      setIsLoading(true);
+      const { data } = await api2.post('/login_user', {
+        email: lemail,
+        password: lpsw,
+
+      });
+
+      const { user } = data;
+      dispatch(LOGIN_USER({
+        name: user.name,
+        token: data.token,
+        email: user.email,
+        logged: true,
+        user_id: user.id,
+      }));
+      setIsLoading(false);
     }
   };
 
@@ -113,6 +127,7 @@ function Login() {
               inputValue={ actionUserLogin }
               placeHolder="E-mail"
               msgError="Email inválido!"
+              disabled={ isLoading || logged }
             />
             <Input
               id="lpsw"
@@ -123,6 +138,7 @@ function Login() {
               inputValue={ actionUserLogin }
               placeHolder="Senha"
               msgError="Senha invalida!"
+              disabled={ isLoading || logged }
             />
           </div>
           <div className={ style.action }>
@@ -145,7 +161,7 @@ function Login() {
               textBtn="Entrar"
               icoName="singin"
               action={ clickLogin }
-              actionLiberate={ loadingLogin }
+              actionLiberate={ isLoading }
             />
           </div>
         </form>
@@ -160,6 +176,7 @@ function Login() {
               inputValue={ actionRegister }
               ivalue={ stateRegister.rname }
               msgError="Preencha Nome e Sobrenome"
+              disabled={ isLoading || logged }
             />
             <Input
               id="remail"
@@ -170,6 +187,7 @@ function Login() {
               inputValue={ actionRegister }
               ivalue={ stateRegister.remail }
               msgError="E-mail inválido!"
+              disabled={ isLoading || logged }
             />
             <Input
               id="rpsw"
@@ -179,6 +197,7 @@ function Login() {
               inputValue={ actionRegister }
               ivalue={ stateRegister.rpsw }
               msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
+              disabled={ isLoading || logged }
             />
           </div>
           <div className={ style.action }>
@@ -186,7 +205,7 @@ function Login() {
               textBtn="Criar Conta"
               icoName="setRight"
               action={ () => { } }
-              actionLiberate={ false }
+              actionLiberate={ isLoading }
             />
           </div>
         </form>

@@ -7,7 +7,7 @@ const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
 const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
 
 function Input({
-  id, type, name, placeHolder, autoComplete, inputValue, ivalue, msgError,
+  id, type, name, placeHolder, autoComplete, inputValue, ivalue, msgError, disabled,
 }: PInputText) {
   const [statusValid, setSatusValid] = useState(false);
 
@@ -53,6 +53,7 @@ function Input({
         onChange={ handleChange }
         onBlur={ validInput }
         value={ ivalue }
+        disabled={ disabled }
       />
       <span
         className={ style.ph }

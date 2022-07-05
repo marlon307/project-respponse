@@ -3,12 +3,24 @@ import type { StateUserType } from './types/user';
 
 // Define the initial state using that type
 const stateUser: StateUserType = {
-  name: 'Nome',
-  logged: true,
+  name: '',
+  logged: false,
+  token: '',
+  email: '',
+  user_id: '',
 };
 
-const ACTION_LOGIN_USER = (state: StateUserType, { payload }: PayloadAction<boolean>) => {
-  state.logged = payload;
+const ACTION_LOGIN_USER = (
+  state: StateUserType,
+  { payload }: PayloadAction<StateUserType>,
+) => {
+  state.logged = true;
+  state.name = payload.name;
+  state.email = payload.email;
+  state.token = payload.token;
+  state.user_id = payload.user_id;
 };
 
-export { ACTION_LOGIN_USER, stateUser };
+const ACTION_LOGOUT_USER = () => stateUser;
+
+export { ACTION_LOGIN_USER, ACTION_LOGOUT_USER, stateUser };

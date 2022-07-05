@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
-import { stateUser, ACTION_LOGIN_USER } from './user';
+import { stateUser, ACTION_LOGIN_USER, ACTION_LOGOUT_USER } from './user';
 import {
   stateBag, ACTION_ADD_BAG_ITEMS, ACTION_RM_BAG_ITEM,
   ACTION_EDIT_BAG_ITEM, ACTION_FINISH_EDIT_BAG_ITEM,
@@ -14,6 +14,7 @@ export const userSlice = createSlice({
   initialState: stateUser,
   reducers: {
     LOGIN_USER: ACTION_LOGIN_USER,
+    LOGOUT_USER: ACTION_LOGOUT_USER,
   },
 });
 
@@ -42,6 +43,7 @@ export const searchSlice = createSlice({
 
 export const {
   LOGIN_USER,
+  LOGOUT_USER,
 } = userSlice.actions;
 
 export const {
