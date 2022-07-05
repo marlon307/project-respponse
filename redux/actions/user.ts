@@ -19,8 +19,13 @@ const ACTION_LOGIN_USER = (
   state.email = payload.email;
   state.token = payload.token;
   state.user_id = payload.user_id;
+
+  localStorage.setItem('user', JSON.stringify(payload));
 };
 
-const ACTION_LOGOUT_USER = () => stateUser;
+const ACTION_LOGOUT_USER = () => {
+  localStorage.clear();
+  return stateUser;
+};
 
 export { ACTION_LOGIN_USER, ACTION_LOGOUT_USER, stateUser };
