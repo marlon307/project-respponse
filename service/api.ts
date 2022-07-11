@@ -6,6 +6,7 @@ const api = axios.create({
 
 export const api2 = axios.create({
   baseURL: 'http://localhost:5000/',
+  withCredentials: true,
 });
 
 // https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900

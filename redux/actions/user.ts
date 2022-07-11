@@ -1,7 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import type { StateUserType } from './types/user';
 
-// Define the initial state using that type
 const stateUser: StateUserType = {
   name: '',
   logged: false,
