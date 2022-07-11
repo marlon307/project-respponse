@@ -47,7 +47,6 @@ function Login() {
       const { data } = await api2.post('/login_user', {
         email: lemail,
         password: lpsw,
-
       });
 
       const { user } = data;

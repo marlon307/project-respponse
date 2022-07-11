@@ -1,42 +1,19 @@
-import React, {
-  useState, /* useEffect, */ Suspense, lazy,
-} from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
-import style from './style.module.scss';
 import SearchBar from '../SearchBar';
 import MenuBag from './components/MenuBag';
 import MenuUser from './components/MenuUser';
 import MenuMobile from './components/MenuMobile';
-import { useAppSelector /* useAppDispatch */ } from '../../redux/hooks';
-// import { LOGIN_USER } from '../../redux/actions';
+import { useAppSelector } from '../../redux/hooks';
+import style from './style.module.scss';
 
 const Bar = lazy(() => import('../SearchBar/Bar'));
 
 function Header() {
   const [searchopen, setSearchopen] = useState(false);
-  // const dispatch = useAppDispatch();
   const reduxDataUser = useAppSelector(({ user }) => user);
 
-  // useEffect(() => {
-  //   const getLocalStorage = localStorage.getItem('data_user')!;
-
-  //   const getUserData = () => {
-  //     if (getLocalStorage !== null) {
-  //       const user = JSON.parse(getLocalStorage);
-
-  //       if (user.logged) {
-  //         dispatch(LOGIN_USER(user));
-  //       }
-  //     } else {
-  //       localStorage.setItem('data_user', JSON.stringify({
-  //         logged: false,
-  //       }));
-  //     }
-  //   };
-
-  //   getUserData();
-  // }, []);
   return (
     <header className={ style.header }>
       <div className={ style.container }>
