@@ -50,6 +50,7 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   return (
     <div className={ style.contbtn }>
       <button
+        data-teste={ activeMsg }
         className={ cx(style.btn_t2, {
           [style.msgerr]: activeMsg,
         }) }

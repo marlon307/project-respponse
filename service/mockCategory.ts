@@ -58,10 +58,10 @@ const categorys = [
   }, {
     ctgID: 9,
     imgCategory: 'https://i.imgur.com/q9Fwqyv.png',
-    categoryName: 'Suave',
-    subTitle: 'Suave',
-    path: 'suave',
-    color: '#e724e1',
+    categoryName: 'Sob encomenda',
+    subTitle: 'Sob encomenda',
+    path: 'sob-encomenda',
+    color: '#71b5c5',
   }, {
     ctgID: 10,
     imgCategory: 'https://i.imgur.com/q9Fwqyv.png',

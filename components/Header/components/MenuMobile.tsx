@@ -6,16 +6,15 @@ import { LOGOUT_USER } from '../../../redux/actions';
 import CustomLink from '../../CustomLink';
 import style from './styles/style.module.scss';
 
-function MenuMobile() {
+function MenuMobile({ data }: any) {
   const dipatch = useAppDispatch();
-  const { user, bag } = useAppSelector((states) => states);
+  const { bag } = useAppSelector((states) => states);
   const { bagItems } = bag;
-  const { logged } = user;
   const [dropMnMobile, setDropMnMobile] = useState(false);
 
   function handleClickLogOutUser() {
     setDropMnMobile(!dropMnMobile);
-    if (logged) {
+    if (data) {
       dipatch(LOGOUT_USER());
     }
   }
@@ -36,13 +35,16 @@ function MenuMobile() {
       document.body.removeAttribute('class');
     }
   }, [dropMnMobile]);
-
+  // bagItems.length && !dropMnMobile && data
+  // contb
   return (
-    <div className={ cx(style.mobile, {
-      [style.contb]: bagItems.length && !dropMnMobile,
-    }) }
+    <div
+      data-item-bag={ bagItems.length }
+      className={ cx(style.mobile, {
+        [style.contb]: bagItems.length && !dropMnMobile && data,
+      }) }
     >
-      { logged ? (
+      { data ? (
         <button
           type="button"
           aria-label="Menu"
@@ -60,10 +62,7 @@ function MenuMobile() {
         </Link>
       ) }
 
-      <div className={ cx(style.dromn, {
-        [style.drop]: dropMnMobile,
-      }) }
-      >
+      <div aria-hidden={ dropMnMobile } className={ style.dropmn }>
         <nav className={ style.dropmobile }>
           <ul>
             <li>
@@ -79,7 +78,7 @@ function MenuMobile() {
                 </CustomLink>
               </Link>
             </li>
-            { logged && (
+            { data && (
               <>
                 <li>
                   <Link href="/account" passHref>
@@ -129,7 +128,7 @@ function MenuMobile() {
               </>
             ) }
             <li>
-              { logged ? (
+              { data ? (
                 <Link href="/" passHref>
                   <CustomLink
                     ariaLabel="Sair"

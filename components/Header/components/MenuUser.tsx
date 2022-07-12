@@ -1,24 +1,23 @@
 import React, {
-  useState, useRef, useEffect, lazy, Suspense,
+  useState, useEffect, lazy, Suspense,
 } from 'react';
 import Link from 'next/link';
 import CustomLink from '../../CustomLink';
-import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
+import { /* useAppSelector, */ useAppDispatch } from '../../../redux/hooks';
 import { LOGOUT_USER } from '../../../redux/actions';
 import style from './styles/style.module.scss';
 
 const ContentModal = lazy(() => import('../../Modal/ContentModal'));
 const LoginRegister = lazy(() => import('../../../pages/login-register'));
 
-function MenuUser() {
+function MenuUser({ data }: any) {
   const dispatch = useAppDispatch();
-  const { logged } = useAppSelector(({ user }) => user);
-  const ref = useRef(null);
+  // const { logged } = useAppSelector(({ user }) => user);
   const [openLogin, setOpenLogin] = useState(false);
 
   function openModalLogin(event: { preventDefault: () => void; }) {
     event.preventDefault();
-    if (!logged) {
+    if (!data) {
       setOpenLogin(true);
     } else {
       dispatch(LOGOUT_USER());
@@ -26,14 +25,14 @@ function MenuUser() {
   }
   // Fechar modal apos login
   useEffect(() => {
-    if (logged) {
+    if (data) {
       setOpenLogin(false);
     }
-  }, [logged]);
+  }, [data]);
 
   return (
     <div className={ style.usermneu }>
-      { logged ? (
+      { data ? (
         <>
           <Link href="/account" passHref className={ style.mnuser }>
             <a aria-label="Conta">
@@ -42,10 +41,7 @@ function MenuUser() {
               </svg>
             </a>
           </Link>
-          <div
-            ref={ ref }
-            className={ style.dropmenu }
-          >
+          <div className={ style.dropmenu }>
             <span className={ style.set } />
             <ul>
               <li>
