@@ -5,14 +5,15 @@ import SearchBar from '../SearchBar';
 import MenuBag from './components/MenuBag';
 import MenuUser from './components/MenuUser';
 import MenuMobile from './components/MenuMobile';
-import { useAppSelector } from '../../redux/hooks';
+// import { useAppSelector } from '../../redux/hooks';
 import style from './style.module.scss';
 
 const Bar = lazy(() => import('../SearchBar/Bar'));
 
-function Header() {
+function Header({ data }: any) {
   const [searchopen, setSearchopen] = useState(false);
-  const reduxDataUser = useAppSelector(({ user }) => user);
+  // const reduxDataUser = useAppSelector(({ user }) => user);
+  // console.log(data);
 
   return (
     <header className={ style.header }>
@@ -42,9 +43,9 @@ function Header() {
             searchopen={ searchopen }
             setSearchopen={ setSearchopen }
           />
-          { reduxDataUser.logged && <MenuBag /> }
-          <MenuUser />
-          <MenuMobile />
+          { data && <MenuBag /> }
+          <MenuUser data={ data } />
+          <MenuMobile data={ data } />
         </nav>
       </div>
     </header>

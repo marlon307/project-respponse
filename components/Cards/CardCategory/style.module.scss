@@ -5,7 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  width: max-content;
+  flex: none;
   gap: 1em;
 
   .imgctg {
@@ -26,7 +27,7 @@
     }
   }
 
-  span {
+  span:nth-child(even) {
     border-radius: 12px;
     font-weight: 700;
     color: #333;

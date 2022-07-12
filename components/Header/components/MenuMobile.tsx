@@ -6,16 +6,15 @@ import { LOGOUT_USER } from '../../../redux/actions';
 import CustomLink from '../../CustomLink';
 import style from './styles/style.module.scss';
 
-function MenuMobile() {
+function MenuMobile({ data }: any) {
   const dipatch = useAppDispatch();
-  const { user, bag } = useAppSelector((states) => states);
+  const { bag } = useAppSelector((states) => states);
   const { bagItems } = bag;
-  const { logged } = user;
   const [dropMnMobile, setDropMnMobile] = useState(false);
 
   function handleClickLogOutUser() {
     setDropMnMobile(!dropMnMobile);
-    if (logged) {
+    if (data) {
       dipatch(LOGOUT_USER());
     }
   }
@@ -39,10 +38,10 @@ function MenuMobile() {
 
   return (
     <div className={ cx(style.mobile, {
-      [style.contb]: bagItems.length && !dropMnMobile,
+      [style.contb]: bagItems.length && !dropMnMobile && data,
     }) }
     >
-      { logged ? (
+      { data ? (
         <button
           type="button"
           aria-label="Menu"
@@ -54,7 +53,12 @@ function MenuMobile() {
         </button>
       ) : (
         <Link href="/login-register" passHref>
-          <a aria-label="Entrar" className={ style.login }>
+          <a
+            aria-label="Entrar"
+            className={ cx(style.login, {
+              [style.contb]: bagItems.length,
+            }) }
+          >
             Entrar
           </a>
         </Link>
@@ -79,7 +83,7 @@ function MenuMobile() {
                 </CustomLink>
               </Link>
             </li>
-            { logged && (
+            { data && (
               <>
                 <li>
                   <Link href="/account" passHref>
@@ -129,7 +133,7 @@ function MenuMobile() {
               </>
             ) }
             <li>
-              { logged ? (
+              { data ? (
                 <Link href="/" passHref>
                   <CustomLink
                     ariaLabel="Sair"

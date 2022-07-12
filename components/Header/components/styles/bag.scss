@@ -96,6 +96,7 @@
   .contb {
 
     &::after {
+      z-index: -1;
       left: 16px;
     }
   }
