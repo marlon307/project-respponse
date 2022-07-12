@@ -5,7 +5,7 @@
 }
 
 @media (max-width: 700px) {
-  .dromn {
+  .dropmn {
     display: block;
   }
 
@@ -42,7 +42,7 @@
     }
   }
 
-  .drop {
+  [aria-hidden="true"] {
     .dropmobile {
       transform: translateX(0);
       box-shadow: -5px 0px 20px 0px #e5e5e5;

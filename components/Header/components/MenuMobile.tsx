@@ -35,11 +35,14 @@ function MenuMobile({ data }: any) {
       document.body.removeAttribute('class');
     }
   }, [dropMnMobile]);
-
+  // bagItems.length && !dropMnMobile && data
+  // contb
   return (
-    <div className={ cx(style.mobile, {
-      [style.contb]: bagItems.length && !dropMnMobile && data,
-    }) }
+    <div
+      data-item-bag={ bagItems.length }
+      className={ cx(style.mobile, {
+        [style.contb]: bagItems.length && !dropMnMobile && data,
+      }) }
     >
       { data ? (
         <button
@@ -53,21 +56,13 @@ function MenuMobile({ data }: any) {
         </button>
       ) : (
         <Link href="/login-register" passHref>
-          <a
-            aria-label="Entrar"
-            className={ cx(style.login, {
-              [style.contb]: bagItems.length,
-            }) }
-          >
+          <a aria-label="Entrar" className={ style.login }>
             Entrar
           </a>
         </Link>
       ) }
 
-      <div className={ cx(style.dromn, {
-        [style.drop]: dropMnMobile,
-      }) }
-      >
+      <div aria-hidden={ dropMnMobile } className={ style.dropmn }>
         <nav className={ style.dropmobile }>
           <ul>
             <li>
