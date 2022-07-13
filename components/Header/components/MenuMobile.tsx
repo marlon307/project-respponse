@@ -54,7 +54,7 @@ function MenuMobile({ data }: any) {
           </a>
         </Link>
       ) }
-      <div className={ style.dropmn } aria-hidden={ dropMnMobile }>
+      <div className={ style.dropmn } data-active={ dropMnMobile }>
         <nav className={ style.dropmobile }>
           <ul>
             <li>
