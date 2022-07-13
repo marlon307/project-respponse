@@ -27,6 +27,21 @@
       padding: 3em 0;
     }
 
+    li[data-bag="true"] {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 9px;
+        height: 9px;
+        bottom: 14px;
+        left: 1.1em;
+        background: #E77D23;
+        border-radius: 50%;
+      }
+    }
+
     svg {
       z-index: -2;
     }

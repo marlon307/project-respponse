@@ -202,7 +202,7 @@
     display: none;
   }
 
-  .open.buybar {
+  .buybar[aria-hidden="true"] {
     max-height: 60vh;
 
     .calc {

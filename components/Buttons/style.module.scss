@@ -186,7 +186,7 @@
   width: 18%;
 }
 
-.msgerr {
+:is(.btn_t3, .btn_t2)[data-error="true"] {
   gap: 1.4em;
   border-color: var(--colorerr) !important;
 

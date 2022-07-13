@@ -25,6 +25,14 @@
   }
 }
 
+.input[data-error="true"] {
+  border-color: var(--colorerr);
+
+  span {
+    color: var(--colorerr);
+  }
+}
+
 .ph {
   cursor: initial;
   margin-left: 22px;
@@ -35,14 +43,6 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.err {
-  border-color: var(--colorerr);
-
-  span {
-    color: var(--colorerr);
-  }
 }
 
 .inputRadio {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import cx from 'classnames';
 import calcAllValuesArray from '../../hooks/useCalcs';
 import { BuyFinishBtn } from '../Buttons';
 import style from './style.module.scss';
@@ -23,10 +22,7 @@ function BarBuy() {
   }, [bagItems, shipping.valueShipping, cupomAplicate.descountCupom]);
 
   return (
-    <section className={
-      cx(style.buybar, { [style.open]: openInfo })
-    }
-    >
+    <section className={ style.buybar } aria-hidden={ openInfo }>
       <div className={ style.container }>
         <div className={ style.calc }>
           <div>

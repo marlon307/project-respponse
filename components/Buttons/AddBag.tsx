@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import cx from 'classnames';
 import type { PBtnAddBag } from './types';
 import { useAppDispatch } from '../../redux/hooks';
 import { ADD_BAG_ITEMS } from '../../redux/actions';
@@ -50,13 +49,11 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   return (
     <div className={ style.contbtn }>
       <button
-        data-teste={ activeMsg }
-        className={ cx(style.btn_t2, {
-          [style.msgerr]: activeMsg,
-        }) }
+        className={ style.btn_t2 }
         type="button"
         aria-label="Adicionar a sacola e ir para checkout."
         title="Adicionar a sacola e ir para checkout."
+        data-error={ activeMsg }
         onClick={ () => handleClick(true) }
       >
         <span>{ activeMsg ? 'Selecione cor e tamanho!' : 'Comprar Agora' }</span>
@@ -64,9 +61,8 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
       <button
         type="button"
         title="Adicionar a sacola."
-        className={ cx(style.btn_t3, {
-          [style.msgerr]: activeMsg,
-        }) }
+        className={ style.btn_t3 }
+        data-error={ activeMsg }
         aria-label="Adicionar a sacola."
         onClick={ () => handleClick(false) }
       >

@@ -1,6 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
 import Link from 'next/link';
-import cx from 'classnames';
 import SearchBar from '../SearchBar';
 import MenuBag from './components/MenuBag';
 import MenuUser from './components/MenuUser';
@@ -29,10 +28,7 @@ function Header({ data }: any) {
           </a>
         </Link>
       </div>
-      <div className={ cx(style.searchdrop, {
-        [style.drop]: searchopen,
-      }) }
-      >
+      <div className={ style.searchdrop } aria-hidden={ searchopen }>
         <Suspense fallback={ <>...</> }>
           <Bar setSearchopen={ setSearchopen } />
         </Suspense>

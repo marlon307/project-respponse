@@ -19,7 +19,7 @@ const ACTION_LOGIN_USER = (
   state.token = payload.token;
   state.user_id = payload.user_id;
 
-  localStorage.setItem('data_user', JSON.stringify(payload));
+  // localStorage.setItem('data_user', JSON.stringify(payload));
 };
 
 const ACTION_LOGOUT_USER = () => {

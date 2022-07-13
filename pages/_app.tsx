@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps, data }: TPropsApp) {
     //   user_id: 'user.id_user',
     // }));
     // console.log(store);
+    // console.log('00000');
   }, []);
   return (
     <Provider store={ store }>

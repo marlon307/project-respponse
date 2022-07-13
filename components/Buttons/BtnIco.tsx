@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 
@@ -22,7 +21,7 @@ function BtnIco({
   return (
     <button
       type="button"
-      className={ cx('button1', style.btn_t1) }
+      className={ style.btn_t1 }
       onClick={ handleClick }
       disabled={ actionLiberate }
     >

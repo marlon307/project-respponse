@@ -34,7 +34,7 @@
   cursor: pointer;
 }
 
-.tablog.active {
+.tablog[aria-hidden="false"] {
   &:after {
     content: '';
     position: absolute;
@@ -49,7 +49,7 @@
   display: none;
 }
 
-.tab.active {
+.tab[aria-hidden="false"] {
   display: block;
 }
 
