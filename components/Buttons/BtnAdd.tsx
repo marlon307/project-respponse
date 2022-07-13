@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import style from './style.module.scss';
 
 type PBtnAdd = {
@@ -13,7 +12,7 @@ function BtnAdd({ eventBtn }: PBtnAdd) {
 
   return (
     <button
-      className={ cx('button1', style.btnadd) }
+      className={ style.btnadd }
       type="button"
       onClick={ eventButtonAdd }
     >

@@ -50,16 +50,16 @@
     height: 0;
   }
 
-  .open+.dropcontainer {
+  [aria-hidden="false"]+.dropcontainer {
     height: auto;
   }
 
-  .open+.dropcontainer section {
+  [aria-hidden="false"]+.dropcontainer section {
     display: block;
     border: none;
   }
 
-  .dropOption.open {
+  .dropOption[aria-hidden="false"] {
     padding: 28px 0;
     border: none;
   }

@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import cx from 'classnames';
 import Link from 'next/link';
 import { useAppSelector } from '../../../redux/hooks';
 import { SmallCard } from '../../Cards';
@@ -11,10 +10,7 @@ function MenuBag() {
   const ref = useRef(null);
 
   return (
-    <div className={ cx(style.bag, {
-      [style.contb]: bagItems.length,
-    }) }
-    >
+    <div className={ style.bag } data-bag={ Boolean(bagItems.length) }>
       <Link href="/bag">
         <a aria-label="Sacola">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

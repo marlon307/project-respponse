@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import cx from 'classnames';
 import style from './style.module.scss';
 import type { PInputText } from './type';
 
@@ -38,12 +37,7 @@ function Input({
   }
 
   return (
-    <label
-      className={ cx(style.input, {
-        [style.err]: statusValid,
-      }) }
-      htmlFor={ id }
-    >
+    <label className={ style.input } htmlFor={ id } data-error={ statusValid }>
       <input
         id={ id }
         type={ type }

@@ -101,7 +101,6 @@ function MenuUser({ data }: any) {
           </CustomLink>
         </Link>
       ) }
-
       <Suspense fallback="...">
         <ContentModal isOpen={ openLogin } openModal={ setOpenLogin }>
           { openLogin && <LoginRegister /> }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import cx from 'classnames';
 import { useRouter } from 'next/router';
 import Svg from '../assets/Svg';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
@@ -17,7 +16,7 @@ function Login() {
   const dispatch = useAppDispatch();
   const reduxUser = useAppSelector(({ user }) => user);
   const router = useRouter();
-  const [sectionTab, setSectionTab] = useState(true);
+  const [sectionTab, setSectionTab] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [stateLogin, setStateLogin] = useState({
     lemail: '',
@@ -74,12 +73,12 @@ function Login() {
   // Tabs Login
   function tabSectionLogin(event: { preventDefault: () => void; }) {
     event.preventDefault();
-    setSectionTab(true);
+    setSectionTab(0);
   }
 
   function tabSectionRegister(event: { preventDefault: () => void; }) {
     event.preventDefault();
-    setSectionTab(false);
+    setSectionTab(1);
   }
 
   useEffect(() => {
@@ -100,23 +99,25 @@ function Login() {
         </div>
         <div className={ style.sectiontab }>
           <button
-            type="button"
+            className={ style.tablog }
             aria-label="Login"
+            aria-hidden={ !(sectionTab === 0) }
+            type="button"
             onClick={ tabSectionLogin }
-            className={ cx(style.tablog, { [style.active]: sectionTab }) }
           >
             <h1>Entrar</h1>
           </button>
           <button
-            type="button"
+            className={ style.tablog }
             aria-label="Registre-se"
+            aria-hidden={ !(sectionTab === 1) }
+            type="button"
             onClick={ tabSectionRegister }
-            className={ cx(style.tablog, { [style.active]: !sectionTab }) }
           >
             <h1>Registre-se</h1>
           </button>
         </div>
-        <form className={ cx(style.tab, { [style.active]: sectionTab }) }>
+        <form className={ style.tab } aria-hidden={ !(sectionTab === 0) }>
           <div className="inputs">
             <Input
               id="lemail"
@@ -165,7 +166,7 @@ function Login() {
             />
           </div>
         </form>
-        <form className={ cx(style.tab, { [style.active]: !sectionTab }) }>
+        <form className={ style.tab } aria-hidden={ !(sectionTab === 1) }>
           <div className="inputs">
             <Input
               id="rname"
