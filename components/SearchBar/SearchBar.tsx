@@ -7,17 +7,12 @@ type Props = {
 };
 
 function SearchBar({ setSearchopen, searchopen }: Props) {
-  function openSearchBar(event: { preventDefault: () => void; }) {
-    event.preventDefault();
-    setSearchopen(!searchopen);
-  }
-
   return (
     !searchopen ? (
       <div className={ style.searchBar }>
         <button
           type="button"
-          onClick={ openSearchBar }
+          onClick={ () => setSearchopen(!searchopen) }
           aria-label="Pesquisar Produtos"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

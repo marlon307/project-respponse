@@ -37,7 +37,7 @@
   opacity: 0;
 }
 
-.searchdrop[aria-hidden="true"] {
+.searchdrop[aria-hidden="false"] {
   transform: translate3d(-50%, 0, 0);
   opacity: 1;
 }
@@ -103,7 +103,7 @@
     z-index: 565656;
   }
 
-  .searchdrop[aria-hidden="true"] {
+  .searchdrop[aria-hidden="false"] {
     transform: translate3d(-50%, 18px, 0);
   }
 }

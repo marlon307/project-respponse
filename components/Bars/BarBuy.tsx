@@ -22,7 +22,7 @@ function BarBuy() {
   }, [bagItems, shipping.valueShipping, cupomAplicate.descountCupom]);
 
   return (
-    <section className={ style.buybar } aria-hidden={ openInfo }>
+    <section className={ style.buybar } data-active={ openInfo }>
       <div className={ style.container }>
         <div className={ style.calc }>
           <div>
