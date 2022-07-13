@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { signIn, useSession } from 'next-auth/react';
 import Svg from '../assets/Svg';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { LOGIN_USER } from '../redux/actions';
 import BtnIco from '../components/Buttons/BtnIco';
 import style from '../Sass/style.module.scss';
-import { api2 } from '../service/api';
+// import { api2 } from '../service/api';
 import { Input } from '../components/ComponentsForm';
 import HeadSEO from '../components/Head/HeadSEO';
 
@@ -14,6 +15,7 @@ const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
 
 function Login() {
   const dispatch = useAppDispatch();
+  const { data } = useSession();
   const reduxUser = useAppSelector(({ user }) => user);
   const router = useRouter();
   const [sectionTab, setSectionTab] = useState(0);
@@ -43,20 +45,23 @@ function Login() {
 
     if (validEmail.test(lemail) && validPsw.test(lpsw) && isLoading === false) {
       setIsLoading(true);
-      const { data } = await api2.post('/login_user', {
+      const response = await signIn('credentials', {
+        redirect: false,
         email: lemail,
         password: lpsw,
       });
 
-      const { user } = data;
+      if (response?.status === 200 && data) {
+        const { user, token }: any = data.data;
 
-      dispatch(LOGIN_USER({
-        name: user.name,
-        token: data.token,
-        email: user.email,
-        logged: true,
-        user_id: user.id_user,
-      }));
+        dispatch(LOGIN_USER({
+          name: user.name,
+          token,
+          email: user.email,
+          logged: true,
+          user_id: user.id_user,
+        }));
+      }
       setIsLoading(false);
     }
   };

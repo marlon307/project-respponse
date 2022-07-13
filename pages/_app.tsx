@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 import Header from '../components/Header/Header';
@@ -30,12 +31,14 @@ function MyApp({ Component, pageProps, data }: TPropsApp) {
   }, []);
   return (
     <Provider store={ store }>
-      <Header data={ data } />
-      <main className={ style.main }>
-        <Component { ...pageProps } />
-      </main>
-      <Footer />
-      <Modal />
+      <SessionProvider session={ pageProps.session } refetchInterval={ 0 }>
+        <Header data={ data } />
+        <main className={ style.main }>
+          <Component { ...pageProps } />
+        </main>
+        <Footer />
+        <Modal />
+      </SessionProvider>
     </Provider>
   );
 }
