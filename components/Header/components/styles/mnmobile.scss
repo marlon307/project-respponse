@@ -58,7 +58,7 @@
     }
   }
 
-  [aria-hidden="true"] {
+  [data-active="true"] {
     .dropmobile {
       transform: translateX(0);
     }
