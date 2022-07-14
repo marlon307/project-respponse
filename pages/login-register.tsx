@@ -240,7 +240,6 @@ function Login() {
             ) : (
               <div className={ style.msgregister }>
                 Registrado com sucesso.
-
                 <span />
                 <p>
                   Confirme sua conta atraves do email que enviamos para
