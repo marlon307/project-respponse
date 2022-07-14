@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { LOGOUT_USER } from '../../../redux/actions';
 import CustomLink from '../../CustomLink';
@@ -7,6 +8,7 @@ import style from './styles/style.module.scss';
 
 function MenuMobile({ data, logOut }: any) {
   const dipatch = useAppDispatch();
+  const router = useRouter();
   const { bag } = useAppSelector((states) => states);
   const { bagItems } = bag;
   const [dropMnMobile, setDropMnMobile] = useState(false);
@@ -16,6 +18,7 @@ function MenuMobile({ data, logOut }: any) {
     if (data) {
       logOut(undefined);
       dipatch(LOGOUT_USER());
+      router.push('/');
     }
   }
 
