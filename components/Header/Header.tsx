@@ -28,7 +28,7 @@ function Header({ data }: any) {
           </a>
         </Link>
       </div>
-      <div className={ style.searchdrop } aria-hidden={ !searchopen }>
+      <div className={ style.searchdrop } data-active={ searchopen }>
         <Suspense fallback={ <>...</> }>
           <Bar setSearchopen={ setSearchopen } />
         </Suspense>
