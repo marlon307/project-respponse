@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import style from './style.module.scss';
 import type { PInputText } from './type';
 
-const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
-const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
-
 function Input({
-  id, type, name, placeHolder, autoComplete, inputValue, ivalue, msgError, disabled,
+  id, type, name, placeHolder, autoComplete, inputValue, ivalue, msgError, disabled, isValid,
 }: PInputText) {
+  const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
+  const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
   const [statusValid, setSatusValid] = useState(false);
 
   function handleChange({ target }: any) {
@@ -37,7 +36,7 @@ function Input({
   }
 
   return (
-    <label className={ style.input } htmlFor={ id } data-error={ statusValid }>
+    <label className={ style.input } htmlFor={ id } data-error={ statusValid || isValid }>
       <input
         id={ id }
         type={ type }
@@ -51,9 +50,9 @@ function Input({
       />
       <span
         className={ style.ph }
-        title={ statusValid ? msgError : placeHolder }
+        title={ statusValid || isValid ? msgError : placeHolder }
       >
-        { statusValid ? msgError : placeHolder }
+        { statusValid || isValid ? msgError : placeHolder }
       </span>
     </label>
   );
