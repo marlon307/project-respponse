@@ -1,18 +1,38 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, {
+  useState, Suspense, lazy, useEffect,
+} from 'react';
 import Link from 'next/link';
 import SearchBar from '../SearchBar';
 import MenuBag from './components/MenuBag';
 import MenuUser from './components/MenuUser';
 import MenuMobile from './components/MenuMobile';
-// import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch } from '../../redux/hooks';
 import style from './style.module.scss';
+import { LOGIN_USER } from '../../redux/actions';
 
 const Bar = lazy(() => import('../SearchBar/Bar'));
 
 function Header({ data }: any) {
   const [searchopen, setSearchopen] = useState(false);
-  // const reduxDataUser = useAppSelector(({ user }) => user);
-  // console.log(data);
+  const [isLogged, setIsLogged] = useState(data);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const datalocal = localStorage.getItem('data_user')!;
+    if (data && datalocal) {
+      const { id_user: iduser, email, name } = JSON.parse(datalocal);
+
+      dispatch(LOGIN_USER({
+        name,
+        token: isLogged,
+        email,
+        logged: true,
+        user_id: iduser,
+      }));
+    } else {
+      setIsLogged(undefined);
+    }
+  }, []);
 
   return (
     <header className={ style.header }>
@@ -39,9 +59,9 @@ function Header({ data }: any) {
             searchopen={ searchopen }
             setSearchopen={ setSearchopen }
           />
-          { data && <MenuBag /> }
-          <MenuUser data={ data } />
-          <MenuMobile data={ data } />
+          { isLogged && <MenuBag /> }
+          <MenuUser data={ isLogged } logOut={ setIsLogged } />
+          <MenuMobile data={ isLogged } logOut={ setIsLogged } />
         </nav>
       </div>
     </header>
