@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
-
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
+import Modal from '../components/Modal/Modal';
 // import { LOGIN_USER } from '../redux/actions';
+import style from '../Sass/style.module.scss';
 import '../Sass/globals.scss';
-import Layout from '../components/layout/Layout';
 
 type TPropsApp = {
   Component: AppProps['Component'];
@@ -28,9 +30,12 @@ function MyApp({ Component, pageProps, data }: TPropsApp) {
 
   return (
     <Provider store={ store }>
-      <Layout data={ data }>
+      <Header data={ data } />
+      <main className={ style.main }>
         <Component { ...pageProps } />
-      </Layout>
+      </main>
+      <Footer />
+      <Modal />
     </Provider>
   );
 }
