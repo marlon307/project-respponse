@@ -47,7 +47,6 @@ function Login() {
         email: lemail,
         password: lpsw,
       });
-
       const { user } = data;
 
       dispatch(LOGIN_USER({

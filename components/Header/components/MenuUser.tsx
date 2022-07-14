@@ -10,7 +10,7 @@ import style from './styles/style.module.scss';
 const ContentModal = lazy(() => import('../../Modal/ContentModal'));
 const LoginRegister = lazy(() => import('../../../pages/login-register'));
 
-function MenuUser({ data }: any) {
+function MenuUser({ data, logOut }: any) {
   const dispatch = useAppDispatch();
   // const { logged } = useAppSelector(({ user }) => user);
   const [openLogin, setOpenLogin] = useState(false);
@@ -20,6 +20,7 @@ function MenuUser({ data }: any) {
     if (!data) {
       setOpenLogin(true);
     } else {
+      logOut(undefined);
       dispatch(LOGOUT_USER());
     }
   }

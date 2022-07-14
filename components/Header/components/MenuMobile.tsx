@@ -5,7 +5,7 @@ import { LOGOUT_USER } from '../../../redux/actions';
 import CustomLink from '../../CustomLink';
 import style from './styles/style.module.scss';
 
-function MenuMobile({ data }: any) {
+function MenuMobile({ data, logOut }: any) {
   const dipatch = useAppDispatch();
   const { bag } = useAppSelector((states) => states);
   const { bagItems } = bag;
@@ -14,6 +14,7 @@ function MenuMobile({ data }: any) {
   function handleClickLogOutUser() {
     setDropMnMobile(!dropMnMobile);
     if (data) {
+      logOut(undefined);
       dipatch(LOGOUT_USER());
     }
   }
