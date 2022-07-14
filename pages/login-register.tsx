@@ -9,15 +9,18 @@ import HeadSEO from '../components/Head/HeadSEO';
 import { api2 } from '../service/api';
 import style from '../Sass/style.module.scss';
 
-const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
-const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
-
 function Login() {
+  const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
+  const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
+
   const dispatch = useAppDispatch();
   const reduxUser = useAppSelector(({ user }) => user);
   const router = useRouter();
   const [sectionTab, setSectionTab] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isValidLogin, setisValidLogin] = useState(false);
+  const [isValidRegister, setisValidRegister] = useState(false);
+  const [isRegistred, setisRegistered] = useState<string | null>(null);
   const [stateLogin, setStateLogin] = useState({
     lemail: '',
     lpsw: '',
@@ -36,6 +39,7 @@ function Login() {
       ...state,
       [name]: value,
     }));
+    setisValidLogin(false);
   };
 
   const clickLogin = async () => {
@@ -43,19 +47,26 @@ function Login() {
 
     if (validEmail.test(lemail) && validPsw.test(lpsw) && isLoading === false) {
       setIsLoading(true);
+
       const { data } = await api2.post('/login_user', {
         email: lemail,
         password: lpsw,
-      });
-      const { user } = data;
+      }).catch(({ response }) => response);
 
-      dispatch(LOGIN_USER({
-        name: user.name,
-        token: data.token,
-        email: user.email,
-        logged: true,
-        user_id: user.id_user,
-      }));
+      if (data.status !== 400) {
+        const { user } = data;
+
+        dispatch(LOGIN_USER({
+          name: user.name,
+          token: data.token,
+          email: user.email,
+          logged: true,
+          user_id: user.id_user,
+        }));
+      } else {
+        setisValidLogin(true);
+        setIsLoading(false);
+      }
       setIsLoading(false);
     }
   };
@@ -69,16 +80,27 @@ function Login() {
     }));
   };
 
-  // Tabs Login
-  function tabSectionLogin(event: { preventDefault: () => void; }) {
-    event.preventDefault();
-    setSectionTab(0);
-  }
+  const clickRegister = async () => {
+    const { remail, rname, rpsw } = stateRegister;
 
-  function tabSectionRegister(event: { preventDefault: () => void; }) {
-    event.preventDefault();
-    setSectionTab(1);
-  }
+    if (validEmail.test(remail) && validPsw.test(rpsw) && isLoading === false) {
+      setIsLoading(true);
+
+      const { data } = await api2.post('/createuser', {
+        email: remail,
+        password: rpsw,
+        name: rname,
+      }).catch(({ response }) => response);
+
+      if (data.status === 201) {
+        setisRegistered(remail);
+      } else {
+        setisValidRegister(true);
+        setIsLoading(false);
+      }
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (router.asPath === '/login-register' && reduxUser.logged) {
@@ -102,7 +124,7 @@ function Login() {
             aria-label="Login"
             aria-hidden={ !(sectionTab === 0) }
             type="button"
-            onClick={ tabSectionLogin }
+            onClick={ () => setSectionTab(0) }
           >
             <h1>Entrar</h1>
           </button>
@@ -111,7 +133,7 @@ function Login() {
             aria-label="Registre-se"
             aria-hidden={ !(sectionTab === 1) }
             type="button"
-            onClick={ tabSectionRegister }
+            onClick={ () => setSectionTab(1) }
           >
             <h1>Registre-se</h1>
           </button>
@@ -128,6 +150,7 @@ function Login() {
               placeHolder="E-mail"
               msgError="Email inválido!"
               disabled={ isLoading || reduxUser.logged }
+              isValid={ isValidLogin }
             />
             <Input
               id="lpsw"
@@ -139,6 +162,7 @@ function Login() {
               placeHolder="Senha"
               msgError="Senha invalida!"
               disabled={ isLoading || reduxUser.logged }
+              isValid={ isValidLogin }
             />
           </div>
           <div className={ style.action }>
@@ -166,48 +190,64 @@ function Login() {
           </div>
         </form>
         <form className={ style.tab } aria-hidden={ !(sectionTab === 1) }>
-          <div className="inputs">
-            <Input
-              id="rname"
-              type="name"
-              name="rname"
-              placeHolder="Nome Sobrenome"
-              autoComplete="name"
-              inputValue={ actionRegister }
-              ivalue={ stateRegister.rname }
-              msgError="Preencha Nome e Sobrenome"
-              disabled={ isLoading || reduxUser.logged }
-            />
-            <Input
-              id="remail"
-              type="email"
-              name="remail"
-              placeHolder="E-mail"
-              autoComplete="email"
-              inputValue={ actionRegister }
-              ivalue={ stateRegister.remail }
-              msgError="E-mail inválido!"
-              disabled={ isLoading || reduxUser.logged }
-            />
-            <Input
-              id="rpsw"
-              type="password"
-              name="rpsw"
-              placeHolder="Senha"
-              inputValue={ actionRegister }
-              ivalue={ stateRegister.rpsw }
-              msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
-              disabled={ isLoading || reduxUser.logged }
-            />
-          </div>
-          <div className={ style.action }>
-            <BtnIco
-              textBtn="Criar Conta"
-              icoName="setRight"
-              action={ () => { } }
-              actionLiberate={ isLoading }
-            />
-          </div>
+          { !isRegistred
+            ? (
+              <>
+                <div className="inputs">
+                  <Input
+                    id="rname"
+                    type="name"
+                    name="rname"
+                    placeHolder="Nome Sobrenome"
+                    autoComplete="name"
+                    inputValue={ actionRegister }
+                    ivalue={ stateRegister.rname }
+                    msgError="Preencha Nome e Sobrenome"
+                    disabled={ isLoading || reduxUser.logged }
+                  />
+                  <Input
+                    id="remail"
+                    type="email"
+                    name="remail"
+                    placeHolder="E-mail"
+                    autoComplete="email"
+                    inputValue={ actionRegister }
+                    ivalue={ stateRegister.remail }
+                    msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
+                    disabled={ isLoading || reduxUser.logged }
+                    isValid={ isValidRegister }
+                  />
+                  <Input
+                    id="rpsw"
+                    type="password"
+                    name="rpsw"
+                    placeHolder="Senha"
+                    inputValue={ actionRegister }
+                    ivalue={ stateRegister.rpsw }
+                    msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
+                    disabled={ isLoading || reduxUser.logged }
+                  />
+                </div>
+                <div className={ style.action }>
+                  <BtnIco
+                    textBtn="Criar Conta"
+                    icoName="setRight"
+                    action={ clickRegister }
+                    actionLiberate={ isLoading }
+                  />
+                </div>
+              </>
+            ) : (
+              <div className={ style.msgregister }>
+                Registrado com sucesso.
+                <span />
+                <p>
+                  Confirme sua conta atraves do email que enviamos para
+                  { ' ' }
+                  <b>{ isRegistred }</b>
+                </p>
+              </div>
+            ) }
         </form>
       </section>
     </>

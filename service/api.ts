@@ -11,7 +11,7 @@ export const api2 = axios.create({
 
 // https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900
 
-api.interceptors.request.use(async (config: AxiosRequestConfig) => {
+api.interceptors.request.use((config: AxiosRequestConfig) => {
   const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9';
 
   if (token) {

@@ -1,38 +1,40 @@
-import React, {
-  useState, Suspense, lazy, useEffect,
-} from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import SearchBar from '../SearchBar';
+import Bar from '../SearchBar/Bar';
 import MenuBag from './components/MenuBag';
 import MenuUser from './components/MenuUser';
 import MenuMobile from './components/MenuMobile';
-import { useAppDispatch } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import style from './style.module.scss';
 import { LOGIN_USER } from '../../redux/actions';
 
-const Bar = lazy(() => import('../SearchBar/Bar'));
-
 function Header({ data }: any) {
+  const reduxUser = useAppSelector(({ user }) => user)!;
   const [searchopen, setSearchopen] = useState(false);
   const [isLogged, setIsLogged] = useState(data);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const datalocal = localStorage.getItem('data_user')!;
-    if (data && datalocal) {
-      const { id_user: iduser, email, name } = JSON.parse(datalocal);
+    const datalocal = JSON.parse(localStorage.getItem('data_user')!);
 
-      dispatch(LOGIN_USER({
-        name,
-        token: isLogged,
-        email,
-        logged: true,
-        user_id: iduser,
-      }));
+    if (isLogged || datalocal) {
+      if (datalocal !== null) {
+        dispatch(LOGIN_USER({
+          name: datalocal.name,
+          token: reduxUser.token || isLogged,
+          email: datalocal.name,
+          logged: true,
+          user_id: datalocal.id_user,
+        }));
+        setIsLogged(reduxUser.token || isLogged);
+      } else {
+        setIsLogged(undefined);
+      }
     } else {
       setIsLogged(undefined);
     }
-  }, []);
+  }, [reduxUser.logged]);
 
   return (
     <header className={ style.header }>
@@ -49,9 +51,7 @@ function Header({ data }: any) {
         </Link>
       </div>
       <div className={ style.searchdrop } data-active={ searchopen }>
-        <Suspense fallback={ <>...</> }>
-          <Bar setSearchopen={ setSearchopen } />
-        </Suspense>
+        <Bar setSearchopen={ setSearchopen } />
       </div>
       <div className={ style.container }>
         <nav className={ style.nav }>

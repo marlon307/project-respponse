@@ -1,18 +1,18 @@
-import React, {
-  useState, useEffect, lazy, Suspense,
-} from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import ContentModal from '../../Modal/ContentModal';
 import CustomLink from '../../CustomLink';
 import { /* useAppSelector, */ useAppDispatch } from '../../../redux/hooks';
 import { LOGOUT_USER } from '../../../redux/actions';
 import style from './styles/style.module.scss';
 
-const ContentModal = lazy(() => import('../../Modal/ContentModal'));
+// const ContentModal = lazy(() => import('../../Modal/ContentModal'));
 const LoginRegister = lazy(() => import('../../../pages/login-register'));
 
 function MenuUser({ data, logOut }: any) {
   const dispatch = useAppDispatch();
-  // const { logged } = useAppSelector(({ user }) => user);
+  const router = useRouter();
   const [openLogin, setOpenLogin] = useState(false);
 
   function openModalLogin(event: { preventDefault: () => void; }) {
@@ -22,6 +22,7 @@ function MenuUser({ data, logOut }: any) {
     } else {
       logOut(undefined);
       dispatch(LOGOUT_USER());
+      router.push('/');
     }
   }
   // Fechar modal apos login
@@ -102,11 +103,9 @@ function MenuUser({ data, logOut }: any) {
           </CustomLink>
         </Link>
       ) }
-      <Suspense fallback="...">
-        <ContentModal isOpen={ openLogin } openModal={ setOpenLogin }>
-          { openLogin && <LoginRegister /> }
-        </ContentModal>
-      </Suspense>
+      <ContentModal isOpen={ openLogin } openModal={ setOpenLogin }>
+        { openLogin && <LoginRegister /> }
+      </ContentModal>
     </div>
   );
 }

@@ -18,4 +18,5 @@ export interface PInputText {
   regexValidator?: RegExp;
   msgError?: string;
   disabled?: boolean;
+  isValid?: boolean;
 }
