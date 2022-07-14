@@ -31,11 +31,8 @@ function MyApp({ Component, pageProps, data }: TPropsApp) {
 MyApp.getInitialProps = async (context: any) => {
   const cookie = context.ctx.req ? context.ctx.req.cookies : null;
   return {
-    data: cookie.u_token ? `Bearer ${cookie.u_token}` : undefined,
+    data: cookie?.u_token ? `Bearer ${cookie.u_token}` : undefined,
   };
-  // return {
-  //   data: `Bearer ${cookie.u_token}`,
-  // };
 };
 
 export default MyApp;
