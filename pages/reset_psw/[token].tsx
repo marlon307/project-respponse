@@ -42,7 +42,7 @@ function Token() {
       }).catch(({ response }) => response);
 
       if (data.status === 200) {
-        setMsg('Senha alterada com sucesso!');
+        setMsg(data.msg);
       } else {
         setIsLoading(false);
         setisValid(true);
@@ -69,7 +69,7 @@ function Token() {
                 placeHolder="Digine uma nova senha."
                 ivalue={ newpsw.psw_1 }
                 inputValue={ changeEmail! }
-                msgError={ isValid ? 'Informções errada!' : 'Senha inválida!' }
+                msgError={ isValid ? 'Token expirado!' : 'Senha inválida!' }
                 isValid={ isValid }
               />
               <Input
@@ -79,7 +79,7 @@ function Token() {
                 placeHolder="Repita a senha digitada acima"
                 ivalue={ newpsw.psw_2 }
                 inputValue={ changeEmail! }
-                msgError={ isValid ? 'Informções errada!' : 'Senha inválida!' }
+                msgError={ isValid ? 'Token expirado!' : 'Senha inválida!' }
                 isValid={ isValid }
               />
             </div>

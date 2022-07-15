@@ -1,21 +1,11 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useAppSelector } from '../redux/hooks';
+import React from 'react';
+import type { GetServerSideProps } from 'next';
 import { SmallCard } from '../components/Cards';
 import style from '../Sass/style.module.scss';
 import mockBag from '../service/mockBag';
 import HeadSEO from '../components/Head/HeadSEO';
 
 function Favorite() {
-  const { logged } = useAppSelector(({ user }) => user);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!logged) {
-      router.push('/');
-    }
-  }, [logged, router]);
-
   return (
     <>
       <HeadSEO title="Favoritos" description="Lista de favoritos." />
@@ -40,5 +30,22 @@ function Favorite() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  if (req.cookies.u_token) {
+    return {
+      props: {
+        logged: req.cookies.u_token,
+      },
+    };
+  }
+
+  return {
+    redirect: {
+      permanent: false,
+      destination: '/',
+    },
+  };
+};
 
 export default Favorite;

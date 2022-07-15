@@ -1,8 +1,7 @@
 import React, {
-  useState, useEffect, useCallback, lazy, Suspense,
+  useState, useCallback, lazy, Suspense,
 } from 'react';
-import { useRouter } from 'next/router';
-import { useAppSelector } from '../redux/hooks';
+import type { GetServerSideProps } from 'next';
 import BtnAdd from '../components/Buttons/BtnAdd';
 import style from '../Sass/style.module.scss';
 import Loading from '../components/Loading';
@@ -19,8 +18,6 @@ const Help = lazy(() => import('./help'));
 const ContentModal = lazy(() => import('../components/Modal/ContentModal'));
 
 function Account() {
-  const { logged } = useAppSelector(({ user }) => user);
-  const router = useRouter();
   const [dropOption, setDropOption] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
@@ -31,16 +28,9 @@ function Account() {
   }, []);
 
   const openOrderId = useCallback(() => {
-    // (id) =>
     setOpenModal(true);
     setTypeModal('order');
   }, []);
-
-  useEffect(() => {
-    if (!logged) {
-      router.push('/');
-    }
-  }, [logged, router]);
 
   return (
     <>
@@ -157,5 +147,22 @@ function Account() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  if (req.cookies.u_token) {
+    return {
+      props: {
+        logged: req.cookies.u_token,
+      },
+    };
+  }
+
+  return {
+    redirect: {
+      permanent: false,
+      destination: '/',
+    },
+  };
+};
 
 export default Account;

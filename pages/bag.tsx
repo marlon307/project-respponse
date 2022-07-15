@@ -1,4 +1,5 @@
 import React, { useCallback, useState, lazy } from 'react';
+import type { GetServerSideProps } from 'next';
 import BarBuy from '../components/Bars/BarBuy';
 import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
@@ -92,5 +93,22 @@ function Bag() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  if (req.cookies.u_token) {
+    return {
+      props: {
+        logged: req.cookies.u_token,
+      },
+    };
+  }
+
+  return {
+    redirect: {
+      permanent: false,
+      destination: '/',
+    },
+  };
+};
 
 export default Bag;
