@@ -19,6 +19,24 @@
     height: 28px;
     transition: 3s;
   }
+
+  &:hover svg {
+    animation: hoversearch 0.2s ease normal;
+  }
+}
+
+@keyframes hoversearch {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(0.8, 0.8, 0.8);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
 }
 
 .bar {
