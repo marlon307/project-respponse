@@ -58,4 +58,8 @@ function Input({
   );
 }
 
+Input.defaultProps = {
+  autoComplete: 'off',
+};
+
 export default Input;

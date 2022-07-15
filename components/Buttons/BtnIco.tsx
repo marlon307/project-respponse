@@ -2,9 +2,9 @@ import React from 'react';
 import style from './style.module.scss';
 import Svg from '../../assets/Svg';
 
-type PBtnIco = {
+export type PBtnIco = {
   textBtn: string;
-  icoName: string;
+  icoName?: string;
   action: Function;
   actionLiberate: boolean;
 };
@@ -35,11 +35,15 @@ function BtnIco({
       ) : (
         <>
           { textBtn }
-          <Svg icoName={ icoName } />
+          <Svg icoName={ icoName! } />
         </>
       ) }
     </button>
   );
 }
+
+BtnIco.defaultProps = {
+  icoName: undefined,
+};
 
 export default BtnIco;
