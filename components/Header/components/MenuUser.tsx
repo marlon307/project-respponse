@@ -3,15 +3,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ContentModal from '../../Modal/ContentModal';
 import CustomLink from '../../CustomLink';
-import { /* useAppSelector, */ useAppDispatch } from '../../../redux/hooks';
-import { LOGOUT_USER } from '../../../redux/actions';
 import style from './styles/style.module.scss';
+import useUser, { logOutUser } from '../../../hooks/useUser';
 
 // const ContentModal = lazy(() => import('../../Modal/ContentModal'));
 const LoginRegister = lazy(() => import('../../../pages/login-register'));
 
-function MenuUser({ data, logOut }: any) {
-  const dispatch = useAppDispatch();
+function MenuUser({ data }: any) {
+  const { mutate } = useUser();
   const router = useRouter();
   const [openLogin, setOpenLogin] = useState(false);
 
@@ -20,8 +19,8 @@ function MenuUser({ data, logOut }: any) {
     if (!data) {
       setOpenLogin(true);
     } else {
-      logOut(undefined);
-      dispatch(LOGOUT_USER());
+      logOutUser();
+      mutate();
       router.push('/');
     }
   }

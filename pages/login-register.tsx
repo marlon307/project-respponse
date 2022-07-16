@@ -1,25 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 import Svg from '../assets/Svg';
-import { useAppSelector, useAppDispatch } from '../redux/hooks';
-import { LOGIN_USER } from '../redux/actions';
 import BtnIco from '../components/Buttons/BtnIco';
 import { Input } from '../components/ComponentsForm';
 import HeadSEO from '../components/Head/HeadSEO';
 import { api2 } from '../service/api';
 import style from '../Sass/style.module.scss';
+import useUser, { loginUser } from '../hooks/useUser';
 
 function Login() {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
-
-  const dispatch = useAppDispatch();
-  const reduxUser = useAppSelector(({ user }) => user);
-  const router = useRouter();
+  const { mutate/* , isLoading */ } = useUser();
   const [sectionTab, setSectionTab] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
   const [isValidLogin, setisValidLogin] = useState(false);
   const [isValidRegister, setisValidRegister] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isRegistred, setisRegistered] = useState<string | null>(null);
   const [stateLogin, setStateLogin] = useState({
     lemail: '',
@@ -47,28 +42,10 @@ function Login() {
 
     if (validEmail.test(lemail) && validPsw.test(lpsw) && isLoading === false) {
       setIsLoading(true);
-
-      const { data } = await api2.post('/login_user', {
-        email: lemail,
-        password: lpsw,
-      }).catch(({ response }) => response);
-
-      if (data.status !== 400) {
-        const { user } = data;
-
-        dispatch(LOGIN_USER({
-          name: user.name,
-          token: data.token,
-          email: user.email,
-          logged: true,
-          user_id: user.id_user,
-        }));
-      } else {
-        setisValidLogin(true);
-        setIsLoading(false);
-      }
-      setIsLoading(false);
+      await loginUser(lemail, lpsw);
+      mutate();
     }
+    setIsLoading(false);
   };
 
   // Function Register
@@ -84,8 +61,6 @@ function Login() {
     const { remail, rname, rpsw } = stateRegister;
 
     if (validEmail.test(remail) && validPsw.test(rpsw) && isLoading === false) {
-      setIsLoading(true);
-
       const { data } = await api2.post('/createuser', {
         email: remail,
         password: rpsw,
@@ -96,17 +71,15 @@ function Login() {
         setisRegistered(remail);
       } else {
         setisValidRegister(true);
-        setIsLoading(false);
       }
-      setIsLoading(false);
     }
   };
 
-  useEffect(() => {
-    if (router.asPath === '/login-register' && reduxUser.logged) {
-      router.push('/');
-    }
-  }, [reduxUser.logged, router]);
+  // useEffect(() => {
+  //   if (router.asPath === '/login-register' && reduxUser.logged) {
+  //     router.push('/');
+  //   }
+  // }, [reduxUser.logged, router]);
 
   return (
     <>
@@ -149,7 +122,7 @@ function Login() {
               inputValue={ actionUserLogin }
               placeHolder="E-mail"
               msgError="Email inválido!"
-              disabled={ isLoading || reduxUser.logged }
+              disabled={ isLoading }
               isValid={ isValidLogin }
             />
             <Input
@@ -161,7 +134,7 @@ function Login() {
               inputValue={ actionUserLogin }
               placeHolder="Senha"
               msgError="Senha invalida!"
-              disabled={ isLoading || reduxUser.logged }
+              disabled={ isLoading }
               isValid={ isValidLogin }
             />
           </div>
@@ -190,7 +163,7 @@ function Login() {
           </div>
         </form>
         <form className={ style.tab } aria-hidden={ !(sectionTab === 1) }>
-          { isRegistred
+          { !isRegistred
             ? (
               <>
                 <div className="inputs">
@@ -203,7 +176,7 @@ function Login() {
                     inputValue={ actionRegister }
                     ivalue={ stateRegister.rname }
                     msgError="Preencha Nome e Sobrenome"
-                    disabled={ isLoading || reduxUser.logged }
+                    disabled={ isLoading }
                   />
                   <Input
                     id="remail"
@@ -214,7 +187,7 @@ function Login() {
                     inputValue={ actionRegister }
                     ivalue={ stateRegister.remail }
                     msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
-                    disabled={ isLoading || reduxUser.logged }
+                    disabled={ isLoading }
                     isValid={ isValidRegister }
                   />
                   <Input
@@ -225,7 +198,7 @@ function Login() {
                     inputValue={ actionRegister }
                     ivalue={ stateRegister.rpsw }
                     msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
-                    disabled={ isLoading || reduxUser.logged }
+                    disabled={ isLoading }
                   />
                 </div>
                 <div className={ style.action }>
