@@ -8,16 +8,10 @@ import Modal from '../components/Modal/Modal';
 import style from '../Sass/style.module.scss';
 import '../Sass/globals.scss';
 
-type TPropsApp = {
-  Component: AppProps['Component'];
-  pageProps: AppProps['pageProps'];
-  data: any
-};
-
-function MyApp({ Component, pageProps, data }: TPropsApp) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={ store }>
-      <Header data={ data } />
+      <Header />
       <main className={ style.main }>
         <Component { ...pageProps } />
       </main>
@@ -26,12 +20,5 @@ function MyApp({ Component, pageProps, data }: TPropsApp) {
     </Provider>
   );
 }
-
-MyApp.getInitialProps = async (context: any) => {
-  const cookie = context.ctx.req ? context.ctx.req.cookies : null;
-  return {
-    data: cookie?.u_token ? `Bearer ${cookie.u_token}` : undefined,
-  };
-};
 
 export default MyApp;
