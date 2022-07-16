@@ -5,7 +5,6 @@ import { store } from '../redux/store';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Modal from '../components/Modal/Modal';
-// import { LOGIN_USER } from '../redux/actions';
 import style from '../Sass/style.module.scss';
 import '../Sass/globals.scss';
 

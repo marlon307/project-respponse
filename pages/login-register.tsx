@@ -190,7 +190,7 @@ function Login() {
           </div>
         </form>
         <form className={ style.tab } aria-hidden={ !(sectionTab === 1) }>
-          { isRegistred
+          { !isRegistred
             ? (
               <>
                 <div className="inputs">
