@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import router from 'next/router';
 import { useAppSelector } from '../../../redux/hooks';
 import CustomLink from '../../CustomLink';
 import useUser, { logOutUser } from '../../../hooks/useUser';
 import style from './styles/style.module.scss';
 
 function MenuMobile({ data }: any) {
-  const router = useRouter();
   const { mutate } = useUser();
   const { bag } = useAppSelector((states) => states);
   const { bagItems } = bag;

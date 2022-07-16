@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import router from 'next/router';
 import ContentModal from '../../Modal/ContentModal';
 import CustomLink from '../../CustomLink';
 import style from './styles/style.module.scss';
@@ -11,7 +11,6 @@ const LoginRegister = lazy(() => import('../../../pages/login-register'));
 
 function MenuUser({ data }: any) {
   const { mutate } = useUser();
-  const router = useRouter();
   const [openLogin, setOpenLogin] = useState(false);
 
   function openModalLogin(event: { preventDefault: () => void; }) {

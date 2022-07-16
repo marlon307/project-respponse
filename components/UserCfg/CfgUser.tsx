@@ -1,6 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useAppSelector } from '../../redux/hooks';
+import React, { useState, useCallback } from 'react';
 import { InputRadio } from '../ComponentsForm';
 import Input from '../ComponentsForm/Input';
 import style from './style.module.scss';
@@ -11,9 +9,6 @@ type TEvent = {
 };
 
 function CfgUser() {
-  const { logged } = useAppSelector(({ user }) => user);
-  const router = useRouter();
-
   const [stateIfonUser, setStateIfoUser] = useState({
     name: '',
     email: '',
@@ -31,12 +26,6 @@ function CfgUser() {
       [name]: value,
     }));
   }, []);
-
-  useEffect(() => {
-    if (!logged) {
-      router.push('/');
-    }
-  }, [logged]);
 
   return (
     <section className={ style.section }>
