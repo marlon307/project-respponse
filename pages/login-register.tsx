@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import router from 'next/router';
 import Svg from '../assets/Svg';
 import BtnIco from '../components/Buttons/BtnIco';
 import { Input } from '../components/ComponentsForm';
@@ -10,7 +11,7 @@ import useUser, { loginUser } from '../hooks/useUser';
 function Login() {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
-  const { mutate/* , isLoading */ } = useUser();
+  const { mutate } = useUser();
   const [sectionTab, setSectionTab] = useState(0);
   const [isValidLogin, setisValidLogin] = useState(false);
   const [isValidRegister, setisValidRegister] = useState(false);
@@ -42,8 +43,14 @@ function Login() {
 
     if (validEmail.test(lemail) && validPsw.test(lpsw) && isLoading === false) {
       setIsLoading(true);
-      await loginUser(lemail, lpsw);
-      mutate();
+      const { status } = await loginUser(lemail, lpsw);
+
+      if (status === 200) {
+        mutate();
+        router.push('/');
+      } else {
+        setisValidLogin(true);
+      }
     }
     setIsLoading(false);
   };
@@ -61,6 +68,7 @@ function Login() {
     const { remail, rname, rpsw } = stateRegister;
 
     if (validEmail.test(remail) && validPsw.test(rpsw) && isLoading === false) {
+      setIsLoading(true);
       const { data } = await api2.post('/createuser', {
         email: remail,
         password: rpsw,
@@ -72,6 +80,7 @@ function Login() {
       } else {
         setisValidRegister(true);
       }
+      setIsLoading(false);
     }
   };
 
