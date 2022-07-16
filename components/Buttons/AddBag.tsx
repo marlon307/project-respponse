@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import router from 'next/router';
 import type { PBtnAddBag } from './types';
 import { useAppDispatch } from '../../redux/hooks';
 import { ADD_BAG_ITEMS } from '../../redux/actions';
@@ -7,7 +7,6 @@ import style from './style.module.scss';
 
 function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
   const dispatch = useAppDispatch();
-  const router = useRouter();
   const {
     id, title, type, price, mainImg, discount, oldPrice,
   } = productId;

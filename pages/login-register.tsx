@@ -75,12 +75,6 @@ function Login() {
     }
   };
 
-  // useEffect(() => {
-  //   if (router.asPath === '/login-register' && reduxUser.logged) {
-  //     router.push('/');
-  //   }
-  // }, [reduxUser.logged, router]);
-
   return (
     <>
       <HeadSEO

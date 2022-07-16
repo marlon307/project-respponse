@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { GetServerSideProps } from 'next';
+import router from 'next/router';
 import { SmallCard } from '../components/Cards';
 import style from '../Sass/style.module.scss';
 import mockBag from '../service/mockBag';
 import HeadSEO from '../components/Head/HeadSEO';
+import useUser from '../hooks/useUser';
 
 function Favorite() {
+  const { loggedOut } = useUser();
+
+  useEffect(() => {
+    if (loggedOut) {
+      router.push('/');
+    }
+  }, [loggedOut]);
+
   return (
     <>
       <HeadSEO title="Favoritos" description="Lista de favoritos." />

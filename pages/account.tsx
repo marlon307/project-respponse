@@ -1,11 +1,13 @@
 import React, {
-  useState, useCallback, lazy, Suspense,
+  useState, useCallback, lazy, Suspense, useEffect,
 } from 'react';
 import type { GetServerSideProps } from 'next';
+import router from 'next/router';
 import BtnAdd from '../components/Buttons/BtnAdd';
 import style from '../Sass/style.module.scss';
 import Loading from '../components/Loading';
 import HeadSEO from '../components/Head/HeadSEO';
+import useUser from '../hooks/useUser';
 
 const Order = lazy(() => import('../components/Order/Orders'));
 const OrderId = lazy(() => import('../components/Order/OrderId'));
@@ -18,6 +20,7 @@ const Help = lazy(() => import('./help'));
 const ContentModal = lazy(() => import('../components/Modal/ContentModal'));
 
 function Account() {
+  const { loggedOut } = useUser();
   const [dropOption, setDropOption] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
@@ -31,6 +34,12 @@ function Account() {
     setOpenModal(true);
     setTypeModal('order');
   }, []);
+
+  useEffect(() => {
+    if (loggedOut) {
+      router.push('/');
+    }
+  }, [loggedOut]);
 
   return (
     <>
