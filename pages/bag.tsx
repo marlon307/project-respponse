@@ -4,9 +4,24 @@ import BarBuy from '../components/Bars/BarBuy';
 import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
-import { useAppSelector } from '../redux/hooks';
 import style from '../Sass/style.module.scss';
 import HeadSEO from '../components/Head/HeadSEO';
+
+const mockItem = [{
+  id: 0,
+  title: 'Algodão Pima',
+  type: 'Jérsei',
+  mainImg: 'https://i.imgur.com/dDldc4q.png',
+  price: 71.25,
+  oldPrice: 75.00,
+  colorName: 'Azul',
+  color: '#74bcf7',
+  size: 'M',
+  quantity: 2,
+  discount: 5,
+  identifyBag: '0#74bcf7M',
+  code: '3SFA469',
+}];
 
 const CardEdit = lazy(() => import('../components/Cards/CardEdit/CardEdit'));
 const RenderAdderess = lazy(() => import('../components/Bag/RenderAdderess'));
@@ -14,7 +29,6 @@ const Addaddress = lazy(() => import('../components/Add/Address'));
 const Addacard = lazy(() => import('../components/Add/Addcard'));
 
 function Bag() {
-  const { bagItems } = useAppSelector(({ bag }) => bag);
   const [openModal, setOpenModal] = useState<String>('');
   const [hiddenList, setHiddenList] = useState(false);
 
@@ -37,7 +51,7 @@ function Bag() {
               </svg>
               Sacola
             </h1>
-            { bagItems.length
+            { mockItem.length
               ? (
                 <button
                   type="button"
@@ -52,14 +66,14 @@ function Bag() {
                 { ' ' }
                 (
                 { ' ' }
-                { bagItems.length }
+                { mockItem.length }
                 { ' ' }
                 )
               </span>
             ) }
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
-            { bagItems.length ? bagItems.map((object) => (
+            { mockItem.length ? mockItem.map((object) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }

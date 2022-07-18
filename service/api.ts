@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 export const api2 = axios.create({
-  baseURL: 'http://localhost:5000/',
+  baseURL: process.env.API_JSON,
   withCredentials: true,
 });
 

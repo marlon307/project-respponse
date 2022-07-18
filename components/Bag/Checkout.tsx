@@ -3,9 +3,9 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { mockShipping, mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
-import style from './style.module.scss';
 import { SELECT_PAYMENT, SELECT_SHIPPING } from '../../redux/actions';
 import CustomLink from '../CustomLink';
+import style from './style.module.scss';
 
 type PropsCheckout = {
   setOpenModal: Function
@@ -22,7 +22,7 @@ function Checkout({ setOpenModal }: PropsCheckout) {
   const { shippingCompany } = shipping;
   const [cupomText, setCupomText] = useState('');
 
-  const hadleCupom = useCallback(({ value }: any) => {
+  const hadleCupom = useCallback(({ value }: HTMLInputElement) => {
     setCupomText(value);
   }, []);
 
