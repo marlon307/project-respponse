@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 export const api2 = axios.create({
-  baseURL: process.env.API_JSON,
+  baseURL: process.env.LOCAL_API_HOST_2,
   withCredentials: true,
 });
 
