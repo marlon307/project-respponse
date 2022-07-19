@@ -37,7 +37,7 @@ function Token() {
         password: newpsw.psw_1,
       }, {
         headers: {
-          authorization: `Bearer ${formatToken?.replace('token=', '')}`,
+          authorization: `Bearer ${formatToken}`,
         },
       }).catch(({ response }) => response);
 
