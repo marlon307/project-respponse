@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { getCookie, deleteCookie } from 'cookies-next';
+import { getCookie, deleteCookie, setCookie } from 'cookies-next';
 import { api2 } from '../service/api';
 
 export const loginUser = async (email: string, password: string) => {
@@ -9,6 +9,12 @@ export const loginUser = async (email: string, password: string) => {
       email,
       password,
     }).catch(({ response }) => response);
+
+    setCookie('u_token', data.token, {
+      expires: new Date(data.exp),
+      secure: true,
+      sameSite: 'strict',
+    });
     return data;
   }
 

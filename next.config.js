@@ -19,7 +19,6 @@ module.exports = withPWA({
     VALIDATION_PSW: process.env.VALIDATION_PSW,
     LOCAL_API_HOST: process.env.LOCAL_API_HOST,
     LOCAL_API_HOST_2: process.env.LOCAL_API_HOST_2,
-    JWT_SECRET: process.env.JWT_SECRET,
   },
   pwa: {
     dest: 'public',
