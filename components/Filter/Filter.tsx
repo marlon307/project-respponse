@@ -15,9 +15,9 @@ function Filter({ listChecked, setListFilter }: TFilter) {
       id, name, value, dataset,
     } = target;
 
-    setListFilter!([...listChecked, {
+    setListFilter!([{
       id, name: value, key: name, color: dataset.color,
-    }]);
+    }, ...listChecked]);
   }, [listChecked]);
 
   return (

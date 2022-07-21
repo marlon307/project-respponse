@@ -1,4 +1,4 @@
-import React, { useCallback, useState, lazy } from 'react';
+import React, { /* useCallback, */ useState, lazy } from 'react';
 import type { GetServerSideProps } from 'next';
 import BarBuy from '../components/Bars/BarBuy';
 import { SmallCard } from '../components/Cards';
@@ -65,7 +65,6 @@ const stateBag: StateBagType = {
   },
 };
 
-const CardEdit = lazy(() => import('../components/Cards/CardEdit/CardEdit'));
 const RenderAdderess = lazy(() => import('../components/Bag/RenderAdderess'));
 const Addaddress = lazy(() => import('../components/Add/Address'));
 const Addacard = lazy(() => import('../components/Add/Addcard'));
@@ -73,10 +72,6 @@ const Addacard = lazy(() => import('../components/Add/Addcard'));
 function Bag() {
   const [openModal, setOpenModal] = useState<String>('');
   const [hiddenList, setHiddenList] = useState(false);
-
-  const openModalEdit = useCallback(() => {
-    setOpenModal('edit');
-  }, []);
 
   return (
     <>
@@ -121,7 +116,7 @@ function Bag() {
                   objectID={ object }
                   removable
                   editable
-                  eventModal={ openModalEdit }
+                  eventModal={ () => { /* openModalEdit */ } }
                   identifyBag={ object.id + object.color + object.size }
                 />
               </li>
@@ -140,13 +135,11 @@ function Bag() {
       <ContentModal
         openModal={ setOpenModal }
         isOpen={
-          openModal === 'edit'
-          || openModal === 'address'
+          openModal === 'address'
           || openModal === 'addaddress'
           || openModal === 'addcard'
         }
       >
-        { openModal === 'edit' && <CardEdit itemEdit={ stateBag.itemEditBag } /> }
         { openModal === 'address' && <RenderAdderess /> }
         { openModal === 'addaddress' && <Addaddress /> }
         { openModal === 'addcard' && <Addacard /> }
