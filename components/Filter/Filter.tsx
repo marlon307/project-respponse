@@ -14,10 +14,11 @@ function Filter({ listChecked, setListFilter }: TFilter) {
     const {
       id, name, value, dataset,
     } = target;
+
     setListFilter!([...listChecked, {
       id, name: value, key: name, color: dataset.color,
     }]);
-  }, []);
+  }, [listChecked]);
 
   return (
     <section className={ style.optionsfilter }>
