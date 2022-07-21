@@ -12,25 +12,27 @@ function SmallCard({
     size, quantity, discount, oldPrice,
   } = objectID;
 
-  const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
-    event.preventDefault();
+  // const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
+  //   event.preventDefault();
 
-    // dispatch(EDIT_BAG_ITEM({
-    //   id: objectID.id,
-    //   title: objectID.title,
-    //   type: objectID.type,
-    //   mainImg: objectID.mainImg,
-    //   color: objectID.color,
-    //   colorName: objectID.colorName,
-    //   size: objectID.size,
-    //   quantity: objectID.quantity,
-    //   identifyBag: objectID.identifyBag,
-    // }));
-    eventModal!();
-  }, [eventModal, objectID]);
+  //   // dispatch(EDIT_BAG_ITEM({
+  //   //   id: objectID.id,
+  //   //   title: objectID.title,
+  //   //   type: objectID.type,
+  //   //   mainImg: objectID.mainImg,
+  //   //   color: objectID.color,
+  //   //   colorName: objectID.colorName,
+  //   //   size: objectID.size,
+  //   //   quantity: objectID.quantity,
+  //   //   identifyBag: objectID.identifyBag,
+  //   // }));
+  //   eventModal!();
+  // }, [eventModal, objectID]);
 
   const handleClickDelete = useCallback(() => {
     // dispatch(RM_BAG_ITEM(identifyBag!));
+    // eslint-disable-next-line no-console
+    console.log(editable, eventModal);
   }, [identifyBag]);
 
   return (
