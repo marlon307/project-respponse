@@ -1,20 +1,20 @@
 import React from 'react';
 import style from './style.module.scss';
 import api from '../../service/api';
-import { useAppSelector } from '../../redux/hooks';
+import { StateBagType } from '../../types/bag';
 
-function BuyFinishBtn() {
-  const { bagItems } = useAppSelector(({ bag }) => bag);
+type TBuyFinish = {
+  dataBag: StateBagType;
+};
 
+function BuyFinishBtn({ dataBag }: TBuyFinish) {
   async function handleClickBuy() {
-    const listRevalidate = bagItems.map(({ id }) => id.toString());
+    const listRevalidate = dataBag.bagItems.map(({ id }) => id.toString());
 
-    const { data } = await api.post(
+    await api.post(
       '/revalidate',
       { listRevalidate },
     ).catch((error) => ({ data: error.message }));
-    // eslint-disable-next-line no-console
-    console.log(data);
   }
 
   return (

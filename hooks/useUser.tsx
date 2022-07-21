@@ -4,6 +4,7 @@ import { api2 } from '../service/api';
 
 export const loginUser = async (email: string, password: string) => {
   const cookie = getCookie('u_token');
+
   if (!cookie && email && password) {
     const { data } = await api2.post('/login_user', {
       email,
@@ -23,7 +24,7 @@ export const loginUser = async (email: string, password: string) => {
   }
 
   const error: any = new Error('Not authorized!');
-  error.status = 403;
+  error.status = 401;
   throw error;
 };
 
@@ -33,7 +34,7 @@ const useUser = () => {
   const { data, mutate, error } = useSWR('login_user', loginUser);
 
   const loading = !data && !error;
-  const loggedOut = error && error.status === 403;
+  const loggedOut = error && error.status === 401;
 
   return {
     loading,

@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import router from 'next/router';
 import type { PBtnAddBag } from './types';
-import { useAppDispatch } from '../../redux/hooks';
-import { ADD_BAG_ITEMS } from '../../redux/actions';
 import style from './style.module.scss';
 
 function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
-  const dispatch = useAppDispatch();
-  const {
-    id, title, type, price, mainImg, discount, oldPrice,
-  } = productId;
+  // const {
+  //   id, title, type, price, mainImg, discount, oldPrice,
+  // } = productId;
 
   const [buttonActive, setbutonActive] = useState(false);
   const [activeMsg, setActiveMsg] = useState(false);
 
   function handleClick(redirect: boolean) {
+    // eslint-disable-next-line no-console
+    console.log(productId);
+
     if (buttonActive) {
-      dispatch(ADD_BAG_ITEMS({
-        id,
-        title,
-        discount,
-        oldPrice,
-        type,
-        price,
-        mainImg,
-        quantity: 1,
-        ...colorSelected,
-        size: sizeSelected,
-        identifyBag: productId.id + colorSelected.color + sizeSelected,
-      }));
+      // dispatch(ADD_BAG_ITEMS({
+      //   id,
+      //   title,
+      //   discount,
+      //   oldPrice,
+      //   type,
+      //   price,
+      //   mainImg,
+      //   quantity: 1,
+      //   ...colorSelected,
+      //   size: sizeSelected,
+      //   identifyBag: productId.id + colorSelected.color + sizeSelected,
+      // }));
       if (redirect) router.push('/bag');
     } else {
       setActiveMsg(true);

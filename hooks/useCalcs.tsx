@@ -5,7 +5,7 @@ type ArrObj = Array<{
 }>;
 
 const calcAllValuesArray = (array: ArrObj) => {
-  const value = array.reduce((
+  const value = array?.reduce((
     accumulator,
     { quantity, price },
   ) => {

@@ -6,6 +6,7 @@ import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
 import style from '../Sass/style.module.scss';
 import HeadSEO from '../components/Head/HeadSEO';
+import { StateBagType } from '../types/bag';
 
 const mockItem = [{
   id: 0,
@@ -22,6 +23,47 @@ const mockItem = [{
   identifyBag: '0#74bcf7M',
   code: '3SFA469',
 }];
+
+const stateBag: StateBagType = {
+  bagItems: [],
+  valueBag: 0,
+  itemEditBag: {
+    id: 0,
+    title: '',
+    type: '',
+    color: '',
+    colorName: '',
+    mainImg: {
+      src: '',
+    },
+    size: '',
+    quantity: 0,
+    identifyBag: '',
+  },
+  checkout: {
+    adderessSelected: {
+      name: 'Clique aqui ( 👇 ) para selecionar o endereço.',
+      road: '---',
+      district: '---',
+      number: '---',
+      uf: '---',
+      city: '---',
+      zipcode: '---',
+    },
+    shipping: {
+      shippingCompany: '',
+      valueShipping: 0,
+    },
+    formatPay: {
+      formatPayment: 'Forma de pagamento',
+      division: 0,
+    },
+    cupomAplicate: {
+      code: '',
+      descountCupom: 0,
+    },
+  },
+};
 
 const CardEdit = lazy(() => import('../components/Cards/CardEdit/CardEdit'));
 const RenderAdderess = lazy(() => import('../components/Bag/RenderAdderess'));
@@ -87,9 +129,14 @@ function Bag() {
               : <li className={ style.empty }>Sacola Vazia</li> }
           </ul>
         </section>
-        <Checkout setOpenModal={ setOpenModal } />
+        <Checkout
+          setOpenModal={ setOpenModal }
+          infoCheckout={ stateBag.checkout }
+        />
       </div>
-      <BarBuy />
+      <BarBuy
+        stateBag={ stateBag }
+      />
       <ContentModal
         openModal={ setOpenModal }
         isOpen={
@@ -99,7 +146,7 @@ function Bag() {
           || openModal === 'addcard'
         }
       >
-        { openModal === 'edit' && <CardEdit /> }
+        { openModal === 'edit' && <CardEdit itemEdit={ stateBag.itemEditBag } /> }
         { openModal === 'address' && <RenderAdderess /> }
         { openModal === 'addaddress' && <Addaddress /> }
         { openModal === 'addcard' && <Addacard /> }

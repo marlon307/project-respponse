@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useAppSelector } from '../redux/hooks';
 import { api2 } from '../service/api';
 import BtnIco from '../components/Buttons/BtnIco';
 import { Input } from '../components/ComponentsForm';
 import HeadSEO from '../components/Head/HeadSEO';
 import style from '../Sass/style.module.scss';
 
-function Resetpsw() {
+type TProps = {
+  props: {
+    logged: string | undefined;
+  }
+};
+
+function Resetpsw({ props }: TProps) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
-  const { logged } = useAppSelector(({ user }) => user);
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isValid, setisValid] = useState(false);
@@ -75,7 +79,7 @@ function Resetpsw() {
             </div>
           ) }
           <div className={ style.action }>
-            { !logged && (
+            { !props.logged && (
               <Link href="/login-register">
                 <a className="link">
                   Fazer Login
@@ -96,5 +100,9 @@ function Resetpsw() {
     </>
   );
 }
+
+Resetpsw.getInitialProps = async ({ req }: any) => ({
+  props: { logged: req.cookies?.u_token },
+});
 
 export default Resetpsw;

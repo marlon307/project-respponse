@@ -1,25 +1,21 @@
 import React, { useState, useCallback, memo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { mockShipping, mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
-import { SELECT_PAYMENT, SELECT_SHIPPING } from '../../redux/actions';
 import CustomLink from '../CustomLink';
+import { StateBagType } from '../../types/bag';
 import style from './style.module.scss';
 
 type PropsCheckout = {
-  setOpenModal: Function
+  setOpenModal: Function;
+  infoCheckout: StateBagType['checkout']
 };
 
-function Checkout({ setOpenModal }: PropsCheckout) {
-  const dipatch = useAppDispatch();
-  const { adderessSelected, shipping, formatPay } = useAppSelector(
-    ({ bag }) => bag.checkout,
-  );
+function Checkout({ setOpenModal, infoCheckout }: PropsCheckout) {
   const {
     name, road, district, number, uf, city, zipcode,
-  } = adderessSelected;
-  const { shippingCompany } = shipping;
+  } = infoCheckout.adderessSelected;
+  const { shippingCompany } = infoCheckout.shipping;
   const [cupomText, setCupomText] = useState('');
 
   const hadleCupom = useCallback(({ value }: HTMLInputElement) => {
@@ -27,17 +23,23 @@ function Checkout({ setOpenModal }: PropsCheckout) {
   }, []);
 
   const handleSipping = useCallback((idInput: string, value: number) => {
-    dipatch(SELECT_SHIPPING({
-      shippingCompany: idInput,
-      valueShipping: value,
-    }));
+    // eslint-disable-next-line no-console
+    console.log(idInput, value);
+
+    // dipatch(SELECT_SHIPPING({
+    //   shippingCompany: idInput,
+    //   valueShipping: value,
+    // }));
   }, []);
 
   const handlePayment = useCallback((idName: string) => {
-    dipatch(SELECT_PAYMENT({
-      formatPayment: idName,
-      division: 1,
-    }));
+    // eslint-disable-next-line no-console
+    console.log(idName);
+
+    // dipatch(SELECT_PAYMENT({
+    //   formatPayment: idName,
+    //   division: 1,
+    // }));
   }, []);
 
   return (
@@ -121,7 +123,7 @@ function Checkout({ setOpenModal }: PropsCheckout) {
           { mockPayment.map((object) => (
             <InputRadio
               key={ object.id }
-              checked={ formatPay.formatPayment === object.name }
+              checked={ infoCheckout.formatPay.formatPayment === object.name }
               name={ object.name }
               id={ object.name }
               family="payment"

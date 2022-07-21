@@ -1,21 +1,22 @@
 import React, { useCallback } from 'react';
 import ItemList from './ItemList';
-import { ADD_FILTER_LIST } from '../../redux/actions';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import mockItensFilter from '../../service/mockCtg';
 import style from './style.module.scss';
+import { StateSearchType } from '../../pages/category/search';
 
-function Filter() {
-  const dispatch = useAppDispatch();
-  const { listFilter } = useAppSelector(({ search }) => search);
+type TFilter = {
+  setListFilter: Function;
+  listChecked: StateSearchType['listFilter'];
+};
+
+function Filter({ listChecked, setListFilter }: TFilter) {
   const addListFilter = useCallback(({ target }: any) => {
     const {
       id, name, value, dataset,
     } = target;
-
-    dispatch(ADD_FILTER_LIST({
+    setListFilter!([...listChecked, {
       id, name: value, key: name, color: dataset.color,
-    }));
+    }]);
   }, []);
 
   return (
@@ -35,7 +36,7 @@ function Filter() {
                 value={ name }
                 color={ color }
                 execFunction={ addListFilter }
-                checked={ listFilter.some((item) => +item.id === id) }
+                checked={ listChecked.some((item) => +item.id === id) }
               />
             )
           ))
@@ -52,7 +53,7 @@ function Filter() {
                 key={ name }
                 value={ name }
                 execFunction={ addListFilter }
-                checked={ listFilter.some((item) => +item.id === id) }
+                checked={ listChecked.some((item) => +item.id === id) }
               />
             )
           ))
@@ -69,7 +70,7 @@ function Filter() {
                 key={ name }
                 value={ name }
                 execFunction={ addListFilter }
-                checked={ listFilter.some((item) => +item.id === id) }
+                checked={ listChecked.some((item) => +item.id === id) }
               />
             )
           ))
@@ -86,7 +87,7 @@ function Filter() {
                 key={ name }
                 value={ name }
                 execFunction={ addListFilter }
-                checked={ listFilter.some((item) => +item.id === id) }
+                checked={ listChecked.some((item) => +item.id === id) }
               />
             )
           ))
@@ -99,21 +100,21 @@ function Filter() {
           name="gen"
           value="Criança"
           execFunction={ addListFilter }
-          checked={ listFilter.some((item) => +item.id === 36) }
+          checked={ listChecked.some((item) => +item.id === 36) }
         />
         <ItemList
           id={ 37 }
           name="gen"
           value="Femenino"
           execFunction={ addListFilter }
-          checked={ listFilter.some((item) => +item.id === 37) }
+          checked={ listChecked.some((item) => +item.id === 37) }
         />
         <ItemList
           id={ 38 }
           name="gen"
           value="Masculino"
           execFunction={ addListFilter }
-          checked={ listFilter.some((item) => +item.id === 38) }
+          checked={ listChecked.some((item) => +item.id === 38) }
         />
       </div>
       <h2>Modelo</h2>
@@ -127,7 +128,7 @@ function Filter() {
                 key={ name }
                 value={ name }
                 execFunction={ addListFilter }
-                checked={ listFilter.some((item) => +item.id === id) }
+                checked={ listChecked.some((item) => +item.id === id) }
               />
             )
           ))
