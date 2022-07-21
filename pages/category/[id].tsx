@@ -16,25 +16,11 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
   const [sizeWidth] = useWindowSize();
   const [listFilter, setListFilter] = useState<StateSearchType['listFilter']>([]);
   const [modalFilter, setModalFilter] = useState(false);
-  const removeListFilter = useCallback(
-    ({ target }: any) => target,
-    // const { id } = target;
-    // const formatId = id.replace('list', '');
 
-    // dispatch(ADD_FILTER_LIST({ id: formatId }));
-    // const ACTION_ADD_FILTER_LIST = (state: StateSearchType, { payload }: PayloadAction<any>) => {
-    //   const key = Object.keys(payload)[0];
-    //   const existItem = state.listFilter.find((element) => element[key] === payload[key]);
-
-    //   if (existItem) {
-    //     const newList = state.listFilter.filter((element) => element[key] !== payload[key]);
-    //     state.listFilter = newList;
-    //   } else {
-    //     state.listFilter.unshift(payload);
-    //   }
-    // };
-    [],
-  );
+  const removeListFilter = useCallback(({ target }: any) => {
+    const { id } = target;
+    setListFilter((prevState) => prevState.filter((objId) => objId.id !== id));
+  }, [listFilter]);
 
   useEffect(() => {
     if (sizeWidth > 790) {
@@ -82,7 +68,7 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
             { listFilter.map((item) => (
               <SwiperSlide key={ item.id }>
                 <ItemList
-                  id={ `list${item.id}` }
+                  id={ item.id }
                   name={ item.key }
                   value={ item.name }
                   color={ item.color }
