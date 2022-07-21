@@ -118,44 +118,11 @@
   }
 }
 
-.barfilter {
-  position: relative;
-  max-width: 100px;
-
-  button {
-    padding: 0.8em 0;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: #3d3d3d;
-
-    svg {
-      width: 1.7em;
-      height: 1.7em;
-      fill: #3d3d3d;
-    }
-
-    span {
-      font-size: 1.4em;
-      font-weight: 600;
-    }
-  }
-}
-
 @media (max-width: 790px) {
   .optionsfilter {
     max-width: 600px;
     padding: max(1em, 2em);
     margin: 0;
-  }
-
-  .barfilter {
-    button {
-      padding: 0;
-    }
   }
 }
 

@@ -4,13 +4,13 @@ import { useRouter } from 'next/router';
 import BtnIco from '../../components/Buttons/BtnIco';
 import Input from '../../components/ComponentsForm/Input';
 import HeadSEO from '../../components/Head/HeadSEO';
-import { useAppSelector } from '../../redux/hooks';
 import style from '../../Sass/style.module.scss';
 import { api2 } from '../../service/api';
+import useUser from '../../hooks/useUser';
 
 function Token() {
+  const { loggedOut } = useUser();
   const router = useRouter();
-  const { logged } = useAppSelector(({ user }) => user);
   const [newpsw, setPsw] = useState({
     psw_1: '',
     psw_2: '',
@@ -90,7 +90,7 @@ function Token() {
             </div>
           ) }
           <div className={ style.action }>
-            { !logged && (
+            { !loggedOut && (
               <Link href="/login-register">
                 <a className="link">
                   Fazer Login

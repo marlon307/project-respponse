@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import calcAllValuesArray from '../../hooks/useCalcs';
+import { StateBagType } from '../../types/bag';
 import { BuyFinishBtn } from '../Buttons';
 import style from './style.module.scss';
-import { useAppSelector } from '../../redux/hooks';
 
-function BarBuy() {
-  const { bagItems, checkout } = useAppSelector(({ bag }) => bag);
-  const { formatPay, shipping, cupomAplicate } = checkout;
+type TBarBuy = {
+  stateBag: {
+    bagItems: StateBagType['bagItems'];
+    checkout: StateBagType['checkout'];
+  }
+};
+
+function BarBuy({ stateBag }: TBarBuy) {
+  const { bagItems, checkout } = stateBag;
+
+  // const { formatPay, shipping, cupomAplicate } = stateBag.checkout.formatPay;
   const [openInfo, setOpenInfo] = useState(false);
   const [valueBag, setValueBag] = useState(0);
 
@@ -16,10 +24,10 @@ function BarBuy() {
   }
 
   useEffect(() => {
-    const calc = shipping.valueShipping
-      + calcAllValuesArray(bagItems) - cupomAplicate.descountCupom;
+    const calc = checkout.shipping.valueShipping
+      + calcAllValuesArray(bagItems) - checkout.cupomAplicate.descountCupom;
     setValueBag(calc);
-  }, [bagItems, shipping.valueShipping, cupomAplicate.descountCupom]);
+  }, [bagItems, stateBag.checkout]);
 
   return (
     <section className={ style.buybar } data-active={ openInfo }>
@@ -28,7 +36,7 @@ function BarBuy() {
           <div>
             <span>Frete:</span>
             <span>
-              { shipping.valueShipping.toLocaleString('pt-br', {
+              { stateBag.checkout?.shipping.valueShipping.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }
@@ -37,7 +45,7 @@ function BarBuy() {
           <div>
             <span>Descontos:</span>
             <span>
-              { cupomAplicate.descountCupom.toLocaleString('pt-br', {
+              { stateBag.checkout?.cupomAplicate.descountCupom.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }
@@ -45,10 +53,10 @@ function BarBuy() {
           </div>
           <div>
             <span title="Forma de pagamento">
-              { formatPay.formatPayment }
+              { stateBag.checkout?.formatPay.formatPayment }
               :
             </span>
-            <span>{ `${formatPay.division}x` }</span>
+            <span>{ `${stateBag.checkout?.formatPay.division}x` }</span>
           </div>
         </div>
         <div className={ style.calcfinish }>
@@ -61,7 +69,7 @@ function BarBuy() {
               }) }
             </span>
           </div>
-          <BuyFinishBtn />
+          <BuyFinishBtn dataBag={ stateBag } />
         </div>
       </div>
       <button

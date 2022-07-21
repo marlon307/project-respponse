@@ -5,54 +5,54 @@ import BarColors from '../../Bars/BarColors';
 import BarSize from '../../Bars/BarSize';
 import Qtd from '../../Bars/Qtd';
 import LoadingImage from '../../LoadImage';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { mockCards } from '../../../service/mockCards';
-import { EDIT_BAG_ITEM, FINISH_EDIT_BAG_ITEM } from '../../../redux/actions';
+import { StateBagType } from '../../../types/bag';
 import style from './style.module.scss';
 
-function CardEdit() {
-  const { itemEditBag } = useAppSelector(({ bag }) => bag);
-  const dispatch = useAppDispatch();
+type TCardEdit = {
+  itemEdit: StateBagType['itemEditBag']
+};
 
+function CardEdit({ itemEdit }: TCardEdit) {
   const [colorupdate, setColorUpdate] = useState({
-    color: itemEditBag.color,
-    colorName: itemEditBag.colorName,
+    color: itemEdit.color,
+    colorName: itemEdit.colorName,
   });
-  const [sizeupdate, setSizeUpdate] = useState(itemEditBag.size);
-  const [qauntityupdate, setQauntityUpdate] = useState(itemEditBag.quantity);
+  const [sizeupdate, setSizeUpdate] = useState(itemEdit.size);
+  const [qauntityupdate, setQauntityUpdate] = useState(itemEdit.quantity);
   const [urlImage, setUrlimg] = useState<ImageProps['src']>();
 
   useEffect(() => {
-    const array = mockCards[itemEditBag.id].options;
+    const array = mockCards[itemEdit.id].options;
     checkSizeAvailable(array, colorupdate.color);
 
-    const { imgs } = array.find((object) => object.color === itemEditBag.color)!;
+    const { imgs } = array.find((object) => object.color === itemEdit.color)!;
 
     setUrlimg(imgs[0].urlImg);
-    checkColorAvailable(mockCards[itemEditBag.id].options, sizeupdate);
+    checkColorAvailable(mockCards[itemEdit.id].options, sizeupdate);
   }, [colorupdate, sizeupdate]);
 
   useEffect(() => {
-    const {
-      id, title, mainImg, color, size, type, quantity,
-    } = itemEditBag;
+    // const {
+    //   id, title, mainImg, color, size, type, quantity,
+    // } = itemEdit;
 
-    if (color !== colorupdate.color || sizeupdate !== size || qauntityupdate !== quantity) {
-      dispatch(EDIT_BAG_ITEM({
-        id,
-        title,
-        mainImg,
-        type,
-        ...colorupdate,
-        size: sizeupdate,
-        quantity: qauntityupdate,
-        identifyBag: itemEditBag.identifyBag,
-      }));
-    }
+    // if (color !== colorupdate.color || sizeupdate !== size || qauntityupdate !== quantity) {
+    //   dispatch(EDIT_BAG_ITEM({
+    //     id,
+    //     title,
+    //     mainImg,
+    //     type,
+    //     ...colorupdate,
+    //     size: sizeupdate,
+    //     quantity: qauntityupdate,
+    //     identifyBag: itemEdit.identifyBag,
+    //   }));
+    // }
   }, [colorupdate, qauntityupdate, sizeupdate]);
 
   useEffect(() => () => {
-    dispatch(FINISH_EDIT_BAG_ITEM());
+    // dispatch(FINISH_EDIT_BAG_ITEM());
   }, []);
 
   return (
@@ -64,7 +64,7 @@ function CardEdit() {
             width={ 200 }
             height={ 300 }
             src={ !urlImage
-              ? mockCards[itemEditBag.id].options[0].imgs[0].urlImg
+              ? mockCards[itemEdit.id].options[0].imgs[0].urlImg
               : urlImage }
             priority
             loading="eager"
@@ -72,14 +72,14 @@ function CardEdit() {
         </div>
         <div className={ style.colors }>
           <BarColors
-            array={ mockCards[itemEditBag.id].options }
+            array={ mockCards[itemEdit.id].options }
             execFunction={ setColorUpdate }
           />
         </div>
       </div>
       <BarSize
-        array={ mockCards[itemEditBag.id].options }
-        color={ itemEditBag.color }
+        array={ mockCards[itemEdit.id].options }
+        color={ itemEdit.color }
         execFunction={ setSizeUpdate }
       />
       <div className={ style.secondline }>
@@ -88,8 +88,8 @@ function CardEdit() {
           execFunction={ setQauntityUpdate }
         />
         <div className={ style.titles }>
-          <h1>{ itemEditBag.type }</h1>
-          <h2>{ itemEditBag.title }</h2>
+          <h1>{ itemEdit.type }</h1>
+          <h2>{ itemEdit.title }</h2>
         </div>
       </div>
     </div>

@@ -52,6 +52,33 @@
   }
 }
 
+.barfilter {
+  position: relative;
+  max-width: 100px;
+
+  button {
+    padding: 0.8em 0;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #3d3d3d;
+
+    svg {
+      width: 1.7em;
+      height: 1.7em;
+      fill: #3d3d3d;
+    }
+
+    span {
+      font-size: 1.4em;
+      font-weight: 600;
+    }
+  }
+}
+
 @media (max-width: 1080px) {
   .categorycont {
     grid-template-areas: '. . .';
@@ -72,6 +99,12 @@
 
   .categorycont {
     margin: 12px 3%;
+  }
+
+  .barfilter {
+    button {
+      padding: 0;
+    }
   }
 }
 

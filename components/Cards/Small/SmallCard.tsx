@@ -2,15 +2,11 @@ import React, { useCallback, memo } from 'react';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
-import { useAppDispatch } from '../../../redux/hooks';
 import type { PSmallCard } from './type';
-import { EDIT_BAG_ITEM, RM_BAG_ITEM } from '../../../redux/actions';
 
 function SmallCard({
   objectID, removable, editable, eventModal, identifyBag,
 }: PSmallCard) {
-  const dispatch = useAppDispatch();
-
   const {
     id, title, type, mainImg, price, colorName, color,
     size, quantity, discount, oldPrice,
@@ -19,22 +15,22 @@ function SmallCard({
   const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
     event.preventDefault();
 
-    dispatch(EDIT_BAG_ITEM({
-      id: objectID.id,
-      title: objectID.title,
-      type: objectID.type,
-      mainImg: objectID.mainImg,
-      color: objectID.color,
-      colorName: objectID.colorName,
-      size: objectID.size,
-      quantity: objectID.quantity,
-      identifyBag: objectID.identifyBag,
-    }));
+    // dispatch(EDIT_BAG_ITEM({
+    //   id: objectID.id,
+    //   title: objectID.title,
+    //   type: objectID.type,
+    //   mainImg: objectID.mainImg,
+    //   color: objectID.color,
+    //   colorName: objectID.colorName,
+    //   size: objectID.size,
+    //   quantity: objectID.quantity,
+    //   identifyBag: objectID.identifyBag,
+    // }));
     eventModal!();
-  }, [dispatch, eventModal, objectID]);
+  }, [eventModal, objectID]);
 
   const handleClickDelete = useCallback(() => {
-    dispatch(RM_BAG_ITEM(identifyBag!));
+    // dispatch(RM_BAG_ITEM(identifyBag!));
   }, [identifyBag]);
 
   return (

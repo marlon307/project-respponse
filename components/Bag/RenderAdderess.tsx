@@ -1,16 +1,13 @@
 import React, { useCallback } from 'react';
-import { SELECT_ADDRESS } from '../../redux/actions';
-import type { TAddress } from '../../redux/actions/types/bag';
-import { useAppDispatch } from '../../redux/hooks';
+import type { TAddress } from '../../types/bag';
 import mockAdderes from '../../service/mockAdderes';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 
 function RenderAdderess() {
-  const dispatch = useAppDispatch();
-
   const handleClick = useCallback((adderess: TAddress) => {
-    dispatch(SELECT_ADDRESS(adderess));
+    // eslint-disable-next-line no-console
+    console.log(adderess);
   }, []);
   // id, name, road, district, number, uf, city, zipcode,
 

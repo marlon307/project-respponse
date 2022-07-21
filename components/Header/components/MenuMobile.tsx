@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import router from 'next/router';
-import { useAppSelector } from '../../../redux/hooks';
 import CustomLink from '../../CustomLink';
 import useUser, { logOutUser } from '../../../hooks/useUser';
 import style from './styles/style.module.scss';
 
+const mockItem = [{
+  id: 0,
+  title: 'Algodão Pima',
+  type: 'Jérsei',
+  mainImg: 'https://i.imgur.com/dDldc4q.png',
+  price: 71.25,
+  oldPrice: 75.00,
+  colorName: 'Azul',
+  color: '#74bcf7',
+  size: 'M',
+  quantity: 2,
+  discount: 5,
+  identifyBag: '0#74bcf7M',
+  code: '3SFA469',
+}];
+
 function MenuMobile({ data }: any) {
   const { mutate } = useUser();
-  const { bag } = useAppSelector((states) => states);
-  const { bagItems } = bag;
   const [dropMnMobile, setDropMnMobile] = useState(false);
 
   function handleClickLogOutUser() {
@@ -39,7 +52,7 @@ function MenuMobile({ data }: any) {
   }, [dropMnMobile]);
 
   return (
-    <div className={ style.mobile } data-bag={ Boolean(bagItems.length) }>
+    <div className={ style.mobile } data-bag={ Boolean(mockItem.length) }>
       { data ? (
         <button
           type="button"
@@ -52,7 +65,7 @@ function MenuMobile({ data }: any) {
         </button>
       ) : (
         <Link href="/login-register" passHref>
-          <a className={ style.login } data-bag={ Boolean(bagItems.length) } aria-label="Entrar">
+          <a className={ style.login } data-bag={ Boolean(mockItem.length) } aria-label="Entrar">
             Entrar
           </a>
         </Link>
@@ -101,7 +114,7 @@ function MenuMobile({ data }: any) {
                     </CustomLink>
                   </Link>
                 </li>
-                <li data-bag={ Boolean(bagItems.length) }>
+                <li data-bag={ Boolean(mockItem.length) }>
                   <Link
                     href="/bag"
                     passHref
