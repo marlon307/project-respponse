@@ -1,0 +1,25 @@
+.cardedit {
+  padding: 1em;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  max-width: 450px;
+  flex-wrap: wrap;
+  color: #585858;
+
+  button {
+    text-align: center;
+    cursor: pointer;
+    width: 2.5em;
+    height: 2.5em;
+    display: block;
+    padding: 8px;
+    border: 1px solid var(--bordercolor);
+    background: transparent;
+    border-radius: 12px;
+    font-size: 1.1em;
+    flex: none;
+  }
+}

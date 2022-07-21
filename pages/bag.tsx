@@ -68,9 +68,10 @@ const stateBag: StateBagType = {
 const RenderAdderess = lazy(() => import('../components/Bag/RenderAdderess'));
 const Addaddress = lazy(() => import('../components/Add/Address'));
 const Addacard = lazy(() => import('../components/Add/Addcard'));
+const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'));
 
 function Bag() {
-  const [openModal, setOpenModal] = useState<String>('');
+  const [openModal, setOpenModal] = useState<String | number>('');
   const [hiddenList, setHiddenList] = useState(false);
 
   return (
@@ -116,7 +117,7 @@ function Bag() {
                   objectID={ object }
                   removable
                   editable
-                  eventModal={ () => { /* openModalEdit */ } }
+                  eventModal={ setOpenModal! }
                   identifyBag={ object.id + object.color + object.size }
                 />
               </li>
@@ -129,20 +130,20 @@ function Bag() {
           infoCheckout={ stateBag.checkout }
         />
       </div>
-      <BarBuy
-        stateBag={ stateBag }
-      />
+      <BarBuy stateBag={ stateBag } />
       <ContentModal
         openModal={ setOpenModal }
         isOpen={
           openModal === 'address'
           || openModal === 'addaddress'
           || openModal === 'addcard'
+          || Number.isInteger(openModal)
         }
       >
         { openModal === 'address' && <RenderAdderess /> }
         { openModal === 'addaddress' && <Addaddress /> }
         { openModal === 'addcard' && <Addacard /> }
+        { Number.isInteger(openModal) && <CardEdit /> }
       </ContentModal>
     </>
   );

@@ -12,27 +12,14 @@ function SmallCard({
     size, quantity, discount, oldPrice,
   } = objectID;
 
-  // const handleClickEdit = useCallback((event: { preventDefault: () => void; }) => {
-  //   event.preventDefault();
-
-  //   // dispatch(EDIT_BAG_ITEM({
-  //   //   id: objectID.id,
-  //   //   title: objectID.title,
-  //   //   type: objectID.type,
-  //   //   mainImg: objectID.mainImg,
-  //   //   color: objectID.color,
-  //   //   colorName: objectID.colorName,
-  //   //   size: objectID.size,
-  //   //   quantity: objectID.quantity,
-  //   //   identifyBag: objectID.identifyBag,
-  //   // }));
-  //   eventModal!();
-  // }, [eventModal, objectID]);
+  const handleClickEdit = useCallback(() => {
+    eventModal!(56);
+  }, [eventModal, objectID]);
 
   const handleClickDelete = useCallback(() => {
     // dispatch(RM_BAG_ITEM(identifyBag!));
     // eslint-disable-next-line no-console
-    console.log(editable, eventModal);
+    console.log(editable);
   }, [identifyBag]);
 
   return (
@@ -61,9 +48,15 @@ function SmallCard({
           <div className={ style.setting }>
             <span title={ `${colorName}` } style={ { background: `${color}` } } />
             <span title={ `Tamanho ${size}` }>{ size }</span>
-            <span title={ `${quantity} ${type} - ${title}` }>
-              { quantity }
-              x
+            <span>
+              <button
+                type="button"
+                title={ `${quantity} ${type} - ${title}. ( 👇 ) Clique para alterar a quantidade.` }
+                onClick={ handleClickEdit }
+              >
+                { quantity }
+                x
+              </button>
             </span>
           </div>
           <div className={ style.price }>

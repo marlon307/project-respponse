@@ -65,8 +65,6 @@
   width: 100%;
   margin-left: 140px;
 
-  overflow: hidden;
-
   a {
     width: 80%;
     display: flex;
@@ -119,21 +117,44 @@
 }
 
 .setting {
+  position: relative;
   @include flexCenter;
   gap: 16px;
 
-  span {
+  :is(span, button) {
+    position: relative;
     @include flexCenter;
     width: 16px;
     height: 16px;
     border-radius: 50%;
     color: #747474;
+    background: transparent;
+    font-size: 1em;
   }
 
   span:first-child {
     width: 15px;
     height: 15px;
     border: 1px solid var(--bordercolor);
+  }
+
+  button {
+    cursor: pointer;
+    position: absolute;
+    padding: 1.65em;
+
+    &::after {
+      left: 2.6em;
+      top: 1.15em;
+      position: absolute;
+      content: '';
+      display: flex;
+      border-left: 2px solid #747474;
+      border-bottom: 2px solid #747474;
+      width: 8px;
+      height: 8px;
+      transform: rotateZ(315deg);
+    }
   }
 }
 
