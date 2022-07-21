@@ -4,7 +4,9 @@ import api from '../../service/api';
 import { StateBagType } from '../../types/bag';
 
 type TBuyFinish = {
-  dataBag: StateBagType;
+  dataBag: {
+    bagItems: StateBagType['bagItems']
+  };
 };
 
 function BuyFinishBtn({ dataBag }: TBuyFinish) {
