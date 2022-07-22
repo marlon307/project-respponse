@@ -19,7 +19,6 @@ function SmallCard({
   const handleClickDelete = useCallback(() => {
     // dispatch(RM_BAG_ITEM(identifyBag!));
     // eslint-disable-next-line no-console
-    console.log(editable);
   }, [identifyBag]);
 
   return (
@@ -49,14 +48,21 @@ function SmallCard({
             <span title={ `${colorName}` } style={ { background: `${color}` } } />
             <span title={ `Tamanho ${size}` }>{ size }</span>
             <span>
-              <button
-                type="button"
-                title={ `${quantity} ${type} - ${title}. ( 👇 ) Clique para alterar a quantidade.` }
-                onClick={ handleClickEdit }
-              >
-                { quantity }
-                x
-              </button>
+              { editable ? (
+                <button
+                  type="button"
+                  title={ `${quantity} ${type} - ${title}. ( 👇 ) Clique para alterar a quantidade.` }
+                  onClick={ handleClickEdit }
+                >
+                  { quantity }
+                  x
+                </button>
+              ) : (
+                <>
+                  { quantity }
+                  x
+                </>
+              ) }
             </span>
           </div>
           <div className={ style.price }>
