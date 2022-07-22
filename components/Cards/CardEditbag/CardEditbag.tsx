@@ -6,13 +6,16 @@ const limitsitem = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
 
 function CardEditbag() {
   return (
-    <ul className={ style.cardedit }>
-      { limitsitem.map((value) => (
-        <li key={ value }>
-          <button type="button">{ value }</button>
-        </li>
-      )) }
-    </ul>
+    <div className={ style.cardedit }>
+      <h2>Escolha a quantidade.</h2>
+      <ul>
+        { limitsitem.map((value) => (
+          <li key={ value }>
+            <button type="button">{ value }</button>
+          </li>
+        )) }
+      </ul>
+    </div>
   );
 }
 
