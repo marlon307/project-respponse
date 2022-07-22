@@ -13,8 +13,8 @@ function SmallCard({
   } = objectID;
 
   const handleClickEdit = useCallback(() => {
-    eventModal!(56);
-  }, [eventModal, objectID]);
+    eventModal!(id);
+  }, []);
 
   const handleClickDelete = useCallback(() => {
     // dispatch(RM_BAG_ITEM(identifyBag!));

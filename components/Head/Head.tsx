@@ -1,4 +1,5 @@
 /* eslint-disable react/no-invalid-html-attribute */
+// https://appsco.pe/developer/splash-screens
 import React from 'react';
 
 function Seo() {
