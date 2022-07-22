@@ -6,7 +6,8 @@ function Seo() {
     <>
       <meta name="title" content="Respponse" />
       <link rel="icon" href="/favico.ico" />
-      <link href="splashscreens/splash_1.png" media="(device-width: 320px) and (device-height: 2732px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+      <link href="splashscreens/splash_1.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+      <link href="splashscreens/splash_2.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
       <meta name="mobile-web-app-capable" content="yes" />
       <link rel="apple-touch-icon" href="/favico.ico" />
       <link rel="manifest" href="/manifest.json" />
