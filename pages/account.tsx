@@ -9,13 +9,13 @@ import Loading from '../components/Loading';
 import HeadSEO from '../components/Head/HeadSEO';
 import useUser from '../hooks/useUser';
 
+const Usercfg = lazy(() => import('../components/UserCfg/CfgUser'));
 const Order = lazy(() => import('../components/Order/Orders'));
 const OrderId = lazy(() => import('../components/Order/OrderId'));
-const Cards = lazy(() => import('../components/Cards/Cards'));
 const Address = lazy(() => import('../components/Cards/Address'));
-const AddCard = lazy(() => import('../components/Add/Addcard'));
 const Addaderess = lazy(() => import('../components/Add/Address'));
-const Usercfg = lazy(() => import('../components/UserCfg/CfgUser'));
+const Cards = lazy(() => import('../components/Cards/Cards'));
+const AddCard = lazy(() => import('../components/Add/Addcard'));
 const Help = lazy(() => import('./help'));
 const ContentModal = lazy(() => import('../components/Modal/ContentModal'));
 
@@ -96,6 +96,7 @@ function Account() {
           <BtnAdd eventBtn={ () => functionOpenModal('address') } />
           <div className={ style.contentoption }>
             <Suspense fallback={ <Loading /> }>
+              {/* https://pt.stackoverflow.com/questions/97965/erro-ao-formatar-cep */ }
               <Address />
             </Suspense>
           </div>
@@ -142,7 +143,6 @@ function Account() {
           </Suspense>
         </div>
       </div>
-
       <Suspense fallback="...">
         <ContentModal
           isOpen={ openModal }
