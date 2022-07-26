@@ -115,7 +115,7 @@ function Login() {
           </button>
         </div>
         <form className={ style.tab } aria-hidden={ !(sectionTab === 0) }>
-          <div className="inputs">
+          <div className={ style.inputs }>
             <Input
               id="lemail"
               type="email"
@@ -142,11 +142,12 @@ function Login() {
             />
           </div>
           <div className={ style.action }>
-            <label htmlFor="remember">
-              <input id="remember" type="checkbox" />
-              { ' ' }
-              Lembrar meus dados.
-            </label>
+            <BtnIco
+              textBtn="Entrar"
+              icoName="singin"
+              action={ clickLogin }
+              actionLiberate={ isLoading }
+            />
             <a
               href="/resetpsw"
               className="link"
@@ -155,14 +156,6 @@ function Login() {
             >
               Esqueceu a senha?
             </a>
-          </div>
-          <div className={ style.action }>
-            <BtnIco
-              textBtn="Entrar"
-              icoName="singin"
-              action={ clickLogin }
-              actionLiberate={ isLoading }
-            />
           </div>
         </form>
         <form className={ style.tab } aria-hidden={ !(sectionTab === 1) }>
