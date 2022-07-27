@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import router from 'next/router';
 import CustomLink from '../../CustomLink';
-import useUser, { logOutUser } from '../../../hooks/useUser';
+import useLogin, { logOutUser } from '../../../hooks/useLogin';
 import style from './styles/style.module.scss';
 
 const mockItem = [{
@@ -22,7 +22,7 @@ const mockItem = [{
 }];
 
 function MenuMobile({ data }: any) {
-  const { mutate } = useUser();
+  const { mutate } = useLogin();
   const [dropMnMobile, setDropMnMobile] = useState(false);
 
   function handleClickLogOutUser() {

@@ -5,10 +5,10 @@ import { SmallCard } from '../components/Cards';
 import style from '../Sass/style.module.scss';
 import mockBag from '../service/mockBag';
 import HeadSEO from '../components/Head/HeadSEO';
-import useUser from '../hooks/useUser';
+import useLogin from '../hooks/useLogin';
 
 function Favorite() {
-  const { loggedOut } = useUser();
+  const { loggedOut } = useLogin();
 
   useEffect(() => {
     if (loggedOut) {

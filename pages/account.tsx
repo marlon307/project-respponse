@@ -7,6 +7,7 @@ import BtnAdd from '../components/Buttons/BtnAdd';
 import style from '../Sass/style.module.scss';
 import Loading from '../components/Loading';
 import HeadSEO from '../components/Head/HeadSEO';
+import useLogin from '../hooks/useLogin';
 import useUser from '../hooks/useUser';
 
 const Usercfg = lazy(() => import('../components/UserCfg/CfgUser'));
@@ -20,7 +21,8 @@ const Help = lazy(() => import('./help'));
 const ContentModal = lazy(() => import('../components/Modal/ContentModal'));
 
 function Account() {
-  const { loggedOut } = useUser();
+  const { ifoUser } = useUser();
+  const { loggedOut } = useLogin();
   const [dropOption, setDropOption] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
@@ -58,7 +60,7 @@ function Account() {
         </a>
         <div className={ style.dropcontainer }>
           <Suspense fallback={ <Loading /> }>
-            <Usercfg />
+            { ifoUser && <Usercfg data={ ifoUser } /> }
           </Suspense>
         </div>
       </div>

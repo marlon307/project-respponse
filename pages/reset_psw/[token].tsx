@@ -6,10 +6,10 @@ import Input from '../../components/ComponentsForm/Input';
 import HeadSEO from '../../components/Head/HeadSEO';
 import style from '../../Sass/style.module.scss';
 import { api2 } from '../../service/api';
-import useUser from '../../hooks/useUser';
+import useLogin from '../../hooks/useLogin';
 
 function Token() {
-  const { loggedOut } = useUser();
+  const { loggedOut } = useLogin();
   const router = useRouter();
   const [newpsw, setPsw] = useState({
     psw_1: '',

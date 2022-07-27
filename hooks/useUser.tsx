@@ -1,26 +1,19 @@
 import useSWR from 'swr';
-import { getCookie, deleteCookie, setCookie } from 'cookies-next';
+import { getCookie } from 'cookies-next';
 import { api2 } from '../service/api';
 
-export const loginUser = async (email: string, password: string) => {
+export const infoUser = async () => {
   const cookie = getCookie('u_token');
-
-  if (!cookie && email && password) {
-    const { data } = await api2.post('/login_user', {
-      email,
-      password,
-    }).catch(({ response }) => response);
-
-    setCookie('u_token', data.token, {
-      expires: new Date(data.exp),
-      secure: true,
-      sameSite: 'strict',
-    });
-    return data;
-  }
+  // console.log(router);
 
   if (cookie) {
-    return cookie;
+    const { data } = await api2.get('/get_user_info', {
+      headers: {
+        authorization: `Bearer ${cookie}`,
+      },
+    }).catch(({ response }) => response);
+
+    return data.response;
   }
 
   const error: any = new Error('Not authorized!');
@@ -28,10 +21,8 @@ export const loginUser = async (email: string, password: string) => {
   throw error;
 };
 
-export const logOutUser = async () => deleteCookie('u_token');
-
 const useUser = () => {
-  const { data, mutate, error } = useSWR('login_user', loginUser);
+  const { data, mutate, error } = useSWR('/get_user_info', infoUser);
 
   const loading = !data && !error;
   const loggedOut = error && error.status === 401;
@@ -39,7 +30,7 @@ const useUser = () => {
   return {
     loading,
     loggedOut,
-    user: data,
+    ifoUser: data,
     mutate,
   };
 };
