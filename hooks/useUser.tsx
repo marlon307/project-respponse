@@ -22,7 +22,11 @@ export const infoUser = async () => {
 };
 
 const useUser = () => {
-  const { data, mutate, error } = useSWR('/get_user_info', infoUser);
+  const { data, mutate, error } = useSWR(
+    '/get_user_info',
+    infoUser,
+    { revalidateOnFocus: false },
+  );
 
   const loading = !data && !error;
   const loggedOut = error && error.status === 401;
