@@ -14,8 +14,8 @@ function CfgUser({ data }: any) {
     email: data.email,
     date: new Date(data.birthday),
     doc: data.cpf_cnpj,
-    tel: data.telephones[0].phone,
-    cel: data.telephones[1].phone,
+    tel: data.telephones[0]?.phone || '',
+    cel: data.telephones[1]?.phone || '',
   });
 
   const userCfgInfo = useCallback((target: TEvent) => {
