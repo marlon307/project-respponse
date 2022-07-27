@@ -8,19 +8,20 @@ type TEvent = {
   value: string;
 };
 
-function CfgUser() {
+function CfgUser({ data }: any) {
   const [stateIfonUser, setStateIfoUser] = useState({
-    name: '',
-    email: '',
-    psw: '',
-    date: '',
-    doc: '',
-    tel: '',
-    cel: '',
+    name: data.name,
+    email: data.email,
+    date: new Date(data.birthday),
+    doc: data.cpf_cnpj,
+    tel: data.telephones[0].phone,
+    cel: data.telephones[1].phone,
   });
 
   const userCfgInfo = useCallback((target: TEvent) => {
     const { name, value } = target;
+    // console.log(value.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3')); Telefone
+
     setStateIfoUser((state) => ({
       ...state,
       [name]: value,
@@ -69,7 +70,7 @@ function CfgUser() {
                 type="date"
                 name="date"
                 placeHolder="Data"
-                ivalue={ stateIfonUser.date }
+                ivalue={ stateIfonUser.date.toISOString().split('T')[0] }
                 inputValue={ userCfgInfo }
                 msgError="Selecione uma data"
               />
@@ -87,21 +88,21 @@ function CfgUser() {
               <h5>Sexo</h5>
               <div className={ style.inp }>
                 <InputRadio
-                  checked={ false }
+                  checked={ data.gender_id === 1 }
                   id="men"
                   name="Masculino"
                   family="grnere"
                   execFunction={ () => { } }
                 />
                 <InputRadio
-                  checked={ false }
+                  checked={ data.gender_id === 2 }
                   id="female"
                   name="Femenino"
                   family="grnere"
                   execFunction={ () => { } }
                 />
                 <InputRadio
-                  checked={ false }
+                  checked={ data.gender_id === null }
                   id="undefined"
                   name="Não informar"
                   family="grnere"

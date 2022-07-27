@@ -4,13 +4,13 @@ import router from 'next/router';
 import ContentModal from '../../Modal/ContentModal';
 import CustomLink from '../../CustomLink';
 import style from './styles/style.module.scss';
-import useUser, { logOutUser } from '../../../hooks/useUser';
+import useLogin, { logOutUser } from '../../../hooks/useLogin';
 
 // const ContentModal = lazy(() => import('../../Modal/ContentModal'));
 const LoginRegister = lazy(() => import('../../../pages/login-register'));
 
 function MenuUser({ data }: any) {
-  const { mutate } = useUser();
+  const { mutate } = useLogin();
   const [openLogin, setOpenLogin] = useState(false);
 
   function openModalLogin(event: { preventDefault: () => void; }) {

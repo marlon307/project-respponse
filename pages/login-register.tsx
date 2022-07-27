@@ -6,12 +6,12 @@ import { Input } from '../components/ComponentsForm';
 import HeadSEO from '../components/Head/HeadSEO';
 import { api2 } from '../service/api';
 import style from '../Sass/style.module.scss';
-import useUser, { loginUser } from '../hooks/useUser';
+import useLogin, { loginUser } from '../hooks/useLogin';
 
 function Login() {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
-  const { mutate } = useUser();
+  const { mutate } = useLogin();
   const [sectionTab, setSectionTab] = useState(0);
   const [isValidLogin, setisValidLogin] = useState(false);
   const [isValidRegister, setisValidRegister] = useState(false);

@@ -6,10 +6,10 @@ import MenuBag from './components/MenuBag';
 import MenuUser from './components/MenuUser';
 import MenuMobile from './components/MenuMobile';
 import style from './style.module.scss';
-import useUser from '../../hooks/useUser';
+import useLogin from '../../hooks/useLogin';
 
 function Header() {
-  const { loggedOut } = useUser();
+  const { loggedOut } = useLogin();
   const [searchopen, setSearchopen] = useState(false);
 
   return (

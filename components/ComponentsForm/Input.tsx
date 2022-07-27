@@ -45,7 +45,7 @@ function Input({
         autoComplete={ autoComplete }
         onChange={ handleChange }
         onBlur={ validInput }
-        value={ ivalue }
+        defaultValue={ ivalue }
         disabled={ disabled }
       />
       <span
