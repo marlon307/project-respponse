@@ -3,7 +3,8 @@ import style from './style.module.scss';
 import type { PInputText } from './type';
 
 function Input({
-  id, type, name, placeHolder, autoComplete, inputValue, ivalue, msgError, disabled, isValid,
+  id, type, name, placeHolder, autoComplete, inputValue, ivalue,
+  msgError, disabled, isValid, max, patt,
 }: PInputText) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
@@ -47,6 +48,8 @@ function Input({
         onBlur={ validInput }
         defaultValue={ ivalue }
         disabled={ disabled }
+        maxLength={ max }
+        pattern={ patt }
       />
       <span
         className={ style.ph }
@@ -60,6 +63,7 @@ function Input({
 
 Input.defaultProps = {
   autoComplete: 'off',
+  ivalue: '',
 };
 
 export default Input;

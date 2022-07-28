@@ -4,7 +4,6 @@ import { api2 } from '../service/api';
 
 export const infoUser = async () => {
   const cookie = getCookie('u_token');
-  // console.log(router);
 
   if (cookie) {
     const { data } = await api2.get('/get_user_info', {
@@ -25,7 +24,10 @@ const useUser = () => {
   const { data, mutate, error } = useSWR(
     '/get_user_info',
     infoUser,
-    { revalidateOnFocus: false },
+    {
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+    },
   );
 
   const loading = !data && !error;

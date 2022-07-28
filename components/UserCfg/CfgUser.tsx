@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import useUser from '../../hooks/useUser';
 import { InputRadio } from '../ComponentsForm';
 import Input from '../ComponentsForm/Input';
 import style from './style.module.scss';
@@ -8,25 +9,49 @@ type TEvent = {
   value: string;
 };
 
-function CfgUser({ data }: any) {
-  const [stateIfonUser, setStateIfoUser] = useState({
-    name: data.name,
-    email: data.email,
-    date: new Date(data.birthday),
-    doc: data.cpf_cnpj,
-    tel: data.telephones[0]?.phone || '',
-    cel: data.telephones[1]?.phone || '',
+type TStateUser = {
+  name: string;
+  email: string;
+  date: string;
+  doc: string;
+  tel: string;
+  cel: string;
+};
+
+function CfgUser() {
+  const { ifoUser, loading } = useUser();
+
+  const [stateIfonUser, setStateIfoUser] = useState<TStateUser>({
+    name: '',
+    email: '',
+    date: new Date().toISOString().split('T')[0],
+    doc: '',
+    tel: '',
+    cel: '',
   });
 
   const userCfgInfo = useCallback((target: TEvent) => {
     const { name, value } = target;
-    // console.log(value.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3')); Telefone
+    // console.log(value.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'));
 
     setStateIfoUser((state) => ({
       ...state,
       [name]: value,
     }));
   }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      setStateIfoUser({
+        name: ifoUser?.name,
+        email: ifoUser?.email,
+        date: new Date(ifoUser?.birthday).toISOString().split('T')[0],
+        doc: ifoUser?.cpf_cnpj,
+        tel: ifoUser?.telephones[0]?.phone,
+        cel: ifoUser?.telephones[1]?.phone,
+      });
+    }
+  }, [loading]);
 
   return (
     <section className={ style.section }>
@@ -70,7 +95,7 @@ function CfgUser({ data }: any) {
                 type="date"
                 name="date"
                 placeHolder="Data"
-                ivalue={ stateIfonUser.date.toISOString().split('T')[0] }
+                ivalue={ stateIfonUser.date }
                 inputValue={ userCfgInfo }
                 msgError="Selecione uma data"
               />
@@ -82,27 +107,28 @@ function CfgUser({ data }: any) {
                 ivalue={ stateIfonUser.doc }
                 inputValue={ userCfgInfo }
                 msgError="CPF inválido"
+                max={ 14 }
               />
             </div>
             <div className={ style.genere }>
               <h5>Sexo</h5>
               <div className={ style.inp }>
                 <InputRadio
-                  checked={ data.gender_id === 1 }
+                  checked={ ifoUser?.gender_id === 1 }
                   id="men"
                   name="Masculino"
                   family="grnere"
                   execFunction={ () => { } }
                 />
                 <InputRadio
-                  checked={ data.gender_id === 2 }
+                  checked={ ifoUser?.gender_id === 2 }
                   id="female"
                   name="Femenino"
                   family="grnere"
                   execFunction={ () => { } }
                 />
                 <InputRadio
-                  checked={ data.gender_id === null }
+                  checked={ ifoUser?.gender_id === null }
                   id="undefined"
                   name="Não informar"
                   family="grnere"
@@ -122,16 +148,18 @@ function CfgUser({ data }: any) {
                   ivalue={ stateIfonUser.tel }
                   inputValue={ userCfgInfo }
                   msgError="Insira um telefone"
+                  max={ 11 }
                 />
                 <Input
                   id="cel"
                   type="tel"
                   name="cel"
-                  placeHolder="Telefone"
+                  placeHolder="Celular"
                   autoComplete="tel"
                   ivalue={ stateIfonUser.cel }
                   inputValue={ userCfgInfo }
                   msgError="Insira um telefone"
+                  max={ 11 }
                 />
               </div>
             </div>
