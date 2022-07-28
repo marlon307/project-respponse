@@ -1,0 +1,94 @@
+Optimized by devina (https://devina.io/svg-minifier)
+
+SVG-1.svg -> Saved 131 bytes (33.76%) of 388 bytes
+
+SVG-2.svg -> Saved 756 bytes (79.66%) of 949 bytes
+
+SVG-3.svg -> Saved 783 bytes (72.30%) of 1083 bytes
+
+SVG-4.svg -> Saved 1134 bytes (80.03%) of 1417 bytes
+
+SVG-5.svg -> Saved 2022 bytes (82.10%) of 2463 bytes
+
+SVG-6.svg -> Saved 1041 bytes (76.26%) of 1365 bytes
+
+SVG-7.svg -> Saved 2652 bytes (75.97%) of 3491 bytes
+
+SVG-8.svg -> Saved 11708 bytes (68.03%) of 17210 bytes
+
+SVG-9.svg -> Saved 675 bytes (67.64%) of 998 bytes
+
+SVG-10.svg -> Saved 1189 bytes (78.38%) of 1517 bytes
+
+SVG-11.svg -> Saved 604 bytes (76.46%) of 790 bytes
+
+SVG-12.svg -> Saved 1352 bytes (81.45%) of 1660 bytes
+
+SVG-13.svg -> Saved 1988 bytes (75.45%) of 2635 bytes
+
+SVG-14.svg -> Saved 2559 bytes (88.98%) of 2876 bytes
+
+SVG-15.svg -> Saved 1917 bytes (77.77%) of 2465 bytes
+
+SVG-16.svg -> Saved 2933 bytes (78.53%) of 3735 bytes
+
+SVG-17.svg -> Saved 2574 bytes (88.64%) of 2904 bytes
+
+SVG-18.svg -> Saved 1709 bytes (80.88%) of 2113 bytes
+
+SVG-19.svg -> Saved 1987 bytes (81.17%) of 2448 bytes
+
+SVG-20.svg -> Saved 1057 bytes (76.87%) of 1375 bytes
+
+SVG-21.svg -> Saved 1017 bytes (69.42%) of 1465 bytes
+
+SVG-22.svg -> Saved 860 bytes (78.68%) of 1093 bytes
+
+SVG-23.svg -> Saved 837 bytes (79.19%) of 1057 bytes
+
+SVG-24.svg -> Saved 925 bytes (81.50%) of 1135 bytes
+
+SVG-25.svg -> Saved 1079 bytes (71.22%) of 1515 bytes
+
+SVG-26.svg -> Saved 1441 bytes (75.88%) of 1899 bytes
+
+SVG-27.svg -> Saved 633 bytes (68.28%) of 927 bytes
+
+SVG-28.svg -> Saved 1799 bytes (83.87%) of 2145 bytes
+
+SVG-29.svg -> Saved 1680 bytes (80.23%) of 2094 bytes
+
+SVG-30.svg -> Saved 786 bytes (67.70%) of 1161 bytes
+
+SVG-31.svg -> Saved 1168 bytes (79.40%) of 1471 bytes
+
+SVG-32.svg -> Saved 2652 bytes (75.97%) of 3491 bytes
+
+SVG-33.svg -> Saved 3626 bytes (86.35%) of 4199 bytes
+
+SVG-34.svg -> Saved 2503 bytes (80.87%) of 3095 bytes
+
+SVG-35.svg -> Saved 574 bytes (75.53%) of 760 bytes
+
+SVG-36.svg -> Saved 2648 bytes (87.42%) of 3029 bytes
+
+SVG-37.svg -> Saved 3378 bytes (84.03%) of 4020 bytes
+
+SVG-38.svg -> Saved 1032 bytes (82.49%) of 1251 bytes
+
+SVG-39.svg -> Saved 1610 bytes (77.29%) of 2083 bytes
+
+SVG-40.svg -> Saved 933 bytes (75.18%) of 1241 bytes
+
+SVG-41.svg -> Saved 1097 bytes (76.82%) of 1428 bytes
+
+SVG-42.svg -> Saved 776 bytes (71.79%) of 1081 bytes
+
+SVG-43.svg -> Saved 1300 bytes (75.93%) of 1712 bytes
+
+SVG-44.svg -> Saved 2986 bytes (80.03%) of 3731 bytes
+
+SVG-45.svg -> Saved 1518 bytes (85.04%) of 1785 bytes
+
+SVG-46.svg -> Saved 2175 bytes (82.29%) of 2643 bytes
+
