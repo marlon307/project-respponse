@@ -19,4 +19,6 @@ export interface PInputText {
   msgError?: string;
   disabled?: boolean;
   isValid?: boolean;
+  max?: number;
+  patt?: string;
 }

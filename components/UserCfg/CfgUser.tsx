@@ -32,7 +32,7 @@ function CfgUser() {
 
   const userCfgInfo = useCallback((target: TEvent) => {
     const { name, value } = target;
-    // console.log(value.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3')); Telefone
+    // console.log(value.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'));
 
     setStateIfoUser((state) => ({
       ...state,
@@ -107,6 +107,7 @@ function CfgUser() {
                 ivalue={ stateIfonUser.doc }
                 inputValue={ userCfgInfo }
                 msgError="CPF inválido"
+                max={ 14 }
               />
             </div>
             <div className={ style.genere }>
@@ -147,16 +148,18 @@ function CfgUser() {
                   ivalue={ stateIfonUser.tel }
                   inputValue={ userCfgInfo }
                   msgError="Insira um telefone"
+                  max={ 11 }
                 />
                 <Input
                   id="cel"
                   type="tel"
                   name="cel"
-                  placeHolder="Telefone"
+                  placeHolder="Celular"
                   autoComplete="tel"
                   ivalue={ stateIfonUser.cel }
                   inputValue={ userCfgInfo }
                   msgError="Insira um telefone"
+                  max={ 11 }
                 />
               </div>
             </div>
