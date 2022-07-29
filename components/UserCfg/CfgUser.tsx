@@ -1,13 +1,10 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, {
+  useState, useCallback, useEffect,
+} from 'react';
 import useUser from '../../hooks/useUser';
 import { InputRadio } from '../ComponentsForm';
 import Input from '../ComponentsForm/Input';
 import style from './style.module.scss';
-
-type TEvent = {
-  name: string;
-  value: string;
-};
 
 type TStateUser = {
   name: string;
@@ -30,13 +27,14 @@ function CfgUser() {
     cel: '',
   });
 
-  const userCfgInfo = useCallback((target: TEvent) => {
-    const { name, value } = target;
-    // console.log(value.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'));
+  const userCfgInfo = useCallback((target: HTMLInputElement) => {
+    const {
+      name, value, pattern, dataset,
+    } = target;
 
     setStateIfoUser((state) => ({
       ...state,
-      [name]: value,
+      [name]: dataset.format ? value.replace(new RegExp(pattern), dataset.format) : value,
     }));
   }, []);
 
@@ -107,7 +105,9 @@ function CfgUser() {
                 ivalue={ stateIfonUser.doc }
                 inputValue={ userCfgInfo }
                 msgError="CPF inválido"
-                max={ 14 }
+                max={ 11 }
+                patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
+                format="$1.$2.$3-$4"
               />
             </div>
             <div className={ style.genere }>
@@ -149,6 +149,8 @@ function CfgUser() {
                   inputValue={ userCfgInfo }
                   msgError="Insira um telefone"
                   max={ 11 }
+                  patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
+                  format="$1 $2-$3"
                 />
                 <Input
                   id="cel"
@@ -160,6 +162,8 @@ function CfgUser() {
                   inputValue={ userCfgInfo }
                   msgError="Insira um telefone"
                   max={ 11 }
+                  patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
+                  format="$1 $2-$3"
                 />
               </div>
             </div>

@@ -21,4 +21,5 @@ export interface PInputText {
   isValid?: boolean;
   max?: number;
   patt?: string;
+  format?: string;
 }
