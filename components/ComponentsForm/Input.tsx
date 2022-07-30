@@ -11,7 +11,7 @@ function Input({
   const [statusValid, setSatusValid] = useState(false);
 
   function handleChange({ target }: any) {
-    inputValue(target);
+    inputValue!(target);
   }
 
   function validInput() {
@@ -47,7 +47,7 @@ function Input({
         onChange={ handleChange }
         onBlur={ validInput }
         value={ ivalue }
-        disabled={ disabled }
+        disabled={ inputValue === undefined || disabled }
         maxLength={ max }
         pattern={ patt }
         data-format={ format }

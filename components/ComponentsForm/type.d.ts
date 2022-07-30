@@ -1,8 +1,8 @@
 export type PInputRadio = {
   name: string;
-  id: string;
+  iId: string;
   family: string;
-  value?: number;
+  iValue?: number;
   execFunction?: Function;
   checked: boolean
 };
@@ -14,7 +14,7 @@ export interface PInputText {
   placeHolder: string;
   autoComplete?: string;
   ivalue: any;
-  inputValue: Function;
+  inputValue?: Function;
   regexValidator?: RegExp;
   msgError?: string;
   disabled?: boolean;
