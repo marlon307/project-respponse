@@ -3,9 +3,10 @@ import style from './style.module.scss';
 
 type PBtnAdd = {
   eventBtn: Function,
+  title?: string
 };
 
-function BtnAdd({ eventBtn }: PBtnAdd) {
+function BtnAdd({ eventBtn, title }: PBtnAdd) {
   function eventButtonAdd() {
     eventBtn();
   }
@@ -16,9 +17,13 @@ function BtnAdd({ eventBtn }: PBtnAdd) {
       type="button"
       onClick={ eventButtonAdd }
     >
-      Adicionar
+      { title }
     </button>
   );
 }
+
+BtnAdd.defaultProps = {
+  title: 'Adicionar',
+};
 
 export default BtnAdd;

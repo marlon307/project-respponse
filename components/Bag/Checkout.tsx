@@ -102,10 +102,10 @@ function Checkout({ setOpenModal, infoCheckout }: PropsCheckout) {
                 style: 'currency',
                 currency: 'BRL',
               })} - ${object.toDate}` }
-              id={ object.name }
+              iId={ object.name }
               family="shipping"
               execFunction={ handleSipping }
-              value={ object.price }
+              iValue={ object.price }
             />
           )) }
         </div>
@@ -125,7 +125,7 @@ function Checkout({ setOpenModal, infoCheckout }: PropsCheckout) {
               key={ object.id }
               checked={ infoCheckout.formatPay.formatPayment === object.name }
               name={ object.name }
-              id={ object.name }
+              iId={ object.name }
               family="payment"
               execFunction={ handlePayment }
             />

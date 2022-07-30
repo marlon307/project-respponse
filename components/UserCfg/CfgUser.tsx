@@ -2,6 +2,7 @@ import React, {
   useState, useCallback, useEffect,
 } from 'react';
 import useUser from '../../hooks/useUser';
+import BtnAdd from '../Buttons/BtnAdd';
 import { InputRadio } from '../ComponentsForm';
 import Input from '../ComponentsForm/Input';
 import style from './style.module.scss';
@@ -13,11 +14,11 @@ type TStateUser = {
   doc: string;
   tel: string;
   cel: string;
+  gender: string,
 };
 
 function CfgUser() {
   const { ifoUser, loading } = useUser();
-
   const [stateIfonUser, setStateIfoUser] = useState<TStateUser>({
     name: '',
     email: '',
@@ -25,6 +26,7 @@ function CfgUser() {
     doc: '',
     tel: '',
     cel: '',
+    gender: '',
   });
 
   const userCfgInfo = useCallback((target: HTMLInputElement) => {
@@ -34,9 +36,14 @@ function CfgUser() {
 
     setStateIfoUser((state) => ({
       ...state,
-      [name]: dataset.format ? value.replace(new RegExp(pattern), dataset.format) : value,
+      [name]: dataset?.format ? value.replace(new RegExp(pattern), dataset.format) : value,
     }));
   }, []);
+
+  function saveUpdateInfoUser() {
+    // eslint-disable-next-line no-console
+    console.log(stateIfonUser);
+  }
 
   useEffect(() => {
     if (!loading) {
@@ -44,9 +51,10 @@ function CfgUser() {
         name: ifoUser?.name,
         email: ifoUser?.email,
         date: new Date(ifoUser?.birthday).toISOString().split('T')[0],
-        doc: ifoUser?.cpf_cnpj,
-        tel: ifoUser?.telephones[0]?.phone,
-        cel: ifoUser?.telephones[1]?.phone,
+        doc: ifoUser?.cpf_cnpj?.replace(/^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})/, '$1.$2.$3-$4'),
+        tel: ifoUser?.tel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
+        cel: ifoUser?.cel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
+        gender: ifoUser?.gender_id === null ? 0 : ifoUser?.gender_id,
       });
     }
   }, [loading]);
@@ -75,8 +83,8 @@ function CfgUser() {
                 placeHolder="E-mail"
                 autoComplete="email"
                 ivalue={ stateIfonUser.email }
-                inputValue={ userCfgInfo }
                 msgError="E-mail inválido"
+                disabled
               />
               <a
                 href="/resetpsw"
@@ -115,24 +123,27 @@ function CfgUser() {
               <div className={ style.inp }>
                 <InputRadio
                   checked={ ifoUser?.gender_id === 1 }
-                  id="men"
+                  iId="men"
                   name="Masculino"
-                  family="grnere"
-                  execFunction={ () => { } }
+                  family="gender"
+                  iValue={ 3 }
+                  execFunction={ userCfgInfo }
                 />
                 <InputRadio
                   checked={ ifoUser?.gender_id === 2 }
-                  id="female"
+                  iId="female"
                   name="Femenino"
-                  family="grnere"
-                  execFunction={ () => { } }
+                  family="gender"
+                  iValue={ 2 }
+                  execFunction={ userCfgInfo }
                 />
                 <InputRadio
                   checked={ ifoUser?.gender_id === null }
-                  id="undefined"
+                  iId="undefined"
                   name="Não informar"
-                  family="grnere"
-                  execFunction={ () => { } }
+                  family="gender"
+                  iValue={ 1 }
+                  execFunction={ userCfgInfo }
                 />
               </div>
             </div>
@@ -170,6 +181,7 @@ function CfgUser() {
           </form>
         </div>
       </div>
+      <BtnAdd eventBtn={ saveUpdateInfoUser! } title="Salvar" />
     </section>
   );
 }

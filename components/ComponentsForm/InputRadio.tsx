@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import style from './style.module.scss';
 import type { PInputRadio } from './type';
 
 function InputRadio({
-  id, name, family, value, execFunction, checked,
+  iId, name, family, iValue, execFunction, checked,
 }: PInputRadio) {
-  function handleClick(idInput: string, price: number) {
-    execFunction!(idInput, price);
+  function handleClick({ target }: ChangeEvent<HTMLInputElement> | any) {
+    execFunction!(target);
   }
 
   return (
     <div className={ style.inputRadio }>
-      <label htmlFor={ id }>
+      <label htmlFor={ iId }>
         <input
-          id={ id }
+          id={ iId }
           type="radio"
           name={ family }
-          onClick={ () => handleClick(id, value!) }
+          value={ iValue }
+          onClick={ handleClick }
           defaultChecked={ checked }
         />
         <span>{ name }</span>
