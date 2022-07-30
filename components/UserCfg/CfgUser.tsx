@@ -14,7 +14,7 @@ type TStateUser = {
   doc: string;
   tel: string;
   cel: string;
-  gen: string,
+  gender: string,
 };
 
 function CfgUser() {
@@ -26,7 +26,7 @@ function CfgUser() {
     doc: '',
     tel: '',
     cel: '',
-    gen: '',
+    gender: '',
   });
 
   const userCfgInfo = useCallback((target: HTMLInputElement) => {
@@ -40,6 +40,11 @@ function CfgUser() {
     }));
   }, []);
 
+  function saveUpdateInfoUser() {
+    // eslint-disable-next-line no-console
+    console.log(stateIfonUser);
+  }
+
   useEffect(() => {
     if (!loading) {
       setStateIfoUser({
@@ -49,7 +54,7 @@ function CfgUser() {
         doc: ifoUser?.cpf_cnpj?.replace(/^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})/, '$1.$2.$3-$4'),
         tel: ifoUser?.tel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
         cel: ifoUser?.cel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
-        gen: ifoUser?.gender_id === null ? 0 : ifoUser?.gender_id,
+        gender: ifoUser?.gender_id === null ? 0 : ifoUser?.gender_id,
       });
     }
   }, [loading]);
@@ -120,15 +125,15 @@ function CfgUser() {
                   checked={ ifoUser?.gender_id === 1 }
                   iId="men"
                   name="Masculino"
-                  family="grnere"
-                  iValue={ 1 }
+                  family="gender"
+                  iValue={ 3 }
                   execFunction={ userCfgInfo }
                 />
                 <InputRadio
                   checked={ ifoUser?.gender_id === 2 }
                   iId="female"
                   name="Femenino"
-                  family="grnere"
+                  family="gender"
                   iValue={ 2 }
                   execFunction={ userCfgInfo }
                 />
@@ -136,8 +141,8 @@ function CfgUser() {
                   checked={ ifoUser?.gender_id === null }
                   iId="undefined"
                   name="Não informar"
-                  family="grnere"
-                  iValue={ 0 }
+                  family="gender"
+                  iValue={ 1 }
                   execFunction={ userCfgInfo }
                 />
               </div>
@@ -176,7 +181,7 @@ function CfgUser() {
           </form>
         </div>
       </div>
-      <BtnAdd eventBtn={ () => { } } title="Salvar" />
+      <BtnAdd eventBtn={ saveUpdateInfoUser! } title="Salvar" />
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import style from './style.module.scss';
 import type { PInputText } from './type';
 
@@ -10,7 +10,7 @@ function Input({
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
   const [statusValid, setSatusValid] = useState(false);
 
-  function handleChange({ target }: any) {
+  function handleChange({ target }: ChangeEvent<HTMLInputElement> | any) {
     inputValue!(target);
   }
 
