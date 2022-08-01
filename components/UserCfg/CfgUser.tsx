@@ -2,6 +2,7 @@ import React, {
   useState, useCallback, useEffect,
 } from 'react';
 import useUser from '../../hooks/useUser';
+import { api2 } from '../../service/api';
 import BtnAdd from '../Buttons/BtnAdd';
 import { InputRadio } from '../ComponentsForm';
 import Input from '../ComponentsForm/Input';
@@ -21,7 +22,7 @@ type TCfg = {
 };
 
 function CfgUser({ token }: TCfg) {
-  const { ifoUser, loading } = useUser(token);
+  const { ifoUser, loading, mutate } = useUser(token);
   const [stateIfonUser, setStateIfoUser] = useState<TStateUser>({
     name: '',
     email: '',
@@ -43,9 +44,25 @@ function CfgUser({ token }: TCfg) {
     }));
   }, []);
 
-  function saveUpdateInfoUser() {
+  async function saveUpdateInfoUser() {
     // eslint-disable-next-line no-console
-    console.log(stateIfonUser);
+    const newBody = {
+      name: stateIfonUser.name,
+      date: stateIfonUser.date,
+      doc: stateIfonUser.doc,
+      tel: stateIfonUser.tel,
+      cel: stateIfonUser.cel,
+      gender: stateIfonUser.gender,
+    };
+    const { data } = await api2.patch('/update_user', newBody, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).catch(({ response }) => response);
+
+    if (data.status === 200) {
+      mutate({ ...ifoUser, ...newBody });
+    }
   }
 
   useEffect(() => {
@@ -60,7 +77,7 @@ function CfgUser({ token }: TCfg) {
         gender: ifoUser?.gender_id === null ? 0 : ifoUser?.gender_id,
       });
     }
-  }, [loading]);
+  }, [loading, ifoUser]);
 
   return (
     <section className={ style.section }>

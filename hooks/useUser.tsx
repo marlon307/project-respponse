@@ -6,7 +6,7 @@ type TUser = {
   token: string;
 };
 
-export const infoUser = async ({ route, token }: TUser) => {
+const infoUser = async ({ route, token }: TUser) => {
   if (token) {
     const { data } = await api2.get(route, {
       headers: {
