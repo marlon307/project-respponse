@@ -16,9 +16,12 @@ type TStateUser = {
   cel: string;
   gender: string,
 };
+type TCfg = {
+  token: string
+};
 
-function CfgUser() {
-  const { ifoUser, loading } = useUser();
+function CfgUser({ token }: TCfg) {
+  const { ifoUser, loading } = useUser(token);
   const [stateIfonUser, setStateIfoUser] = useState<TStateUser>({
     name: '',
     email: '',
