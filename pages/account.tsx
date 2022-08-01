@@ -19,7 +19,11 @@ const AddCard = lazy(() => import('../components/Add/Addcard'));
 const Help = lazy(() => import('./help'));
 const ContentModal = lazy(() => import('../components/Modal/ContentModal'));
 
-function Account() {
+type TAccount = {
+  token: string
+};
+
+function Account({ token }: TAccount) {
   const { loggedOut } = useLogin();
   const [dropOption, setDropOption] = useState('');
   const [openModal, setOpenModal] = useState(false);
@@ -58,7 +62,7 @@ function Account() {
         </a>
         <div className={ style.dropcontainer }>
           <Suspense fallback={ <Loading /> }>
-            <Usercfg />
+            <Usercfg token={ token } />
           </Suspense>
         </div>
       </div>
@@ -160,7 +164,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (req.cookies.u_token) {
     return {
       props: {
-        logged: req.cookies.u_token,
+        token: req.cookies.u_token,
       },
     };
   }

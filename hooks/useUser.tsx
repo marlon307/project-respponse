@@ -1,14 +1,16 @@
 import useSWR from 'swr';
-import { getCookie } from 'cookies-next';
 import { api2 } from '../service/api';
 
-export const infoUser = async () => {
-  const cookie = getCookie('u_token');
+type TUser = {
+  route: string;
+  token: string;
+};
 
-  if (cookie) {
-    const { data } = await api2.get('/get_user_info', {
+export const infoUser = async ({ route, token }: TUser) => {
+  if (token) {
+    const { data } = await api2.get(route, {
       headers: {
-        authorization: `Bearer ${cookie}`,
+        authorization: `Bearer ${token}`,
       },
     }).catch(({ response }) => response);
 
@@ -20,9 +22,12 @@ export const infoUser = async () => {
   throw error;
 };
 
-const useUser = () => {
+const useUser = (token: string) => {
   const { data, mutate, error } = useSWR(
-    '/get_user_info',
+    {
+      route: '/get_user_info',
+      token,
+    },
     infoUser,
     {
       revalidateOnFocus: false,
