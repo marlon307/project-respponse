@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import useUser from '../../hooks/useUser';
 import { api2 } from '../../service/api';
-import BtnAdd from '../Buttons/BtnAdd';
+import BtnIco from '../Buttons/BtnIco';
 import { InputRadio } from '../ComponentsForm';
 import Input from '../ComponentsForm/Input';
 import style from './style.module.scss';
@@ -23,6 +23,7 @@ type TCfg = {
 
 function CfgUser({ token }: TCfg) {
   const { ifoUser, loading, mutate } = useUser(token);
+  const [isLoading, setIsLoading] = useState(false);
   const [stateIfonUser, setStateIfoUser] = useState<TStateUser>({
     name: '',
     email: '',
@@ -45,7 +46,6 @@ function CfgUser({ token }: TCfg) {
   }, []);
 
   async function saveUpdateInfoUser() {
-    // eslint-disable-next-line no-console
     const newBody = {
       name: stateIfonUser.name,
       date: stateIfonUser.date,
@@ -54,14 +54,19 @@ function CfgUser({ token }: TCfg) {
       cel: stateIfonUser.cel,
       gender: stateIfonUser.gender,
     };
-    const { data } = await api2.patch('/update_user', newBody, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    }).catch(({ response }) => response);
+    if (newBody.name && newBody.doc && newBody.date) {
+      setIsLoading(true);
 
-    if (data.status === 200) {
-      mutate({ ...ifoUser, ...newBody });
+      const { data } = await api2.patch('/update_user', newBody, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }).catch(({ response }) => response);
+
+      if (data.status === 200) {
+        mutate({ ...ifoUser, ...newBody }, false);
+      }
+      setIsLoading(false);
     }
   }
 
@@ -90,7 +95,7 @@ function CfgUser({ token }: TCfg) {
                 id="name"
                 type="name"
                 name="name"
-                placeHolder="Nome e Sobrenome"
+                placeHolder="* Nome e Sobrenome"
                 msgError="Preencha Nome e Sobrenome"
                 autoComplete="name"
                 ivalue={ stateIfonUser.name }
@@ -120,7 +125,7 @@ function CfgUser({ token }: TCfg) {
                 id="date"
                 type="date"
                 name="date"
-                placeHolder="Data"
+                placeHolder="* Data"
                 ivalue={ stateIfonUser.date }
                 inputValue={ userCfgInfo }
                 msgError="Selecione uma data"
@@ -129,7 +134,7 @@ function CfgUser({ token }: TCfg) {
                 id="doc"
                 type="doc"
                 name="doc"
-                placeHolder="CPF"
+                placeHolder="* CPF"
                 ivalue={ stateIfonUser.doc }
                 inputValue={ userCfgInfo }
                 msgError="CPF inválido"
@@ -201,7 +206,11 @@ function CfgUser({ token }: TCfg) {
           </form>
         </div>
       </div>
-      <BtnAdd eventBtn={ saveUpdateInfoUser! } title="Salvar" />
+      <BtnIco
+        action={ saveUpdateInfoUser! }
+        textBtn="Salvar"
+        actionLiberate={ isLoading }
+      />
     </section>
   );
 }
