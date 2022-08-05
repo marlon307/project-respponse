@@ -1,8 +1,12 @@
 .order {
-  width: 700px;
-  padding: 2em;
+  max-width: 700px;
+  width: 100vw;
   border-radius: 1em;
   background: var(--maincolor);
+}
+
+.content_order {
+  padding: 2em 6%;
 
   span {
     color: #464646;
@@ -243,16 +247,9 @@
   }
 }
 
-@media (max-width: 771px) {
-  .order {
-    max-width: 600px;
-  }
-}
-
 @media (max-width: 670px) {
   .order {
     max-width: 470px;
-    padding: 2em 0.65em;
   }
 }
 
@@ -317,10 +314,8 @@
       }
     }
   }
-}
 
-@media (max-width: 470px) {
-  .order {
-    width: auto;
+  .content_order {
+    padding: 2em 3%;
   }
 }
