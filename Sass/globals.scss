@@ -1,16 +1,15 @@
 // https://loading.io/css/
 :root {
-  --maincolor: #fff;
+  --maincolor: #FFF;
   --color-with-bg: #F5F5F5;
-  --maincolormenu: #ffffffea;
-  --color-border: #0000001a;
-  --boxshadowcolor: #0000001a;
+  --maincolormenu: #ffffffEA;
+  --color-border: #0000001A;
   --titlecolor: #303030;
   --hovericon: #919191;
-  --colorlink: #006bef;
+  --colorlink: #006BEF;
   --color-black: #333;
-  --backgroundimg: #eaeaea;
-  --colo-red: #db1818;
+  --backgroundimg: #EAEAEA;
+  --colo-red: #DB1818;
   --color-green: #43AA37;
   --color-grey-with: #A7A7A7;
   --color-grey: #505050;
@@ -18,6 +17,10 @@
   --color-dark-grey: #585858;
   --color-shadow-modal: #00000070;
   --color-orange: #E77D23;
+}
+
+body {
+  background: var(--maincolor);
 }
 
 * {
