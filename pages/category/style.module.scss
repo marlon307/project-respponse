@@ -23,7 +23,7 @@
   position: sticky;
   z-index: 444;
   top: 90px;
-  background: #ffffffe5;
+  background: var(--maincolormenu);
   grid-area: filter;
   display: grid;
   grid-template-areas: 'btn listfilter';
@@ -64,12 +64,12 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    color: #3d3d3d;
+    color: var(--color-grey);
 
     svg {
       width: 1.7em;
       height: 1.7em;
-      fill: #3d3d3d;
+      fill: var(--color-grey);
     }
 
     span {

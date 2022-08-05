@@ -4,9 +4,9 @@ import BarBuy from '../components/Bars/BarBuy';
 import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
-import style from '../Sass/style.module.scss';
 import HeadSEO from '../components/Head/HeadSEO';
 import { StateBagType } from '../types/bag';
+import style from '../Sass/style.module.scss';
 
 const mockItem = [{
   id: 0,

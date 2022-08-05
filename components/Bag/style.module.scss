@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     gap: 18px;
-    color: #505050;
+    color: var(--color-grey);
     font-weight: 600;
   }
 }
@@ -31,13 +31,13 @@
 .options {
   padding: 2px 12px;
   margin: 0 auto 0;
-  border: 1px solid var(--bordercolor);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
 
   .descount {
     display: flex;
     margin: 16px 8px;
-    color: #585858;
+    color: var(--color-dark-grey);
   }
 }
 

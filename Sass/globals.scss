@@ -1,14 +1,26 @@
 // https://loading.io/css/
 :root {
-  --maincolor: #fff;
-  --maincolormenu: #ffffffea;
-  --bordercolor: #0000001a;
-  --boxshadowcolor: #0000001a;
+  --maincolor: #FFF;
+  --color-with-bg: #F5F5F5;
+  --maincolormenu: #ffffffEA;
+  --color-border: #0000001A;
   --titlecolor: #303030;
   --hovericon: #919191;
-  --colorlink: #0662B9;
-  --backgroundimg: #eaeaea;
-  --colorerr: #db1818;
+  --colorlink: #006BEF;
+  --color-black: #333;
+  --backgroundimg: #EAEAEA;
+  --colo-red: #DB1818;
+  --color-green: #43AA37;
+  --color-grey-with: #A7A7A7;
+  --color-grey: #505050;
+  --color-purple: #706BB3;
+  --color-dark-grey: #585858;
+  --color-shadow-modal: #00000070;
+  --color-orange: #E77D23;
+}
+
+body {
+  background: var(--maincolor);
 }
 
 * {
@@ -60,33 +72,33 @@ html {
 }
 
 // https://tobiasahlin.com/spinkit/
-
 .spinner {
   width: 40px;
   height: 40px;
   z-index: 99995;
   position: relative;
   margin: 0 auto;
-}
 
-.double-bounce1,
-.double-bounce2 {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #ebebeb;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  left: 0;
+  &::after,
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #ebebeb;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-  animation: sk-bounce 2.0s infinite ease-in-out;
-}
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+  }
 
-.double-bounce2 {
-  -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s;
+  &::after {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
 }
 
 .lds-ellipsis {
@@ -103,7 +115,7 @@ html {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--maincolor);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
@@ -202,6 +214,6 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #dad7d7;
+  background: var(--color-grey-with);
   border-radius: 5px;
 }

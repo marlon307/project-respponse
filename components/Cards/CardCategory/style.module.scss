@@ -30,7 +30,7 @@
   span:nth-child(even) {
     border-radius: 12px;
     font-weight: 700;
-    color: #333;
+    color: var(--color-grey);
     padding: 0.6em 0.6em 0.6em 4em;
   }
 

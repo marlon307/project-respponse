@@ -22,9 +22,9 @@
 
 .login {
   padding: 0.8em 1em;
-  background: #333333;
+  background: var(--color-black);
   border-radius: 12px;
-  color: #fff;
+  color: var(--maincolor);
   font-weight: 600;
   letter-spacing: 1.2px;
   position: relative;
@@ -41,7 +41,7 @@
   &::after {
     content: "";
     left: 50%;
-    border: 1px solid var(--bordercolor);
+    border: 1px solid var(--color-border);
     background: var(--maincolor);
     position: absolute;
     top: -0.5px;
@@ -65,7 +65,7 @@
     right: -20px;
     border-radius: 12px;
     top: 30px;
-    border: 1px solid var(--bordercolor);
+    border: 1px solid var(--color-border);
     background: var(--maincolor);
   }
 
@@ -78,7 +78,7 @@
       align-items: center;
       gap: 20px;
       cursor: pointer;
-      color: #333333;
+      color: var(--color-black);
 
       &:hover {
         text-decoration: underline;

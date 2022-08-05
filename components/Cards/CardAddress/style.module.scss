@@ -1,16 +1,16 @@
 .cardaddress {
   position: relative;
   padding: 18px;
-  border: 1px solid var(--bordercolor);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  color: #333;
-  background: #fff;
+  color: var(--color-grey);
+  background: var(--maincolor);
   width: -webkit-fill-available;
 
   .line {
     display: flex;
     margin-top: 12px;
-    color: #585858;
+    color: var(--color-dark-grey);
   }
 
   div {
@@ -35,7 +35,7 @@
   svg {
     width: 22px !important;
     height: 22px !important;
-    fill: #c2c2c2;
+    fill: var(--color-grey-with);
 
     &:hover {
       fill: var(--hovericon);

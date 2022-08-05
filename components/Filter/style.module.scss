@@ -1,6 +1,6 @@
 .itemfilter {
   display: flex;
-  color: #6f6f6f;
+  color: var(--color-grey);
   overflow: hidden;
   align-items: center;
   justify-content: center;
@@ -22,9 +22,9 @@
   cursor: pointer;
   padding: 3px 16px;
   border-radius: 26px;
-  border: 1px solid var(--bordercolor);
+  border: 1px solid var(--color-border);
   background: transparent;
-  color: #6f6f6f;
+  color: var(--color-grey);
   font-size: 1em;
   user-select: none;
 
@@ -33,12 +33,12 @@
     height: 12px;
     border-radius: 50%;
     margin-left: 8px;
-    border: 1px solid var(--bordercolor);
+    border: 1px solid var(--color-border);
   }
 
   svg {
     margin-left: 6px;
-    fill: #7c7c7c;
+    fill: var(--color-grey);
     width: 1.2em;
     transform: rotate(-90deg);
   }
@@ -53,13 +53,13 @@
 
   h1 {
     font-size: 1.3em;
-    color: #3d3d3d;
+    color: var(--color-dark-grey);
     text-align: center;
   }
 
   h2 {
     font-size: 1em;
-    color: #505050;
+    color: var(--color-grey);
     margin: 16px 0;
   }
 
@@ -105,15 +105,15 @@
   width: 8em;
   height: 8em;
   border-radius: 50%;
-  border: 1px solid var(--bordercolor);
+  border: 1px solid var(--color-border);
   line-height: 2;
   font-weight: 600;
   cursor: pointer;
-  color: #6f6f6f;
+  color: var(--color-grey);
   margin: 0 auto;
 
   svg {
-    fill: #6f6f6f;
+    fill: var(--color-grey);
     transform: rotate(-90deg);
   }
 }

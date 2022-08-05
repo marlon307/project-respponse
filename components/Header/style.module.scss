@@ -10,7 +10,7 @@
 
   &::before {
     content: '';
-    background: #ffffffe5;
+    background: var(--maincolormenu);
     backdrop-filter: saturate(100%) blur(8px);
     position: absolute;
     width: 100%;
@@ -63,7 +63,7 @@
 .active {
   background: var(--maincolormenu);
   backdrop-filter: saturate(100%) blur(5px);
-  box-shadow: inset 0 -1px 0 0 var(--bordercolor);
+  box-shadow: inset 0 -1px 0 0 var(--color-border);
 }
 
 @media (max-width: 790px) {

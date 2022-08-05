@@ -87,12 +87,12 @@
 
 .titles {
   h1 {
-    color: #525252;
+    color: var(--color-grey);
     font-size: 2em;
   }
 
   h2 {
-    color: #707070;
+    color: var(--color-grey);
     font-size: 1.2em;
   }
 }
@@ -116,11 +116,11 @@
     content: attr(data-oldprice);
     display: inline-block;
     text-decoration: line-through;
-    color: #bfbfbf;
+    color: var(--color-grey-with);
   }
 
   h4 {
-    color: #525252;
+    color: var(--color-grey);
     font-size: 2em;
   }
 }

@@ -52,7 +52,7 @@
   font-size: 1.2em;
   text-align: center;
   margin: 3em 0;
-  color: #585858;
+  color: var(--color-dark-grey);
 }
 
 @media (max-width: 750px) {
@@ -115,8 +115,8 @@
         display: block;
         width: 8px;
         height: 8px;
-        border-left: 3px solid #333;
-        border-top: 3px solid #333;
+        border-left: 3px solid var(--color-grey);
+        border-top: 3px solid var(--color-grey);
         border-radius: 2px;
       }
     }

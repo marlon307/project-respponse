@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, Suspense } from 'react';
 import { createPortal } from 'react-dom';
 import useOutsideClick from '../../hooks/useOutSide';
-import Loading from '../Loading';
 import style from './style.module.scss';
 
 type PModal = {
@@ -35,7 +34,7 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
       ref={ modalRef }
       className={ style.content_modal }
     >
-      <Suspense fallback={ <Loading /> }>
+      <Suspense fallback={ <div className="spinner" /> }>
         { children }
       </Suspense>
     </div>,
