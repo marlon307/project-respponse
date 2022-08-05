@@ -24,9 +24,9 @@
   position: relative;
   padding: 16px 72px;
   border-radius: 12px;
-  background: #fff;
-  border: 2px solid #006bef;
-  color: #006bef;
+  background: var(--maincolor);
+  border: 2px solid var(--colorlink);
+  color: var(----colorlink);
   font-weight: 700;
   cursor: pointer;
   font-size: 1em;
@@ -82,7 +82,7 @@
 
 .redirect {
   position: relative;
-  border: 2px solid #006bef;
+  border: 2px solid var(--colorlink);
   max-width: 180px;
   border-radius: 1em;
   cursor: pointer;
@@ -96,7 +96,7 @@
     position: relative;
     top: auto;
     padding: 18px 0 18px 24px;
-    color: #006bef;
+    color: var(----colorlink);
     font-weight: 600;
     font-size: 0.96em;
   }
@@ -105,7 +105,7 @@
   @include clickBtn;
 
   svg {
-    fill: #006bef;
+    fill: var(--colorlink);
     transition: transform 0.2s ease-in-out;
   }
 
@@ -118,9 +118,9 @@
   border-radius: 12px;
   text-align: center;
   padding: 14px 38px;
-  background: #006bef;
+  background: var(--colorlink);
   font-weight: 600;
-  color: #fff;
+  color: var(--maincolor);
   font-size: 1em;
   cursor: pointer;
 }
@@ -131,8 +131,8 @@
   height: 52px;
   font-size: 1em;
   font-weight: 600;
-  background: #006bef;
-  color: #fff;
+  background: var(--colorlink);
+  color: var(--maincolor);
   @include center;
   gap: 12px;
   cursor: pointer;
@@ -146,7 +146,7 @@
   }
 
   path {
-    fill: #fff;
+    fill: var(--maincolor);
   }
 }
 
@@ -159,8 +159,8 @@
   button {
     font-size: 1em;
     font-weight: 600;
-    border: 2px solid #006bef;
-    background: #ffff;
+    border: 2px solid var(--colorlink);
+    background: var(--maincolor);
     cursor: pointer;
     flex: none;
     border-radius: 12px;
@@ -173,12 +173,12 @@
   }
 
   span {
-    color: #006bef;
+    color: var(----colorlink);
     white-space: nowrap;
   }
 
   path {
-    fill: #006bef;
+    fill: var(--colorlink);
   }
 }
 
@@ -192,14 +192,14 @@
 
 :is(.btn_t3, .btn_t2)[data-error="true"] {
   gap: 1.4em;
-  border-color: var(--colorerr) !important;
+  border-color: var(--colo-red) !important;
 
   span {
-    color: var(--colorerr) !important;
+    color: var(--colo-red) !important;
   }
 
   path {
-    fill: var(--colorerr);
+    fill: var(--colo-red);
   }
 }
 

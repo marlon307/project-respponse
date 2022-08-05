@@ -10,7 +10,7 @@
   padding: 2em 6%;
 
   h1 {
-    color: #505050;
+    color: var(--color-grey);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,7 @@
       flex: none;
       width: 1.2em;
       height: 1.2em;
-      fill: #505050;
+      fill: var(--color-grey);
     }
   }
 }

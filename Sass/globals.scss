@@ -1,14 +1,23 @@
 // https://loading.io/css/
 :root {
   --maincolor: #fff;
+  --color-with-bg: #F5F5F5;
   --maincolormenu: #ffffffea;
-  --bordercolor: #0000001a;
+  --color-border: #0000001a;
   --boxshadowcolor: #0000001a;
   --titlecolor: #303030;
   --hovericon: #919191;
-  --colorlink: #0662B9;
+  --colorlink: #006bef;
+  --color-black: #333;
   --backgroundimg: #eaeaea;
-  --colorerr: #db1818;
+  --colo-red: #db1818;
+  --color-green: #43AA37;
+  --color-grey-with: #A7A7A7;
+  --color-grey: #505050;
+  --color-purple: #706BB3;
+  --color-dark-grey: #585858;
+  --color-shadow-modal: #00000070;
+  --color-orange: #E77D23;
 }
 
 * {
@@ -103,7 +112,7 @@ html {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--maincolor);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
@@ -202,6 +211,6 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #dad7d7;
+  background: var(--color-grey-with);
   border-radius: 5px;
 }
