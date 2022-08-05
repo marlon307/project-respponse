@@ -4,16 +4,9 @@
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 
-const prod = process.env.NODE_ENV === 'development';
+const inDevelopment = process.env.NODE_ENV === 'development';
 
-module.exports = withPWA({
-  pwa: {
-    disable: prod,
-    dest: 'public',
-    runtimeCaching,
-    register: true,
-    sw: 'sw.js',
-  },
+const config = {
   images: {
     domains: ['i.imgur.com'],
     deviceSizes: [280, 350, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -31,4 +24,16 @@ module.exports = withPWA({
   },
   swcMinify: true,
   reactStrictMode: true,
+};
+
+const withPWAConfig = withPWA({
+  pwa: {
+    dest: 'public',
+    runtimeCaching,
+    register: true,
+    sw: 'sw.js',
+  },
+  ...config,
 });
+
+module.exports = inDevelopment ? config : withPWAConfig;
