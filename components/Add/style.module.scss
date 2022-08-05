@@ -1,8 +1,13 @@
 .sectionadd {
+  display: block;
   background: var(--maincolor);
-  width: 400px;
-  padding: 2em max(2em, 6%);
+  width: 100vw;
+  max-width: 450px;
   border-radius: 1em;
+}
+
+.content {
+  padding: 2em 6%;
 
   h1 {
     color: #505050;
@@ -19,11 +24,5 @@
       height: 1.2em;
       fill: #505050;
     }
-  }
-}
-
-@media (max-width: 470px) {
-  .sectionadd {
-    width: auto;
   }
 }
