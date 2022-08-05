@@ -60,33 +60,33 @@ html {
 }
 
 // https://tobiasahlin.com/spinkit/
-
 .spinner {
   width: 40px;
   height: 40px;
   z-index: 99995;
   position: relative;
   margin: 0 auto;
-}
 
-.double-bounce1,
-.double-bounce2 {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #ebebeb;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  left: 0;
+  &::after,
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #ebebeb;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-  animation: sk-bounce 2.0s infinite ease-in-out;
-}
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+  }
 
-.double-bounce2 {
-  -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s;
+  &::after {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
 }
 
 .lds-ellipsis {

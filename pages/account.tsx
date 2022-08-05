@@ -5,9 +5,9 @@ import type { GetServerSideProps } from 'next';
 import router from 'next/router';
 import BtnAdd from '../components/Buttons/BtnAdd';
 import style from '../Sass/style.module.scss';
-import Loading from '../components/Loading';
 import HeadSEO from '../components/Head/HeadSEO';
 import useLogin from '../hooks/useLogin';
+import ContentModal from '../components/Modal/ContentModal';
 
 const Usercfg = lazy(() => import('../components/UserCfg/CfgUser'));
 const Order = lazy(() => import('../components/Order/Orders'));
@@ -17,7 +17,6 @@ const Addaderess = lazy(() => import('../components/Add/Address'));
 const Cards = lazy(() => import('../components/Cards/Cards'));
 const AddCard = lazy(() => import('../components/Add/Addcard'));
 const Help = lazy(() => import('./help'));
-const ContentModal = lazy(() => import('../components/Modal/ContentModal'));
 
 type TAccount = {
   token: string
@@ -61,7 +60,7 @@ function Account({ token }: TAccount) {
           <span>Configurações do Usuário</span>
         </a>
         <div className={ style.dropcontainer }>
-          <Suspense fallback={ <Loading /> }>
+          <Suspense fallback={ <div className="spinner" /> }>
             <Usercfg token={ token } />
           </Suspense>
         </div>
@@ -79,7 +78,7 @@ function Account({ token }: TAccount) {
           <span>Pedidos</span>
         </a>
         <div className={ style.dropcontainer }>
-          <Suspense fallback={ <Loading /> }>
+          <Suspense fallback={ <div className="spinner" /> }>
             <Order execFunction={ openOrderId } />
           </Suspense>
         </div>
@@ -99,7 +98,7 @@ function Account({ token }: TAccount) {
         <div className={ style.dropcontainer }>
           <BtnAdd eventBtn={ () => functionOpenModal('address') } />
           <div className={ style.contentoption }>
-            <Suspense fallback={ <Loading /> }>
+            <Suspense fallback={ <div className="spinner" /> }>
               <Address />
             </Suspense>
           </div>
@@ -121,7 +120,7 @@ function Account({ token }: TAccount) {
           <section className={ style.section }>
             <BtnAdd eventBtn={ () => functionOpenModal('cards') } />
             <div className={ style.contentoption }>
-              <Suspense fallback={ <Loading /> }>
+              <Suspense fallback={ <div className="spinner" /> }>
                 <Cards />
               </Suspense>
             </div>
@@ -141,21 +140,19 @@ function Account({ token }: TAccount) {
           <span>Ajuda</span>
         </a>
         <div className={ style.dropcontainer }>
-          <Suspense fallback={ <Loading /> }>
+          <Suspense fallback={ <div className="spinner" /> }>
             <Help />
           </Suspense>
         </div>
       </div>
-      <Suspense fallback="...">
-        <ContentModal
-          isOpen={ openModal }
-          openModal={ setOpenModal }
-        >
-          { (openModal && typeModal === 'order') && <OrderId /> }
-          { (openModal && typeModal === 'cards') && <AddCard /> }
-          { (openModal && typeModal === 'address') && <Addaderess /> }
-        </ContentModal>
-      </Suspense>
+      <ContentModal
+        isOpen={ openModal }
+        openModal={ setOpenModal }
+      >
+        { (openModal && typeModal === 'order') && <OrderId /> }
+        { (openModal && typeModal === 'cards') && <AddCard /> }
+        { (openModal && typeModal === 'address') && <Addaderess /> }
+      </ContentModal>
     </>
   );
 }
