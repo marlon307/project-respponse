@@ -26,7 +26,7 @@
   border-radius: 12px;
   background: var(--maincolor);
   border: 2px solid var(--colorlink);
-  color: var(----colorlink);
+  color: var(--colorlink);
   font-weight: 700;
   cursor: pointer;
   font-size: 1em;
@@ -96,7 +96,7 @@
     position: relative;
     top: auto;
     padding: 18px 0 18px 24px;
-    color: var(----colorlink);
+    color: var(--colorlink);
     font-weight: 600;
     font-size: 0.96em;
   }
@@ -173,7 +173,7 @@
   }
 
   span {
-    color: var(----colorlink);
+    color: var(--colorlink);
     white-space: nowrap;
   }
 
