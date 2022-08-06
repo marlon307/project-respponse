@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from 'react';
+import { api2 } from '../../service/api';
 import BtnAdd from '../Buttons/BtnAdd';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
-function Address() {
+function Address({ token }: IToken) {
   const [addressForm, setAddressForm] = useState({
     namedest: '',
     zipcode: '',
@@ -14,21 +15,47 @@ function Address() {
     city: '',
   });
 
-  const hadleChange = useCallback((target: { name: string; value: string; }) => {
-    const { name, value } = target;
+  const hadleChange = useCallback((target: HTMLInputElement) => {
+    const {
+      name, value, dataset, pattern,
+    } = target;
+
     setAddressForm((state) => ({
       ...state,
-      [name]: value,
+      [name]: dataset?.format
+        ? value.replace(new RegExp(pattern), dataset.format)
+        : value,
     }));
   }, []);
+
+  async function handleAddAddress() {
+    const body = {
+      name_delivery: addressForm.namedest,
+      city: addressForm.city,
+      district: addressForm.district,
+      uf: addressForm.state,
+      cep: addressForm.zipcode,
+      road: addressForm.street,
+      number_home: addressForm.number,
+    };
+
+    const { data } = await api2.post('/add_address', body, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).catch(({ response }) => response);
+    if (data.status === 201) {
+      // eslint-disable-next-line no-console
+      console.log(data);
+    }
+  }
 
   return (
     <section className={ style.sectionadd }>
       <div className={ style.content }>
-
         <h1>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11.5 7.3 11.8a1 1 0 0 0 1.3 0C13 21.5 20 15.4 20 10a8 8 0 0 0-8-8Zm0 17.6c-2.1-2-6-6.3-6-9.6a6 6 0 1 1 12 0c0 3.3-3.9 7.7-6 9.6ZM12 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" fill="#333" />
+            <path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11.5 7.3 11.8a1 1 0 0 0 1.3 0C13 21.5 20 15.4 20 10a8 8 0 0 0-8-8Zm0 17.6c-2.1-2-6-6.3-6-9.6a6 6 0 1 1 12 0c0 3.3-3.9 7.7-6 9.6ZM12 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" />
           </svg>
           Adicionar endereço
         </h1>
@@ -53,6 +80,9 @@ function Address() {
               ivalue={ addressForm.zipcode }
               inputValue={ hadleChange }
               msgError="Insira um CEP válido."
+              max={ 9 }
+              patt="^([\d]{5})\-*([\d]{3})"
+              format="$1-$2"
             />
             <Input
               id="street"
@@ -104,7 +134,7 @@ function Address() {
               msgError="Insira a Cidade."
             />
           </div>
-          <BtnAdd eventBtn={ () => { } } />
+          <BtnAdd eventBtn={ handleAddAddress! } />
         </form>
       </div>
     </section>
