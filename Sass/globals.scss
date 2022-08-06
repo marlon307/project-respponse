@@ -6,7 +6,7 @@
   --color-border: #0000001A;
   --titlecolor: #303030;
   --hovericon: #919191;
-  --colorlink: #006BEF;
+  --color-blue: #006BEF;
   --color-black: #333;
   --backgroundimg: #EAEAEA;
   --colo-red: #DB1818;
@@ -59,7 +59,7 @@ html {
 }
 
 .link {
-  color: var(--colorlink);
+  color: var(--color-blue);
   cursor: pointer;
 
   &:hover {

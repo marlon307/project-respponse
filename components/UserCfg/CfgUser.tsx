@@ -17,11 +17,8 @@ type TStateUser = {
   cel: string;
   gender: string,
 };
-type TCfg = {
-  token: string
-};
 
-function CfgUser({ token }: TCfg) {
+function CfgUser({ token }: IToken) {
   const { ifoUser, loading, mutate } = useUser(token);
   const [isLoading, setIsLoading] = useState(false);
   const [stateIfonUser, setStateIfoUser] = useState<TStateUser>({

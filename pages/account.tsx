@@ -151,7 +151,7 @@ function Account({ token }: TAccount) {
       >
         { (openModal && typeModal === 'order') && <OrderId /> }
         { (openModal && typeModal === 'cards') && <AddCard /> }
-        { (openModal && typeModal === 'address') && <Addaderess /> }
+        { (openModal && typeModal === 'address') && <Addaderess token={ token } /> }
       </ContentModal>
     </>
   );

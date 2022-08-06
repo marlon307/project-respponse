@@ -141,7 +141,7 @@ function Bag() {
         }
       >
         { openModal === 'address' && <RenderAdderess /> }
-        { openModal === 'addaddress' && <Addaddress /> }
+        { openModal === 'addaddress' && <Addaddress token="" /> }
         { openModal === 'addcard' && <Addacard /> }
         { Number.isInteger(openModal) && <CardEdit /> }
       </ContentModal>
