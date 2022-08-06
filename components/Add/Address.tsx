@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { api2 } from '../../service/api';
-import BtnAdd from '../Buttons/BtnAdd';
+import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
 function Address({ token }: IToken) {
-  const [addressForm, setAddressForm] = useState({
+  const [isLoading, setisLoading] = useState(false);
+  const [addressForm, setAddressForm] = useState<ITAddress>({
     namedest: '',
     zipcode: '',
     street: '',
@@ -29,24 +30,33 @@ function Address({ token }: IToken) {
   }, []);
 
   async function handleAddAddress() {
-    const body = {
-      name_delivery: addressForm.namedest,
-      city: addressForm.city,
-      district: addressForm.district,
-      uf: addressForm.state,
-      cep: addressForm.zipcode,
-      road: addressForm.street,
-      number_home: addressForm.number,
-    };
+    // addressForm[key]
+    // Verificar se todas as chaves estão preenchidas
+    const checkValue = Object.keys(addressForm)
+      .every((key) => /^[0-9a-zA-Z]/.test(addressForm[key]));
 
-    const { data } = await api2.post('/add_address', body, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    }).catch(({ response }) => response);
-    if (data.status === 201) {
-      // eslint-disable-next-line no-console
-      console.log(data);
+    if (checkValue) {
+      setisLoading(true);
+      const body = {
+        name_delivery: addressForm.namedest,
+        city: addressForm.city,
+        district: addressForm.district,
+        uf: addressForm.state,
+        cep: addressForm.zipcode,
+        road: addressForm.street,
+        number_home: addressForm.number,
+      };
+
+      const { data } = await api2.post('/add_address', body, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }).catch(({ response }) => response);
+      if (data.status === 201) {
+        // eslint-disable-next-line no-console
+        console.log(data);
+      }
+      setisLoading(false);
     }
   }
 
@@ -65,7 +75,7 @@ function Address({ token }: IToken) {
               id="namedest"
               type="text"
               name="namedest"
-              placeHolder="Nome do destinatário"
+              placeHolder="Nome do destinatário *"
               autoComplete="name"
               ivalue={ addressForm.namedest }
               inputValue={ hadleChange }
@@ -75,20 +85,20 @@ function Address({ token }: IToken) {
               id="zipcode"
               type="text"
               name="zipcode"
-              placeHolder="CEP"
+              placeHolder="CEP *"
               autoComplete="postal-code"
               ivalue={ addressForm.zipcode }
               inputValue={ hadleChange }
               msgError="Insira um CEP válido."
               max={ 9 }
-              patt="^([\d]{5})\-*([\d]{3})"
+              patt="^([\d]{5})\.*([\d]{3})"
               format="$1-$2"
             />
             <Input
               id="street"
               type="text"
               name="street"
-              placeHolder="Rua"
+              placeHolder="Rua *"
               autoComplete="street-address"
               ivalue={ addressForm.street }
               inputValue={ hadleChange }
@@ -98,7 +108,7 @@ function Address({ token }: IToken) {
               id="district"
               type="text"
               name="district"
-              placeHolder="Bairro"
+              placeHolder="Bairro *"
               autoComplete="address-level3"
               ivalue={ addressForm.district }
               inputValue={ hadleChange }
@@ -108,7 +118,7 @@ function Address({ token }: IToken) {
               id="number"
               type="text"
               name="number"
-              placeHolder="N°"
+              placeHolder="N° *"
               ivalue={ addressForm.number }
               inputValue={ hadleChange }
               msgError="Insira o número da Casa."
@@ -117,24 +127,29 @@ function Address({ token }: IToken) {
               id="state"
               type="text"
               name="state"
-              placeHolder="UF"
+              placeHolder="UF *"
               autoComplete="shipping address-level1"
               ivalue={ addressForm.state }
               inputValue={ hadleChange }
               msgError="Insira o Estado (UF)."
+              max={ 2 }
             />
             <Input
               id="city"
               type="text"
               name="city"
-              placeHolder="Cidade"
+              placeHolder="Cidade *"
               autoComplete="shipping shipping address-level2"
               ivalue={ addressForm.city }
               inputValue={ hadleChange }
               msgError="Insira a Cidade."
             />
           </div>
-          <BtnAdd eventBtn={ handleAddAddress! } />
+          <BtnIco
+            textBtn="Adicionar"
+            action={ handleAddAddress! }
+            actionLiberate={ isLoading }
+          />
         </form>
       </div>
     </section>
