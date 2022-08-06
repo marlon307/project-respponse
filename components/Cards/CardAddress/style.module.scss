@@ -6,6 +6,7 @@
   color: var(--color-grey);
   background: var(--maincolor);
   width: -webkit-fill-available;
+  flex: none;
 
   .line {
     display: flex;
@@ -21,8 +22,16 @@
 }
 
 .address {
-  max-width: 348px;
-  width: 100%;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1em;
+
+  .cardaddress {
+    max-width: 354px;
+  }
 }
 
 .delete {
@@ -46,5 +55,9 @@
 @media (max-width: 500px) {
   .address {
     max-width: 450px;
+
+    .cardaddress {
+      max-width: 500px;
+    }
   }
 }

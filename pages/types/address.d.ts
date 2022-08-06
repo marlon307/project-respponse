@@ -8,3 +8,7 @@ interface ITAddress {
   city: string,
   [key: string]: string,
 }
+
+interface IListAddress {
+  listAddress: Array<ITAddress>
+}
