@@ -6,15 +6,15 @@ type TUser = {
   token: string;
 };
 
-const infoUser = async ({ route, token }: TUser) => {
+const listAddress = async ({ route, token }: TUser) => {
   if (token) {
-    const { data } = await api2.post(route, {
+    const { data } = await api2.get(route, {
       headers: {
         authorization: `Bearer ${token}`,
       },
     }).catch(({ response }) => response);
 
-    return data.response;
+    return data;
   }
 
   const error: any = new Error('Not authorized!');
@@ -22,13 +22,13 @@ const infoUser = async ({ route, token }: TUser) => {
   throw error;
 };
 
-const useUser = <Data = any>(token: string) => {
+const useAddress = <Data = any>(token: string) => {
   const { data, mutate, error } = useSWR<Data>(
     {
-      route: '/add_address',
+      route: '/get_address_user',
       token,
     },
-    infoUser,
+    listAddress,
   );
 
   const loading = !data && !error;
@@ -37,9 +37,9 @@ const useUser = <Data = any>(token: string) => {
   return {
     loading,
     loggedOut,
-    ifoUser: data,
+    listAddress: data,
     mutate,
   };
 };
 
-export default useUser;
+export default useAddress;

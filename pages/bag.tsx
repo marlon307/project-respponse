@@ -70,7 +70,7 @@ const Addaddress = lazy(() => import('../components/Add/Address'));
 const Addacard = lazy(() => import('../components/Add/Addcard'));
 const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'));
 
-function Bag() {
+function Bag({ token }: IToken) {
   const [openModal, setOpenModal] = useState<String | number>('');
   const [hiddenList, setHiddenList] = useState(false);
 
@@ -141,7 +141,7 @@ function Bag() {
         }
       >
         { openModal === 'address' && <RenderAdderess /> }
-        { openModal === 'addaddress' && <Addaddress token="" /> }
+        { openModal === 'addaddress' && <Addaddress token={ token } /> }
         { openModal === 'addcard' && <Addacard /> }
         { Number.isInteger(openModal) && <CardEdit /> }
       </ContentModal>
@@ -153,7 +153,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (req.cookies.u_token) {
     return {
       props: {
-        logged: req.cookies.u_token,
+        token: req.cookies.u_token,
       },
     };
   }

@@ -8,6 +8,7 @@ import style from '../Sass/style.module.scss';
 import HeadSEO from '../components/Head/HeadSEO';
 import useLogin from '../hooks/useLogin';
 import ContentModal from '../components/Modal/ContentModal';
+import useAddress from '../hooks/useAddress';
 
 const Usercfg = lazy(() => import('../components/UserCfg/CfgUser'));
 const Order = lazy(() => import('../components/Order/Orders'));
@@ -24,6 +25,7 @@ type TAccount = {
 
 function Account({ token }: TAccount) {
   const { loggedOut } = useLogin();
+  const { listAddress } = useAddress(token);
   const [dropOption, setDropOption] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
@@ -99,7 +101,7 @@ function Account({ token }: TAccount) {
           <BtnAdd eventBtn={ () => functionOpenModal('address') } />
           <div className={ style.contentoption }>
             <Suspense fallback={ <div className="spinner" /> }>
-              <Address />
+              <Address listAddress={ listAddress?.address } />
             </Suspense>
           </div>
         </div>
