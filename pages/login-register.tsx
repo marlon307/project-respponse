@@ -213,7 +213,9 @@ function Login() {
                 <p>
                   Confirme sua conta atraves do email que enviamos para
                   { ' ' }
-                  <b>{ isRegistred }</b>
+                  <b>
+                    <p>{ isRegistred }</p>
+                  </b>
                 </p>
               </div>
             ) }
