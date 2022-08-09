@@ -26,7 +26,7 @@ function Address({ token, listAddress }: TAdderess) {
       const newList = listAddress.filter(({ id }) => id !== address);
       mutate({ address: newList }, false);
     }
-  }, []);
+  }, [listAddress]);
 
   return (
     <div className={ style.address }>
