@@ -43,7 +43,7 @@ function Address({ listAddress, token }: TAdderess) {
           zipcode={ cep }
           district={ district }
           removable
-          execFunction={ () => removeAddress(id) }
+          execFunction={ () => removeAddress(id ?? 0) }
         />
       )) }
       { !listAddress?.length && <h3>Você não possui endereços cadastrados.</h3> }
