@@ -1,10 +1,12 @@
 import React, { useState, useCallback } from 'react';
+import useAddress from '../../hooks/useAddress';
 import { api2 } from '../../service/api';
 import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
 function Address({ token }: IToken) {
+  const { mutate, listAddress } = useAddress(token);
   const [isLoading, setisLoading] = useState(false);
   const [addressForm, setAddressForm] = useState<ITAddress>({
     namedest: '',
@@ -53,8 +55,12 @@ function Address({ token }: IToken) {
         },
       }).catch(({ response }) => response);
       if (data.status === 201) {
-        // eslint-disable-next-line no-console
-        console.log(data);
+        mutate({
+          address: [...listAddress.address, {
+            id: data.address,
+            ...body,
+          }],
+        }, false);
       }
       setisLoading(false);
     }
