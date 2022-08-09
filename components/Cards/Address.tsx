@@ -9,8 +9,9 @@ type TAdderess = {
   token: IToken['token'];
 };
 
-function Address({ listAddress, token }: TAdderess) {
+function Address({ token, listAddress }: TAdderess) {
   const { mutate } = useAddress(token);
+
   const removeAddress = useCallback(async (address: number) => {
     const { data } = await api2.delete('/delete_address_user', {
       headers: {
@@ -23,8 +24,7 @@ function Address({ listAddress, token }: TAdderess) {
 
     if (data.status === 200) {
       const newList = listAddress.filter(({ id }) => id !== address);
-
-      mutate(...newList, false);
+      mutate({ address: newList }, false);
     }
   }, []);
 
