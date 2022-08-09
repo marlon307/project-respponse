@@ -101,7 +101,12 @@ function Account({ token }: TAccount) {
           <BtnAdd eventBtn={ () => functionOpenModal('address') } />
           <div className={ style.contentoption }>
             <Suspense fallback={ <div className="spinner" /> }>
-              <Address listAddress={ listAddress?.address } />
+              { listAddress?.address && (
+                <Address
+                  listAddress={ listAddress?.address }
+                  token={ token }
+                />
+              ) }
             </Suspense>
           </div>
         </div>
