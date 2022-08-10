@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay } from 'swiper';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
-import { IPropsHome } from './types/typesIndex';
+import { IPropsHome } from '../types/typesIndex';
 import api from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';

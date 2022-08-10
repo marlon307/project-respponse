@@ -1,4 +1,4 @@
-export interface ICardProduct {
+interface ICardProduct {
   pageFilter: {
     categoryName: string;
   };
