@@ -18,17 +18,17 @@ export interface TypeAddBagInfos extends TypeEditBagInfos {
   price: number;
 }
 
-export interface TShipping {
+interface TShipping {
   shippingCompany: string;
   valueShipping: number;
 }
 
-export interface TFormatPay {
+interface TFormatPay {
   formatPayment: string;
   division: number;
 }
 
-export interface TAddress {
+interface TAddress {
   name: string;
   road: string;
   district: string;
@@ -38,7 +38,7 @@ export interface TAddress {
   zipcode: string;
 }
 
-export interface StateBagType {
+interface StateBagType {
   bagItems: Array<TypeAddBagInfos>;
   valueBag: number;
   itemEditBag: TypeEditBagInfos;

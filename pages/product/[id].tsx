@@ -158,11 +158,9 @@ type TRequestProduct = {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const productId = Number(params.id);
-
   const {
     data: { product, similar },
-  }: TRequestProduct = await api.get(`/product/${productId}`)
+  }: TRequestProduct = await api.get(`/product/${params.id}`)
     .catch((error) => ({ data: error.message }));
 
   return {
