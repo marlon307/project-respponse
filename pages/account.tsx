@@ -40,6 +40,11 @@ function Account({ token }: TAccount) {
     setTypeModal('order');
   }, []);
 
+  function closeModal() {
+    setOpenModal(false);
+    setTypeModal('');
+  }
+
   useEffect(() => {
     if (loggedOut) {
       router.push('/');
@@ -158,7 +163,7 @@ function Account({ token }: TAccount) {
       >
         { (openModal && typeModal === 'order') && <OrderId /> }
         { (openModal && typeModal === 'cards') && <AddCard /> }
-        { (openModal && typeModal === 'address') && <Addaderess token={ token } /> }
+        { (openModal && typeModal === 'address') && <Addaderess token={ token } execFunction={ closeModal! } /> }
       </ContentModal>
     </>
   );
