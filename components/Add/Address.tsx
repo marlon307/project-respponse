@@ -5,7 +5,12 @@ import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
-function Address({ token }: IToken) {
+type TAddress = {
+  token: IToken['token'];
+  execFunction: () => void;
+};
+
+function Address({ token, execFunction }: TAddress) {
   const { mutate, listAddress } = useAddress(token);
   const [isLoading, setisLoading] = useState(false);
   const [addressForm, setAddressForm] = useState<ITAddress>({
@@ -54,6 +59,7 @@ function Address({ token }: IToken) {
           authorization: `Bearer ${token}`,
         },
       }).catch(({ response }) => response);
+
       if (data.status === 201) {
         mutate({
           address: [...listAddress.address, {
@@ -63,6 +69,7 @@ function Address({ token }: IToken) {
         }, false);
       }
       setisLoading(false);
+      execFunction!();
     }
   }
 
