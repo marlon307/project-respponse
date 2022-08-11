@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-// import { GetStaticProps } from 'next';
+import React, { useState/* , useEffect */ } from 'react';
+import { GetServerSideProps } from 'next';
 import { Swiper/* , SwiperSlide */ } from 'swiper/react';
 // import LoadingImage from '../../components/LoadImage';
 // import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 // import { DetailsCard, Spec } from '../../components/Cards';
-import AddBag from '../../components/Buttons/AddBag';
+// import AddBag from '../../components/Buttons/AddBag';
 // import BarSize from '../../components/Bars/BarSize';
 // import BarColors from '../../components/Bars/BarColors';
-import { TypeProduct } from './product';
-import api from '../../service/api';
+import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
@@ -16,26 +15,35 @@ import style from './style.module.scss';
 import { Input, InputRadio } from '../../components/ComponentsForm';
 import BtnAdd from '../../components/Buttons/BtnAdd';
 
-function ProductId({ product }: TypeProduct) {
-  const [sizeChecked, setSizeChecked] = useState('');
+type TList = {
+  list: {
+    list_ctg: Array<ICategory>;
+    list_colors: Array<IColor>;
+    list_sizes: Array<ISize>;
+    list_gender: Array<IGender>;
+  }
+};
+
+function ProductId({ list }: TList) {
+  // const [sizeChecked, setSizeChecked] = useState('');
   const [configProduct, setConfigProduct] = useState('');
-  const [colorChecked, setColorChecked] = useState({
-    color: '',
-    colorName: '',
-  });
+  // const [colorChecked, setColorChecked] = useState({
+  //   color: '',
+  //   colorName: '',
+  // });
 
   // useEffect(() => {
   //   checkSizeAvailable(options, colorChecked.color);
   //   checkColorAvailable(options, sizeChecked);
   // }, [colorChecked, options, sizeChecked]);
 
-  useEffect(() => {
-    setSizeChecked('');
-    setColorChecked({
-      color: '',
-      colorName: '',
-    });
-  }, []);
+  // useEffect(() => {
+  //   setSizeChecked('');
+  //   setColorChecked({
+  //     color: '',
+  //     colorName: '',
+  //   });
+  // }, []);
 
   return (
     <>
@@ -87,9 +95,11 @@ function ProductId({ product }: TypeProduct) {
             <div className={ style.select }>
               <pre>Camisa</pre>
               <ul>
-                <li>GGG</li>
-                <li>GGG</li>
-                <li>GGG</li>
+                { list.list_ctg.map(({ id, category_name }) => (
+                  <li key={ id }>
+                    { category_name }
+                  </li>
+                )) }
               </ul>
             </div>
             <Input
@@ -122,18 +132,22 @@ function ProductId({ product }: TypeProduct) {
                   <div className={ style.select }>
                     <span />
                     <ul>
-                      <li>
-                        <span />
-                        Color Name
-                      </li>
+                      { list.list_colors.map(({ id, color, color_name }) => (
+                        <li key={ id }>
+                          <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
+                          { color_name }
+                        </li>
+                      )) }
                     </ul>
                   </div>
                   <div className={ style.select }>
                     <pre>GGGG</pre>
                     <ul>
-                      <li>GGG</li>
-                      <li>GGG</li>
-                      <li>GGG</li>
+                      { list.list_sizes.map(({ id, size }) => (
+                        <li key={ id }>
+                          { size }
+                        </li>
+                      )) }
                     </ul>
                   </div>
                   <Input
@@ -159,41 +173,28 @@ function ProductId({ product }: TypeProduct) {
             <div className={ style.gen }>
               <h3>Género</h3>
               <div className={ style.gen_options }>
-                <InputRadio
-                  checked
-                  iId="men"
-                  name="Masculino"
-                  family="gender"
-                  iValue={ 3 }
-                  execFunction={ () => { } }
-                />
-                <InputRadio
-                  checked
-                  iId="female"
-                  name="Femenino"
-                  family="gender"
-                  iValue={ 2 }
-                  execFunction={ () => { } }
-                />
-                <InputRadio
-                  checked
-                  iId="undefined"
-                  name="Unissex"
-                  family="gender"
-                  iValue={ 1 }
-                  execFunction={ () => { } }
-                />
+                { list.list_gender.map(({ id, gender, gender_name }) => (
+                  <InputRadio
+                    key={ id }
+                    checked
+                    iId={ gender }
+                    name={ gender_name }
+                    family="gender"
+                    iValue={ id }
+                    execFunction={ () => { } }
+                  />
+                )) }
               </div>
             </div>
             <textarea name="mindescription" id="mindesc" placeholder="Descrição minima" />
             <textarea name="details" id="details" placeholder="Detalhes" />
             <textarea name="espec" id="espec" placeholder="Especificações" />
           </div>
-          <AddBag
+          {/* <AddBag
             productId={ product }
             colorSelected={ colorChecked }
             sizeSelected={ sizeChecked }
-          />
+          /> */}
         </div>
       </div>
     </>
@@ -202,22 +203,23 @@ function ProductId({ product }: TypeProduct) {
 
 export default ProductId;
 
-type TRequestProduct = {
-  data: {
-    product: TypeProduct['product'],
-    similar: TypeProduct['similar'],
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const { data } = await api2.get('/list_options', {
+    headers: {
+      authorization: `Bearer ${req.cookies.u_token}`,
+    },
+  }).catch((error) => ({ data: error.message }));
+
+  if (data.status === 200) {
+    return {
+      props: { list: data.list },
+    };
   }
-};
-
-export const getInitialProps = async ({ params }: any) => {
-  const productId = Number(params.id);
-
-  const {
-    data: { product, similar },
-  }: TRequestProduct = await api.get(`/product/${productId}`)
-    .catch((error) => ({ data: error.message }));
 
   return {
-    props: { product, similar },
+    redirect: {
+      permanent: false,
+      destination: '/',
+    },
   };
 };
