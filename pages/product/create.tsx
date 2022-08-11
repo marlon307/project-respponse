@@ -13,7 +13,7 @@ import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
 import style from './style.module.scss';
-import { Input } from '../../components/ComponentsForm';
+import { Input, InputRadio } from '../../components/ComponentsForm';
 import BtnAdd from '../../components/Buttons/BtnAdd';
 
 function ProductId({ product }: TypeProduct) {
@@ -66,7 +66,7 @@ function ProductId({ product }: TypeProduct) {
           </Swiper>
         </div>
         <div className={ style.products_similar }>
-          <h3>Produtos Similares</h3>
+          <h3>Produtos com estoque baixo</h3>
           <Swiper
             slidesPerView="auto"
             wrapperTag="section"
@@ -83,10 +83,15 @@ function ProductId({ product }: TypeProduct) {
         </div>
         <div className={ style.maincontentinfo }>
           <div className={ style.panel_addproduct }>
-            <select>
-              <option value="Categorias" disabled selected hidden>Categorias</option>
-              <option value="Terno">Terno</option>
-            </select>
+            <h3>Categoria</h3>
+            <div className={ style.select }>
+              <pre>Camisa</pre>
+              <ul>
+                <li>GGG</li>
+                <li>GGG</li>
+                <li>GGG</li>
+              </ul>
+            </div>
             <Input
               id="title"
               type="text"
@@ -124,7 +129,7 @@ function ProductId({ product }: TypeProduct) {
                     </ul>
                   </div>
                   <div className={ style.select }>
-                    <span>PP</span>
+                    <pre>GGGG</pre>
                     <ul>
                       <li>GGG</li>
                       <li>GGG</li>
@@ -150,6 +155,35 @@ function ProductId({ product }: TypeProduct) {
                 </div>
               </div>
               <BtnAdd eventBtn={ () => { } } title="Adicionar cor" />
+            </div>
+            <div className={ style.gen }>
+              <h3>Género</h3>
+              <div className={ style.gen_options }>
+                <InputRadio
+                  checked
+                  iId="men"
+                  name="Masculino"
+                  family="gender"
+                  iValue={ 3 }
+                  execFunction={ () => { } }
+                />
+                <InputRadio
+                  checked
+                  iId="female"
+                  name="Femenino"
+                  family="gender"
+                  iValue={ 2 }
+                  execFunction={ () => { } }
+                />
+                <InputRadio
+                  checked
+                  iId="undefined"
+                  name="Unissex"
+                  family="gender"
+                  iValue={ 1 }
+                  execFunction={ () => { } }
+                />
+              </div>
             </div>
             <textarea name="mindescription" id="mindesc" placeholder="Descrição minima" />
             <textarea name="details" id="details" placeholder="Detalhes" />
