@@ -114,11 +114,6 @@ function ProductId({ product, similar }: TypeProduct) {
                 execFunction={ setColorChecked }
               />
             </div>
-            <div className={ style.mindetail }>
-              <p>
-                { descrtion }
-              </p>
-            </div>
             <div className={ style.secondline }>
               <BarSize
                 array={ options }

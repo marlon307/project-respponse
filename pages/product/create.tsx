@@ -1,12 +1,8 @@
-import React, { useState/* , useEffect */ } from 'react';
+import React, { useState, useCallback } from 'react';
 import { GetServerSideProps } from 'next';
 import { Swiper/* , SwiperSlide */ } from 'swiper/react';
 // import LoadingImage from '../../components/LoadImage';
-// import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
-// import { DetailsCard, Spec } from '../../components/Cards';
 // import AddBag from '../../components/Buttons/AddBag';
-// import BarSize from '../../components/Bars/BarSize';
-// import BarColors from '../../components/Bars/BarColors';
 import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
@@ -24,26 +20,69 @@ type TList = {
   }
 };
 
+type TFeature = {
+  [key: string]: {
+    sku: string;
+    color: string;
+    qtd: string;
+    size: string;
+    [key: string]: string | number;
+  };
+};
+
+type TInfo = {
+  title: string;
+  discount: string;
+  price: string;
+  details: string;
+  espec: string;
+  [key: string]: string | number;
+};
+
 function ProductId({ list }: TList) {
-  // const [sizeChecked, setSizeChecked] = useState('');
-  const [configProduct, setConfigProduct] = useState('');
-  // const [colorChecked, setColorChecked] = useState({
-  //   color: '',
-  //   colorName: '',
-  // });
+  const [infoProduct, setInfoProduct] = useState<TInfo>({
+    title: '',
+    discount: '',
+    price: '',
+    mindescription: '',
+    details: '',
+    espec: '',
+  });
+  const [featureProduct, setFeatureProduct] = useState<TFeature>({
+    0: {
+      sku: '',
+      size: '',
+      qtd: '',
+      color: '',
+    },
+  });
 
-  // useEffect(() => {
-  //   checkSizeAvailable(options, colorChecked.color);
-  //   checkColorAvailable(options, sizeChecked);
-  // }, [colorChecked, options, sizeChecked]);
+  const handlerChangeInfo = useCallback((target: HTMLInputElement | any) => {
+    const { name, value } = target;
 
-  // useEffect(() => {
-  //   setSizeChecked('');
-  //   setColorChecked({
-  //     color: '',
-  //     colorName: '',
-  //   });
-  // }, []);
+    setInfoProduct((currentState) => ({
+      ...currentState,
+      [name]: value,
+    }));
+  }, []);
+
+  const handlerAddChangeFeature = useCallback((target: HTMLInputElement) => {
+    const { name, value } = target;
+    setFeatureProduct((currentState) => ({
+      ...currentState,
+      [target.id]: {
+        ...currentState[target.id],
+        [name]: value,
+      },
+    }));
+  }, []);
+
+  function addFeature() {
+    setFeatureProduct((currentState) => ({
+      ...currentState,
+      [Object.keys(currentState).length + 1]: {},
+    }));
+  }
 
   return (
     <>
@@ -107,68 +146,75 @@ function ProductId({ list }: TList) {
               type="text"
               name="title"
               placeHolder="Titulo"
-              inputValue={ setConfigProduct }
-              ivalue={ configProduct }
+              inputValue={ handlerChangeInfo }
+              ivalue={ infoProduct.title }
+              msgError="Informe um titulo"
             />
             <Input
               id="discount"
               type="text"
               name="discount"
               placeHolder="Desconto"
-              inputValue={ setConfigProduct }
-              ivalue={ configProduct }
+              inputValue={ handlerChangeInfo }
+              ivalue={ infoProduct.discount }
+              msgError="Informe um desconto"
             />
             <Input
               id="price"
               type="text"
               name="price"
               placeHolder="Preço"
-              inputValue={ setConfigProduct }
-              ivalue={ configProduct }
+              inputValue={ handlerChangeInfo }
+              ivalue={ infoProduct.price }
+              msgError="Informe um preço"
             />
             <div className={ style.palet_colors }>
-              <div className={ style.list_colors }>
-                <div className={ style.color }>
-                  <div className={ style.select }>
-                    <span />
-                    <ul>
-                      { list.list_colors.map(({ id, color, color_name }) => (
-                        <li key={ id }>
-                          <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
-                          { color_name }
-                        </li>
-                      )) }
-                    </ul>
+              { Object.keys(featureProduct).map((key) => (
+                <div className={ style.list_colors } key={ key }>
+                  <div className={ style.color }>
+                    <div className={ style.select }>
+                      <span />
+                      <ul>
+                        { list.list_colors.map(({ id, color, color_name }) => (
+                          <li key={ id }>
+                            <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
+                            { color_name }
+                          </li>
+                        )) }
+                      </ul>
+                    </div>
+                    <div className={ style.select }>
+                      <pre>GGGG</pre>
+                      <ul>
+                        { list.list_sizes.map(({ id, size }) => (
+                          <li key={ id }>
+                            { size }
+                          </li>
+                        )) }
+                      </ul>
+                    </div>
+                    <Input
+                      id={ key }
+                      type="text"
+                      name="qtd"
+                      placeHolder="Quantidade"
+                      inputValue={ handlerAddChangeFeature }
+                      ivalue={ featureProduct[key].qtd }
+                      msgError="Quantidade"
+                    />
+                    <Input
+                      id={ key }
+                      type="text"
+                      name="sku"
+                      placeHolder="SKU"
+                      inputValue={ handlerAddChangeFeature }
+                      ivalue={ featureProduct[key].sku }
+                      msgError="SKU"
+                    />
                   </div>
-                  <div className={ style.select }>
-                    <pre>GGGG</pre>
-                    <ul>
-                      { list.list_sizes.map(({ id, size }) => (
-                        <li key={ id }>
-                          { size }
-                        </li>
-                      )) }
-                    </ul>
-                  </div>
-                  <Input
-                    id="qtd"
-                    type="text"
-                    name="qtd"
-                    placeHolder="Quantidade"
-                    inputValue={ setConfigProduct }
-                    ivalue={ configProduct }
-                  />
-                  <Input
-                    id="sku"
-                    type="text"
-                    name="sku"
-                    placeHolder="SKU"
-                    inputValue={ setConfigProduct }
-                    ivalue={ configProduct }
-                  />
                 </div>
-              </div>
-              <BtnAdd eventBtn={ () => { } } title="Adicionar cor" />
+              )) }
+              <BtnAdd eventBtn={ addFeature! } title="Adicionar cor" />
             </div>
             <div className={ style.gen }>
               <h3>Género</h3>
@@ -176,7 +222,7 @@ function ProductId({ list }: TList) {
                 { list.list_gender.map(({ id, gender, gender_name }) => (
                   <InputRadio
                     key={ id }
-                    checked
+                    checked={ id === 1 }
                     iId={ gender }
                     name={ gender_name }
                     family="gender"
@@ -186,9 +232,22 @@ function ProductId({ list }: TList) {
                 )) }
               </div>
             </div>
-            <textarea name="mindescription" id="mindesc" placeholder="Descrição minima" />
-            <textarea name="details" id="details" placeholder="Detalhes" />
-            <textarea name="espec" id="espec" placeholder="Especificações" />
+            <textarea
+              name="details"
+              id="details"
+              placeholder="Detalhes"
+              value={ infoProduct.details }
+              onChange={ handlerChangeInfo }
+              maxLength={ 500 }
+            />
+            <textarea
+              name="espec"
+              id="espec"
+              placeholder="Especificações"
+              value={ infoProduct.espec }
+              onChange={ handlerChangeInfo }
+              maxLength={ 500 }
+            />
           </div>
           {/* <AddBag
             productId={ product }
