@@ -10,7 +10,7 @@ function Input({
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
   const [statusValid, setSatusValid] = useState(false);
 
-  function handleChange({ target }: ChangeEvent<HTMLInputElement> | any) {
+  function handleChange({ target }: ChangeEvent<HTMLInputElement>) {
     inputValue!(target);
   }
 
