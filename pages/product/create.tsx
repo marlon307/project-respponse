@@ -51,9 +51,9 @@ function ProductId({ list }: TList) {
   const [featureProduct, setFeatureProduct] = useState<TFeature>({
     0: {
       sku: '',
-      size: '',
+      size: '0',
       qtd: '',
-      color: '',
+      color: '#fff',
     },
   });
 
@@ -66,7 +66,7 @@ function ProductId({ list }: TList) {
     }));
   }, []);
 
-  const handlerAddChangeFeature = useCallback((target: HTMLInputElement) => {
+  const handlerChangeFeature = useCallback((target: HTMLInputElement) => {
     const { name, value } = target;
     setFeatureProduct((currentState) => ({
       ...currentState,
@@ -77,10 +77,26 @@ function ProductId({ list }: TList) {
     }));
   }, []);
 
+  const changeFeatureColor = useCallback(({ target }: any) => {
+    const { name, value, dataset } = target;
+    setFeatureProduct((currentState) => ({
+      ...currentState,
+      [dataset.index]: {
+        ...currentState[dataset.index],
+        [name]: value,
+      },
+    }));
+  }, []);
+
   function addFeature() {
     setFeatureProduct((currentState) => ({
       ...currentState,
-      [Object.keys(currentState).length + 1]: {},
+      [Object.keys(currentState).length + 1]: {
+        sku: '',
+        size: '0',
+        qtd: '',
+        color: '#fff',
+      },
     }));
   }
 
@@ -173,22 +189,26 @@ function ProductId({ list }: TList) {
                 <div className={ style.list_colors } key={ key }>
                   <div className={ style.color }>
                     <div className={ style.select }>
-                      <span />
+                      <span style={ { backgroundColor: featureProduct[key].color } } />
                       <ul>
                         { list.list_colors.map(({ id, color, color_name }) => (
                           <li key={ id }>
-                            <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
-                            { color_name }
+                            <button type="button" name="color" value={ color } data-index={ key } onClick={ changeFeatureColor }>
+                              <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
+                              { color_name }
+                            </button>
                           </li>
                         )) }
                       </ul>
                     </div>
                     <div className={ style.select }>
-                      <pre>GGGG</pre>
+                      <pre>{ featureProduct[key].size }</pre>
                       <ul>
                         { list.list_sizes.map(({ id, size }) => (
                           <li key={ id }>
-                            { size }
+                            <button type="button" name="size" value={ size } data-index={ key } onClick={ changeFeatureColor }>
+                              { size }
+                            </button>
                           </li>
                         )) }
                       </ul>
@@ -198,7 +218,7 @@ function ProductId({ list }: TList) {
                       type="text"
                       name="qtd"
                       placeHolder="Quantidade"
-                      inputValue={ handlerAddChangeFeature }
+                      inputValue={ handlerChangeFeature }
                       ivalue={ featureProduct[key].qtd }
                       msgError="Quantidade"
                     />
@@ -207,7 +227,7 @@ function ProductId({ list }: TList) {
                       type="text"
                       name="sku"
                       placeHolder="SKU"
-                      inputValue={ handlerAddChangeFeature }
+                      inputValue={ handlerChangeFeature }
                       ivalue={ featureProduct[key].sku }
                       msgError="SKU"
                     />
