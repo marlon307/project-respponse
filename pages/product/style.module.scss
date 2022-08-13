@@ -95,7 +95,7 @@
 
   h2 {
     color: var(--color-grey);
-    font-size: 1.2em;
+    font-size: 1em;
   }
 }
 
@@ -103,6 +103,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  flex-direction: column;
+  gap: 2em;
 }
 
 .price {
@@ -122,7 +124,7 @@
 }
 
 .barcolor {
-  margin: 52px 0 32px;
+  margin: 32px 0;
 }
 
 .secondline {
@@ -160,6 +162,11 @@
       margin: 0 auto;
       border-radius: 1em;
     }
+  }
+
+  .primaryline {
+    flex-direction: row;
+    gap: 1em;
   }
 
   .products_similar {

@@ -87,8 +87,8 @@ function ProductId({ product, similar }: TypeProduct) {
           <div className={ style.infodesc }>
             <div className={ style.primaryline }>
               <div className={ style.titles }>
-                <h1>{ type }</h1>
-                <h2>{ title }</h2>
+                <h2>{ type }</h2>
+                <h1>{ title }</h1>
               </div>
               <div className={ style.price }>
                 <span data-oldprice={
