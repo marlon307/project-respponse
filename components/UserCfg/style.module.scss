@@ -1,11 +1,17 @@
+.form {
+  h4 {
+    margin-bottom: 2em;
+  }
+}
+
 .inp {
-  margin-top: 1em;
   position: relative;
   display: flex;
   gap: 1em;
 
   label {
     width: 100%;
+    margin: 1em 0;
   }
 
   a {
@@ -15,20 +21,8 @@
   }
 }
 
-.genere {
-  margin: 0;
-
-  h5 {
-    margin: 1em 0;
-  }
-}
-
 .contact {
-  margin-bottom: 2em;
-
-  h5 {
-    margin: 2em 0;
-  }
+  margin: 1.4em 0 1.8em;
 
   label {
     margin: 0;
@@ -36,16 +30,18 @@
 }
 
 @media (max-width: 550px) {
+  .form {
+    h4 {
+      margin-bottom: 1em;
+    }
+  }
+
   .inp {
     flex-direction: column;
     gap: 0;
 
     a {
       top: -1.3em;
-    }
-
-    label:nth-child(1) {
-      margin: 1.6em 0 0.9em;
     }
 
     label {
@@ -67,8 +63,8 @@
   .contact {
     margin-bottom: 1em;
 
-    h5 {
-      margin: 1em 0 0.2em;
+    h4 {
+      margin: 1em 0 0;
     }
   }
 }

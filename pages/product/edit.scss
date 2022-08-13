@@ -31,10 +31,6 @@
 .palet_colors {
   margin: 1.8em 0;
 
-  button {
-    margin-top: 1em;
-  }
-
   input {
     padding: 0 14px !important;
   }
@@ -44,7 +40,7 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
-  margin-bottom: 0.6em;
+  margin-bottom: 1.4em;
 }
 
 .select {
@@ -68,6 +64,7 @@
     cursor: pointer;
     width: 36px;
     height: 36px;
+    border-radius: 0.8em;
   }
 
   ul {
@@ -83,21 +80,16 @@
     overflow: hidden;
   }
 
-  li {
-    padding: 12px 22px;
-    cursor: pointer;
+  button {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 1em;
-
-    span {
-      position: relative;
-      width: 36px;
-      height: 36px;
-      background: #3232;
-      border-radius: 50%;
-    }
+    cursor: pointer;
+    margin-top: 0;
+    background: transparent;
+    padding: 12px 22px;
+    width: 100%;
   }
 
   .color {
@@ -106,6 +98,10 @@
 
   li:hover {
     background: var(--color-border);
+
+    span {
+      pointer-events: none;
+    }
   }
 
   &:hover {

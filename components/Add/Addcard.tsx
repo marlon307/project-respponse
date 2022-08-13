@@ -30,48 +30,47 @@ function Addcard() {
           Adicionar Cartão de Crédito
         </h1>
         <form>
-          <div className="inputs">
-            <Input
-              id="namecard"
-              type="text"
-              name="namecard"
-              placeHolder="Nome do cartão de crédito"
-              autoComplete="cc-name"
-              ivalue={ addCardState.namecard }
-              inputValue={ hadleChange }
-              msgError="Insira o nome do cartão de crédito."
-            />
-            <Input
-              id="cardvalidate"
-              type="text"
-              name="cardvalidate"
-              placeHolder="Data de validade"
-              autoComplete="cc-exp"
-              ivalue={ addCardState.cardvalidate }
-              inputValue={ hadleChange }
-              msgError="Insira a data de vencimento."
-            />
-            <Input
-              id="numbercard"
-              type="text"
-              name="numbercard"
-              placeHolder="Número do cartão"
-              autoComplete="cc-number"
-              ivalue={ addCardState.numbercard }
-              inputValue={ hadleChange }
-              msgError="Insira o número."
-            />
-            <Input
-              id="codev"
-              type="text"
-              name="codev"
-              placeHolder="Código de segurança"
-              autoComplete="off"
-              ivalue={ addCardState.codev }
-              inputValue={ hadleChange }
-              msgError="Insira o código de segurança (CVV)."
-            />
-          </div>
+
+          <Input
+            id="namecard"
+            type="text"
+            name="namecard"
+            placeHolder="Nome do cartão de crédito"
+            autoComplete="cc-name"
+            ivalue={ addCardState.namecard }
+            inputValue={ hadleChange }
+            msgError="Insira o nome do cartão de crédito."
+          />
+          <Input
+            id="cardvalidate"
+            type="text"
+            name="cardvalidate"
+            placeHolder="Data de validade"
+            autoComplete="cc-exp"
+            ivalue={ addCardState.cardvalidate }
+            inputValue={ hadleChange }
+            msgError="Insira a data de vencimento."
+          />
+          <Input
+            id="numbercard"
+            type="text"
+            name="numbercard"
+            placeHolder="Número do cartão"
+            autoComplete="cc-number"
+            ivalue={ addCardState.numbercard }
+            inputValue={ hadleChange }
+            msgError="Insira o número."
+          />
+          <Input
+            id="codev"
+            type="text"
+            name="codev"
+            placeHolder="Código de segurança"
+            autoComplete="off"
+            ivalue={ addCardState.codev }
+            inputValue={ hadleChange }
+            msgError="Insira o código de segurança (CVV)."
+          />
           <BtnAdd eventBtn={ () => { } } />
         </form>
       </div>
