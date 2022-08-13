@@ -4,6 +4,10 @@
   width: 100vw;
   max-width: 450px;
   border-radius: 1em;
+
+  h1 {
+    margin-bottom: 1.6em;
+  }
 }
 
 .content {
@@ -24,5 +28,9 @@
       height: 1.2em;
       fill: var(--color-grey);
     }
+  }
+
+  label {
+    margin: 1.6em 0;
   }
 }

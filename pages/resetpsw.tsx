@@ -49,22 +49,20 @@ function Resetpsw({ props }: TProps) {
         description="Insira seu e-mail para recuperar sua senha."
       />
       <section className={ style.contlogin }>
-        <h1>Recuperar senha</h1>
+        <h1 className={ style.title_resetpsw }>Recuperar senha</h1>
         <form>
           { contMsg === null ? (
-            <div className="inputs">
-              <Input
-                id="email"
-                type="email"
-                name="email"
-                placeHolder="E-mail"
-                autoComplete="email"
-                ivalue={ email }
-                inputValue={ changeEmail! }
-                msgError={ isValid ? 'Email inválido ou não cadastrado!' : 'Email inválido!' }
-                isValid={ isValid }
-              />
-            </div>
+            <Input
+              id="email"
+              type="email"
+              name="email"
+              placeHolder="E-mail"
+              autoComplete="email"
+              ivalue={ email }
+              inputValue={ changeEmail! }
+              msgError={ isValid ? 'Email inválido ou não cadastrado!' : 'Email inválido!' }
+              isValid={ isValid }
+            />
           ) : (
             <div className={ style.msgregister }>
               <p>

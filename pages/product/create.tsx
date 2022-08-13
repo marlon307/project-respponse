@@ -31,6 +31,7 @@ type TFeature = {
 };
 
 type TInfo = {
+  category: string;
   title: string;
   discount: string;
   price: string;
@@ -41,10 +42,10 @@ type TInfo = {
 
 function ProductId({ list }: TList) {
   const [infoProduct, setInfoProduct] = useState<TInfo>({
+    category: 'Selecionae uma categoria.',
     title: '',
     discount: '',
     price: '',
-    mindescription: '',
     details: '',
     espec: '',
   });
@@ -148,11 +149,19 @@ function ProductId({ list }: TList) {
           <div className={ style.panel_addproduct }>
             <h3>Categoria</h3>
             <div className={ style.select }>
-              <pre>Camisa</pre>
+              <pre>{ infoProduct.category }</pre>
               <ul>
                 { list.list_ctg.map(({ id, category_name }) => (
                   <li key={ id }>
-                    { category_name }
+                    <button
+                      type="button"
+                      name="category"
+                      value={ category_name }
+                      data-index="ctg"
+                      onClick={ (e) => handlerChangeInfo(e.target) }
+                    >
+                      { category_name }
+                    </button>
                   </li>
                 )) }
               </ul>

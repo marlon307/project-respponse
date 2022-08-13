@@ -115,32 +115,30 @@ function Login() {
           </button>
         </div>
         <form className={ style.tab } aria-hidden={ !(sectionTab === 0) }>
-          <div className={ style.inputs }>
-            <Input
-              id="lemail"
-              type="email"
-              name="lemail"
-              autoComplete="email"
-              ivalue={ stateLogin.lemail }
-              inputValue={ actionUserLogin }
-              placeHolder="E-mail"
-              msgError="Email inválido!"
-              disabled={ isLoading }
-              isValid={ isValidLogin }
-            />
-            <Input
-              id="lpsw"
-              type="password"
-              name="lpsw"
-              autoComplete="current-password"
-              ivalue={ stateLogin.lpsw }
-              inputValue={ actionUserLogin }
-              placeHolder="Senha"
-              msgError="Senha invalida!"
-              disabled={ isLoading }
-              isValid={ isValidLogin }
-            />
-          </div>
+          <Input
+            id="lemail"
+            type="email"
+            name="lemail"
+            autoComplete="email"
+            ivalue={ stateLogin.lemail }
+            inputValue={ actionUserLogin }
+            placeHolder="E-mail"
+            msgError="Email inválido!"
+            disabled={ isLoading }
+            isValid={ isValidLogin }
+          />
+          <Input
+            id="lpsw"
+            type="password"
+            name="lpsw"
+            autoComplete="current-password"
+            ivalue={ stateLogin.lpsw }
+            inputValue={ actionUserLogin }
+            placeHolder="Senha"
+            msgError="Senha invalida!"
+            disabled={ isLoading }
+            isValid={ isValidLogin }
+          />
           <div className={ style.action }>
             <BtnIco
               textBtn="Entrar"
@@ -162,41 +160,39 @@ function Login() {
           { !isRegistred
             ? (
               <>
-                <div className="inputs">
-                  <Input
-                    id="rname"
-                    type="name"
-                    name="rname"
-                    placeHolder="Nome Sobrenome"
-                    autoComplete="name"
-                    inputValue={ actionRegister }
-                    ivalue={ stateRegister.rname }
-                    msgError="Preencha Nome e Sobrenome"
-                    disabled={ isLoading }
-                  />
-                  <Input
-                    id="remail"
-                    type="email"
-                    name="remail"
-                    placeHolder="E-mail"
-                    autoComplete="email"
-                    inputValue={ actionRegister }
-                    ivalue={ stateRegister.remail }
-                    msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
-                    disabled={ isLoading }
-                    isValid={ isValidRegister }
-                  />
-                  <Input
-                    id="rpsw"
-                    type="password"
-                    name="rpsw"
-                    placeHolder="Senha"
-                    inputValue={ actionRegister }
-                    ivalue={ stateRegister.rpsw }
-                    msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
-                    disabled={ isLoading }
-                  />
-                </div>
+                <Input
+                  id="rname"
+                  type="name"
+                  name="rname"
+                  placeHolder="Nome Sobrenome"
+                  autoComplete="name"
+                  inputValue={ actionRegister }
+                  ivalue={ stateRegister.rname }
+                  msgError="Preencha Nome e Sobrenome"
+                  disabled={ isLoading }
+                />
+                <Input
+                  id="remail"
+                  type="email"
+                  name="remail"
+                  placeHolder="E-mail"
+                  autoComplete="email"
+                  inputValue={ actionRegister }
+                  ivalue={ stateRegister.remail }
+                  msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
+                  disabled={ isLoading }
+                  isValid={ isValidRegister }
+                />
+                <Input
+                  id="rpsw"
+                  type="password"
+                  name="rpsw"
+                  placeHolder="Senha"
+                  inputValue={ actionRegister }
+                  ivalue={ stateRegister.rpsw }
+                  msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
+                  disabled={ isLoading }
+                />
                 <div className={ style.action }>
                   <BtnIco
                     textBtn="Criar Conta"

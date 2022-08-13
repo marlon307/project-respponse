@@ -82,133 +82,130 @@ function CfgUser({ token }: IToken) {
   }, [loading, ifoUser]);
 
   return (
-    <section className={ style.section }>
-      <div className={ style.contaienrsection }>
-        <div className="inputs">
-          <h3>Informações básicas</h3>
-          <form>
-            <div className={ style.inp }>
-              <Input
-                id="name"
-                type="name"
-                name="name"
-                placeHolder="* Nome e Sobrenome"
-                msgError="Preencha Nome e Sobrenome"
-                autoComplete="name"
-                ivalue={ stateIfonUser.name }
-                inputValue={ userCfgInfo }
-              />
-              <Input
-                id="email"
-                type="email"
-                name="email"
-                placeHolder="E-mail"
-                autoComplete="email"
-                ivalue={ stateIfonUser.email }
-                msgError="E-mail inválido"
-                disabled
-              />
-              <a
-                href="/resetpsw"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link"
-              >
-                Trocar Senha
-              </a>
-            </div>
-            <div className={ style.inp }>
-              <Input
-                id="date"
-                type="date"
-                name="date"
-                placeHolder="* Data"
-                ivalue={ stateIfonUser.date }
-                inputValue={ userCfgInfo }
-                msgError="Selecione uma data"
-              />
-              <Input
-                id="doc"
-                type="doc"
-                name="doc"
-                placeHolder="* CPF"
-                ivalue={ stateIfonUser.doc }
-                inputValue={ userCfgInfo }
-                msgError="CPF inválido"
-                max={ 11 }
-                patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
-                format="$1.$2.$3-$4"
-              />
-            </div>
-            <div className={ style.genere }>
-              <h5>Sexo</h5>
-              <div className={ style.inp }>
-                <InputRadio
-                  checked={ ifoUser?.gender_id === 1 }
-                  iId="men"
-                  name="Masculino"
-                  family="gender"
-                  iValue={ 3 }
-                  execFunction={ userCfgInfo }
-                />
-                <InputRadio
-                  checked={ ifoUser?.gender_id === 2 }
-                  iId="female"
-                  name="Femenino"
-                  family="gender"
-                  iValue={ 2 }
-                  execFunction={ userCfgInfo }
-                />
-                <InputRadio
-                  checked={ ifoUser?.gender_id === null }
-                  iId="undefined"
-                  name="Não informar"
-                  family="gender"
-                  iValue={ 1 }
-                  execFunction={ userCfgInfo }
-                />
-              </div>
-            </div>
-            <div className={ style.contact }>
-              <h5>Contato</h5>
-              <div className={ style.inp }>
-                <Input
-                  id="tel"
-                  type="tel"
-                  name="tel"
-                  placeHolder="Telefone"
-                  autoComplete="tel"
-                  ivalue={ stateIfonUser.tel }
-                  inputValue={ userCfgInfo }
-                  msgError="Insira um telefone"
-                  max={ 11 }
-                  patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
-                  format="$1 $2-$3"
-                />
-                <Input
-                  id="cel"
-                  type="tel"
-                  name="cel"
-                  placeHolder="Celular"
-                  autoComplete="tel"
-                  ivalue={ stateIfonUser.cel }
-                  inputValue={ userCfgInfo }
-                  msgError="Insira um telefone"
-                  max={ 11 }
-                  patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
-                  format="$1 $2-$3"
-                />
-              </div>
-            </div>
-          </form>
+    <>
+      <form className={ style.form }>
+        <h4>Informações básicas</h4>
+        <div className={ style.inp }>
+          <Input
+            id="name"
+            type="name"
+            name="name"
+            placeHolder="* Nome e Sobrenome"
+            msgError="Preencha Nome e Sobrenome"
+            autoComplete="name"
+            ivalue={ stateIfonUser.name }
+            inputValue={ userCfgInfo }
+          />
+          <Input
+            id="email"
+            type="email"
+            name="email"
+            placeHolder="E-mail"
+            autoComplete="email"
+            ivalue={ stateIfonUser.email }
+            msgError="E-mail inválido"
+            disabled
+          />
+          <a
+            href="/resetpsw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link"
+          >
+            Trocar Senha
+          </a>
         </div>
-      </div>
+        <div className={ style.inp }>
+          <Input
+            id="date"
+            type="date"
+            name="date"
+            placeHolder="* Data"
+            ivalue={ stateIfonUser.date }
+            inputValue={ userCfgInfo }
+            msgError="Selecione uma data"
+          />
+          <Input
+            id="doc"
+            type="doc"
+            name="doc"
+            placeHolder="* CPF"
+            ivalue={ stateIfonUser.doc }
+            inputValue={ userCfgInfo }
+            msgError="CPF inválido"
+            max={ 11 }
+            patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
+            format="$1.$2.$3-$4"
+          />
+        </div>
+        <div className={ style.genere }>
+          <h4>Sexo</h4>
+          <div className={ style.inp }>
+            <InputRadio
+              checked={ ifoUser?.gender_id === 1 }
+              iId="men"
+              name="Masculino"
+              family="gender"
+              iValue={ 3 }
+              execFunction={ userCfgInfo }
+            />
+            <InputRadio
+              checked={ ifoUser?.gender_id === 2 }
+              iId="female"
+              name="Femenino"
+              family="gender"
+              iValue={ 2 }
+              execFunction={ userCfgInfo }
+            />
+            <InputRadio
+              checked={ ifoUser?.gender_id === null }
+              iId="undefined"
+              name="Não informar"
+              family="gender"
+              iValue={ 1 }
+              execFunction={ userCfgInfo }
+            />
+          </div>
+        </div>
+        <div className={ style.contact }>
+          <h4>Contato</h4>
+          <div className={ style.inp }>
+            <Input
+              id="tel"
+              type="tel"
+              name="tel"
+              placeHolder="Telefone"
+              autoComplete="tel"
+              ivalue={ stateIfonUser.tel }
+              inputValue={ userCfgInfo }
+              msgError="Insira um telefone"
+              max={ 11 }
+              patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
+              format="$1 $2-$3"
+            />
+            <Input
+              id="cel"
+              type="tel"
+              name="cel"
+              placeHolder="Celular"
+              autoComplete="tel"
+              ivalue={ stateIfonUser.cel }
+              inputValue={ userCfgInfo }
+              msgError="Insira um telefone"
+              max={ 11 }
+              patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
+              format="$1 $2-$3"
+            />
+          </div>
+        </div>
+      </form>
+
       <BtnIco
         action={ saveUpdateInfoUser! }
         textBtn="Salvar"
         actionLiberate={ isLoading }
       />
-    </section>
+    </>
   );
 }
 

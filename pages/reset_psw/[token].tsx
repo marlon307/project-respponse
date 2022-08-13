@@ -58,10 +58,10 @@ function Token() {
         description="Insira seu e-mail para recuperar sua senha."
       />
       <section className={ style.contlogin }>
-        <h1>Alterar senha</h1>
+        <h1 className={ style.title_resetpsw }>Alterar senha</h1>
         <form>
           { contMsg === null ? (
-            <div className="inputs">
+            <>
               <Input
                 id="psw1"
                 type="password"
@@ -82,7 +82,7 @@ function Token() {
                 msgError={ isValid ? 'Token expirado!' : 'Senha inválida!' }
                 isValid={ isValid }
               />
-            </div>
+            </>
           ) : (
             <div className={ style.msgregister }>
               <span />

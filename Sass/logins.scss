@@ -4,6 +4,14 @@
   padding: 2em max(2em, 6%);
   border-radius: 1em;
   margin: 0 auto;
+
+  label {
+    margin: 1.8em 0 1em;
+  }
+}
+
+.title_resetpsw {
+  margin-bottom: 2em;
 }
 
 .sectiontab {
@@ -58,10 +66,6 @@
   align-items: center;
   justify-content: space-between;
   margin: 32px 0 16px;
-}
-
-.inputs {
-  margin-bottom: 3em;
 }
 
 .msgregister {
