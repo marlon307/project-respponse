@@ -266,7 +266,7 @@ function ProductId({ list }: TList) {
               id="details"
               placeholder="Detalhes"
               value={ infoProduct.details }
-              onChange={ handlerChangeInfo }
+              onChange={ (e) => handlerChangeInfo(e.target) }
               maxLength={ 500 }
             />
             <textarea
@@ -274,7 +274,7 @@ function ProductId({ list }: TList) {
               id="espec"
               placeholder="Especificações"
               value={ infoProduct.espec }
-              onChange={ handlerChangeInfo }
+              onChange={ (e) => handlerChangeInfo(e.target) }
               maxLength={ 500 }
             />
           </div>
