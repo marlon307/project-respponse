@@ -1,12 +1,18 @@
 /**
  * @type {import('next').NextConfig}
- * */
-// const withPWA = require('next-pwa');
-// const runtimeCaching = require('next-pwa/cache');
+ **
+*/
 
-// const inDevelopment = process.env.NODE_ENV === 'development';
+const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+  disable: process.env.NODE_ENV === 'development',
+  dest: 'public',
+  runtimeCaching,
+  register: true,
+  sw: 'sw.js',
+});
 
-const nextConfigDevelopment = {
+module.exports = withPWA({
   images: {
     domains: ['i.imgur.com'],
     deviceSizes: [280, 350, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -24,18 +30,4 @@ const nextConfigDevelopment = {
   },
   swcMinify: true,
   reactStrictMode: true,
-};
-
-// const nextConfigProduction = withPWA({
-//   pwa: {
-//     dest: 'public',
-//     runtimeCaching,
-//     register: true,
-//     sw: 'sw.js',
-//   },
-//   ...nextConfigDevelopment,
-// });
-
-// module.exports = inDevelopment ? nextConfigDevelopment : nextConfigProduction;
-
-module.exports = nextConfigDevelopment;
+});
