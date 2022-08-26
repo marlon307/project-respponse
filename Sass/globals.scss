@@ -211,3 +211,14 @@ html {
   background: var(--color-grey-with);
   border-radius: 5px;
 }
+
+*:hover::-webkit-scrollbar {
+  height: 12px;
+}
+
+// Detecta se é um tela touch screen
+@media (hover: none) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
