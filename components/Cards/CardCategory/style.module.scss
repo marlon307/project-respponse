@@ -6,8 +6,10 @@
   align-items: center;
   justify-content: center;
   width: max-content;
+  height: 90px;
   flex: none;
   gap: 1em;
+  scroll-snap-align: center;
 
   .imgctg {
     position: absolute;

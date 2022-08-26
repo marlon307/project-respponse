@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GetStaticProps } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Autoplay } from 'swiper';
+import { Autoplay } from 'swiper';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome } from '../types/typesIndex';
@@ -15,8 +15,6 @@ import { SwiperButtonNext, SwiperButtonPrev } from '../components/Buttons/Swiper
 function Home({
   categorys, slides, mockCards, mockPromotions,
 }: IPropsHome) {
-  const [swiperInstance, setSwiperInstance] = useState<SwiperCore>();
-
   return (
     <>
       <HeadSEO title="" description="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
@@ -56,69 +54,40 @@ function Home({
       </div>
       <div className={ style.listctg }>
         <h2>Categorias</h2>
-        <Swiper
-          className={ style.slide_container }
-          slidesPerView="auto"
-          wrapperTag="section"
-          spaceBetween={ 16 }
-        >
-          <SwiperButtonNext />
-          <SwiperButtonPrev />
+        <div className={ style.slide_container }>
           { categorys.map(({
             ctgID, imgCategory, categoryName, color, path,
           }) => (
-            <SwiperSlide key={ ctgID }>
-              <CardCategory
-                image={ imgCategory }
-                ctgName={ categoryName }
-                path={ path }
-                color={ color! }
-              />
-            </SwiperSlide>
+            <CardCategory
+              key={ ctgID }
+              image={ imgCategory }
+              ctgName={ categoryName }
+              path={ path }
+              color={ color! }
+            />
           )) }
-        </Swiper>
+        </div>
       </div>
       <div className={ style.highlights }>
         <h2>Destaques</h2>
-        <Swiper
-          className={ style.slide_container }
-          slidesPerView="auto"
-          wrapperTag="section"
-          spaceBetween={ 16 }
-        >
-          <SwiperButtonNext />
-          <SwiperButtonPrev />
+        <div className={ style.slide_container }>
           { mockCards.map((object: IPropsHome['mockCards'][0]) => (
-            <SwiperSlide key={ object.id } className={ style.panel }>
+            <div key={ object.id } className={ style.panel }>
               <CardProduct
                 key={ object.id }
                 objectProduct={ object }
               />
-            </SwiperSlide>
+            </div>
           )) }
-        </Swiper>
+        </div>
       </div>
       <div className={ style.promotions }>
         <h2>Promoções</h2>
-        <Swiper
-          className={ style.slide_container }
-          onSwiper={ setSwiperInstance }
-          wrapperTag="section"
-          slidesPerView="auto"
-          allowTouchMove
-          spaceBetween={ 16 }
-          onBeforeResize={ ({ width }) => width > 680 && swiperInstance?.slideTo(0) }
-          breakpoints={ {
-            700: {
-              allowTouchMove: false,
-              spaceBetween: 0,
-            },
-          } }
-        >
+        <section>
           { mockPromotions.map(({
             id, img, title, path,
           }: any) => (
-            <SwiperSlide key={ id } tag="figure">
+            <figure key={ id }>
               <LoadingImage
                 src={ img }
                 quality={ 85 }
@@ -131,9 +100,9 @@ function Home({
                 <h4>{ title }</h4>
                 <BtnRedirect path={ `/category/${path}` } titleBtn="Compre" />
               </figcaption>
-            </SwiperSlide>
+            </figure>
           )) }
-        </Swiper>
+        </section>
       </div>
     </>
   );
