@@ -55,12 +55,13 @@
   border-radius: 1em;
   margin-bottom: 4em;
   margin: 0 6% 4em;
-  overflow: hidden;
 
   section {
+    overflow: overlay;
     display: flex;
     flex-direction: row;
     width: -webkit-fill-available;
+    scroll-snap-type: x mandatory;
   }
 
   figure {
@@ -72,6 +73,7 @@
     width: 100%;
     user-select: none;
     flex: none;
+    scroll-snap-align: center;
   }
 
   img {
@@ -344,7 +346,7 @@
   }
 
   .slide_container {
-    padding: 3%;
+    padding: 0 3%;
   }
 
   .listctg {
@@ -384,7 +386,7 @@
       grid-auto-columns: 90%;
       grid-template-rows: 300px;
       gap: 1em;
-      padding: 3%;
+      padding: 0 3%;
 
       figcaption {
         left: 1em;
@@ -427,6 +429,7 @@
 
     .panel {
       margin-top: 1em;
+      max-width: 200px;
     }
   }
 
