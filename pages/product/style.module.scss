@@ -34,7 +34,7 @@
 }
 
 .panel {
-  width: 90%;
+  width: 100%;
   height: 100%;
   max-width: 250px;
   flex-shrink: 0;
@@ -227,5 +227,9 @@
 
   .products_similar :is(h3, .slide_prod) {
     padding: 0 3%;
+  }
+
+  .panel {
+    max-width: 200px;
   }
 }
