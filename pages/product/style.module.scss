@@ -148,7 +148,7 @@
       'slide'
       'infos'
       'products';
-    grid-template-columns: auto;
+    grid-template-columns: 100%;
   }
 
   .slide {
@@ -196,7 +196,6 @@
   }
 
   .products_similar {
-    width: 100%;
     margin-bottom: 3em;
   }
 }
@@ -226,11 +225,7 @@
     margin: 1.6em 0;
   }
 
-  .products_similar {
-    width: 100vw;
-
-    :is(h3, .slide_prod) {
-      padding: 0 3%;
-    }
+  .products_similar :is(h3, .slide_prod) {
+    padding: 0 3%;
   }
 }
