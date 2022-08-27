@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import ItemList from '../../components/Filter/ItemList';
 import api from '../../service/api';
@@ -60,23 +59,18 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
               ) }
             </ContentModal>
           </div>
-          <Swiper
-            slidesPerView="auto"
-            wrapperTag="section"
-            className={ style.listfilter }
-          >
+          <div className={ style.listfilter }>
             { listFilter.map((item) => (
-              <SwiperSlide key={ item.id }>
-                <ItemList
-                  id={ item.id }
-                  name={ item.key }
-                  value={ item.name }
-                  color={ item.color }
-                  execFunction={ removeListFilter }
-                />
-              </SwiperSlide>
+              <ItemList
+                key={ item.id }
+                id={ item.id }
+                name={ item.key }
+                value={ item.name }
+                color={ item.color }
+                execFunction={ removeListFilter }
+              />
             )) }
-          </Swiper>
+          </div>
         </div>
         <div className={ style.categorycont }>
           {

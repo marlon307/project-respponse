@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import LoadingImage from '../../components/LoadImage';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
@@ -11,7 +10,7 @@ import { TypeProduct } from './product';
 import api from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 import CardProduct from '../../components/Cards/CardProduct/CardProduct';
-import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
+// import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
 import style from './style.module.scss';
 
 function ProductId({ product, similar }: TypeProduct) {
@@ -48,40 +47,28 @@ function ProductId({ product, similar }: TypeProduct) {
       />
       <div className={ style.contprod }>
         <div className={ style.slide }>
-          <Swiper
-            className={ style.panels }
-            slidesPerView="auto"
-            wrapperTag="section"
-          >
-            <SwiperButtonNext />
-            <SwiperButtonPrev />
+          <div className={ style.panels }>
             { options[0].imgs.map(({ urlImg, imgid }: any) => (
-              <SwiperSlide key={ imgid } className={ style.contsimg } tag="figure">
+              <figure key={ imgid } className={ style.contsimg }>
                 <LoadingImage
                   src={ urlImg }
                   quality={ 80 }
                   alt={ title }
                   layout="fill"
                 />
-              </SwiperSlide>
+              </figure>
             )) }
-          </Swiper>
+          </div>
         </div>
         <div className={ style.products_similar }>
           <h3>Produtos Similares</h3>
-          <Swiper
-            slidesPerView="auto"
-            wrapperTag="section"
-            spaceBetween={ 16 }
-          >
-            <SwiperButtonNext />
-            <SwiperButtonPrev />
+          <section>
             { similar.map((productSimilar: TypeProduct['similar'][0]) => (
-              <SwiperSlide key={ productSimilar.id } className={ style.panel }>
+              <div key={ productSimilar.id } className={ style.panel }>
                 <CardProduct objectProduct={ productSimilar } />
-              </SwiperSlide>
+              </div>
             )) }
-          </Swiper>
+          </section>
         </div>
         <div className={ style.maincontentinfo }>
           <div className={ style.infodesc }>

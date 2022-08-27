@@ -1,9 +1,9 @@
 .itemfilter {
   display: flex;
   color: var(--color-grey);
-  overflow: hidden;
   align-items: center;
   justify-content: center;
+  flex: none;
 
   input {
     display: none;
@@ -27,6 +27,7 @@
   color: var(--color-grey);
   font-size: 1em;
   user-select: none;
+  flex: none;
 
   span {
     width: 12px;
