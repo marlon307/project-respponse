@@ -1,7 +1,5 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome } from '../types/typesIndex';
@@ -10,7 +8,7 @@ import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
 import HeadSEO from '../components/Head/HeadSEO';
 import style from '../Sass/style.module.scss';
-import { SwiperButtonNext, SwiperButtonPrev } from '../components/Buttons/SwiperButton';
+// import { SwiperButtonNext, SwiperButtonPrev } from '../components/Buttons/SwiperButton';
 
 function Home({
   categorys, slides, mockCards, mockPromotions,
@@ -19,21 +17,11 @@ function Home({
     <>
       <HeadSEO title="" description="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
       <div className={ style.banner }>
-        <Swiper
-          slidesPerView="auto"
-          wrapperTag="section"
-          autoplay={ {
-            delay: 15000,
-            disableOnInteraction: false,
-          } }
-          modules={ [Autoplay] }
-        >
-          <SwiperButtonNext />
-          <SwiperButtonPrev />
+        <section>
           { slides.map(({
             id, srcImg, alt, background,
           }) => (
-            <SwiperSlide key={ id } tag="figure" style={ { background: `${background}` } }>
+            <figure key={ id } style={ { background: `${background}` } }>
               <LoadingImage
                 src={ srcImg }
                 quality={ 85 }
@@ -48,9 +36,9 @@ function Home({
                   Shop now—no promo code needed.
                 </p>
               </figcaption>
-            </SwiperSlide>
+            </figure>
           )) }
-        </Swiper>
+        </section>
       </div>
       <div className={ style.listctg }>
         <h2>Categorias</h2>
