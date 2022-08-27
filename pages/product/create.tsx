@@ -1,12 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { GetServerSideProps } from 'next';
-import { Swiper/* , SwiperSlide */ } from 'swiper/react';
 // import LoadingImage from '../../components/LoadImage';
 // import AddBag from '../../components/Buttons/AddBag';
 import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
-import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
+// import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
 import style from './style.module.scss';
 import { Input, InputRadio } from '../../components/ComponentsForm';
 import BtnAdd from '../../components/Buttons/BtnAdd';
@@ -110,13 +109,7 @@ function ProductId({ list }: TList) {
       />
       <div className={ style.contprod }>
         <div className={ style.slide }>
-          <Swiper
-            className={ style.panels }
-            slidesPerView="auto"
-            wrapperTag="section"
-          >
-            <SwiperButtonNext />
-            <SwiperButtonPrev />
+          <div className={ style.panels }>
             {/* { options[0].imgs.map(({ urlImg, imgid }: any) => (
               <SwiperSlide key={ imgid } className={ style.contsimg } tag="figure">
                 <LoadingImage
@@ -127,23 +120,17 @@ function ProductId({ list }: TList) {
                 />
               </SwiperSlide>
             )) } */}
-          </Swiper>
+          </div>
         </div>
         <div className={ style.products_similar }>
           <h3>Produtos com estoque baixo</h3>
-          <Swiper
-            slidesPerView="auto"
-            wrapperTag="section"
-            spaceBetween={ 16 }
-          >
-            <SwiperButtonNext />
-            <SwiperButtonPrev />
+          <div>
             {/* { similar.map((productSimilar: TypeProduct['similar'][0]) => (
               <SwiperSlide key={ productSimilar.id } className={ style.panel }>
                 <CardProduct objectProduct={ productSimilar } />
               </SwiperSlide>
             )) } */}
-          </Swiper>
+          </div>
         </div>
         <div className={ style.maincontentinfo }>
           <div className={ style.panel_addproduct }>

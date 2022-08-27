@@ -35,21 +35,13 @@
 }
 
 .listfilter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
   grid-area: listfilter;
-  overflow: hidden;
-
-  section {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    box-sizing: border-box;
-    white-space: nowrap;
-
-    label {
-      margin-left: 6px;
-    }
-  }
+  overflow: overlay;
+  padding: 14px 0;
 }
 
 .barfilter {
