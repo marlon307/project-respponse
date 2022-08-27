@@ -62,13 +62,13 @@ function ProductId({ product, similar }: TypeProduct) {
         </div>
         <div className={ style.products_similar }>
           <h3>Produtos Similares</h3>
-          <section>
+          <div className={ style.slide_prod }>
             { similar.map((productSimilar: TypeProduct['similar'][0]) => (
-              <div key={ productSimilar.id } className={ style.panel }>
+              <div className={ style.panel } key={ productSimilar.id }>
                 <CardProduct objectProduct={ productSimilar } />
               </div>
             )) }
-          </section>
+          </div>
         </div>
         <div className={ style.maincontentinfo }>
           <div className={ style.infodesc }>

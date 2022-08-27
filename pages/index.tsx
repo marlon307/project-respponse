@@ -60,7 +60,7 @@ function Home({
         <h2>Destaques</h2>
         <div className={ style.slide_container }>
           { mockCards.map((object: IPropsHome['mockCards'][0]) => (
-            <div key={ object.id } className={ style.panel }>
+            <div className={ style.panel } key={ object.id }>
               <CardProduct
                 key={ object.id }
                 objectProduct={ object }
