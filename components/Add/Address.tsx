@@ -54,7 +54,7 @@ function Address({ token, execFunction }: TAddress) {
         number_home: addressForm.number,
       };
 
-      const { data } = await api2.post('/add_address', body, {
+      const { data } = await api2.post('/address', body, {
         headers: {
           authorization: `Bearer ${token}`,
         },

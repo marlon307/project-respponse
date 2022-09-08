@@ -25,7 +25,7 @@ const listAddress = async ({ route, token }: TUser) => {
 const useAddress = <Data = any>(token: string) => {
   const { data, mutate, error } = useSWR<Data>(
     {
-      route: '/get_address_user',
+      route: '/address',
       token,
     },
     listAddress,

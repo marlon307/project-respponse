@@ -13,7 +13,7 @@ function Address({ token, listAddress }: TAdderess) {
   const { mutate } = useAddress(token);
 
   const removeAddress = useCallback(async (address: number) => {
-    const { data } = await api2.delete('/delete_address_user', {
+    const { data } = await api2.delete('/address', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

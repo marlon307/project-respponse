@@ -21,7 +21,10 @@ export type TypeProduct = {
       colorName: string;
       color: string;
       size: Object;
-      imgs: Array<Object>;
+      imgs: Array<{
+        imgid: Number;
+        urlImg: ImageProps['src'];
+      }>;
     }>
   };
   similar: ICardProduct['products']
