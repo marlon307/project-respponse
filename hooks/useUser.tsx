@@ -25,7 +25,7 @@ const infoUser = async ({ route, token }: TUser) => {
 const useUser = <Data = any>(token: string) => {
   const { data, mutate, error } = useSWR<Data>(
     {
-      route: '/get_user_info',
+      route: '/user',
       token,
     },
     infoUser,

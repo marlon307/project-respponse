@@ -54,7 +54,7 @@ function CfgUser({ token }: IToken) {
     if (newBody.name && newBody.doc && newBody.date) {
       setIsLoading(true);
 
-      const { data } = await api2.patch('/update_user', newBody, {
+      const { data } = await api2.patch('/user', newBody, {
         headers: {
           authorization: `Bearer ${token}`,
         },

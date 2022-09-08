@@ -9,7 +9,7 @@ function CardEditbag() {
         <ul>
           { [...Array(30).keys()].map((value) => (
             <li key={ value }>
-              <button type="button">{ value }</button>
+              <button type="button">{ value + 1 }</button>
             </li>
           )) }
         </ul>
