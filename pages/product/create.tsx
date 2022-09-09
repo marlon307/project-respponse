@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { GetServerSideProps } from 'next';
-// import LoadingImage from '../../components/LoadImage';
+import LoadingImage from '../../components/LoadImage';
 // import AddBag from '../../components/Buttons/AddBag';
 import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
@@ -25,6 +25,8 @@ type TFeature = {
     color: string;
     qtd: string;
     size: string;
+    discount: string;
+    price: string;
     [key: string]: string | number;
   };
 };
@@ -32,19 +34,18 @@ type TFeature = {
 type TInfo = {
   category: string;
   title: string;
-  discount: string;
-  price: string;
   details: string;
   espec: string;
   [key: string]: string | number;
 };
 
+const fakeImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+
 function ProductId({ list }: TList) {
+  const [listimg, setLidtImg] = useState<any>({});
   const [infoProduct, setInfoProduct] = useState<TInfo>({
     category: 'Selecionae uma categoria.',
     title: '',
-    discount: '',
-    price: '',
     details: '',
     espec: '',
   });
@@ -54,6 +55,8 @@ function ProductId({ list }: TList) {
       size: '0',
       qtd: '',
       color: '#fff',
+      price: '',
+      discount: '',
     },
   });
 
@@ -99,6 +102,16 @@ function ProductId({ list }: TList) {
       },
     }));
   }
+  function loadImg({ target }: any) {
+    const { files, name } = target;
+
+    if (files[0].type === 'image/png') {
+      setLidtImg((current_list_img: object) => ({
+        ...current_list_img,
+        [name]: URL.createObjectURL(target.files[0]),
+      }));
+    }
+  }
 
   return (
     <>
@@ -107,19 +120,36 @@ function ProductId({ list }: TList) {
         description="Criando Produto"
         keywords="Criando Produto"
       />
-      <div className={ style.contprod }>
+      <form className={ style.contprod }>
         <div className={ style.slide }>
           <div className={ style.panels }>
-            {/* { options[0].imgs.map(({ urlImg, imgid }: any) => (
-              <SwiperSlide key={ imgid } className={ style.contsimg } tag="figure">
+            { Object.keys(listimg).map((key_image) => (
+              <div className={ style.contsimg } key={ key_image }>
                 <LoadingImage
-                  src={ urlImg }
+                  src={ listimg[key_image] }
                   quality={ 80 }
-                  alt={ title }
-                  layout="fill"
+                  alt="title"
                 />
-              </SwiperSlide>
-            )) } */}
+              </div>
+            )) }
+          </div>
+          <div className={ style.list_upload }>
+            { [...Array(6).keys()].map((upload_panel) => (
+              <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
+                <LoadingImage
+                  src={ listimg[`img-${upload_panel}`] ?? fakeImage }
+                  quality={ 80 }
+                  alt="upload_image"
+                />
+                <input
+                  id={ `img-${upload_panel}` }
+                  type="file"
+                  name={ `img-${upload_panel}` }
+                  accept=".png"
+                  onChange={ loadImg }
+                />
+              </label>
+            )) }
           </div>
         </div>
         <div className={ style.products_similar }>
@@ -162,71 +192,77 @@ function ProductId({ list }: TList) {
               ivalue={ infoProduct.title }
               msgError="Informe um titulo"
             />
-            <Input
-              id="discount"
-              type="text"
-              name="discount"
-              placeHolder="Desconto"
-              inputValue={ handlerChangeInfo }
-              ivalue={ infoProduct.discount }
-              msgError="Informe um desconto"
-            />
-            <Input
-              id="price"
-              type="text"
-              name="price"
-              placeHolder="Preço"
-              inputValue={ handlerChangeInfo }
-              ivalue={ infoProduct.price }
-              msgError="Informe um preço"
-            />
             <div className={ style.palet_colors }>
               { Object.keys(featureProduct).map((key) => (
                 <div className={ style.list_colors } key={ key }>
                   <div className={ style.color }>
-                    <div className={ style.select }>
-                      <span style={ { backgroundColor: featureProduct[key].color } } />
-                      <ul>
-                        { list.list_colors.map(({ id, color, color_name }) => (
-                          <li key={ id }>
-                            <button type="button" name="color" value={ color } data-index={ key } onClick={ changeFeatureColor }>
-                              <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
-                              { color_name }
-                            </button>
-                          </li>
-                        )) }
-                      </ul>
+                    <div className={ style.line }>
+                      <div className={ style.select }>
+                        <span style={ { backgroundColor: featureProduct[key].color } } />
+                        <ul>
+                          { list.list_colors.map(({ id, color, color_name }) => (
+                            <li key={ id }>
+                              <button type="button" name="color" value={ color } data-index={ key } onClick={ changeFeatureColor }>
+                                <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
+                                { color_name }
+                              </button>
+                            </li>
+                          )) }
+                        </ul>
+                      </div>
+                      <div className={ style.select }>
+                        <pre>{ featureProduct[key].size }</pre>
+                        <ul>
+                          { list.list_sizes.map(({ id, size }) => (
+                            <li key={ id }>
+                              <button type="button" name="size" value={ size } data-index={ key } onClick={ changeFeatureColor }>
+                                { size }
+                              </button>
+                            </li>
+                          )) }
+                        </ul>
+                      </div>
                     </div>
-                    <div className={ style.select }>
-                      <pre>{ featureProduct[key].size }</pre>
-                      <ul>
-                        { list.list_sizes.map(({ id, size }) => (
-                          <li key={ id }>
-                            <button type="button" name="size" value={ size } data-index={ key } onClick={ changeFeatureColor }>
-                              { size }
-                            </button>
-                          </li>
-                        )) }
-                      </ul>
+                    <div className={ style.line }>
+                      <Input
+                        id={ key }
+                        type="text"
+                        name="qtd"
+                        placeHolder="Quantidade"
+                        inputValue={ handlerChangeFeature }
+                        ivalue={ featureProduct[key].qtd }
+                        msgError="Quantidade"
+                      />
+                      <Input
+                        id={ key }
+                        type="text"
+                        name="sku"
+                        placeHolder="SKU"
+                        inputValue={ handlerChangeFeature }
+                        ivalue={ featureProduct[key].sku }
+                        msgError="SKU"
+                      />
                     </div>
-                    <Input
-                      id={ key }
-                      type="text"
-                      name="qtd"
-                      placeHolder="Quantidade"
-                      inputValue={ handlerChangeFeature }
-                      ivalue={ featureProduct[key].qtd }
-                      msgError="Quantidade"
-                    />
-                    <Input
-                      id={ key }
-                      type="text"
-                      name="sku"
-                      placeHolder="SKU"
-                      inputValue={ handlerChangeFeature }
-                      ivalue={ featureProduct[key].sku }
-                      msgError="SKU"
-                    />
+                    <div className={ style.line }>
+                      <Input
+                        id={ key }
+                        type="text"
+                        name="price"
+                        placeHolder="Preço"
+                        inputValue={ handlerChangeFeature }
+                        ivalue={ featureProduct[key].price }
+                        msgError="Preço"
+                      />
+                      <Input
+                        id={ key }
+                        type="text"
+                        name="discount"
+                        placeHolder="Desconto"
+                        inputValue={ handlerChangeFeature }
+                        ivalue={ featureProduct[key].discount }
+                        msgError="Desconto"
+                      />
+                    </div>
                   </div>
                 </div>
               )) }
@@ -271,7 +307,7 @@ function ProductId({ list }: TList) {
             sizeSelected={ sizeChecked }
           /> */}
         </div>
-      </div>
+      </form>
     </>
   );
 }

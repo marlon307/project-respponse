@@ -1,16 +1,13 @@
 import React from 'react';
-import Image, { ImageProps } from 'next/image';
+import Image, { ImageProps } from 'next/future/image';
 
 type TLoadImage = {
   src: ImageProps['src'];
-  width?: ImageProps['width'];
-  height?: ImageProps['height'];
   quality?: ImageProps['quality'];
   alt: ImageProps['alt'];
   priority?: ImageProps['priority'];
   loading?: ImageProps['loading'];
   sizes?: ImageProps['sizes'];
-  layout?: ImageProps['layout'];
 };
 // https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
 
@@ -33,33 +30,28 @@ const toBase64 = (str: string) => (typeof window === 'undefined'
   : window.btoa(str));
 
 function LoadingImage({
-  src, width, height, quality, alt, priority, loading, sizes, layout,
+  src, quality, alt, priority, loading, sizes,
 }: TLoadImage) {
   return (
     <Image
       quality={ quality }
       src={ src }
       alt={ alt }
-      layout={ layout }
-      width={ width }
-      height={ height }
+      fill
       placeholder="blur"
       priority={ priority }
       loading={ loading }
       sizes={ sizes }
-      blurDataURL={ `data:image/svg+xml;base64,${toBase64(shimmer(width || '100%', height || '100%'))}` }
+      blurDataURL={ `data:image/svg+xml;base64,${toBase64(shimmer('100%', '100%'))}` }
     />
   );
 }
 
 LoadingImage.defaultProps = {
   priority: false,
-  layout: 'responsive',
   loading: 'lazy',
   sizes: undefined,
   quality: 70,
-  width: undefined,
-  height: undefined,
 };
 
 export default LoadingImage;

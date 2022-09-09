@@ -5,7 +5,7 @@
   grid-template-areas:
     'slide infos'
     'products infos';
-  grid-template-columns: auto minmax(200px, 400px);
+  grid-template-columns: minmax(200px, 100vw) minmax(200px, 400px);
   margin: 0 6%;
   width: -webkit-fill-available;
 }
@@ -69,6 +69,7 @@
 }
 
 .contsimg {
+  position: relative;
   width: 100%;
   height: 100%;
   flex: none;
