@@ -77,7 +77,6 @@ function Home({
             <figure key={ id }>
               <LoadingImage
                 src={ img }
-                fill
                 quality={ 85 }
                 alt={ title }
                 loading="eager"
