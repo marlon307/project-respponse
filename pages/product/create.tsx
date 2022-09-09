@@ -23,11 +23,12 @@ type TFeature = {
   [key: string]: {
     sku: string;
     color: string;
-    qtd: string;
+    qunatity: string;
     size: string;
     discount: string;
     price: string;
-    [key: string]: string | number;
+    listImage: any;
+    // [key: string]: string | number;
   };
 };
 
@@ -42,7 +43,7 @@ type TInfo = {
 const fakeImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
 function ProductId({ list }: TList) {
-  const [listimg, setLidtImg] = useState<any>({});
+  const [selectedFeature, setSelectedFeature] = useState(1);
   const [infoProduct, setInfoProduct] = useState<TInfo>({
     category: 'Selecionae uma categoria.',
     title: '',
@@ -50,13 +51,14 @@ function ProductId({ list }: TList) {
     espec: '',
   });
   const [featureProduct, setFeatureProduct] = useState<TFeature>({
-    0: {
+    1: {
       sku: '',
       size: '0',
-      qtd: '',
+      qunatity: '',
       color: '#fff',
       price: '',
       discount: '',
+      listImage: {},
     },
   });
 
@@ -97,18 +99,31 @@ function ProductId({ list }: TList) {
       [Object.keys(currentState).length + 1]: {
         sku: '',
         size: '0',
-        qtd: '',
+        qunatity: '',
         color: '#fff',
+        discount: '',
+        price: '',
+        listImage: {},
       },
     }));
+    setSelectedFeature((currentFeatureVisible) => currentFeatureVisible + 1);
   }
+
   function loadImg({ target }: any) {
-    const { files, name } = target;
+    const {
+      name, dataset, files,
+    } = target;
 
     if (files[0].type === 'image/png') {
-      setLidtImg((current_list_img: object) => ({
-        ...current_list_img,
-        [name]: URL.createObjectURL(target.files[0]),
+      setFeatureProduct((currentState) => ({
+        ...currentState,
+        [dataset.index]: {
+          ...currentState[dataset.index],
+          listImage: {
+            ...currentState[dataset.index].listImage,
+            [name]: URL.createObjectURL(target.files[0]),
+          },
+        },
       }));
     }
   }
@@ -123,10 +138,10 @@ function ProductId({ list }: TList) {
       <form className={ style.contprod }>
         <div className={ style.slide }>
           <div className={ style.panels }>
-            { Object.keys(listimg).map((key_image) => (
+            { Object.keys(featureProduct[selectedFeature]?.listImage ?? {}).map((key_image) => (
               <div className={ style.contsimg } key={ key_image }>
                 <LoadingImage
-                  src={ listimg[key_image] }
+                  src={ featureProduct[selectedFeature].listImage[key_image] }
                   quality={ 80 }
                   alt="title"
                 />
@@ -137,7 +152,7 @@ function ProductId({ list }: TList) {
             { [...Array(6).keys()].map((upload_panel) => (
               <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
                 <LoadingImage
-                  src={ listimg[`img-${upload_panel}`] ?? fakeImage }
+                  src={ featureProduct[selectedFeature]?.listImage[`img-${upload_panel}`] ?? fakeImage }
                   quality={ 80 }
                   alt="upload_image"
                 />
@@ -147,6 +162,7 @@ function ProductId({ list }: TList) {
                   name={ `img-${upload_panel}` }
                   accept=".png"
                   onChange={ loadImg }
+                  data-index={ selectedFeature }
                 />
               </label>
             )) }
@@ -227,10 +243,10 @@ function ProductId({ list }: TList) {
                       <Input
                         id={ key }
                         type="text"
-                        name="qtd"
+                        name="qunatity"
                         placeHolder="Quantidade"
                         inputValue={ handlerChangeFeature }
-                        ivalue={ featureProduct[key].qtd }
+                        ivalue={ featureProduct[key].qunatity }
                         msgError="Quantidade"
                       />
                       <Input

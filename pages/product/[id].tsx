@@ -54,7 +54,6 @@ function ProductId({ product, similar }: TypeProduct) {
                   src={ urlImg }
                   quality={ 80 }
                   alt={ title }
-                  layout="fill"
                 />
               </figure>
             )) }
