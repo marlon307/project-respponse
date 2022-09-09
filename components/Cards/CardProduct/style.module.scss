@@ -1,15 +1,16 @@
 // Style Card producsts
 .productcard {
   position: relative;
-  max-width: 350px;
+  max-width: 300px;
   min-width: 100px;
   width: 100%;
-  height: auto;
+  height: 100%;
 
   figure {
     position: relative;
     width: 100%;
-    height: auto;
+    max-height: 300px;
+    height: 100ch;
     border-radius: 1em;
     overflow: hidden;
     background: var(--color-with-bg);
@@ -109,6 +110,14 @@
 
     span:nth-child(2n) {
       bottom: 1.5em;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .productcard {
+    figure {
+      height: 220px;
     }
   }
 }

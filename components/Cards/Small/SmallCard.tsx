@@ -29,7 +29,6 @@ function SmallCard({
             src={ mainImg }
             alt={ title }
             quality={ 85 }
-            layout="fill"
             loading="eager"
             sizes="130px"
             priority

@@ -26,7 +26,6 @@ function Home({
                 src={ srcImg }
                 quality={ 85 }
                 alt={ alt }
-                layout="fill"
                 loading="lazy"
               />
               <figcaption>
@@ -80,7 +79,6 @@ function Home({
                 src={ img }
                 quality={ 85 }
                 alt={ title }
-                layout="fill"
                 loading="eager"
                 sizes="(max-width: 500px) 304.56px, 1486.52px"
               />
