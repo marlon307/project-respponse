@@ -11,6 +11,7 @@ import { Input, InputRadio } from '../../components/ComponentsForm';
 import BtnAdd from '../../components/Buttons/BtnAdd';
 
 type TList = {
+  token: string;
   list: {
     list_ctg: Array<ICategory>;
     list_colors: Array<IColor>;
@@ -22,9 +23,9 @@ type TList = {
 type TFeature = {
   [key: string]: {
     sku: string;
-    color: string;
-    qunatity: string;
-    size: string;
+    colors_id: number;
+    quantity: string;
+    sizes_id: number;
     discount: string;
     price: string;
     listImage: any;
@@ -33,29 +34,31 @@ type TFeature = {
 };
 
 type TInfo = {
-  category: string;
+  categorys_id: number;
   title: string;
   details: string;
-  espec: string;
+  gender_id: number;
+  specifications: string;
   [key: string]: string | number;
 };
 
 const fakeImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
-function ProductId({ list }: TList) {
+function ProductId({ list, token }: TList) {
   const [selectedFeature, setSelectedFeature] = useState(1);
   const [infoProduct, setInfoProduct] = useState<TInfo>({
-    category: 'Selecionae uma categoria.',
+    categorys_id: 0,
     title: '',
+    gender_id: 0,
     details: '',
-    espec: '',
+    specifications: '',
   });
   const [featureProduct, setFeatureProduct] = useState<TFeature>({
     1: {
       sku: '',
-      size: '0',
-      qunatity: '',
-      color: '#fff',
+      sizes_id: 0,
+      quantity: '',
+      colors_id: 0,
       price: '',
       discount: '',
       listImage: {},
@@ -73,11 +76,13 @@ function ProductId({ list }: TList) {
 
   const handlerChangeFeature = useCallback((target: HTMLInputElement) => {
     const { name, value } = target;
+    const types = ['quantity', 'price', 'discount', 'sizes_id', 'colors_id'];
+
     setFeatureProduct((currentState) => ({
       ...currentState,
       [target.id]: {
         ...currentState[target.id],
-        [name]: value,
+        [name]: types.includes(name) ? Number(value) : value,
       },
     }));
   }, []);
@@ -88,7 +93,7 @@ function ProductId({ list }: TList) {
       ...currentState,
       [dataset.index]: {
         ...currentState[dataset.index],
-        [name]: value,
+        [name]: Number(value),
       },
     }));
   }, []);
@@ -98,9 +103,9 @@ function ProductId({ list }: TList) {
       ...currentState,
       [Object.keys(currentState).length + 1]: {
         sku: '',
-        size: '0',
-        qunatity: '',
-        color: '#fff',
+        sizes_id: '0',
+        quantity: '',
+        colors_id: '0',
         discount: '',
         price: '',
         listImage: {},
@@ -121,11 +126,35 @@ function ProductId({ list }: TList) {
           ...currentState[dataset.index],
           listImage: {
             ...currentState[dataset.index].listImage,
-            [name]: URL.createObjectURL(target.files[0]),
+            [name]: target.files[0],
+            // [name]: URL.createObjectURL(target.files[0]),
           },
         },
       }));
     }
+  }
+
+  async function registerProduct() {
+    const { gender_id: genderId, categorys_id: ctgId } = infoProduct;
+    const listFiles = Object.values(featureProduct);
+    const newBody = {
+      ...infoProduct,
+      gender_id: Number(genderId),
+      categorys_id: ctgId,
+      warranty: 1, // Garantia
+      list_qtd: listFiles,
+    };
+
+    const formdata = new FormData();
+
+    formdata.append('files', listFiles[0].listImage['img-0']);
+    formdata.append('body', JSON.stringify(newBody));
+
+    await api2.post('product_seller', formdata, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).catch((err) => err);
   }
 
   return (
@@ -135,13 +164,13 @@ function ProductId({ list }: TList) {
         description="Criando Produto"
         keywords="Criando Produto"
       />
-      <form className={ style.contprod }>
+      <form className={ style.contprod } encType="multipart/form-data">
         <div className={ style.slide }>
           <div className={ style.panels }>
             { Object.keys(featureProduct[selectedFeature]?.listImage ?? {}).map((key_image) => (
               <div className={ style.contsimg } key={ key_image }>
                 <LoadingImage
-                  src={ featureProduct[selectedFeature].listImage[key_image] }
+                  src={ URL.createObjectURL(featureProduct[selectedFeature].listImage[key_image]) }
                   quality={ 80 }
                   alt="title"
                 />
@@ -152,7 +181,9 @@ function ProductId({ list }: TList) {
             { [...Array(6).keys()].map((upload_panel) => (
               <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
                 <LoadingImage
-                  src={ featureProduct[selectedFeature]?.listImage[`img-${upload_panel}`] ?? fakeImage }
+                  src={ featureProduct[selectedFeature].listImage[`img-${upload_panel}`]
+                    ? URL.createObjectURL(featureProduct[selectedFeature].listImage[`img-${upload_panel}`])
+                    : fakeImage }
                   quality={ 80 }
                   alt="upload_image"
                 />
@@ -182,14 +213,18 @@ function ProductId({ list }: TList) {
           <div className={ style.panel_addproduct }>
             <h3>Categoria</h3>
             <div className={ style.select }>
-              <pre>{ infoProduct.category }</pre>
+              <pre>
+                { list.list_ctg.find(
+                  ({ id }) => Number(id) === Number(infoProduct.categorys_id),
+                )?.category_name }
+              </pre>
               <ul>
                 { list.list_ctg.map(({ id, category_name }) => (
                   <li key={ id }>
                     <button
                       type="button"
-                      name="category"
-                      value={ category_name }
+                      name="categorys_id"
+                      value={ id }
                       data-index="ctg"
                       onClick={ (e) => handlerChangeInfo(e.target) }
                     >
@@ -214,11 +249,16 @@ function ProductId({ list }: TList) {
                   <div className={ style.color }>
                     <div className={ style.line }>
                       <div className={ style.select }>
-                        <span style={ { backgroundColor: featureProduct[key].color } } />
+                        <span style={ {
+                          backgroundColor: list.list_colors.find(
+                            ({ id }) => id === featureProduct[key].colors_id,
+                          )?.color,
+                        } }
+                        />
                         <ul>
                           { list.list_colors.map(({ id, color, color_name }) => (
                             <li key={ id }>
-                              <button type="button" name="color" value={ color } data-index={ key } onClick={ changeFeatureColor }>
+                              <button type="button" name="colors_id" value={ id } data-index={ key } onClick={ changeFeatureColor }>
                                 <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
                                 { color_name }
                               </button>
@@ -227,11 +267,15 @@ function ProductId({ list }: TList) {
                         </ul>
                       </div>
                       <div className={ style.select }>
-                        <pre>{ featureProduct[key].size }</pre>
+                        <pre>
+                          { list.list_sizes.find(
+                            ({ id }) => id === featureProduct[key].sizes_id,
+                          )?.size }
+                        </pre>
                         <ul>
                           { list.list_sizes.map(({ id, size }) => (
                             <li key={ id }>
-                              <button type="button" name="size" value={ size } data-index={ key } onClick={ changeFeatureColor }>
+                              <button type="button" name="sizes_id" value={ id } data-index={ key } onClick={ changeFeatureColor }>
                                 { size }
                               </button>
                             </li>
@@ -243,10 +287,10 @@ function ProductId({ list }: TList) {
                       <Input
                         id={ key }
                         type="text"
-                        name="qunatity"
+                        name="quantity"
                         placeHolder="Quantidade"
                         inputValue={ handlerChangeFeature }
-                        ivalue={ featureProduct[key].qunatity }
+                        ivalue={ featureProduct[key].quantity }
                         msgError="Quantidade"
                       />
                       <Input
@@ -293,9 +337,9 @@ function ProductId({ list }: TList) {
                     checked={ id === 1 }
                     iId={ gender }
                     name={ gender_name }
-                    family="gender"
+                    family="gender_id"
                     iValue={ id }
-                    execFunction={ () => { } }
+                    execFunction={ handlerChangeInfo }
                   />
                 )) }
               </div>
@@ -309,7 +353,7 @@ function ProductId({ list }: TList) {
               maxLength={ 500 }
             />
             <textarea
-              name="espec"
+              name="specifications"
               id="espec"
               placeholder="Especificações"
               value={ infoProduct.espec }
@@ -322,6 +366,9 @@ function ProductId({ list }: TList) {
             colorSelected={ colorChecked }
             sizeSelected={ sizeChecked }
           /> */}
+          <button type="button" onClick={ registerProduct }>
+            Cadastrar Produto
+          </button>
         </div>
       </form>
     </>
@@ -339,7 +386,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 
   if (data.status === 200) {
     return {
-      props: { list: data.list },
+      props: {
+        list: data.list,
+        token: req.cookies.u_token,
+      },
     };
   }
 
