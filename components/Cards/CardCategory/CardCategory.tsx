@@ -22,8 +22,6 @@ function CardCategory({
             src={ image }
             quality={ 80 }
             alt={ ctgName }
-            width={ 70 }
-            height={ 70 }
             sizes="70px"
           />
         </figure>
