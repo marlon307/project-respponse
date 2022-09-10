@@ -24,7 +24,8 @@ function CardProduct({ objectProduct }: TypeProduct) {
             src={ mainImg }
             quality={ 85 }
             alt={ title }
-            sizes="(max-width: 360px) 152px, (max-width: 500px) 220px, 350px"
+            sizes="100vw"
+          // sizes="(max-width: 360px) 152px, (max-width: 500px) 220px, 350px"
           />
         </figure>
         <div className={ style.infocont }>
