@@ -22,7 +22,7 @@ function CardCategory({
             src={ image }
             quality={ 80 }
             alt={ ctgName }
-            sizes="100vw"
+            sizes="70px"
           />
         </figure>
         <span style={ { background: `${color}1a` } }>{ ctgName }</span>
