@@ -80,7 +80,8 @@ function Home({
                 quality={ 85 }
                 alt={ title }
                 loading="eager"
-                sizes="(max-width: 500px) 304.56px, 1486.52px"
+                sizes="100vw"
+              // sizes="(max-width: 500px) 304.56px, 1486.52px"
               />
               <figcaption>
                 <h4>{ title }</h4>

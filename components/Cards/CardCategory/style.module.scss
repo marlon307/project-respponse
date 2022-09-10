@@ -18,15 +18,13 @@
     transform: translateY(-50%);
     width: 64px;
     height: 64px;
+  }
 
-    img {
-      border-radius: none;
-      will-change: transform;
-      object-fit: cover;
-      transition: 0.2s;
-      transform: scale3d(0.96, 0.96, 0.96);
-      // filter: drop-shadow(1px 5px 3px rgb(243, 173, 173));
-    }
+  img {
+    border-radius: none;
+    object-fit: cover;
+    transition: 0.2s;
+    will-change: transform;
   }
 
   span:nth-child(even) {
@@ -37,9 +35,8 @@
   }
 
   &:hover {
-
     img {
-      transform: scale3d(1, 1, 1);
+      transform: scale3d(1.04, 1.04, 1.04);
     }
   }
 }

@@ -15,8 +15,8 @@ const withPWA = require('next-pwa')({
 module.exports = withPWA({
   images: {
     domains: ['i.imgur.com'],
-    deviceSizes: [280, 350, 640, 750, 828, 1080, 1200, 1920],
-    imageSizes: [70, 96, 100, 128, 130, 256, 384, 1080, 1920],
+    deviceSizes: [280, 350, 640, 750, 828, 1080, 1920],
+    imageSizes: [70, 96, 128, 256, 384, 1080, 1920],
   },
   i18n: {
     locales: ['pt-br'],

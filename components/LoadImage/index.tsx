@@ -50,7 +50,7 @@ function LoadingImage({
 LoadingImage.defaultProps = {
   priority: false,
   loading: 'lazy',
-  sizes: undefined,
+  sizes: '100vw',
   quality: 70,
 };
 
