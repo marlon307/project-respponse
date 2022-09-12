@@ -38,10 +38,10 @@ function LoadingImage({
       src={ src }
       alt={ alt }
       fill
-      placeholder="blur"
       priority={ priority }
       loading={ loading }
       sizes={ sizes }
+      placeholder="blur"
       blurDataURL={ `data:image/svg+xml;base64,${toBase64(shimmer('100%', '100%'))}` }
     />
   );

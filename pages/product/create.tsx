@@ -28,7 +28,6 @@ type TFeature = {
     sizes_id: number;
     discount: string;
     price: string;
-    listImage: any;
     // [key: string]: string | number;
   };
 };
@@ -61,9 +60,9 @@ function ProductId({ list, token }: TList) {
       colors_id: 0,
       price: '',
       discount: '',
-      listImage: {},
     },
   });
+  const [listFiles, setListFiles] = useState<any>({ 1: {} });
 
   const handlerChangeInfo = useCallback((target: HTMLInputElement | any) => {
     const { name, value } = target;
@@ -114,29 +113,22 @@ function ProductId({ list, token }: TList) {
     setSelectedFeature((currentFeatureVisible) => currentFeatureVisible + 1);
   }
 
-  function loadImg({ target }: any) {
-    const {
-      name, dataset, files,
-    } = target;
+  function loadImg(event: any) {
+    const { dataset, files } = event.target;
 
-    if (files[0].type === 'image/png') {
-      setFeatureProduct((currentState) => ({
-        ...currentState,
-        [dataset.index]: {
-          ...currentState[dataset.index],
-          listImage: {
-            ...currentState[dataset.index].listImage,
-            [name]: target.files[0],
-            // [name]: URL.createObjectURL(target.files[0]),
-          },
-        },
-      }));
-    }
+    setListFiles((currentFiles: any) => ({
+      ...currentFiles,
+      [dataset.index]: {
+        ...currentFiles[dataset.index],
+        [dataset.indexcolor]: files[0],
+      },
+    }));
   }
+  // console.log(listFiles);
 
   async function registerProduct() {
     const { gender_id: genderId, categorys_id: ctgId } = infoProduct;
-    const listFiles = Object.values(featureProduct);
+
     const newBody = {
       ...infoProduct,
       gender_id: Number(genderId),
@@ -147,8 +139,16 @@ function ProductId({ list, token }: TList) {
 
     const formdata = new FormData();
 
-    formdata.append('files', listFiles[0].listImage['img-0']);
+    Object.keys(listFiles).forEach((index) => {
+      Object.keys(listFiles[index]).forEach((files_index) => {
+        formdata.append('file', listFiles[index][files_index]);
+      });
+    });
+
     formdata.append('body', JSON.stringify(newBody));
+
+    // formdata.append('files-1', listFiles[1][0]);
+    // formdata.append('body', JSON.stringify(newBody));
 
     await api2.post('product_seller', formdata, {
       headers: {
@@ -167,10 +167,10 @@ function ProductId({ list, token }: TList) {
       <form className={ style.contprod } encType="multipart/form-data">
         <div className={ style.slide }>
           <div className={ style.panels }>
-            { Object.keys(featureProduct[selectedFeature]?.listImage ?? {}).map((key_image) => (
+            { Object.keys(listFiles[selectedFeature] ?? {}).map((key_image) => (
               <div className={ style.contsimg } key={ key_image }>
                 <LoadingImage
-                  src={ URL.createObjectURL(featureProduct[selectedFeature].listImage[key_image]) }
+                  src={ URL.createObjectURL(listFiles[selectedFeature][key_image]) }
                   quality={ 80 }
                   alt="title"
                 />
@@ -181,19 +181,23 @@ function ProductId({ list, token }: TList) {
             { [...Array(6).keys()].map((upload_panel) => (
               <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
                 <LoadingImage
-                  src={ featureProduct[selectedFeature].listImage[`img-${upload_panel}`]
-                    ? URL.createObjectURL(featureProduct[selectedFeature].listImage[`img-${upload_panel}`])
-                    : fakeImage }
+                  src={
+                    listFiles[selectedFeature][upload_panel]
+                      ? URL.createObjectURL(listFiles[selectedFeature][upload_panel])
+                      : fakeImage
+                  }
                   quality={ 80 }
                   alt="upload_image"
                 />
                 <input
                   id={ `img-${upload_panel}` }
                   type="file"
-                  name={ `img-${upload_panel}` }
+                  name={ `img-${selectedFeature}` }
                   accept=".png"
                   onChange={ loadImg }
+                  data-indexcolor={ upload_panel }
                   data-index={ selectedFeature }
+                  multiple
                 />
               </label>
             )) }
