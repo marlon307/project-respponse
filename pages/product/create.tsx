@@ -107,10 +107,10 @@ function ProductId({ list, token }: TList) {
         colors_id: '0',
         discount: '',
         price: '',
-        listImage: {},
       },
     }));
     setSelectedFeature((currentFeatureVisible) => currentFeatureVisible + 1);
+    setListFiles((curreFiles: any) => ({ ...curreFiles, [selectedFeature + 1]: {} }));
   }
 
   function loadImg(event: any) {
@@ -124,7 +124,6 @@ function ProductId({ list, token }: TList) {
       },
     }));
   }
-  // console.log(listFiles);
 
   async function registerProduct() {
     const { gender_id: genderId, categorys_id: ctgId } = infoProduct;
@@ -134,21 +133,17 @@ function ProductId({ list, token }: TList) {
       gender_id: Number(genderId),
       categorys_id: ctgId,
       warranty: 1, // Garantia
-      list_qtd: listFiles,
+      list_qtd: featureProduct,
     };
 
     const formdata = new FormData();
 
     Object.keys(listFiles).forEach((index) => {
       Object.keys(listFiles[index]).forEach((files_index) => {
-        formdata.append('file', listFiles[index][files_index]);
+        formdata.append(`list_file-${index}`, listFiles[index][files_index]);
       });
     });
-
     formdata.append('body', JSON.stringify(newBody));
-
-    // formdata.append('files-1', listFiles[1][0]);
-    // formdata.append('body', JSON.stringify(newBody));
 
     await api2.post('product_seller', formdata, {
       headers: {
@@ -180,6 +175,7 @@ function ProductId({ list, token }: TList) {
           <div className={ style.list_upload }>
             { [...Array(6).keys()].map((upload_panel) => (
               <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
+                {/* { console.log(listFiles[selectedFeature][upload_panel]) } */ }
                 <LoadingImage
                   src={
                     listFiles[selectedFeature][upload_panel]
@@ -197,7 +193,6 @@ function ProductId({ list, token }: TList) {
                   onChange={ loadImg }
                   data-indexcolor={ upload_panel }
                   data-index={ selectedFeature }
-                  multiple
                 />
               </label>
             )) }
