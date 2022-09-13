@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { GetServerSideProps } from 'next';
 import LoadingImage from '../../components/LoadImage';
-// import AddBag from '../../components/Buttons/AddBag';
 import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
@@ -175,7 +174,6 @@ function ProductId({ list, token }: TList) {
           <div className={ style.list_upload }>
             { [...Array(6).keys()].map((upload_panel) => (
               <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
-                {/* { console.log(listFiles[selectedFeature][upload_panel]) } */ }
                 <LoadingImage
                   src={
                     listFiles[selectedFeature][upload_panel]
@@ -360,14 +358,8 @@ function ProductId({ list, token }: TList) {
               maxLength={ 500 }
             />
           </div>
-          {/* <AddBag
-            productId={ product }
-            colorSelected={ colorChecked }
-            sizeSelected={ sizeChecked }
-          /> */}
-          <button type="button" onClick={ registerProduct }>
-            Cadastrar Produto
-          </button>
+          <br />
+          <BtnAdd eventBtn={ registerProduct! } title="Cadastrar produto" />
         </div>
       </form>
     </>

@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
 import { IPropsHome } from '../types/typesIndex';
-import api from '../service/api';
+import api, { api2 } from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
 import HeadSEO from '../components/Head/HeadSEO';
@@ -104,8 +104,16 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data }: TRequestProduct = await api.get('/home')
     .catch((error) => ({ data: error.message }));
 
+  const newdata: TRequestProduct = await api2.get('/list_product')
+    .catch((error) => ({ data: error.message }));
+
   return {
-    props: data,
+    props: {
+      categorys: data.categorys,
+      slides: data.slides,
+      mockCards: newdata.data.list,
+      mockPromotions: data.mockPromotions,
+    },
     // revalidated: true,
   };
 };
