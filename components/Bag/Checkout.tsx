@@ -3,7 +3,7 @@ import { mockShipping, mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import CustomLink from '../CustomLink';
-import { StateBagType } from '../../types/bag';
+import { StateBagType } from '../../@types/bag';
 import style from './style.module.scss';
 
 type PropsCheckout = {

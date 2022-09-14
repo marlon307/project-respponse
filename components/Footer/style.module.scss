@@ -47,3 +47,17 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 500px) {
+  .footer {
+    padding: 2em 0;
+  }
+
+  .footercolumn {
+    gap: 2em;
+
+    &:last-child {
+      margin-top: 2em;
+    }
+  }
+}

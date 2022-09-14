@@ -7,7 +7,7 @@ import HeadSEO from '../../components/Head/HeadSEO';
 import useWindowSize from '../../hooks/useWindowSize';
 import ContentModal from '../../components/Modal/ContentModal';
 import Filter from '../../components/Filter/Filter';
-import type { ICardProduct } from '../../types/typeCardProduct';
+import type { ICardProduct } from '../../@types/typeCardProduct';
 import type { StateSearchType } from './search';
 import style from './style.module.scss';
 

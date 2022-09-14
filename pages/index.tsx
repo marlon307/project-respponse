@@ -2,7 +2,7 @@ import React from 'react';
 import { GetStaticProps } from 'next';
 import { CardCategory } from '../components/Cards';
 import LoadingImage from '../components/LoadImage';
-import { IPropsHome } from '../types/typesIndex';
+import { IPropsHome } from '../@types/typesIndex';
 import api, { api2 } from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';

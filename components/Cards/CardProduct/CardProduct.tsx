@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
-import type { ICardProduct } from '../../../types/typeCardProduct';
+import type { ICardProduct } from '../../../@types/typeCardProduct';
 import style from './style.module.scss';
 
 type TypeProduct = {

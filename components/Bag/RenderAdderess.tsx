@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import type { TAddress } from '../../types/bag';
+import type { TAddress } from '../../@types/bag';
 import mockAdderes from '../../service/mockAdderes';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';

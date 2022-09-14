@@ -1,6 +1,6 @@
 import type { ImageProps } from 'next/image';
 import type { TDetail, TSpecification } from './components/Cards/CardDetail/types';
-import type { ICardProduct } from '../../types/typeCardProduct';
+import type { ICardProduct } from '../../@types/typeCardProduct';
 
 export type TypeProduct = {
   product: {
