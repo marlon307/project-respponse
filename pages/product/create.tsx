@@ -42,6 +42,10 @@ type TInfo = {
 
 const fakeImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
+interface ListColor {
+  [key: string]: number[]
+}
+
 function ProductId({ list, token }: TList) {
   const [selectedFeature, setSelectedFeature] = useState(1);
   const [infoProduct, setInfoProduct] = useState<TInfo>({
@@ -62,6 +66,7 @@ function ProductId({ list, token }: TList) {
     },
   });
   const [listFiles, setListFiles] = useState<any>({ 1: {} });
+  const [listColors, setListColors] = useState<ListColor>({ 1: [] });
 
   const handlerChangeInfo = useCallback((target: HTMLInputElement | any) => {
     const { name, value } = target;
@@ -93,6 +98,15 @@ function ProductId({ list, token }: TList) {
         ...currentState[dataset.index],
         [name]: Number(value),
       },
+    }));
+  }, []);
+
+  const changeColorOption = useCallback(({ target }: any) => {
+    const { value, dataset } = target;
+
+    setListColors((currentColor) => ({
+      ...currentColor,
+      [dataset.index]: [...currentColor[dataset.index], Number(value)],
     }));
   }, []);
 
@@ -242,44 +256,61 @@ function ProductId({ list, token }: TList) {
             />
             <div className={ style.palet_colors }>
               { Object.keys(featureProduct).map((key) => (
-                <div className={ style.list_colors } key={ key }>
-                  <div className={ style.color }>
-                    <div className={ style.line }>
-                      <div className={ style.select }>
-                        <span style={ {
-                          backgroundColor: list.list_colors.find(
-                            ({ id }) => id === featureProduct[key].colors_id,
-                          )?.color,
-                        } }
-                        />
-                        <ul>
-                          { list.list_colors.map(({ id, color, color_name }) => (
-                            <li key={ id }>
-                              <button type="button" name="colors_id" value={ id } data-index={ key } onClick={ changeFeatureColor }>
-                                <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
-                                { color_name }
-                              </button>
-                            </li>
-                          )) }
-                        </ul>
-                      </div>
-                      <div className={ style.select }>
-                        <pre>
-                          { list.list_sizes.find(
-                            ({ id }) => id === featureProduct[key].sizes_id,
-                          )?.size }
-                        </pre>
-                        <ul>
-                          { list.list_sizes.map(({ id, size }) => (
-                            <li key={ id }>
-                              <button type="button" name="sizes_id" value={ id } data-index={ key } onClick={ changeFeatureColor }>
-                                { size }
-                              </button>
-                            </li>
-                          )) }
-                        </ul>
-                      </div>
+                <div className={ style.info_colors } key={ key }>
+                  <div className={ style.colo_size }>
+                    <div className={ style.select }>
+                      <span style={ {
+                        backgroundColor: list.list_colors.find(
+                          ({ id }) => id === featureProduct[key].colors_id,
+                        )?.color,
+                      } }
+                      />
+                      <ul>
+                        { list.list_colors.map(({ id, color, color_name }) => (
+                          <li key={ id }>
+                            <button type="button" name="colors_id" value={ id } data-index={ key } onClick={ changeFeatureColor }>
+                              <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
+                              { color_name }
+                            </button>
+                          </li>
+                        )) }
+                      </ul>
                     </div>
+                    <i />
+                    <div className={ style.list_sizes }>
+
+                      { ' ' }
+                      { list.list_sizes.map(
+                        (objid) => listColors[selectedFeature].includes(objid.id)
+                          && (
+                            <button type="button" key={ objid.id }>
+                              { objid.size }
+                            </button>
+                          ),
+                      ) }
+                    </div>
+                    <div className={ style.select }>
+                      <pre>
+                        +
+                      </pre>
+                      <ul>
+                        { list.list_sizes.map(({ id, size }) => (
+                          <li key={ id }>
+                            <button
+                              type="button"
+                              name="sizes_id"
+                              value={ id }
+                              data-index={ key }
+                              onClick={ changeColorOption }
+                            >
+                              { size }
+                            </button>
+                          </li>
+                        )) }
+                      </ul>
+                    </div>
+                  </div>
+                  <div className={ style.desc_opt }>
                     <div className={ style.line }>
                       <Input
                         id={ key }
