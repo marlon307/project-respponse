@@ -93,8 +93,7 @@ function CfgUser({ token }: IToken) {
             placeHolder="* Nome e Sobrenome"
             msgError="Preencha Nome e Sobrenome"
             autoComplete="name"
-            ivalue={ stateIfonUser.name }
-            inputValue={ userCfgInfo }
+            dValue={ stateIfonUser.name }
           />
           <Input
             id="email"
@@ -102,7 +101,7 @@ function CfgUser({ token }: IToken) {
             name="email"
             placeHolder="E-mail"
             autoComplete="email"
-            ivalue={ stateIfonUser.email }
+            dValue={ stateIfonUser.email }
             msgError="E-mail inválido"
             disabled
           />
@@ -121,8 +120,7 @@ function CfgUser({ token }: IToken) {
             type="date"
             name="date"
             placeHolder="* Data"
-            ivalue={ stateIfonUser.date }
-            inputValue={ userCfgInfo }
+            dValue={ stateIfonUser.date }
             msgError="Selecione uma data"
           />
           <Input
@@ -130,8 +128,7 @@ function CfgUser({ token }: IToken) {
             type="doc"
             name="doc"
             placeHolder="* CPF"
-            ivalue={ stateIfonUser.doc }
-            inputValue={ userCfgInfo }
+            dValue={ stateIfonUser.doc }
             msgError="CPF inválido"
             max={ 11 }
             patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
@@ -176,8 +173,7 @@ function CfgUser({ token }: IToken) {
               name="tel"
               placeHolder="Telefone"
               autoComplete="tel"
-              ivalue={ stateIfonUser.tel }
-              inputValue={ userCfgInfo }
+              dValue={ stateIfonUser.tel }
               msgError="Insira um telefone"
               max={ 11 }
               patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
@@ -189,8 +185,7 @@ function CfgUser({ token }: IToken) {
               name="cel"
               placeHolder="Celular"
               autoComplete="tel"
-              ivalue={ stateIfonUser.cel }
-              inputValue={ userCfgInfo }
+              dValue={ stateIfonUser.cel }
               msgError="Insira um telefone"
               max={ 11 }
               patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo } from 'react';
+import React, { useCallback, memo } from 'react';
 import { mockShipping, mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
@@ -16,11 +16,6 @@ function Checkout({ setOpenModal, infoCheckout }: PropsCheckout) {
     name, road, district, number, uf, city, zipcode,
   } = infoCheckout.adderessSelected;
   const { shippingCompany } = infoCheckout.shipping;
-  const [cupomText, setCupomText] = useState('');
-
-  const hadleCupom = useCallback(({ value }: HTMLInputElement) => {
-    setCupomText(value);
-  }, []);
 
   const handleSipping = useCallback((idInput: string, value: number) => {
     // eslint-disable-next-line no-console
@@ -159,8 +154,6 @@ function Checkout({ setOpenModal, infoCheckout }: PropsCheckout) {
               type="text"
               name="cupom"
               placeHolder="Insira aqui o cupom"
-              ivalue={ cupomText }
-              inputValue={ hadleCupom }
               msgError="Cupom inválido"
             />
           </div>
