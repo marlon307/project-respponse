@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import router from 'next/router';
 import Svg from '../assets/Svg';
 import BtnIco from '../components/Buttons/BtnIco';
@@ -17,33 +17,17 @@ function Login() {
   const [isValidRegister, setisValidRegister] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistred, setisRegistered] = useState<string | null>(null);
-  const [stateLogin, setStateLogin] = useState({
-    lemail: '',
-    lpsw: '',
-  });
-  const [stateRegister, setStateRegister] = useState({
-    rname: '',
-    remail: '',
-    rpsw: '',
-  });
 
   // Functions Login
-  const actionUserLogin = (target: { name: string; value: string; }) => {
-    const { name, value } = target;
+  const clickLogin = async (event: FormEvent) => {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
 
-    setStateLogin((state) => ({
-      ...state,
-      [name]: value,
-    }));
-    setisValidLogin(false);
-  };
-
-  const clickLogin = async () => {
-    const { lemail, lpsw } = stateLogin;
-
-    if (validEmail.test(lemail) && validPsw.test(lpsw) && isLoading === false) {
+    if (validEmail.test(String(data.lemail))
+      && validPsw.test(String(data.lpsw)) && isLoading === false) {
       setIsLoading(true);
-      const { status } = await loginUser(lemail, lpsw);
+      const { status } = await loginUser(String(data.lemail), String(data.lpsw));
 
       if (status === 200) {
         mutate();
@@ -55,28 +39,22 @@ function Login() {
     setIsLoading(false);
   };
 
-  // Function Register
-  const actionRegister = (target: { name: any; value: any; }) => {
-    const { name, value } = target;
-    setStateRegister((state) => ({
-      ...state,
-      [name]: value,
-    }));
-  };
+  const clickRegister = async (event: FormEvent) => {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
 
-  const clickRegister = async () => {
-    const { remail, rname, rpsw } = stateRegister;
-
-    if (validEmail.test(remail) && validPsw.test(rpsw) && isLoading === false) {
+    if (validEmail.test(String(data.remail))
+      && validPsw.test(String(data.rpsw)) && isLoading === false) {
       setIsLoading(true);
-      const { data } = await api2.post('/createuser', {
-        email: remail,
-        password: rpsw,
-        name: rname,
+      const res = await api2.post('/createuser', {
+        email: data.remail,
+        password: data.rpsw,
+        name: data.rname,
       }).catch(({ response }) => response);
 
-      if (data.status === 201) {
-        setisRegistered(remail);
+      if (res.data.status === 201) {
+        setisRegistered(String(data.remail));
       } else {
         setisValidRegister(true);
       }
@@ -114,14 +92,16 @@ function Login() {
             <h1>Registre-se</h1>
           </button>
         </div>
-        <form className={ style.tab } aria-hidden={ !(sectionTab === 0) }>
+        <form
+          className={ style.tab }
+          aria-hidden={ !(sectionTab === 0) }
+          onSubmit={ clickLogin }
+        >
           <Input
             id="lemail"
             type="email"
             name="lemail"
             autoComplete="email"
-            ivalue={ stateLogin.lemail }
-            inputValue={ actionUserLogin }
             placeHolder="E-mail"
             msgError="Email inválido!"
             disabled={ isLoading }
@@ -132,8 +112,6 @@ function Login() {
             type="password"
             name="lpsw"
             autoComplete="current-password"
-            ivalue={ stateLogin.lpsw }
-            inputValue={ actionUserLogin }
             placeHolder="Senha"
             msgError="Senha invalida!"
             disabled={ isLoading }
@@ -143,7 +121,6 @@ function Login() {
             <BtnIco
               textBtn="Entrar"
               icoName="singin"
-              action={ clickLogin }
               actionLiberate={ isLoading }
             />
             <a
@@ -156,7 +133,11 @@ function Login() {
             </a>
           </div>
         </form>
-        <form className={ style.tab } aria-hidden={ !(sectionTab === 1) }>
+        <form
+          className={ style.tab }
+          aria-hidden={ !(sectionTab === 1) }
+          onSubmit={ clickRegister }
+        >
           { !isRegistred
             ? (
               <>
@@ -166,8 +147,6 @@ function Login() {
                   name="rname"
                   placeHolder="Nome Sobrenome"
                   autoComplete="name"
-                  inputValue={ actionRegister }
-                  ivalue={ stateRegister.rname }
                   msgError="Preencha Nome e Sobrenome"
                   disabled={ isLoading }
                 />
@@ -177,8 +156,6 @@ function Login() {
                   name="remail"
                   placeHolder="E-mail"
                   autoComplete="email"
-                  inputValue={ actionRegister }
-                  ivalue={ stateRegister.remail }
                   msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
                   disabled={ isLoading }
                   isValid={ isValidRegister }
@@ -188,8 +165,6 @@ function Login() {
                   type="password"
                   name="rpsw"
                   placeHolder="Senha"
-                  inputValue={ actionRegister }
-                  ivalue={ stateRegister.rpsw }
                   msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
                   disabled={ isLoading }
                 />
@@ -197,7 +172,6 @@ function Login() {
                   <BtnIco
                     textBtn="Criar Conta"
                     icoName="setRight"
-                    action={ clickRegister }
                     actionLiberate={ isLoading }
                   />
                 </div>

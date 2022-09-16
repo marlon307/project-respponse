@@ -60,6 +60,9 @@
 
 .list_sizes {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: overlay;
   gap: 6px;
 
   button {
@@ -92,12 +95,22 @@
 }
 
 .select {
+  appearance: none;
+  width: auto;
+  padding: 0.8em;
+  border-radius: 0.8em;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  font-size: 1em;
+}
+
+.select_custon {
   position: relative;
+  border-radius: 0.8em;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   border: 1px solid var(--color-border);
-  border-radius: 0.8em;
 
   pre {
     min-width: 34px;

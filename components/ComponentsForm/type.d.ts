@@ -13,8 +13,6 @@ export interface PInputText {
   name: string;
   placeHolder: string;
   autoComplete?: string;
-  ivalue: any;
-  inputValue?: Function;
   regexValidator?: RegExp;
   msgError?: string;
   disabled?: boolean;

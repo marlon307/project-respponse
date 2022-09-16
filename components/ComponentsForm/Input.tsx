@@ -3,18 +3,14 @@ import style from './style.module.scss';
 import type { PInputText } from './type';
 
 function Input({
-  id, type, name, placeHolder, autoComplete, inputValue, ivalue,
-  msgError, disabled, isValid, max, patt, format,
+  id, type, name, placeHolder, autoComplete,
+  msgError, isValid, max, patt, format,
 }: PInputText) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
   const [statusValid, setSatusValid] = useState(false);
 
-  function handleChange({ target }: ChangeEvent<HTMLInputElement>) {
-    inputValue!(target);
-  }
-
-  function validInput() {
+  function validInput({ target }: ChangeEvent<HTMLInputElement>) {
     let validates: RegExp = /0/;
 
     switch (type) {
@@ -29,7 +25,7 @@ function Input({
         break;
     }
 
-    if (validates.test(ivalue)) {
+    if (validates.test(target.value)) {
       setSatusValid(false);
     } else {
       setSatusValid(true);
@@ -44,13 +40,10 @@ function Input({
         name={ name }
         placeholder={ placeHolder }
         autoComplete={ autoComplete }
-        onChange={ handleChange }
-        onBlur={ validInput }
-        value={ ivalue }
-        disabled={ inputValue === undefined || disabled }
         maxLength={ max }
         pattern={ patt }
         data-format={ format }
+        onBlur={ validInput }
       />
       <span
         className={ style.ph }
