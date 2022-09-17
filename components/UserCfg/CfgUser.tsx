@@ -36,11 +36,11 @@ function CfgUser({ token }: IToken) {
 
     const newBody = {
       name: data.name,
-      date: data.date,
+      date: new Date(String(data.date)),
       doc: data.doc,
       tel: data.tel,
       cel: data.cel,
-      gender: data.gender,
+      gender: Number(data.gender),
     };
     if (newBody.name && newBody.doc && newBody.date) {
       setIsLoading(true);
