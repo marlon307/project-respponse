@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { FormEvent, useState } from 'react';
 import useAddress from '../../hooks/useAddress';
 import { api2 } from '../../service/api';
 import BtnIco from '../Buttons/BtnIco';
@@ -13,57 +13,38 @@ type TAddress = {
 function Address({ token, execFunction }: TAddress) {
   const { mutate, listAddress } = useAddress(token);
   const [isLoading, setisLoading] = useState(false);
-  const [addressForm, setAddressForm] = useState<ITAddress>({
-    namedest: '',
-    zipcode: '',
-    street: '',
-    district: '',
-    number: '',
-    state: '',
-    city: '',
-  });
 
-  const hadleChange = useCallback((target: HTMLInputElement) => {
-    const {
-      name, value, dataset, pattern,
-    } = target;
+  async function handleAddAddress(event: FormEvent) {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
 
-    setAddressForm((state) => ({
-      ...state,
-      [name]: dataset?.format
-        ? value.replace(new RegExp(pattern), dataset.format)
-        : value,
-    }));
-  }, []);
-
-  async function handleAddAddress() {
-    // addressForm[key]
     // Verificar se todas as chaves estão preenchidas
-    const checkValue = Object.keys(addressForm)
-      .every((key) => /^[0-9a-zA-Z]/.test(addressForm[key]));
+    const checkValue = Object.keys(data)
+      .every((key) => /^[0-9a-zA-Z]/.test(String(data[key])));
 
     if (checkValue) {
       setisLoading(true);
       const body = {
-        name_delivery: addressForm.namedest,
-        city: addressForm.city,
-        district: addressForm.district,
-        uf: addressForm.state,
-        cep: addressForm.zipcode,
-        road: addressForm.street,
-        number_home: addressForm.number,
+        name_delivery: data.namedest,
+        city: data.city,
+        district: data.district,
+        uf: data.state,
+        cep: data.zipcode,
+        road: data.street,
+        number_home: data.number,
       };
 
-      const { data } = await api2.post('/address', body, {
+      const res = await api2.post('/address', body, {
         headers: {
           authorization: `Bearer ${token}`,
         },
       }).catch(({ response }) => response);
 
-      if (data.status === 201) {
+      if (res.data.status === 201) {
         mutate({
           address: [...listAddress.address, {
-            id: data.address,
+            id: res.data.address,
             ...body,
           }],
         }, false);
@@ -82,15 +63,13 @@ function Address({ token, execFunction }: TAddress) {
           </svg>
           Adicionar endereço
         </h1>
-        <form>
+        <form onSubmit={ handleAddAddress }>
           <Input
             id="namedest"
             type="text"
             name="namedest"
             placeHolder="Nome do destinatário *"
             autoComplete="name"
-            ivalue={ addressForm.namedest }
-            inputValue={ hadleChange }
             msgError="Insira o Nome do destinatário."
           />
           <Input
@@ -99,12 +78,10 @@ function Address({ token, execFunction }: TAddress) {
             name="zipcode"
             placeHolder="CEP *"
             autoComplete="postal-code"
-            ivalue={ addressForm.zipcode }
-            inputValue={ hadleChange }
             msgError="Insira um CEP válido."
-            max={ 9 }
-            patt="^([\d]{5})\.*([\d]{3})"
-            format="$1-$2"
+            max={ 8 }
+          // patt="^([\d]{5})\.*([\d]{3})"
+          // format="$1-$2"
           />
           <Input
             id="street"
@@ -112,8 +89,6 @@ function Address({ token, execFunction }: TAddress) {
             name="street"
             placeHolder="Rua *"
             autoComplete="street-address"
-            ivalue={ addressForm.street }
-            inputValue={ hadleChange }
             msgError="Insira o nome da Rua."
           />
           <Input
@@ -122,8 +97,6 @@ function Address({ token, execFunction }: TAddress) {
             name="district"
             placeHolder="Bairro *"
             autoComplete="address-level3"
-            ivalue={ addressForm.district }
-            inputValue={ hadleChange }
             msgError="Insira o nome do Bairro."
           />
           <Input
@@ -131,8 +104,6 @@ function Address({ token, execFunction }: TAddress) {
             type="text"
             name="number"
             placeHolder="N° *"
-            ivalue={ addressForm.number }
-            inputValue={ hadleChange }
             msgError="Insira o número da Casa."
           />
           <Input
@@ -141,8 +112,6 @@ function Address({ token, execFunction }: TAddress) {
             name="state"
             placeHolder="UF *"
             autoComplete="shipping address-level1"
-            ivalue={ addressForm.state }
-            inputValue={ hadleChange }
             msgError="Insira o Estado (UF)."
             max={ 2 }
           />
@@ -152,13 +121,10 @@ function Address({ token, execFunction }: TAddress) {
             name="city"
             placeHolder="Cidade *"
             autoComplete="shipping shipping address-level2"
-            ivalue={ addressForm.city }
-            inputValue={ hadleChange }
             msgError="Insira a Cidade."
           />
           <BtnIco
             textBtn="Adicionar"
-            action={ handleAddAddress! }
             actionLiberate={ isLoading }
           />
         </form>

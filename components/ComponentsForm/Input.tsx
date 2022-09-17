@@ -4,7 +4,7 @@ import type { PInputText } from './type';
 
 function Input({
   id, type, name, placeHolder, autoComplete, dValue,
-  msgError, isValid, max, patt, format, disabled,
+  msgError, isValid, max, format, disabled,
 }: PInputText) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
@@ -41,7 +41,7 @@ function Input({
         placeholder={ placeHolder }
         autoComplete={ autoComplete }
         maxLength={ max }
-        pattern={ patt }
+        // pattern={ patt }
         defaultValue={ dValue }
         data-format={ format }
         onBlur={ validInput }
