@@ -111,7 +111,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       categorys: data.categorys,
       slides: data.slides,
-      mockCards: newdata || [], // newdata.data.list,
+      mockCards: [] ?? newdata, // newdata.data.list,
       mockPromotions: data.mockPromotions,
     },
     // revalidated: true,
