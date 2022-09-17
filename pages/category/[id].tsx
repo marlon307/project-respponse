@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import CardProduct from '../../components/Cards/CardProduct/CardProduct';
+// import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import ItemList from '../../components/Filter/ItemList';
 import api from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
@@ -75,10 +75,13 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
         <div className={ style.categorycont }>
           {
             products.map((object) => (
-              <CardProduct
-                key={ object.id }
-                objectProduct={ object }
-              />
+              // <CardProduct
+              //   key={ object.id }
+              //   objectProduct={ object }
+              // />
+              <div key={ object.id }>
+                Card Product
+              </div>
             ))
           }
         </div>
