@@ -82,39 +82,34 @@ function ProductId({ list, token }: TList) {
 
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
-    // const teste2 = listColors[1].map(({ id }) => id);
-    const result = Object.keys(listColors).map((key) => ({
-      ...listColors[key],
-      sizes: listSizes[key].map(({ id }) => id),
-      sku: data[`sku-${key}`],
-      quantity: data[`quantity-${key}`],
-      discount: data[`discount-${key}`],
-      price: data[`price-${key}`],
-    }));
-    console.log(result);
 
-    // const newBody = {
-    //   ...infoProduct,
-    //   gender_id: Number(genderId),
-    //   categorys_id: ctgId,
-    //   warranty: 1, // Garantia
-    //   list_qtd: featureProduct,
-    // };
+    const options = Object.keys(listColors).map((key) => {
+      formData.delete(`img-${key}`);
+      formData.delete('file');
+      return {
+        ...listColors[key],
+        sizes: listSizes[key].map(({ id }) => id),
+        sku: data[`sku-${key}`],
+        quantity: Number(data[`quantity-${key}`]),
+        discount: Number(data[`discount-${key}`]),
+        price: Number(data[`price-${key}`]),
+      };
+    });
 
-    // const formdata = new FormData();
+    Object.keys(listFiles).forEach((index) => {
+      Object.keys(listFiles[index]).forEach((files_index) => {
+        formData.append(`list_file-${index}`, listFiles[index][files_index]);
+      });
+    });
 
-    // Object.keys(listFiles).forEach((index) => {
-    //   Object.keys(listFiles[index]).forEach((files_index) => {
-    //     formdata.append(`list_file-${index}`, listFiles[index][files_index]);
-    //   });
-    // });
-    // formdata.append('body', JSON.stringify(newBody));
+    formData.append('warranty', '1');
+    formData.append('options', JSON.stringify(options));
 
-    // await api2.post('product_seller', formdata, {
-    //   headers: {
-    //     authorization: `Bearer ${token}`,
-    //   },
-    // }).catch((err) => err);
+    await api2.post('product_seller', formData, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).catch((err) => err);
   }
 
   return (
