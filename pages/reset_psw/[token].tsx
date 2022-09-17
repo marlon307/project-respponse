@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import BtnIco from '../../components/Buttons/BtnIco';
@@ -11,38 +11,33 @@ import useLogin from '../../hooks/useLogin';
 function Token() {
   const { loggedOut } = useLogin();
   const router = useRouter();
-  const [newpsw, setPsw] = useState({
-    psw_1: '',
-    psw_2: '',
-  });
   const [isLoading, setIsLoading] = useState(false);
   const [isValid, setisValid] = useState(false);
   const [contMsg, setMsg] = useState<string | null>(null);
 
-  function changeEmail({ name, value }: HTMLInputElement) {
-    setPsw((state) => ({ ...state, [name]: value }));
-    setisValid(false);
-  }
+  async function sendmailReset(event: FormEvent) {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
 
-  async function sendmailReset() {
     const validPsw1 = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
     const validPsw2 = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
 
-    if (validPsw1.test(newpsw.psw_2) && validPsw2.test(newpsw.psw_1)
-      && newpsw.psw_1 === newpsw.psw_2) {
+    if (validPsw1.test(String(data.psw_2)) && validPsw2.test(String(data.psw_1))
+      && String(data.psw_1) === String(data.psw_2)) {
       setIsLoading(true);
       const formatToken: any = router.query.token;
 
-      const { data } = await api2.patch('/reset_psw_user', {
-        password: newpsw.psw_1,
+      const res = await api2.patch('/reset_psw_user', {
+        password: data.psw_1,
       }, {
         headers: {
           authorization: `Bearer ${formatToken}`,
         },
       }).catch(({ response }) => response);
 
-      if (data.status === 200) {
-        setMsg(data.msg);
+      if (res.data.status === 200) {
+        setMsg(res.data.msg);
       } else {
         setIsLoading(false);
         setisValid(true);
@@ -59,7 +54,7 @@ function Token() {
       />
       <section className={ style.contlogin }>
         <h1 className={ style.title_resetpsw }>Alterar senha</h1>
-        <form>
+        <form onSubmit={ sendmailReset }>
           { contMsg === null ? (
             <>
               <Input
@@ -67,8 +62,6 @@ function Token() {
                 type="password"
                 name="psw_1"
                 placeHolder="Digine uma nova senha."
-                ivalue={ newpsw.psw_1 }
-                inputValue={ changeEmail! }
                 msgError={ isValid ? 'Token expirado!' : 'Senha inválida!' }
                 isValid={ isValid }
               />
@@ -77,8 +70,6 @@ function Token() {
                 type="password"
                 name="psw_2"
                 placeHolder="Repita a senha digitada acima"
-                ivalue={ newpsw.psw_2 }
-                inputValue={ changeEmail! }
                 msgError={ isValid ? 'Token expirado!' : 'Senha inválida!' }
                 isValid={ isValid }
               />
@@ -100,7 +91,6 @@ function Token() {
             { contMsg === null && (
               <BtnIco
                 textBtn="Alterar senha"
-                action={ sendmailReset! }
                 actionLiberate={ isLoading }
               />
             ) }
