@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import Link from 'next/link';
 import { api2 } from '../service/api';
 import BtnIco from '../components/Buttons/BtnIco';
@@ -14,26 +14,24 @@ type TProps = {
 
 function Resetpsw({ props }: TProps) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
-  const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isValid, setisValid] = useState(false);
   const [contMsg, setMsg] = useState<string | null>(null);
 
-  function changeEmail({ value }: HTMLInputElement) {
-    setEmail(value);
-    setisValid(false);
-  }
+  async function sendmailReset(event: FormEvent) {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
 
-  async function sendmailReset() {
-    if (validEmail.test(email)) {
+    if (validEmail.test(String(data.email))) {
       setIsLoading(true);
 
-      const { data } = await api2.post('/solicitation_reset_psw_user', {
-        email,
+      const res = await api2.post('/solicitation_reset_psw_user', {
+        email: data.email,
       }).catch(({ response }) => response);
 
-      if (data.status === 200) {
-        setMsg(email);
+      if (res.data.status === 200) {
+        setMsg(res.email);
       } else {
         setIsLoading(false);
         setisValid(true);
@@ -50,7 +48,7 @@ function Resetpsw({ props }: TProps) {
       />
       <section className={ style.contlogin }>
         <h1 className={ style.title_resetpsw }>Recuperar senha</h1>
-        <form>
+        <form onSubmit={ sendmailReset }>
           { contMsg === null ? (
             <Input
               id="email"
@@ -58,8 +56,6 @@ function Resetpsw({ props }: TProps) {
               name="email"
               placeHolder="E-mail"
               autoComplete="email"
-              ivalue={ email }
-              inputValue={ changeEmail! }
               msgError={ isValid ? 'Email inválido ou não cadastrado!' : 'Email inválido!' }
               isValid={ isValid }
             />

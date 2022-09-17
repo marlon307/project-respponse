@@ -4,15 +4,15 @@ export interface ICardProduct {
   };
   products: Array<{
     id: number;
-    type: string;
+    category_name: string;
     title: string;
-    mainImg: string
-    price: number;
-    options: Array<{
-      colorName: string;
+    color_list: Array<{
+      id: number;
+      color_name: string;
       color: string;
+      discount: number;
+      price: number;
+      url_image: string;
     }>;
-    discount: number;
-    oldPrice: number;
   }>;
 }

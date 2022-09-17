@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './style.module.scss';
 import api from '../../service/api';
-import { StateBagType } from '../../types/bag';
+import { StateBagType } from '../../@types/bag';
 
 type TBuyFinish = {
   dataBag: {

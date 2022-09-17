@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import CardProduct from '../../components/Cards/CardProduct/CardProduct';
+// import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import ItemList from '../../components/Filter/ItemList';
 import api from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 import useWindowSize from '../../hooks/useWindowSize';
 import ContentModal from '../../components/Modal/ContentModal';
 import Filter from '../../components/Filter/Filter';
-import type { ICardProduct } from '../../types/typeCardProduct';
+import type { ICardProduct } from '../../@types/typeCardProduct';
 import type { StateSearchType } from './search';
 import style from './style.module.scss';
 
@@ -75,10 +75,13 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
         <div className={ style.categorycont }>
           {
             products.map((object) => (
-              <CardProduct
-                key={ object.id }
-                objectProduct={ object }
-              />
+              // <CardProduct
+              //   key={ object.id }
+              //   objectProduct={ object }
+              // />
+              <div key={ object.id }>
+                Card Product
+              </div>
             ))
           }
         </div>

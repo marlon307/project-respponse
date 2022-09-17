@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import calcAllValuesArray from '../../hooks/useCalcs';
-import { StateBagType } from '../../types/bag';
+import { StateBagType } from '../../@types/bag';
 import { BuyFinishBtn } from '../Buttons';
 import style from './style.module.scss';
 

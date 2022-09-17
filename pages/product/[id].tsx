@@ -9,11 +9,11 @@ import BarColors from '../../components/Bars/BarColors';
 import { TypeProduct } from './product';
 import api from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
-import CardProduct from '../../components/Cards/CardProduct/CardProduct';
+// import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 // import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
 import style from './style.module.scss';
 
-function ProductId({ product, similar }: TypeProduct) {
+function ProductId({ product/* , similar */ }: TypeProduct) {
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState({
     color: '',
@@ -62,11 +62,11 @@ function ProductId({ product, similar }: TypeProduct) {
         <div className={ style.products_similar }>
           <h3>Produtos Similares</h3>
           <div className={ style.slide_prod }>
-            { similar.map((productSimilar: TypeProduct['similar'][0]) => (
+            {/* { similar.map((productSimilar: TypeProduct['similar'][0]) => (
               <div className={ style.panel } key={ productSimilar.id }>
                 <CardProduct objectProduct={ productSimilar } />
               </div>
-            )) }
+            )) } */}
           </div>
         </div>
         <div className={ style.maincontentinfo }>

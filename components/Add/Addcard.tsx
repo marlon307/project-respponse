@@ -1,25 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import BtnAdd from '../Buttons/BtnAdd';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
 function Addcard() {
-  const [addCardState, setAddCardState] = useState({
-    namecard: '',
-    numbercard: '',
-    cardvalidate: '',
-    name: '',
-    codev: '',
-  });
-
-  const hadleChange = useCallback((target: { name: string; value: string; }) => {
-    const { name, value } = target;
-    setAddCardState((state) => ({
-      ...state,
-      [name]: value,
-    }));
-  }, []);
-
   return (
     <section className={ style.sectionadd }>
       <div className={ style.content }>
@@ -37,8 +21,6 @@ function Addcard() {
             name="namecard"
             placeHolder="Nome do cartão de crédito"
             autoComplete="cc-name"
-            ivalue={ addCardState.namecard }
-            inputValue={ hadleChange }
             msgError="Insira o nome do cartão de crédito."
           />
           <Input
@@ -47,8 +29,6 @@ function Addcard() {
             name="cardvalidate"
             placeHolder="Data de validade"
             autoComplete="cc-exp"
-            ivalue={ addCardState.cardvalidate }
-            inputValue={ hadleChange }
             msgError="Insira a data de vencimento."
           />
           <Input
@@ -57,8 +37,6 @@ function Addcard() {
             name="numbercard"
             placeHolder="Número do cartão"
             autoComplete="cc-number"
-            ivalue={ addCardState.numbercard }
-            inputValue={ hadleChange }
             msgError="Insira o número."
           />
           <Input
@@ -67,8 +45,6 @@ function Addcard() {
             name="codev"
             placeHolder="Código de segurança"
             autoComplete="off"
-            ivalue={ addCardState.codev }
-            inputValue={ hadleChange }
             msgError="Insira o código de segurança (CVV)."
           />
           <BtnAdd eventBtn={ () => { } } />

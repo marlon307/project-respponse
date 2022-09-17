@@ -1,7 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, FormEvent } from 'react';
 import { GetServerSideProps } from 'next';
 import LoadingImage from '../../components/LoadImage';
-// import AddBag from '../../components/Buttons/AddBag';
 import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
@@ -20,97 +19,50 @@ type TList = {
   }
 };
 
-type TFeature = {
-  [key: string]: {
-    sku: string;
-    colors_id: number;
-    quantity: string;
-    sizes_id: number;
-    discount: string;
-    price: string;
-    // [key: string]: string | number;
-  };
-};
-
-type TInfo = {
-  categorys_id: number;
-  title: string;
-  details: string;
-  gender_id: number;
-  specifications: string;
-  [key: string]: string | number;
-};
-
 const fakeImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+
+interface ListColor {
+  [key: string]: IColor | any;
+}
+interface ListSize {
+  [key: string]: ISize[];
+}
+interface IFile {
+  [key: string]: any
+}
 
 function ProductId({ list, token }: TList) {
   const [selectedFeature, setSelectedFeature] = useState(1);
-  const [infoProduct, setInfoProduct] = useState<TInfo>({
-    categorys_id: 0,
-    title: '',
-    gender_id: 0,
-    details: '',
-    specifications: '',
-  });
-  const [featureProduct, setFeatureProduct] = useState<TFeature>({
-    1: {
-      sku: '',
-      sizes_id: 0,
-      quantity: '',
-      colors_id: 0,
-      price: '',
-      discount: '',
-    },
-  });
-  const [listFiles, setListFiles] = useState<any>({ 1: {} });
-
-  const handlerChangeInfo = useCallback((target: HTMLInputElement | any) => {
-    const { name, value } = target;
-
-    setInfoProduct((currentState) => ({
-      ...currentState,
-      [name]: value,
-    }));
-  }, []);
-
-  const handlerChangeFeature = useCallback((target: HTMLInputElement) => {
-    const { name, value } = target;
-    const types = ['quantity', 'price', 'discount', 'sizes_id', 'colors_id'];
-
-    setFeatureProduct((currentState) => ({
-      ...currentState,
-      [target.id]: {
-        ...currentState[target.id],
-        [name]: types.includes(name) ? Number(value) : value,
-      },
-    }));
-  }, []);
+  const [listColors, setListColors] = useState<ListColor>({ 1: {} });
+  const [listSizes, setListSize] = useState<ListSize>({ 1: [] });
+  const [listFiles, setListFiles] = useState<IFile>({ 1: {} });
 
   const changeFeatureColor = useCallback(({ target }: any) => {
-    const { name, value, dataset } = target;
-    setFeatureProduct((currentState) => ({
-      ...currentState,
-      [dataset.index]: {
-        ...currentState[dataset.index],
-        [name]: Number(value),
-      },
+    const { value, dataset } = target;
+    const object = { id: Number(dataset.id), color: value };
+    setListColors((currentColor) => ({
+      ...currentColor,
+      [dataset.index]: object,
     }));
-  }, []);
+  }, [listColors]);
+
+  const addSizeOption = useCallback(({ target }: any) => {
+    const { value, dataset } = target;
+    const object = { id: Number(dataset.id), size: value };
+
+    if (!listSizes[dataset.index].some(({ id }) => id === Number(dataset.id))) {
+      setListSize((currentSize) => ({
+        ...currentSize,
+        [dataset.index]: [...currentSize[dataset.index], object],
+      }));
+    }
+  }, [listSizes]);
 
   function addFeature() {
-    setFeatureProduct((currentState) => ({
-      ...currentState,
-      [Object.keys(currentState).length + 1]: {
-        sku: '',
-        sizes_id: '0',
-        quantity: '',
-        colors_id: '0',
-        discount: '',
-        price: '',
-        listImage: {},
-      },
-    }));
+    setListColors((currentColor) => ({ ...currentColor, [selectedFeature + 1]: {} }));
     setSelectedFeature((currentFeatureVisible) => currentFeatureVisible + 1);
+    setListFiles((curreFiles) => ({ ...curreFiles, [selectedFeature + 1]: {} }));
+    setListSize((currentSize) => ({ ...currentSize, [selectedFeature + 1]: [] }));
   }
 
   function loadImg(event: any) {
@@ -124,33 +76,36 @@ function ProductId({ list, token }: TList) {
       },
     }));
   }
-  // console.log(listFiles);
 
-  async function registerProduct() {
-    const { gender_id: genderId, categorys_id: ctgId } = infoProduct;
+  async function registerProduct(event: FormEvent) {
+    event.preventDefault();
 
-    const newBody = {
-      ...infoProduct,
-      gender_id: Number(genderId),
-      categorys_id: ctgId,
-      warranty: 1, // Garantia
-      list_qtd: listFiles,
-    };
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
 
-    const formdata = new FormData();
+    const options = Object.keys(listColors).map((key) => {
+      formData.delete(`img-${key}`);
+      formData.delete('file');
+      return {
+        ...listColors[key],
+        sizes: listSizes[key].map(({ id }) => id),
+        sku: data[`sku-${key}`],
+        quantity: Number(data[`quantity-${key}`]),
+        discount: Number(data[`discount-${key}`]),
+        price: Number(data[`price-${key}`]),
+      };
+    });
 
     Object.keys(listFiles).forEach((index) => {
       Object.keys(listFiles[index]).forEach((files_index) => {
-        formdata.append('file', listFiles[index][files_index]);
+        formData.append(`list_file-${index}`, listFiles[index][files_index]);
       });
     });
 
-    formdata.append('body', JSON.stringify(newBody));
+    formData.append('warranty', '1');
+    formData.append('options', JSON.stringify(options));
 
-    // formdata.append('files-1', listFiles[1][0]);
-    // formdata.append('body', JSON.stringify(newBody));
-
-    await api2.post('product_seller', formdata, {
+    await api2.post('product_seller', formData, {
       headers: {
         authorization: `Bearer ${token}`,
       },
@@ -164,7 +119,7 @@ function ProductId({ list, token }: TList) {
         description="Criando Produto"
         keywords="Criando Produto"
       />
-      <form className={ style.contprod } encType="multipart/form-data">
+      <form className={ style.contprod } encType="multipart/form-data" onSubmit={ registerProduct }>
         <div className={ style.slide }>
           <div className={ style.panels }>
             { Object.keys(listFiles[selectedFeature] ?? {}).map((key_image) => (
@@ -197,7 +152,6 @@ function ProductId({ list, token }: TList) {
                   onChange={ loadImg }
                   data-indexcolor={ upload_panel }
                   data-index={ selectedFeature }
-                  multiple
                 />
               </label>
             )) }
@@ -216,94 +170,91 @@ function ProductId({ list, token }: TList) {
         <div className={ style.maincontentinfo }>
           <div className={ style.panel_addproduct }>
             <h3>Categoria</h3>
-            <div className={ style.select }>
-              <pre>
-                { list.list_ctg.find(
-                  ({ id }) => Number(id) === Number(infoProduct.categorys_id),
-                )?.category_name }
-              </pre>
-              <ul>
-                { list.list_ctg.map(({ id, category_name }) => (
-                  <li key={ id }>
-                    <button
-                      type="button"
-                      name="categorys_id"
-                      value={ id }
-                      data-index="ctg"
-                      onClick={ (e) => handlerChangeInfo(e.target) }
-                    >
-                      { category_name }
-                    </button>
-                  </li>
-                )) }
-              </ul>
-            </div>
+            <select
+              className={ style.select }
+              name="categorys_id"
+              defaultValue=""
+              placeholder="Selecione o game que deseja jogar"
+            >
+              <option disabled hidden value="">Selectione uma categoria</option>
+              { list.list_ctg.map(({ id, category_name }) => (
+                <option
+                  key={ id }
+                  value={ id }
+                  data-index="ctg"
+                >
+                  { category_name }
+                </option>
+              )) }
+            </select>
             <Input
               id="title"
               type="text"
               name="title"
               placeHolder="Titulo"
-              inputValue={ handlerChangeInfo }
-              ivalue={ infoProduct.title }
               msgError="Informe um titulo"
             />
             <div className={ style.palet_colors }>
-              { Object.keys(featureProduct).map((key) => (
-                <div className={ style.list_colors } key={ key }>
-                  <div className={ style.color }>
-                    <div className={ style.line }>
-                      <div className={ style.select }>
-                        <span style={ {
-                          backgroundColor: list.list_colors.find(
-                            ({ id }) => id === featureProduct[key].colors_id,
-                          )?.color,
-                        } }
-                        />
-                        <ul>
-                          { list.list_colors.map(({ id, color, color_name }) => (
-                            <li key={ id }>
-                              <button type="button" name="colors_id" value={ id } data-index={ key } onClick={ changeFeatureColor }>
-                                <span className={ style.color } data-color={ color } style={ { background: `${color}` } } />
-                                { color_name }
-                              </button>
-                            </li>
-                          )) }
-                        </ul>
-                      </div>
-                      <div className={ style.select }>
-                        <pre>
-                          { list.list_sizes.find(
-                            ({ id }) => id === featureProduct[key].sizes_id,
-                          )?.size }
-                        </pre>
-                        <ul>
-                          { list.list_sizes.map(({ id, size }) => (
-                            <li key={ id }>
-                              <button type="button" name="sizes_id" value={ id } data-index={ key } onClick={ changeFeatureColor }>
-                                { size }
-                              </button>
-                            </li>
-                          )) }
-                        </ul>
-                      </div>
+              { Object.keys(listColors).map((key) => (
+                <div className={ style.info_colors } key={ key }>
+                  <div className={ style.colo_size }>
+                    <div className={ style.select_custon }>
+                      <span style={ { backgroundColor: listColors[key]?.color } } />
+                      <ul>
+                        { list.list_colors.map(({ id, color, color_name }) => (
+                          <li key={ id }>
+                            <button type="button" name="colors_id" value={ color } data-id={ id } data-index={ key } onClick={ changeFeatureColor }>
+                              <span className={ style.color } style={ { background: `${color}` } } />
+                              { color_name }
+                            </button>
+                          </li>
+                        )) }
+                      </ul>
                     </div>
+                    <i />
+                    <div className={ style.list_sizes }>
+                      { listSizes[key]?.map((object) => (
+                        <button type="button" key={ object.id }>
+                          { object.size }
+                        </button>
+                      )) }
+                    </div>
+                    <div className={ style.select_custon }>
+                      <pre>
+                        +
+                      </pre>
+                      <ul>
+                        { list.list_sizes.map(({ id, size }) => (
+                          <li key={ id }>
+                            <button
+                              type="button"
+                              name="sizes_id"
+                              value={ size }
+                              data-id={ id }
+                              data-index={ key }
+                              onClick={ addSizeOption }
+                            >
+                              { size }
+                            </button>
+                          </li>
+                        )) }
+                      </ul>
+                    </div>
+                  </div>
+                  <div className={ style.desc_opt }>
                     <div className={ style.line }>
                       <Input
                         id={ key }
                         type="text"
-                        name="quantity"
+                        name={ `quantity-${key}` }
                         placeHolder="Quantidade"
-                        inputValue={ handlerChangeFeature }
-                        ivalue={ featureProduct[key].quantity }
                         msgError="Quantidade"
                       />
                       <Input
                         id={ key }
                         type="text"
-                        name="sku"
+                        name={ `sku-${key}` }
                         placeHolder="SKU"
-                        inputValue={ handlerChangeFeature }
-                        ivalue={ featureProduct[key].sku }
                         msgError="SKU"
                       />
                     </div>
@@ -311,19 +262,15 @@ function ProductId({ list, token }: TList) {
                       <Input
                         id={ key }
                         type="text"
-                        name="price"
+                        name={ `price-${key}` }
                         placeHolder="Preço"
-                        inputValue={ handlerChangeFeature }
-                        ivalue={ featureProduct[key].price }
                         msgError="Preço"
                       />
                       <Input
                         id={ key }
                         type="text"
-                        name="discount"
+                        name={ `discount-${key}` }
                         placeHolder="Desconto"
-                        inputValue={ handlerChangeFeature }
-                        ivalue={ featureProduct[key].discount }
                         msgError="Desconto"
                       />
                     </div>
@@ -343,7 +290,6 @@ function ProductId({ list, token }: TList) {
                     name={ gender_name }
                     family="gender_id"
                     iValue={ id }
-                    execFunction={ handlerChangeInfo }
                   />
                 )) }
               </div>
@@ -352,27 +298,17 @@ function ProductId({ list, token }: TList) {
               name="details"
               id="details"
               placeholder="Detalhes"
-              value={ infoProduct.details }
-              onChange={ (e) => handlerChangeInfo(e.target) }
               maxLength={ 500 }
             />
             <textarea
               name="specifications"
               id="espec"
               placeholder="Especificações"
-              value={ infoProduct.espec }
-              onChange={ (e) => handlerChangeInfo(e.target) }
               maxLength={ 500 }
             />
           </div>
-          {/* <AddBag
-            productId={ product }
-            colorSelected={ colorChecked }
-            sizeSelected={ sizeChecked }
-          /> */}
-          <button type="button" onClick={ registerProduct }>
-            Cadastrar Produto
-          </button>
+          <br />
+          <button type="submit">Cadastrar produto</button>
         </div>
       </form>
     </>

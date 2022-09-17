@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
-import type { ICardProduct } from '../../../types/typeCardProduct';
+import type { ICardProduct } from '../../../@types/typeCardProduct';
 import style from './style.module.scss';
 
 type TypeProduct = {
@@ -10,7 +10,7 @@ type TypeProduct = {
 
 function CardProduct({ objectProduct }: TypeProduct) {
   const {
-    id, type, title, mainImg, price, options, discount, oldPrice,
+    id, category_name: ctgName, title, color_list: colorList,
   } = objectProduct;
 
   return (
@@ -18,10 +18,10 @@ function CardProduct({ objectProduct }: TypeProduct) {
       href={ `/product/${id.toString()}` }
       as={ `/product/${id.toString()}` }
     >
-      <a className={ style.productcard } aria-label={ `${type} ${title}` }>
+      <a className={ style.productcard } aria-label={ `${ctgName} ${title}` }>
         <figure>
           <LoadingImage
-            src={ mainImg }
+            src={ colorList[0].url_image }
             quality={ 85 }
             alt={ title }
             sizes="(max-width: 360px) 152px, (max-width: 500px) 220px, 300px"
@@ -30,19 +30,15 @@ function CardProduct({ objectProduct }: TypeProduct) {
         <div className={ style.infocont }>
           <div className={ style.info }>
             <div className={ style.primaryline }>
-              <span>{ type }</span>
+              <span>{ ctgName }</span>
               <div className={ style.colors }>
-                { options!
-                  && options.map((_, index: number) => {
-                    const value = Object.values(options![index]);
-                    return (
-                      <span
-                        key={ value[0] }
-                        title={ value[0] }
-                        style={ { backgroundColor: `${value[1]}` } }
-                      />
-                    );
-                  }) }
+                { colorList.map(({ color_name, color, id: idKey }) => (
+                  <span
+                    key={ idKey }
+                    title={ color_name }
+                    style={ { backgroundColor: `${color}` } }
+                  />
+                )) }
               </div>
             </div>
             <div className={ style.secondline }>
@@ -51,15 +47,16 @@ function CardProduct({ objectProduct }: TypeProduct) {
             <div
               className={ style.price }
               data-oldprice={
-                discount > 0 ? oldPrice.toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                }) : ''
+                colorList[0].discount > 0
+                  ? (colorList[0].price * (colorList[0].discount / 100) + colorList[0].price).toLocaleString('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }) : ''
               }
             >
               <span>
                 {
-                  price.toLocaleString('pt-br', {
+                  colorList[0].price.toLocaleString('pt-br', {
                     style: 'currency',
                     currency: 'BRL',
                   })

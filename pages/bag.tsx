@@ -5,7 +5,7 @@ import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
 import HeadSEO from '../components/Head/HeadSEO';
-import { StateBagType } from '../types/bag';
+import { StateBagType } from '../@types/bag';
 import style from '../Sass/style.module.scss';
 
 const mockItem = [{

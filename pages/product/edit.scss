@@ -13,7 +13,7 @@
   }
 
   label {
-    margin-top: 1.8em;
+    margin-top: 1.35em;
   }
 
   textarea {
@@ -36,11 +36,50 @@
   }
 }
 
-.list_colors {
+.colo_size {
+  margin-top: 12px;
+  display: flex;
+
+  i {
+    display: block;
+    padding: 0 0.5em;
+
+    &::before {
+      line-height: 38px;
+      content: '';
+      border-left: 1px solid var(--color-border);
+    }
+  }
+}
+
+.desc_opt {
+  display: flex;
+  gap: 1em;
+  margin-top: 0.34em;
+}
+
+.list_sizes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: overlay;
+  gap: 6px;
+
+  button {
+    background: transparent;
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+      content: 'x';
+    }
+  }
+}
+
+.info_colors {
   display: flex;
   flex-direction: column;
-  gap: 1em;
-  margin-bottom: 1.4em;
+  margin: 1em 0 1.4em;
   border-top: 1px solid var(--color-border);
 
   &:first-child {
@@ -53,17 +92,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.4em;
-  padding-top: 1.4em;
 }
 
 .select {
+  appearance: none;
+  width: auto;
+  padding: 0.8em;
+  border-radius: 0.8em;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.select_custon {
   position: relative;
+  border-radius: 0.8em;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   border: 1px solid var(--color-border);
-  border-radius: 0.8em;
 
   pre {
     min-width: 34px;
@@ -106,10 +154,6 @@
     width: 100%;
   }
 
-  .color {
-    border: 1px solid var(--color-border);
-  }
-
   li:hover {
     background: var(--color-border);
 
@@ -122,15 +166,6 @@
     ul {
       display: block;
     }
-  }
-}
-
-.color {
-  @include center;
-  gap: 0.8em;
-
-  label {
-    margin-top: 0;
   }
 }
 
