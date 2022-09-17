@@ -1,6 +1,4 @@
-import React, {
-  useState, useCallback, useEffect,
-} from 'react';
+import React, { useState, useEffect } from 'react';
 import useUser from '../../hooks/useUser';
 import { api2 } from '../../service/api';
 import BtnIco from '../Buttons/BtnIco';
@@ -30,17 +28,6 @@ function CfgUser({ token }: IToken) {
     cel: '',
     gender: '',
   });
-
-  const userCfgInfo = useCallback((target: HTMLInputElement) => {
-    const {
-      name, value, pattern, dataset,
-    } = target;
-
-    setStateIfoUser((state) => ({
-      ...state,
-      [name]: dataset?.format ? value.replace(new RegExp(pattern), dataset.format) : value,
-    }));
-  }, []);
 
   async function saveUpdateInfoUser() {
     const newBody = {
@@ -131,7 +118,7 @@ function CfgUser({ token }: IToken) {
             dValue={ stateIfonUser.doc }
             msgError="CPF inválido"
             max={ 11 }
-            patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
+            // patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
             format="$1.$2.$3-$4"
           />
         </div>
@@ -144,7 +131,6 @@ function CfgUser({ token }: IToken) {
               name="Masculino"
               family="gender"
               iValue={ 3 }
-              execFunction={ userCfgInfo }
             />
             <InputRadio
               checked={ ifoUser?.gender_id === 2 }
@@ -152,7 +138,6 @@ function CfgUser({ token }: IToken) {
               name="Femenino"
               family="gender"
               iValue={ 2 }
-              execFunction={ userCfgInfo }
             />
             <InputRadio
               checked={ ifoUser?.gender_id === null }
@@ -160,7 +145,6 @@ function CfgUser({ token }: IToken) {
               name="Não informar"
               family="gender"
               iValue={ 1 }
-              execFunction={ userCfgInfo }
             />
           </div>
         </div>
@@ -176,7 +160,7 @@ function CfgUser({ token }: IToken) {
               dValue={ stateIfonUser.tel }
               msgError="Insira um telefone"
               max={ 11 }
-              patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
+              // patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
               format="$1 $2-$3"
             />
             <Input
@@ -188,7 +172,7 @@ function CfgUser({ token }: IToken) {
               dValue={ stateIfonUser.cel }
               msgError="Insira um telefone"
               max={ 11 }
-              patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
+              // patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
               format="$1 $2-$3"
             />
           </div>
