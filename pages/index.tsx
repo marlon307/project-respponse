@@ -11,7 +11,7 @@ import style from '../Sass/style.module.scss';
 // import { SwiperButtonNext, SwiperButtonPrev } from '../components/Buttons/SwiperButton';
 
 function Home({
-  categorys, slides, mockCards, mockPromotions,
+  categorys, slides, list_product, mockPromotions,
 }: IPropsHome) {
   return (
     <>
@@ -58,7 +58,7 @@ function Home({
       <div className={ style.highlights }>
         <h2>Destaques</h2>
         <div className={ style.slide_container }>
-          { mockCards.map((object: IPropsHome['mockCards'][0]) => (
+          { list_product.map((object: IPropsHome['list_product'][0]) => (
             <div className={ style.panel } key={ object.id }>
               <CardProduct
                 key={ object.id }
@@ -111,7 +111,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       categorys: data.categorys,
       slides: data.slides,
-      mockCards: [] ?? newdata, // newdata.data.list,
+      list_product: newdata.data.list, // newdata.data.list,
       mockPromotions: data.mockPromotions,
     },
     // revalidated: true,

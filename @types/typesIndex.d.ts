@@ -16,6 +16,6 @@ export type IPropsHome = {
     priority: ImageProps['priority'],
     background: string;
   }>
-  mockCards: ICardProduct['products']
+  list_product: ICardProduct['products']
   mockPromotions
 };
