@@ -80,7 +80,7 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
               </div>
               <div className={ style.price }>
                 <span data-oldprice={
-                  option[colorChecked.index].price && option[colorChecked.index].price.toLocaleString('pt-br', {
+                  option[colorChecked.index].discount && option[colorChecked.index].discount.toLocaleString('pt-br', {
                     style: 'currency',
                     currency: 'BRL',
                   })
@@ -110,7 +110,7 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
               />
             </div>
             <AddBag
-              productId={ product }
+              objectproduct={ product }
               colorSelected={ colorChecked }
               sizeSelected={ sizeChecked }
             />
@@ -164,7 +164,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .catch(() => {
       throw new Error('Bad response from server');
     });
-  // console.log(data);
+  // eslint-disable-next-line no-console
+  console.log(data);
 
   // const paths = products.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }));
 

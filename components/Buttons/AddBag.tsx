@@ -3,7 +3,7 @@ import router from 'next/router';
 import type { PBtnAddBag } from './types';
 import style from './style.module.scss';
 
-function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
+function AddBag({ objectproduct, colorSelected, sizeSelected }: PBtnAddBag) {
   // const {
   //   id, title, type, price, mainImg, discount, oldPrice,
   // } = productId;
@@ -13,7 +13,7 @@ function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
 
   function handleClick(redirect: boolean) {
     // eslint-disable-next-line no-console
-    console.log(productId);
+    console.log(objectproduct);
 
     if (buttonActive) {
       // dispatch(ADD_BAG_ITEMS({

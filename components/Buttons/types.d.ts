@@ -22,14 +22,14 @@ export type TObjectProduct = {
   }>
 };
 
-export type PBtnAddBag = {
-  productId: TObjectProduct;
+export interface PBtnAddBag {
+  objectproduct: TObjectProduct[0];
   colorSelected: {
     color: string;
     colorName: string;
   };
   sizeSelected: string;
-};
+}
 
 export type TObjectUserBag = {
   user: {
