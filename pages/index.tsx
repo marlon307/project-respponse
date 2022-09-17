@@ -104,7 +104,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data }: TRequestProduct = await api.get('/home')
     .catch((error) => ({ data: error.message }));
 
-  const newdata: TRequestProduct = await api2.get('/list_product')
+  const newdata: TRequestProduct = await api2.get('/product')
     .catch((error) => ({ data: error.message }));
 
   return {

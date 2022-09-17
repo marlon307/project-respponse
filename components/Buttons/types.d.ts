@@ -13,7 +13,7 @@ export type TObjectProduct = {
   oldPrice: number;
   details: Object;
   specification: Object;
-  options: Array<{
+  list_options: Array<{
     idc: string;
     colorName: string;
     color: string;

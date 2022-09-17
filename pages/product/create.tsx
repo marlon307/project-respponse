@@ -105,7 +105,7 @@ function ProductId({ list, token }: TList) {
     formData.append('warranty', '1');
     formData.append('options', JSON.stringify(options));
 
-    await api2.post('product_seller', formData, {
+    await api2.post('/product', formData, {
       headers: {
         authorization: `Bearer ${token}`,
       },

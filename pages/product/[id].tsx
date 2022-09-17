@@ -7,7 +7,7 @@ import AddBag from '../../components/Buttons/AddBag';
 import BarSize from '../../components/Bars/BarSize';
 import BarColors from '../../components/Bars/BarColors';
 import { TypeProduct } from './product';
-import api from '../../service/api';
+import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 // import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
@@ -18,37 +18,39 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
   const [colorChecked, setColorChecked] = useState({
     color: '',
     colorName: '',
+    index: 0,
   });
 
   const {
-    title, type, price, descrtion, branch, gender, discount,
-    oldPrice, details, specification, options,
+    title, category_name: ctgName, descrtion, gender,
+    details, specification, list_options: option,
   } = product;
 
   useEffect(() => {
-    checkSizeAvailable(options, colorChecked.color);
-    checkColorAvailable(options, sizeChecked);
-  }, [colorChecked, options, sizeChecked]);
+    checkSizeAvailable(option, colorChecked.color);
+    checkColorAvailable(option, sizeChecked);
+  }, [colorChecked, option, sizeChecked]);
 
   useEffect(() => {
     setSizeChecked('');
     setColorChecked({
       color: '',
       colorName: '',
+      index: 0,
     });
   }, [product.id]);
 
   return (
     <>
       <HeadSEO
-        title={ `${type} - ${title}` }
+        title={ `${ctgName} - ${title}` }
         description={ descrtion }
-        keywords={ `${type} - ${title}, Roupas claras para caminhadas` }
+        keywords={ `${ctgName} - ${title}, Roupas claras para caminhadas` }
       />
       <div className={ style.contprod }>
         <div className={ style.slide }>
           <div className={ style.panels }>
-            { options[0].imgs.map(({ urlImg, imgid }: any) => (
+            { option[colorChecked.index].images.map(({ urlImg, imgid }: any) => (
               <figure key={ imgid } className={ style.contsimg }>
                 <LoadingImage
                   src={ urlImg }
@@ -73,20 +75,20 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
           <div className={ style.infodesc }>
             <div className={ style.primaryline }>
               <div className={ style.titles }>
-                <h2>{ type }</h2>
+                <h2>{ ctgName }</h2>
                 <h1>{ title }</h1>
               </div>
               <div className={ style.price }>
                 <span data-oldprice={
-                  discount && oldPrice.toLocaleString('pt-br', {
+                  option[colorChecked.index].price && option[colorChecked.index].price.toLocaleString('pt-br', {
                     style: 'currency',
                     currency: 'BRL',
                   })
                 }
                 />
-                { discount > 0 && (
+                { option[colorChecked.index].price > 0 && (
                   <h4>
-                    { price.toLocaleString('pt-br', {
+                    { option[colorChecked.index].price.toLocaleString('pt-br', {
                       style: 'currency',
                       currency: 'BRL',
                     }) }
@@ -96,14 +98,14 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
             </div>
             <div className={ style.barcolor }>
               <BarColors
-                array={ options }
+                array={ option }
                 execFunction={ setColorChecked }
               />
             </div>
             <div className={ style.secondline }>
               <BarSize
-                array={ options }
-                color={ colorChecked.color === '' ? options[0].color : colorChecked.color }
+                array={ option }
+                color={ option[colorChecked.index].color }
                 execFunction={ setSizeChecked }
               />
             </div>
@@ -117,7 +119,7 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
             <div className={ style.detailsCarosel }>
               <DetailsCard
                 gender={ gender }
-                branch={ branch }
+                branch="Marca"
                 details={ details }
               />
               <Spec specification={ specification } />
@@ -139,13 +141,11 @@ type TRequestProduct = {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const {
-    data: { product, similar },
-  }: TRequestProduct = await api.get(`/product/${params.id}`)
+  const { data }: TRequestProduct = await api2.get(`/product/${params.id}`)
     .catch((error) => ({ data: error.message }));
 
   return {
-    props: { product, similar },
+    props: { product: data.product },
     // revalidated: true,
   };
 };
@@ -160,15 +160,16 @@ type TRequestArr = {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: { products } }: TRequestArr = await api.get('/products')
+  const data: TRequestArr = await api2.get('/product')
     .catch(() => {
       throw new Error('Bad response from server');
     });
+  // console.log(data);
 
-  const paths = products.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }));
+  // const paths = products.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }));
 
   return {
-    paths,
+    paths: [{ params: { id: '19' } }],
     fallback: false,
   };
 };

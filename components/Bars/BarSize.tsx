@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import style from './style.module.scss';
 
 interface IObject {
-  size: Object;
+  sizes: Object;
   color: string;
 }
 
@@ -14,7 +14,7 @@ type TProps = {
 
 function BarSize({ array, color, execFunction }: TProps) {
   const itemSizes = array.find((object) => object.color === color)!;
-  const arraySize = itemSizes && Object.keys(itemSizes.size);
+  const arraySize = Object.keys(itemSizes.sizes);
 
   const handleClick = useCallback((sizeSelected: string) => {
     execFunction(sizeSelected);

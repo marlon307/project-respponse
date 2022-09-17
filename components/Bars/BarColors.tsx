@@ -20,12 +20,12 @@ function BarColors({ array, execFunction }: PBarColors) {
   return (
     <div className={ style.barcolor } title="Cores">
       { array !== undefined
-        && array.map(({ idc, colorName, color }) => (
+        && array.map(({ idc, colorName, color }, index) => (
           <button type="button" key={ color }>
             <label htmlFor={ idc }>
               <input
                 id={ idc }
-                onClick={ () => handleClick({ color, colorName }) }
+                onClick={ () => handleClick({ color, colorName, index }) }
                 type="radio"
                 name="color"
               />

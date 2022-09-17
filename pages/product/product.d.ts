@@ -6,22 +6,21 @@ export type TypeProduct = {
   product: {
     id: number;
     title: string;
-    type: string;
-    price: number;
+    category_name: string;
     descrtion: string;
     branch: string;
     gender: string;
     mainImg: Object<ImageProps['src']>;
-    discount: number;
-    oldPrice: number;
     details: TDetail;
     specification: TSpecification;
-    options: Array<{
+    list_options: Array<{
       idc: string;
       colorName: string;
       color: string;
-      size: Object;
-      imgs: Array<{
+      price: number;
+      discount: number;
+      sizes: Object;
+      images: Array<{
         imgid: Number;
         urlImg: ImageProps['src'];
       }>;
