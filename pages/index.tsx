@@ -104,14 +104,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data }: TRequestProduct = await api.get('/home')
     .catch((error) => ({ data: error.message }));
 
-  // const newdata: TRequestProduct = await api2.get('/list_product')
-  //   .catch((error) => ({ data: error.message }));
+  const newdata: TRequestProduct = await api2.get('/list_product')
+    .catch((error) => ({ data: error.message }));
 
   return {
     props: {
       categorys: data.categorys,
       slides: data.slides,
-      mockCards: [], // newdata.data.list,
+      mockCards: newdata || [], // newdata.data.list,
       mockPromotions: data.mockPromotions,
     },
     // revalidated: true,
