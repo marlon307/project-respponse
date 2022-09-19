@@ -80,10 +80,11 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
               </div>
               <div className={ style.price }>
                 <span data-oldprice={
-                  option[colorChecked.index].discount && option[colorChecked.index].discount.toLocaleString('pt-br', {
-                    style: 'currency',
-                    currency: 'BRL',
-                  })
+                  option[colorChecked.index].discount > 0
+                    ? option[colorChecked.index].oldPrice.toLocaleString('pt-br', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    }) : null
                 }
                 />
                 { option[colorChecked.index].price > 0 && (

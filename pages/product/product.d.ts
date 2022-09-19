@@ -18,6 +18,7 @@ export type TypeProduct = {
       colorName: string;
       color: string;
       price: number;
+      oldPrice: number;
       discount: number;
       sizes: Object;
       images: Array<{
