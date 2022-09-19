@@ -23,7 +23,7 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
 
   const {
     title, category_name: ctgName, descrtion, gender,
-    details, specification, list_options: option,
+    details, specifications, list_options: option,
   } = product;
 
   useEffect(() => {
@@ -122,7 +122,7 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
                 branch="Marca"
                 details={ details }
               />
-              <Spec specification={ specification } />
+              <Spec specifications={ specifications } />
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 
 type TRequestArr = {
   data: {
-    products: Array<{
+    list: Array<{
       id: number,
     }>,
     similar: TypeProduct['similar']
@@ -160,17 +160,15 @@ type TRequestArr = {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data: TRequestArr = await api2.get('/product')
+  const { data }: TRequestArr = await api2.get('/product')
     .catch(() => {
       throw new Error('Bad response from server');
     });
-  // eslint-disable-next-line no-console
-  console.log(data);
 
-  // const paths = products.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }));
+  const paths = data.list.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }));
 
   return {
-    paths: [{ params: { id: '19' } }],
-    fallback: false,
+    paths,
+    fallback: true,
   };
 };

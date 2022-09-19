@@ -88,9 +88,11 @@ function ProductId({ list, token }: TList) {
       formData.delete('file');
       return {
         ...listColors[key],
-        sizes: listSizes[key].map(({ id }) => id),
+        sizes: listSizes[key].map(({ id }) => ({
+          id,
+          quantity: Number(data[`quantity-${key}-${id}`]),
+        })),
         sku: data[`sku-${key}`],
-        quantity: Number(data[`quantity-${key}`]),
         discount: Number(data[`discount-${key}`]),
         price: Number(data[`price-${key}`]),
       };
@@ -197,7 +199,7 @@ function ProductId({ list, token }: TList) {
             <div className={ style.palet_colors }>
               { Object.keys(listColors).map((key) => (
                 <div className={ style.info_colors } key={ key }>
-                  <div className={ style.colo_size }>
+                  <div className={ style.color_size }>
                     <div className={ style.select_custon }>
                       <span style={ { backgroundColor: listColors[key]?.color } } />
                       <ul>
@@ -212,53 +214,23 @@ function ProductId({ list, token }: TList) {
                       </ul>
                     </div>
                     <i />
-                    <div className={ style.list_sizes }>
-                      { listSizes[key]?.map((object) => (
-                        <button type="button" key={ object.id }>
-                          { object.size }
-                        </button>
-                      )) }
-                    </div>
-                    <div className={ style.select_custon }>
-                      <pre>
-                        +
-                      </pre>
-                      <ul>
-                        { list.list_sizes.map(({ id, size }) => (
-                          <li key={ id }>
-                            <button
-                              type="button"
-                              name="sizes_id"
-                              value={ size }
-                              data-id={ id }
-                              data-index={ key }
-                              onClick={ addSizeOption }
-                            >
-                              { size }
-                            </button>
-                          </li>
-                        )) }
-                      </ul>
-                    </div>
+                    <Input
+                      id={ key }
+                      type="text"
+                      name={ `sku-${key}` }
+                      placeHolder="SKU"
+                      msgError="SKU"
+                    />
                   </div>
                   <div className={ style.desc_opt }>
                     <div className={ style.line }>
-                      <Input
+                      {/* <Input
                         id={ key }
                         type="text"
                         name={ `quantity-${key}` }
                         placeHolder="Quantidade"
                         msgError="Quantidade"
-                      />
-                      <Input
-                        id={ key }
-                        type="text"
-                        name={ `sku-${key}` }
-                        placeHolder="SKU"
-                        msgError="SKU"
-                      />
-                    </div>
-                    <div className={ style.line }>
+                      /> */}
                       <Input
                         id={ key }
                         type="text"
@@ -273,6 +245,42 @@ function ProductId({ list, token }: TList) {
                         placeHolder="Desconto"
                         msgError="Desconto"
                       />
+                    </div>
+                    <div className={ style.line }>
+                      { listSizes[key].length
+                        ? (
+                          <div className={ style.list_sizes }>
+                            { listSizes[key]?.map((object) => (
+                              <div className={ style.size_qtd } key={ object.id }>
+                                <button type="button">
+                                  { object.size }
+                                </button>
+                                <input type="text" name={ `quantity-${key}-${object.id}` } placeholder="QTD" title="Qauntidade" />
+                              </div>
+                            )) }
+                          </div>
+                        ) : null }
+                      <div className={ style.select_custon }>
+                        <pre>
+                          +
+                        </pre>
+                        <ul>
+                          { list.list_sizes.map(({ id, size }) => (
+                            <li key={ id }>
+                              <button
+                                type="button"
+                                name="sizes_id"
+                                value={ size }
+                                data-id={ id }
+                                data-index={ key }
+                                onClick={ addSizeOption }
+                              >
+                                { size }
+                              </button>
+                            </li>
+                          )) }
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>

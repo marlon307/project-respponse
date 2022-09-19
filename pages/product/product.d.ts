@@ -1,5 +1,5 @@
 import type { ImageProps } from 'next/image';
-import type { TDetail, TSpecification } from './components/Cards/CardDetail/types';
+import type { TDetail } from './components/Cards/CardDetail/types';
 import type { ICardProduct } from '../../@types/typeCardProduct';
 
 export type TypeProduct = {
@@ -12,7 +12,7 @@ export type TypeProduct = {
     gender: string;
     mainImg: Object<ImageProps['src']>;
     details: TDetail;
-    specification: TSpecification;
+    specifications: string;
     list_options: Array<{
       idc: string;
       colorName: string;

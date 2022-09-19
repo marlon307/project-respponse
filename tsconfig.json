@@ -23,8 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.config.js",
-    "redux/actions/Stock-action.js"
+    "**/*.config.js"
   ],
   "exclude": [
     "node_modules"
