@@ -1,13 +1,15 @@
-export type PInputRadio = {
+import { InputHTMLAttributes } from 'react';
+
+export interface PInputRadio extends InputHTMLAttributes<T> {
   name: string;
   iId: string;
   family: string;
   iValue?: number;
   execFunction?: Function;
   checked: boolean
-};
+}
 
-export interface PInputText {
+export interface PInputText extends InputHTMLAttributes<T> {
   id: string;
   type: string;
   name: string;

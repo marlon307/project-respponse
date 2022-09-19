@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useState } from 'react';
-import style from './style.module.scss';
 import type { PInputText } from './type';
+import style from './style.module.scss';
 
 function Input({
   id, type, name, placeHolder, autoComplete, dValue,
-  msgError, isValid, max, format, disabled,
+  msgError, isValid, max, format, disabled, ...props
 }: PInputText) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
@@ -35,6 +35,7 @@ function Input({
   return (
     <label className={ style.input } htmlFor={ id } data-error={ statusValid || isValid }>
       <input
+        { ...props }
         id={ id }
         type={ type }
         name={ name }

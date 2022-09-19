@@ -9,7 +9,7 @@ import style from './style.module.scss';
 import { Input, InputRadio } from '../../components/ComponentsForm';
 import BtnAdd from '../../components/Buttons/BtnAdd';
 
-type TList = {
+type Props = {
   token: string;
   list: {
     list_ctg: Array<ICategory>;
@@ -24,17 +24,15 @@ const fakeImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC
 interface ListColor {
   [key: string]: IColor | any;
 }
-interface ListSize {
-  [key: string]: ISize[];
-}
+
 interface IFile {
   [key: string]: any
 }
 
-function ProductId({ list, token }: TList) {
+function ProductId({ list, token }: Props) {
   const [selectedFeature, setSelectedFeature] = useState(1);
   const [listColors, setListColors] = useState<ListColor>({ 1: {} });
-  const [listSizes, setListSize] = useState<ListSize>({ 1: [] });
+  const [listSizes, setListSize] = useState<ISize[]>([]);
   const [listFiles, setListFiles] = useState<IFile>({ 1: {} });
 
   const changeFeatureColor = useCallback(({ target }: any) => {
@@ -50,11 +48,11 @@ function ProductId({ list, token }: TList) {
     const { value, dataset } = target;
     const object = { id: Number(dataset.id), size: value };
 
-    if (!listSizes[dataset.index].some(({ id }) => id === Number(dataset.id))) {
-      setListSize((currentSize) => ({
+    if (!listSizes.some(({ id }) => id === Number(dataset.id))) {
+      setListSize((currentSize) => ([
         ...currentSize,
-        [dataset.index]: [...currentSize[dataset.index], object],
-      }));
+        object,
+      ]));
     }
   }, [listSizes]);
 
@@ -62,7 +60,7 @@ function ProductId({ list, token }: TList) {
     setListColors((currentColor) => ({ ...currentColor, [selectedFeature + 1]: {} }));
     setSelectedFeature((currentFeatureVisible) => currentFeatureVisible + 1);
     setListFiles((curreFiles) => ({ ...curreFiles, [selectedFeature + 1]: {} }));
-    setListSize((currentSize) => ({ ...currentSize, [selectedFeature + 1]: [] }));
+    // setListSize((currentSize) => ({ ...currentSize, [selectedFeature + 1]: [] }));
   }
 
   function loadImg(event: any) {
@@ -88,7 +86,7 @@ function ProductId({ list, token }: TList) {
       formData.delete('file');
       return {
         ...listColors[key],
-        sizes: listSizes[key].map(({ id }) => ({
+        sizes: listSizes.map(({ id }) => ({
           id,
           quantity: Number(data[`quantity-${key}-${id}`]),
         })),
@@ -154,6 +152,7 @@ function ProductId({ list, token }: TList) {
                   onChange={ loadImg }
                   data-indexcolor={ upload_panel }
                   data-index={ selectedFeature }
+                  required
                 />
               </label>
             )) }
@@ -177,6 +176,7 @@ function ProductId({ list, token }: TList) {
               name="categorys_id"
               defaultValue=""
               placeholder="Selecione o game que deseja jogar"
+              required
             >
               <option disabled hidden value="">Selectione uma categoria</option>
               { list.list_ctg.map(({ id, category_name }) => (
@@ -195,6 +195,7 @@ function ProductId({ list, token }: TList) {
               name="title"
               placeHolder="Titulo"
               msgError="Informe um titulo"
+              required
             />
             <div className={ style.palet_colors }>
               { Object.keys(listColors).map((key) => (
@@ -220,23 +221,18 @@ function ProductId({ list, token }: TList) {
                       name={ `sku-${key}` }
                       placeHolder="SKU"
                       msgError="SKU"
+                      required
                     />
                   </div>
                   <div className={ style.desc_opt }>
                     <div className={ style.line }>
-                      {/* <Input
-                        id={ key }
-                        type="text"
-                        name={ `quantity-${key}` }
-                        placeHolder="Quantidade"
-                        msgError="Quantidade"
-                      /> */}
                       <Input
                         id={ key }
                         type="text"
                         name={ `price-${key}` }
                         placeHolder="Preço"
                         msgError="Preço"
+                        required
                       />
                       <Input
                         id={ key }
@@ -244,18 +240,26 @@ function ProductId({ list, token }: TList) {
                         name={ `discount-${key}` }
                         placeHolder="Desconto"
                         msgError="Desconto"
+                        required
                       />
                     </div>
                     <div className={ style.line }>
-                      { listSizes[key].length
+                      { listSizes.length
                         ? (
                           <div className={ style.list_sizes }>
-                            { listSizes[key]?.map((object) => (
+                            { listSizes?.map((object) => (
                               <div className={ style.size_qtd } key={ object.id }>
                                 <button type="button">
                                   { object.size }
                                 </button>
-                                <input type="text" name={ `quantity-${key}-${object.id}` } placeholder="QTD" title="Qauntidade" />
+                                <input
+                                  type="text"
+                                  name={ `quantity-${key}-${object.id}` }
+                                  placeholder="QTD"
+                                  title="Qauntidade"
+                                  required
+                                  defaultValue={ 0 }
+                                />
                               </div>
                             )) }
                           </div>
@@ -298,6 +302,7 @@ function ProductId({ list, token }: TList) {
                     name={ gender_name }
                     family="gender_id"
                     iValue={ id }
+                    required
                   />
                 )) }
               </div>
@@ -307,12 +312,14 @@ function ProductId({ list, token }: TList) {
               id="details"
               placeholder="Detalhes"
               maxLength={ 500 }
+              required
             />
             <textarea
               name="specifications"
               id="espec"
               placeholder="Especificações"
               maxLength={ 500 }
+              required
             />
           </div>
           <br />
