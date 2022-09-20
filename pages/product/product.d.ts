@@ -20,6 +20,7 @@ export type TypeProduct = {
       price: number;
       oldPrice: number;
       discount: number;
+      option_id: number;
       sizes: Object;
       images: Array<{
         imgid: Number;

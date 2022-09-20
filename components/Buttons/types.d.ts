@@ -23,10 +23,11 @@ export type TObjectProduct = {
 };
 
 export interface PBtnAddBag {
-  objectproduct: TObjectProduct[0];
   colorSelected: {
     color: string;
     colorName: string;
+    option: number;
+    index: number;
   };
   sizeSelected: string;
 }

@@ -1,34 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import router from 'next/router';
+import { getCookie } from 'cookies-next';
+import { api2 } from '../../service/api';
 import type { PBtnAddBag } from './types';
 import style from './style.module.scss';
 
-function AddBag({ objectproduct, colorSelected, sizeSelected }: PBtnAddBag) {
-  // const {
-  //   id, title, type, price, mainImg, discount, oldPrice,
-  // } = productId;
-
+function AddBag({ colorSelected, sizeSelected }: PBtnAddBag) {
   const [buttonActive, setbutonActive] = useState(false);
   const [activeMsg, setActiveMsg] = useState(false);
 
-  function handleClick(redirect: boolean) {
-    // eslint-disable-next-line no-console
-    console.log(objectproduct);
+  async function handleClick(redirect: boolean) {
+    const token = getCookie('u_token');
 
-    if (buttonActive) {
-      // dispatch(ADD_BAG_ITEMS({
-      //   id,
-      //   title,
-      //   discount,
-      //   oldPrice,
-      //   type,
-      //   price,
-      //   mainImg,
-      //   quantity: 1,
-      //   ...colorSelected,
-      //   size: sizeSelected,
-      //   identifyBag: productId.id + colorSelected.color + sizeSelected,
-      // }));
+    if (buttonActive && token) {
+      await api2.post('/bag', {
+        quantity: 1,
+        option_product_id: colorSelected.option,
+        size: sizeSelected,
+      }, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
       if (redirect) router.push('/bag');
     } else {
       setActiveMsg(true);

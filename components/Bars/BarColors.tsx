@@ -5,6 +5,7 @@ interface IObjectsColor {
   idc: string;
   colorName: string;
   color: string;
+  option_id: number
 }
 
 interface Props {
@@ -20,12 +21,16 @@ function BarColors({ array, execFunction }: Props) {
   return (
     <div className={ style.barcolor } title="Cores">
       { array !== undefined
-        && array.map(({ idc, colorName, color }, index) => (
+        && array.map(({
+          idc, colorName, color, option_id: option,
+        }, index) => (
           <button type="button" key={ color }>
             <label htmlFor={ idc }>
               <input
                 id={ idc }
-                onClick={ () => handleClick({ color, colorName, index }) }
+                onClick={ () => handleClick({
+                  color, colorName, index, option,
+                }) }
                 type="radio"
                 name="color"
               />
