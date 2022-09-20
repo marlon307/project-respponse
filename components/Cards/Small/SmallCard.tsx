@@ -1,4 +1,4 @@
-import React, { useCallback, memo } from 'react';
+import React, { memo } from 'react';
 import Link from 'next/link';
 import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
@@ -11,10 +11,6 @@ function SmallCard({
     id, title, category_name: type, url_image: mainImg, price, colorName, color,
     size, quantity, discount, oldPrice,
   } = objectID;
-
-  const handleClickEdit = useCallback(() => {
-    eventModal!(id);
-  }, []);
 
   return (
     <div className={ style.smallcard }>
@@ -46,7 +42,7 @@ function SmallCard({
                 <button
                   type="button"
                   title={ `${quantity} ${type} - ${title}. ( 👇 ) Clique para alterar a quantidade.` }
-                  onClick={ handleClickEdit }
+                  onClick={ eventModal }
                 >
                   { quantity }
                   x

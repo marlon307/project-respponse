@@ -2,6 +2,6 @@ export interface PSmallCard {
   objectID: ObjectId;
   removable?: boolean;
   editable?: boolean;
-  eventModal?: Function;
+  eventModal?: () => void;
   execFunction?: () => void;
 }

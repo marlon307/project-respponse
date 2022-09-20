@@ -62,7 +62,8 @@ interface Props {
 }
 
 function Bag({ token, listBag }: Props) {
-  const [openModal, setOpenModal] = useState<String | number>('');
+  const [openModal, setOpenModal] = useState<string>('');
+  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<string>('');
   const [hiddenList, setHiddenList] = useState(false);
 
   const deleteBagItem = useCallback(async (identify: string) => {
@@ -77,6 +78,11 @@ function Bag({ token, listBag }: Props) {
         size: split[1],
       },
     }).catch((err) => ({ err }));
+  }, []);
+
+  const openEditItemBagModal = useCallback(async (identify: string) => {
+    setOpenModal('editbag');
+    setIdentifyEditItemBag(identify);
   }, []);
 
   return (
@@ -122,7 +128,7 @@ function Bag({ token, listBag }: Props) {
                   objectID={ object }
                   removable
                   editable
-                  eventModal={ setOpenModal! }
+                  eventModal={ () => openEditItemBagModal(`${object.product_option}-${object.size}`) }
                   execFunction={ () => deleteBagItem(`${object.product_option}-${object.size}`) }
                 />
               </li>
@@ -142,13 +148,14 @@ function Bag({ token, listBag }: Props) {
           openModal === 'address'
           || openModal === 'addaddress'
           || openModal === 'addcard'
-          || Number.isInteger(openModal)
+          || openModal === 'editbag'
+          // ${objectID.product_option}-${size}
         }
       >
         { openModal === 'address' && <RenderAdderess /> }
         { openModal === 'addaddress' && <Addaddress token={ token } execFunction={ () => setOpenModal('') } /> }
         { openModal === 'addcard' && <Addacard /> }
-        { Number.isInteger(openModal) && <CardEdit /> }
+        { openModal === 'editbag' && <CardEdit identify={ identifyEditItemBag } token={ token } /> }
       </ContentModal>
     </>
   );
