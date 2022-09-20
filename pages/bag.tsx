@@ -1,4 +1,4 @@
-import React, { /* useCallback, */ useState, lazy } from 'react';
+import React, { useCallback, useState, lazy } from 'react';
 import type { GetServerSideProps } from 'next';
 import BarBuy from '../components/Bars/BarBuy';
 import { SmallCard } from '../components/Cards';
@@ -13,6 +13,7 @@ const stateBag: StateBagType = {
   bagItems: [],
   valueBag: 0,
   itemEditBag: {
+    product_option: 0,
     id: 0,
     title: '',
     type: '',
@@ -64,6 +65,20 @@ function Bag({ token, listBag }: Props) {
   const [openModal, setOpenModal] = useState<String | number>('');
   const [hiddenList, setHiddenList] = useState(false);
 
+  const deleteBagItem = useCallback(async (identify: string) => {
+    const split = identify.split('-');
+
+    await api2.delete('/bag', {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+      data: {
+        option_id: Number(split[0]),
+        size: split[1],
+      },
+    }).catch((err) => ({ err }));
+  }, []);
+
   return (
     <>
       <HeadSEO
@@ -108,7 +123,7 @@ function Bag({ token, listBag }: Props) {
                   removable
                   editable
                   eventModal={ setOpenModal! }
-                  identifyBag={ object.id + object.color + object.size }
+                  execFunction={ () => deleteBagItem(`${object.product_option}-${object.size}`) }
                 />
               </li>
             ))

@@ -3,5 +3,5 @@ export interface PSmallCard {
   removable?: boolean;
   editable?: boolean;
   eventModal?: Function;
-  identifyBag?: string;
+  execFunction?: () => void;
 }

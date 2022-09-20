@@ -10,6 +10,7 @@ export interface TypeEditBagInfos {
   colorName: string;
   color: string;
   size: string;
+  product_option: number;
 }
 
 export interface TypeAddBagInfos extends TypeEditBagInfos {
