@@ -155,7 +155,13 @@ function Bag({ token, listBag }: Props) {
         { openModal === 'address' && <RenderAdderess /> }
         { openModal === 'addaddress' && <Addaddress token={ token } execFunction={ () => setOpenModal('') } /> }
         { openModal === 'addcard' && <Addacard /> }
-        { openModal === 'editbag' && <CardEdit identify={ identifyEditItemBag } token={ token } /> }
+        { openModal === 'editbag' && (
+          <CardEdit
+            identify={ identifyEditItemBag }
+            token={ token }
+            execeFunction={ setOpenModal }
+          />
+        ) }
       </ContentModal>
     </>
   );

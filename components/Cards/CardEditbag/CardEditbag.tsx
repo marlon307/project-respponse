@@ -5,9 +5,10 @@ import style from './style.module.scss';
 interface Props {
   identify: string
   token: string
+  execeFunction: (params: string) => void
 }
 
-function CardEditbag({ identify, token }: Props) {
+function CardEditbag({ identify, token, execeFunction }: Props) {
   const updateItembag = async ({ target }: any) => {
     const split = identify.split('-');
     await api2.patch('/bag', {
@@ -19,6 +20,7 @@ function CardEditbag({ identify, token }: Props) {
         Authorization: `Bearer ${token}`,
       },
     }).catch((data) => ({ data }));
+    execeFunction('');
   };
 
   return (
