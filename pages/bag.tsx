@@ -5,24 +5,9 @@ import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
 import HeadSEO from '../components/Head/HeadSEO';
-import { StateBagType } from '../@types/bag';
+import { StateBagType, TypeEditBagInfos } from '../@types/bag';
+import { api2 } from '../service/api';
 import style from '../Sass/style.module.scss';
-
-const mockItem = [{
-  id: 0,
-  title: 'Algodão Pima',
-  type: 'Jérsei',
-  mainImg: 'https://i.imgur.com/dDldc4q.png',
-  price: 71.25,
-  oldPrice: 75.00,
-  colorName: 'Azul',
-  color: '#74bcf7',
-  size: 'M',
-  quantity: 2,
-  discount: 5,
-  identifyBag: '0#74bcf7M',
-  code: '3SFA469',
-}];
 
 const stateBag: StateBagType = {
   bagItems: [],
@@ -70,7 +55,12 @@ const Addaddress = lazy(() => import('../components/Add/Address'));
 const Addacard = lazy(() => import('../components/Add/Addcard'));
 const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'));
 
-function Bag({ token }: IToken) {
+interface Props {
+  token: IToken['token'];
+  listBag: TypeEditBagInfos[];
+}
+
+function Bag({ token, listBag }: Props) {
   const [openModal, setOpenModal] = useState<String | number>('');
   const [hiddenList, setHiddenList] = useState(false);
 
@@ -89,7 +79,7 @@ function Bag({ token }: IToken) {
               </svg>
               Sacola
             </h1>
-            { mockItem.length
+            { listBag.length
               ? (
                 <button
                   type="button"
@@ -104,14 +94,14 @@ function Bag({ token }: IToken) {
                 { ' ' }
                 (
                 { ' ' }
-                { mockItem.length }
+                { listBag.length }
                 { ' ' }
                 )
               </span>
             ) }
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
-            { mockItem.length ? mockItem.map((object) => (
+            { listBag.length ? listBag.map((object) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
@@ -151,9 +141,16 @@ function Bag({ token }: IToken) {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (req.cookies.u_token) {
+    const { data } = await api2.get('/bag', {
+      headers: {
+        authorization: `Bearer ${req.cookies.u_token}`,
+      },
+    }).catch((err) => ({ data: err }));
+
     return {
       props: {
         token: req.cookies.u_token,
+        listBag: data.list_bag,
       },
     };
   }

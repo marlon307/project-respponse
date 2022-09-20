@@ -7,12 +7,12 @@ interface IObjectsColor {
   color: string;
 }
 
-type PBarColors = {
+interface Props {
   array: Array<IObjectsColor>;
   execFunction: Function
-};
+}
 
-function BarColors({ array, execFunction }: PBarColors) {
+function BarColors({ array, execFunction }: Props) {
   const handleClick = useCallback((object: Object) => {
     execFunction(object);
   }, [execFunction]);

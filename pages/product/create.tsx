@@ -8,6 +8,7 @@ import HeadSEO from '../../components/Head/HeadSEO';
 import style from './style.module.scss';
 import { Input, InputRadio } from '../../components/ComponentsForm';
 import BtnAdd from '../../components/Buttons/BtnAdd';
+import BtnIco from '../../components/Buttons/BtnIco';
 
 type Props = {
   token: string;
@@ -34,6 +35,7 @@ function ProductId({ list, token }: Props) {
   const [listColors, setListColors] = useState<ListColor>({ 1: {} });
   const [listSizes, setListSize] = useState<ISize[]>([]);
   const [listFiles, setListFiles] = useState<IFile>({ 1: {} });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const changeFeatureColor = useCallback(({ target }: any) => {
     const { value, dataset } = target;
@@ -77,7 +79,7 @@ function ProductId({ list, token }: Props) {
 
   async function registerProduct(event: FormEvent) {
     event.preventDefault();
-
+    setIsLoading(true);
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
@@ -110,6 +112,7 @@ function ProductId({ list, token }: Props) {
         authorization: `Bearer ${token}`,
       },
     }).catch((err) => err);
+    setIsLoading(false);
   }
 
   return (
@@ -170,7 +173,6 @@ function ProductId({ list, token }: Props) {
         </div>
         <div className={ style.maincontentinfo }>
           <div className={ style.panel_addproduct }>
-            <h3>Categoria</h3>
             <select
               className={ style.select }
               name="categorys_id"
@@ -206,7 +208,14 @@ function ProductId({ list, token }: Props) {
                       <ul>
                         { list.list_colors.map(({ id, color, color_name }) => (
                           <li key={ id }>
-                            <button type="button" name="colors_id" value={ color } data-id={ id } data-index={ key } onClick={ changeFeatureColor }>
+                            <button
+                              type="button"
+                              name="colors_id"
+                              value={ color }
+                              data-id={ id }
+                              data-index={ key }
+                              onClick={ changeFeatureColor }
+                            >
                               <span className={ style.color } style={ { background: `${color}` } } />
                               { color_name }
                             </button>
@@ -230,17 +239,19 @@ function ProductId({ list, token }: Props) {
                         id={ key }
                         type="text"
                         name={ `price-${key}` }
-                        placeHolder="Preço"
-                        msgError="Preço"
+                        placeHolder="(R$) Preço"
+                        msgError="(R$) Preço"
                         required
+                        max={ 8 }
                       />
                       <Input
                         id={ key }
                         type="text"
                         name={ `discount-${key}` }
-                        placeHolder="Desconto"
-                        msgError="Desconto"
+                        placeHolder="(%) Desconto"
+                        msgError="(%) Desconto"
                         required
+                        max={ 8 }
                       />
                     </div>
                     <div className={ style.line }>
@@ -323,7 +334,10 @@ function ProductId({ list, token }: Props) {
             />
           </div>
           <br />
-          <button type="submit">Cadastrar produto</button>
+          <BtnIco
+            textBtn="Cadastrar produto"
+            actionLiberate={ isLoading }
+          />
         </div>
       </form>
     </>

@@ -8,7 +8,7 @@ function SmallCard({
   objectID, removable, editable, eventModal, identifyBag,
 }: PSmallCard) {
   const {
-    id, title, type, mainImg, price, colorName, color,
+    id, title, category_name: type, url_image: mainImg, price, colorName, color,
     size, quantity, discount, oldPrice,
   } = objectID;
 
