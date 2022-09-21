@@ -65,24 +65,31 @@ function Bag({ token, listBag }: Props) {
   const [openModal, setOpenModal] = useState<string>('');
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<string>('');
   const [hiddenList, setHiddenList] = useState(false);
+  const [bagItems, setBagItems] = useState<TypeEditBagInfos[]>(listBag);
 
-  const deleteBagItem = useCallback(async (identify: string) => {
-    const split = identify.split('-');
-
-    await api2.delete('/bag', {
+  const deleteBagItem = useCallback(async (identify: TypeEditBagInfos) => {
+    const { data } = await api2.delete('/bag', {
       headers: {
         authorization: `Bearer ${token}`,
       },
       data: {
-        option_id: Number(split[0]),
-        size: split[1],
+        option_id: identify.product_option,
+        size: identify.size,
       },
-    }).catch((err) => ({ err }));
-  }, []);
+    }).catch((err) => ({ data: err }));
 
-  const openEditItemBagModal = useCallback(async (identify: string) => {
+    if (data.status === 200) {
+      setBagItems((currentItems) => {
+        currentItems.splice(currentItems.indexOf(identify), 1);
+        return [...currentItems];
+      });
+    }
+  }, [bagItems]);
+
+  const openEditItemBagModal = useCallback(async (identify: TypeEditBagInfos) => {
     setOpenModal('editbag');
-    setIdentifyEditItemBag(identify);
+    // `${object.product_option}-${object.size}`
+    setIdentifyEditItemBag(`${identify.product_option}-${identify.size}`);
   }, []);
 
   return (
@@ -100,7 +107,7 @@ function Bag({ token, listBag }: Props) {
               </svg>
               Sacola
             </h1>
-            { listBag.length
+            { bagItems.length
               ? (
                 <button
                   type="button"
@@ -115,21 +122,21 @@ function Bag({ token, listBag }: Props) {
                 { ' ' }
                 (
                 { ' ' }
-                { listBag.length }
+                { bagItems.length }
                 { ' ' }
                 )
               </span>
             ) }
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
-            { listBag.length ? listBag.map((object) => (
+            { bagItems.length ? bagItems.map((object) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
                   removable
                   editable
-                  eventModal={ () => openEditItemBagModal(`${object.product_option}-${object.size}`) }
-                  execFunction={ () => deleteBagItem(`${object.product_option}-${object.size}`) }
+                  eventModal={ () => openEditItemBagModal(object) }
+                  execFunction={ () => deleteBagItem(object) }
                 />
               </li>
             ))
@@ -149,7 +156,6 @@ function Bag({ token, listBag }: Props) {
           || openModal === 'addaddress'
           || openModal === 'addcard'
           || openModal === 'editbag'
-          // ${objectID.product_option}-${size}
         }
       >
         { openModal === 'address' && <RenderAdderess /> }

@@ -13,7 +13,7 @@ function AddBag({ colorSelected, sizeSelected }: PBtnAddBag) {
     const token = getCookie('u_token');
 
     if (buttonActive && token) {
-      await api2.post('/bag', {
+      const { data } = await api2.post('/bag', {
         quantity: 1,
         option_product_id: colorSelected.option,
         size: sizeSelected,
@@ -22,7 +22,8 @@ function AddBag({ colorSelected, sizeSelected }: PBtnAddBag) {
           authorization: `Bearer ${token}`,
         },
       });
-      if (redirect) router.push('/bag');
+
+      if (redirect && data.status === 201) router.push('/bag');
     } else {
       setActiveMsg(true);
     }

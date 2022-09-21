@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { api2 } from '../../../service/api';
 import style from './style.module.scss';
 
@@ -9,9 +9,11 @@ interface Props {
 }
 
 function CardEditbag({ identify, token, execeFunction }: Props) {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const updateItembag = async ({ target }: any) => {
+    setIsLoading(true);
     const split = identify.split('-');
-    await api2.patch('/bag', {
+    const res = await api2.patch('/bag', {
       quantity: Number(target.value),
       option_id: Number(split[0]),
       size: split[1],
@@ -20,7 +22,11 @@ function CardEditbag({ identify, token, execeFunction }: Props) {
         Authorization: `Bearer ${token}`,
       },
     }).catch((data) => ({ data }));
-    execeFunction('');
+    if (res.data.status === 200) {
+      setIsLoading(false);
+      execeFunction('');
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -40,6 +46,7 @@ function CardEditbag({ identify, token, execeFunction }: Props) {
             </li>
           )) }
         </ul>
+        { isLoading ? <div className="spinner" /> : null }
       </div>
     </div>
   );
