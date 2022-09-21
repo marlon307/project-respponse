@@ -63,7 +63,7 @@ function ContentBag() {
   const { listBag, token } = props;
 
   const [openModal, setOpenModal] = useState<string>('');
-  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeEditBagInfos | {}>({});
+  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeEditBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
 
   const deleteBagItem = useCallback(async (identify: TypeEditBagInfos) => {

@@ -11,6 +11,7 @@ const mockItem = [{
   mainImg: 'https://i.imgur.com/dDldc4q.png',
   price: 71.25,
   oldPrice: 75.00,
+  option: 1,
   colorName: 'Azul',
   color: '#74bcf7',
   size: 'M',
@@ -49,7 +50,6 @@ function MenuBag() {
                 <li key={ object.id + object.color + object.size }>
                   <SmallCard
                     objectID={ object }
-                    identifyBag={ object.id + object.color + object.size }
                     removable
                   />
                 </li>
