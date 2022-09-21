@@ -1,29 +1,37 @@
 import { CookieValueTypes } from 'cookies-next';
 import React, { useState } from 'react';
+import { TypeEditBagInfos } from '../../../@types/bag';
+import useBag from '../../../hooks/useBag';
 import { api2 } from '../../../service/api';
 import style from './style.module.scss';
 
 interface Props {
-  identify: string
-  token: CookieValueTypes
+  identify: TypeEditBagInfos;
+  token: CookieValueTypes;
   execeFunction: (params: string) => void
 }
 
 function CardEditbag({ identify, token, execeFunction }: Props) {
+  const { props, mutate } = useBag();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const updateItembag = async ({ target }: any) => {
     setIsLoading(true);
-    const split = identify.split('-');
     const res = await api2.patch('/bag', {
       quantity: Number(target.value),
-      option_id: Number(split[0]),
-      size: split[1],
+      option_id: identify.product_option,
+      size: identify.size,
     }, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }).catch((data) => ({ data }));
     if (res.data.status === 200) {
+      const newProps = [...props.listBag];
+      const index = props.listBag.indexOf(identify);
+      newProps.splice(index, 1, { ...props.listBag[index], quantity: Number(target.value) });
+      mutate({ listBag: newProps, token }, {
+        revalidate: false,
+      });
       setIsLoading(false);
       execeFunction('');
     }

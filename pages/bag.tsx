@@ -59,11 +59,11 @@ const Addacard = lazy(() => import('../components/Add/Addcard'));
 const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'));
 
 function ContentBag() {
-  const { props } = useBag();
+  const { props, mutate } = useBag();
   const { listBag, token } = props;
 
   const [openModal, setOpenModal] = useState<string>('');
-  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<string>('');
+  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeEditBagInfos | {}>({});
   const [hiddenList, setHiddenList] = useState(false);
 
   const deleteBagItem = useCallback(async (identify: TypeEditBagInfos) => {
@@ -78,14 +78,17 @@ function ContentBag() {
     }).catch((err) => ({ data: err }));
 
     if (data.status === 200) {
-      //
+      const newProps = [...props.listBag];
+      newProps.splice(props.listBag.indexOf(identify), 1);
+      mutate({ listBag: newProps, token }, {
+        revalidate: false,
+      });
     }
-  }, [listBag]);
+  }, [props.listBag]);
 
   const openEditItemBagModal = useCallback(async (identify: TypeEditBagInfos) => {
     setOpenModal('editbag');
-    // `${object.product_option}-${object.size}`
-    setIdentifyEditItemBag(`${identify.product_option}-${identify.size}`);
+    setIdentifyEditItemBag(identify);
   }, []);
 
   return (
