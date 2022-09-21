@@ -1,9 +1,10 @@
+import { CookieValueTypes } from 'cookies-next';
 import useSWR from 'swr';
 import { api2 } from '../service/api';
 
 type TUser = {
   route: string;
-  token: string;
+  token: CookieValueTypes;
 };
 
 const listAddress = async ({ route, token }: TUser) => {
@@ -22,7 +23,7 @@ const listAddress = async ({ route, token }: TUser) => {
   throw error;
 };
 
-const useAddress = <Data = any>(token: string) => {
+const useAddress = <Data = any>(token: CookieValueTypes) => {
   const { data, mutate, error } = useSWR<Data>(
     {
       route: '/address',

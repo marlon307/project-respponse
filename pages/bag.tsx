@@ -1,5 +1,6 @@
 import React, { useCallback, useState, lazy } from 'react';
 import type { GetServerSideProps } from 'next';
+import { SWRConfig } from 'swr';
 import BarBuy from '../components/Bars/BarBuy';
 import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
@@ -8,6 +9,7 @@ import HeadSEO from '../components/Head/HeadSEO';
 import { StateBagType, TypeEditBagInfos } from '../@types/bag';
 import { api2 } from '../service/api';
 import style from '../Sass/style.module.scss';
+import useBag from '../hooks/useBag';
 
 const stateBag: StateBagType = {
   bagItems: [],
@@ -56,16 +58,13 @@ const Addaddress = lazy(() => import('../components/Add/Address'));
 const Addacard = lazy(() => import('../components/Add/Addcard'));
 const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'));
 
-interface Props {
-  token: IToken['token'];
-  listBag: TypeEditBagInfos[];
-}
+function ContentBag() {
+  const { props } = useBag();
+  const { listBag, token } = props;
 
-function Bag({ token, listBag }: Props) {
   const [openModal, setOpenModal] = useState<string>('');
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<string>('');
   const [hiddenList, setHiddenList] = useState(false);
-  const [bagItems, setBagItems] = useState<TypeEditBagInfos[]>(listBag);
 
   const deleteBagItem = useCallback(async (identify: TypeEditBagInfos) => {
     const { data } = await api2.delete('/bag', {
@@ -79,12 +78,9 @@ function Bag({ token, listBag }: Props) {
     }).catch((err) => ({ data: err }));
 
     if (data.status === 200) {
-      setBagItems((currentItems) => {
-        currentItems.splice(currentItems.indexOf(identify), 1);
-        return [...currentItems];
-      });
+      //
     }
-  }, [bagItems]);
+  }, [listBag]);
 
   const openEditItemBagModal = useCallback(async (identify: TypeEditBagInfos) => {
     setOpenModal('editbag');
@@ -94,10 +90,6 @@ function Bag({ token, listBag }: Props) {
 
   return (
     <>
-      <HeadSEO
-        title="Sacola e Checkout"
-        description="Finalize sua compra"
-      />
       <div className={ style.bag }>
         <section className={ style.list }>
           <div className={ style.title }>
@@ -107,7 +99,7 @@ function Bag({ token, listBag }: Props) {
               </svg>
               Sacola
             </h1>
-            { bagItems.length
+            { listBag.length
               ? (
                 <button
                   type="button"
@@ -122,14 +114,14 @@ function Bag({ token, listBag }: Props) {
                 { ' ' }
                 (
                 { ' ' }
-                { bagItems.length }
+                { listBag.length }
                 { ' ' }
                 )
               </span>
             ) }
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
-            { bagItems.length ? bagItems.map((object) => (
+            { listBag.length ? listBag.map((object: TypeEditBagInfos) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
@@ -173,6 +165,27 @@ function Bag({ token, listBag }: Props) {
   );
 }
 
+interface Props {
+  fallback: {
+    token: IToken['token'];
+    listBag: TypeEditBagInfos[];
+  }
+}
+
+function Bag({ fallback }: Props) {
+  return (
+    <>
+      <HeadSEO
+        title="Sacola e Checkout"
+        description="Finalize sua compra"
+      />
+      <SWRConfig value={ { fallback } }>
+        <ContentBag />
+      </SWRConfig>
+    </>
+  );
+}
+
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (req.cookies.u_token) {
     const { data } = await api2.get('/bag', {
@@ -183,8 +196,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 
     return {
       props: {
-        token: req.cookies.u_token,
-        listBag: data.list_bag,
+        fallback: {
+          '/bag': {
+            token: req.cookies.u_token,
+            listBag: data.list_bag,
+          },
+        },
       },
     };
   }

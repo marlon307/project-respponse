@@ -1,12 +1,11 @@
-import useSWR from 'swr';
 import { getCookie } from 'cookies-next';
+import useSWR from 'swr';
 import { api2 } from '../service/api';
 
-export const addBag = async () => {
+export const listBag = async (path: string) => {
   const token = getCookie('u_token');
-
   if (token) {
-    const { data } = await api2.get('/bag', {
+    const { data } = await api2.get(path, {
       headers: {
         authorization: `Bearer ${token}`,
       },
@@ -20,15 +19,20 @@ export const addBag = async () => {
 };
 
 const useBag = () => {
-  const { data, mutate, error } = useSWR('/bag', addBag);
-
+  const { data, mutate, error } = useSWR('/bag', listBag, {
+    revalidateOnMount: false,
+  });
   const loading = !data && !error;
   const loggedOut = error && error.status === 401;
+  const token = getCookie('u_token');
 
   return {
     loading,
     loggedOut,
-    user: data,
+    props: {
+      listBag: data.listBag ? data.listBag : data.list_bag,
+      token,
+    },
     mutate,
   };
 };

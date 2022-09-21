@@ -1,10 +1,11 @@
+import { CookieValueTypes } from 'cookies-next';
 import React, { useState } from 'react';
 import { api2 } from '../../../service/api';
 import style from './style.module.scss';
 
 interface Props {
   identify: string
-  token: string
+  token: CookieValueTypes
   execeFunction: (params: string) => void
 }
 

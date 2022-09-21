@@ -1,3 +1,4 @@
+import { CookieValueTypes } from 'cookies-next';
 import React, { FormEvent, useState } from 'react';
 import useAddress from '../../hooks/useAddress';
 import { api2 } from '../../service/api';
@@ -6,7 +7,7 @@ import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
 type TAddress = {
-  token: IToken['token'];
+  token: CookieValueTypes;
   execFunction: () => void;
 };
 
