@@ -72,7 +72,7 @@ function ContentBag() {
         authorization: `Bearer ${token}`,
       },
       data: {
-        option_id: identify.product_option,
+        product_option: identify.product_option,
         size: identify.size,
       },
     }).catch((err) => ({ data: err }));

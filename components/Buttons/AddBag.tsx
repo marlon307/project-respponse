@@ -6,15 +6,15 @@ import style from './style.module.scss';
 import useBag from '../../hooks/useBag';
 import { TypeEditBagInfos } from '../../@types/bag';
 
-function AddBag({ option, sizeSelected }: PBtnAddBag) {
-  const { props } = useBag(true);
+function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
+  const { props, mutate } = useBag(true);
 
   const [buttonActive, setbutonActive] = useState(false);
   const [activeMsg, setActiveMsg] = useState(false);
 
   async function handleClick(redirect: boolean) {
     const index = props.listBag.findIndex(
-      (objectindex: TypeEditBagInfos) => objectindex.product_option === option.option_id
+      (objectindex: TypeEditBagInfos) => objectindex.product_option === option.product_option
         && objectindex.size === sizeSelected,
     );
 
@@ -27,12 +27,27 @@ function AddBag({ option, sizeSelected }: PBtnAddBag) {
         },
         data: {
           quantity: index !== -1 ? props.listBag[index].quantity + 1 : 1,
-          option_id: option.option_id,
+          product_option: option.option_id,
           size: sizeSelected,
         },
       });
 
       if (redirect && (data.status === 201 || data.status === 200)) {
+        if (index !== -1) {
+          props.listBag[index].quantity += 1;
+          mutate({ ...props }, { revalidate: false });
+        } else {
+          props.listBag = [...props.listBag, {
+            ...option,
+            ...infoTitelAndType,
+            category_name: infoTitelAndType.ctgName,
+            product_option: option.option_id,
+            size: sizeSelected,
+            quantity: 1,
+            url_image: option.images[0].urlImg,
+          }];
+        }
+        mutate({ ...props }, { revalidate: false });
         router.push('/bag');
       }
     } else {

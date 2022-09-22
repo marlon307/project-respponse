@@ -5,7 +5,7 @@ interface IObjectsColor {
   idc: string;
   colorName: string;
   color: string;
-  option_id: number
+  product_option: number
 }
 
 interface Props {
@@ -22,7 +22,7 @@ function BarColors({ array, execFunction }: Props) {
     <div className={ style.barcolor } title="Cores">
       { array !== undefined
         && array.map(({
-          idc, colorName, color, option_id: option,
+          idc, colorName, color, product_option: option,
         }, index) => (
           <button type="button" key={ color }>
             <label htmlFor={ idc }>

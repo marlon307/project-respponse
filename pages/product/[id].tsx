@@ -116,6 +116,10 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
             <AddBag
               option={ option[colorChecked.index] }
               sizeSelected={ sizeChecked }
+              infoTitelAndType={ {
+                title,
+                ctgName,
+              } }
             />
           </div>
           <div className={ style.more }>

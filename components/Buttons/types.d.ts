@@ -32,6 +32,10 @@ export interface ColorSelected {
 export interface PBtnAddBag {
   option: TypeEditBagInfos;
   sizeSelected: string;
+  infoTitelAndType: {
+    title: string;
+    ctgName: string
+  }
 }
 
 export type TObjectUserBag = {

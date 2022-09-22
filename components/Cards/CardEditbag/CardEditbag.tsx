@@ -18,7 +18,7 @@ function CardEditbag({ identify, token, execeFunction }: Props) {
     setIsLoading(true);
     const res = await api2.patch('/bag', {
       quantity: Number(target.value),
-      option_id: identify.product_option,
+      product_option: identify.product_option,
       size: identify.size,
     }, {
       headers: {
