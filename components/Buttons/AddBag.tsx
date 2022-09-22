@@ -14,10 +14,9 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
 
   async function handleClick(redirect: boolean) {
     const index = props.listBag.findIndex(
-      (objectindex: TypeEditBagInfos) => objectindex.product_option === option.product_option
+      (objectindex: TypeEditBagInfos) => objectindex.product_option === option.option_id
         && objectindex.size === sizeSelected,
     );
-
     if (buttonActive && props.token) {
       const { data } = await api2({
         method: index !== -1 ? 'PATCH' : 'POST',
