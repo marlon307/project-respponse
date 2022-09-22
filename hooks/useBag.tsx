@@ -18,19 +18,20 @@ export const listBag = async (path: string) => {
   throw error;
 };
 
-const useBag = () => {
+const useBag = (revalidate: boolean) => {
   const { data, mutate, error } = useSWR('/bag', listBag, {
-    revalidateOnMount: false,
+    revalidateOnMount: revalidate,
   });
   const loading = !data && !error;
   const loggedOut = error && error.status === 401;
   const token = getCookie('u_token');
+  const bagList = data?.list_bag ?? data?.listBag;
 
   return {
     loading,
     loggedOut,
     props: {
-      listBag: data.listBag ? data.listBag : data.list_bag,
+      listBag: bagList,
       token,
     },
     mutate,

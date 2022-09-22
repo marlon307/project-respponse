@@ -22,13 +22,15 @@ export type TObjectProduct = {
   }>
 };
 
+export interface ColorSelected {
+  color: string;
+  colorName: string;
+  option: number;
+  index: number;
+}
+
 export interface PBtnAddBag {
-  colorSelected: {
-    color: string;
-    colorName: string;
-    option: number;
-    index: number;
-  };
+  option: TypeEditBagInfos;
   sizeSelected: string;
 }
 

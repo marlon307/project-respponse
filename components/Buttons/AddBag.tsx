@@ -1,43 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import router from 'next/router';
-import { getCookie } from 'cookies-next';
 import { api2 } from '../../service/api';
 import type { PBtnAddBag } from './types';
 import style from './style.module.scss';
+import useBag from '../../hooks/useBag';
+import { TypeEditBagInfos } from '../../@types/bag';
 
-function AddBag({ colorSelected, sizeSelected }: PBtnAddBag) {
+function AddBag({ option, sizeSelected }: PBtnAddBag) {
+  const { props } = useBag(true);
+
   const [buttonActive, setbutonActive] = useState(false);
   const [activeMsg, setActiveMsg] = useState(false);
 
   async function handleClick(redirect: boolean) {
-    const token = getCookie('u_token');
+    const index = props.listBag.findIndex(
+      (objectindex: TypeEditBagInfos) => objectindex.product_option === option.option_id
+        && objectindex.size === sizeSelected,
+    );
 
-    if (buttonActive && token) {
-      const { data } = await api2.post('/bag', {
-        quantity: 1,
-        option_product_id: colorSelected.option,
-        size: sizeSelected,
-      }, {
+    if (buttonActive && props.token) {
+      const { data } = await api2({
+        method: index !== -1 ? 'PATCH' : 'POST',
+        url: '/bag',
         headers: {
-          authorization: `Bearer ${token}`,
+          authorization: `Bearer ${props.token}`,
+        },
+        data: {
+          quantity: index !== -1 ? props.listBag[index].quantity + 1 : 1,
+          option_id: option.option_id,
+          size: sizeSelected,
         },
       });
 
-      if (redirect && data.status === 201) router.push('/bag');
+      if (redirect && (data.status === 201 || data.status === 200)) {
+        router.push('/bag');
+      }
     } else {
       setActiveMsg(true);
     }
   }
 
   useEffect(() => {
-    if (colorSelected.color === '' && sizeSelected === '') {
+    if (option.color === '' && sizeSelected === '') {
       setbutonActive(false);
     }
-    if (colorSelected.color !== '' && sizeSelected !== '') {
+    if (option.color !== '' && sizeSelected !== '') {
       setbutonActive(true);
       setActiveMsg(false);
     }
-  }, [activeMsg, colorSelected.color, sizeSelected]);
+  }, [activeMsg, option.color, sizeSelected]);
 
   return (
     <div className={ style.contbtn }>

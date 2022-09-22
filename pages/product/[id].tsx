@@ -12,7 +12,7 @@ import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 // import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
 import style from './style.module.scss';
-import { PBtnAddBag } from '../../components/Buttons/types';
+import { ColorSelected } from '../../components/Buttons/types';
 
 function ProductId({ product/* , similar */ }: TypeProduct) {
   const {
@@ -21,7 +21,7 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
   } = product;
 
   const [sizeChecked, setSizeChecked] = useState('');
-  const [colorChecked, setColorChecked] = useState<PBtnAddBag['colorSelected']>({
+  const [colorChecked, setColorChecked] = useState<ColorSelected>({
     color: '',
     colorName: '',
     index: 0,
@@ -114,7 +114,7 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
               />
             </div>
             <AddBag
-              colorSelected={ colorChecked }
+              option={ option[colorChecked.index] }
               sizeSelected={ sizeChecked }
             />
           </div>

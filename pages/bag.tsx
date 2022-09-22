@@ -59,7 +59,7 @@ const Addacard = lazy(() => import('../components/Add/Addcard'));
 const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'));
 
 function ContentBag() {
-  const { props, mutate } = useBag();
+  const { props, mutate } = useBag(false);
   const { listBag, token } = props;
 
   const [openModal, setOpenModal] = useState<string>('');

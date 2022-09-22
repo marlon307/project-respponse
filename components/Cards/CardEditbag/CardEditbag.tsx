@@ -12,7 +12,7 @@ interface Props {
 }
 
 function CardEditbag({ identify, token, execeFunction }: Props) {
-  const { props, mutate } = useBag();
+  const { props, mutate } = useBag(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const updateItembag = async ({ target }: any) => {
     setIsLoading(true);
