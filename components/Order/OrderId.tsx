@@ -7,9 +7,10 @@ import style from './style.module.scss';
 
 interface Props {
   token: string;
+  orderid: number;
 }
 
-function OrderId({ token }: Props) {
+function OrderId({ token, orderid }: Props) {
   const [order, setOrder] = useState({
     id: 0,
     status_id: 0,
@@ -37,7 +38,7 @@ function OrderId({ token }: Props) {
 
   useEffect(() => {
     async function getOrderId() {
-      const { data } = await api2.get(`/order/${13}`, {
+      const { data } = await api2.get(`/order/${orderid}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -98,14 +99,16 @@ function OrderId({ token }: Props) {
         <div className={ style.orderadders }>
           <div>
             <h3>Dados da entrega</h3>
+            <span>Entregar para Nome da Silva</span>
             <span>
+              Casa
+              { ' - ' }
               { order?.address?.road }
               { ', ' }
               { order?.address?.number_home }
               { ' - ' }
               { order?.address?.district }
             </span>
-            <span>Casa</span>
             <span>
               { order?.address?.city }
               { ', ' }

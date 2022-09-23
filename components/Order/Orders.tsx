@@ -1,13 +1,28 @@
-import React, { useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { api2 } from '../../service/api';
 import style from './style.module.scss';
 
 type TPropsOrders = {
-  execFunction: Function
+  execFunction: Function;
+  token: string;
 };
 
-function Orders({ execFunction }: TPropsOrders) {
+function Orders({ execFunction, token }: TPropsOrders) {
+  const [orders, setOrders] = useState<[]>([]);
   const orderIdOpen = useCallback((orderId: string) => {
     execFunction!(orderId);
+  }, []);
+
+  useEffect(() => {
+    async function getOrders() {
+      const { data } = await api2.get('/order', {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setOrders(data.orders);
+    }
+    getOrders();
   }, []);
 
   return (
@@ -20,21 +35,20 @@ function Orders({ execFunction }: TPropsOrders) {
         </tr>
       </thead>
       <tbody>
-        <tr onClick={ () => orderIdOpen('00003') }>
-          <td>0003</td>
-          <td>11/04/22</td>
-          <td>Pag. Pendente</td>
-        </tr>
-        <tr onClick={ () => orderIdOpen('00002') }>
-          <td>0002</td>
-          <td>09/04/22</td>
-          <td>Enviado.</td>
-        </tr>
-        <tr onClick={ () => orderIdOpen('00001') }>
-          <td>0001</td>
-          <td>26/12/21</td>
-          <td>Entregue</td>
-        </tr>
+        { orders.map(({ id, date_order, status }) => (
+          <tr key={ id } onClick={ () => orderIdOpen(id) }>
+            <td>{ id }</td>
+            <td>
+              { new Date(date_order)
+                .toLocaleDateString('pt-BR', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                }) }
+            </td>
+            <td>{ status }</td>
+          </tr>
+        )) }
       </tbody>
     </table>
   );

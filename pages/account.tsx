@@ -29,15 +29,17 @@ function Account({ token }: TAccount) {
   const [dropOption, setDropOption] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
+  const [orderid, setOrderId] = useState<number>(0);
 
   const functionOpenModal = useCallback((type: React.SetStateAction<string>) => {
     setOpenModal(true);
     setTypeModal(type);
   }, []);
 
-  const openOrderId = useCallback(() => {
+  const openOrderId = useCallback((idorder: number) => {
     setOpenModal(true);
     setTypeModal('order');
+    setOrderId(idorder);
   }, []);
 
   function closeModal() {
@@ -86,7 +88,7 @@ function Account({ token }: TAccount) {
         </a>
         <div className={ style.dropcontainer }>
           <Suspense fallback={ <div className="spinner" /> }>
-            <Order execFunction={ openOrderId } />
+            <Order execFunction={ openOrderId } token={ token } />
           </Suspense>
         </div>
       </div>
@@ -161,7 +163,7 @@ function Account({ token }: TAccount) {
         isOpen={ openModal }
         openModal={ setOpenModal }
       >
-        { (openModal && typeModal === 'order') && <OrderId token={ token } /> }
+        { (openModal && typeModal === 'order') && <OrderId token={ token } orderid={ orderid } /> }
         { (openModal && typeModal === 'cards') && <AddCard /> }
         { (openModal && typeModal === 'address') && <Addaderess token={ token } execFunction={ closeModal! } /> }
       </ContentModal>
