@@ -1,16 +1,63 @@
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import React from 'react';
-import mockBag from '../../service/mockBag';
 import { SmallCard } from '../Cards';
 import CustomLink from '../CustomLink';
+import { api2 } from '../../service/api';
 import style from './style.module.scss';
 
-function OrderId() {
+interface Props {
+  token: string;
+}
+
+function OrderId({ token }: Props) {
+  const [order, setOrder] = useState({
+    id: 0,
+    status_id: 0,
+    address: {
+      road: '',
+      number_home: '',
+      district: '',
+      city: '',
+      uf: '',
+      zipcode: '',
+    },
+    list_products: [],
+    value_order: 0,
+    date_order: '',
+    carrier: {
+      name_carrier: '',
+      code: null,
+    },
+  });
   function copyCode(event: { preventDefault: () => void; }) {
     event.preventDefault();
     // https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
     navigator.clipboard.writeText('QF000000000BR');
   }
+
+  useEffect(() => {
+    async function getOrderId() {
+      const { data } = await api2.get(`/order/${13}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+
+      data.order.date_order = new Date(data.order.date_order)
+        .toLocaleDateString('pt-BR', {
+          weekday: 'long',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+
+      setOrder(data.order);
+    }
+    getOrderId();
+  }, []);
 
   return (
     <div className={ style.order }>
@@ -20,7 +67,7 @@ function OrderId() {
             <span>
               <b>Numero do pedido:</b>
               { ' ' }
-              000001
+              { order.id }
             </span>
             <span>
               <b>Forma de pagamento:</b>
@@ -31,13 +78,15 @@ function OrderId() {
           <span>
             <b>Data:</b>
             { ' ' }
-            01/08/2021
+            <span>
+              { order.date_order }
+            </span>
           </span>
         </div>
         <div className={ style.status }>
           <h2>Status do Pedido</h2>
           <div className={ style.progressbar }>
-            <div data-status="4">
+            <div data-status={ order.status_id }>
               <span title="Pedido Realizado" aria-label="Pedido Realizado" />
               <span title="Pagamento Aprovado" aria-label="Pagamento Aprovado" />
               <span title="NF-e Disponivel" aria-label="NF-e Disponivel" />
@@ -49,15 +98,27 @@ function OrderId() {
         <div className={ style.orderadders }>
           <div>
             <h3>Dados da entrega</h3>
-            <span>Rua São Paulo, 000 - Santa Cruz </span>
+            <span>
+              { order?.address?.road }
+              { ', ' }
+              { order?.address?.number_home }
+              { ' - ' }
+              { order?.address?.district }
+            </span>
             <span>Casa</span>
-            <span>Valença, MG 00000-000</span>
+            <span>
+              { order?.address?.city }
+              { ', ' }
+              { order?.address?.uf }
+              { ' - ' }
+              { order?.address?.zipcode }
+            </span>
           </div>
           <div>
-            <h3>Correios</h3>
+            <h3>{ order.carrier.name_carrier }</h3>
             <span className={ style.shippingcompany }>
-              <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">QF000000000BR</a>
-
+              { order.carrier.code ? <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ order.carrier.code }</a>
+                : <span>Código indisponível no momento.</span> }
               <Link href="/" passHref>
                 <CustomLink
                   onClick={ copyCode! }
@@ -73,7 +134,7 @@ function OrderId() {
         </div>
         <div className={ style.orderitems }>
           <ul>
-            { mockBag.map((object) => (
+            { order.list_products?.map((object: { id: number }) => (
               <li key={ object.id }>
                 <SmallCard
                   removable={ false }
@@ -98,7 +159,12 @@ function OrderId() {
           </div>
           <div>
             <span>Total</span>
-            <span>R$ 125,99</span>
+            <span>
+              { order.value_order?.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
+            </span>
           </div>
         </div>
       </div>
