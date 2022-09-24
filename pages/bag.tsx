@@ -12,7 +12,6 @@ import style from '../Sass/style.module.scss';
 import useBag from '../hooks/useBag';
 
 const stateBag: StateBagType = {
-  bagItems: [],
   valueBag: 0,
   itemEditBag: {
     product_option: 0,
@@ -61,7 +60,6 @@ const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'
 function ContentBag() {
   const { props, mutate } = useBag(false);
   const { listBag, token } = props;
-
   const [openModal, setOpenModal] = useState<string>('');
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeEditBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
@@ -110,7 +108,7 @@ function ContentBag() {
                   aria-hidden={ hiddenList }
                   onClick={ () => setHiddenList(!hiddenList) }
                 />
-              ) : '' }
+              ) : null }
             { hiddenList && (
               <span>
                 Informações da sua compra
@@ -143,7 +141,7 @@ function ContentBag() {
           infoCheckout={ stateBag.checkout }
         />
       </div>
-      <BarBuy stateBag={ stateBag } />
+      <BarBuy listProducts={ listBag } token={ token } />
       <ContentModal
         openModal={ setOpenModal }
         isOpen={

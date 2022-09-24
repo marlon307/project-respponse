@@ -40,7 +40,6 @@ interface TAddress {
 }
 
 interface StateBagType {
-  bagItems: Array<TypeAddBagInfos>;
   valueBag: number;
   itemEditBag: TypeEditBagInfos;
   checkout: {

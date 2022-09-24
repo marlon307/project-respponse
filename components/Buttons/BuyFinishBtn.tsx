@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CookieValueTypes } from 'cookies-next/lib/types';
+import { TypeEditBagInfos } from '../../@types/bag';
+import api, { api2 } from '../../service/api';
 import style from './style.module.scss';
-import api from '../../service/api';
-import { StateBagType } from '../../@types/bag';
 
 type TBuyFinish = {
-  dataBag: {
-    bagItems: StateBagType['bagItems']
-  };
+  listProducts: TypeEditBagInfos[];
+  token: CookieValueTypes;
 };
 
-function BuyFinishBtn({ dataBag }: TBuyFinish) {
+function BuyFinishBtn({ listProducts, token }: TBuyFinish) {
+  const [progress, setProgress] = useState<number | string>('Finalizar Compra');
   async function handleClickBuy() {
-    const listRevalidate = dataBag.bagItems.map(({ id }) => id.toString());
+    if (listProducts.length) {
+      setProgress('Processando pedido...');
+      const listRevalidate = listProducts.map(({ id }) => id.toString());
 
-    await api.post(
-      '/revalidate',
-      { listRevalidate },
-    ).catch((error) => ({ data: error.message }));
+      const { data } = await api2.post('/register_order', {
+        address: 1,
+        carrie: 1,
+      }, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }).catch((err) => ({ data: err }));
+
+      if (data.status === 200) {
+        await api.post('/revalidate', { listRevalidate: [...new Set(listRevalidate)] })
+          .catch((error) => ({ data: error.message }));
+      }
+
+      setProgress(`Pedido: #${data.order.number_order.toString().padStart(6, '0')}`);
+    }
   }
 
   return (
@@ -25,7 +40,7 @@ function BuyFinishBtn({ dataBag }: TBuyFinish) {
       onClick={ handleClickBuy }
       className={ style.buyFinish }
     >
-      Finalizar Compra
+      { progress }
     </button>
   );
 }

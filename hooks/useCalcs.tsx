@@ -1,8 +1,6 @@
-type ArrObj = Array<{
-  quantity: number;
-  price: number;
-  discount: number
-}>;
+import { TypeAddBagInfos } from '../@types/bag';
+
+type ArrObj = TypeAddBagInfos[];
 
 const calcAllValuesArray = (array: ArrObj) => {
   const value = array?.reduce((
