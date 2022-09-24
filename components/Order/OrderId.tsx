@@ -30,10 +30,10 @@ function OrderId({ token, orderid }: Props) {
       code: null,
     },
   });
-  function copyCode(event: { preventDefault: () => void; }) {
+  function copyCode(event: React.SyntheticEvent<Element, Event>, code: string) {
     event.preventDefault();
     // https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
-    navigator.clipboard.writeText('QF000000000BR');
+    navigator.clipboard.writeText(code);
   }
 
   useEffect(() => {
@@ -67,8 +67,8 @@ function OrderId({ token, orderid }: Props) {
           <div>
             <span>
               <b>Numero do pedido:</b>
-              { ' ' }
-              { order.id }
+              { ' #' }
+              { order.id.toString().padStart(6, '0') }
             </span>
             <span>
               <b>Forma de pagamento:</b>
@@ -124,7 +124,7 @@ function OrderId({ token, orderid }: Props) {
                 : <span>Código indisponível no momento.</span> }
               <Link href="/" passHref>
                 <CustomLink
-                  onClick={ copyCode! }
+                  onClick={ (e) => copyCode(e, order.carrier.code ?? '') }
                   ariaLabel="Copiar"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
