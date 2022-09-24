@@ -53,6 +53,7 @@ function OrderId({ token, orderid }: Props) {
           hour: '2-digit',
           minute: '2-digit',
           second: '2-digit',
+          timeZone: 'UTC',
         });
 
       setOrder(data.order);
@@ -138,7 +139,7 @@ function OrderId({ token, orderid }: Props) {
         <div className={ style.orderitems }>
           <ul>
             { order.list_products?.map((object: { id: number }) => (
-              <li key={ object.id }>
+              <li key={ Math.random() * object.id }>
                 <SmallCard
                   removable={ false }
                   objectID={ object }

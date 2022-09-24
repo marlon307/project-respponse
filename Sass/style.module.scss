@@ -226,6 +226,7 @@
 
     img {
       object-fit: cover;
+      -webkit-user-drag: none;
     }
   }
 }

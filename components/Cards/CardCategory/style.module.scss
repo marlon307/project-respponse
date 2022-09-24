@@ -25,6 +25,7 @@
     object-fit: cover;
     transition: 0.2s;
     will-change: transform;
+    -webkit-user-drag: none;
   }
 
   span:nth-child(even) {

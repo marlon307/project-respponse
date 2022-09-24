@@ -32,6 +32,7 @@ function LoadingImage({
       fill
       priority={ priority }
       loading={ loading }
+      draggable="false"
       sizes={ sizes }
       placeholder="blur"
       blurDataURL={ `data:image/svg+xml;base64,${toBase64(shimmer('100%', '100%'))}` }
