@@ -1,0 +1,26 @@
+import { TypeAddBagInfos } from '../../@types/bag';
+
+interface Props {
+  token: string;
+  orderid: number;
+}
+
+interface StateOrder {
+  id?: number;
+  status_id?: number,
+  address?: {
+    road: string;
+    number_home: string;
+    district: string;
+    city: string;
+    uf: string;
+    zipcode: string;
+  };
+  list_products?: TypeAddBagInfos[];
+  value_order?: number;
+  date_order?: string;
+  carrier?: {
+    name_carrier: string;
+    code: string;
+  },
+}
