@@ -1,12 +1,12 @@
 import { CookieValueTypes } from 'cookies-next';
 import React, { useState } from 'react';
-import { TypeEditBagInfos } from '../../../@types/bag';
+import { TypeAddBagInfos } from '../../../@types/bag';
 import useBag from '../../../hooks/useBag';
 import { api2 } from '../../../service/api';
 import style from './style.module.scss';
 
 interface Props {
-  identify: TypeEditBagInfos;
+  identify: TypeAddBagInfos;
   token: CookieValueTypes;
   execeFunction: (params: string) => void
 }

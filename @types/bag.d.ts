@@ -2,12 +2,11 @@ import type { ImageProps } from 'next/image';
 
 export interface TypeEditBagInfos {
   id: number;
-  type: string;
+  category_name: string;
   title: string;
   quantity: number;
-  identifyBag: string;
-  mainImg: Object<ImageProps['src']>;
-  colorName: string;
+  url_image: Object<ImageProps['src']>;
+  color_name: string;
   color: string;
   size: string;
   product_option: number;

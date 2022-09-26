@@ -3,33 +3,11 @@ import Link from 'next/link';
 import { SmallCard } from '../Cards';
 import CustomLink from '../CustomLink';
 import { api2 } from '../../service/api';
+import { Props, StateOrder } from './type';
 import style from './style.module.scss';
 
-interface Props {
-  token: string;
-  orderid: number;
-}
-
 function OrderId({ token, orderid }: Props) {
-  const [order, setOrder] = useState({
-    id: 0,
-    status_id: 0,
-    address: {
-      road: '',
-      number_home: '',
-      district: '',
-      city: '',
-      uf: '',
-      zipcode: '',
-    },
-    list_products: [],
-    value_order: 0,
-    date_order: '',
-    carrier: {
-      name_carrier: '',
-      code: null,
-    },
-  });
+  const [order, setOrder] = useState<StateOrder>({});
   function copyCode(event: React.SyntheticEvent<Element, Event>, code: string) {
     event.preventDefault();
     // https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
@@ -69,7 +47,7 @@ function OrderId({ token, orderid }: Props) {
             <span>
               <b>Numero do pedido:</b>
               { ' #' }
-              { order.id.toString().padStart(6, '0') }
+              { order?.id?.toString().padStart(6, '0') }
             </span>
             <span>
               <b>Forma de pagamento:</b>
@@ -119,13 +97,13 @@ function OrderId({ token, orderid }: Props) {
             </span>
           </div>
           <div>
-            <h3>{ order.carrier.name_carrier }</h3>
+            <h3>{ order.carrier?.name_carrier }</h3>
             <span className={ style.shippingcompany }>
-              { order.carrier.code ? <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ order.carrier.code }</a>
+              { order.carrier?.code ? <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ order.carrier?.code }</a>
                 : <span>Código indisponível no momento.</span> }
               <Link href="/" passHref>
                 <CustomLink
-                  onClick={ (e) => copyCode(e, order.carrier.code ?? '') }
+                  onClick={ (e) => copyCode(e, order.carrier?.code ?? '') }
                   ariaLabel="Copiar"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -138,8 +116,8 @@ function OrderId({ token, orderid }: Props) {
         </div>
         <div className={ style.orderitems }>
           <ul>
-            { order.list_products?.map((object: { id: number }) => (
-              <li key={ Math.random() * object.id }>
+            { order.list_products?.map((object) => (
+              <li key={ `${object.id}${object.color}${object.size}` }>
                 <SmallCard
                   removable={ false }
                   objectID={ object }

@@ -6,7 +6,7 @@ import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
 import HeadSEO from '../components/Head/HeadSEO';
-import { StateBagType, TypeEditBagInfos } from '../@types/bag';
+import { StateBagType, TypeAddBagInfos } from '../@types/bag';
 import { api2 } from '../service/api';
 import style from '../Sass/style.module.scss';
 import useBag from '../hooks/useBag';
@@ -17,15 +17,14 @@ const stateBag: StateBagType = {
     product_option: 0,
     id: 0,
     title: '',
-    type: '',
+    category_name: '',
     color: '',
-    colorName: '',
-    mainImg: {
+    color_name: '',
+    url_image: {
       src: '',
     },
     size: '',
     quantity: 0,
-    identifyBag: '',
   },
   checkout: {
     adderessSelected: {
@@ -61,10 +60,10 @@ function ContentBag() {
   const { props, mutate } = useBag(false);
   const { listBag, token } = props;
   const [openModal, setOpenModal] = useState<string>('');
-  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeEditBagInfos | any>({});
+  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
 
-  const deleteBagItem = useCallback(async (identify: TypeEditBagInfos) => {
+  const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
     const { data } = await api2.delete('/bag', {
       headers: {
         authorization: `Bearer ${token}`,
@@ -84,7 +83,7 @@ function ContentBag() {
     }
   }, [props.listBag]);
 
-  const openEditItemBagModal = useCallback(async (identify: TypeEditBagInfos) => {
+  const openEditItemBagModal = useCallback(async (identify: TypeAddBagInfos) => {
     setOpenModal('editbag');
     setIdentifyEditItemBag(identify);
   }, []);
@@ -122,7 +121,7 @@ function ContentBag() {
             ) }
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
-            { listBag.length ? listBag.map((object: TypeEditBagInfos) => (
+            { listBag.length ? listBag.map((object: TypeAddBagInfos) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
@@ -169,7 +168,7 @@ function ContentBag() {
 interface Props {
   fallback: {
     token: IToken['token'];
-    listBag: TypeEditBagInfos[];
+    listBag: TypeAddBagInfos[];
   }
 }
 
