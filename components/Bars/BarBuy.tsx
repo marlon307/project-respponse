@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { CookieValueTypes } from 'cookies-next/lib/types';
 import calcAllValuesArray from '../../hooks/useCalcs';
 import { StateBagType, TypeAddBagInfos } from '../../@types/bag';
@@ -17,18 +17,17 @@ type TBarBuy = {
 function BarBuy({ listProducts, stateBag, token }: TBarBuy) {
   // const { formatPay, shipping, cupomAplicate } = stateBag.checkout.formatPay;
   const [openInfo, setOpenInfo] = useState(false);
-  const [valueBag, setValueBag] = useState(0);
 
   function openBarMenu(event: { preventDefault: () => void; }) {
     event.preventDefault();
     setOpenInfo(!openInfo);
   }
 
-  useEffect(() => {
-    // const calc = checkout.shipping.valueShipping
-    //   + calcAllValuesArray(stateBag) - checkout.cupomAplicate.descountCupom;
-    setValueBag(calcAllValuesArray(listProducts));
-  }, [listProducts/* , stateBag.checkout */]);
+  // useEffect(() => {
+  //   // const calc = checkout.shipping.valueShipping
+  //   //   + calcAllValuesArray(stateBag) - checkout.cupomAplicate.descountCupom;
+  //   setValueBag(calcAllValuesArray(listProducts));
+  // }, [listProducts/* , stateBag.checkout */]);
 
   return (
     <section className={ style.buybar } data-active={ openInfo }>
@@ -64,7 +63,7 @@ function BarBuy({ listProducts, stateBag, token }: TBarBuy) {
           <div>
             <span>Valor Total:</span>
             <span>
-              { valueBag.toLocaleString('pt-br', {
+              { calcAllValuesArray(listProducts)?.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }

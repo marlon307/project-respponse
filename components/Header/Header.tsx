@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import SearchBar from '../SearchBar';
 import Bar from '../SearchBar/Bar';
-import MenuBag from './components/MenuBag';
+// import MenuBag from './components/MenuBag';
 import MenuUser from './components/MenuUser';
 import MenuMobile from './components/MenuMobile';
-import style from './style.module.scss';
 import useLogin from '../../hooks/useLogin';
+import style from './style.module.scss';
 
 function Header() {
   const { loggedOut } = useLogin();
@@ -35,7 +35,15 @@ function Header() {
             searchopen={ searchopen }
             setSearchopen={ setSearchopen }
           />
-          { !loggedOut && <MenuBag /> }
+          { !loggedOut && (
+            <Link href="/bag">
+              <a aria-label="Sacola" className={ style.bag } data-bag={ Boolean(1) }>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 7h-3V6a4 4 0 1 0-8 0v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1Zm-9-1a2 2 0 1 1 4 0v1h-4V6Zm8 13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9h2v1a1 1 0 1 0 2 0V9h4v1a1 1 0 0 0 2 0V9h2v10Z" fill="#333" />
+                </svg>
+              </a>
+            </Link>
+          ) }
           <MenuUser data={ !loggedOut } />
           <MenuMobile data={ !loggedOut } />
         </nav>

@@ -1,40 +1,31 @@
-import React, { useCallback, memo } from 'react';
+import React, { useCallback } from 'react';
 import { mockShipping, mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import CustomLink from '../CustomLink';
-import { StateBagType } from '../../@types/bag';
+import { StateBagType, TAddress } from '../../@types/bag';
 import style from './style.module.scss';
 
 type PropsCheckout = {
   setOpenModal: Function;
   infoCheckout: StateBagType['checkout']
+  addSelected?: TAddress
+  qunatityAdd: number
 };
 
-function Checkout({ setOpenModal, infoCheckout }: PropsCheckout) {
-  const {
-    name, road, district, number, uf, city, zipcode,
-  } = infoCheckout.adderessSelected;
+function Checkout({
+  setOpenModal, addSelected, infoCheckout, qunatityAdd,
+}: PropsCheckout) {
   const { shippingCompany } = infoCheckout.shipping;
 
   const handleSipping = useCallback((idInput: string, value: number) => {
     // eslint-disable-next-line no-console
     console.log(idInput, value);
-
-    // dipatch(SELECT_SHIPPING({
-    //   shippingCompany: idInput,
-    //   valueShipping: value,
-    // }));
   }, []);
 
   const handlePayment = useCallback((idName: string) => {
     // eslint-disable-next-line no-console
     console.log(idName);
-
-    // dipatch(SELECT_PAYMENT({
-    //   formatPayment: idName,
-    //   division: 1,
-    // }));
   }, []);
 
   return (
@@ -54,17 +45,17 @@ function Checkout({ setOpenModal, infoCheckout }: PropsCheckout) {
           ariaLabel="Clique aqui para escolher um endereço de entrega."
           onClick={ (event) => {
             event.preventDefault();
-            setOpenModal('address');
+            setOpenModal(qunatityAdd ? 'address' : 'addaddress');
           } }
         >
           <CardAdderess
-            name={ name }
-            road={ road }
-            number={ number }
-            city={ city }
-            uf={ uf }
-            zipcode={ zipcode }
-            district={ district }
+            name_delivery={ addSelected?.name_delivery }
+            road={ addSelected?.road }
+            number_home={ addSelected?.number_home }
+            city={ addSelected?.city }
+            uf={ addSelected?.uf }
+            cep={ addSelected?.cep }
+            district={ addSelected?.district }
           />
         </CustomLink>
         <CustomLink
@@ -164,4 +155,7 @@ function Checkout({ setOpenModal, infoCheckout }: PropsCheckout) {
   );
 }
 
-export default memo(Checkout);
+export default Checkout;
+Checkout.defaultProps = {
+  addSelected: undefined,
+};

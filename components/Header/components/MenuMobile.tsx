@@ -5,22 +5,6 @@ import CustomLink from '../../CustomLink';
 import useLogin, { logOutUser } from '../../../hooks/useLogin';
 import style from './styles/style.module.scss';
 
-const mockItem = [{
-  id: 0,
-  title: 'Algodão Pima',
-  type: 'Jérsei',
-  mainImg: 'https://i.imgur.com/dDldc4q.png',
-  price: 71.25,
-  oldPrice: 75.00,
-  colorName: 'Azul',
-  color: '#74bcf7',
-  size: 'M',
-  quantity: 2,
-  discount: 5,
-  identifyBag: '0#74bcf7M',
-  code: '3SFA469',
-}];
-
 function MenuMobile({ data }: any) {
   const { mutate } = useLogin();
   const [dropMnMobile, setDropMnMobile] = useState(false);
@@ -52,7 +36,7 @@ function MenuMobile({ data }: any) {
   }, [dropMnMobile]);
 
   return (
-    <div className={ style.mobile } data-bag={ Boolean(mockItem.length) }>
+    <div className={ style.mobile }>
       { data ? (
         <button
           type="button"
@@ -65,7 +49,7 @@ function MenuMobile({ data }: any) {
         </button>
       ) : (
         <Link href="/login-register" passHref>
-          <a className={ style.login } data-bag={ Boolean(mockItem.length) } aria-label="Entrar">
+          <a className={ style.login } aria-label="Entrar">
             Entrar
           </a>
         </Link>
@@ -111,19 +95,6 @@ function MenuMobile({ data }: any) {
                         <path d="M20.2 5a6.3 6.3 0 0 0-8.2-.6 6.3 6.3 0 0 0-8.2 9.4l6.3 6.3a2.8 2.8 0 0 0 3.8 0l6.3-6.3a6.3 6.3 0 0 0 0-8.8Zm-1.4 7.5-6.3 6.2a.8.8 0 0 1-1 0l-6.2-6.3a4.3 4.3 0 0 1 0-6 4.3 4.3 0 0 1 6 0 1 1 0 0 0 1.4 0 4.3 4.3 0 0 1 6 6Z" fill="#333" />
                       </svg>
                       Favoritos
-                    </CustomLink>
-                  </Link>
-                </li>
-                <li data-bag={ Boolean(mockItem.length) }>
-                  <Link
-                    href="/bag"
-                    passHref
-                  >
-                    <CustomLink ariaLabel="Sacola" onClick={ closeMenu! }>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M19 7h-3V6a4 4 0 1 0-8 0v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1Zm-9-1a2 2 0 1 1 4 0v1h-4V6Zm8 13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9h2v1a1 1 0 1 0 2 0V9h4v1a1 1 0 0 0 2 0V9h2v10Z" fill="#333" />
-                      </svg>
-                      Sacola
                     </CustomLink>
                   </Link>
                 </li>

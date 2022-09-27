@@ -1,31 +1,18 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
 import { SmallCard } from '../../Cards';
-import style from './styles/style.module.scss';
 import { BtnRedirect } from '../../Buttons';
-
-const mockItem = [{
-  id: 0,
-  title: 'Algodão Pima',
-  type: 'Jérsei',
-  mainImg: 'https://i.imgur.com/dDldc4q.png',
-  price: 71.25,
-  oldPrice: 75.00,
-  option: 1,
-  colorName: 'Azul',
-  color: '#74bcf7',
-  size: 'M',
-  quantity: 2,
-  discount: 5,
-  identifyBag: '0#74bcf7M',
-  code: '3SFA469',
-}];
+import useBag from '../../../hooks/useBag';
+import { TypeAddBagInfos } from '../../../@types/bag';
+import calcAllValuesArray from '../../../hooks/useCalcs';
+import style from './styles/style.module.scss';
 
 function MenuBag() {
   const ref = useRef(null);
+  const { props } = useBag(true);
 
   return (
-    <div className={ style.bag } data-bag={ Boolean(mockItem.length) }>
+    <div className={ style.bag } data-bag={ Boolean(props.listBag?.length) }>
       <Link href="/bag">
         <a aria-label="Sacola">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -41,12 +28,12 @@ function MenuBag() {
         <div className={ style.containBag }>
           <h2 className={ style.titlemenu }>
             {
-              mockItem.length ? 'Sacola' : 'Sacola Vazia'
+              props.listBag?.length ? 'Sacola' : 'Sacola Vazia'
             }
           </h2>
           <ul>
             {
-              mockItem.map((object) => (
+              props.listBag?.map((object: TypeAddBagInfos) => (
                 <li key={ object.id + object.color + object.size }>
                   <SmallCard
                     objectID={ object }
@@ -60,13 +47,13 @@ function MenuBag() {
             <div>
               <span>Total:</span>
               <span>
-                { Number(126).toLocaleString('pt-br', {
+                { calcAllValuesArray(props.listBag)?.toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL',
                 }) }
               </span>
             </div>
-            <BtnRedirect path="/bag" titleBtn="Checkout" />
+            <BtnRedirect path="/bag" titleBtn="Finalizar compra" />
           </div>
         </div>
       </div>

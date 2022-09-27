@@ -25,13 +25,14 @@ const useBag = (revalidate: boolean) => {
   const loading = !data && !error;
   const loggedOut = error && error.status === 401;
   const token = getCookie('u_token');
-  const bagList = data?.list_bag ?? data?.listBag;
+  // const bagList = data?.infobag.list_b ?? data?.listBag;
 
   return {
     loading,
     loggedOut,
     props: {
-      listBag: bagList,
+      listBag: data?.infobag.list_b,
+      listAdd: data?.infobag.list_add,
       token,
     },
     mutate,

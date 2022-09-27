@@ -1,33 +1,31 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import type { TAddress } from '../../@types/bag';
-import mockAdderes from '../../service/mockAdderes';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 
-function RenderAdderess() {
-  const handleClick = useCallback((adderess: TAddress) => {
-    // eslint-disable-next-line no-console
-    console.log(adderess);
-  }, []);
-  // id, name, road, district, number, uf, city, zipcode,
+interface Props {
+  listAdd: TAddress[]
+  execFunction: (n: number) => void;
+}
 
+function RenderAdderess({ listAdd, execFunction }: Props) {
   return (
     <div className={ style.add }>
-      { mockAdderes.map((adderess) => (
+      { listAdd.map((adderess) => (
         <a
           href=""
           aria-label="Clique aqui para selecionar este endereço de entrega."
-          key={ adderess.id }
+          key={ adderess.add_id }
           className={ style.cont }
-          onClick={ (event) => { event.preventDefault(); handleClick(adderess); } }
+          onClick={ (event) => { event.preventDefault(); execFunction(adderess.add_id ?? 0); } }
         >
           <CardAdderess
-            name={ adderess.name }
+            name_delivery={ adderess.name_delivery }
             road={ adderess.road }
-            number={ adderess.number }
+            number_home={ adderess.number_home }
             city={ adderess.city }
             uf={ adderess.uf }
-            zipcode={ adderess.zipcode }
+            cep={ adderess.cep }
             district={ adderess.district }
           />
         </a>

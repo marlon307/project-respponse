@@ -27,15 +27,6 @@ const stateBag: StateBagType = {
     quantity: 0,
   },
   checkout: {
-    adderessSelected: {
-      name: 'Clique aqui ( 👇 ) para selecionar o endereço.',
-      road: '---',
-      district: '---',
-      number: '---',
-      uf: '---',
-      city: '---',
-      zipcode: '---',
-    },
     shipping: {
       shippingCompany: '',
       valueShipping: 0,
@@ -58,8 +49,9 @@ const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'
 
 function ContentBag() {
   const { props, mutate } = useBag(false);
-  const { listBag, token } = props;
+  const { listBag, listAdd, token } = props;
   const [openModal, setOpenModal] = useState<string>('');
+  const [addressid, setAddressid] = useState<number>(0);
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
 
@@ -131,13 +123,14 @@ function ContentBag() {
                   execFunction={ () => deleteBagItem(object) }
                 />
               </li>
-            ))
-              : <li className={ style.empty }>Sacola Vazia</li> }
+            )) : <li className={ style.empty }>Sacola Vazia</li> }
           </ul>
         </section>
         <Checkout
           setOpenModal={ setOpenModal }
           infoCheckout={ stateBag.checkout }
+          addSelected={ listAdd.find((add: { add_id: number; }) => add?.add_id === addressid) }
+          qunatityAdd={ listAdd.length }
         />
       </div>
       <BarBuy listProducts={ listBag } token={ token } />
@@ -150,7 +143,7 @@ function ContentBag() {
           || openModal === 'editbag'
         }
       >
-        { openModal === 'address' && <RenderAdderess /> }
+        { openModal === 'address' && <RenderAdderess listAdd={ listAdd } execFunction={ setAddressid } /> }
         { openModal === 'addaddress' && <Addaddress token={ token } execFunction={ () => setOpenModal('') } /> }
         { openModal === 'addcard' && <Addacard /> }
         { openModal === 'editbag' && (
@@ -199,7 +192,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
         fallback: {
           '/bag': {
             token: req.cookies.u_token,
-            listBag: data.list_bag,
+            infobag: data.infobag,
           },
         },
       },

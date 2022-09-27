@@ -1,8 +1,6 @@
-@import './bag.scss';
 @import './mnmobile.scss';
 
 .usermneu,
-.bag,
 .mobile {
   cursor: pointer;
   position: relative;
@@ -106,8 +104,7 @@
 
 @media (max-width: 700px) {
 
-  .usermneu,
-  .bag {
+  .usermneu {
     display: none;
     visibility: hidden;
     opacity: 0;

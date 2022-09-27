@@ -29,20 +29,20 @@ interface TFormatPay {
 }
 
 interface TAddress {
-  name: string;
+  add_id?: number;
+  name_delivery: string;
   road: string;
   district: string;
-  number: string;
+  number_home: string;
   uf: string;
   city: string;
-  zipcode: string;
+  cep: string;
 }
 
 interface StateBagType {
   valueBag: number;
   itemEditBag: TypeEditBagInfos;
   checkout: {
-    adderessSelected: TAddress;
     shipping: Shipping;
     formatPay: TFormatPay;
     cupomAplicate: {

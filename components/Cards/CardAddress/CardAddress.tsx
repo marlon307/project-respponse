@@ -1,21 +1,22 @@
 import React, { memo } from 'react';
-
+import { TAddress } from '../../../@types/bag';
 import style from './style.module.scss';
 
-export type PCardAdderess = {
-  name: string;
-  road: string;
-  district: string;
-  number: string;
-  uf: string;
-  city: string;
-  zipcode: string;
+export interface PCardAdderess {
   removable?: boolean;
-  execFunction?: () => void
-};
+  execFunction?: () => void;
+  name_delivery?: TAddress['name_delivery'];
+  road?: TAddress['road'];
+  district?: TAddress['district'];
+  number_home?: TAddress['number_home'];
+  uf?: TAddress['uf'];
+  city?: TAddress['city'];
+  cep?: TAddress['cep'];
+}
 
 function CardAdderess({
-  name, road, district, number, uf, city, zipcode, removable, execFunction,
+  name_delivery: name, road, district, number_home: number, uf, city,
+  cep: zipcode, removable, execFunction,
 }: PCardAdderess) {
   return (
     <div className={ style.cardaddress }>
@@ -68,6 +69,13 @@ function CardAdderess({
 CardAdderess.defaultProps = {
   removable: false,
   execFunction: () => { },
+  name_delivery: 'Clique aqui ( 👇 ) para selecionar o endereço.',
+  road: '---',
+  district: '---',
+  number_home: '---',
+  uf: '---',
+  city: '---',
+  cep: '---',
 };
 
 export default memo(CardAdderess);
