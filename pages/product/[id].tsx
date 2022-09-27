@@ -6,16 +6,19 @@ import { DetailsCard, Spec } from '../../components/Cards';
 import AddBag from '../../components/Buttons/AddBag';
 import BarSize from '../../components/Bars/BarSize';
 import BarColors from '../../components/Bars/BarColors';
-import { TypeProduct } from './product';
+import { SimilarProduct, TypeProduct } from './product';
 import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 // import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
-import { ColorSelected } from '../../components/Buttons/types';
-import productMock from '../../service/product_id';
 import style from './style.module.scss';
+import { ColorSelected } from '../../components/Buttons/types';
 
-function ProductId({ product/* , similar */ }: TypeProduct) {
+interface Props {
+  product: TypeProduct
+}
+
+function ProductId({ product/* , similar */ }: Props) {
   const {
     title, category_name: ctgName, descrtion, gender,
     details, specifications, list_options: option,
@@ -141,38 +144,37 @@ function ProductId({ product/* , similar */ }: TypeProduct) {
 
 export default ProductId;
 
-type TRequestProduct = {
+interface TRequestProduct {
   data: {
-    product: TypeProduct['product'],
-    similar: TypeProduct['similar'],
+    product: TypeProduct,
+    similar: SimilarProduct['similar'],
   }
-};
+}
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const { data }: TRequestProduct = await api2.get(`/product/${params.id}`)
     .catch((error) => ({ data: error.message }));
 
   return {
-    props: { product: data.product ?? productMock },
+    props: { product: data.product },
     // revalidated: true,
   };
 };
 
-type TRequestArr = {
+interface TRequestArr {
   data: {
-    list: Array<{
-      id: number,
-    }>,
-    similar: TypeProduct['similar']
+    list: TypeProduct[];
+    similar: SimilarProduct['similar'];
   }
-};
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data }: TRequestArr = await api2.get('/product')
-    .catch((err) => ({ data: err }));
+    .catch(() => {
+      throw new Error('Bad response from server');
+    });
 
-  const paths = data.list?.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }))
-    ?? [{ params: { id: productMock.id.toString() } }];
+  const paths = data.list.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }));
 
   return {
     paths,

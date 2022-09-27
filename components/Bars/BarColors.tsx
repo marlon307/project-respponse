@@ -3,7 +3,7 @@ import style from './style.module.scss';
 
 interface IObjectsColor {
   idc: string;
-  colorName: string;
+  color_name: string;
   color: string;
   product_option: number
 }
@@ -22,20 +22,20 @@ function BarColors({ array, execFunction }: Props) {
     <div className={ style.barcolor } title="Cores">
       { array !== undefined
         && array.map(({
-          idc, colorName, color, product_option: option,
+          idc, color_name, color, product_option: option,
         }, index) => (
           <button type="button" key={ color }>
             <label htmlFor={ idc }>
               <input
                 id={ idc }
                 onClick={ () => handleClick({
-                  color, colorName, index, option,
+                  color, color_name, index, option,
                 }) }
                 type="radio"
                 name="color"
               />
               <span
-                title={ colorName }
+                title={ color_name }
                 style={ {
                   background: color,
                   borderColor: color,

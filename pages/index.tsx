@@ -7,7 +7,6 @@ import api, { api2 } from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
 import HeadSEO from '../components/Head/HeadSEO';
-import destaque from '../service/destaque_id';
 import style from '../Sass/style.module.scss';
 // import { SwiperButtonNext, SwiperButtonPrev } from '../components/Buttons/SwiperButton';
 
@@ -112,7 +111,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       categorys: data.categorys,
       slides: data.slides,
-      list_product: newdata.data?.list ?? [destaque], // newdata.data.list,
+      list_product: newdata.data.list, // newdata.data.list,
       mockPromotions: data.mockPromotions,
     },
     // revalidated: true,
