@@ -45,7 +45,7 @@ function OrderId({ token, orderid }: Props) {
         <div className={ style.topline }>
           <div>
             <span>
-              <b>Numero do pedido:</b>
+              <b>Número do pedido:</b>
               { ' #' }
               { order?.id?.toString().padStart(6, '0') }
             </span>
