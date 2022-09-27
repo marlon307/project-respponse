@@ -15,10 +15,12 @@ import style from './style.module.scss';
 import { ColorSelected } from '../../components/Buttons/types';
 
 interface Props {
-  product: TypeProduct
+  product: TypeProduct,
+  similar: SimilarProduct['similar'],
 }
 
-function ProductId({ product/* , similar */ }: Props) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function ProductId({ product, similar }: Props) {
   const {
     title, category_name: ctgName, descrtion, gender,
     details, specifications, list_options: option,
@@ -144,15 +146,8 @@ function ProductId({ product/* , similar */ }: Props) {
 
 export default ProductId;
 
-interface TRequestProduct {
-  data: {
-    product: TypeProduct,
-    similar: SimilarProduct['similar'],
-  }
-}
-
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const { data }: TRequestProduct = await api2.get(`/product/${params.id}`)
+  const { data }: { data: Props } = await api2.get(`/product/${params.id}`)
     .catch((error) => ({ data: error.message }));
 
   return {
@@ -181,3 +176,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: true,
   };
 };
+
+// ProductId.defaultProps = {
+//   similar: [],
+// };
