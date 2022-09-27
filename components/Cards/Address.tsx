@@ -35,12 +35,12 @@ function Address({ token, listAddress }: TAdderess) {
       }) => (
         <CardAdderess
           key={ id }
-          name={ name_delivery }
+          name_delivery={ name_delivery }
           road={ road }
-          number={ number_home }
+          number_home={ number_home }
           city={ city }
           uf={ uf }
-          zipcode={ cep }
+          cep={ cep }
           district={ district }
           removable
           execFunction={ () => removeAddress(id ?? 0) }
