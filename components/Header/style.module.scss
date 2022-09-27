@@ -25,6 +25,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 2.2em;
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .searchdrop {
@@ -76,6 +81,11 @@
 }
 
 .bag {
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+
   &:hover svg {
     animation: var(--hovermn) 0.2s ease normal;
   }
