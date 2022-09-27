@@ -11,8 +11,9 @@ import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 // import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
-import style from './style.module.scss';
 import { ColorSelected } from '../../components/Buttons/types';
+import productMock from '../../service/product_id';
+import style from './style.module.scss';
 
 function ProductId({ product/* , similar */ }: TypeProduct) {
   const {
@@ -152,7 +153,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     .catch((error) => ({ data: error.message }));
 
   return {
-    props: { product: data.product },
+    props: { product: data.product ?? productMock },
     // revalidated: true,
   };
 };
@@ -168,11 +169,10 @@ type TRequestArr = {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data }: TRequestArr = await api2.get('/product')
-    .catch(() => {
-      throw new Error('Bad response from server');
-    });
+    .catch((err) => ({ data: err }));
 
-  const paths = data.list.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }));
+  const paths = data.list?.map(({ id }: { id: number }) => ({ params: { id: id.toString() } }))
+    ?? [{ params: { id: productMock.id.toString() } }];
 
   return {
     paths,
