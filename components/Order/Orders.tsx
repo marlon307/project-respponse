@@ -37,7 +37,7 @@ function Orders({ execFunction, token }: TPropsOrders) {
       <tbody>
         { orders.map(({ id, date_order, status }) => (
           <tr key={ id } onClick={ () => orderIdOpen(id) }>
-            <td>{ id }</td>
+            <td>{ String(id).padStart(6, '0') }</td>
             <td>
               { new Date(date_order)
                 .toLocaleDateString('pt-BR', {
