@@ -110,6 +110,7 @@ function ProductId({ list, token }: Props) {
     await api2.post('/product', formData, {
       headers: {
         authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
       },
     }).catch((err) => err);
     setIsLoading(false);
