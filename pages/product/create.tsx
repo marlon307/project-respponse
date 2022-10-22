@@ -105,7 +105,7 @@ function ProductId({ list, token }: Props) {
     });
 
     formData.append('warranty', '1');
-    formData.append('options', JSON.stringify(options));
+    formData.append('list_qtd', JSON.stringify(options));
 
     await api2.post('/product', formData, {
       headers: {
@@ -350,14 +350,13 @@ export default ProductId;
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const { data } = await api2.get('/list_options', {
     headers: {
-      authorization: `Bearer ${req.cookies.u_token}`,
+      // authorization: `Bearer ${req.cookies.u_token}`,
     },
   }).catch((error) => ({ data: error.message }));
-
   if (data.status === 200) {
     return {
       props: {
-        list: data.list,
+        list: data.option_list,
         token: req.cookies.u_token,
       },
     };
