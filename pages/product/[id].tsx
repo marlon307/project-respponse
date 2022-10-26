@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import LoadingImage from '../../components/LoadImage';
+// import LoadingImage from '../../components/LoadImage';
+import Image from 'next/image';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
 import AddBag from '../../components/Buttons/AddBag';
@@ -61,7 +62,7 @@ function ProductId({ product, similar }: Props) {
           <div className={ style.panels }>
             { option[colorChecked.index].images.map(({ urlImg, imgid }: any) => (
               <figure key={ imgid } className={ style.contsimg }>
-                <LoadingImage
+                <Image
                   src={ urlImg }
                   quality={ 80 }
                   alt={ title }

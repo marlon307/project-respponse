@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
-import LoadingImage from '../../LoadImage';
+import Image from 'next/image';
+// import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
 import type { PSmallCard } from './type';
 
@@ -16,7 +17,7 @@ function SmallCard({
     <div className={ style.smallcard }>
       <div className={ style.img }>
         <figure>
-          <LoadingImage
+          <Image
             src={ mainImg }
             alt={ title }
             quality={ 85 }

@@ -1,6 +1,7 @@
 import React, { useState, useCallback, FormEvent } from 'react';
 import { GetServerSideProps } from 'next';
-import LoadingImage from '../../components/LoadImage';
+import Image from 'next/image';
+// import LoadingImage from '../../components/LoadImage';
 import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
@@ -128,7 +129,7 @@ function ProductId({ list, token }: Props) {
           <div className={ style.panels }>
             { Object.keys(listFiles[selectedFeature] ?? {}).map((key_image) => (
               <div className={ style.contsimg } key={ key_image }>
-                <LoadingImage
+                <Image
                   src={ URL.createObjectURL(listFiles[selectedFeature][key_image]) }
                   quality={ 80 }
                   alt="title"
@@ -139,7 +140,7 @@ function ProductId({ list, token }: Props) {
           <div className={ style.list_upload }>
             { [...Array(6).keys()].map((upload_panel) => (
               <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
-                <LoadingImage
+                <Image
                   src={
                     listFiles[selectedFeature][upload_panel]
                       ? URL.createObjectURL(listFiles[selectedFeature][upload_panel])

@@ -1,5 +1,5 @@
 import React from 'react';
-import Image, { ImageProps } from 'next/future/image';
+import Image, { ImageProps } from 'next/image';
 // https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
 
 const shimmer = (w: string | number, h: string | number) => `
@@ -29,7 +29,6 @@ function LoadingImage({
       quality={ quality }
       src={ src }
       alt={ alt }
-      fill
       priority={ priority }
       loading={ loading }
       draggable="false"

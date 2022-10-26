@@ -1,8 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { ImageProps } from 'next/image';
-import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
+// import LoadingImage from '../../LoadImage';
 
 type PCardCategory = {
   image: ImageProps['src'];
@@ -18,7 +19,7 @@ function CardCategory({
     <Link href={ `/category/${path}` } passHref>
       <a aria-label={ ctgName } className={ style.itencategory }>
         <figure className={ style.imgctg }>
-          <LoadingImage
+          <Image
             src={ image }
             quality={ 80 }
             alt={ ctgName }

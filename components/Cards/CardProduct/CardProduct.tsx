@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
-import LoadingImage from '../../LoadImage';
+import Image from 'next/image';
+// import LoadingImage from '../../LoadImage';
 import type { ICardProduct } from '../../../@types/typeCardProduct';
 import style from './style.module.scss';
 
@@ -20,7 +21,7 @@ function CardProduct({ objectProduct }: TypeProduct) {
     >
       <a className={ style.productcard } aria-label={ `${ctgName} ${title}` }>
         <figure>
-          <LoadingImage
+          <Image
             src={ colorList[0].url_image }
             quality={ 85 }
             alt={ title }

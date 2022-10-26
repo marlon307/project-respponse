@@ -1,7 +1,8 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import { CardCategory } from '../components/Cards';
-import LoadingImage from '../components/LoadImage';
+// import LoadingImage from '../components/LoadImage';
 import { IPropsHome } from '../@types/typesIndex';
 import api, { api2 } from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
@@ -22,7 +23,7 @@ function Home({
             id, srcImg, alt, background,
           }) => (
             <figure key={ id } style={ { background: `${background}` } }>
-              <LoadingImage
+              <Image
                 src={ srcImg }
                 quality={ 85 }
                 alt={ alt }
@@ -75,7 +76,7 @@ function Home({
             id, img, title, path,
           }: any) => (
             <figure key={ id }>
-              <LoadingImage
+              <Image
                 src={ img }
                 quality={ 85 }
                 alt={ title }
