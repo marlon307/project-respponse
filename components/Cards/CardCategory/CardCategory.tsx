@@ -16,18 +16,17 @@ function CardCategory({
   image, ctgName, path, color,
 }: PCardCategory) {
   return (
-    <Link href={ `/category/${path}` } passHref>
-      <a aria-label={ ctgName } className={ style.itencategory }>
-        <figure className={ style.imgctg }>
-          <Image
-            src={ image }
-            quality={ 80 }
-            alt={ ctgName }
-            sizes="70px"
-          />
-        </figure>
-        <span style={ { background: `${color}1a` } }>{ ctgName }</span>
-      </a>
+    <Link className={ style.itencategory } href={ `/category/${path}` } aria-label={ ctgName }>
+      <figure className={ style.imgctg }>
+        <Image
+          src={ image }
+          quality={ 80 }
+          alt={ ctgName }
+          sizes="70px"
+          fill
+        />
+      </figure>
+      <span style={ { background: `${color}1a` } }>{ ctgName }</span>
     </Link>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-// import LoadingImage from '../../components/LoadImage';
 import Image from 'next/image';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../components/Cards';
@@ -66,6 +65,7 @@ function ProductId({ product, similar }: Props) {
                   src={ urlImg }
                   quality={ 80 }
                   alt={ title }
+                  fill
                 />
               </figure>
             )) }

@@ -82,10 +82,8 @@ function Token() {
           ) }
           <div className={ style.action }>
             { !loggedOut && (
-              <Link href="/login-register">
-                <a className="link">
-                  Fazer Login
-                </a>
+              <Link className="link" href="/login-register">
+                Fazer Login
               </Link>
             ) }
             { contMsg === null && (

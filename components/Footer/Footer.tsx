@@ -10,21 +10,18 @@ function Footer() {
           <h1>Sobre</h1>
           <ul>
             <li>
-              <Link href="/help">
-                <a aria-label="Construção do Site">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21.7 15.6 17.2 11l.1-1.4a7.7 7.7 0 0 0-10.9-7 1 1 0 0 0-.3 1.6l4.4 4.4-1.8 1.8L4.3 6a1 1 0 0 0-.8-.2 1 1 0 0 0-.8.5 7.7 7.7 0 0 0 8.4 10.8l4.5 4.5a1 1 0 0 0 1.7-.3 1 1 0 0 0-.3-1.1l-4.8-5a1 1 0 0 0-1-.2 5.9 5.9 0 0 1-3.7-.2 5.7 5.7 0 0 1-3.4-6.2L8 12.6a1 1 0 0 0 1.4 0l3.2-3.2a1 1 0 0 0 0-1.4L8.7 4h1a5.7 5.7 0 0 1 5.5 7.1 1 1 0 0 0 .2 1l5 4.9a1 1 0 1 0 1.4-1.4Z" fill="#333" /></svg>
-                  Construção do Site
-                </a>
+              <Link href="/help" aria-label="Construção do Site">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21.7 15.6 17.2 11l.1-1.4a7.7 7.7 0 0 0-10.9-7 1 1 0 0 0-.3 1.6l4.4 4.4-1.8 1.8L4.3 6a1 1 0 0 0-.8-.2 1 1 0 0 0-.8.5 7.7 7.7 0 0 0 8.4 10.8l4.5 4.5a1 1 0 0 0 1.7-.3 1 1 0 0 0-.3-1.1l-4.8-5a1 1 0 0 0-1-.2 5.9 5.9 0 0 1-3.7-.2 5.7 5.7 0 0 1-3.4-6.2L8 12.6a1 1 0 0 0 1.4 0l3.2-3.2a1 1 0 0 0 0-1.4L8.7 4h1a5.7 5.7 0 0 1 5.5 7.1 1 1 0 0 0 .2 1l5 4.9a1 1 0 1 0 1.4-1.4Z" fill="#333" /></svg>
+                Construção do Site
               </Link>
             </li>
             <li>
-              <Link href="/help">
-                <a aria-label="Quem Somos">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="m11.3 15.3-.1.1-.1.2v.8a.9.9 0 0 0 .5.5 1 1 0 0 0 .8 0 .9.9 0 0 0 .5-.5l.1-.4a1 1 0 0 0-1.7-.7ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm0-13a3 3 0 0 0-2.6 1.5 1 1 0 1 0 1.7 1A1 1 0 1 1 12 11a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-.2A3 3 0 0 0 12 7Z" fill="#333" />
-                  </svg>
-                  Quem Somos
-                </a>
+              <Link href="/help" aria-label="Quem Somos">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="m11.3 15.3-.1.1-.1.2v.8a.9.9 0 0 0 .5.5 1 1 0 0 0 .8 0 .9.9 0 0 0 .5-.5l.1-.4a1 1 0 0 0-1.7-.7ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm0-13a3 3 0 0 0-2.6 1.5 1 1 0 1 0 1.7 1A1 1 0 1 1 12 11a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-.2A3 3 0 0 0 12 7Z" fill="#333" />
+                </svg>
+                Quem Somos
               </Link>
             </li>
           </ul>
@@ -49,13 +46,11 @@ function Footer() {
               </a>
             </li>
             <li>
-              <Link href="/help">
-                <a aria-label="Politica de troca e devoluções">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M9 12H7a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2Zm-1-2h4a1 1 0 1 0 0-2H8a1 1 0 1 0 0 2Zm1 6H7a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2Zm12-4h-3V3a1 1 0 0 0-1.5-.9l-3 1.7-3-1.7a1 1 0 0 0-1 0l-3 1.7-3-1.7A1 1 0 0 0 2 3v16a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-6a1 1 0 0 0-1-1ZM5 20a1 1 0 0 1-1-1V4.7L6 6a1 1 0 0 0 1 0L10 4 13 6a1 1 0 0 0 1 0l2-1.2V19c0 .3 0 .7.2 1H5Zm15-1a1 1 0 1 1-2 0v-5h2v5Zm-6.4-2.8-.2-.1h-.2a1 1 0 0 0-1 .2 1 1 0 0 0-.1 1l.2.4.3.2a1 1 0 0 0 .8 0l.3-.2a1 1 0 0 0 .3-.7 1 1 0 0 0-.3-.7l-.1-.1Zm.1-4a1 1 0 0 0-1.7.9 1 1 0 0 0 1.7.6 1 1 0 0 0 0-1.4Z" fill="#333" />
-                  </svg>
-                  Politica de troca e devolução
-                </a>
+              <Link href="/help" aria-label="Politica de troca e devoluções">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12H7a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2Zm-1-2h4a1 1 0 1 0 0-2H8a1 1 0 1 0 0 2Zm1 6H7a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2Zm12-4h-3V3a1 1 0 0 0-1.5-.9l-3 1.7-3-1.7a1 1 0 0 0-1 0l-3 1.7-3-1.7A1 1 0 0 0 2 3v16a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-6a1 1 0 0 0-1-1ZM5 20a1 1 0 0 1-1-1V4.7L6 6a1 1 0 0 0 1 0L10 4 13 6a1 1 0 0 0 1 0l2-1.2V19c0 .3 0 .7.2 1H5Zm15-1a1 1 0 1 1-2 0v-5h2v5Zm-6.4-2.8-.2-.1h-.2a1 1 0 0 0-1 .2 1 1 0 0 0-.1 1l.2.4.3.2a1 1 0 0 0 .8 0l.3-.2a1 1 0 0 0 .3-.7 1 1 0 0 0-.3-.7l-.1-.1Zm.1-4a1 1 0 0 0-1.7.9 1 1 0 0 0 1.7.6 1 1 0 0 0 0-1.4Z" fill="#333" />
+                </svg>
+                Politica de troca e devolução
               </Link>
             </li>
           </ul>

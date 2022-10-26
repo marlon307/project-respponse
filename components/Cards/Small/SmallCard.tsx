@@ -28,11 +28,9 @@ function SmallCard({
         </figure>
       </div>
       <div className={ style.desc }>
-        <Link href={ `/product/${id}` }>
-          <a aria-label={ `${type} - ${title}` }>
-            <h2>{ type }</h2>
-            <h3>{ title }</h3>
-          </a>
+        <Link href={ `/product/${id}` } aria-label={ `${type} - ${title}` }>
+          <h2>{ type }</h2>
+          <h3>{ title }</h3>
         </Link>
         <div className={ style.infos }>
           <div className={ style.setting }>

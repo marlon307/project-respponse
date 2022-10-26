@@ -28,6 +28,7 @@ function Home({
                 quality={ 85 }
                 alt={ alt }
                 loading="lazy"
+                fill
               />
               <figcaption>
                 <h1>{ alt }</h1>
@@ -82,6 +83,7 @@ function Home({
                 alt={ title }
                 loading="eager"
                 sizes="(max-width: 500px) 304.56px, 1486.52px"
+                fill
               />
               <figcaption>
                 <h4>{ title }</h4>
@@ -103,7 +105,14 @@ type TRequestProduct = {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data }: TRequestProduct = await api.get('/home')
-    .catch((error) => ({ data: error.message }));
+    .catch((error) => ({
+      data: {
+        categorys: [],
+        slides: [],
+        mockPromotions: [],
+      },
+      detail: error.message,
+    }));
 
   const newdata: TRequestProduct = await api2.get('/product')
     .catch((error) => ({ data: error.message }));
