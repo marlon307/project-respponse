@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { SmallCard } from '../Cards';
-import CustomLink from '../CustomLink';
 import { api2 } from '../../service/api';
 import { Props, StateOrder } from './type';
 import style from './style.module.scss';

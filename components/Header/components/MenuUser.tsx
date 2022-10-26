@@ -2,7 +2,6 @@ import React, { useState, useEffect, lazy } from 'react';
 import Link from 'next/link';
 import router from 'next/router';
 import ContentModal from '../../Modal/ContentModal';
-import CustomLink from '../../CustomLink';
 import style from './styles/style.module.scss';
 import useLogin, { logOutUser } from '../../../hooks/useLogin';
 

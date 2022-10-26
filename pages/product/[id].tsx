@@ -11,8 +11,8 @@ import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 // import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
-import style from './style.module.scss';
 import { ColorSelected } from '../../components/Buttons/types';
+import style from './style.module.scss';
 
 interface Props {
   product: TypeProduct,
@@ -148,9 +148,8 @@ function ProductId({ product, similar }: Props) {
 export default ProductId;
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const { data }: { data: Props } = await api2.get(`/product/${params.id}`)
-    .catch((error) => ({ data: error.message }));
-
+  const { data }: any = await api2.get(`/product/${params.id}`)
+    .catch((error) => ({ detail: error.message }));
   return {
     props: { product: data.product },
     // revalidated: true,
