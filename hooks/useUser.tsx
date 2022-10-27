@@ -8,11 +8,8 @@ type TUser = {
 
 const infoUser = async ({ route, token }: TUser) => {
   if (token) {
-    const { data } = await api2.get(route, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    }).catch(({ response }) => response);
+    const { data } = await api2.get(route)
+      .catch(({ response }) => response);
 
     return data.response;
   }

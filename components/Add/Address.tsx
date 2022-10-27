@@ -7,11 +7,10 @@ import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
 type TAddress = {
-  token: CookieValueTypes;
   execFunction: () => void;
 };
 
-function Address({ token, execFunction }: TAddress) {
+function Address({ execFunction }: TAddress) {
   const { mutate, listAddress } = useAddress(token);
   const [isLoading, setisLoading] = useState(false);
 
@@ -36,7 +35,8 @@ function Address({ token, execFunction }: TAddress) {
         number_home: data.number,
       };
 
-      const res = await api2.post('/address', body).catch(({ response }) => response);
+      const res = await api2.post('/address', body)
+        .catch(({ response }) => response);
 
       if (res.data.status === 201) {
         mutate({

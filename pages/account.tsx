@@ -88,7 +88,7 @@ function Account({ token }: TAccount) {
         </a>
         <div className={ style.dropcontainer }>
           <Suspense fallback={ <div className="spinner" /> }>
-            <Order execFunction={ openOrderId } token={ token } />
+            <Order execFunction={ openOrderId } />
           </Suspense>
         </div>
       </div>
@@ -109,10 +109,7 @@ function Account({ token }: TAccount) {
           <div className={ style.contentoption }>
             <Suspense fallback={ <div className="spinner" /> }>
               { listAddress?.address && (
-                <Address
-                  listAddress={ listAddress?.address }
-                  token={ token }
-                />
+                <Address listAddress={ listAddress?.address } />
               ) }
             </Suspense>
           </div>
@@ -163,9 +160,9 @@ function Account({ token }: TAccount) {
         isOpen={ openModal }
         openModal={ setOpenModal }
       >
-        { (openModal && typeModal === 'order') && <OrderId token={ token } orderid={ orderid } /> }
+        { (openModal && typeModal === 'order') && <OrderId orderid={ orderid } /> }
         { (openModal && typeModal === 'cards') && <AddCard /> }
-        { (openModal && typeModal === 'address') && <Addaderess token={ token } execFunction={ closeModal! } /> }
+        { (openModal && typeModal === 'address') && <Addaderess execFunction={ closeModal! } /> }
       </ContentModal>
     </>
   );

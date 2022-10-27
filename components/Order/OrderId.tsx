@@ -5,7 +5,7 @@ import { api2 } from '../../service/api';
 import { Props, StateOrder } from './type';
 import style from './style.module.scss';
 
-function OrderId({ token, orderid }: Props) {
+function OrderId({ orderid }: Props) {
   const [order, setOrder] = useState<StateOrder>({});
   function copyCode(event: React.SyntheticEvent<Element, Event>, code: string) {
     event.preventDefault();

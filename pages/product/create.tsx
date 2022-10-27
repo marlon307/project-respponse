@@ -110,7 +110,6 @@ function ProductId({ list, token }: Props) {
 
     await api2.post('/product', formData, {
       headers: {
-        authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
       },
     }).catch((err) => err);
@@ -350,11 +349,8 @@ function ProductId({ list, token }: Props) {
 export default ProductId;
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const { data } = await api2.get('/list_options', {
-    headers: {
-      // authorization: `Bearer ${req.cookies.u_token}`,
-    },
-  }).catch((error) => ({ data: error.message }));
+  const { data } = await api2.get('/list_options')
+    .catch((error) => ({ data: error.message }));
   if (data.status === 200) {
     return {
       props: {

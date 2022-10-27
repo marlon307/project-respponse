@@ -4,10 +4,9 @@ import style from './style.module.scss';
 
 type TPropsOrders = {
   execFunction: Function;
-  token: string;
 };
 
-function Orders({ execFunction, token }: TPropsOrders) {
+function Orders({ execFunction }: TPropsOrders) {
   const [orders, setOrders] = useState<[]>([]);
   const orderIdOpen = useCallback((orderId: string) => {
     execFunction!(orderId);
@@ -15,11 +14,7 @@ function Orders({ execFunction, token }: TPropsOrders) {
 
   useEffect(() => {
     async function getOrders() {
-      const { data } = await api2.get('/order', {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
+      const { data } = await api2.get('/order');
       setOrders(data.orders);
     }
     getOrders();

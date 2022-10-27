@@ -180,11 +180,8 @@ function Bag({ fallback }: Props) {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (req.cookies.u_token) {
-    const { data } = await api2.get('/bag', {
-      headers: {
-        authorization: `Bearer ${req.cookies.u_token}`,
-      },
-    }).catch((err) => ({ data: err }));
+    const { data } = await api2.get('/bag')
+      .catch((err) => ({ data: err }));
 
     return {
       props: {

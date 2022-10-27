@@ -21,9 +21,6 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
       const { data } = await api2({
         method: index !== -1 ? 'PATCH' : 'POST',
         url: '/bag',
-        headers: {
-          authorization: `Bearer ${props.token}`,
-        },
         data: {
           quantity: index !== -1 ? props.listBag[index].quantity + 1 : 1,
           product_option: option.option_id,

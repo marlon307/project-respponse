@@ -1,7 +1,6 @@
 import { TypeAddBagInfos } from '../../@types/bag';
 
 interface Props {
-  token: string;
   orderid: number;
 }
 

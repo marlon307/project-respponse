@@ -20,10 +20,6 @@ function CardEditbag({ identify, token, execeFunction }: Props) {
       quantity: Number(target.value),
       product_option: identify.product_option,
       size: identify.size,
-    }, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
     }).catch((data) => ({ data }));
     if (res.data.status === 200) {
       const newProps = [...props.listBag];
