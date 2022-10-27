@@ -4,7 +4,6 @@ import { api2 } from '../service/api';
 const infoUser = async (route: string) => {
   const { data } = await api2.get(route)
     .catch(({ response }) => response);
-
   if (data.status === 200) return data.response;
 
   const error: any = new Error('Not authorized!');
@@ -14,12 +13,13 @@ const infoUser = async (route: string) => {
 
 const useUser = <Data = any>(isRequest: boolean) => {
   const { data, mutate, error } = useSWR<Data>(
-    '/user',
+    isRequest ? '/user' : null,
     infoUser,
     {
+      suspense: true,
       revalidateOnFocus: false,
+      revalidateOnMount: false,
       revalidateIfStale: false,
-      revalidateOnMount: isRequest,
     },
   );
 
@@ -29,7 +29,7 @@ const useUser = <Data = any>(isRequest: boolean) => {
   return {
     loading,
     loggedOut,
-    ifoUser: data,
+    dataUser: data,
     mutate,
   };
 };

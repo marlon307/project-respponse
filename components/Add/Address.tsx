@@ -10,7 +10,7 @@ type TAddress = {
 };
 
 function Address({ execFunction }: TAddress) {
-  const { mutate, listAddress } = useAddress();
+  const { mutate, listAddress } = useAddress(false);
   const [isLoading, setisLoading] = useState(false);
 
   async function handleAddAddress(event: FormEvent) {

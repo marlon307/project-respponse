@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { CardAdderess } from '.';
 
 import { api2 } from '../../service/api';
@@ -10,7 +10,7 @@ type TAdderess = {
 };
 
 function Address({ isRequest }: TAdderess) {
-  const { listAddress, mutate } = useAddress();
+  const { addressList, mutate } = useAddress(isRequest);
 
   const removeAddress = useCallback(async (address: number) => {
     const { data } = await api2.delete('/address', {
@@ -20,33 +20,37 @@ function Address({ isRequest }: TAdderess) {
     }).catch(({ response }) => response);
 
     if (data.status === 200) {
-      const newList = listAddress.filter(({ id }) => id !== address);
+      const newList = addressList.filter(({ id }: ITAddress) => id !== address);
       mutate({ address: newList }, false);
     }
-  }, [listAddress]);
+  }, [addressList]);
+
+  useEffect(() => {
+    if (isRequest && !addressList.length) {
+      mutate();
+    }
+  }, [isRequest]);
 
   return (
-    isRequest ? (
-      <div className={ style.address }>
-        { listAddress?.map(({
-          id, name_delivery, number_home, city, uf, cep, road, district,
-        }) => (
-          <CardAdderess
-            key={ id }
-            name_delivery={ name_delivery }
-            road={ road }
-            number_home={ number_home }
-            city={ city }
-            uf={ uf }
-            cep={ cep }
-            district={ district }
-            removable
-            execFunction={ () => removeAddress(id ?? 0) }
-          />
-        )) }
-        { !listAddress?.length && <h3>Você não possui endereços cadastrados.</h3> }
-      </div>
-    ) : null
+    <div className={ style.address }>
+      { addressList?.map(({
+        id, name_delivery, number_home, city, uf, cep, road, district,
+      }: ITAddress) => (
+        <CardAdderess
+          key={ id }
+          name_delivery={ name_delivery }
+          road={ road }
+          number_home={ number_home }
+          city={ city }
+          uf={ uf }
+          cep={ cep }
+          district={ district }
+          removable
+          execFunction={ () => removeAddress(id ?? 0) }
+        />
+      )) }
+      { !addressList?.length && <h3>Você não possui endereços cadastrados.</h3> }
+    </div>
   );
 }
 

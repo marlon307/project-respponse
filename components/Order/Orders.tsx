@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { getCookie } from 'cookies-next';
 import { api2 } from '../../service/api';
 import style from './style.module.scss';
 
@@ -16,7 +17,11 @@ function Orders({ execFunction, isRequest }: TPropsOrders) {
   useEffect(() => {
     async function getOrders() {
       if (isRequest) {
-        const { data } = await api2.get('/order');
+        const { data } = await api2.get('/order', {
+          headers: {
+            authorization: `Bearer ${getCookie('u_token')}`,
+          },
+        });
         setOrders(data.orders);
       }
     }

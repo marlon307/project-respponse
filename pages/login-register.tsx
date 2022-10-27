@@ -47,11 +47,8 @@ function Login() {
     if (validEmail.test(String(data.remail))
       && validPsw.test(String(data.rpsw)) && isLoading === false) {
       setIsLoading(true);
-      const res = await api2.post('/createuser', {
-        email: data.remail,
-        password: data.rpsw,
-        name: data.rname,
-      }).catch(({ response }) => response);
+      const res = await api2.post('/createuser', formData)
+        .catch(({ response }) => response);
 
       if (res.data.status === 201) {
         setisRegistered(String(data.remail));
@@ -144,7 +141,7 @@ function Login() {
                 <Input
                   id="rname"
                   type="name"
-                  name="rname"
+                  name="name"
                   placeHolder="Nome Sobrenome"
                   autoComplete="name"
                   msgError="Preencha Nome e Sobrenome"
@@ -153,7 +150,7 @@ function Login() {
                 <Input
                   id="remail"
                   type="email"
-                  name="remail"
+                  name="username"
                   placeHolder="E-mail"
                   autoComplete="email"
                   msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }

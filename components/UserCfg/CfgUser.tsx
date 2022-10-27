@@ -21,9 +21,9 @@ interface Props {
 }
 
 function CfgUser({ isRequest }: Props) {
-  const { ifoUser, mutate } = useUser(isRequest);
   const [isLoading, setIsLoading] = useState(false);
-  const [stateIfonUser, setStateIfoUser] = useState<TStateUser>({
+  const { dataUser, mutate } = useUser(isRequest);
+  const [stateIfonUser, setStateinfoUser] = useState<TStateUser>({
     name: '',
     email: '',
     date: new Date().toISOString().split('T')[0],
@@ -38,43 +38,38 @@ function CfgUser({ isRequest }: Props) {
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
-    const newBody = {
-      name: data.name,
-      date: new Date(String(data.date)),
-      doc: data.doc,
-      tel: data.tel,
-      cel: data.cel,
-      gender: Number(data.gender),
-    };
-    if (newBody.name && newBody.doc && newBody.date) {
+    if (data.name && data.doc && data.date) {
       setIsLoading(true);
 
-      const res = await api2.patch('/user', newBody)
+      const res = await api2.patch('/user', formData)
         .catch(({ response }) => response);
 
       if (res.data.status === 200) {
-        mutate({ ...ifoUser, ...newBody }, false);
+        mutate({ ...dataUser, ...data }, false);
       }
       setIsLoading(false);
     }
   }
 
   useEffect(() => {
-    if (!ifoUser && isRequest) {
+    if (!dataUser && isRequest) {
       mutate();
     }
-    if (ifoUser && isRequest) {
-      setStateIfoUser({
-        name: ifoUser?.name,
-        email: ifoUser?.email,
-        date: new Date(ifoUser?.birthday)?.toISOString().split('T')[0],
-        doc: ifoUser?.cpf_cnpj?.replace(/^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})/, '$1.$2.$3-$4'),
-        tel: ifoUser?.tel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
-        cel: ifoUser?.cel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
-        gender: ifoUser?.gender_id === null ? 0 : ifoUser?.gender_id,
+  }, [isRequest]);
+
+  useEffect(() => {
+    if (dataUser && isRequest) {
+      setStateinfoUser({
+        name: dataUser?.name,
+        email: dataUser?.email,
+        date: new Date(dataUser?.birthday)?.toISOString().split('T')[0],
+        doc: dataUser?.cpf_cnpj?.replace(/^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})/, '$1.$2.$3-$4'),
+        tel: dataUser?.tel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
+        cel: dataUser?.cel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
+        gender: dataUser?.gender_id === null ? 0 : dataUser?.gender_id,
       });
     }
-  }, [ifoUser, isRequest]);
+  }, [dataUser]);
 
   return (
     <form className={ style.form } onSubmit={ saveUpdateInfoUser }>
@@ -92,7 +87,7 @@ function CfgUser({ isRequest }: Props) {
         <Input
           id="email"
           type="email"
-          name="email"
+          name="block"
           placeHolder="E-mail"
           autoComplete="email"
           dValue={ stateIfonUser.email }
@@ -130,24 +125,24 @@ function CfgUser({ isRequest }: Props) {
         />
       </div>
       <div className={ style.genere }>
-        <h4>Sexo</h4>
+        <h4>Género</h4>
         <div className={ style.inp }>
           <InputRadio
-            checked={ ifoUser?.gender_id === 1 }
+            checked={ dataUser?.gender_id === 1 }
             iId="men"
             name="Masculino"
             family="gender"
             iValue={ 3 }
           />
           <InputRadio
-            checked={ ifoUser?.gender_id === 2 }
+            checked={ dataUser?.gender_id === 2 }
             iId="female"
             name="Femenino"
             family="gender"
             iValue={ 2 }
           />
           <InputRadio
-            checked={ ifoUser?.gender_id === null }
+            checked={ dataUser?.gender_id === null }
             iId="undefined"
             name="Não informar"
             family="gender"

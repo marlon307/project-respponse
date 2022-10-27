@@ -25,7 +25,8 @@ api2.interceptors.request.use((config: AxiosRequestConfig) => {
   const token = getCookie('u_token');
 
   if (token) {
-    api2.defaults.headers.common.authorization = `Bearer ${token}`;
+    // api2.defaults.headers.common.authorization = `Bearer ${token}`;
+    config.headers!.authorization = `Bearer ${token}`;
   }
 
   return config;

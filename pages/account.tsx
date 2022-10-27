@@ -164,7 +164,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (req.cookies.u_token) {
     return {
       props: {
-        token: req.cookies.u_token,
+        detail: 'Acesso Autorizado.',
       },
     };
   }
