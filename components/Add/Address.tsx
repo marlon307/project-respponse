@@ -36,11 +36,7 @@ function Address({ token, execFunction }: TAddress) {
         number_home: data.number,
       };
 
-      const res = await api2.post('/address', body, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }).catch(({ response }) => response);
+      const res = await api2.post('/address', body).catch(({ response }) => response);
 
       if (res.data.status === 201) {
         mutate({

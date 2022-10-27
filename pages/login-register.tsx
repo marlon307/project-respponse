@@ -27,7 +27,7 @@ function Login() {
     if (validEmail.test(String(data.lemail))
       && validPsw.test(String(data.lpsw)) && isLoading === false) {
       setIsLoading(true);
-      const { status } = await loginUser(String(data.lemail), String(data.lpsw));
+      const { status } = await loginUser(formData, true);
 
       if (status === 200) {
         mutate();
@@ -100,7 +100,7 @@ function Login() {
           <Input
             id="lemail"
             type="email"
-            name="lemail"
+            name="username"
             autoComplete="email"
             placeHolder="E-mail"
             msgError="Email inválido!"
@@ -110,7 +110,7 @@ function Login() {
           <Input
             id="lpsw"
             type="password"
-            name="lpsw"
+            name="password"
             autoComplete="current-password"
             placeHolder="Senha"
             msgError="Senha invalida!"

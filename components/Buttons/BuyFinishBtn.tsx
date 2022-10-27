@@ -19,10 +19,6 @@ function BuyFinishBtn({ listProducts, token }: TBuyFinish) {
       const { data } = await api2.post('/register_order', {
         address: 1,
         carrie: 1,
-      }, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
       }).catch((err) => ({ data: err }));
 
       if (data.status === 200) {

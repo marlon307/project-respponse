@@ -5,11 +5,7 @@ import { api2 } from '../service/api';
 export const listBag = async (path: string) => {
   const token = getCookie('u_token');
   if (token) {
-    const { data } = await api2.get(path, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    }).catch(({ response }) => response);
+    const { data } = await api2.get(path).catch(({ response }) => response);
     return data;
   }
 
@@ -26,13 +22,12 @@ const useBag = (revalidate: boolean) => {
   const loggedOut = error && error.status === 401;
   const token = getCookie('u_token');
   // const bagList = data?.infobag.list_b ?? data?.listBag;
-
   return {
     loading,
     loggedOut,
     props: {
       listBag: data?.infobag.list_b,
-      listAdd: data?.infobag.list_add,
+      mainAdd: data?.infobag.main_add,
       token,
     },
     mutate,

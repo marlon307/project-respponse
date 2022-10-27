@@ -17,7 +17,6 @@ function Checkout({
   setOpenModal, addSelected, infoCheckout, qunatityAdd,
 }: PropsCheckout) {
   const { shippingCompany } = infoCheckout.shipping;
-
   const handleSipping = useCallback((idInput: string, value: number) => {
     // eslint-disable-next-line no-console
     console.log(idInput, value);

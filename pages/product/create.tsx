@@ -133,6 +133,7 @@ function ProductId({ list, token }: Props) {
                   src={ URL.createObjectURL(listFiles[selectedFeature][key_image]) }
                   quality={ 80 }
                   alt="title"
+                  fill
                 />
               </div>
             )) }

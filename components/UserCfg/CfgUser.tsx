@@ -45,11 +45,8 @@ function CfgUser({ token }: IToken) {
     if (newBody.name && newBody.doc && newBody.date) {
       setIsLoading(true);
 
-      const res = await api2.patch('/user', newBody, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }).catch(({ response }) => response);
+      const res = await api2.patch('/user', newBody)
+        .catch(({ response }) => response);
 
       if (res.data.status === 200) {
         mutate({ ...ifoUser, ...newBody }, false);

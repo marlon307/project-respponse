@@ -49,7 +49,8 @@ const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'
 
 function ContentBag() {
   const { props, mutate } = useBag(false);
-  const { listBag, listAdd, token } = props;
+  const { listBag, mainAdd, token } = props;
+
   const [openModal, setOpenModal] = useState<string>('');
   const [addressid, setAddressid] = useState<number>(0);
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
@@ -57,9 +58,6 @@ function ContentBag() {
 
   const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
     const { data } = await api2.delete('/bag', {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
       data: {
         product_option: identify.product_option,
         size: identify.size,
@@ -129,8 +127,9 @@ function ContentBag() {
         <Checkout
           setOpenModal={ setOpenModal }
           infoCheckout={ stateBag.checkout }
-          addSelected={ listAdd.find((add: { add_id: number; }) => add?.add_id === addressid) }
-          qunatityAdd={ listAdd.length }
+          // addSelected={ listAdd.find((add: { add_id: number; }) => add?.add_id === addressid) }
+          // qunatityAdd={ listAdd.length }
+          addSelected={ mainAdd }
         />
       </div>
       <BarBuy listProducts={ listBag } token={ token } />

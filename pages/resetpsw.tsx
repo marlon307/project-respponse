@@ -26,9 +26,7 @@ function Resetpsw({ props }: TProps) {
     if (validEmail.test(String(data.email))) {
       setIsLoading(true);
 
-      const res = await api2.post('/solicitation_reset_psw_user', {
-        email: data.email,
-      }).catch(({ response }) => response);
+      const res = await api2.post('/solicitation_reset_psw_user', formData).catch(({ response }) => response);
 
       if (res.data.status === 200) {
         setMsg(res.email);
@@ -82,7 +80,6 @@ function Resetpsw({ props }: TProps) {
               <BtnIco
                 textBtn="Enviar Email"
                 icoName="email"
-                action={ sendmailReset! }
                 actionLiberate={ isLoading }
               />
             ) }

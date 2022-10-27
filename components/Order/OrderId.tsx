@@ -15,11 +15,7 @@ function OrderId({ token, orderid }: Props) {
 
   useEffect(() => {
     async function getOrderId() {
-      const { data } = await api2.get(`/order/${orderid}`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
+      const { data } = await api2.get(`/order/${orderid}`);
 
       data.order.date_order = new Date(data.order.date_order)
         .toLocaleDateString('pt-BR', {

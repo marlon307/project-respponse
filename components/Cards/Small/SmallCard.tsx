@@ -23,7 +23,7 @@ function SmallCard({
             quality={ 85 }
             loading="eager"
             sizes="130px"
-            priority
+            fill
           />
         </figure>
       </div>
