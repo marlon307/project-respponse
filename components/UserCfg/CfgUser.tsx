@@ -8,7 +8,7 @@ import style from './style.module.scss';
 
 type TStateUser = {
   name: string;
-  email: string;
+  umail: string;
   date: string;
   doc: string;
   tel: string;
@@ -25,7 +25,7 @@ function CfgUser({ isRequest }: Props) {
   const { dataUser, mutate } = useUser(isRequest);
   const [stateIfonUser, setStateinfoUser] = useState<TStateUser>({
     name: '',
-    email: '',
+    umail: '',
     date: new Date().toISOString().split('T')[0],
     doc: '',
     tel: '',
@@ -61,7 +61,7 @@ function CfgUser({ isRequest }: Props) {
     if (dataUser && isRequest) {
       setStateinfoUser({
         name: dataUser?.name,
-        email: dataUser?.email,
+        umail: dataUser?.umail,
         date: new Date(dataUser?.birthday)?.toISOString().split('T')[0],
         doc: dataUser?.cpf_cnpj?.replace(/^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})/, '$1.$2.$3-$4'),
         tel: dataUser?.tel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
@@ -90,7 +90,7 @@ function CfgUser({ isRequest }: Props) {
           name="block"
           placeHolder="E-mail"
           autoComplete="email"
-          dValue={ stateIfonUser.email }
+          dValue={ stateIfonUser.umail }
           msgError="E-mail inválido"
           disabled
         />
