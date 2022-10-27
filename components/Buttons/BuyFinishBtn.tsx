@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { CookieValueTypes } from 'cookies-next/lib/types';
 import { TypeEditBagInfos } from '../../@types/bag';
 import api, { api2 } from '../../service/api';
 import style from './style.module.scss';
 
 type TBuyFinish = {
   listProducts: TypeEditBagInfos[];
-  token: CookieValueTypes;
 };
 
-function BuyFinishBtn({ listProducts, token }: TBuyFinish) {
+function BuyFinishBtn({ listProducts }: TBuyFinish) {
   const [progress, setProgress] = useState<number | string>('Finalizar Compra');
   async function handleClickBuy() {
     if (listProducts.length) {

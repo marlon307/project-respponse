@@ -4,9 +4,10 @@ import style from './style.module.scss';
 
 type TPropsOrders = {
   execFunction: Function;
+  isRequest: boolean
 };
 
-function Orders({ execFunction }: TPropsOrders) {
+function Orders({ execFunction, isRequest }: TPropsOrders) {
   const [orders, setOrders] = useState<[]>([]);
   const orderIdOpen = useCallback((orderId: string) => {
     execFunction!(orderId);
@@ -14,11 +15,13 @@ function Orders({ execFunction }: TPropsOrders) {
 
   useEffect(() => {
     async function getOrders() {
-      const { data } = await api2.get('/order');
-      setOrders(data.orders);
+      if (isRequest) {
+        const { data } = await api2.get('/order');
+        setOrders(data.orders);
+      }
     }
     getOrders();
-  }, []);
+  }, [isRequest]);
 
   return (
     <table className={ style.table } cellSpacing="0">

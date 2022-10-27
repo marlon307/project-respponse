@@ -1,16 +1,16 @@
 import React, { useCallback } from 'react';
 import { CardAdderess } from '.';
+
 import { api2 } from '../../service/api';
 import useAddress from '../../hooks/useAddress';
 import style from './CardAddress/style.module.scss';
 
 type TAdderess = {
-  listAddress: IListAddress['listAddress'];
-  token: IToken['token'];
+  isRequest: boolean;
 };
 
-function Address({ token, listAddress }: TAdderess) {
-  const { mutate } = useAddress(token);
+function Address({ isRequest }: TAdderess) {
+  const { listAddress, mutate } = useAddress();
 
   const removeAddress = useCallback(async (address: number) => {
     const { data } = await api2.delete('/address', {
@@ -26,25 +26,27 @@ function Address({ token, listAddress }: TAdderess) {
   }, [listAddress]);
 
   return (
-    <div className={ style.address }>
-      { listAddress?.map(({
-        id, name_delivery, number_home, city, uf, cep, road, district,
-      }) => (
-        <CardAdderess
-          key={ id }
-          name_delivery={ name_delivery }
-          road={ road }
-          number_home={ number_home }
-          city={ city }
-          uf={ uf }
-          cep={ cep }
-          district={ district }
-          removable
-          execFunction={ () => removeAddress(id ?? 0) }
-        />
-      )) }
-      { !listAddress?.length && <h3>Você não possui endereços cadastrados.</h3> }
-    </div>
+    isRequest ? (
+      <div className={ style.address }>
+        { listAddress?.map(({
+          id, name_delivery, number_home, city, uf, cep, road, district,
+        }) => (
+          <CardAdderess
+            key={ id }
+            name_delivery={ name_delivery }
+            road={ road }
+            number_home={ number_home }
+            city={ city }
+            uf={ uf }
+            cep={ cep }
+            district={ district }
+            removable
+            execFunction={ () => removeAddress(id ?? 0) }
+          />
+        )) }
+        { !listAddress?.length && <h3>Você não possui endereços cadastrados.</h3> }
+      </div>
+    ) : null
   );
 }
 

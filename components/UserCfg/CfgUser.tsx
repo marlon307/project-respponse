@@ -16,8 +16,12 @@ type TStateUser = {
   gender: string,
 };
 
-function CfgUser({ token }: IToken) {
-  const { ifoUser, loading, mutate } = useUser(token);
+interface Props {
+  isRequest: boolean;
+}
+
+function CfgUser({ isRequest }: Props) {
+  const { ifoUser, mutate } = useUser(isRequest);
   const [isLoading, setIsLoading] = useState(false);
   const [stateIfonUser, setStateIfoUser] = useState<TStateUser>({
     name: '',
@@ -56,18 +60,21 @@ function CfgUser({ token }: IToken) {
   }
 
   useEffect(() => {
-    if (!loading) {
+    if (!ifoUser && isRequest) {
+      mutate();
+    }
+    if (ifoUser && isRequest) {
       setStateIfoUser({
         name: ifoUser?.name,
         email: ifoUser?.email,
-        date: new Date(ifoUser?.birthday).toISOString().split('T')[0],
+        date: new Date(ifoUser?.birthday)?.toISOString().split('T')[0],
         doc: ifoUser?.cpf_cnpj?.replace(/^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})/, '$1.$2.$3-$4'),
         tel: ifoUser?.tel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
         cel: ifoUser?.cel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
         gender: ifoUser?.gender_id === null ? 0 : ifoUser?.gender_id,
       });
     }
-  }, [loading, ifoUser]);
+  }, [ifoUser, isRequest]);
 
   return (
     <form className={ style.form } onSubmit={ saveUpdateInfoUser }>

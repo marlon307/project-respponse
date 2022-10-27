@@ -1,34 +1,25 @@
 import useSWR from 'swr';
 import { api2 } from '../service/api';
 
-type TUser = {
-  route: string;
-  token: string;
-};
+const infoUser = async (route: string) => {
+  const { data } = await api2.get(route)
+    .catch(({ response }) => response);
 
-const infoUser = async ({ route, token }: TUser) => {
-  if (token) {
-    const { data } = await api2.get(route)
-      .catch(({ response }) => response);
-
-    return data.response;
-  }
+  if (data.status === 200) return data.response;
 
   const error: any = new Error('Not authorized!');
   error.status = 401;
   throw error;
 };
 
-const useUser = <Data = any>(token: string) => {
+const useUser = <Data = any>(isRequest: boolean) => {
   const { data, mutate, error } = useSWR<Data>(
-    {
-      route: '/user',
-      token,
-    },
+    '/user',
     infoUser,
     {
       revalidateOnFocus: false,
       revalidateIfStale: false,
+      revalidateOnMount: isRequest,
     },
   );
 

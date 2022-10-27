@@ -12,7 +12,6 @@ function OrderId({ orderid }: Props) {
     // https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
     navigator.clipboard.writeText(code);
   }
-
   useEffect(() => {
     async function getOrderId() {
       const { data } = await api2.get(`/order/${orderid}`);

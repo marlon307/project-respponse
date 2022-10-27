@@ -11,10 +11,9 @@ type TBarBuy = {
     bagItems: [];
     checkout: StateBagType['checkout'];
   }
-  token: CookieValueTypes;
 };
 
-function BarBuy({ listProducts, stateBag, token }: TBarBuy) {
+function BarBuy({ listProducts, stateBag }: TBarBuy) {
   // const { formatPay, shipping, cupomAplicate } = stateBag.checkout.formatPay;
   const [openInfo, setOpenInfo] = useState(false);
 
@@ -69,7 +68,7 @@ function BarBuy({ listProducts, stateBag, token }: TBarBuy) {
               }) }
             </span>
           </div>
-          <BuyFinishBtn listProducts={ listProducts } token={ token } />
+          <BuyFinishBtn listProducts={ listProducts } />
         </div>
       </div>
       <button

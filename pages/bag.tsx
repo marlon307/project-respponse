@@ -49,7 +49,7 @@ const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'
 
 function ContentBag() {
   const { props, mutate } = useBag(false);
-  const { listBag, mainAdd, token } = props;
+  const { listBag, mainAdd } = props;
 
   const [openModal, setOpenModal] = useState<string>('');
   const [addressid, setAddressid] = useState<number>(0);
@@ -67,7 +67,7 @@ function ContentBag() {
     if (data.status === 200) {
       const newProps = [...props.listBag];
       newProps.splice(props.listBag.indexOf(identify), 1);
-      mutate({ listBag: newProps, token }, {
+      mutate({ listBag: newProps }, {
         revalidate: false,
       });
     }
@@ -132,7 +132,7 @@ function ContentBag() {
           addSelected={ mainAdd }
         />
       </div>
-      <BarBuy listProducts={ listBag } token={ token } />
+      <BarBuy listProducts={ listBag } />
       <ContentModal
         openModal={ setOpenModal }
         isOpen={
@@ -143,12 +143,11 @@ function ContentBag() {
         }
       >
         { openModal === 'address' && <RenderAdderess listAdd={ listAdd } execFunction={ setAddressid } /> }
-        { openModal === 'addaddress' && <Addaddress token={ token } execFunction={ () => setOpenModal('') } /> }
+        { openModal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
         { openModal === 'addcard' && <Addacard /> }
         { openModal === 'editbag' && (
           <CardEdit
             identify={ identifyEditItemBag }
-            token={ token }
             execeFunction={ setOpenModal }
           />
         ) }
@@ -159,7 +158,6 @@ function ContentBag() {
 
 interface Props {
   fallback: {
-    token: IToken['token'];
     listBag: TypeAddBagInfos[];
   }
 }
@@ -180,7 +178,11 @@ function Bag({ fallback }: Props) {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (req.cookies.u_token) {
-    const { data } = await api2.get('/bag')
+    const { data } = await api2.get('/bag', {
+      headers: {
+        authorization: `Bearer ${req.cookies.u_token}`,
+      },
+    })
       .catch((err) => ({ data: err }));
 
     return {

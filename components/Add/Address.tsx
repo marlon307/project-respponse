@@ -1,4 +1,3 @@
-import { CookieValueTypes } from 'cookies-next';
 import React, { FormEvent, useState } from 'react';
 import useAddress from '../../hooks/useAddress';
 import { api2 } from '../../service/api';
@@ -11,7 +10,7 @@ type TAddress = {
 };
 
 function Address({ execFunction }: TAddress) {
-  const { mutate, listAddress } = useAddress(token);
+  const { mutate, listAddress } = useAddress();
   const [isLoading, setisLoading] = useState(false);
 
   async function handleAddAddress(event: FormEvent) {

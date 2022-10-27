@@ -1,31 +1,20 @@
-import { CookieValueTypes } from 'cookies-next';
 import useSWR from 'swr';
 import { api2 } from '../service/api';
 
-type TUser = {
-  route: string;
-  token: CookieValueTypes;
-};
+const listAddress = async (route: string) => {
+  const { data } = await api2.get(route)
+    .catch(({ response }) => response);
 
-const listAddress = async ({ route, token }: TUser) => {
-  if (token) {
-    const { data } = await api2.get(route)
-      .catch(({ response }) => response);
-
-    return data;
-  }
+  if (data.status === 200) return data;
 
   const error: any = new Error('Not authorized!');
   error.status = 401;
   throw error;
 };
 
-const useAddress = <Data = any>(token: CookieValueTypes) => {
+const useAddress = <Data = any>() => {
   const { data, mutate, error } = useSWR<Data>(
-    {
-      route: '/address',
-      token,
-    },
+    '/address',
     listAddress,
   );
 
