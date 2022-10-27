@@ -10,7 +10,7 @@ type TAddress = {
 };
 
 function Address({ execFunction }: TAddress) {
-  const { mutate, listAddress } = useAddress(false);
+  const { mutate, addressList } = useAddress(false);
   const [isLoading, setisLoading] = useState(false);
 
   async function handleAddAddress(event: FormEvent) {
@@ -24,24 +24,15 @@ function Address({ execFunction }: TAddress) {
 
     if (checkValue) {
       setisLoading(true);
-      const body = {
-        name_delivery: data.namedest,
-        city: data.city,
-        district: data.district,
-        uf: data.state,
-        cep: data.zipcode,
-        road: data.street,
-        number_home: data.number,
-      };
 
-      const res = await api2.post('/address', body)
+      const res = await api2.post('/address', formData)
         .catch(({ response }) => response);
 
       if (res.data.status === 201) {
         mutate({
-          address: [...listAddress.address, {
+          address: [...addressList.address, {
             id: res.data.address,
-            ...body,
+            ...data,
           }],
         }, false);
       }

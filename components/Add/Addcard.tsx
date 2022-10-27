@@ -14,7 +14,6 @@ function Addcard() {
           Adicionar Cartão de Crédito
         </h1>
         <form>
-
           <Input
             id="namecard"
             type="text"
