@@ -44,14 +44,14 @@ function Login() {
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
-    if (validEmail.test(String(data.remail))
-      && validPsw.test(String(data.rpsw)) && isLoading === false) {
+    if (validEmail.test(String(data.email))
+      && validPsw.test(String(data.password)) && isLoading === false) {
       setIsLoading(true);
       const res = await api2.post('/createuser', formData)
         .catch(({ response }) => response);
 
       if (res.data.status === 201) {
-        setisRegistered(String(data.remail));
+        setisRegistered(String(data.email));
       } else {
         setisValidRegister(true);
       }
@@ -150,7 +150,7 @@ function Login() {
                 <Input
                   id="remail"
                   type="email"
-                  name="username"
+                  name="email"
                   placeHolder="E-mail"
                   autoComplete="email"
                   msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
@@ -160,7 +160,7 @@ function Login() {
                 <Input
                   id="rpsw"
                   type="password"
-                  name="rpsw"
+                  name="password"
                   placeHolder="Senha"
                   msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
                   disabled={ isLoading }
