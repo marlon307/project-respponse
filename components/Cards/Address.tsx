@@ -12,15 +12,11 @@ function Address({ isRequest }: TAdderess) {
   const { addressList, mutate } = useAddress(isRequest);
 
   const removeAddress = useCallback(async (address: number) => {
-    const { data } = await api2.delete('/address', {
-      data: {
-        address,
-      },
-    }).catch(({ response }) => response);
+    const { data } = await api2.delete(`/address/${address}`)
+      .catch(({ response }) => response);
 
     if (data.status === 200) {
-      const newList = addressList.filter(({ id }: ITAddress) => id !== address);
-      mutate({ address: newList }, false);
+      mutate(addressList.filter(({ id }: ITAddress) => id !== address), false);
     }
   }, [addressList]);
 
