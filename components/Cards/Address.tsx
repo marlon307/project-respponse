@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
 import { CardAdderess } from '.';
-
 import { api2 } from '../../service/api';
 import useAddress from '../../hooks/useAddress';
 import style from './CardAddress/style.module.scss';
@@ -33,20 +32,12 @@ function Address({ isRequest }: TAdderess) {
 
   return (
     <div className={ style.address }>
-      { addressList?.map(({
-        id, name_delivery, number_home, city, uf, cep, road, district,
-      }: ITAddress) => (
+      { addressList?.map((address: ITAddress) => (
         <CardAdderess
-          key={ id }
-          name_delivery={ name_delivery }
-          road={ road }
-          number_home={ number_home }
-          city={ city }
-          uf={ uf }
-          cep={ cep }
-          district={ district }
+          key={ address.id }
+          { ...address }
           removable
-          execFunction={ () => removeAddress(id ?? 0) }
+          execFunction={ () => removeAddress(address.id ?? 0) }
         />
       )) }
       { !addressList?.length && <h3>Você não possui endereços cadastrados.</h3> }

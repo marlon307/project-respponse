@@ -28,17 +28,6 @@ interface TFormatPay {
   division: number;
 }
 
-interface TAddress {
-  add_id?: number;
-  name_delivery: string;
-  road: string;
-  district: string;
-  number_home: string;
-  uf: string;
-  city: string;
-  cep: string;
-}
-
 interface StateBagType {
   valueBag: number;
   itemEditBag: TypeEditBagInfos;

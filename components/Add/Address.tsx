@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react';
-import useAddress from '../../hooks/useAddress';
+import { useSWRConfig } from 'swr';
 import { api2 } from '../../service/api';
 import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';
@@ -10,7 +10,7 @@ type TAddress = {
 };
 
 function Address({ execFunction }: TAddress) {
-  const { mutate, addressList } = useAddress(false);
+  const { cache, mutate } = useSWRConfig();
   const [isLoading, setisLoading] = useState(false);
 
   async function handleAddAddress(event: FormEvent) {
@@ -29,12 +29,15 @@ function Address({ execFunction }: TAddress) {
         .catch(({ response }) => response);
 
       if (res.data.status === 201) {
-        mutate({
-          address: [...addressList.address, {
+        const addressList = cache.get('/address');
+        mutate(
+          '/address',
+          [...addressList, {
             id: res.data.address,
             ...data,
           }],
-        }, false);
+          false,
+        );
       }
       setisLoading(false);
       execFunction!();

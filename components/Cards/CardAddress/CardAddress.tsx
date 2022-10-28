@@ -1,59 +1,44 @@
 import React, { memo } from 'react';
-import { TAddress } from '../../../@types/bag';
 import style from './style.module.scss';
 
-export interface PCardAdderess {
+interface Props extends ITAddress {
   removable?: boolean;
   execFunction?: () => void;
-  name_delivery?: TAddress['name_delivery'];
-  road?: TAddress['road'];
-  district?: TAddress['district'];
-  number_home?: TAddress['number_home'];
-  uf?: TAddress['uf'];
-  city?: TAddress['city'];
-  cep?: TAddress['cep'];
 }
 
 function CardAdderess({
-  name_delivery: name, road, district, number_home: number, uf, city,
-  cep: zipcode, removable, execFunction,
-}: PCardAdderess) {
+  namedest, city, district, number, state, street, zipcode, execFunction, removable,
+}: Props) {
   return (
     <div className={ style.cardaddress }>
-      <h3 title="Entregar para">{ name }</h3>
+      <h3 title="Entregar para">{ namedest }</h3>
       <div>
-        <span title={ `Rua: ${road}` } className={ style.line }>
+        <span title={ `Rua: ${street}` } className={ style.line }>
           Rua:
-          { ' ' }
-          { road }
+          <p>{ street }</p>
         </span>
         <span title={ `N°: ${number}` } className={ style.line }>
           N°:
-          { ' ' }
-          { number }
+          <p>{ number }</p>
         </span>
       </div>
       <span title={ `Bairro: ${district}` } className={ style.line }>
         Bairro:
-        { ' ' }
-        { district }
+        <p>{ district }</p>
       </span>
       <div>
-        <span title={ `Estado: ${uf}` } className={ style.line }>
+        <span title={ `Estado: ${state}` } className={ style.line }>
           UF:
-          { ' ' }
-          { uf }
+          <p>{ state }</p>
         </span>
         <span title={ `Cidade: ${city}` } className={ style.line }>
           Cidade:
-          { ' ' }
-          { city }
+          <p>{ city }</p>
         </span>
       </div>
       <span title={ `CEP: ${zipcode}` } className={ style.line }>
         CEP:
-        { ' ' }
-        { zipcode }
+        <p>{ zipcode }</p>
       </span>
       { removable && (
         <button className={ style.delete } title="Excluir Endereço" type="button" onClick={ execFunction }>
@@ -69,13 +54,13 @@ function CardAdderess({
 CardAdderess.defaultProps = {
   removable: false,
   execFunction: () => { },
-  name_delivery: 'Clique aqui ( 👇 ) para selecionar o endereço.',
-  road: '---',
-  district: '---',
-  number_home: '---',
-  uf: '---',
-  city: '---',
-  cep: '---',
+  // namedest: 'Clique aqui ( 👇 ) para selecionar o endereço.',
+  // street: '---',
+  // district: '---',
+  // number: '---',
+  // state: '---',
+  // city: '---',
+  // zipecode: '---',
 };
 
 export default memo(CardAdderess);
