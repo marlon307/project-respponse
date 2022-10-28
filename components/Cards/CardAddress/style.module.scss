@@ -24,7 +24,7 @@
 .address {
   width: 100%;
   display: flex;
-  max-height: 300px;
+  height: 380px;
   overflow: auto;
   align-items: center;
   justify-content: flex-start;
@@ -32,7 +32,6 @@
   gap: 1em;
 
   .cardaddress {
-    // 354
     max-width: 350px;
   }
 
@@ -64,5 +63,6 @@
   .address {
     flex-wrap: nowrap;
     align-items: flex-start;
+    height: 200px;
   }
 }
