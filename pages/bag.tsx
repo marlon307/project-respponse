@@ -59,7 +59,7 @@ function ContentBag() {
   const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
     const { data } = await api2.delete('/bag', {
       data: {
-        product_option: identify.product_option,
+        product_option: identify.opt_id,
         size: identify.size,
       },
     }).catch((err) => ({ data: err }));
@@ -67,9 +67,7 @@ function ContentBag() {
     if (data.status === 200) {
       const newProps = [...props.listBag];
       newProps.splice(props.listBag.indexOf(identify), 1);
-      mutate({ listBag: newProps }, {
-        revalidate: false,
-      });
+      mutate(newProps, false);
     }
   }, [props.listBag]);
 

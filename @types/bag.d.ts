@@ -9,7 +9,7 @@ export interface TypeEditBagInfos {
   color_name: string;
   color: string;
   size: string;
-  product_option: number;
+  opt_id: number;
 }
 
 export interface TypeAddBagInfos extends TypeEditBagInfos {
