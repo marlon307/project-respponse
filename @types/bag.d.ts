@@ -32,11 +32,17 @@ interface StateBagType {
   valueBag: number;
   itemEditBag: TypeEditBagInfos;
   checkout: {
-    shipping: Shipping;
     formatPay: TFormatPay;
     cupomAplicate: {
       code: string;
       descountCupom: number;
     };
   }
+}
+
+export interface Shipping {
+  id: number;
+  name_carrie: string;
+  price: float;
+  toDate: number;
 }

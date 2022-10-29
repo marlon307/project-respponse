@@ -6,7 +6,7 @@ export interface PInputRadio extends InputHTMLAttributes<T> {
   family: string;
   iValue?: number;
   execFunction?: Function;
-  checked: boolean
+  checked?: boolean
 }
 
 export interface PInputText extends InputHTMLAttributes<T> {

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { CookieValueTypes } from 'cookies-next/lib/types';
 import calcAllValuesArray from '../../hooks/useCalcs';
 import { StateBagType, TypeAddBagInfos } from '../../@types/bag';
 import { BuyFinishBtn } from '../Buttons';

@@ -1,33 +1,24 @@
 import React from 'react';
-import type { TAddress } from '../../@types/bag';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 
 interface Props {
-  listAdd: TAddress[]
   execFunction: (n: number) => void;
 }
 
-function RenderAdderess({ listAdd, execFunction }: Props) {
+function RenderAdderess({ execFunction }: Props) {
+  const listAddress: IListAddress['listAddress'] = [];
   return (
     <div className={ style.add }>
-      { listAdd.map((adderess) => (
+      { listAddress.map((adderess) => (
         <a
-          href=""
+          href="#"
           aria-label="Clique aqui para selecionar este endereço de entrega."
-          key={ adderess.add_id }
+          key={ adderess.id }
           className={ style.cont }
-          onClick={ (event) => { event.preventDefault(); execFunction(adderess.add_id ?? 0); } }
+          onClick={ (event) => { event.preventDefault(); execFunction(adderess.id ?? 0); } }
         >
-          <CardAdderess
-            name_delivery={ adderess.name_delivery }
-            road={ adderess.road }
-            number_home={ adderess.number_home }
-            city={ adderess.city }
-            uf={ adderess.uf }
-            cep={ adderess.cep }
-            district={ adderess.district }
-          />
+          <CardAdderess { ...adderess } />
         </a>
       )) }
     </div>

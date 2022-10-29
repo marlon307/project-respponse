@@ -6,41 +6,41 @@ import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
 import HeadSEO from '../components/Head/HeadSEO';
-import { StateBagType, TypeAddBagInfos } from '../@types/bag';
+import { TypeAddBagInfos } from '../@types/bag';
 import { api2 } from '../service/api';
 import style from '../Sass/style.module.scss';
 import useBag from '../hooks/useBag';
 
-const stateBag: StateBagType = {
-  valueBag: 0,
-  itemEditBag: {
-    product_option: 0,
-    id: 0,
-    title: '',
-    category_name: '',
-    color: '',
-    color_name: '',
-    url_image: {
-      src: '',
-    },
-    size: '',
-    quantity: 0,
-  },
-  checkout: {
-    shipping: {
-      shippingCompany: '',
-      valueShipping: 0,
-    },
-    formatPay: {
-      formatPayment: 'Forma de pagamento',
-      division: 0,
-    },
-    cupomAplicate: {
-      code: '',
-      descountCupom: 0,
-    },
-  },
-};
+// const stateBag = {
+//   valueBag: 0,
+//   itemEditBag: {
+//     product_option: 0,
+//     id: 0,
+//     title: '',
+//     category_name: '',
+//     color: '',
+//     color_name: '',
+//     url_image: {
+//       src: '',
+//     },
+//     size: '',
+//     quantity: 0,
+//   },
+//   checkout: {
+//     shipping: {
+//       shippingCompany: '',
+//       valueShipping: 0,
+//     },
+//     formatPay: {
+//       formatPayment: 'Forma de pagamento',
+//       division: 0,
+//     },
+//     cupomAplicate: {
+//       code: '',
+//       descountCupom: 0,
+//     },
+//   },
+// };
 
 const RenderAdderess = lazy(() => import('../components/Bag/RenderAdderess'));
 const Addaddress = lazy(() => import('../components/Add/Address'));
@@ -49,7 +49,7 @@ const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'
 
 function ContentBag() {
   const { props, mutate } = useBag(false);
-  const { listBag, mainAdd } = props;
+  const { listBag, mainAdd, shipping_company: shipping } = props;
 
   const [openModal, setOpenModal] = useState<string>('');
   const [addressid, setAddressid] = useState<number>(0);
@@ -126,9 +126,9 @@ function ContentBag() {
         </section>
         <Checkout
           setOpenModal={ setOpenModal }
-          infoCheckout={ stateBag.checkout }
+          shipping={ shipping }
           // addSelected={ listAdd.find((add: { add_id: number; }) => add?.add_id === addressid) }
-          // qunatityAdd={ listAdd.length }
+          qunatityAdd={ listBag.length }
           addSelected={ mainAdd }
         />
       </div>
@@ -142,7 +142,7 @@ function ContentBag() {
           || openModal === 'editbag'
         }
       >
-        { openModal === 'address' && <RenderAdderess listAdd={ listAdd } execFunction={ setAddressid } /> }
+        { openModal === 'address' && <RenderAdderess execFunction={ setAddressid } /> }
         { openModal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
         { openModal === 'addcard' && <Addacard /> }
         { openModal === 'editbag' && (

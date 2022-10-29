@@ -1,22 +1,23 @@
 import React, { useCallback } from 'react';
-import { mockShipping, mockPayment } from '../../service/mockCheckout';
+import Link from 'next/link';
+import { mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
-import CustomLink from '../CustomLink';
-import { StateBagType, TAddress } from '../../@types/bag';
+import { Shipping } from '../../@types/bag';
+// import { StateBagType } from '../../@types/bag';
 import style from './style.module.scss';
 
-type PropsCheckout = {
+interface Props {
   setOpenModal: Function;
-  infoCheckout: StateBagType['checkout']
-  addSelected?: TAddress
-  qunatityAdd: number
-};
+  shipping: Array<Shipping>;
+  addSelected: ITAddress;
+  qunatityAdd: number;
+}
 
 function Checkout({
-  setOpenModal, addSelected, infoCheckout, qunatityAdd,
-}: PropsCheckout) {
-  const { shippingCompany } = infoCheckout.shipping;
+  setOpenModal, addSelected, shipping, qunatityAdd,
+}: Props) {
+  // const { shippingCompany } = infoCheckout.shipping;
   const handleSipping = useCallback((idInput: string, value: number) => {
     // eslint-disable-next-line no-console
     console.log(idInput, value);
@@ -39,35 +40,27 @@ function Checkout({
             Endereço de entrega
           </h3>
         </div>
-        <CustomLink
+        <Link
           href="/"
-          ariaLabel="Clique aqui para escolher um endereço de entrega."
+          aria-label="Clique aqui para escolher um endereço de entrega."
           onClick={ (event) => {
             event.preventDefault();
             setOpenModal(qunatityAdd ? 'address' : 'addaddress');
           } }
         >
-          <CardAdderess
-            name_delivery={ addSelected?.name_delivery }
-            road={ addSelected?.road }
-            number_home={ addSelected?.number_home }
-            city={ addSelected?.city }
-            uf={ addSelected?.uf }
-            cep={ addSelected?.cep }
-            district={ addSelected?.district }
-          />
-        </CustomLink>
-        <CustomLink
+          <CardAdderess { ...addSelected! } />
+        </Link>
+        <Link
           className="link"
           href="/"
-          ariaLabel="Adicionar endereço"
+          aria-label="Adicionar endereço"
           onClick={ (event) => {
             event.preventDefault();
             setOpenModal('addaddress');
           } }
         >
           Adicionar endereço
-        </CustomLink>
+        </Link>
       </div>
       <div className={ style.contcheckout }>
         <div className={ style.select }>
@@ -79,15 +72,14 @@ function Checkout({
           </h3>
         </div>
         <div className={ style.options }>
-          { mockShipping.map((object) => (
+          { shipping.map((object) => (
             <InputRadio
-              checked={ shippingCompany === object.name }
               key={ object.id }
-              name={ `${object.name} - ${object.price.toLocaleString('pt-br', {
+              name={ `${object.name_carrie} - ${object.price.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
-              })} - ${object.toDate}` }
-              iId={ object.name }
+              })} - até ${object.toDate} dias úteis` }
+              iId={ object.name_carrie }
               family="shipping"
               execFunction={ handleSipping }
               iValue={ object.price }
@@ -108,7 +100,6 @@ function Checkout({
           { mockPayment.map((object) => (
             <InputRadio
               key={ object.id }
-              checked={ infoCheckout.formatPay.formatPayment === object.name }
               name={ object.name }
               iId={ object.name }
               family="payment"
@@ -116,17 +107,17 @@ function Checkout({
             />
           )) }
         </div>
-        <CustomLink
+        <Link
           href="/"
           className="link"
-          ariaLabel="Adicionar Cartão"
+          aria-label="Adicionar Cartão"
           onClick={ (event) => {
             event.preventDefault();
             setOpenModal('addcard');
           } }
         >
           Adicionar Cartão
-        </CustomLink>
+        </Link>
       </div>
       <div className={ style.contcheckout }>
         <div className={ style.select }>
@@ -155,6 +146,3 @@ function Checkout({
 }
 
 export default Checkout;
-Checkout.defaultProps = {
-  addSelected: undefined,
-};
