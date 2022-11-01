@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
@@ -10,7 +10,7 @@ import { SimilarProduct, TypeProduct } from './product';
 import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
-// import { SwiperButtonNext, SwiperButtonPrev } from '../../components/Buttons/SwiperButton';
+import { ButtonNext, ButtonPrev } from '../../components/Buttons/Buttons';
 import { ColorSelected } from '../../components/Buttons/types';
 import style from './style.module.scss';
 
@@ -26,6 +26,7 @@ function ProductId({ product, similar }: Props) {
     details, specifications, list_options: option,
   } = product;
 
+  const slide = useRef<HTMLDivElement | null>(null);
   const [sizeChecked, setSizeChecked] = useState('');
   const [colorChecked, setColorChecked] = useState<ColorSelected>({
     color: '',
@@ -58,7 +59,9 @@ function ProductId({ product, similar }: Props) {
       />
       <div className={ style.contprod }>
         <div className={ style.slide }>
-          <div className={ style.panels }>
+          <ButtonNext reference={ slide } />
+          <ButtonPrev reference={ slide } />
+          <div className={ style.panels } ref={ slide }>
             { option[colorChecked.index].images.map(({ urlImg, imgid }: any) => (
               <figure key={ imgid } className={ style.contsimg }>
                 <Image

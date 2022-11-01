@@ -43,6 +43,7 @@
   border-radius: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  z-index: 8888;
   @include center;
 
   &::before {
@@ -64,7 +65,7 @@
   background: transparent;
   border-radius: 50%;
   transform: translateY(-50%);
-  z-index: 7777;
+  z-index: 8888;
   cursor: pointer;
   @include center;
 

@@ -50,6 +50,7 @@
   justify-content: flex-start;
   overflow: overlay;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 
   figure {
     width: 100%;

@@ -57,6 +57,7 @@
   margin: 0 6% 4em;
 
   section {
+    scroll-behavior: smooth;
     overflow: overlay;
     display: flex;
     flex-direction: row;
