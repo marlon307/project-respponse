@@ -26,7 +26,16 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
           product_option: option.option_id,
           size: sizeSelected,
         },
-      });
+      }).catch(({ response }) => ({
+        data: {
+          detail: response.data.detail,
+          status: response.status,
+        },
+      }));
+
+      if (data.status === 401) {
+        router.push('/login-register');
+      }
 
       if (redirect && (data.status === 201 || data.status === 200)) {
         if (index !== -1) {
