@@ -29,9 +29,9 @@ const useBag = (revalidate: boolean) => {
     loading,
     loggedOut,
     props: {
-      listBag: data?.infobag.list_b,
-      mainAdd: data?.infobag.main_add,
-      shipping_company: data?.infobag.shipping_company,
+      listBag: data?.infobag?.list_b || [],
+      mainAdd: data?.infobag?.main_add || {},
+      shipping_company: data?.infobag?.shipping_company || {},
     },
     mutate,
   };
