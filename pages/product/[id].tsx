@@ -62,12 +62,14 @@ function ProductId({ product, similar }: Props) {
           <ButtonNext reference={ slide } />
           <ButtonPrev reference={ slide } />
           <div className={ style.panels } ref={ slide }>
-            { option[colorChecked.index].images.map(({ urlImg, imgid }: any) => (
+            { option[colorChecked.index].images.map(({ urlImg, imgid }: any, index) => (
               <figure key={ imgid } className={ style.contsimg }>
                 <Image
                   src={ urlImg }
                   quality={ 80 }
                   alt={ title }
+                  loading={ index === 0 ? 'eager' : 'lazy' }
+                  priority={ index === 0 }
                   fill
                 />
               </figure>

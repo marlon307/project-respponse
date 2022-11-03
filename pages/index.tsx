@@ -21,13 +21,14 @@ function Home({
         <section>
           { slides.map(({
             id, srcImg, alt, background,
-          }) => (
+          }, index) => (
             <figure key={ id } style={ { background: `${background}` } }>
               <Image
                 src={ srcImg }
                 quality={ 85 }
                 alt={ alt }
-                loading="lazy"
+                loading={ index === 0 ? 'eager' : 'lazy' }
+                priority={ index === 0 }
                 fill
               />
               <figcaption>
