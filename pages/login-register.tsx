@@ -1,6 +1,5 @@
 import React, { FormEvent, useState } from 'react';
 import router from 'next/router';
-import Svg from '../assets/Svg';
 import BtnIco from '../components/Buttons/BtnIco';
 import { Input } from '../components/ComponentsForm';
 import HeadSEO from '../components/Head/HeadSEO';
@@ -66,9 +65,6 @@ function Login() {
         description={ `${sectionTab ? 'Faça seu login na' : 'Registre-se na'} respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você.` }
       />
       <section className={ style.contlogin }>
-        <div className={ style.logo }>
-          <Svg icoName="logo" />
-        </div>
         <div className={ style.sectiontab }>
           <button
             className={ style.tablog }
