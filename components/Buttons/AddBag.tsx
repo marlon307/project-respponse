@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import router from 'next/router';
+import { useSWRConfig } from 'swr';
 import { api2 } from '../../service/api';
+// import useBag from '../../hooks/useBag';
 import type { PBtnAddBag } from './types';
+import type { TypeEditBagInfos } from '../../@types/bag';
 import style from './style.module.scss';
-import useBag from '../../hooks/useBag';
-import { TypeEditBagInfos } from '../../@types/bag';
 
 function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
-  const { props, mutate } = useBag(true);
-
+  // const { props, mutate } = useBag(true);
+  const { cache, mutate } = useSWRConfig();
   const [buttonActive, setbutonActive] = useState(false);
   const [activeMsg, setActiveMsg] = useState(false);
 
   async function handleClick(redirect: boolean) {
-    const index = props.listBag.findIndex(
+    let listBag = cache.get('/bag');
+
+    const index = listBag?.findIndex(
       (objectindex: TypeEditBagInfos) => objectindex.opt_id === option.option_id
         && objectindex.size === sizeSelected,
     );
@@ -22,7 +25,7 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
         method: index !== -1 ? 'PATCH' : 'POST',
         url: '/bag',
         data: {
-          quantity: index !== -1 ? props.listBag[index].quantity + 1 : 1,
+          quantity: index !== -1 ? listBag[index].quantity + 1 : 1,
           product_option: option.option_id,
           size: sizeSelected,
         },
@@ -39,10 +42,11 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
 
       if (redirect && (data.status === 201 || data.status === 200)) {
         if (index !== -1) {
-          props.listBag[index].quantity += 1;
-          mutate({ ...props }, { revalidate: false });
+          listBag[index].quantity += 1;
+          mutate('/bag', [...listBag], false);
+          // mutate({ ...props }, { revalidate: false });
         } else {
-          props.listBag = [...props.listBag, {
+          listBag = [...listBag, {
             ...option,
             ...infoTitelAndType,
             category_name: infoTitelAndType.ctgName,
@@ -52,7 +56,8 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
             url_image: option.images[0].urlImg,
           }];
         }
-        mutate({ ...props }, { revalidate: false });
+        mutate('/bag', listBag, false);
+        // mutate({ ...props }, { revalidate: false });
         router.push('/bag');
       }
     } else {

@@ -11,7 +11,7 @@ import { api2 } from '../../service/api';
 import HeadSEO from '../../components/Head/HeadSEO';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import { ButtonNext, ButtonPrev } from '../../components/Buttons/Buttons';
-import { ColorSelected } from '../../components/Buttons/types';
+import type { ColorSelected } from '../../components/Buttons/types';
 import style from './style.module.scss';
 
 interface Props {
@@ -55,7 +55,7 @@ function ProductId({ product, similar }: Props) {
       <HeadSEO
         title={ `${ctgName} - ${title}` }
         description={ descrtion }
-        keywords={ `${ctgName} - ${title}, Roupas claras para caminhadas` }
+        keywords={ `${ctgName} - ${title}` }
       />
       <div className={ style.contprod }>
         <div className={ style.slide }>
@@ -70,6 +70,7 @@ function ProductId({ product, similar }: Props) {
                   alt={ title }
                   loading={ index === 0 ? 'eager' : 'lazy' }
                   priority={ index === 0 }
+                  sizes="100vw"
                   fill
                 />
               </figure>

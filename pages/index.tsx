@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { CardCategory } from '../components/Cards';
 // import LoadingImage from '../components/LoadImage';
-import { IPropsHome } from '../@types/typesIndex';
+import type { IPropsHome } from '../@types/typesIndex';
 import api, { api2 } from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';

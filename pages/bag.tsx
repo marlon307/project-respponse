@@ -1,15 +1,15 @@
 import React, { useCallback, useState, lazy } from 'react';
-import type { GetServerSideProps } from 'next';
 import { SWRConfig } from 'swr';
+import type { GetServerSideProps } from 'next';
+import type { TypeAddBagInfos } from '../@types/bag';
 import BarBuy from '../components/Bars/BarBuy';
 import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
 import HeadSEO from '../components/Head/HeadSEO';
-import { TypeAddBagInfos } from '../@types/bag';
+import useBag from '../hooks/useBag';
 import { api2 } from '../service/api';
 import style from '../Sass/style.module.scss';
-import useBag from '../hooks/useBag';
 
 // const stateBag = {
 //   valueBag: 0,
