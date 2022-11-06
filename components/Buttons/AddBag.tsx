@@ -14,18 +14,19 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
   const [activeMsg, setActiveMsg] = useState(false);
 
   async function handleClick(redirect: boolean) {
-    let listBag = cache.get('/bag');
-
-    const index = listBag?.findIndex(
-      (objectindex: TypeEditBagInfos) => objectindex.opt_id === option.option_id
-        && objectindex.size === sizeSelected,
-    );
     if (buttonActive) {
+      let infoBag = cache.get('/bag');
+
+      const index = infoBag?.list_b.findIndex(
+        (objectindex: TypeEditBagInfos) => objectindex.opt_id === option.option_id
+          && objectindex.size === sizeSelected,
+      );
+
       const { data } = await api2({
         method: index !== -1 ? 'PATCH' : 'POST',
         url: '/bag',
         data: {
-          quantity: index !== -1 ? listBag[index].quantity + 1 : 1,
+          quantity: index !== -1 ? infoBag.list_b[index].quantity + 1 : 1,
           product_option: option.option_id,
           size: sizeSelected,
         },
@@ -42,11 +43,11 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
 
       if (redirect && (data.status === 201 || data.status === 200)) {
         if (index !== -1) {
-          listBag[index].quantity += 1;
-          mutate('/bag', [...listBag], false);
+          infoBag.list_b[index].quantity += 1;
+          mutate('/bag', [...infoBag.list_b], false);
           // mutate({ ...props }, { revalidate: false });
         } else {
-          listBag = [...listBag, {
+          infoBag = [...infoBag.list_b, {
             ...option,
             ...infoTitelAndType,
             category_name: infoTitelAndType.ctgName,
@@ -56,7 +57,7 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
             url_image: option.images[0].urlImg,
           }];
         }
-        mutate('/bag', listBag, false);
+        mutate('/bag', infoBag, false);
         // mutate({ ...props }, { revalidate: false });
         router.push('/bag');
       }
