@@ -30,11 +30,7 @@ const useBag = (revalidate: boolean) => {
   return {
     loading,
     loggedOut,
-    props: {
-      listBag: data?.infobag?.list_b || [],
-      mainAdd: data?.infobag?.main_add || {},
-      shipping_company: data?.infobag?.shipping_company || [],
-    },
+    props: data?.infobag,
     mutate,
   };
 };

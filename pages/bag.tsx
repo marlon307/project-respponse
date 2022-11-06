@@ -48,18 +48,17 @@ const Addacard = lazy(() => import('../components/Add/Addcard'));
 const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'));
 
 function ContentBag() {
-  const { props, mutate } = useBag(false);
-  const { listBag, mainAdd, shipping_company: shipping } = props;
+  const { props, mutate, loading } = useBag(false);
 
   const [openModal, setOpenModal] = useState<string>('');
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
 
-  const setBagAddres = useCallback((add: ITAddress) => {
+  const setBagAddres = (add: ITAddress) => {
     setOpenModal('');
-    props.mainAdd = add;
+    props.main_add = add;
     mutate(props, false);
-  }, []);
+  };
 
   const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
     const { data } = await api2.delete('/bag', {
@@ -70,18 +69,18 @@ function ContentBag() {
     }).catch((err) => ({ data: err }));
 
     if (data.status === 200) {
-      const newProps = [...props.listBag];
-      newProps.splice(props.listBag.indexOf(identify), 1);
+      const newProps = [...props.list_b];
+      newProps.splice(props?.list_b.indexOf(identify), 1);
       mutate(newProps, false);
     }
-  }, [props.listBag]);
+  }, [props?.list_b]);
 
   const openEditItemBagModal = useCallback(async (identify: TypeAddBagInfos) => {
     setOpenModal('editbag');
     setIdentifyEditItemBag(identify);
   }, []);
 
-  return (
+  return loading ? <div>sdsd</div> : (
     <>
       <div className={ style.bag }>
         <section className={ style.list }>
@@ -92,7 +91,7 @@ function ContentBag() {
               </svg>
               Sacola
             </h1>
-            { listBag.length
+            { props?.list_b?.length
               ? (
                 <button
                   type="button"
@@ -107,14 +106,14 @@ function ContentBag() {
                 { ' ' }
                 (
                 { ' ' }
-                { listBag.length }
+                { props?.list_b?.length }
                 { ' ' }
                 )
               </span>
             ) }
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
-            { listBag.length ? listBag.map((object: TypeAddBagInfos) => (
+            { props?.list_b?.length ? props?.list_b.map((object: TypeAddBagInfos) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
@@ -129,13 +128,13 @@ function ContentBag() {
         </section>
         <Checkout
           setOpenModal={ setOpenModal }
-          shipping={ shipping }
+          shipping={ props?.shipping_company }
           // addSelected={ listAdd.find((add: { add_id: number; }) => add?.add_id === addressid) }
-          qunatityAdd={ listBag.length }
-          addSelected={ mainAdd }
+          qunatityAdd={ props?.list_b?.length }
+          addSelected={ props?.main_add }
         />
       </div>
-      <BarBuy listProducts={ listBag } />
+      <BarBuy listProducts={ props?.list_b } />
       <ContentModal
         openModal={ setOpenModal }
         isOpen={
@@ -161,7 +160,7 @@ function ContentBag() {
 
 interface Props {
   fallback: {
-    listBag: TypeAddBagInfos[];
+    list_b: TypeAddBagInfos[];
   }
 }
 
