@@ -1,19 +1,24 @@
-import React, { ChangeEvent, useState } from 'react';
-import type { PInputText } from './type';
+import React, { FocusEvent, useState, useCallback } from 'react';
+// import type { PInputText } from './type';
 import style from './style.module.scss';
 
+interface Props extends HTMLInputElement {
+  isValid?: boolean;
+  format?: string;
+  msgError: string;
+}
+
 function Input({
-  id, type, name, placeHolder, autoComplete, dValue,
-  msgError, isValid, max, format, disabled, ...props
-}: PInputText) {
+  msgError, format, isValid, ...props
+}: Props) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
   const [statusValid, setSatusValid] = useState(false);
 
-  function validInput({ target }: ChangeEvent<HTMLInputElement>) {
+  const validInput = useCallback((event: FocusEvent<HTMLInputElement>) => {
     let validates: RegExp = /0/;
 
-    switch (type) {
+    switch (props.type) {
       case 'email':
         validates = validEmail;
         break;
@@ -25,41 +30,33 @@ function Input({
         break;
     }
 
-    if (validates.test(target.value)) {
+    if (validates.test(event.target.value)) {
       setSatusValid(false);
     } else {
       setSatusValid(true);
     }
-  }
+  }, []);
 
   return (
-    <label className={ style.input } htmlFor={ id } data-error={ statusValid || isValid }>
+    <label className={ style.input } htmlFor={ props.id } data-error={ statusValid || isValid }>
       <input
         { ...props }
-        id={ id }
-        type={ type }
-        name={ name }
-        placeholder={ placeHolder }
-        autoComplete={ autoComplete }
-        maxLength={ max }
-        // pattern={ patt }
-        defaultValue={ dValue }
-        data-format={ format }
         onBlur={ validInput }
-        disabled={ disabled }
+        data-format={ format }
       />
       <span
         className={ style.ph }
-        title={ statusValid || isValid ? msgError : placeHolder }
+        title={ statusValid || isValid ? msgError : props.placeholder }
       >
-        { statusValid || isValid ? msgError : placeHolder }
+        { statusValid || isValid ? msgError : props.placeholder }
       </span>
     </label>
   );
 }
 
 Input.defaultProps = {
-  autoComplete: 'off',
+  isValid: true,
+  format: '',
 };
 
 export default Input;

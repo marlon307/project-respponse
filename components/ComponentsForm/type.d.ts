@@ -13,8 +13,8 @@ export interface PInputText extends InputHTMLAttributes<T> {
   id: string;
   type: string;
   name: string;
-  placeHolder: string;
-  autoComplete?: string;
+  placeholder: string;
+  autocomplete?: string;
   regexValidator?: RegExp;
   msgError?: string;
   disabled?: boolean;

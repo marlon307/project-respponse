@@ -61,7 +61,7 @@ function Token() {
                 id="psw1"
                 type="password"
                 name="psw_1"
-                placeHolder="Digine uma nova senha."
+                placeholder="Digine uma nova senha."
                 msgError={ isValid ? 'Token expirado!' : 'Senha inválida!' }
                 isValid={ isValid }
               />
@@ -69,7 +69,7 @@ function Token() {
                 id="psw2"
                 type="password"
                 name="psw_2"
-                placeHolder="Repita a senha digitada acima"
+                placeholder="Repita a senha digitada acima"
                 msgError={ isValid ? 'Token expirado!' : 'Senha inválida!' }
                 isValid={ isValid }
               />

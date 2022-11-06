@@ -4,8 +4,8 @@ import BtnIco from '../components/Buttons/BtnIco';
 import { Input } from '../components/ComponentsForm';
 import HeadSEO from '../components/Head/HeadSEO';
 import { api2 } from '../service/api';
-import style from '../Sass/style.module.scss';
 import useLogin, { loginUser } from '../hooks/useLogin';
+import style from '../Sass/style.module.scss';
 
 function Login() {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
@@ -94,8 +94,8 @@ function Login() {
             id="lemail"
             type="email"
             name="username"
-            autoComplete="email"
-            placeHolder="E-mail"
+            autocomplete="email"
+            placeholder="E-mail"
             msgError="Email inválido!"
             disabled={ isLoading }
             isValid={ isValidLogin }
@@ -104,8 +104,8 @@ function Login() {
             id="lpsw"
             type="password"
             name="password"
-            autoComplete="current-password"
-            placeHolder="Senha"
+            autocomplete="current-password"
+            placeholder="Senha"
             msgError="Senha invalida!"
             disabled={ isLoading }
             isValid={ isValidLogin }
@@ -138,8 +138,8 @@ function Login() {
                   id="rname"
                   type="name"
                   name="name"
-                  placeHolder="Nome Sobrenome"
-                  autoComplete="name"
+                  autocomplete="name"
+                  placeholder="Nome Sobrenome"
                   msgError="Preencha Nome e Sobrenome"
                   disabled={ isLoading }
                 />
@@ -147,8 +147,8 @@ function Login() {
                   id="remail"
                   type="email"
                   name="email"
-                  placeHolder="E-mail"
-                  autoComplete="email"
+                  autocomplete="email"
+                  placeholder="E-mail"
                   msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
                   disabled={ isLoading }
                   isValid={ isValidRegister }
@@ -157,7 +157,7 @@ function Login() {
                   id="rpsw"
                   type="password"
                   name="password"
-                  placeHolder="Senha"
+                  placeholder="Senha"
                   msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
                   disabled={ isLoading }
                 />

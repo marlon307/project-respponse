@@ -18,32 +18,32 @@ function Addcard() {
             id="namecard"
             type="text"
             name="namecard"
-            placeHolder="Nome do cartão de crédito"
-            autoComplete="cc-name"
+            placeholder="Nome do cartão de crédito"
+            autocomplete="cc-name"
             msgError="Insira o nome do cartão de crédito."
           />
           <Input
             id="cardvalidate"
             type="text"
             name="cardvalidate"
-            placeHolder="Data de validade"
-            autoComplete="cc-exp"
+            placeholder="Data de validade"
+            autocomplete="cc-exp"
             msgError="Insira a data de vencimento."
           />
           <Input
             id="numbercard"
             type="text"
             name="numbercard"
-            placeHolder="Número do cartão"
-            autoComplete="cc-number"
+            placeholder="Número do cartão"
+            autocomplete="cc-number"
             msgError="Insira o número."
           />
           <Input
             id="codev"
             type="text"
             name="codev"
-            placeHolder="Código de segurança"
-            autoComplete="off"
+            placeholder="Código de segurança"
+            autocomplete="off"
             msgError="Insira o código de segurança (CVV)."
           />
           <BtnAdd eventBtn={ () => { } } />

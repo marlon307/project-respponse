@@ -58,16 +58,16 @@ function Address({ execFunction }: TAddress) {
             id="namedest"
             type="text"
             name="namedest"
-            placeHolder="Nome do destinatário *"
-            autoComplete="name"
+            placeholder="Nome do destinatário *"
+            autocomplete="name"
             msgError="Insira o Nome do destinatário."
           />
           <Input
             id="zipcode"
             type="text"
             name="zipcode"
-            placeHolder="CEP *"
-            autoComplete="postal-code"
+            placeholder="CEP *"
+            autocomplete="postal-code"
             msgError="Insira um CEP válido."
             max={ 8 }
           // patt="^([\d]{5})\.*([\d]{3})"
@@ -77,31 +77,31 @@ function Address({ execFunction }: TAddress) {
             id="street"
             type="text"
             name="street"
-            placeHolder="Rua *"
-            autoComplete="street-address"
+            placeholder="Rua *"
+            autocomplete="street-address"
             msgError="Insira o nome da Rua."
           />
           <Input
             id="district"
             type="text"
             name="district"
-            placeHolder="Bairro *"
-            autoComplete="address-level3"
+            placeholder="Bairro *"
+            autocomplete="address-level3"
             msgError="Insira o nome do Bairro."
           />
           <Input
             id="number"
             type="text"
             name="number"
-            placeHolder="N° *"
+            placeholder="N° *"
             msgError="Insira o número da Casa."
           />
           <Input
             id="state"
             type="text"
             name="state"
-            placeHolder="UF *"
-            autoComplete="shipping address-level1"
+            placeholder="UF *"
+            autocomplete="shipping address-level1"
             msgError="Insira o Estado (UF)."
             max={ 2 }
           />
@@ -109,8 +109,8 @@ function Address({ execFunction }: TAddress) {
             id="city"
             type="text"
             name="city"
-            placeHolder="Cidade *"
-            autoComplete="shipping shipping address-level2"
+            placeholder="Cidade *"
+            autocomplete="shipping shipping address-level2"
             msgError="Insira a Cidade."
           />
           <BtnIco

@@ -79,17 +79,17 @@ function CfgUser({ isRequest }: Props) {
           id="name"
           type="name"
           name="name"
-          placeHolder="* Nome e Sobrenome"
+          placeholder="* Nome e Sobrenome"
           msgError="Preencha Nome e Sobrenome"
-          autoComplete="name"
+          autocomplete="name"
           dValue={ stateIfonUser.name }
         />
         <Input
           id="email"
           type="email"
           name="block"
-          placeHolder="E-mail"
-          autoComplete="email"
+          placeholder="E-mail"
+          autocomplete="email"
           dValue={ stateIfonUser.umail }
           msgError="E-mail inválido"
           disabled
@@ -108,7 +108,7 @@ function CfgUser({ isRequest }: Props) {
           id="date"
           type="date"
           name="date"
-          placeHolder="* Data"
+          placeholder="* Data"
           dValue={ stateIfonUser.date }
           msgError="Selecione uma data"
         />
@@ -116,7 +116,7 @@ function CfgUser({ isRequest }: Props) {
           id="doc"
           type="doc"
           name="doc"
-          placeHolder="* CPF"
+          placeholder="* CPF"
           dValue={ stateIfonUser.doc }
           msgError="CPF inválido"
           max={ 11 }
@@ -157,8 +157,8 @@ function CfgUser({ isRequest }: Props) {
             id="tel"
             type="tel"
             name="tel"
-            placeHolder="Telefone"
-            autoComplete="tel"
+            placeholder="Telefone"
+            autocomplete="tel"
             dValue={ stateIfonUser.tel }
             msgError="Insira um telefone"
             max={ 11 }
@@ -169,8 +169,8 @@ function CfgUser({ isRequest }: Props) {
             id="cel"
             type="tel"
             name="cel"
-            placeHolder="Celular"
-            autoComplete="tel"
+            placeholder="Celular"
+            autocomplete="tel"
             dValue={ stateIfonUser.cel }
             msgError="Insira um telefone"
             max={ 11 }

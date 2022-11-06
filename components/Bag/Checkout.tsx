@@ -134,7 +134,7 @@ function Checkout({
               id="cupom"
               type="text"
               name="cupom"
-              placeHolder="Insira aqui o cupom"
+              placeholder="Insira aqui o cupom"
               msgError="Cupom inválido"
             />
           </div>

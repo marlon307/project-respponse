@@ -197,7 +197,7 @@ function ProductId({ list, token }: Props) {
               id="title"
               type="text"
               name="title"
-              placeHolder="Titulo"
+              placeholder="Titulo"
               msgError="Informe um titulo"
               required
             />
@@ -230,7 +230,7 @@ function ProductId({ list, token }: Props) {
                       id={ key }
                       type="text"
                       name={ `sku-${key}` }
-                      placeHolder="SKU"
+                      placeholder="SKU"
                       msgError="SKU"
                       required
                     />
@@ -241,7 +241,7 @@ function ProductId({ list, token }: Props) {
                         id={ key }
                         type="text"
                         name={ `price-${key}` }
-                        placeHolder="(R$) Preço"
+                        placeholder="(R$) Preço"
                         msgError="(R$) Preço"
                         required
                         max={ 8 }
@@ -250,7 +250,7 @@ function ProductId({ list, token }: Props) {
                         id={ key }
                         type="text"
                         name={ `discount-${key}` }
-                        placeHolder="(%) Desconto"
+                        placeholder="(%) Desconto"
                         msgError="(%) Desconto"
                         required
                         max={ 8 }
