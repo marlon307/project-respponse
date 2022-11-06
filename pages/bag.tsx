@@ -48,7 +48,7 @@ const Addacard = lazy(() => import('../components/Add/Addcard'));
 const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'));
 
 function ContentBag() {
-  const { props, mutate, loading } = useBag(false);
+  const { props, mutate } = useBag(false);
 
   const [openModal, setOpenModal] = useState<string>('');
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
@@ -80,7 +80,7 @@ function ContentBag() {
     setIdentifyEditItemBag(identify);
   }, []);
 
-  return loading ? <div>sdsd</div> : (
+  return (
     <>
       <div className={ style.bag }>
         <section className={ style.list }>
