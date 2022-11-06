@@ -10,7 +10,7 @@ function Input({
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
   const [statusValid, setSatusValid] = useState(false);
 
-  const validInput = useCallback((event: FocusEvent<HTMLInputElement>) => {
+  const validInput = useCallback(({ target }: FocusEvent<HTMLInputElement>) => {
     let validates: RegExp = /0/;
 
     switch (props.type) {
@@ -25,7 +25,7 @@ function Input({
         break;
     }
 
-    if (validates.test(event.target.value)) {
+    if (validates.test(target.value)) {
       setSatusValid(false);
     } else {
       setSatusValid(true);

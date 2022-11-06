@@ -20,6 +20,8 @@ const useBag = (revalidate: boolean) => {
     listBag,
     {
       revalidateOnMount: revalidate,
+      // revalidateIfStale: false,
+      // revalidateOnFocus: false,
     },
   );
   const loading = !data && !error;
@@ -31,7 +33,7 @@ const useBag = (revalidate: boolean) => {
     props: {
       listBag: data?.infobag?.list_b || [],
       mainAdd: data?.infobag?.main_add || {},
-      shipping_company: data?.infobag?.shipping_company || {},
+      shipping_company: data?.infobag?.shipping_company || [],
     },
     mutate,
   };

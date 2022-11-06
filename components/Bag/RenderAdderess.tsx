@@ -1,22 +1,24 @@
 import React from 'react';
+import useAddress from '../../hooks/useAddress';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 
 interface Props {
-  execFunction: (n: number) => void;
+  execFunction: (add: ITAddress) => void;
 }
 
 function RenderAdderess({ execFunction }: Props) {
-  const listAddress: IListAddress['listAddress'] = [];
+  const { addressList } = useAddress(true);
+
   return (
     <div className={ style.add }>
-      { listAddress.map((adderess) => (
+      { addressList.map((adderess: ITAddress) => (
         <a
           href="#"
           aria-label="Clique aqui para selecionar este endereço de entrega."
           key={ adderess.id }
           className={ style.cont }
-          onClick={ (event) => { event.preventDefault(); execFunction(adderess.id ?? 0); } }
+          onClick={ (event) => { event.preventDefault(); execFunction(adderess); } }
         >
           <CardAdderess { ...adderess } />
         </a>

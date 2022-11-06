@@ -72,7 +72,7 @@ function Checkout({
           </h3>
         </div>
         <div className={ style.options }>
-          { shipping.map((object) => (
+          { shipping?.map((object) => (
             <InputRadio
               key={ object.id }
               name={ `${object.name_carrie} - ${object.price.toLocaleString('pt-br', {

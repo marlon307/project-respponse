@@ -52,9 +52,14 @@ function ContentBag() {
   const { listBag, mainAdd, shipping_company: shipping } = props;
 
   const [openModal, setOpenModal] = useState<string>('');
-  const [addressid, setAddressid] = useState<number>(0);
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
+
+  const setBagAddres = useCallback((add: ITAddress) => {
+    setOpenModal('');
+    props.mainAdd = add;
+    mutate(props, false);
+  }, []);
 
   const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
     const { data } = await api2.delete('/bag', {
@@ -140,7 +145,7 @@ function ContentBag() {
           || openModal === 'editbag'
         }
       >
-        { openModal === 'address' && <RenderAdderess execFunction={ setAddressid } /> }
+        { openModal === 'address' && <RenderAdderess execFunction={ setBagAddres! } /> }
         { openModal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
         { openModal === 'addcard' && <Addacard /> }
         { openModal === 'editbag' && (
@@ -180,8 +185,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       headers: {
         authorization: `Bearer ${req.cookies.u_token}`,
       },
-    })
-      .catch((err) => ({ data: err }));
+    }).catch((err) => ({ data: err }));
 
     return {
       props: {

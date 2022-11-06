@@ -4,10 +4,10 @@ import React, {
 import type { GetServerSideProps } from 'next';
 import router from 'next/router';
 import BtnAdd from '../components/Buttons/BtnAdd';
-import style from '../Sass/style.module.scss';
 import HeadSEO from '../components/Head/HeadSEO';
 import useLogin from '../hooks/useLogin';
 import ContentModal from '../components/Modal/ContentModal';
+import style from '../Sass/style.module.scss';
 
 const Usercfg = lazy(() => import('../components/UserCfg/CfgUser'));
 const Order = lazy(() => import('../components/Order/Orders'));
