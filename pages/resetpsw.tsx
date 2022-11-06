@@ -53,7 +53,7 @@ function Resetpsw({ props }: TProps) {
               type="email"
               name="email"
               placeholder="E-mail"
-              autocomplete="email"
+              autoComplete="email"
               msgError={ isValid ? 'Email inválido ou não cadastrado!' : 'Email inválido!' }
               isValid={ isValid }
             />

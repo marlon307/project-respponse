@@ -81,7 +81,7 @@ function CfgUser({ isRequest }: Props) {
           name="name"
           placeholder="* Nome e Sobrenome"
           msgError="Preencha Nome e Sobrenome"
-          autocomplete="name"
+          autoComplete="name"
           dValue={ stateIfonUser.name }
         />
         <Input
@@ -89,7 +89,7 @@ function CfgUser({ isRequest }: Props) {
           type="email"
           name="block"
           placeholder="E-mail"
-          autocomplete="email"
+          autoComplete="email"
           dValue={ stateIfonUser.umail }
           msgError="E-mail inválido"
           disabled
@@ -158,7 +158,7 @@ function CfgUser({ isRequest }: Props) {
             type="tel"
             name="tel"
             placeholder="Telefone"
-            autocomplete="tel"
+            autoComplete="tel"
             dValue={ stateIfonUser.tel }
             msgError="Insira um telefone"
             max={ 11 }
@@ -170,7 +170,7 @@ function CfgUser({ isRequest }: Props) {
             type="tel"
             name="cel"
             placeholder="Celular"
-            autocomplete="tel"
+            autoComplete="tel"
             dValue={ stateIfonUser.cel }
             msgError="Insira um telefone"
             max={ 11 }

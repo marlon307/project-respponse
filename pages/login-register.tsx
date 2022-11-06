@@ -94,7 +94,7 @@ function Login() {
             id="lemail"
             type="email"
             name="username"
-            autocomplete="email"
+            autoComplete="email"
             placeholder="E-mail"
             msgError="Email inválido!"
             disabled={ isLoading }
@@ -104,7 +104,7 @@ function Login() {
             id="lpsw"
             type="password"
             name="password"
-            autocomplete="current-password"
+            autoComplete="current-password"
             placeholder="Senha"
             msgError="Senha invalida!"
             disabled={ isLoading }
@@ -138,7 +138,7 @@ function Login() {
                   id="rname"
                   type="name"
                   name="name"
-                  autocomplete="name"
+                  autoComplete="name"
                   placeholder="Nome Sobrenome"
                   msgError="Preencha Nome e Sobrenome"
                   disabled={ isLoading }
@@ -147,7 +147,7 @@ function Login() {
                   id="remail"
                   type="email"
                   name="email"
-                  autocomplete="email"
+                  autoComplete="email"
                   placeholder="E-mail"
                   msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
                   disabled={ isLoading }

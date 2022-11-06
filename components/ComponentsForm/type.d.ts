@@ -9,18 +9,8 @@ export interface PInputRadio extends InputHTMLAttributes<T> {
   checked?: boolean
 }
 
-export interface PInputText extends InputHTMLAttributes<T> {
-  id: string;
-  type: string;
-  name: string;
-  placeholder: string;
-  autocomplete?: string;
-  regexValidator?: RegExp;
-  msgError?: string;
-  disabled?: boolean;
+export interface Props extends InputHTMLAttributes<T> {
   isValid?: boolean;
-  dValue?: string;
-  max?: number;
-  // patt?: string;
   format?: string;
+  msgError: string;
 }

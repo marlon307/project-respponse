@@ -59,7 +59,7 @@ function Address({ execFunction }: TAddress) {
             type="text"
             name="namedest"
             placeholder="Nome do destinatário *"
-            autocomplete="name"
+            autoComplete="name"
             msgError="Insira o Nome do destinatário."
           />
           <Input
@@ -67,7 +67,7 @@ function Address({ execFunction }: TAddress) {
             type="text"
             name="zipcode"
             placeholder="CEP *"
-            autocomplete="postal-code"
+            autoComplete="postal-code"
             msgError="Insira um CEP válido."
             max={ 8 }
           // patt="^([\d]{5})\.*([\d]{3})"
@@ -78,7 +78,7 @@ function Address({ execFunction }: TAddress) {
             type="text"
             name="street"
             placeholder="Rua *"
-            autocomplete="street-address"
+            autoComplete="street-address"
             msgError="Insira o nome da Rua."
           />
           <Input
@@ -86,7 +86,7 @@ function Address({ execFunction }: TAddress) {
             type="text"
             name="district"
             placeholder="Bairro *"
-            autocomplete="address-level3"
+            autoComplete="address-level3"
             msgError="Insira o nome do Bairro."
           />
           <Input
@@ -101,7 +101,7 @@ function Address({ execFunction }: TAddress) {
             type="text"
             name="state"
             placeholder="UF *"
-            autocomplete="shipping address-level1"
+            autoComplete="shipping address-level1"
             msgError="Insira o Estado (UF)."
             max={ 2 }
           />
@@ -110,7 +110,7 @@ function Address({ execFunction }: TAddress) {
             type="text"
             name="city"
             placeholder="Cidade *"
-            autocomplete="shipping shipping address-level2"
+            autoComplete="shipping shipping address-level2"
             msgError="Insira a Cidade."
           />
           <BtnIco

@@ -1,12 +1,7 @@
-import React, { FocusEvent, useState, useCallback } from 'react';
-// import type { PInputText } from './type';
+import React, { useState, useCallback } from 'react';
+import type { FocusEvent } from 'react';
+import type { Props } from './type';
 import style from './style.module.scss';
-
-interface Props extends HTMLInputElement {
-  isValid?: boolean;
-  format?: string;
-  msgError: string;
-}
 
 function Input({
   msgError, format, isValid, ...props
