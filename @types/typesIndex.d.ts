@@ -1,7 +1,7 @@
 import type { ImageProps } from 'next/image';
 import type { ICardProduct } from '../../types/typeCardProduct';
 
-export type IPropsHome = {
+export interface IPropsHome {
   categorys: Array<{
     ctgID: number;
     imgCategory: ImageProps['src'];
@@ -18,4 +18,4 @@ export type IPropsHome = {
   }>
   list_product: ICardProduct['products']
   mockPromotions
-};
+}
