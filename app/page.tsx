@@ -41,7 +41,7 @@ export default function Page() {
     <>
       <HeadSEO title="" description="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
       <div className={ style.banner }>
-        <section>
+        <div className={ style.panel }>
           { props?.slides?.map(({
             id, srcImg, alt, background,
           }, index) => (
@@ -63,7 +63,7 @@ export default function Page() {
               </figcaption>
             </figure>
           )) }
-        </section>
+        </div>
       </div>
       <div className={ style.listctg }>
         <h2>Categorias</h2>
@@ -96,7 +96,7 @@ export default function Page() {
       </div>
       <div className={ style.promotions }>
         <h2>Promoções</h2>
-        <section>
+        <div className={ style.panel }>
           { props?.mockPromotions?.map(({
             id, img, title, path,
           }: any) => (
@@ -115,7 +115,7 @@ export default function Page() {
               </figcaption>
             </figure>
           )) }
-        </section>
+        </div>
       </div>
     </>
   );
