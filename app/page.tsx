@@ -26,9 +26,9 @@ async function getData() {
     .catch((error) => ({ data: error.message }));
 
   return {
-    categorys: data.categorys,
+    categorys: newdata.data.categorys,
     slides: data.slides,
-    list_product: newdata.data.list, // newdata.data.list,
+    list_product: newdata.data.list_product, // newdata.data.list,
     mockPromotions: data.mockPromotions,
     // revalidated: true,
   };
