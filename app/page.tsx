@@ -34,8 +34,11 @@ async function getData() {
   };
 }
 
+const props: IPropsHome = getData();
+
 export default function Page() {
-  const props: IPropsHome = use(getData());
+  // const props: IPropsHome = use(getData());
+  // const props: IPropsHome = teste;
   // console.log(props);
   return (
     <>

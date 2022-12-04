@@ -23,8 +23,8 @@ function Login() {
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
-    if (validEmail.test(String(data.lemail))
-      && validPsw.test(String(data.lpsw)) && isLoading === false) {
+    if (validEmail.test(String(data.username))
+      && validPsw.test(String(data.password)) && isLoading === false) {
       setIsLoading(true);
       const { status } = await loginUser(formData, true);
 

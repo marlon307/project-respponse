@@ -82,7 +82,7 @@ function CfgUser({ isRequest }: Props) {
           placeholder="* Nome e Sobrenome"
           msgError="Preencha Nome e Sobrenome"
           autoComplete="name"
-          dValue={ stateIfonUser.name }
+          defaultValue={ stateIfonUser.name }
         />
         <Input
           id="email"
@@ -90,7 +90,7 @@ function CfgUser({ isRequest }: Props) {
           name="block"
           placeholder="E-mail"
           autoComplete="email"
-          dValue={ stateIfonUser.umail }
+          defaultValue={ stateIfonUser.umail }
           msgError="E-mail inválido"
           disabled
         />
@@ -109,7 +109,7 @@ function CfgUser({ isRequest }: Props) {
           type="date"
           name="date"
           placeholder="* Data"
-          dValue={ stateIfonUser.date }
+          defaultValue={ stateIfonUser.date }
           msgError="Selecione uma data"
         />
         <Input
@@ -117,7 +117,7 @@ function CfgUser({ isRequest }: Props) {
           type="doc"
           name="doc"
           placeholder="* CPF"
-          dValue={ stateIfonUser.doc }
+          defaultValue={ stateIfonUser.doc }
           msgError="CPF inválido"
           max={ 11 }
           // patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
@@ -159,7 +159,7 @@ function CfgUser({ isRequest }: Props) {
             name="tel"
             placeholder="Telefone"
             autoComplete="tel"
-            dValue={ stateIfonUser.tel }
+            defaultValue={ stateIfonUser.tel }
             msgError="Insira um telefone"
             max={ 11 }
             // patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
@@ -171,7 +171,7 @@ function CfgUser({ isRequest }: Props) {
             name="cel"
             placeholder="Celular"
             autoComplete="tel"
-            dValue={ stateIfonUser.cel }
+            defaultValue={ stateIfonUser.cel }
             msgError="Insira um telefone"
             max={ 11 }
             // patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
