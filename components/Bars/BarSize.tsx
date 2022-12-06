@@ -1,7 +1,11 @@
-import React, { useCallback } from 'react';
+'use client';
+
+import React from 'react';
+import { checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import style from './style.module.scss';
 
 interface IObject {
+  idc: string;
   sizes: Object;
   color: string;
 }
@@ -9,16 +13,16 @@ interface IObject {
 type TProps = {
   array: Array<IObject>;
   color: string;
-  execFunction: Function;
 };
 
-function BarSize({ array, color, execFunction }: TProps) {
+function BarSize({ array, color }: TProps) {
   const itemSizes = array.find((object) => object.color === color)!;
-  const arraySize = Object.keys(itemSizes.sizes);
+  const arraySize: string[] = Object.keys(itemSizes.sizes);
 
-  const handleClick = useCallback((sizeSelected: string) => {
-    execFunction(sizeSelected);
-  }, [execFunction]);
+  function handleClick() {
+    const value = document.querySelector('input[name="color"]:checked');
+    checkSizeAvailable(array, value?.getAttribute('data-color')!);
+  }
 
   return (
     <div className={ style.barsize }>
@@ -28,7 +32,7 @@ function BarSize({ array, color, execFunction }: TProps) {
             type="radio"
             name="size"
             id={ sizeName }
-            onClick={ () => handleClick(sizeName) }
+            onClick={ handleClick }
           />
           <span>{ sizeName }</span>
         </label>

@@ -1,4 +1,6 @@
-import React, { useCallback } from 'react';
+'use client';
+
+import React from 'react';
 import style from './style.module.scss';
 
 interface IObjectsColor {
@@ -10,13 +12,13 @@ interface IObjectsColor {
 
 interface Props {
   array: Array<IObjectsColor>;
-  execFunction: Function
+  // execFunction: Function
 }
 
-function BarColors({ array, execFunction }: Props) {
-  const handleClick = useCallback((object: Object) => {
-    execFunction(object);
-  }, [execFunction]);
+function BarColors({ array }: Props) {
+  const handleClick = (object: Object) => {
+    // execFunction(object);
+  };
 
   return (
     <div className={ style.barcolor } title="Cores">

@@ -1,6 +1,4 @@
-'use client';
-
-import React, { use } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { CardCategory } from '../components/Cards';
 import type { IPropsHome } from '../@types/typesIndex';
@@ -34,9 +32,8 @@ async function getData() {
   };
 }
 
-const props: IPropsHome = getData();
-
-export default function Page() {
+export default async function Page() {
+  const props: IPropsHome = await getData();
   // const props: IPropsHome = use(getData());
   // const props: IPropsHome = teste;
   // console.log(props);

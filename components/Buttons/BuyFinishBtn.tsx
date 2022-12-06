@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TypeEditBagInfos } from '../../@types/bag';
 import api, { api2 } from '../../service/api';
 import style from './style.module.scss';
@@ -8,7 +8,8 @@ type TBuyFinish = {
 };
 
 function BuyFinishBtn({ listProducts }: TBuyFinish) {
-  const [progress, setProgress] = useState<number | string>('Finalizar Compra');
+  // const [progress, setProgress] = useState<number | string>('Finalizar Compra');
+  const progress = 'Finalizar Compra';
   async function handleClickBuy() {
     if (listProducts.length) {
       setProgress('Processando pedido...');

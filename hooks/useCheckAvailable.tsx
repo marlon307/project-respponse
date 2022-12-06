@@ -1,19 +1,19 @@
 type ObjectType = {
   idc: string;
+  sizes: Object;
   color: string;
-  sizes: {};
 };
 
-type TypeObject = {
-  [key: string]: any;
+type TKeys = {
+  [key: string]: number | any;
 };
 
-function checkSizeAvailable(options: Array<ObjectType>, value: string) {
+function checkSizeAvailable(options: ObjectType[], value: string) {
   if (!options) return;
   const index = options.findIndex(({ color }) => color === value)!;
 
   if (index !== -1) {
-    const typingObject: TypeObject = options[index].sizes;
+    const typingObject: TKeys = options[index].sizes;
 
     // Ira habilitar os inputs se conter no array
     const getSizeAvailable = Object.keys(options[index].sizes)
@@ -37,8 +37,8 @@ function checkSizeAvailable(options: Array<ObjectType>, value: string) {
   }
 }
 
-function checkColorAvailable(options: Array<ObjectType>, value: string) {
-  const getColorInput = options.filter(({ sizes }: TypeObject) => sizes[value] > 0);
+function checkColorAvailable(options: ObjectType[], value: string) {
+  const getColorInput = options.filter(({ sizes }: TKeys) => sizes[value] > 0);
   const getColorAvaliable = getColorInput.map(({ idc }) => idc);
 
   getColorAvaliable.forEach((colorid) => {
@@ -47,7 +47,7 @@ function checkColorAvailable(options: Array<ObjectType>, value: string) {
     disableOptionColor.removeAttribute!('disabled');
   });
 
-  const getSizes = options.filter(({ sizes }: TypeObject) => sizes[value] < 1);
+  const getSizes = options.filter(({ sizes }: TKeys) => sizes[value] < 1);
   const getSizesColorAvaliable = getSizes.map(({ idc }) => idc);
 
   getSizesColorAvaliable.forEach((colorid) => {
