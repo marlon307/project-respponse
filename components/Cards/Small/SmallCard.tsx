@@ -1,46 +1,36 @@
-import React, { useCallback, memo } from 'react';
+import React, { memo } from 'react';
 import Link from 'next/link';
-import LoadingImage from '../../LoadImage';
+import Image from 'next/image';
+// import LoadingImage from '../../LoadImage';
 import style from './style.module.scss';
 import type { PSmallCard } from './type';
 
 function SmallCard({
-  objectID, removable, editable, eventModal, identifyBag,
+  objectID, removable, editable, eventModal, execFunction,
 }: PSmallCard) {
   const {
-    id, title, type, mainImg, price, colorName, color,
+    id, title, category_name: type, url_image: mainImg, price, color_name: colorName, color,
     size, quantity, discount, oldPrice,
   } = objectID;
-
-  const handleClickEdit = useCallback(() => {
-    eventModal!(id);
-  }, []);
-
-  const handleClickDelete = useCallback(() => {
-    // dispatch(RM_BAG_ITEM(identifyBag!));
-    // eslint-disable-next-line no-console
-  }, [identifyBag]);
 
   return (
     <div className={ style.smallcard }>
       <div className={ style.img }>
         <figure>
-          <LoadingImage
+          <Image
             src={ mainImg }
             alt={ title }
             quality={ 85 }
             loading="eager"
             sizes="130px"
-            priority
+            fill
           />
         </figure>
       </div>
       <div className={ style.desc }>
-        <Link href={ `/product/${id}` }>
-          <a aria-label={ `${type} - ${title}` }>
-            <h2>{ type }</h2>
-            <h3>{ title }</h3>
-          </a>
+        <Link href={ `/product/${id}` } aria-label={ `${type} - ${title}` }>
+          <h2>{ type }</h2>
+          <h3>{ title }</h3>
         </Link>
         <div className={ style.infos }>
           <div className={ style.setting }>
@@ -51,7 +41,7 @@ function SmallCard({
                 <button
                   type="button"
                   title={ `${quantity} ${type} - ${title}. ( 👇 ) Clique para alterar a quantidade.` }
-                  onClick={ handleClickEdit }
+                  onClick={ eventModal }
                 >
                   { quantity }
                   x
@@ -92,7 +82,7 @@ function SmallCard({
           type="button"
           className={ style.delete }
           title="Excluir"
-          onClick={ handleClickDelete }
+          onClick={ execFunction }
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 1 0 0-2ZM10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4V5Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10v11Z" />

@@ -14,12 +14,11 @@ function Addcard() {
           Adicionar Cartão de Crédito
         </h1>
         <form>
-
           <Input
             id="namecard"
             type="text"
             name="namecard"
-            placeHolder="Nome do cartão de crédito"
+            placeholder="Nome do cartão de crédito"
             autoComplete="cc-name"
             msgError="Insira o nome do cartão de crédito."
           />
@@ -27,7 +26,7 @@ function Addcard() {
             id="cardvalidate"
             type="text"
             name="cardvalidate"
-            placeHolder="Data de validade"
+            placeholder="Data de validade"
             autoComplete="cc-exp"
             msgError="Insira a data de vencimento."
           />
@@ -35,7 +34,7 @@ function Addcard() {
             id="numbercard"
             type="text"
             name="numbercard"
-            placeHolder="Número do cartão"
+            placeholder="Número do cartão"
             autoComplete="cc-number"
             msgError="Insira o número."
           />
@@ -43,7 +42,7 @@ function Addcard() {
             id="codev"
             type="text"
             name="codev"
-            placeHolder="Código de segurança"
+            placeholder="Código de segurança"
             autoComplete="off"
             msgError="Insira o código de segurança (CVV)."
           />

@@ -1,36 +1,43 @@
-import React, { useCallback } from 'react';
+'use client';
+
+import React from 'react';
 import style from './style.module.scss';
 
 interface IObjectsColor {
   idc: string;
-  colorName: string;
+  color_name: string;
   color: string;
+  product_option: number
 }
 
-type PBarColors = {
+interface Props {
   array: Array<IObjectsColor>;
-  execFunction: Function
-};
+  // execFunction: Function
+}
 
-function BarColors({ array, execFunction }: PBarColors) {
-  const handleClick = useCallback((object: Object) => {
-    execFunction(object);
-  }, [execFunction]);
+function BarColors({ array }: Props) {
+  const handleClick = (object: Object) => {
+    // execFunction(object);
+  };
 
   return (
     <div className={ style.barcolor } title="Cores">
       { array !== undefined
-        && array.map(({ idc, colorName, color }) => (
+        && array.map(({
+          idc, color_name, color, product_option: option,
+        }, index) => (
           <button type="button" key={ color }>
             <label htmlFor={ idc }>
               <input
                 id={ idc }
-                onClick={ () => handleClick({ color, colorName }) }
+                onClick={ () => handleClick({
+                  color, color_name, index, option,
+                }) }
                 type="radio"
                 name="color"
               />
               <span
-                title={ colorName }
+                title={ color_name }
                 style={ {
                   background: color,
                   borderColor: color,

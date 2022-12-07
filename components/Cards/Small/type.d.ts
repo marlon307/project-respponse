@@ -1,7 +1,9 @@
+import { TypeAddBagInfos } from '../../../@types/bag';
+
 export interface PSmallCard {
-  objectID: ObjectId;
+  objectID: TypeAddBagInfos;
   removable?: boolean;
   editable?: boolean;
-  eventModal?: Function;
-  identifyBag?: string;
+  eventModal?: () => void;
+  execFunction?: () => void;
 }

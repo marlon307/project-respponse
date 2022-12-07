@@ -23,8 +23,13 @@
 .nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2.2em;
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .searchdrop {
@@ -57,6 +62,32 @@
       cursor: pointer;
       width: 10em;
     }
+  }
+}
+
+:is(.bag)[data-bag="true"] {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    bottom: 0;
+    left: 1px;
+    background: var(--color-orange);
+    border-radius: 50%;
+  }
+}
+
+.bag {
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  &:hover svg {
+    animation: var(--hovermn) 0.2s ease normal;
   }
 }
 

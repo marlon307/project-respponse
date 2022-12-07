@@ -1,49 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import router from 'next/router';
+'use client';
+
+import React from 'react';
+// import React, { useState, useEffect } from 'react';
+
+import router from 'next/navigation';
+import { useSWRConfig } from 'swr';
+import { api2 } from '../../service/api';
+// import useBag from '../../hooks/useBag';
 import type { PBtnAddBag } from './types';
+import type { TypeEditBagInfos } from '../../@types/bag';
 import style from './style.module.scss';
 
-function AddBag({ productId, colorSelected, sizeSelected }: PBtnAddBag) {
-  // const {
-  //   id, title, type, price, mainImg, discount, oldPrice,
-  // } = productId;
+function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
+  // const { props, mutate } = useBag(true);
+  const { cache, mutate } = useSWRConfig();
+  const activeMsg = true;
+  const buttonActive = true;
+  // const [buttonActive, setbutonActive] = useState(false);
+  // const [activeMsg, setActiveMsg] = useState(false);
 
-  const [buttonActive, setbutonActive] = useState(false);
-  const [activeMsg, setActiveMsg] = useState(false);
-
-  function handleClick(redirect: boolean) {
-    // eslint-disable-next-line no-console
-    console.log(productId);
-
+  async function handleClick(redirect: boolean) {
     if (buttonActive) {
-      // dispatch(ADD_BAG_ITEMS({
-      //   id,
-      //   title,
-      //   discount,
-      //   oldPrice,
-      //   type,
-      //   price,
-      //   mainImg,
-      //   quantity: 1,
-      //   ...colorSelected,
-      //   size: sizeSelected,
-      //   identifyBag: productId.id + colorSelected.color + sizeSelected,
-      // }));
-      if (redirect) router.push('/bag');
+      let infoBag = cache.get('/bag');
+
+      const index = infoBag?.list_b.findIndex(
+        (objectindex: TypeEditBagInfos) => objectindex.opt_id === option.option_id
+          && objectindex.size === sizeSelected,
+      );
+
+      const { data } = await api2({
+        method: index !== -1 ? 'PATCH' : 'POST',
+        url: '/bag',
+        data: {
+          quantity: index !== -1 ? infoBag.list_b[index].quantity + 1 : 1,
+          product_option: option.option_id,
+          size: sizeSelected,
+        },
+      }).catch(({ response }) => ({
+        data: {
+          detail: response.data.detail,
+          status: response.status,
+        },
+      }));
+
+      if (data.status === 401) {
+        router.redirect('/login-register');
+      }
+
+      if (redirect && (data.status === 201 || data.status === 200)) {
+        if (index !== -1) {
+          infoBag.list_b[index].quantity += 1;
+          mutate('/bag', [...infoBag.list_b], false);
+          // mutate({ ...props }, { revalidate: false });
+        } else {
+          infoBag = [...infoBag.list_b, {
+            ...option,
+            ...infoTitelAndType,
+            category_name: infoTitelAndType.ctgName,
+            product_option: option.option_id,
+            size: sizeSelected,
+            quantity: 1,
+            url_image: option.images[0].urlImg,
+          }];
+        }
+        mutate('/bag', infoBag, false);
+        // mutate({ ...props }, { revalidate: false });
+        router.redirect('/bag');
+      }
     } else {
       setActiveMsg(true);
     }
   }
 
-  useEffect(() => {
-    if (colorSelected.color === '' && sizeSelected === '') {
-      setbutonActive(false);
-    }
-    if (colorSelected.color !== '' && sizeSelected !== '') {
-      setbutonActive(true);
-      setActiveMsg(false);
-    }
-  }, [activeMsg, colorSelected.color, sizeSelected]);
+  // useEffect(() => {
+  //   if (option.color === '' && sizeSelected === '') {
+  //     setbutonActive(false);
+  //   }
+  //   if (option.color !== '' && sizeSelected !== '') {
+  //     setbutonActive(true);
+  //     setActiveMsg(false);
+  //   }
+  // }, [activeMsg, option.color, sizeSelected]);
 
   return (
     <div className={ style.contbtn }>

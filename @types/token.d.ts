@@ -1,3 +1,0 @@
-interface IToken {
-  token: string;
-}

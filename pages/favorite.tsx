@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import type { GetServerSideProps } from 'next';
 import router from 'next/router';
 import { SmallCard } from '../components/Cards';
-import style from '../Sass/style.module.scss';
 import mockBag from '../service/mockBag';
 import HeadSEO from '../components/Head/HeadSEO';
 import useLogin from '../hooks/useLogin';
+import style from '../Sass/style.module.scss';
 
 function Favorite() {
   const { loggedOut } = useLogin();

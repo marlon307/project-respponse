@@ -1,8 +1,6 @@
-@import './bag.scss';
 @import './mnmobile.scss';
 
 .usermneu,
-.bag,
 .mobile {
   cursor: pointer;
   position: relative;
@@ -10,8 +8,6 @@
   margin-top: 1em;
 
   svg {
-    width: 28px;
-    height: 28px;
     position: relative;
     display: flex;
     align-items: center;
@@ -106,8 +102,7 @@
 
 @media (max-width: 700px) {
 
-  .usermneu,
-  .bag {
+  .usermneu {
     display: none;
     visibility: hidden;
     opacity: 0;

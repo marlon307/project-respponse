@@ -2,14 +2,14 @@ import type { ImageProps } from 'next/image';
 
 export interface TypeEditBagInfos {
   id: number;
-  type: string;
+  category_name: string;
   title: string;
   quantity: number;
-  identifyBag: string;
-  mainImg: Object<ImageProps['src']>;
-  colorName: string;
+  url_image: Object<ImageProps['src']>;
+  color_name: string;
   color: string;
   size: string;
+  opt_id: number;
 }
 
 export interface TypeAddBagInfos extends TypeEditBagInfos {
@@ -28,27 +28,21 @@ interface TFormatPay {
   division: number;
 }
 
-interface TAddress {
-  name: string;
-  road: string;
-  district: string;
-  number: string;
-  uf: string;
-  city: string;
-  zipcode: string;
-}
-
 interface StateBagType {
-  bagItems: Array<TypeAddBagInfos>;
   valueBag: number;
   itemEditBag: TypeEditBagInfos;
   checkout: {
-    adderessSelected: TAddress;
-    shipping: Shipping;
     formatPay: TFormatPay;
     cupomAplicate: {
       code: string;
       descountCupom: number;
     };
   }
+}
+
+export interface Shipping {
+  id: number;
+  name_carrie: string;
+  price: float;
+  toDate: number;
 }

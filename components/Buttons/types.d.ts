@@ -13,7 +13,7 @@ export type TObjectProduct = {
   oldPrice: number;
   details: Object;
   specification: Object;
-  options: Array<{
+  list_options: Array<{
     idc: string;
     colorName: string;
     color: string;
@@ -22,14 +22,21 @@ export type TObjectProduct = {
   }>
 };
 
-export type PBtnAddBag = {
-  productId: TObjectProduct;
-  colorSelected: {
-    color: string;
-    colorName: string;
-  };
+export interface ColorSelected {
+  color: string;
+  colorName: string;
+  option: number;
+  index: number;
+}
+
+export interface PBtnAddBag {
+  option: TypeEditBagInfos;
   sizeSelected: string;
-};
+  infoTitelAndType: {
+    title: string;
+    ctgName: string
+  }
+}
 
 export type TObjectUserBag = {
   user: {

@@ -1,14 +1,5 @@
 import React from 'react';
-import Image, { ImageProps } from 'next/future/image';
-
-type TLoadImage = {
-  src: ImageProps['src'];
-  quality?: ImageProps['quality'];
-  alt: ImageProps['alt'];
-  priority?: ImageProps['priority'];
-  loading?: ImageProps['loading'];
-  sizes?: ImageProps['sizes'];
-};
+import Image, { ImageProps } from 'next/image';
 // https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
 
 const shimmer = (w: string | number, h: string | number) => `
@@ -30,16 +21,17 @@ const toBase64 = (str: string) => (typeof window === 'undefined'
   : window.btoa(str));
 
 function LoadingImage({
-  src, quality, alt, priority, loading, sizes,
-}: TLoadImage) {
+  src, quality, alt, priority, loading, sizes, ...props
+}: ImageProps) {
   return (
     <Image
+      { ...props }
       quality={ quality }
       src={ src }
       alt={ alt }
-      fill
       priority={ priority }
       loading={ loading }
+      draggable="false"
       sizes={ sizes }
       placeholder="blur"
       blurDataURL={ `data:image/svg+xml;base64,${toBase64(shimmer('100%', '100%'))}` }

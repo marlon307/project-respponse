@@ -1,19 +1,19 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import type { FocusEvent } from 'react';
+import type { Props } from './type';
 import style from './style.module.scss';
-import type { PInputText } from './type';
 
 function Input({
-  id, type, name, placeHolder, autoComplete, dValue,
-  msgError, isValid, max, format, disabled,
-}: PInputText) {
+  msgError, format, isValid, ...props
+}: Props) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
   const [statusValid, setSatusValid] = useState(false);
 
-  function validInput({ target }: ChangeEvent<HTMLInputElement>) {
+  const validInput = useCallback(({ target }: FocusEvent<HTMLInputElement>) => {
     let validates: RegExp = /0/;
 
-    switch (type) {
+    switch (props.type) {
       case 'email':
         validates = validEmail;
         break;
@@ -30,35 +30,28 @@ function Input({
     } else {
       setSatusValid(true);
     }
-  }
+  }, []);
 
   return (
-    <label className={ style.input } htmlFor={ id } data-error={ statusValid || isValid }>
+    <label className={ style.input } htmlFor={ props.id } data-error={ statusValid || isValid }>
       <input
-        id={ id }
-        type={ type }
-        name={ name }
-        placeholder={ placeHolder }
-        autoComplete={ autoComplete }
-        maxLength={ max }
-        // pattern={ patt }
-        defaultValue={ dValue }
-        data-format={ format }
+        { ...props }
         onBlur={ validInput }
-        disabled={ disabled }
+        data-format={ format }
       />
       <span
         className={ style.ph }
-        title={ statusValid || isValid ? msgError : placeHolder }
+        title={ statusValid || isValid ? msgError : props.placeholder }
       >
-        { statusValid || isValid ? msgError : placeHolder }
+        { statusValid || isValid ? msgError : props.placeholder }
       </span>
     </label>
   );
 }
 
 Input.defaultProps = {
-  autoComplete: 'off',
+  isValid: true,
+  format: '',
 };
 
 export default Input;

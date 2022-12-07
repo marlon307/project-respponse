@@ -1,35 +1,26 @@
-import React, { useCallback } from 'react';
-import type { TAddress } from '../../@types/bag';
-import mockAdderes from '../../service/mockAdderes';
+import React from 'react';
+import useAddress from '../../hooks/useAddress';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 
-function RenderAdderess() {
-  const handleClick = useCallback((adderess: TAddress) => {
-    // eslint-disable-next-line no-console
-    console.log(adderess);
-  }, []);
-  // id, name, road, district, number, uf, city, zipcode,
+interface Props {
+  execFunction: (add: ITAddress) => void;
+}
+
+function RenderAdderess({ execFunction }: Props) {
+  const { addressList } = useAddress(true);
 
   return (
     <div className={ style.add }>
-      { mockAdderes.map((adderess) => (
+      { addressList.map((adderess: ITAddress) => (
         <a
-          href=""
+          href="#"
           aria-label="Clique aqui para selecionar este endereço de entrega."
           key={ adderess.id }
           className={ style.cont }
-          onClick={ (event) => { event.preventDefault(); handleClick(adderess); } }
+          onClick={ (event) => { event.preventDefault(); execFunction(adderess); } }
         >
-          <CardAdderess
-            name={ adderess.name }
-            road={ adderess.road }
-            number={ adderess.number }
-            city={ adderess.city }
-            uf={ adderess.uf }
-            zipcode={ adderess.zipcode }
-            district={ adderess.district }
-          />
+          <CardAdderess { ...adderess } />
         </a>
       )) }
     </div>

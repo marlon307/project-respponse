@@ -17,6 +17,7 @@
   --color-dark-grey: #585858;
   --color-shadow-modal: #00000070;
   --color-orange: #E77D23;
+  --hovermn: hovermn;
 }
 
 body {
@@ -42,7 +43,7 @@ html {
   scroll-behavior: smooth !important;
 }
 
-#__next {
+body {
   display: grid;
   grid-template-areas:
     'header'
@@ -193,6 +194,20 @@ html {
   50% {
     transform: scale(1.0);
     -webkit-transform: scale3d(1.0);
+  }
+}
+
+@keyframes hovermn {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(0.8, 0.8, 0.8);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
   }
 }
 

@@ -23,6 +23,10 @@
   b {
     color: var(--color-grey);
   }
+
+  span span {
+    text-transform: capitalize;
+  }
 }
 
 .status {
@@ -45,7 +49,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 12px;
+    height: 10px;
 
     &:before {
       content: '';

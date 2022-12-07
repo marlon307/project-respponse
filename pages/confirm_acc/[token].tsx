@@ -14,7 +14,7 @@ function Token() {
       if (query.token) {
         const { data } = await api2.patch('confirm_acc', {}, {
           headers: {
-            authorization: `Bearer ${query.token}`,
+            token: `Bearer ${query.token}`,
           },
         }).catch(({ response }) => {
           setMsg(response.data.msg);
@@ -41,10 +41,8 @@ function Token() {
           { contMsg && <span /> }
         </div>
         <div className={ style.action }>
-          <Link href="/login-register">
-            <a className="link">
-              Fazer Login
-            </a>
+          <Link className="link" href="/login-register">
+            Fazer Login
           </Link>
         </div>
       </section>

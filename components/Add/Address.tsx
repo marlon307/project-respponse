@@ -1,17 +1,16 @@
 import React, { FormEvent, useState } from 'react';
-import useAddress from '../../hooks/useAddress';
+import { useSWRConfig } from 'swr';
 import { api2 } from '../../service/api';
 import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 
 type TAddress = {
-  token: IToken['token'];
   execFunction: () => void;
 };
 
-function Address({ token, execFunction }: TAddress) {
-  const { mutate, listAddress } = useAddress(token);
+function Address({ execFunction }: TAddress) {
+  const { cache, mutate } = useSWRConfig();
   const [isLoading, setisLoading] = useState(false);
 
   async function handleAddAddress(event: FormEvent) {
@@ -25,29 +24,20 @@ function Address({ token, execFunction }: TAddress) {
 
     if (checkValue) {
       setisLoading(true);
-      const body = {
-        name_delivery: data.namedest,
-        city: data.city,
-        district: data.district,
-        uf: data.state,
-        cep: data.zipcode,
-        road: data.street,
-        number_home: data.number,
-      };
 
-      const res = await api2.post('/address', body, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }).catch(({ response }) => response);
+      const res = await api2.post('/address', formData)
+        .catch(({ response }) => response);
 
       if (res.data.status === 201) {
-        mutate({
-          address: [...listAddress.address, {
+        const addressList = cache.get('/address');
+        mutate(
+          '/address',
+          [...addressList, {
             id: res.data.address,
-            ...body,
+            ...data,
           }],
-        }, false);
+          false,
+        );
       }
       setisLoading(false);
       execFunction!();
@@ -68,7 +58,7 @@ function Address({ token, execFunction }: TAddress) {
             id="namedest"
             type="text"
             name="namedest"
-            placeHolder="Nome do destinatário *"
+            placeholder="Nome do destinatário *"
             autoComplete="name"
             msgError="Insira o Nome do destinatário."
           />
@@ -76,7 +66,7 @@ function Address({ token, execFunction }: TAddress) {
             id="zipcode"
             type="text"
             name="zipcode"
-            placeHolder="CEP *"
+            placeholder="CEP *"
             autoComplete="postal-code"
             msgError="Insira um CEP válido."
             max={ 8 }
@@ -87,7 +77,7 @@ function Address({ token, execFunction }: TAddress) {
             id="street"
             type="text"
             name="street"
-            placeHolder="Rua *"
+            placeholder="Rua *"
             autoComplete="street-address"
             msgError="Insira o nome da Rua."
           />
@@ -95,7 +85,7 @@ function Address({ token, execFunction }: TAddress) {
             id="district"
             type="text"
             name="district"
-            placeHolder="Bairro *"
+            placeholder="Bairro *"
             autoComplete="address-level3"
             msgError="Insira o nome do Bairro."
           />
@@ -103,14 +93,14 @@ function Address({ token, execFunction }: TAddress) {
             id="number"
             type="text"
             name="number"
-            placeHolder="N° *"
+            placeholder="N° *"
             msgError="Insira o número da Casa."
           />
           <Input
             id="state"
             type="text"
             name="state"
-            placeHolder="UF *"
+            placeholder="UF *"
             autoComplete="shipping address-level1"
             msgError="Insira o Estado (UF)."
             max={ 2 }
@@ -119,7 +109,7 @@ function Address({ token, execFunction }: TAddress) {
             id="city"
             type="text"
             name="city"
-            placeHolder="Cidade *"
+            placeholder="Cidade *"
             autoComplete="shipping shipping address-level2"
             msgError="Insira a Cidade."
           />

@@ -4,11 +4,10 @@ import React, {
 import type { GetServerSideProps } from 'next';
 import router from 'next/router';
 import BtnAdd from '../components/Buttons/BtnAdd';
-import style from '../Sass/style.module.scss';
 import HeadSEO from '../components/Head/HeadSEO';
 import useLogin from '../hooks/useLogin';
 import ContentModal from '../components/Modal/ContentModal';
-import useAddress from '../hooks/useAddress';
+import style from '../Sass/style.module.scss';
 
 const Usercfg = lazy(() => import('../components/UserCfg/CfgUser'));
 const Order = lazy(() => import('../components/Order/Orders'));
@@ -19,25 +18,22 @@ const Cards = lazy(() => import('../components/Cards/Cards'));
 const AddCard = lazy(() => import('../components/Add/Addcard'));
 const Help = lazy(() => import('./help'));
 
-type TAccount = {
-  token: string
-};
-
-function Account({ token }: TAccount) {
+function Account() {
   const { loggedOut } = useLogin();
-  const { listAddress } = useAddress(token);
   const [dropOption, setDropOption] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
+  const [orderid, setOrderId] = useState<number>(0);
 
   const functionOpenModal = useCallback((type: React.SetStateAction<string>) => {
     setOpenModal(true);
     setTypeModal(type);
   }, []);
 
-  const openOrderId = useCallback(() => {
+  const openOrderId = useCallback((idorder: number) => {
     setOpenModal(true);
     setTypeModal('order');
+    setOrderId(idorder);
   }, []);
 
   function closeModal() {
@@ -68,7 +64,7 @@ function Account({ token }: TAccount) {
         </a>
         <div className={ style.dropcontainer }>
           <Suspense fallback={ <div className="spinner" /> }>
-            <Usercfg token={ token } />
+            <Usercfg isRequest={ dropOption === 'usercfg' } />
           </Suspense>
         </div>
       </div>
@@ -86,7 +82,7 @@ function Account({ token }: TAccount) {
         </a>
         <div className={ style.dropcontainer }>
           <Suspense fallback={ <div className="spinner" /> }>
-            <Order execFunction={ openOrderId } />
+            <Order execFunction={ openOrderId } isRequest={ dropOption === 'order' } />
           </Suspense>
         </div>
       </div>
@@ -106,12 +102,7 @@ function Account({ token }: TAccount) {
           <BtnAdd eventBtn={ () => functionOpenModal('address') } />
           <div className={ style.contentoption }>
             <Suspense fallback={ <div className="spinner" /> }>
-              { listAddress?.address && (
-                <Address
-                  listAddress={ listAddress?.address }
-                  token={ token }
-                />
-              ) }
+              <Address isRequest={ dropOption === 'address' } />
             </Suspense>
           </div>
         </div>
@@ -161,9 +152,9 @@ function Account({ token }: TAccount) {
         isOpen={ openModal }
         openModal={ setOpenModal }
       >
-        { (openModal && typeModal === 'order') && <OrderId /> }
+        { (openModal && typeModal === 'order') && <OrderId orderid={ orderid } /> }
         { (openModal && typeModal === 'cards') && <AddCard /> }
-        { (openModal && typeModal === 'address') && <Addaderess token={ token } execFunction={ closeModal! } /> }
+        { (openModal && typeModal === 'address') && <Addaderess execFunction={ closeModal! } /> }
       </ContentModal>
     </>
   );
@@ -173,7 +164,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (req.cookies.u_token) {
     return {
       props: {
-        token: req.cookies.u_token,
+        detail: 'Acesso Autorizado.',
       },
     };
   }

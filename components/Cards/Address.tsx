@@ -1,52 +1,42 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { CardAdderess } from '.';
 import { api2 } from '../../service/api';
 import useAddress from '../../hooks/useAddress';
 import style from './CardAddress/style.module.scss';
 
 type TAdderess = {
-  listAddress: IListAddress['listAddress'];
-  token: IToken['token'];
+  isRequest: boolean;
 };
 
-function Address({ token, listAddress }: TAdderess) {
-  const { mutate } = useAddress(token);
+function Address({ isRequest }: TAdderess) {
+  const { addressList, mutate } = useAddress(isRequest);
 
   const removeAddress = useCallback(async (address: number) => {
-    const { data } = await api2.delete('/address', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      data: {
-        address,
-      },
-    }).catch(({ response }) => response);
+    const { data } = await api2.delete(`/address/${address}`)
+      .catch(({ response }) => response);
 
     if (data.status === 200) {
-      const newList = listAddress.filter(({ id }) => id !== address);
-      mutate({ address: newList }, false);
+      mutate(addressList.filter(({ id }: ITAddress) => id !== address), false);
     }
-  }, [listAddress]);
+  }, [addressList]);
+
+  useEffect(() => {
+    if (isRequest && !addressList.length) {
+      mutate();
+    }
+  }, [isRequest]);
 
   return (
     <div className={ style.address }>
-      { listAddress?.map(({
-        id, name_delivery, number_home, city, uf, cep, road, district,
-      }) => (
+      { addressList?.map((address: ITAddress) => (
         <CardAdderess
-          key={ id }
-          name={ name_delivery }
-          road={ road }
-          number={ number_home }
-          city={ city }
-          uf={ uf }
-          zipcode={ cep }
-          district={ district }
+          key={ address.id }
+          { ...address }
           removable
-          execFunction={ () => removeAddress(id ?? 0) }
+          execFunction={ () => removeAddress(address.id ?? 0) }
         />
       )) }
-      { !listAddress?.length && <h3>Você não possui endereços cadastrados.</h3> }
+      { !addressList?.length && <h3>Você não possui endereços cadastrados.</h3> }
     </div>
   );
 }

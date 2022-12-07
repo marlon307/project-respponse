@@ -1,85 +1,87 @@
-import React, { /* useCallback, */ useState, lazy } from 'react';
+import React, { useCallback, useState, lazy } from 'react';
+import { SWRConfig } from 'swr';
 import type { GetServerSideProps } from 'next';
+import type { TypeAddBagInfos } from '../@types/bag';
 import BarBuy from '../components/Bars/BarBuy';
 import { SmallCard } from '../components/Cards';
 import ContentModal from '../components/Modal/ContentModal';
 import Checkout from '../components/Bag';
 import HeadSEO from '../components/Head/HeadSEO';
-import { StateBagType } from '../@types/bag';
+import useBag from '../hooks/useBag';
+import { api2 } from '../service/api';
 import style from '../Sass/style.module.scss';
 
-const mockItem = [{
-  id: 0,
-  title: 'Algodão Pima',
-  type: 'Jérsei',
-  mainImg: 'https://i.imgur.com/dDldc4q.png',
-  price: 71.25,
-  oldPrice: 75.00,
-  colorName: 'Azul',
-  color: '#74bcf7',
-  size: 'M',
-  quantity: 2,
-  discount: 5,
-  identifyBag: '0#74bcf7M',
-  code: '3SFA469',
-}];
-
-const stateBag: StateBagType = {
-  bagItems: [],
-  valueBag: 0,
-  itemEditBag: {
-    id: 0,
-    title: '',
-    type: '',
-    color: '',
-    colorName: '',
-    mainImg: {
-      src: '',
-    },
-    size: '',
-    quantity: 0,
-    identifyBag: '',
-  },
-  checkout: {
-    adderessSelected: {
-      name: 'Clique aqui ( 👇 ) para selecionar o endereço.',
-      road: '---',
-      district: '---',
-      number: '---',
-      uf: '---',
-      city: '---',
-      zipcode: '---',
-    },
-    shipping: {
-      shippingCompany: '',
-      valueShipping: 0,
-    },
-    formatPay: {
-      formatPayment: 'Forma de pagamento',
-      division: 0,
-    },
-    cupomAplicate: {
-      code: '',
-      descountCupom: 0,
-    },
-  },
-};
+// const stateBag = {
+//   valueBag: 0,
+//   itemEditBag: {
+//     product_option: 0,
+//     id: 0,
+//     title: '',
+//     category_name: '',
+//     color: '',
+//     color_name: '',
+//     url_image: {
+//       src: '',
+//     },
+//     size: '',
+//     quantity: 0,
+//   },
+//   checkout: {
+//     shipping: {
+//       shippingCompany: '',
+//       valueShipping: 0,
+//     },
+//     formatPay: {
+//       formatPayment: 'Forma de pagamento',
+//       division: 0,
+//     },
+//     cupomAplicate: {
+//       code: '',
+//       descountCupom: 0,
+//     },
+//   },
+// };
 
 const RenderAdderess = lazy(() => import('../components/Bag/RenderAdderess'));
 const Addaddress = lazy(() => import('../components/Add/Address'));
 const Addacard = lazy(() => import('../components/Add/Addcard'));
 const CardEdit = lazy(() => import('../components/Cards/CardEditbag/CardEditbag'));
 
-function Bag({ token }: IToken) {
-  const [openModal, setOpenModal] = useState<String | number>('');
+function ContentBag() {
+  const { props, mutate } = useBag(false);
+
+  const [openModal, setOpenModal] = useState<string>('');
+  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
+
+  const setBagAddres = (add: ITAddress) => {
+    setOpenModal('');
+    props.main_add = add;
+    mutate(props, false);
+  };
+
+  const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
+    const { data } = await api2.delete('/bag', {
+      data: {
+        product_option: identify.opt_id,
+        size: identify.size,
+      },
+    }).catch((err) => ({ data: err }));
+
+    if (data.status === 200) {
+      const newProps = [...props.list_b];
+      newProps.splice(props?.list_b.indexOf(identify), 1);
+      mutate(newProps, false);
+    }
+  }, [props?.list_b]);
+
+  const openEditItemBagModal = useCallback(async (identify: TypeAddBagInfos) => {
+    setOpenModal('editbag');
+    setIdentifyEditItemBag(identify);
+  }, []);
 
   return (
     <>
-      <HeadSEO
-        title="Sacola e Checkout"
-        description="Finalize sua compra"
-      />
       <div className={ style.bag }>
         <section className={ style.list }>
           <div className={ style.title }>
@@ -89,7 +91,7 @@ function Bag({ token }: IToken) {
               </svg>
               Sacola
             </h1>
-            { mockItem.length
+            { props?.list_b?.length
               ? (
                 <button
                   type="button"
@@ -97,63 +99,101 @@ function Bag({ token }: IToken) {
                   aria-hidden={ hiddenList }
                   onClick={ () => setHiddenList(!hiddenList) }
                 />
-              ) : '' }
+              ) : null }
             { hiddenList && (
               <span>
                 Informações da sua compra
                 { ' ' }
                 (
                 { ' ' }
-                { mockItem.length }
+                { props?.list_b?.length }
                 { ' ' }
                 )
               </span>
             ) }
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
-            { mockItem.length ? mockItem.map((object) => (
+            { props?.list_b?.length ? props?.list_b.map((object: TypeAddBagInfos) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
                   removable
                   editable
-                  eventModal={ setOpenModal! }
-                  identifyBag={ object.id + object.color + object.size }
+                  eventModal={ () => openEditItemBagModal(object) }
+                  execFunction={ () => deleteBagItem(object) }
                 />
               </li>
-            ))
-              : <li className={ style.empty }>Sacola Vazia</li> }
+            )) : <li className={ style.empty }>Sacola Vazia</li> }
           </ul>
         </section>
         <Checkout
           setOpenModal={ setOpenModal }
-          infoCheckout={ stateBag.checkout }
+          shipping={ props?.shipping_company }
+          // addSelected={ listAdd.find((add: { add_id: number; }) => add?.add_id === addressid) }
+          qunatityAdd={ props?.list_b?.length }
+          addSelected={ props?.main_add }
         />
       </div>
-      <BarBuy stateBag={ stateBag } />
+      <BarBuy listProducts={ props?.list_b } />
       <ContentModal
         openModal={ setOpenModal }
         isOpen={
           openModal === 'address'
           || openModal === 'addaddress'
           || openModal === 'addcard'
-          || Number.isInteger(openModal)
+          || openModal === 'editbag'
         }
       >
-        { openModal === 'address' && <RenderAdderess /> }
-        { openModal === 'addaddress' && <Addaddress token={ token } execFunction={ () => setOpenModal('') } /> }
+        { openModal === 'address' && <RenderAdderess execFunction={ setBagAddres! } /> }
+        { openModal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
         { openModal === 'addcard' && <Addacard /> }
-        { Number.isInteger(openModal) && <CardEdit /> }
+        { openModal === 'editbag' && (
+          <CardEdit
+            identify={ identifyEditItemBag }
+            execeFunction={ setOpenModal }
+          />
+        ) }
       </ContentModal>
+    </>
+  );
+}
+
+interface Props {
+  fallback: {
+    list_b: TypeAddBagInfos[];
+  }
+}
+
+function Bag({ fallback }: Props) {
+  return (
+    <>
+      <HeadSEO
+        title="Sacola e Checkout"
+        description="Finalize sua compra"
+      />
+      <SWRConfig value={ { fallback } }>
+        <ContentBag />
+      </SWRConfig>
     </>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (req.cookies.u_token) {
+    const { data } = await api2.get('/bag', {
+      headers: {
+        authorization: `Bearer ${req.cookies.u_token}`,
+      },
+    }).catch((err) => ({ data: err }));
+
     return {
       props: {
-        token: req.cookies.u_token,
+        fallback: {
+          '/bag': {
+            token: req.cookies.u_token,
+            infobag: data.infobag,
+          },
+        },
       },
     };
   }

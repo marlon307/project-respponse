@@ -1,58 +1,44 @@
 import React, { memo } from 'react';
-
 import style from './style.module.scss';
 
-export type PCardAdderess = {
-  name: string;
-  road: string;
-  district: string;
-  number: string;
-  uf: string;
-  city: string;
-  zipcode: string;
+interface Props extends ITAddress {
   removable?: boolean;
-  execFunction?: () => void
-};
+  execFunction?: () => void;
+}
 
 function CardAdderess({
-  name, road, district, number, uf, city, zipcode, removable, execFunction,
-}: PCardAdderess) {
+  namedest = 'Clique aqui ( 👇 ) para selecionar o endereço.', city = '---', district = '---', number = '---', state = '---', street = '---', zipcode = '---', execFunction, removable,
+}: Props) {
   return (
     <div className={ style.cardaddress }>
-      <h3 title="Entregar para">{ name }</h3>
+      <h3 title="Entregar para">{ namedest }</h3>
       <div>
-        <span title={ `Rua: ${road}` } className={ style.line }>
+        <span title={ `Rua: ${street}` } className={ style.line }>
           Rua:
-          { ' ' }
-          { road }
+          <p>{ street }</p>
         </span>
         <span title={ `N°: ${number}` } className={ style.line }>
           N°:
-          { ' ' }
-          { number }
+          <p>{ number }</p>
         </span>
       </div>
       <span title={ `Bairro: ${district}` } className={ style.line }>
         Bairro:
-        { ' ' }
-        { district }
+        <p>{ district }</p>
       </span>
       <div>
-        <span title={ `Estado: ${uf}` } className={ style.line }>
+        <span title={ `Estado: ${state}` } className={ style.line }>
           UF:
-          { ' ' }
-          { uf }
+          <p>{ state }</p>
         </span>
         <span title={ `Cidade: ${city}` } className={ style.line }>
           Cidade:
-          { ' ' }
-          { city }
+          <p>{ city }</p>
         </span>
       </div>
       <span title={ `CEP: ${zipcode}` } className={ style.line }>
         CEP:
-        { ' ' }
-        { zipcode }
+        <p>{ zipcode }</p>
       </span>
       { removable && (
         <button className={ style.delete } title="Excluir Endereço" type="button" onClick={ execFunction }>

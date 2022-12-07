@@ -8,7 +8,7 @@ import style from './style.module.scss';
 
 type TStateUser = {
   name: string;
-  email: string;
+  umail: string;
   date: string;
   doc: string;
   tel: string;
@@ -16,12 +16,16 @@ type TStateUser = {
   gender: string,
 };
 
-function CfgUser({ token }: IToken) {
-  const { ifoUser, loading, mutate } = useUser(token);
+interface Props {
+  isRequest: boolean;
+}
+
+function CfgUser({ isRequest }: Props) {
   const [isLoading, setIsLoading] = useState(false);
-  const [stateIfonUser, setStateIfoUser] = useState<TStateUser>({
+  const { dataUser, mutate } = useUser(isRequest);
+  const [stateIfonUser, setStateinfoUser] = useState<TStateUser>({
     name: '',
-    email: '',
+    umail: '',
     date: new Date().toISOString().split('T')[0],
     doc: '',
     tel: '',
@@ -34,43 +38,38 @@ function CfgUser({ token }: IToken) {
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
-    const newBody = {
-      name: data.name,
-      date: new Date(String(data.date)),
-      doc: data.doc,
-      tel: data.tel,
-      cel: data.cel,
-      gender: Number(data.gender),
-    };
-    if (newBody.name && newBody.doc && newBody.date) {
+    if (data.name && data.doc && data.date) {
       setIsLoading(true);
 
-      const res = await api2.patch('/user', newBody, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }).catch(({ response }) => response);
+      const res = await api2.patch('/user', formData)
+        .catch(({ response }) => response);
 
       if (res.data.status === 200) {
-        mutate({ ...ifoUser, ...newBody }, false);
+        mutate({ ...dataUser, ...data }, false);
       }
       setIsLoading(false);
     }
   }
 
   useEffect(() => {
-    if (!loading) {
-      setStateIfoUser({
-        name: ifoUser?.name,
-        email: ifoUser?.email,
-        date: new Date(ifoUser?.birthday).toISOString().split('T')[0],
-        doc: ifoUser?.cpf_cnpj?.replace(/^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})/, '$1.$2.$3-$4'),
-        tel: ifoUser?.tel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
-        cel: ifoUser?.cel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
-        gender: ifoUser?.gender_id === null ? 0 : ifoUser?.gender_id,
+    if (!dataUser && isRequest) {
+      mutate();
+    }
+  }, [isRequest]);
+
+  useEffect(() => {
+    if (dataUser && isRequest) {
+      setStateinfoUser({
+        name: dataUser?.name,
+        umail: dataUser?.umail,
+        date: new Date(dataUser?.birthday)?.toISOString().split('T')[0],
+        doc: dataUser?.cpf_cnpj?.replace(/^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})/, '$1.$2.$3-$4'),
+        tel: dataUser?.tel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
+        cel: dataUser?.cel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
+        gender: dataUser?.gender_id === null ? 0 : dataUser?.gender_id,
       });
     }
-  }, [loading, ifoUser]);
+  }, [dataUser]);
 
   return (
     <form className={ style.form } onSubmit={ saveUpdateInfoUser }>
@@ -80,18 +79,18 @@ function CfgUser({ token }: IToken) {
           id="name"
           type="name"
           name="name"
-          placeHolder="* Nome e Sobrenome"
+          placeholder="* Nome e Sobrenome"
           msgError="Preencha Nome e Sobrenome"
           autoComplete="name"
-          dValue={ stateIfonUser.name }
+          defaultValue={ stateIfonUser.name }
         />
         <Input
           id="email"
           type="email"
-          name="email"
-          placeHolder="E-mail"
+          name="block"
+          placeholder="E-mail"
           autoComplete="email"
-          dValue={ stateIfonUser.email }
+          defaultValue={ stateIfonUser.umail }
           msgError="E-mail inválido"
           disabled
         />
@@ -109,16 +108,16 @@ function CfgUser({ token }: IToken) {
           id="date"
           type="date"
           name="date"
-          placeHolder="* Data"
-          dValue={ stateIfonUser.date }
+          placeholder="* Data"
+          defaultValue={ stateIfonUser.date }
           msgError="Selecione uma data"
         />
         <Input
           id="doc"
           type="doc"
           name="doc"
-          placeHolder="* CPF"
-          dValue={ stateIfonUser.doc }
+          placeholder="* CPF"
+          defaultValue={ stateIfonUser.doc }
           msgError="CPF inválido"
           max={ 11 }
           // patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
@@ -126,24 +125,24 @@ function CfgUser({ token }: IToken) {
         />
       </div>
       <div className={ style.genere }>
-        <h4>Sexo</h4>
+        <h4>Género</h4>
         <div className={ style.inp }>
           <InputRadio
-            checked={ ifoUser?.gender_id === 1 }
+            checked={ dataUser?.gender_id === 1 }
             iId="men"
             name="Masculino"
             family="gender"
             iValue={ 3 }
           />
           <InputRadio
-            checked={ ifoUser?.gender_id === 2 }
+            checked={ dataUser?.gender_id === 2 }
             iId="female"
             name="Femenino"
             family="gender"
             iValue={ 2 }
           />
           <InputRadio
-            checked={ ifoUser?.gender_id === null }
+            checked={ dataUser?.gender_id === null }
             iId="undefined"
             name="Não informar"
             family="gender"
@@ -158,9 +157,9 @@ function CfgUser({ token }: IToken) {
             id="tel"
             type="tel"
             name="tel"
-            placeHolder="Telefone"
+            placeholder="Telefone"
             autoComplete="tel"
-            dValue={ stateIfonUser.tel }
+            defaultValue={ stateIfonUser.tel }
             msgError="Insira um telefone"
             max={ 11 }
             // patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
@@ -170,9 +169,9 @@ function CfgUser({ token }: IToken) {
             id="cel"
             type="tel"
             name="cel"
-            placeHolder="Celular"
+            placeholder="Celular"
             autoComplete="tel"
-            dValue={ stateIfonUser.cel }
+            defaultValue={ stateIfonUser.cel }
             msgError="Insira um telefone"
             max={ 11 }
             // patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"

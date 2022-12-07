@@ -23,59 +23,7 @@ function Detail({ branch, details, gender }: TDetail) {
             { ' ' }
             { gender }
           </span>
-          <span>
-            Modelagem:
-            { ' ' }
-            { details.model }
-          </span>
-          <span>
-            Manga:
-            { ' ' }
-            { details.mango }
-          </span>
-          <span>
-            Estampa/Padronagem:
-            { ' ' }
-            { details.printPattern }
-          </span>
-          <span>
-            Quantidade de Bolsos:
-            { ' ' }
-            { details.numbPocked }
-          </span>
-          <span>
-            Composição:
-            { ' ' }
-            { details.composition }
-          </span>
-          <span>
-            Tipo de Tecido:
-            { ' ' }
-            { details.kindfabric }
-          </span>
-          <span>
-            Lavagem:
-            { ' ' }
-            { details.wash }
-          </span>
-          <span>
-            { details.material }
-          </span>
-          <span>
-            Características Especiais:
-            { ' ' }
-            { details.specialFeatures }
-          </span>
-          <span>
-            Medidas Modelo:
-            { ' ' }
-            { details.modelMeasures }
-          </span>
-          <span>
-            Medidas da peça:
-            { ' ' }
-            { details.length }
-          </span>
+          <span>{ details }</span>
         </>
       ) }
     </div>

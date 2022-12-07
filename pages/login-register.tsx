@@ -1,12 +1,11 @@
 import React, { FormEvent, useState } from 'react';
 import router from 'next/router';
-import Svg from '../assets/Svg';
 import BtnIco from '../components/Buttons/BtnIco';
 import { Input } from '../components/ComponentsForm';
 import HeadSEO from '../components/Head/HeadSEO';
 import { api2 } from '../service/api';
-import style from '../Sass/style.module.scss';
 import useLogin, { loginUser } from '../hooks/useLogin';
+import style from '../Sass/style.module.scss';
 
 function Login() {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
@@ -24,10 +23,10 @@ function Login() {
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
-    if (validEmail.test(String(data.lemail))
-      && validPsw.test(String(data.lpsw)) && isLoading === false) {
+    if (validEmail.test(String(data.username))
+      && validPsw.test(String(data.password)) && isLoading === false) {
       setIsLoading(true);
-      const { status } = await loginUser(String(data.lemail), String(data.lpsw));
+      const { status } = await loginUser(formData, true);
 
       if (status === 200) {
         mutate();
@@ -44,17 +43,14 @@ function Login() {
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
-    if (validEmail.test(String(data.remail))
-      && validPsw.test(String(data.rpsw)) && isLoading === false) {
+    if (validEmail.test(String(data.email))
+      && validPsw.test(String(data.password)) && isLoading === false) {
       setIsLoading(true);
-      const res = await api2.post('/createuser', {
-        email: data.remail,
-        password: data.rpsw,
-        name: data.rname,
-      }).catch(({ response }) => response);
+      const res = await api2.post('/createuser', formData)
+        .catch(({ response }) => response);
 
       if (res.data.status === 201) {
-        setisRegistered(String(data.remail));
+        setisRegistered(String(data.email));
       } else {
         setisValidRegister(true);
       }
@@ -69,9 +65,6 @@ function Login() {
         description={ `${sectionTab ? 'Faça seu login na' : 'Registre-se na'} respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você.` }
       />
       <section className={ style.contlogin }>
-        <div className={ style.logo }>
-          <Svg icoName="logo" />
-        </div>
         <div className={ style.sectiontab }>
           <button
             className={ style.tablog }
@@ -100,9 +93,9 @@ function Login() {
           <Input
             id="lemail"
             type="email"
-            name="lemail"
+            name="username"
             autoComplete="email"
-            placeHolder="E-mail"
+            placeholder="E-mail"
             msgError="Email inválido!"
             disabled={ isLoading }
             isValid={ isValidLogin }
@@ -110,9 +103,9 @@ function Login() {
           <Input
             id="lpsw"
             type="password"
-            name="lpsw"
+            name="password"
             autoComplete="current-password"
-            placeHolder="Senha"
+            placeholder="Senha"
             msgError="Senha invalida!"
             disabled={ isLoading }
             isValid={ isValidLogin }
@@ -144,18 +137,18 @@ function Login() {
                 <Input
                   id="rname"
                   type="name"
-                  name="rname"
-                  placeHolder="Nome Sobrenome"
+                  name="name"
                   autoComplete="name"
+                  placeholder="Nome Sobrenome"
                   msgError="Preencha Nome e Sobrenome"
                   disabled={ isLoading }
                 />
                 <Input
                   id="remail"
                   type="email"
-                  name="remail"
-                  placeHolder="E-mail"
+                  name="email"
                   autoComplete="email"
+                  placeholder="E-mail"
                   msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
                   disabled={ isLoading }
                   isValid={ isValidRegister }
@@ -163,8 +156,8 @@ function Login() {
                 <Input
                   id="rpsw"
                   type="password"
-                  name="rpsw"
-                  placeHolder="Senha"
+                  name="password"
+                  placeholder="Senha"
                   msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
                   disabled={ isLoading }
                 />

@@ -26,9 +26,7 @@ function Resetpsw({ props }: TProps) {
     if (validEmail.test(String(data.email))) {
       setIsLoading(true);
 
-      const res = await api2.post('/solicitation_reset_psw_user', {
-        email: data.email,
-      }).catch(({ response }) => response);
+      const res = await api2.post('/solicitation_reset_psw_user', formData).catch(({ response }) => response);
 
       if (res.data.status === 200) {
         setMsg(res.email);
@@ -54,7 +52,7 @@ function Resetpsw({ props }: TProps) {
               id="email"
               type="email"
               name="email"
-              placeHolder="E-mail"
+              placeholder="E-mail"
               autoComplete="email"
               msgError={ isValid ? 'Email inválido ou não cadastrado!' : 'Email inválido!' }
               isValid={ isValid }
@@ -74,17 +72,14 @@ function Resetpsw({ props }: TProps) {
           ) }
           <div className={ style.action }>
             { !props.logged && (
-              <Link href="/login-register">
-                <a className="link">
-                  Fazer Login
-                </a>
+              <Link className="link" href="/login-register">
+                Fazer Login
               </Link>
             ) }
             { contMsg === null && (
               <BtnIco
                 textBtn="Enviar Email"
                 icoName="email"
-                action={ sendmailReset! }
                 actionLiberate={ isLoading }
               />
             ) }

@@ -24,13 +24,15 @@
 .address {
   width: 100%;
   display: flex;
+  height: 410px;
+  overflow: auto;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 1em;
 
   .cardaddress {
-    max-width: 354px;
+    max-width: 350px;
   }
 
   h3 {
@@ -59,10 +61,8 @@
 
 @media (max-width: 500px) {
   .address {
-    max-width: 450px;
-
-    .cardaddress {
-      max-width: 500px;
-    }
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    height: 200px;
   }
 }

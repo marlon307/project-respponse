@@ -28,6 +28,7 @@ module.exports = withPWA({
     LOCAL_API_HOST: process.env.LOCAL_API_HOST,
     LOCAL_API_HOST_2: process.env.LOCAL_API_HOST_2,
   },
+  experimental: { appDir: true },
   swcMinify: true,
   reactStrictMode: true,
 });

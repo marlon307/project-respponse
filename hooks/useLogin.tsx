@@ -2,16 +2,14 @@ import useSWR from 'swr';
 import { getCookie, deleteCookie, setCookie } from 'cookies-next';
 import { api2 } from '../service/api';
 
-export const loginUser = async (email: string, password: string) => {
+export const loginUser = async (formData, request: boolean = false) => {
   const cookie = getCookie('u_token');
 
-  if (!cookie && email && password) {
-    const { data } = await api2.post('/login_user', {
-      email,
-      password,
-    }).catch(({ response }) => response);
+  if (!cookie && request) {
+    const { data } = await api2.post('/login_user', formData)
+      .catch(({ response }) => response);
 
-    setCookie('u_token', data.token, {
+    setCookie('u_token', data.access_token, {
       expires: new Date(data.exp),
       secure: true,
       sameSite: 'strict',
