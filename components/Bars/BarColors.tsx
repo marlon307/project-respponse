@@ -1,27 +1,16 @@
 'use client';
 
 import React from 'react';
+import type { IOptions } from '../../app/product/product';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import style from './style.module.scss';
 
-interface IObjectsColor {
-  idc: string;
-  sizes: Object;
-  color: string;
-
-}
-
 interface Props {
-  array: Array<IObjectsColor>;
-  // execFunction: Function
+  array: IOptions[];
 }
 
 function BarColors({ array }: Props) {
-  const handleClick = (object: IObjectsColor) => {
-    // execFunction(object);
-    const value = document.querySelector('input[name="color"]:checked');
-    const colorChecked = value?.getAttribute('data-color')!;
-
+  const handleClick = (object: IOptions) => {
     checkSizeAvailable(array, object.color);
     checkColorAvailable(array, object.color);
   };
@@ -29,25 +18,21 @@ function BarColors({ array }: Props) {
   return (
     <div className={ style.barcolor } title="Cores">
       { array !== undefined
-        && array.map(({
-          idc, color_name, color, product_option: option,
-        }, index) => (
-          <button type="button" key={ color }>
-            <label htmlFor={ `color-${idc}` }>
+        && array.map((option, index) => (
+          <button type="button" key={ option.color }>
+            <label htmlFor={ `color-${option.idc}` }>
               <input
-                id={ `color-${idc}` }
-                onClick={ () => handleClick({
-                  color, color_name, index, option,
-                }) }
+                id={ `color-${option.idc}` }
+                onClick={ () => handleClick({ ...option, index }) }
                 type="radio"
                 name="color"
-                data-color={ color }
+                data-color={ option.color }
               />
               <span
-                title={ color_name }
+                title={ option.colorName }
                 style={ {
-                  background: color,
-                  borderColor: color,
+                  background: option.color,
+                  borderColor: option.color,
                 } }
               />
             </label>
