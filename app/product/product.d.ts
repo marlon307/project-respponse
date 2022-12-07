@@ -6,6 +6,20 @@ interface IListImages {
   imgid: number;
   url_image: ImageProps['src'];
 }
+interface IOptions {
+  idc: string;
+  index?: number;
+  colorName: string;
+  color: string;
+  price: number;
+  oldPrice: number;
+  discount: number;
+  option_id: number;
+  sizes: {
+    [key: string]: number
+  };
+  images: IListImages[];
+}
 
 interface TypeProduct {
   id: number;
@@ -17,19 +31,7 @@ interface TypeProduct {
   url_image: Object<ImageProps['src']>;
   details: TDetail;
   specifications: string;
-  list_options: Array<{
-    idc: string;
-    color_name: string;
-    color: string;
-    price: number;
-    oldPrice: number;
-    discount: number;
-    product_option: number;
-    sizes: {
-      [key: string]: number
-    };
-    images: IListImages[];
-  }>
+  list_options: IOptions[]
 }
 
 interface SimilarProduct {
