@@ -4,6 +4,7 @@
 */
 
 const runtimeCaching = require('next-pwa/cache');
+const path = require('path');
 const withPWA = require('next-pwa')({
   disable: process.env.NODE_ENV === 'development',
   dest: 'public',
@@ -27,6 +28,9 @@ module.exports = withPWA({
     VALIDATION_PSW: process.env.VALIDATION_PSW,
     LOCAL_API_HOST: process.env.LOCAL_API_HOST,
     LOCAL_API_HOST_2: process.env.LOCAL_API_HOST_2,
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'style')],
   },
   experimental: { appDir: true },
   swcMinify: true,

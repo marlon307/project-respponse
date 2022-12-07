@@ -1,14 +1,17 @@
-import React, { RefObject } from 'react';
+'use client';
+
+import React from 'react';
 import style from './style.module.scss';
 
 interface Props {
-  reference: RefObject<HTMLDivElement>
+  idElement: string
 }
 
-export function ButtonNext({ reference }: Props) {
+export function ButtonNext({ idElement }: Props) {
   function next() {
-    if (reference.current !== null) {
-      reference.current.scrollLeft += reference.current.offsetWidth;
+    const item = document.getElementById(idElement);
+    if (item !== null) {
+      item.scrollLeft += item.offsetWidth;
     }
   }
   return (
@@ -21,10 +24,11 @@ export function ButtonNext({ reference }: Props) {
   );
 }
 
-export function ButtonPrev({ reference }: Props) {
+export function ButtonPrev({ idElement }: Props) {
   function prev() {
-    if (reference.current !== null) {
-      reference.current.scrollLeft -= reference.current.offsetWidth;
+    const item = document.getElementById(idElement);
+    if (item !== null) {
+      item.scrollLeft -= item.offsetWidth;
     }
   }
   return (
