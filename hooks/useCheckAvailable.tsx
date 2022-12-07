@@ -1,8 +1,8 @@
-type ObjectType = {
+interface ObjectType {
   idc: string;
   sizes: Object;
   color: string;
-};
+}
 
 type TKeys = {
   [key: string]: number | any;

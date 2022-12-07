@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { checkSizeAvailable } from '../../hooks/useCheckAvailable';
+import { checkSizeAvailable, checkColorAvailable } from '../../hooks/useCheckAvailable';
 import style from './style.module.scss';
 
 interface IObject {
@@ -21,7 +21,10 @@ function BarSize({ array, color }: TProps) {
 
   function handleClick() {
     const value = document.querySelector('input[name="color"]:checked');
-    checkSizeAvailable(array, value?.getAttribute('data-color')!);
+    const colorChecked = value?.getAttribute('data-color')!;
+
+    checkSizeAvailable(array, colorChecked);
+    checkColorAvailable(array, colorChecked);
   }
 
   return (

@@ -1,13 +1,14 @@
 'use client';
 
 import React from 'react';
+import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import style from './style.module.scss';
 
 interface IObjectsColor {
   idc: string;
-  color_name: string;
+  sizes: Object;
   color: string;
-  product_option: number
+
 }
 
 interface Props {
@@ -16,8 +17,13 @@ interface Props {
 }
 
 function BarColors({ array }: Props) {
-  const handleClick = (object: Object) => {
+  const handleClick = (object: IObjectsColor) => {
     // execFunction(object);
+    const value = document.querySelector('input[name="color"]:checked');
+    const colorChecked = value?.getAttribute('data-color')!;
+
+    checkSizeAvailable(array, object.color);
+    checkColorAvailable(array, object.color);
   };
 
   return (
@@ -27,14 +33,15 @@ function BarColors({ array }: Props) {
           idc, color_name, color, product_option: option,
         }, index) => (
           <button type="button" key={ color }>
-            <label htmlFor={ idc }>
+            <label htmlFor={ `color-${idc}` }>
               <input
-                id={ idc }
+                id={ `color-${idc}` }
                 onClick={ () => handleClick({
                   color, color_name, index, option,
                 }) }
                 type="radio"
                 name="color"
+                data-color={ color }
               />
               <span
                 title={ color_name }
