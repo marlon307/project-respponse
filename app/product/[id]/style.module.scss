@@ -16,7 +16,7 @@
 }
 
 .slide {
-  transition: 0.3s;
+  transition: opacity 0.3s ease-in-out;
   opacity: 0;
   grid-area: slide;
   position: relative;
