@@ -11,6 +11,24 @@ interface Props {
 
 function BarColors({ array }: Props) {
   const handleClick = (object: IOptions) => {
+    const oldPrice = document.getElementById('oldp')!;
+    oldPrice.setAttribute('data-oldprice', object.oldPrice.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL',
+    }));
+
+    const curretnPrice = document.getElementById('price')!;
+    curretnPrice.textContent = object.price.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL',
+    });
+
+    const getAriaSlide = document.querySelectorAll('[aria-hidden]');
+    getAriaSlide.forEach((element) => element.setAttribute('aria-hidden', 'true'));
+
+    const selectSlideId = document.getElementById(`slide-${object.index}`);
+    selectSlideId?.setAttribute('aria-hidden', 'false');
+
     checkSizeAvailable(array, object.color);
     checkColorAvailable(array, object.color);
   };

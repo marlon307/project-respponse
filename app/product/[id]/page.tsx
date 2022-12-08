@@ -49,7 +49,12 @@ async function ProductId() {
       />
       <div className={ style.contprod }>
         { option.map(({ images }, index: number) => (
-          <div id={ `slide-${index}` } className={ style.slide } key={ images[0].imgid }>
+          <div
+            id={ `slide-${index}` }
+            className={ style.slide }
+            aria-hidden={ !!index }
+            key={ images[0].imgid }
+          >
             <ButtonNext idElement={ `${index}` } />
             <ButtonPrev idElement={ `${index}` } />
             <div
@@ -62,8 +67,8 @@ async function ProductId() {
                     src={ urlImg }
                     quality={ 80 }
                     alt={ title }
-                    loading={ indexImage === 0 ? 'eager' : 'lazy' }
-                    priority={ indexImage === 0 }
+                    loading={ !indexImage && !index ? 'eager' : 'lazy' }
+                    priority={ !indexImage && !index }
                     sizes="100vw"
                     fill
                   />
@@ -90,17 +95,19 @@ async function ProductId() {
                 <h1>{ title }</h1>
               </div>
               <div className={ style.price }>
-                <span data-oldprice={
-                  option[colorChecked.index].discount > 0
-                    ? option[colorChecked.index].oldPrice.toLocaleString('pt-br', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    }) : null
-                }
+                <span
+                  id="oldp"
+                  data-oldprice={
+                    option[0].discount > 0
+                      ? option[0].oldPrice.toLocaleString('pt-br', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      }) : null
+                  }
                 />
-                { option[colorChecked.index].price > 0 && (
-                  <h4>
-                    { option[colorChecked.index].price.toLocaleString('pt-br', {
+                { option[0].price > 0 && (
+                  <h4 id="price">
+                    { option[0].price.toLocaleString('pt-br', {
                       style: 'currency',
                       currency: 'BRL',
                     }) }
@@ -112,10 +119,7 @@ async function ProductId() {
               <BarColors array={ option } />
             </div>
             <div className={ style.secondline }>
-              <BarSize
-                array={ option }
-                color={ option[colorChecked.index].color }
-              />
+              <BarSize array={ option } />
             </div>
             <AddBag
               option={ option[colorChecked.index] }

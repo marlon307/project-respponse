@@ -8,9 +8,16 @@
   grid-template-columns: minmax(200px, 100vw) minmax(200px, 400px);
   margin: 0 6%;
   width: -webkit-fill-available;
+
+}
+
+.slide[aria-hidden="true"] {
+  opacity: 1;
 }
 
 .slide {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
   grid-area: slide;
   position: relative;
   height: fit-content;

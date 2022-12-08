@@ -12,12 +12,10 @@ interface IObject {
 
 type TProps = {
   array: Array<IObject>;
-  color: string;
 };
 
-function BarSize({ array, color }: TProps) {
-  const itemSizes = array.find((object) => object.color === color)!;
-  const arraySize: string[] = Object.keys(itemSizes.sizes);
+function BarSize({ array }: TProps) {
+  const arraySize: string[] = Object.keys(array[0].sizes);
 
   function handleClick() {
     const value = document.querySelector('input[name="color"]:checked');
