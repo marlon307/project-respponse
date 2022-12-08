@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
-import HeadSEO from '../components/Head/HeadSEO';
-import HelpComponent from '../components/Help';
+import HeadSEO from '../../components/Head/HeadSEO';
+import HelpComponent from '../../components/Help';
 import style from '../Sass/style.module.scss';
 
 function Help() {
