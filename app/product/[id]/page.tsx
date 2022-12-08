@@ -95,17 +95,19 @@ async function ProductId() {
                 <h1>{ title }</h1>
               </div>
               <div className={ style.price }>
-                <span data-oldprice={
-                  option[colorChecked.index].discount > 0
-                    ? option[colorChecked.index].oldPrice.toLocaleString('pt-br', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    }) : null
-                }
+                <span
+                  id="oldp"
+                  data-oldprice={
+                    option[0].discount > 0
+                      ? option[0].oldPrice.toLocaleString('pt-br', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      }) : null
+                  }
                 />
-                { option[colorChecked.index].price > 0 && (
-                  <h4>
-                    { option[colorChecked.index].price.toLocaleString('pt-br', {
+                { option[0].price > 0 && (
+                  <h4 id="price">
+                    { option[0].price.toLocaleString('pt-br', {
                       style: 'currency',
                       currency: 'BRL',
                     }) }
