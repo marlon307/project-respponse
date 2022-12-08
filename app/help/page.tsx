@@ -11,7 +11,7 @@ function Help() {
 
   return (
     <>
-      { pathname === '/help' && <HeadSEO title="Ajuda" description="Ajuda e contato com o suporte para resolver seu problema." /> }
+      { pathname?.includes('/help') && <HeadSEO title="Ajuda" description="Ajuda e contato com o suporte para resolver seu problema." /> }
       <section className={ style.help }>
         <HelpComponent />
       </section>
