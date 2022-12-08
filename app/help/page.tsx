@@ -1,15 +1,17 @@
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import HeadSEO from '../../components/Head/HeadSEO';
 import HelpComponent from '../../components/Help';
-import style from '../Sass/style.module.scss';
+import style from '../../Sass/style.module.scss';
 
 function Help() {
-  const { asPath } = useRouter();
+  // const { asPath } = useRouter();
+  const pathname = usePathname();
 
   return (
     <>
-      { asPath === '/help' && <HeadSEO title="Ajuda" description="Ajuda e contato com o suporte para resolver seu problema." /> }
+      { pathname === '/help' && <HeadSEO title="Ajuda" description="Ajuda e contato com o suporte para resolver seu problema." /> }
       <section className={ style.help }>
         <HelpComponent />
       </section>
