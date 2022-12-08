@@ -1,8 +1,6 @@
 'use client';
 
-import React from 'react';
-// import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 import router from 'next/navigation';
 import { useSWRConfig } from 'swr';
 import { api2 } from '../../service/api';
@@ -11,22 +9,25 @@ import type { PBtnAddBag } from './types';
 import type { TypeEditBagInfos } from '../../@types/bag';
 import style from './style.module.scss';
 
-function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
+function AddBag({ array, infoTitelAndType }: PBtnAddBag) {
   // const { props, mutate } = useBag(true);
   const { cache, mutate } = useSWRConfig();
-  const activeMsg = true;
-  const buttonActive = true;
-  // const [buttonActive, setbutonActive] = useState(false);
-  // const [activeMsg, setActiveMsg] = useState(false);
+  const [activeMsg, setActiveMsg] = useState(false);
 
   async function handleClick(redirect: boolean) {
-    if (buttonActive) {
+    const sizeSelected = document.querySelector('[name="size"]:checked')?.id!;
+    const colorSelected = document.querySelector('[name="color"]:checked')?.id!;
+    if (sizeSelected && colorSelected) {
       let infoBag = cache.get('/bag');
+      const option = array.find((crrOpt) => crrOpt.idc === Number(colorSelected.replace('color-', '')));
 
-      const index = infoBag?.list_b.findIndex(
+      // console.log('ok', infoBag, !infoBag || option.sizes[sizeSelected] <= 0);
+      if (option.sizes[sizeSelected] <= 0) return;
+
+      const index = infoBag.list_b.findIndex(
         (objectindex: TypeEditBagInfos) => objectindex.opt_id === option.option_id
           && objectindex.size === sizeSelected,
-      );
+      ) ?? -1;
 
       const { data } = await api2({
         method: index !== -1 ? 'PATCH' : 'POST',
@@ -71,16 +72,6 @@ function AddBag({ option, sizeSelected, infoTitelAndType }: PBtnAddBag) {
       setActiveMsg(true);
     }
   }
-
-  // useEffect(() => {
-  //   if (option.color === '' && sizeSelected === '') {
-  //     setbutonActive(false);
-  //   }
-  //   if (option.color !== '' && sizeSelected !== '') {
-  //     setbutonActive(true);
-  //     setActiveMsg(false);
-  //   }
-  // }, [activeMsg, option.color, sizeSelected]);
 
   return (
     <div className={ style.contbtn }>

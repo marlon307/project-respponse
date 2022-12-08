@@ -32,14 +32,6 @@ async function ProductId() {
     details, specifications, list_options: option,
   }: TypeProduct = product;
 
-  const sizeChecked = '';
-  const colorChecked = {
-    color: '',
-    colorName: '',
-    index: 0,
-    option: 0,
-  };
-
   return (
     <>
       <HeadSEO
@@ -122,8 +114,7 @@ async function ProductId() {
               <BarSize array={ option } />
             </div>
             <AddBag
-              option={ option[colorChecked.index] }
-              sizeSelected={ sizeChecked }
+              array={ option }
               infoTitelAndType={ {
                 title,
                 ctgName,
