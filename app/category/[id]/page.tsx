@@ -11,7 +11,7 @@ import ContentModal from '../../../components/Modal/ContentModal';
 import Filter from '../../../components/Filter/Filter';
 import type { ICardProduct } from '../../../@types/typeCardProduct';
 import type { StateSearchType } from '../search';
-import style from './style.module.scss';
+import style from '../style.module.scss';
 
 function CategoryId({ products, pageFilter }: ICardProduct) {
   const [sizeWidth] = useWindowSize();
