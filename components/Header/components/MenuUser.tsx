@@ -6,7 +6,7 @@ import style from './styles/style.module.scss';
 import useLogin, { logOutUser } from '../../../hooks/useLogin';
 
 // const ContentModal = lazy(() => import('../../Modal/ContentModal'));
-const LoginRegister = lazy(() => import('../../../pages/login-register'));
+const LoginRegister = lazy(() => import('../../../pages/login-registers'));
 
 function MenuUser({ data }: any) {
   const { mutate } = useLogin();
