@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import type { GetServerSideProps } from 'next';
-import router from 'next/router';
+import { redirect } from 'next/navigation';
 import { SmallCard } from '../components/Cards';
 import mockBag from '../service/mockBag';
 import HeadSEO from '../components/Head/HeadSEO';
@@ -12,7 +12,7 @@ function Favorite() {
 
   useEffect(() => {
     if (loggedOut) {
-      router.push('/');
+      redirect('/');
     }
   }, [loggedOut]);
 

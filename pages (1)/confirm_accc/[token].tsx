@@ -41,7 +41,7 @@ function Token() {
           { contMsg && <span /> }
         </div>
         <div className={ style.action }>
-          <Link className="link" href="/login-register">
+          <Link className="link" href="/login/login-register">
             Fazer Login
           </Link>
         </div>

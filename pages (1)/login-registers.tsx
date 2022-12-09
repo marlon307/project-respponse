@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react';
-import router from 'next/router';
+import { redirect } from 'next/navigation';
 import BtnIco from '../components/Buttons/BtnIco';
 import { Input } from '../components/ComponentsForm';
 import HeadSEO from '../components/Head/HeadSEO';
@@ -30,7 +30,7 @@ function Login() {
 
       if (status === 200) {
         mutate();
-        router.push('/');
+        redirect('/');
       } else {
         setisValidLogin(true);
       }

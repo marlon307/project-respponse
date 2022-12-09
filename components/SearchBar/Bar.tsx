@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import style from './style.module.scss';
 
-export type IProps = {
-  setSearchopen?: Function;
-};
+export interface IProps {
+  setSearchopen: (param: boolean) => void | undefined;
+}
 
 function Bar({ setSearchopen }: IProps) {
   const ref = useRef(null);
@@ -31,9 +31,5 @@ function Bar({ setSearchopen }: IProps) {
     </div>
   );
 }
-
-Bar.defaultProps = {
-  setSearchopen: undefined,
-};
 
 export default Bar;

@@ -72,7 +72,7 @@ function Resetpsw({ props }: TProps) {
           ) }
           <div className={ style.action }>
             { !props.logged && (
-              <Link className="link" href="/login-register">
+              <Link className="link" href="/login/login-register">
                 Fazer Login
               </Link>
             ) }
