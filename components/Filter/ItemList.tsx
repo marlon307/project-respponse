@@ -5,13 +5,13 @@ type PCtg = {
   id: any;
   name: string;
   value: string;
-  color?: string;
-  execFunction?: React.MouseEventHandler<HTMLInputElement>;
+  color?: string | undefined;
+  execFunction?: React.MouseEventHandler<HTMLInputElement> | undefined;
   checked?: boolean;
 };
 
 function ItemList({
-  name, id, value, execFunction, color, checked,
+  name, id, value, execFunction, color, checked = false,
 }: PCtg) {
   return (
     <label htmlFor={ id } className={ style.itemfilter }>
@@ -31,11 +31,5 @@ function ItemList({
     </label>
   );
 }
-
-ItemList.defaultProps = {
-  execFunction: undefined,
-  color: undefined,
-  checked: false,
-};
 
 export default memo(ItemList);
