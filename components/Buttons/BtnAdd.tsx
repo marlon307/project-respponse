@@ -6,7 +6,7 @@ type PBtnAdd = {
   title?: string
 };
 
-function BtnAdd({ eventBtn, title }: PBtnAdd) {
+function BtnAdd({ eventBtn, title = 'Adicionar' }: PBtnAdd) {
   function eventButtonAdd() {
     eventBtn();
   }
@@ -21,9 +21,5 @@ function BtnAdd({ eventBtn, title }: PBtnAdd) {
     </button>
   );
 }
-
-BtnAdd.defaultProps = {
-  title: 'Adicionar',
-};
 
 export default BtnAdd;

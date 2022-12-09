@@ -1,24 +1,24 @@
+'use client';
+
 import React, {
   useState, useCallback, lazy, Suspense, useEffect,
 } from 'react';
-import type { GetServerSideProps } from 'next';
 import { redirect } from 'next/navigation';
-import BtnAdd from '../components/Buttons/BtnAdd';
-import HeadSEO from '../components/Head/HeadSEO';
-import useLogin from '../hooks/useLogin';
-import ContentModal from '../components/Modal/ContentModal';
-import style from '../Sass/style.module.scss';
+import BtnAdd from '../Buttons/BtnAdd';
+import useLogin from '../../hooks/useLogin';
+import ContentModal from '../Modal/ContentModal';
+import style from '../../Sass/style.module.scss';
 
-const Usercfg = lazy(() => import('../components/UserCfg/CfgUser'));
-const Order = lazy(() => import('../components/Order/Orders'));
-const OrderId = lazy(() => import('../components/Order/OrderId'));
-const Address = lazy(() => import('../components/Cards/Address'));
-const Addaderess = lazy(() => import('../components/Add/Address'));
-const Cards = lazy(() => import('../components/Cards/Cards'));
-const AddCard = lazy(() => import('../components/Add/Addcard'));
-const Help = lazy(() => import('./help'));
+const Usercfg = lazy(() => import('./CfgUser'));
+const Order = lazy(() => import('../Order/Orders'));
+const OrderId = lazy(() => import('../Order/OrderId'));
+const Address = lazy(() => import('../Cards/Address'));
+const Addaderess = lazy(() => import('../Add/Address'));
+const Cards = lazy(() => import('../Cards/Cards'));
+const AddCard = lazy(() => import('../Add/Addcard'));
+const Help = lazy(() => import('../../app/help/page'));
 
-function Account() {
+function AccountComponent() {
   const { loggedOut } = useLogin();
   const [dropOption, setDropOption] = useState('');
   const [openModal, setOpenModal] = useState(false);
@@ -46,10 +46,8 @@ function Account() {
       redirect('/');
     }
   }, [loggedOut]);
-
   return (
     <>
-      <HeadSEO title="Conta" description="Conta, pedidos, endereços, cartoes e ajuda." />
       <div className={ style.container } id="user">
         <a
           href="#user"
@@ -160,21 +158,4 @@ function Account() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  if (req.cookies.u_token) {
-    return {
-      props: {
-        detail: 'Acesso Autorizado.',
-      },
-    };
-  }
-
-  return {
-    redirect: {
-      permanent: false,
-      destination: '/',
-    },
-  };
-};
-
-export default Account;
+export default AccountComponent;
