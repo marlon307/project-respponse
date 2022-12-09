@@ -4,8 +4,8 @@ import Svg from '../../assets/Svg';
 
 export interface PBtnIco {
   textBtn: string;
-  icoName?: string;
-  action?: Function;
+  icoName?: string | undefined;
+  action?: Function | undefined;
   actionLiberate: boolean;
 }
 
@@ -42,10 +42,5 @@ function BtnIco({
     </button>
   );
 }
-
-BtnIco.defaultProps = {
-  icoName: undefined,
-  action: () => { },
-};
 
 export default BtnIco;

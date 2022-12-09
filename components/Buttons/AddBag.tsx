@@ -45,7 +45,7 @@ function AddBag({ array, infoTitelAndType }: PBtnAddBag) {
       }));
 
       if (data.status === 401) {
-        router.redirect('/login-register');
+        router.redirect('/login/login-register');
       }
 
       if (redirect && (data.status === 201 || data.status === 200)) {

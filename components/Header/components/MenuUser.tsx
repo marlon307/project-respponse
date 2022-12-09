@@ -1,12 +1,12 @@
 import React, { useState, useEffect, lazy } from 'react';
 import Link from 'next/link';
-import router from 'next/router';
+import { redirect } from 'next/navigation';
 import ContentModal from '../../Modal/ContentModal';
 import style from './styles/style.module.scss';
 import useLogin, { logOutUser } from '../../../hooks/useLogin';
 
 // const ContentModal = lazy(() => import('../../Modal/ContentModal'));
-const LoginRegister = lazy(() => import('../../../pages/login-registers'));
+const LoginRegister = lazy(() => import('../../../app/login/login-register/page'));
 
 function MenuUser({ data }: any) {
   const { mutate } = useLogin();
@@ -19,7 +19,7 @@ function MenuUser({ data }: any) {
     } else {
       logOutUser();
       mutate();
-      router.push('/');
+      redirect('/');
     }
   }
   // Fechar modal apos login
@@ -64,7 +64,7 @@ function MenuUser({ data }: any) {
                 </Link>
               </li>
               <li>
-                <Link href="/login-register" passHref onClick={ openModalLogin! } aria-label="Sair">
+                <Link href="/login/login-register" passHref onClick={ openModalLogin! } aria-label="Sair">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M20 12a1 1 0 0 0-1-1h-7.6l2.3-2.3a1 1 0 0 0-1.4-1.4l-4 4-.2.3a1 1 0 0 0 0 .8l.2.3 4 4a1 1 0 1 0 1.4-1.4L11.4 13H19a1 1 0 0 0 1-1ZM17 2H7a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-3a1 1 0 0 0-2 0v3a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v3a1 1 0 0 0 2 0V5a3 3 0 0 0-3-3Z" fill="#333" />
                   </svg>
@@ -77,7 +77,7 @@ function MenuUser({ data }: any) {
       ) : (
         <Link
           className={ style.login }
-          href="/login-register"
+          href="/login/login-register"
           onClick={ openModalLogin! }
           passHref
           aria-label="Entrar"

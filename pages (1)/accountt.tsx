@@ -2,7 +2,7 @@ import React, {
   useState, useCallback, lazy, Suspense, useEffect,
 } from 'react';
 import type { GetServerSideProps } from 'next';
-import router from 'next/router';
+import { redirect } from 'next/navigation';
 import BtnAdd from '../components/Buttons/BtnAdd';
 import HeadSEO from '../components/Head/HeadSEO';
 import useLogin from '../hooks/useLogin';
@@ -43,7 +43,7 @@ function Account() {
 
   useEffect(() => {
     if (loggedOut) {
-      router.push('/');
+      redirect('/');
     }
   }, [loggedOut]);
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import router from 'next/router';
+import { redirect } from 'next/navigation';
 import useLogin, { logOutUser } from '../../../hooks/useLogin';
 import style from './styles/style.module.scss';
 
@@ -13,7 +13,7 @@ function MenuMobile({ data }: any) {
     if (data) {
       logOutUser();
       mutate();
-      router.push('/');
+      redirect('/');
     }
   }
 
@@ -47,7 +47,7 @@ function MenuMobile({ data }: any) {
           </svg>
         </button>
       ) : (
-        <Link className={ style.login } aria-label="Entrar" href="/login-register" passHref>
+        <Link className={ style.login } aria-label="Entrar" href="/login/login-register" passHref>
           Entrar
         </Link>
       ) }
@@ -92,7 +92,7 @@ function MenuMobile({ data }: any) {
                   Sair
                 </Link>
               ) : (
-                <Link href="/login-register" passHref onClick={ closeMenu! } aria-label="Login">
+                <Link href="/login/login-register" passHref onClick={ closeMenu! } aria-label="Login">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M4 12a1 1 0 0 0 1 1h7.6l-2.3 2.3a1 1 0 1 0 1.4 1.4l4-4 .2-.3a1 1 0 0 0 0-.8 1 1 0 0 0-.2-.3l-4-4a1 1 0 1 0-1.4 1.4l2.3 2.3H5a1 1 0 0 0-1 1ZM17 2H7a3 3 0 0 0-3 3v3a1 1 0 0 0 2 0V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-3a1 1 0 1 0-2 0v3a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Z" fill="#333" />
                   </svg>

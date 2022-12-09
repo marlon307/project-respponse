@@ -28,8 +28,4 @@ function HeadSEO({
   );
 }
 
-HeadSEO.defaultProps = {
-  keywords: undefined,
-};
-
 export default HeadSEO;

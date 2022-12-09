@@ -2,21 +2,26 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import HeadSEO from '../../../components/Head/HeadSEO';
 import { api2 } from '../../../service/api';
 import style from '../../../Sass/style.module.scss';
 
-function Token() {
-  const { isReady, query } = useRouter();
+interface Props {
+  params: {
+    token: string
+  }
+}
+
+function Token({ params }: Props) {
   const [contMsg, setMsg] = useState<string | null>(null);
 
   useEffect(() => {
     async function confirmAcc() {
-      if (query.token) {
+      if (params.token) {
         const { data } = await api2.patch('confirm_acc', {}, {
           headers: {
-            token: `Bearer ${query.token}`,
+            token: `Bearer ${params.token}`,
           },
         }).catch(({ response }) => {
           setMsg(response.data.msg);
@@ -29,7 +34,7 @@ function Token() {
       }
     }
     confirmAcc();
-  }, [isReady]);
+  }, []);
 
   return (
     <>
@@ -43,7 +48,7 @@ function Token() {
           { contMsg && <span /> }
         </div>
         <div className={ style.action }>
-          <Link className="link" href="/login-register">
+          <Link className="link" href="/login/login-register">
             Fazer Login
           </Link>
         </div>
