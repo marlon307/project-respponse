@@ -1,14 +1,16 @@
+'use client';
+
 import React, { useCallback, useEffect, useState } from 'react';
-import { GetStaticProps, GetStaticPaths } from 'next';
+// import { GetStaticProps, GetStaticPaths } from 'next';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
-import ItemList from '../../components/Filter/ItemList';
-import api from '../../service/api';
-import HeadSEO from '../../components/Head/HeadSEO';
-import useWindowSize from '../../hooks/useWindowSize';
-import ContentModal from '../../components/Modal/ContentModal';
-import Filter from '../../components/Filter/Filter';
-import type { ICardProduct } from '../../@types/typeCardProduct';
-import type { StateSearchType } from './search';
+import ItemList from '../../../components/Filter/ItemList';
+// import api from '../../../service/api';
+import HeadSEO from '../../../components/Head/HeadSEO';
+import useWindowSize from '../../../hooks/useWindowSize';
+import ContentModal from '../../../components/Modal/ContentModal';
+import Filter from '../../../components/Filter/Filter';
+import type { ICardProduct } from '../../../@types/typeCardProduct';
+import type { StateSearchType } from '../search';
 import style from './style.module.scss';
 
 function CategoryId({ products, pageFilter }: ICardProduct) {
@@ -92,30 +94,31 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
 
 export default CategoryId;
 
-type RequestCategoryType = {
-  path: string
-};
+// type RequestCategoryType = {
+//   path: string
+// };
 
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const { data } = await api.get('/categorys');
-  const pgProps = await data.categorys.find(({ path }: RequestCategoryType) => path === params.id);
-  return {
-    props: {
-      pageFilter: pgProps,
-      products: data.products,
-    },
-  };
-};
+// export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+//   const { data } = await api.get('/categorys');
+//   const pgProps = await data.categorys.find(({ path }: RequestCategoryType)
+//  => path === params.id);
+//   return {
+//     props: {
+//       pageFilter: pgProps,
+//       products: data.products,
+//     },
+//   };
+// };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await api.get('/categorys');
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const { data } = await api.get('/categorys');
 
-  const paths = data.categorys.map(({ path }: RequestCategoryType) => ({
-    params: { id: path },
-  }));
+//   const paths = data.categorys.map(({ path }: RequestCategoryType) => ({
+//     params: { id: path },
+//   }));
 
-  return {
-    paths,
-    fallback: false,
-  };
-};
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
