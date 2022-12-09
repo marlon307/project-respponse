@@ -4,7 +4,7 @@ import type { Props } from './type';
 import style from './style.module.scss';
 
 function Input({
-  msgError, format, isValid, ...props
+  msgError, format = null, isValid = true, ...props
 }: Props) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
@@ -48,10 +48,5 @@ function Input({
     </label>
   );
 }
-
-Input.defaultProps = {
-  isValid: true,
-  format: '',
-};
 
 export default Input;

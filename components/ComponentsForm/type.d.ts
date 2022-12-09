@@ -11,6 +11,6 @@ export interface PInputRadio extends InputHTMLAttributes<T> {
 
 export interface Props extends InputHTMLAttributes<T> {
   isValid?: boolean;
-  format?: string;
+  format?: string | null;
   msgError: string;
 }

@@ -11,7 +11,7 @@ export interface PCardPay {
 }
 
 function CardPay({
-  name, cardValidate, endNumber, flag, removable,
+  name, cardValidate, endNumber, flag, removable = false,
 }: PCardPay) {
   return (
     <div className={ style.card }>
@@ -38,9 +38,5 @@ function CardPay({
     </div>
   );
 }
-
-CardPay.defaultProps = {
-  removable: false,
-};
 
 export default memo(CardPay);
