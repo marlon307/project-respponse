@@ -1,9 +1,20 @@
 import useSWR from 'swr';
 import { api2 } from '../service/api';
 
+interface PropsData {
+  name?: string;
+  umail?: string;
+  date?: string;
+  doc?: string;
+  tel?: string;
+  cel?: string;
+  gender_id?: number;
+}
+
 const infoUser = async (route: string) => {
   const { data } = await api2.get(route)
     .catch(({ response }) => response);
+
   if (data.status === 200) return data.response;
 
   const error: any = new Error('Not authorized!');
@@ -11,7 +22,7 @@ const infoUser = async (route: string) => {
   throw error;
 };
 
-const useUser = <Data = any>(isRequest: boolean) => {
+const useUser = <Data = PropsData>(isRequest: boolean) => {
   const { data, mutate, error } = useSWR<Data>(
     isRequest ? '/user' : null,
     infoUser,
