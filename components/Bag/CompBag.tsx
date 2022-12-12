@@ -18,7 +18,9 @@ const Addaddress = lazy(() => import('../Add/Address'));
 const Addacard = lazy(() => import('../Add/Addcard'));
 const CardEdit = lazy(() => import('../Cards/CardEditbag/CardEditbag'));
 
-function ContentBag({ fallback }) {
+function ContentBag({ props }) {
+  const fallback = props.infobag;
+
   const { mutate } = useBag(false);
 
   const [openModal, setOpenModal] = useState<string>('');

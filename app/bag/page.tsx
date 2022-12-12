@@ -44,7 +44,7 @@ async function Bag() {
         description="Finalize sua compra"
       />
       {/* <SWRConfig value={ { fallback } }> */ }
-      <ContentBag fallback={ props.fallback } />
+      <ContentBag props={ props.fallback['/bag'] } />
       {/* </SWRConfig> */ }
     </>
   );
