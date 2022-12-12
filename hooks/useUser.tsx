@@ -3,9 +3,9 @@ import { api2 } from '../service/api';
 
 interface PropsData {
   name?: string;
-  umail?: string;
-  date?: string;
-  doc?: string;
+  email?: string;
+  birthday?: string;
+  cpf_cnpj?: string;
   tel?: string;
   cel?: string;
   gender_id?: number;

@@ -51,7 +51,7 @@ function CfgUser({ isRequest }: Props) {
           name="block"
           placeholder="E-mail"
           autoComplete="email"
-          defaultValue={ dataUser?.umail }
+          defaultValue={ dataUser?.email }
           msgError="E-mail inválido"
           disabled
         />
@@ -70,7 +70,7 @@ function CfgUser({ isRequest }: Props) {
           type="date"
           name="date"
           placeholder="* Data"
-          defaultValue={ dataUser?.date }
+          defaultValue={ dataUser?.birthday }
           msgError="Selecione uma data"
         />
         <Input
@@ -78,7 +78,7 @@ function CfgUser({ isRequest }: Props) {
           type="doc"
           name="doc"
           placeholder="* CPF"
-          defaultValue={ dataUser?.doc }
+          defaultValue={ dataUser?.cpf_cnpj }
           msgError="CPF inválido"
           max={ 11 }
           // patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
@@ -88,27 +88,32 @@ function CfgUser({ isRequest }: Props) {
       <div className={ style.genere }>
         <h4>Género</h4>
         <div className={ style.inp }>
-          <InputRadio
-            checked={ dataUser?.gender_id === 1 }
-            iId="men"
-            name="Masculino"
-            family="gender"
-            iValue={ 3 }
-          />
-          <InputRadio
-            checked={ dataUser?.gender_id === 2 }
-            iId="female"
-            name="Femenino"
-            family="gender"
-            iValue={ 2 }
-          />
-          <InputRadio
-            checked={ dataUser?.gender_id === null }
-            iId="undefined"
-            name="Não informar"
-            family="gender"
-            iValue={ 1 }
-          />
+          { dataUser?.gender_id ? (
+            <>
+              <InputRadio
+                checked={ dataUser?.gender_id === 3 }
+                iId="men"
+                name="Masculino"
+                family="gender"
+                iValue={ 3 }
+              />
+              <InputRadio
+                checked={ dataUser?.gender_id === 2 }
+                iId="female"
+                name="Femenino"
+                family="gender"
+                iValue={ 2 }
+              />
+              <InputRadio
+                checked={ dataUser?.gender_id === 1 }
+                iId="undefined"
+                name="Não informar"
+                family="gender"
+                iValue={ 1 }
+              />
+            </>
+          )
+            : null }
         </div>
       </div>
       <div className={ style.contact }>
