@@ -1,5 +1,5 @@
 import React from 'react';
-// import { cookies } from 'next/headers';
+import { cookies } from 'next/headers';
 // import { SWRConfig } from 'swr';
 import { api2 } from '../../service/api';
 import ContentBag from '../../components/Bag/CompBag';
@@ -13,18 +13,18 @@ import HeadSEO from '../../components/Head/HeadSEO';
 // }
 
 async function getInfoBag() {
-  // console.log(cookies().get('u_token'));
-
+  const token = cookies().get('u_token')?.value;
   const { data } = await api2.get('/bag', {
     headers: {
-      authorization: `Bearer ${'req.cookies.u_token'}`,
+      authorization: `Bearer ${token}`,
     },
   }).catch((err) => ({ data: err }));
+
   return {
     props: {
       fallback: {
         '/bag': {
-          token: 'req.cookies.u_token',
+          token,
           infobag: data.infobag,
         },
       },
