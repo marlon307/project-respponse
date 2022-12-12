@@ -48,6 +48,7 @@ function Login() {
     if (validEmail.test(String(data.email))
       && validPsw.test(String(data.password)) && isLoading === false) {
       setIsLoading(true);
+
       const res = await api2.post('/createuser', formData)
         .catch(({ response }) => response);
 

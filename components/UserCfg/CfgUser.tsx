@@ -1,20 +1,10 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
 import useUser from '../../hooks/useUser';
 import { api2 } from '../../service/api';
 import BtnIco from '../Buttons/BtnIco';
 import { InputRadio } from '../ComponentsForm';
 import Input from '../ComponentsForm/Input';
 import style from './style.module.scss';
-
-type TStateUser = {
-  name: string;
-  umail: string;
-  date: string;
-  doc: string;
-  tel: string;
-  cel: string;
-  gender: string,
-};
 
 interface Props {
   isRequest: boolean;
@@ -23,15 +13,6 @@ interface Props {
 function CfgUser({ isRequest }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const { dataUser, mutate } = useUser(isRequest);
-  const [stateIfonUser, setStateinfoUser] = useState<TStateUser>({
-    name: '',
-    umail: '',
-    date: new Date().toISOString().split('T')[0],
-    doc: '',
-    tel: '',
-    cel: '',
-    gender: '',
-  });
 
   async function saveUpdateInfoUser(event: FormEvent) {
     event.preventDefault();
@@ -51,26 +32,6 @@ function CfgUser({ isRequest }: Props) {
     }
   }
 
-  useEffect(() => {
-    if (!dataUser && isRequest) {
-      mutate();
-    }
-  }, [isRequest]);
-
-  useEffect(() => {
-    if (dataUser && isRequest) {
-      setStateinfoUser({
-        name: dataUser?.name,
-        umail: dataUser?.umail,
-        date: new Date(dataUser?.birthday)?.toISOString().split('T')[0],
-        doc: dataUser?.cpf_cnpj?.replace(/^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})/, '$1.$2.$3-$4'),
-        tel: dataUser?.tel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
-        cel: dataUser?.cel?.replace(/^([\d]{2})\.*([\d]{5})-*([\d]{4})/, '$1 $2-$3'),
-        gender: dataUser?.gender_id === null ? 0 : dataUser?.gender_id,
-      });
-    }
-  }, [dataUser]);
-
   return (
     <form className={ style.form } onSubmit={ saveUpdateInfoUser }>
       <h4>Informações básicas</h4>
@@ -82,7 +43,7 @@ function CfgUser({ isRequest }: Props) {
           placeholder="* Nome e Sobrenome"
           msgError="Preencha Nome e Sobrenome"
           autoComplete="name"
-          defaultValue={ stateIfonUser.name }
+          defaultValue={ dataUser?.name }
         />
         <Input
           id="email"
@@ -90,12 +51,12 @@ function CfgUser({ isRequest }: Props) {
           name="block"
           placeholder="E-mail"
           autoComplete="email"
-          defaultValue={ stateIfonUser.umail }
+          defaultValue={ dataUser?.email }
           msgError="E-mail inválido"
           disabled
         />
         <a
-          href="/resetpsw"
+          href="/login/resetpsw"
           target="_blank"
           rel="noopener noreferrer"
           className="link"
@@ -109,7 +70,7 @@ function CfgUser({ isRequest }: Props) {
           type="date"
           name="date"
           placeholder="* Data"
-          defaultValue={ stateIfonUser.date }
+          defaultValue={ dataUser?.birthday }
           msgError="Selecione uma data"
         />
         <Input
@@ -117,7 +78,7 @@ function CfgUser({ isRequest }: Props) {
           type="doc"
           name="doc"
           placeholder="* CPF"
-          defaultValue={ stateIfonUser.doc }
+          defaultValue={ dataUser?.cpf_cnpj }
           msgError="CPF inválido"
           max={ 11 }
           // patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
@@ -127,27 +88,32 @@ function CfgUser({ isRequest }: Props) {
       <div className={ style.genere }>
         <h4>Género</h4>
         <div className={ style.inp }>
-          <InputRadio
-            checked={ dataUser?.gender_id === 1 }
-            iId="men"
-            name="Masculino"
-            family="gender"
-            iValue={ 3 }
-          />
-          <InputRadio
-            checked={ dataUser?.gender_id === 2 }
-            iId="female"
-            name="Femenino"
-            family="gender"
-            iValue={ 2 }
-          />
-          <InputRadio
-            checked={ dataUser?.gender_id === null }
-            iId="undefined"
-            name="Não informar"
-            family="gender"
-            iValue={ 1 }
-          />
+          { dataUser?.gender_id ? (
+            <>
+              <InputRadio
+                checked={ dataUser?.gender_id === 3 }
+                iId="men"
+                name="Masculino"
+                family="gender"
+                iValue={ 3 }
+              />
+              <InputRadio
+                checked={ dataUser?.gender_id === 2 }
+                iId="female"
+                name="Femenino"
+                family="gender"
+                iValue={ 2 }
+              />
+              <InputRadio
+                checked={ dataUser?.gender_id === 1 }
+                iId="undefined"
+                name="Não informar"
+                family="gender"
+                iValue={ 1 }
+              />
+            </>
+          )
+            : null }
         </div>
       </div>
       <div className={ style.contact }>
@@ -159,7 +125,7 @@ function CfgUser({ isRequest }: Props) {
             name="tel"
             placeholder="Telefone"
             autoComplete="tel"
-            defaultValue={ stateIfonUser.tel }
+            defaultValue={ dataUser?.tel }
             msgError="Insira um telefone"
             max={ 11 }
             // patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"
@@ -171,7 +137,7 @@ function CfgUser({ isRequest }: Props) {
             name="cel"
             placeholder="Celular"
             autoComplete="tel"
-            defaultValue={ stateIfonUser.cel }
+            defaultValue={ dataUser?.cel }
             msgError="Insira um telefone"
             max={ 11 }
             // patt="^([\d]{2})\.*([\d]{5})-*([\d]{4})"

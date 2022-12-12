@@ -13,6 +13,7 @@ function AddBag({ array, infoTitelAndType }: PBtnAddBag) {
   // const { props, mutate } = useBag(true);
   const { cache, mutate } = useSWRConfig();
   const [activeMsg, setActiveMsg] = useState(false);
+  console.log(cache);
 
   async function handleClick(redirect: boolean) {
     const sizeSelected = document.querySelector('[name="size"]:checked')?.id!;
@@ -24,7 +25,7 @@ function AddBag({ array, infoTitelAndType }: PBtnAddBag) {
       // console.log('ok', infoBag, !infoBag || option.sizes[sizeSelected] <= 0);
       if (option.sizes[sizeSelected] <= 0) return;
 
-      const index = infoBag.list_b.findIndex(
+      const index = infoBag.list_b?.findIndex(
         (objectindex: TypeEditBagInfos) => objectindex.opt_id === option.option_id
           && objectindex.size === sizeSelected,
       ) ?? -1;
