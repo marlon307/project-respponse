@@ -120,7 +120,7 @@ function Login() {
               actionLiberate={ isLoading }
             />
             <a
-              href="/resetpsw"
+              href="/login/resetpsw"
               className="link"
               target="_blank"
               aria-label="Esqueceu a senha?"

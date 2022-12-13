@@ -13,7 +13,6 @@ function AddBag({ array, infoTitelAndType }: PBtnAddBag) {
   // const { props, mutate } = useBag(true);
   const { cache, mutate } = useSWRConfig();
   const [activeMsg, setActiveMsg] = useState(false);
-  console.log(cache);
 
   async function handleClick(redirect: boolean) {
     const sizeSelected = document.querySelector('[name="size"]:checked')?.id!;
