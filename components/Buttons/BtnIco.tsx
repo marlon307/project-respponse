@@ -10,7 +10,7 @@ export interface PBtnIco {
 }
 
 function BtnIco({
-  textBtn, icoName, action, actionLiberate, ...props
+  textBtn, icoName, action = () => { }, actionLiberate, ...props
 }: PBtnIco) {
   function handleClick() {
     if (!actionLiberate) {

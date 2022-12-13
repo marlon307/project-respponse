@@ -1,20 +1,15 @@
 'use client';
 
 import React, { FormEvent, useState } from 'react';
-import Link from 'next/link';
 import { api2 } from '../../../service/api';
 import BtnIco from '../../../components/Buttons/BtnIco';
 import { Input } from '../../../components/ComponentsForm';
 import HeadSEO from '../../../components/Head/HeadSEO';
 import style from '../../../Sass/style.module.scss';
 
-type TProps = {
-  props: {
-    logged: string | undefined;
-  }
-};
+function Resetpsw() {
+  // const cookie = cookies().get('u_token')?.value;
 
-function Resetpsw({ props }: TProps) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const [isLoading, setIsLoading] = useState(false);
   const [isValid, setisValid] = useState(false);
@@ -73,11 +68,6 @@ function Resetpsw({ props }: TProps) {
             </div>
           ) }
           <div className={ style.action }>
-            { !props.logged && (
-              <Link className="link" href="/login/login-register">
-                Fazer Login
-              </Link>
-            ) }
             { contMsg === null && (
               <BtnIco
                 textBtn="Enviar Email"
@@ -91,9 +81,5 @@ function Resetpsw({ props }: TProps) {
     </>
   );
 }
-
-Resetpsw.getInitialProps = async ({ req }: any) => ({
-  props: { logged: req.cookies?.u_token },
-});
 
 export default Resetpsw;
