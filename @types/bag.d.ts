@@ -42,7 +42,7 @@ interface StateBagType {
 
 export interface Shipping {
   id: number;
-  name_carrie: string;
+  name_carrier: string;
   price: float;
   toDate: number;
 }

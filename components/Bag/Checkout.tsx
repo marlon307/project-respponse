@@ -75,11 +75,11 @@ function Checkout({
           { shipping?.map((object) => (
             <InputRadio
               key={ object.id }
-              name={ `${object.name_carrie} - ${object.price.toLocaleString('pt-br', {
+              name={ `${object.name_carrier} - ${object.price.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               })} - até ${object.toDate} dias úteis` }
-              iId={ object.name_carrie }
+              iId={ object.name_carrier }
               family="shipping"
               execFunction={ handleSipping }
               iValue={ object.price }
