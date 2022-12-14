@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import type { IOptions } from '../../app/product/product';
+import type { IOptions } from '../../app/product/[id]/product';
 import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import style from './style.module.scss';
 
@@ -12,10 +12,14 @@ interface Props {
 function BarColors({ array }: Props) {
   const handleClick = (object: IOptions) => {
     const oldPrice = document.getElementById('oldp')!;
-    oldPrice.setAttribute('data-oldprice', object.oldPrice.toLocaleString('pt-br', {
-      style: 'currency',
-      currency: 'BRL',
-    }));
+    if (object.discount) {
+      oldPrice.setAttribute('data-oldprice', object.discount.toLocaleString('pt-br', {
+        style: 'currency',
+        currency: 'BRL',
+      }));
+    } else {
+      oldPrice.removeAttribute('data-oldprice');
+    }
 
     const curretnPrice = document.getElementById('price')!;
     curretnPrice.textContent = object.price.toLocaleString('pt-br', {

@@ -69,10 +69,10 @@ export default async function Page() {
         <h2>Categorias</h2>
         <div className={ style.slide_container }>
           { props?.categorys?.map(({
-            ctgID, url_image, category_name, color, path,
+            id, url_image, category_name, color, path,
           }) => (
             <CardCategory
-              key={ ctgID }
+              key={ id }
               image={ url_image }
               ctgName={ category_name }
               path={ path }

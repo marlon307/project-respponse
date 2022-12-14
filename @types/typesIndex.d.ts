@@ -3,7 +3,7 @@ import type { ICardProduct } from '../../types/typeCardProduct';
 
 export interface IPropsHome {
   categorys: Array<{
-    ctgID: number;
+    id: number;
     url_image: ImageProps['src'];
     category_name: string;
     color: string,
