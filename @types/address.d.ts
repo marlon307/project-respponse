@@ -1,13 +1,12 @@
 interface ITAddress {
   id: number;
-  namedest: string;
+  name_delivery: string;
   city: string;
   district: string;
-  number: string;
+  number_home: string;
   state: string;
   street: string;
   zipcode: string;
-  // [key: string]: string;
 }
 
 interface IListAddress {

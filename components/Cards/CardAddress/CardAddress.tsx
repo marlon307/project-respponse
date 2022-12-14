@@ -7,7 +7,7 @@ interface Props extends ITAddress {
 }
 
 function CardAdderess({
-  namedest = 'Clique aqui ( 👇 ) para selecionar o endereço.', city = '---', district = '---', number = '---', state = '---', street = '---', zipcode = '---', execFunction, removable = false,
+  name_delivery: namedest = 'Clique aqui ( 👇 ) para selecionar o endereço.', city = '---', district = '---', number_home: number = '---', state = '---', street = '---', zipcode = '---', execFunction, removable = false,
 }: Props) {
   return (
     <div className={ style.cardaddress }>

@@ -48,9 +48,7 @@ function CfgUser({ isRequest }: Props) {
         <Input
           id="email"
           type="email"
-          name="block"
           placeholder="E-mail"
-          autoComplete="email"
           defaultValue={ dataUser?.email }
           msgError="E-mail inválido"
           disabled
@@ -80,9 +78,10 @@ function CfgUser({ isRequest }: Props) {
           placeholder="* CPF"
           defaultValue={ dataUser?.cpf_cnpj }
           msgError="CPF inválido"
-          max={ 11 }
-          // patt="^([\d]{3})\.*([\d]{3})\.*([\d]{3})-*([\d]{2})"
-          format="$1.$2.$3-$4"
+          maxLength={ 11 }
+        // pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+        // pattern="^([\d]{ 3 })\.*([\d]{ 3 })\.*([\d]{ 3 })-*([\d]{ 2 })"
+        // format="$1.$2.$3-$4"
         />
       </div>
       <div className={ style.genere }>

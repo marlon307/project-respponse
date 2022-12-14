@@ -12,6 +12,8 @@ import style from './style.module.scss';
 function AddBag({ array, infoTitelAndType }: PBtnAddBag) {
   // const { props, mutate } = useBag(true);
   const { cache, mutate } = useSWRConfig();
+  console.log(cache);
+
   const [activeMsg, setActiveMsg] = useState(false);
 
   async function handleClick(redirect: boolean) {

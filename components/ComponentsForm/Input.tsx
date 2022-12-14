@@ -4,7 +4,7 @@ import type { Props } from './type';
 import style from './style.module.scss';
 
 function Input({
-  msgError, format = null, isValid = true, ...props
+  msgError, format = null, isValid = false, ...props
 }: Props) {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
   const validPsw = new RegExp(`^${process.env.VALIDATION_PSW!}$`, 'gm');
