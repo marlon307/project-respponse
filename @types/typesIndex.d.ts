@@ -4,8 +4,8 @@ import type { ICardProduct } from '../../types/typeCardProduct';
 export interface IPropsHome {
   categorys: Array<{
     ctgID: number;
-    imgCategory: ImageProps['src'];
-    categoryName: string;
+    url_image: ImageProps['src'];
+    category_name: string;
     color: string,
     path: string
   }>

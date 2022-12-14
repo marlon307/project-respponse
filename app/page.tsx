@@ -26,7 +26,7 @@ async function getData() {
   return {
     categorys: newdata.data.categorys,
     slides: data.slides,
-    list_product: newdata.data.list_product, // newdata.data.list,
+    list_product: newdata.data.list_products, // newdata.data.list,
     mockPromotions: data.mockPromotions,
     // revalidated: true,
   };
@@ -69,12 +69,12 @@ export default async function Page() {
         <h2>Categorias</h2>
         <div className={ style.slide_container }>
           { props?.categorys?.map(({
-            ctgID, imgCategory, categoryName, color, path,
+            ctgID, url_image, category_name, color, path,
           }) => (
             <CardCategory
               key={ ctgID }
-              image={ imgCategory }
-              ctgName={ categoryName }
+              image={ url_image }
+              ctgName={ category_name }
               path={ path }
               color={ color! }
             />
