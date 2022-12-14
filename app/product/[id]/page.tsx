@@ -1,8 +1,6 @@
 import React from 'react';
-// import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-// import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
 import { DetailsCard, Spec } from '../../../components/Cards';
 import AddBag from '../../../components/Buttons/AddBag';
 import BarSize from '../../../components/Bars/BarSize';
@@ -10,16 +8,12 @@ import BarColors from '../../../components/Bars/BarColors';
 import { api2 } from '../../../service/api';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import { ButtonNext, ButtonPrev } from '../../../components/Buttons/Buttons';
-import type { /* SimilarProduct, */ TypeProduct } from './product';
-// import type { ColorSelected } from '../../components/Buttons/types';
+import type { Props, TypeProduct } from './product';
 import style from './style.module.scss';
 
 // interface Props {
 //   similar: SimilarProduct['similar'],
 // }
-interface Props {
-  params: { id: number };
-}
 
 async function getProductID(prodID: number): Promise<TypeProduct> {
   const { data } = await api2.get(`/product/${prodID}`)
