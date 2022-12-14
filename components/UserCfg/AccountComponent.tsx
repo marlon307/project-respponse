@@ -46,6 +46,7 @@ function AccountComponent() {
       redirect('/');
     }
   }, [loggedOut]);
+
   return (
     <>
       <div className={ style.container } id="user">
