@@ -8,8 +8,7 @@ import BarBuy from '../Bars/BarBuy';
 import { SmallCard } from '../Cards';
 import ContentModal from '../Modal/ContentModal';
 import Checkout from '.';
-
-import useBag from '../../hooks/useBag';
+// import useBag from '../../hooks/useBag';
 import { api2 } from '../../service/api';
 import style from '../../Sass/style.module.scss';
 
@@ -20,7 +19,7 @@ const CardEdit = lazy(() => import('../Cards/CardEditbag/CardEditbag'));
 
 function ContentBag({ props }) {
   const fallback = props?.infobag;
-  const { mutate } = useBag(false);
+  // const { mutate } = useBag(false);
 
   const [openModal, setOpenModal] = useState<string>('');
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
@@ -29,7 +28,7 @@ function ContentBag({ props }) {
   const setBagAddres = (add: ITAddress) => {
     setOpenModal('');
     fallback.main_add = add;
-    mutate(fallback, false);
+    // mutate(fallback, false);
   };
 
   const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
@@ -43,7 +42,7 @@ function ContentBag({ props }) {
     if (data.status === 200) {
       const newProps = [...fallback.list_b];
       newProps.splice(fallback?.list_b.indexOf(identify), 1);
-      mutate(newProps, false);
+      // mutate(newProps, false);
     }
   }, [fallback?.list_b]);
 
@@ -121,6 +120,7 @@ function ContentBag({ props }) {
         { openModal === 'addcard' && <Addacard /> }
         { openModal === 'editbag' && (
           <CardEdit
+            props={ fallback }
             identify={ identifyEditItemBag }
             execeFunction={ setOpenModal }
           />
