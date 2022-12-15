@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TypeAddBagInfos } from '../../../@types/bag';
-import useBag from '../../../hooks/useBag';
+// import useBag from '../../../hooks/useBag';
 import { api2 } from '../../../service/api';
 import style from './style.module.scss';
 
@@ -9,8 +9,8 @@ interface Props {
   execeFunction: (params: string) => void
 }
 
-function CardEditbag({ identify, execeFunction }: Props) {
-  const { props, mutate } = useBag(false);
+function CardEditbag({ props, identify, execeFunction }: Props) {
+  // const { props, mutate } = useBag(false);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const updateItembag = async ({ target }: any) => {
@@ -24,9 +24,9 @@ function CardEditbag({ identify, execeFunction }: Props) {
       const newProps = [...props.list_b];
       const index = props.list_b.indexOf(identify);
       newProps.splice(index, 1, { ...props.list_b[index], quantity: Number(target.value) });
-      mutate({ list_b: newProps }, {
-        revalidate: false,
-      });
+      // mutate({ list_b: newProps }, {
+      //   revalidate: false,
+      // });
       setIsLoading(false);
       execeFunction('');
     }
