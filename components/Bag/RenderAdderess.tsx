@@ -1,5 +1,5 @@
-import React from 'react';
-import useAddress from '../../hooks/useAddress';
+import React, { use } from 'react';
+import getAddress from '../../utils/fetchAddress';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 
@@ -8,11 +8,11 @@ interface Props {
 }
 
 function RenderAdderess({ execFunction }: Props) {
-  const { addressList } = useAddress(true);
+  const addressList = use(getAddress(true));
 
   return (
     <div className={ style.add }>
-      { addressList.map((adderess: ITAddress) => (
+      { addressList?.map((adderess: ITAddress) => (
         <a
           href="#"
           aria-label="Clique aqui para selecionar este endereço de entrega."

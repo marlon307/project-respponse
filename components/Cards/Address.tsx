@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { use, useCallback } from 'react';
 import { CardAdderess } from '.';
 import { api2 } from '../../service/api';
-import useAddress from '../../hooks/useAddress';
+import getAddress from '../../utils/fetchAddress';
+// import useAddress from '../../hooks/useAddress';
 import style from './CardAddress/style.module.scss';
 
 type TAdderess = {
@@ -9,22 +10,16 @@ type TAdderess = {
 };
 
 function Address({ isRequest }: TAdderess) {
-  const { addressList, mutate } = useAddress(isRequest);
+  const addressList = use(getAddress(isRequest));
 
   const removeAddress = useCallback(async (address: number) => {
     const { data } = await api2.delete(`/address/${address}`)
       .catch(({ response }) => response);
 
     if (data.status === 200) {
-      mutate(addressList.filter(({ id }: ITAddress) => id !== address), false);
+      addressList.filter(({ id }: ITAddress) => id !== address);
     }
   }, [addressList]);
-
-  useEffect(() => {
-    if (isRequest && !addressList.length) {
-      mutate();
-    }
-  }, [isRequest]);
 
   return (
     <div className={ style.address }>
