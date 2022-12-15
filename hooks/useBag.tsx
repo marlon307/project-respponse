@@ -26,11 +26,12 @@ const useBag = (revalidate: boolean) => {
   );
   const loading = !data && !error;
   const loggedOut = error && error.status === 401;
+
   // const bagList = data?.infobag.list_b ?? data?.listBag;
   return {
     loading,
     loggedOut,
-    props: data?.infobag ?? data,
+    props: data?.infobag,
     mutate,
   };
 };

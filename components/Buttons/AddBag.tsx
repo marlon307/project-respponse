@@ -1,44 +1,28 @@
 'use client';
 
 import React, { useState } from 'react';
-import router from 'next/navigation';
-import { useSWRConfig } from 'swr';
+import { useRouter } from 'next/navigation';
 import { api2 } from '../../service/api';
-// import useBag from '../../hooks/useBag';
 import type { PBtnAddBag } from './types';
-import type { TypeEditBagInfos } from '../../@types/bag';
 import style from './style.module.scss';
 
-function AddBag({ array, infoTitelAndType }: PBtnAddBag) {
-  // const { props, mutate } = useBag(true);
-  const { cache, mutate } = useSWRConfig();
-  console.log(cache);
-
+function AddBag({ array }: PBtnAddBag) {
+  const router = useRouter();
   const [activeMsg, setActiveMsg] = useState(false);
 
-  async function handleClick(redirect: boolean) {
+  async function handleClick(redirectRoute: boolean) {
     const sizeSelected = document.querySelector('[name="size"]:checked')?.id!;
     const colorSelected = document.querySelector('[name="color"]:checked')?.id!;
     if (sizeSelected && colorSelected) {
-      let infoBag = cache.get('/bag');
       const option = array.find((crrOpt) => crrOpt.idc === Number(colorSelected.replace('color-', '')));
 
       // console.log('ok', infoBag, !infoBag || option.sizes[sizeSelected] <= 0);
       if (option.sizes[sizeSelected] <= 0) return;
 
-      const index = infoBag.list_b?.findIndex(
-        (objectindex: TypeEditBagInfos) => objectindex.opt_id === option.option_id
-          && objectindex.size === sizeSelected,
-      ) ?? -1;
-
-      const { data } = await api2({
-        method: index !== -1 ? 'PATCH' : 'POST',
-        url: '/bag',
-        data: {
-          quantity: index !== -1 ? infoBag.list_b[index].quantity + 1 : 1,
-          product_option: option.option_id,
-          size: sizeSelected,
-        },
+      const { data } = await api2.post('/bag', {
+        quantity: 1,
+        product_option: option.option_id,
+        size: sizeSelected,
       }).catch(({ response }) => ({
         data: {
           detail: response.data.detail,
@@ -47,28 +31,11 @@ function AddBag({ array, infoTitelAndType }: PBtnAddBag) {
       }));
 
       if (data.status === 401) {
-        router.redirect('/login/login-register');
+        router.push('/login/login-register');
       }
 
-      if (redirect && (data.status === 201 || data.status === 200)) {
-        if (index !== -1) {
-          infoBag.list_b[index].quantity += 1;
-          mutate('/bag', [...infoBag.list_b], false);
-          // mutate({ ...props }, { revalidate: false });
-        } else {
-          infoBag = [...infoBag.list_b, {
-            ...option,
-            ...infoTitelAndType,
-            category_name: infoTitelAndType.ctgName,
-            product_option: option.option_id,
-            size: sizeSelected,
-            quantity: 1,
-            url_image: option.images[0].urlImg,
-          }];
-        }
-        mutate('/bag', infoBag, false);
-        // mutate({ ...props }, { revalidate: false });
-        router.redirect('/bag');
+      if (redirectRoute && (data.status === 201 || data.status === 200)) {
+        router.push('/bag');
       }
     } else {
       setActiveMsg(true);
