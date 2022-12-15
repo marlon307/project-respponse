@@ -10,7 +10,7 @@ type TAddress = {
 };
 
 function Address({ execFunction }: TAddress) {
-  const { cache, mutate } = useSWRConfig();
+  // const { cache, mutate } = useSWRConfig();
   const [isLoading, setisLoading] = useState(false);
 
   async function handleAddAddress(event: FormEvent) {
@@ -25,20 +25,20 @@ function Address({ execFunction }: TAddress) {
     if (checkValue) {
       setisLoading(true);
 
-      const res = await api2.post('/address', formData)
+      await api2.post('/address', formData)
         .catch(({ response }) => response);
 
-      if (res.data.status === 201) {
-        const addressList = cache.get('/address');
-        mutate(
-          '/address',
-          [...addressList, {
-            id: res.data.address,
-            ...data,
-          }],
-          false,
-        );
-      }
+      // if (res.data.status === 201) {
+      //   const addressList = cache.get('/address');
+      //   mutate(
+      //     '/address',
+      //     [...addressList, {
+      //       id: res.data.address,
+      //       ...data,
+      //     }],
+      //     false,
+      //   );
+      // }
       setisLoading(false);
       execFunction!();
     }
@@ -57,7 +57,7 @@ function Address({ execFunction }: TAddress) {
           <Input
             id="namedest"
             type="text"
-            name="namedest"
+            name="name_delivery"
             placeholder="Nome do destinatário *"
             autoComplete="name"
             msgError="Insira o Nome do destinatário."
@@ -92,7 +92,7 @@ function Address({ execFunction }: TAddress) {
           <Input
             id="number"
             type="text"
-            name="number"
+            name="number_home"
             placeholder="N° *"
             msgError="Insira o número da Casa."
           />
