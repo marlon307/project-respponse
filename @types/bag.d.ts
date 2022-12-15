@@ -33,6 +33,9 @@ interface StateBagType {
   itemEditBag: TypeEditBagInfos;
   checkout: {
     formatPay: TFormatPay;
+    shipping: {
+      valueShipping: float
+    };
     cupomAplicate: {
       code: string;
       descountCupom: number;

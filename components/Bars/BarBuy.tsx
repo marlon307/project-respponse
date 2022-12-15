@@ -51,10 +51,10 @@ function BarBuy({ listProducts, stateBag }: TBarBuy) {
           </div>
           <div>
             <span title="Forma de pagamento">
-              { stateBag?.checkout?.formatPay.formatPayment }
+              { stateBag?.checkout?.formatPay.formatPayment || 'Forma de pagamento' }
               :
             </span>
-            <span>{ `${stateBag?.checkout?.formatPay.division}x` }</span>
+            <span>{ `${stateBag?.checkout?.formatPay.division ?? 1}x` }</span>
           </div>
         </div>
         <div className={ style.calcfinish }>
@@ -82,20 +82,20 @@ function BarBuy({ listProducts, stateBag }: TBarBuy) {
 
 export default BarBuy;
 
-BarBuy.defaultProps = {
-  stateBag: {
-    bagItems: [],
-    checkout: {
-      formatPay: {
-        formatPayment: 'Forma de pagamento',
-        division: 0,
-      },
-      cupomAplicate: {
-        descountCupom: 0,
-      },
-      shipping: {
-        valueShipping: 0,
-      },
-    },
-  },
-};
+// BarBuy.defaultProps = {
+//   stateBag: {
+//     bagItems: [],
+//     checkout: {
+//       formatPay: {
+//         formatPayment: 'Forma de pagamento',
+//         division: 0,
+//       },
+//       cupomAplicate: {
+//         descountCupom: 0,
+//       },
+//       shipping: {
+//         valueShipping: 0,
+//       },
+//     },
+//   },
+// };
