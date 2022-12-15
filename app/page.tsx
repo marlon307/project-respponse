@@ -2,32 +2,22 @@ import React from 'react';
 import Image from 'next/image';
 import { CardCategory } from '../components/Cards';
 import type { IPropsHome } from '../@types/typesIndex';
-import api, { api2 } from '../service/api';
+import { api2 } from '../service/api';
 import CardProduct from '../components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from '../components/Buttons';
-import HeadSEO from '../components/Head/HeadSEO';
 import style from '../Sass/style.module.scss';
 
 async function getData() {
   /*: TRequestProduct */
-  const { data } = await api.get('/home')
-    .catch((error) => ({
-      data: {
-        categorys: [],
-        slides: [],
-        mockPromotions: [],
-      },
-      detail: error.message,
-    }));
-  /*: TRequestProduct */
+
   const newdata = await api2.get('/product')
     .catch((error) => ({ data: error.message }));
 
   return {
     categorys: newdata.data.categorys,
-    slides: data.slides,
+    slides: newdata.data.slides,
     list_product: newdata.data.list_products, // newdata.data.list,
-    mockPromotions: data.mockPromotions,
+    mockPromotions: [], // data.mockPromotions
     // revalidated: true,
   };
 }
@@ -39,26 +29,24 @@ export default async function Page() {
   // console.log(props);
   return (
     <>
-      <HeadSEO title="" description="Respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você." />
       <div className={ style.banner }>
         <div className={ style.panel }>
           { props?.slides?.map(({
-            id, srcImg, alt, background,
+            id, url_image, title, background, description,
           }, index) => (
             <figure key={ id } style={ { background: `${background}` } }>
               <Image
-                src={ srcImg }
+                src={ url_image }
                 quality={ 85 }
-                alt={ alt }
+                alt={ title }
                 loading={ index === 0 ? 'eager' : 'lazy' }
                 priority={ index === 0 }
                 fill
               />
               <figcaption>
-                <h1>{ alt }</h1>
+                <h1>{ title }</h1>
                 <p>
-                  There’s still time to save up to 50% on new markdowns.
-                  Shop now—no promo code needed.
+                  { description }
                 </p>
               </figcaption>
             </figure>

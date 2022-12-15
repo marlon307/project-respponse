@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react';
-import { useSWRConfig } from 'swr';
+// import { useSWRConfig } from 'swr';
 import { api2 } from '../../service/api';
 import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';

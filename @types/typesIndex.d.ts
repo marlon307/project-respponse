@@ -11,10 +11,11 @@ export interface IPropsHome {
   }>
   slides: Array<{
     id: number;
-    srcImg: ImageProps['src'];
-    alt: string;
+    url_image: ImageProps['src'];
+    title: string;
     priority: ImageProps['priority'],
     background: string;
+    description: string;
   }>
   list_product: ICardProduct['products']
   mockPromotions
