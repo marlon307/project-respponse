@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { getCookie } from 'cookies-next';
+import { notFound } from 'next/navigation';
+import React, { use, useCallback } from 'react';
 import { api2 } from '../../service/api';
 import style from './style.module.scss';
 
@@ -8,25 +8,20 @@ type TPropsOrders = {
   isRequest: boolean
 };
 
+async function getOrders(isRequest: boolean): Promise<[]> {
+  if (isRequest) {
+    const { data } = await api2.get('/order')
+      .catch(() => notFound());
+    return data.orders;
+  }
+  return [];
+}
+
 function Orders({ execFunction, isRequest }: TPropsOrders) {
-  const [orders, setOrders] = useState<[]>([]);
+  const orders = use(getOrders(isRequest));
   const orderIdOpen = useCallback((orderId: string) => {
     execFunction!(orderId);
   }, []);
-
-  useEffect(() => {
-    async function getOrders() {
-      if (isRequest) {
-        const { data } = await api2.get('/order', {
-          headers: {
-            authorization: `Bearer ${getCookie('u_token')}`,
-          },
-        });
-        setOrders(data.orders);
-      }
-    }
-    getOrders();
-  }, [isRequest]);
 
   return (
     <table className={ style.table } cellSpacing="0">

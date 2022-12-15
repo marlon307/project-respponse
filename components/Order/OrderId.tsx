@@ -1,37 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { use } from 'react';
 import Link from 'next/link';
 import { SmallCard } from '../Cards';
 import { api2 } from '../../service/api';
-import { Props, StateOrder } from './type';
+import type { Props, StateOrder } from './type';
 import style from './style.module.scss';
 
+async function getOrderId(orderid: number): Promise<StateOrder> {
+  const { data } = await api2.get(`/order/${orderid}`);
+
+  data.order.date_order = new Date(data.order.date_order)
+    .toLocaleDateString('pt-BR', {
+      weekday: 'long',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      timeZone: 'UTC',
+    });
+
+  return data.order;
+}
+
 function OrderId({ orderid }: Props) {
-  const [order, setOrder] = useState<StateOrder>({});
+  const orderId = use(getOrderId(orderid));
+
   function copyCode(event: React.SyntheticEvent<Element, Event>, code: string) {
     event.preventDefault();
     // https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
     navigator.clipboard.writeText(code);
   }
-  useEffect(() => {
-    async function getOrderId() {
-      const { data } = await api2.get(`/order/${orderid}`);
-
-      data.order.date_order = new Date(data.order.date_order)
-        .toLocaleDateString('pt-BR', {
-          weekday: 'long',
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          timeZone: 'UTC',
-        });
-
-      setOrder(data.order);
-    }
-    getOrderId();
-  }, []);
 
   return (
     <div className={ style.order }>
@@ -41,7 +40,7 @@ function OrderId({ orderid }: Props) {
             <span>
               <b>Número do pedido:</b>
               { ' #' }
-              { order?.id?.toString().padStart(6, '0') }
+              { orderId?.id?.toString().padStart(6, '0') }
             </span>
             <span>
               <b>Forma de pagamento:</b>
@@ -53,14 +52,14 @@ function OrderId({ orderid }: Props) {
             <b>Data:</b>
             { ' ' }
             <span>
-              { order.date_order }
+              { orderId.date_order }
             </span>
           </span>
         </div>
         <div className={ style.status }>
           <h2>Status do Pedido</h2>
           <div className={ style.progressbar }>
-            <div data-status={ order.status_id }>
+            <div data-status={ orderId.status_id }>
               <span title="Pedido Realizado" aria-label="Pedido Realizado" />
               <span title="Pagamento Aprovado" aria-label="Pagamento Aprovado" />
               <span title="NF-e Disponivel" aria-label="NF-e Disponivel" />
@@ -76,29 +75,29 @@ function OrderId({ orderid }: Props) {
             <span>
               Casa
               { ' - ' }
-              { order?.address?.road }
+              { orderId?.address?.road }
               { ', ' }
-              { order?.address?.number_home }
+              { orderId?.address?.number_home }
               { ' - ' }
-              { order?.address?.district }
+              { orderId?.address?.district }
             </span>
             <span>
-              { order?.address?.city }
+              { orderId?.address?.city }
               { ', ' }
-              { order?.address?.uf }
+              { orderId?.address?.uf }
               { ' - ' }
-              { order?.address?.zipcode }
+              { orderId?.address?.zipcode }
             </span>
           </div>
           <div>
-            <h3>{ order.carrier?.name_carrier }</h3>
+            <h3>{ orderId.carrier?.name_carrier }</h3>
             <span className={ style.shippingcompany }>
-              { order.carrier?.code ? <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ order.carrier?.code }</a>
+              { orderId.carrier?.code ? <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ orderId.carrier?.code }</a>
                 : <span>Código indisponível no momento.</span> }
               <Link
                 href="/"
                 passHref
-                onClick={ (e) => copyCode(e, order.carrier?.code ?? '') }
+                onClick={ (e) => copyCode(e, orderId.carrier?.code ?? '') }
                 aria-label="Copiar"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -110,7 +109,7 @@ function OrderId({ orderid }: Props) {
         </div>
         <div className={ style.orderitems }>
           <ul>
-            { order.list_products?.map((object) => (
+            { orderId.list_products?.map((object) => (
               <li key={ `${object.id}${object.color}${object.size}` }>
                 <SmallCard
                   removable={ false }
@@ -136,7 +135,7 @@ function OrderId({ orderid }: Props) {
           <div>
             <span>Total</span>
             <span>
-              { order.value_order?.toLocaleString('pt-br', {
+              { orderId.value_order?.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }
