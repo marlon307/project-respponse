@@ -8,6 +8,7 @@ async function getInfoBag() {
 
   const { data } = await api2.get('/bag', {
     headers: {
+      cache: 'no-store',
       authorization: `Bearer ${token}`,
     },
   }).catch((err) => ({ data: err }));
