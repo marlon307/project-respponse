@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useCallback, useState, lazy } from 'react';
-
-// import type { GetServerSideProps } from 'next';
 import type { TypeAddBagInfos } from '../../@types/bag';
 import BarBuy from '../Bars/BarBuy';
 import { SmallCard } from '../Cards';
@@ -24,6 +22,8 @@ function ContentBag({ props }) {
   const [openModal, setOpenModal] = useState<string>('');
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
+  const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(fallback?.list_b);
+  const [shipping, setShipping] = useState({ price: 0 });
 
   const setBagAddres = (add: ITAddress) => {
     setOpenModal('');
@@ -40,15 +40,19 @@ function ContentBag({ props }) {
     }).catch((err) => ({ data: err }));
 
     if (data.status === 200) {
-      const newProps = [...fallback.list_b];
-      newProps.splice(fallback?.list_b.indexOf(identify), 1);
-      // mutate(newProps, false);
+      listBag.splice(listBag.indexOf(identify), 1);
+      setStateBag([...listBag]);
     }
-  }, [fallback?.list_b]);
+  }, [listBag]);
 
   const openEditItemBagModal = useCallback(async (identify: TypeAddBagInfos) => {
-    setOpenModal('editbag');
     setIdentifyEditItemBag(identify);
+    setOpenModal('editbag');
+  }, []);
+
+  const editBag = useCallback(async (array: TypeAddBagInfos[]) => {
+    setStateBag(array);
+    setOpenModal('');
   }, []);
 
   return (
@@ -84,7 +88,7 @@ function ContentBag({ props }) {
             ) }
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
-            { fallback?.list_b?.length ? fallback?.list_b.map((object: TypeAddBagInfos) => (
+            { listBag?.length ? listBag?.map((object: TypeAddBagInfos) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }
@@ -103,9 +107,13 @@ function ContentBag({ props }) {
           // addSelected={ listAdd.find((add: { add_id: number; }) => add?.add_id === addressid) }
           qunatityAdd={ fallback?.list_b?.length }
           addSelected={ fallback?.main_add }
+          setShipping={ setShipping }
         />
       </div>
-      <BarBuy listProducts={ fallback?.list_b } />
+      <BarBuy
+        listProducts={ listBag }
+        shipping={ shipping }
+      />
       <ContentModal
         openModal={ setOpenModal }
         isOpen={
@@ -120,9 +128,9 @@ function ContentBag({ props }) {
         { openModal === 'addcard' && <Addacard /> }
         { openModal === 'editbag' && (
           <CardEdit
-            props={ fallback }
+            props={ listBag }
             identify={ identifyEditItemBag }
-            execeFunction={ setOpenModal }
+            execeFunction={ editBag }
           />
         ) }
       </ContentModal>

@@ -1,11 +1,11 @@
 import type { InputHTMLAttributes } from 'react';
 
-export interface PInputRadio extends InputHTMLAttributes<T> {
+export interface PropsRadio extends InputHTMLAttributes<T> {
   name: string;
   iId: string;
   family: string;
   iValue?: number;
-  execFunction?: Function;
+  execFunction?: () => void;
   checked?: boolean
 }
 

@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { TypeAddBagInfos } from '../../../@types/bag';
-// import useBag from '../../../hooks/useBag';
 import { api2 } from '../../../service/api';
+import type { TypeAddBagInfos } from '../../../@types/bag';
 import style from './style.module.scss';
 
 interface Props {
   identify: TypeAddBagInfos;
-  execeFunction: (params: string) => void
+  execeFunction: (params: TypeAddBagInfos[]) => void
+  props: TypeAddBagInfos[]
 }
 
 function CardEditbag({ props, identify, execeFunction }: Props) {
-  // const { props, mutate } = useBag(false);
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const updateItembag = async ({ target }: any) => {
     setIsLoading(true);
     const res = await api2.patch('/bag', {
@@ -20,15 +19,14 @@ function CardEditbag({ props, identify, execeFunction }: Props) {
       product_option: identify.opt_id,
       size: identify.size,
     }).catch((data) => ({ data }));
+
     if (res.data.status === 200) {
-      const newProps = [...props.list_b];
-      const index = props.list_b.indexOf(identify);
-      newProps.splice(index, 1, { ...props.list_b[index], quantity: Number(target.value) });
-      // mutate({ list_b: newProps }, {
-      //   revalidate: false,
-      // });
+      const newProps = [...props];
+      const index = props.indexOf(identify);
+      newProps.splice(index, 1, { ...props[index], quantity: Number(target.value) });
+
       setIsLoading(false);
-      execeFunction('');
+      execeFunction(newProps);
     }
     setIsLoading(false);
   };

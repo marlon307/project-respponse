@@ -2,7 +2,6 @@ import React, { use, useCallback } from 'react';
 import { CardAdderess } from '.';
 import { api2 } from '../../service/api';
 import getAddress from '../../utils/fetchAddress';
-// import useAddress from '../../hooks/useAddress';
 import style from './CardAddress/style.module.scss';
 
 type TAdderess = {

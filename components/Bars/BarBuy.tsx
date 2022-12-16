@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import calcAllValuesArray from '../../hooks/useCalcs';
-import { StateBagType, TypeAddBagInfos } from '../../@types/bag';
 import { BuyFinishBtn } from '../Buttons';
+import type { StateBagType, TypeAddBagInfos } from '../../@types/bag';
 import style from './style.module.scss';
 
-type TBarBuy = {
+interface TBarBuy {
   listProducts: TypeAddBagInfos[]
+  shipping: { price: number };
   stateBag?: {
     bagItems: [];
     checkout: StateBagType['checkout'];
   }
-};
+}
 
-function BarBuy({ listProducts, stateBag }: TBarBuy) {
+function BarBuy({ listProducts, stateBag, shipping }: TBarBuy) {
   // const { formatPay, shipping, cupomAplicate } = stateBag.checkout.formatPay;
   const [openInfo, setOpenInfo] = useState(false);
+  const calcValue = useMemo(() => {
+    const valueBag = calcAllValuesArray(listProducts);
+
+    return valueBag + shipping.price;
+  }, [shipping.price, listProducts]);
 
   function openBarMenu(event: { preventDefault: () => void; }) {
     event.preventDefault();
@@ -34,7 +40,7 @@ function BarBuy({ listProducts, stateBag }: TBarBuy) {
           <div>
             <span>Frete:</span>
             <span>
-              { stateBag?.checkout?.shipping.valueShipping.toLocaleString('pt-br', {
+              { shipping.price.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }
@@ -61,7 +67,7 @@ function BarBuy({ listProducts, stateBag }: TBarBuy) {
           <div>
             <span>Valor Total:</span>
             <span>
-              { calcAllValuesArray(listProducts)?.toLocaleString('pt-br', {
+              { calcValue?.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }
