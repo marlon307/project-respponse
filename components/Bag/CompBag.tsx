@@ -37,6 +37,7 @@ function ContentBag({ props }) {
         size: identify.size,
       },
     }).catch((err) => ({ data: err }));
+
     if (data.status === 200) {
       listBag.splice(listBag.indexOf(identify), 1);
       setStateBag([...listBag]);
@@ -44,8 +45,13 @@ function ContentBag({ props }) {
   }, [listBag]);
 
   const openEditItemBagModal = useCallback(async (identify: TypeAddBagInfos) => {
-    setOpenModal('editbag');
     setIdentifyEditItemBag(identify);
+    setOpenModal('editbag');
+  }, []);
+
+  const editBag = useCallback(async (array: TypeAddBagInfos[]) => {
+    setStateBag(array);
+    setOpenModal('');
   }, []);
 
   return (
@@ -117,9 +123,9 @@ function ContentBag({ props }) {
         { openModal === 'addcard' && <Addacard /> }
         { openModal === 'editbag' && (
           <CardEdit
-            props={ fallback }
+            props={ listBag }
             identify={ identifyEditItemBag }
-            execeFunction={ setOpenModal }
+            execeFunction={ editBag }
           />
         ) }
       </ContentModal>

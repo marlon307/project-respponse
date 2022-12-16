@@ -5,7 +5,7 @@ import style from './style.module.scss';
 
 interface Props {
   identify: TypeAddBagInfos;
-  execeFunction: (params: string) => void
+  execeFunction: (params: any) => void
 }
 
 function CardEditbag({ props, identify, execeFunction }: Props) {
@@ -18,13 +18,14 @@ function CardEditbag({ props, identify, execeFunction }: Props) {
       product_option: identify.opt_id,
       size: identify.size,
     }).catch((data) => ({ data }));
+
     if (res.data.status === 200) {
-      const newProps = [...props.list_b];
-      const index = props.list_b.indexOf(identify);
-      newProps.splice(index, 1, { ...props.list_b[index], quantity: Number(target.value) });
+      const newProps = [...props];
+      const index = props.indexOf(identify);
+      newProps.splice(index, 1, { ...props[index], quantity: Number(target.value) });
 
       setIsLoading(false);
-      execeFunction('');
+      execeFunction(newProps);
     }
     setIsLoading(false);
   };
