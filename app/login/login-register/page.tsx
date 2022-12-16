@@ -4,7 +4,6 @@ import React, { FormEvent, useState } from 'react';
 // import { useRouter } from 'next/navigation';
 import BtnIco from '../../../components/Buttons/BtnIco';
 import { Input } from '../../../components/ComponentsForm';
-import HeadSEO from '../../../components/Head/HeadSEO';
 import { api2 } from '../../../service/api';
 import useLogin, { loginUser } from '../../../hooks/useLogin';
 import style from '../../../Sass/style.module.scss';
@@ -62,132 +61,126 @@ function Login() {
   };
 
   return (
-    <>
-      <HeadSEO
-        title={ sectionTab === 0 ? 'Login' : 'Registrar' }
-        description={ `${sectionTab ? 'Faça seu login na' : 'Registre-se na'} respponse loja de roupas e acessórios para o dia a dia, tudo de melhor qualidade para você.` }
-      />
-      <section className={ style.contlogin }>
-        <div className={ style.sectiontab }>
-          <button
-            className={ style.tablog }
-            aria-label="Login"
-            aria-hidden={ !(sectionTab === 0) }
-            type="button"
-            onClick={ () => setSectionTab(0) }
-          >
-            <h1>Entrar</h1>
-          </button>
-          <button
-            className={ style.tablog }
-            aria-label="Registre-se"
-            aria-hidden={ !(sectionTab === 1) }
-            type="button"
-            onClick={ () => setSectionTab(1) }
-          >
-            <h1>Registre-se</h1>
-          </button>
-        </div>
-        <form
-          className={ style.tab }
+    <section className={ style.contlogin }>
+      <div className={ style.sectiontab }>
+        <button
+          className={ style.tablog }
+          aria-label="Login"
           aria-hidden={ !(sectionTab === 0) }
-          onSubmit={ clickLogin }
+          type="button"
+          onClick={ () => setSectionTab(0) }
         >
-          <Input
-            id="lemail"
-            type="email"
-            name="username"
-            autoComplete="email"
-            placeholder="E-mail"
-            msgError="Email inválido!"
-            disabled={ isLoading }
-            isValid={ isValidLogin }
-          />
-          <Input
-            id="lpsw"
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            placeholder="Senha"
-            msgError="Senha invalida!"
-            disabled={ isLoading }
-            isValid={ isValidLogin }
-          />
-          <div className={ style.action }>
-            <BtnIco
-              textBtn="Entrar"
-              icoName="singin"
-              actionLiberate={ isLoading }
-            />
-            <a
-              href="/login/resetpsw"
-              className="link"
-              target="_blank"
-              aria-label="Esqueceu a senha?"
-            >
-              Esqueceu a senha?
-            </a>
-          </div>
-        </form>
-        <form
-          className={ style.tab }
+          <h1>Entrar</h1>
+        </button>
+        <button
+          className={ style.tablog }
+          aria-label="Registre-se"
           aria-hidden={ !(sectionTab === 1) }
-          onSubmit={ clickRegister }
+          type="button"
+          onClick={ () => setSectionTab(1) }
         >
-          { !isRegistred
-            ? (
-              <>
-                <Input
-                  id="rname"
-                  type="name"
-                  name="name"
-                  autoComplete="name"
-                  placeholder="Nome Sobrenome"
-                  msgError="Preencha Nome e Sobrenome"
-                  disabled={ isLoading }
+          <h1>Registre-se</h1>
+        </button>
+      </div>
+      <form
+        className={ style.tab }
+        aria-hidden={ !(sectionTab === 0) }
+        onSubmit={ clickLogin }
+      >
+        <Input
+          id="lemail"
+          type="email"
+          name="username"
+          autoComplete="email"
+          placeholder="E-mail"
+          msgError="Email inválido!"
+          disabled={ isLoading }
+          isValid={ isValidLogin }
+        />
+        <Input
+          id="lpsw"
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          placeholder="Senha"
+          msgError="Senha invalida!"
+          disabled={ isLoading }
+          isValid={ isValidLogin }
+        />
+        <div className={ style.action }>
+          <BtnIco
+            textBtn="Entrar"
+            icoName="singin"
+            actionLiberate={ isLoading }
+          />
+          <a
+            href="/login/resetpsw"
+            className="link"
+            target="_blank"
+            aria-label="Esqueceu a senha?"
+          >
+            Esqueceu a senha?
+          </a>
+        </div>
+      </form>
+      <form
+        className={ style.tab }
+        aria-hidden={ !(sectionTab === 1) }
+        onSubmit={ clickRegister }
+      >
+        { !isRegistred
+          ? (
+            <>
+              <Input
+                id="rname"
+                type="name"
+                name="name"
+                autoComplete="name"
+                placeholder="Nome Sobrenome"
+                msgError="Preencha Nome e Sobrenome"
+                disabled={ isLoading }
+              />
+              <Input
+                id="remail"
+                type="email"
+                name="email"
+                autoComplete="email"
+                placeholder="E-mail"
+                msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
+                disabled={ isLoading }
+                isValid={ isValidRegister }
+              />
+              <Input
+                id="rpsw"
+                type="password"
+                name="password"
+                placeholder="Senha"
+                msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
+                disabled={ isLoading }
+              />
+              <div className={ style.action }>
+                <BtnIco
+                  textBtn="Criar Conta"
+                  icoName="setRight"
+                  actionLiberate={ isLoading }
                 />
-                <Input
-                  id="remail"
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  placeholder="E-mail"
-                  msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
-                  disabled={ isLoading }
-                  isValid={ isValidRegister }
-                />
-                <Input
-                  id="rpsw"
-                  type="password"
-                  name="password"
-                  placeholder="Senha"
-                  msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
-                  disabled={ isLoading }
-                />
-                <div className={ style.action }>
-                  <BtnIco
-                    textBtn="Criar Conta"
-                    icoName="setRight"
-                    actionLiberate={ isLoading }
-                  />
-                </div>
-              </>
-            ) : (
-              <div className={ style.msgregister }>
-                Registrado com sucesso.
-                <span />
-                <p>
-                  Confirme sua conta atraves do email que enviamos para
-                  { ' ' }
-                  <b>
-                    <p>{ isRegistred }</p>
-                  </b>
-                </p>
               </div>
-            ) }
-        </form>
-      </section>
-    </>
+            </>
+          ) : (
+            <div className={ style.msgregister }>
+              Registrado com sucesso.
+              <span />
+              <p>
+                Confirme sua conta atraves do email que enviamos para
+                { ' ' }
+                <b>
+                  <p>{ isRegistred }</p>
+                </b>
+              </p>
+            </div>
+          ) }
+      </form>
+    </section>
   );
 }
 
