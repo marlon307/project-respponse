@@ -48,7 +48,7 @@ function Checkout({
             setOpenModal(qunatityAdd ? 'address' : 'addaddress');
           } }
         >
-          <CardAdderess { ...addSelected! } />
+          <CardAdderess { ...addSelected } />
         </Link>
         <Link
           className="link"

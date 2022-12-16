@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useCallback, useState, lazy } from 'react';
-
-// import type { GetServerSideProps } from 'next';
 import type { TypeAddBagInfos } from '../../@types/bag';
 import BarBuy from '../Bars/BarBuy';
 import { SmallCard } from '../Cards';
@@ -24,6 +22,7 @@ function ContentBag({ props }) {
   const [openModal, setOpenModal] = useState<string>('');
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
+  const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(fallback?.list_b);
 
   const setBagAddres = (add: ITAddress) => {
     setOpenModal('');
@@ -38,13 +37,11 @@ function ContentBag({ props }) {
         size: identify.size,
       },
     }).catch((err) => ({ data: err }));
-
     if (data.status === 200) {
-      const newProps = [...fallback.list_b];
-      newProps.splice(fallback?.list_b.indexOf(identify), 1);
-      // mutate(newProps, false);
+      listBag.splice(listBag.indexOf(identify), 1);
+      setStateBag([...listBag]);
     }
-  }, [fallback?.list_b]);
+  }, [listBag]);
 
   const openEditItemBagModal = useCallback(async (identify: TypeAddBagInfos) => {
     setOpenModal('editbag');
@@ -84,7 +81,7 @@ function ContentBag({ props }) {
             ) }
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
-            { fallback?.list_b?.length ? fallback?.list_b.map((object: TypeAddBagInfos) => (
+            { listBag?.length ? listBag?.map((object: TypeAddBagInfos) => (
               <li key={ object.id + object.color + object.size }>
                 <SmallCard
                   objectID={ object }

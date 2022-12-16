@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import calcAllValuesArray from '../../hooks/useCalcs';
-import { StateBagType, TypeAddBagInfos } from '../../@types/bag';
 import { BuyFinishBtn } from '../Buttons';
+import type { StateBagType, TypeAddBagInfos } from '../../@types/bag';
 import style from './style.module.scss';
 
 type TBarBuy = {
