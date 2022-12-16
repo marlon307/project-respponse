@@ -105,34 +105,6 @@ function CreateProduct({ list }) {
 
   return (
     <form className={ style.contprod } encType="multipart/form-data" onSubmit={ registerProduct }>
-      <div className={ style.slide }>
-        <div className={ style.list_upload }>
-          { [...Array(6).keys()].map((upload_panel) => (
-            <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
-              <Image
-                src={
-                  listFiles[selectedFeature][upload_panel]
-                    ? URL.createObjectURL(listFiles[selectedFeature][upload_panel])
-                    : fakeImage
-                }
-                quality={ 80 }
-                alt="upload_image"
-                fill
-              />
-              <input
-                id={ `img-${upload_panel}` }
-                type="file"
-                name={ `img-${selectedFeature}` }
-                accept=".png"
-                onChange={ loadImg }
-                data-indexcolor={ upload_panel }
-                data-index={ selectedFeature }
-                required
-              />
-            </label>
-          )) }
-        </div>
-      </div>
       <div className={ style.products_similar }>
         <h3>Produtos com estoque baixo</h3>
         <div>
@@ -171,9 +143,75 @@ function CreateProduct({ list }) {
             msgError="Informe um titulo"
             required
           />
+          <Input
+            id="width"
+            type="text"
+            name="width"
+            placeholder="Largura"
+            msgError="Informe uma largura"
+            required
+          />
+          <Input
+            id="height"
+            type="text"
+            name="height"
+            placeholder="Altura"
+            msgError="Informe uma altura"
+            required
+          />
+          <Input
+            id="weight"
+            type="text"
+            name="weight"
+            placeholder="Peso"
+            msgError="Informe um peso"
+            required
+          />
+          <Input
+            id="length"
+            type="text"
+            name="length"
+            placeholder="comprimento"
+            msgError="Informe um Comprimento"
+            required
+          />
+          <Input
+            id="insurance_value"
+            type="text"
+            name="insurance_value"
+            placeholder="peso"
+            msgError="Valor do seguro"
+            required
+          />
           <div className={ style.palet_colors }>
             { Object.keys(listColors).map((key) => (
               <div className={ style.info_colors } key={ key }>
+                <div className={ style.list_upload }>
+                  { [...Array(6).keys()].map((upload_panel) => (
+                    <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
+                      <Image
+                        src={
+                          listFiles[key][upload_panel]
+                            ? URL.createObjectURL(listFiles[key][upload_panel])
+                            : fakeImage
+                        }
+                        quality={ 80 }
+                        alt="upload_image"
+                        fill
+                      />
+                      <input
+                        id={ `img-${upload_panel}` }
+                        type="file"
+                        name={ `img-${key}` }
+                        accept=".png"
+                        onChange={ loadImg }
+                        data-indexcolor={ upload_panel }
+                        data-index={ selectedFeature }
+                        required
+                      />
+                    </label>
+                  )) }
+                </div>
                 <div className={ style.color_size }>
                   <div className={ style.select_custon }>
                     <span style={ { backgroundColor: listColors[key]?.color } } />
@@ -220,8 +258,8 @@ function CreateProduct({ list }) {
                       id={ key }
                       type="text"
                       name={ `discount-${key}` }
-                      placeholder="(%) Desconto"
-                      msgError="(%) Desconto"
+                      placeholder="(R$) Desconto"
+                      msgError="(R$) Desconto"
                       required
                       max={ 8 }
                     />
