@@ -23,6 +23,7 @@ function ContentBag({ props }) {
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
   const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(fallback?.list_b);
+  const [shipping, setShipping] = useState({ price: 0 });
 
   const setBagAddres = (add: ITAddress) => {
     setOpenModal('');
@@ -106,9 +107,13 @@ function ContentBag({ props }) {
           // addSelected={ listAdd.find((add: { add_id: number; }) => add?.add_id === addressid) }
           qunatityAdd={ fallback?.list_b?.length }
           addSelected={ fallback?.main_add }
+          setShipping={ setShipping }
         />
       </div>
-      <BarBuy listProducts={ fallback?.list_b } />
+      <BarBuy
+        listProducts={ listBag }
+        shipping={ shipping }
+      />
       <ContentModal
         openModal={ setOpenModal }
         isOpen={

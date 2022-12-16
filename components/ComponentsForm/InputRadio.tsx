@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './style.module.scss';
-import type { PInputRadio } from './type';
+import type { PropsRadio } from './type';
 
 function InputRadio({
-  iId, name, family, iValue, checked,
-}: PInputRadio) {
+  iId, name, family, iValue, checked, execFunction,
+}: PropsRadio) {
   return (
     <div className={ style.inputRadio }>
       <label htmlFor={ iId }>
@@ -14,6 +14,7 @@ function InputRadio({
           name={ family }
           value={ iValue }
           defaultChecked={ checked }
+          onClick={ execFunction }
         />
         <span>{ name }</span>
       </label>

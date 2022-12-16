@@ -12,16 +12,17 @@ interface Props {
   shipping: Array<Shipping>;
   addSelected: ITAddress;
   qunatityAdd: number;
+  setShipping: (props: Shipping) => void
 }
 
 function Checkout({
-  setOpenModal, addSelected, shipping, qunatityAdd,
+  setOpenModal, addSelected, shipping, qunatityAdd, setShipping,
 }: Props) {
   // const { shippingCompany } = infoCheckout.shipping;
-  const handleSipping = useCallback((idInput: string, value: number) => {
-    // eslint-disable-next-line no-console
-    console.log(idInput, value);
-  }, []);
+  // const handleSipping = useCallback((idInput: number, value: number) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log(idInput, value);
+  // }, []);
 
   const handlePayment = useCallback((idName: string) => {
     // eslint-disable-next-line no-console
@@ -81,7 +82,12 @@ function Checkout({
               })} - até ${object.toDate} dias úteis` }
               iId={ object.name_carrier }
               family="shipping"
-              execFunction={ handleSipping }
+              execFunction={ () => setShipping({
+                id: object.id,
+                price: object.price,
+                name_carrier: '',
+                toDate: 0,
+              }) }
               iValue={ object.price }
             />
           )) }
@@ -103,7 +109,7 @@ function Checkout({
               name={ object.name }
               iId={ object.name }
               family="payment"
-              execFunction={ handlePayment }
+              execFunction={ () => handlePayment('sd') }
             />
           )) }
         </div>
