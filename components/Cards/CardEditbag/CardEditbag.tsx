@@ -5,7 +5,8 @@ import style from './style.module.scss';
 
 interface Props {
   identify: TypeAddBagInfos;
-  execeFunction: (params: any) => void
+  execeFunction: (params: TypeAddBagInfos[]) => void
+  props: TypeAddBagInfos[]
 }
 
 function CardEditbag({ props, identify, execeFunction }: Props) {
