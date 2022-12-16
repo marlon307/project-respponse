@@ -5,7 +5,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 // import CardProduct from '../../components/Cards/CardProduct/CardProduct';
 import ItemList from '../../../components/Filter/ItemList';
 // import api from '../../../service/api';
-import HeadSEO from '../../../components/Head/HeadSEO';
 import useWindowSize from '../../../hooks/useWindowSize';
 import ContentModal from '../../../components/Modal/ContentModal';
 import Filter from '../../../components/Filter/Filter';

@@ -80,7 +80,7 @@ function Checkout({
                 style: 'currency',
                 currency: 'BRL',
               })} - até ${object.toDate} dias úteis` }
-              iId={ object.name_carrier }
+              iId={ String(object.id) }
               family="shipping"
               execFunction={ () => setShipping({
                 id: object.id,

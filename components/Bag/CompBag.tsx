@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useCallback, useState, lazy } from 'react';
-import type { TypeAddBagInfos } from '../../@types/bag';
 import BarBuy from '../Bars/BarBuy';
 import { SmallCard } from '../Cards';
 import ContentModal from '../Modal/ContentModal';
 import Checkout from '.';
 // import useBag from '../../hooks/useBag';
 import { api2 } from '../../service/api';
+import type { TypeAddBagInfos, Shipping } from '../../@types/bag';
 import style from '../../Sass/style.module.scss';
 
 const RenderAdderess = lazy(() => import('./RenderAdderess'));
@@ -23,7 +23,7 @@ function ContentBag({ props }) {
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
   const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(fallback?.list_b);
-  const [shipping, setShipping] = useState({ price: 0 });
+  const [shipping, setShipping] = useState<Shipping>({ price: 0 });
 
   const setBagAddres = (add: ITAddress) => {
     setOpenModal('');
@@ -104,7 +104,6 @@ function ContentBag({ props }) {
         <Checkout
           setOpenModal={ setOpenModal }
           shipping={ fallback?.shipping_company }
-          // addSelected={ listAdd.find((add: { add_id: number; }) => add?.add_id === addressid) }
           qunatityAdd={ fallback?.list_b?.length }
           addSelected={ fallback?.main_add }
           setShipping={ setShipping }
@@ -113,6 +112,7 @@ function ContentBag({ props }) {
       <BarBuy
         listProducts={ listBag }
         shipping={ shipping }
+        addresId={ fallback?.main_add.id }
       />
       <ContentModal
         openModal={ setOpenModal }
@@ -123,7 +123,7 @@ function ContentBag({ props }) {
           || openModal === 'editbag'
         }
       >
-        { openModal === 'address' && <RenderAdderess execFunction={ setBagAddres! } /> }
+        { openModal === 'address' && <RenderAdderess execFunction={ setBagAddres } /> }
         { openModal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
         { openModal === 'addcard' && <Addacard /> }
         { openModal === 'editbag' && (

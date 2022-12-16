@@ -1,24 +1,26 @@
 import React, { useMemo, useState } from 'react';
 import calcAllValuesArray from '../../hooks/useCalcs';
 import { BuyFinishBtn } from '../Buttons';
-import type { StateBagType, TypeAddBagInfos } from '../../@types/bag';
+import type { Shipping, StateBagType, TypeAddBagInfos } from '../../@types/bag';
 import style from './style.module.scss';
 
 interface TBarBuy {
   listProducts: TypeAddBagInfos[]
-  shipping: { price: number };
+  shipping: Shipping;
+  addresId: number;
   stateBag?: {
     bagItems: [];
     checkout: StateBagType['checkout'];
   }
 }
 
-function BarBuy({ listProducts, stateBag, shipping }: TBarBuy) {
-  // const { formatPay, shipping, cupomAplicate } = stateBag.checkout.formatPay;
+function BarBuy({
+  listProducts, stateBag, shipping, addresId,
+}: TBarBuy) {
   const [openInfo, setOpenInfo] = useState(false);
+
   const calcValue = useMemo(() => {
     const valueBag = calcAllValuesArray(listProducts);
-
     return valueBag + shipping.price;
   }, [shipping.price, listProducts]);
 
@@ -26,12 +28,6 @@ function BarBuy({ listProducts, stateBag, shipping }: TBarBuy) {
     event.preventDefault();
     setOpenInfo(!openInfo);
   }
-
-  // useEffect(() => {
-  //   // const calc = checkout.shipping.valueShipping
-  //   //   + calcAllValuesArray(stateBag) - checkout.cupomAplicate.descountCupom;
-  //   setValueBag(calcAllValuesArray(listProducts));
-  // }, [listProducts/* , stateBag.checkout */]);
 
   return (
     <section className={ style.buybar } data-active={ openInfo }>
@@ -73,7 +69,11 @@ function BarBuy({ listProducts, stateBag, shipping }: TBarBuy) {
               }) }
             </span>
           </div>
-          <BuyFinishBtn listProducts={ listProducts } />
+          <BuyFinishBtn
+            listProducts={ listProducts }
+            shippingId={ shipping.id }
+            addresId={ addresId }
+          />
         </div>
       </div>
       <button
