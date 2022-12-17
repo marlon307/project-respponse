@@ -50,7 +50,6 @@ function CreateProduct({ list }) {
     setListColors((currentColor) => ({ ...currentColor, [selectedFeature + 1]: {} }));
     setSelectedFeature((currentFeatureVisible) => currentFeatureVisible + 1);
     setListFiles((curreFiles) => ({ ...curreFiles, [selectedFeature + 1]: {} }));
-    // setListSize((currentSize) => ({ ...currentSize, [selectedFeature + 1]: [] }));
   }
 
   function loadImg(event: any) {
@@ -105,44 +104,35 @@ function CreateProduct({ list }) {
 
   return (
     <form className={ style.contprod } encType="multipart/form-data" onSubmit={ registerProduct }>
-      <div className={ style.products_similar }>
-        <h3>Produtos com estoque baixo</h3>
-        <div>
-          {/* { similar.map((productSimilar: TypeProduct['similar'][0]) => (
-              <SwiperSlide key={ productSimilar.id } className={ style.panel }>
-                <CardProduct objectProduct={ productSimilar } />
-              </SwiperSlide>
-            )) } */}
-        </div>
-      </div>
-      <div className={ style.maincontentinfo }>
-        <div className={ style.panel_addproduct }>
-          <select
-            className={ style.select }
-            name="categorys_id"
-            defaultValue=""
-            placeholder="Selecione o game que deseja jogar"
-            required
-          >
-            <option disabled hidden value="">Selectione uma categoria</option>
-            { list.list_ctg.map(({ id, category_name }) => (
-              <option
-                key={ id }
-                value={ id }
-                data-index="ctg"
-              >
-                { category_name }
-              </option>
-            )) }
-          </select>
-          <Input
-            id="title"
-            type="text"
-            name="title"
-            placeholder="Titulo"
-            msgError="Informe um titulo"
-            required
-          />
+      <div className={ style.panel_addproduct }>
+        <select
+          className={ style.select }
+          name="categorys_id"
+          defaultValue=""
+          placeholder="Selecione o game que deseja jogar"
+          required
+        >
+          <option disabled hidden value="">Selectione uma categoria</option>
+          { list.list_ctg.map(({ id, category_name }) => (
+            <option
+              key={ id }
+              value={ id }
+              data-index="ctg"
+            >
+              { category_name }
+            </option>
+          )) }
+        </select>
+        <Input
+          id="title"
+          type="text"
+          name="title"
+          placeholder="Titulo"
+          msgError="Informe um titulo"
+          required
+        />
+        <fieldset className={ style.fieldset }>
+          <legend>* Dimensões do produto:</legend>
           <Input
             id="width"
             type="text"
@@ -171,7 +161,7 @@ function CreateProduct({ list }) {
             id="length"
             type="text"
             name="length"
-            placeholder="comprimento"
+            placeholder="Comprimento"
             msgError="Informe um Comprimento"
             required
           />
@@ -179,176 +169,177 @@ function CreateProduct({ list }) {
             id="insurance_value"
             type="text"
             name="insurance_value"
-            placeholder="peso"
-            msgError="Valor do seguro"
+            placeholder="Valor do seguro"
+            msgError="Informe valor do seguro"
             required
           />
-          <div className={ style.palet_colors }>
-            { Object.keys(listColors).map((key) => (
-              <div className={ style.info_colors } key={ key }>
-                <div className={ style.list_upload }>
-                  { [...Array(6).keys()].map((upload_panel) => (
-                    <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
-                      <Image
-                        src={
-                          listFiles[key][upload_panel]
-                            ? URL.createObjectURL(listFiles[key][upload_panel])
-                            : fakeImage
-                        }
-                        quality={ 80 }
-                        alt="upload_image"
-                        fill
-                      />
-                      <input
-                        id={ `img-${upload_panel}` }
-                        type="file"
-                        name={ `img-${key}` }
-                        accept=".png"
-                        onChange={ loadImg }
-                        data-indexcolor={ upload_panel }
-                        data-index={ selectedFeature }
-                        required
-                      />
-                    </label>
-                  )) }
+        </fieldset>
+        <div className={ style.palet_colors }>
+          { Object.keys(listColors).map((key) => (
+            <div className={ style.info_colors } key={ key }>
+              <div className={ style.list_upload }>
+                { [...Array(6).keys()].map((upload_panel) => (
+                  <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
+                    <Image
+                      src={
+                        listFiles[key][upload_panel]
+                          ? URL.createObjectURL(listFiles[key][upload_panel])
+                          : fakeImage
+                      }
+                      quality={ 80 }
+                      alt="upload_image"
+                      fill
+                    />
+                    <input
+                      id={ `img-${upload_panel}` }
+                      type="file"
+                      name={ `img-${key}` }
+                      accept=".png"
+                      onChange={ loadImg }
+                      data-indexcolor={ upload_panel }
+                      data-index={ selectedFeature }
+                      required
+                    />
+                  </label>
+                )) }
+              </div>
+              <div className={ style.color_size }>
+                <div className={ style.select_custon }>
+                  <span style={ { backgroundColor: listColors[key]?.color } } />
+                  <span>Cor</span>
+                  <ul>
+                    { list.list_colors.map(({ id, color, color_name }) => (
+                      <li key={ id }>
+                        <button
+                          type="button"
+                          name="colors_id"
+                          value={ color }
+                          data-id={ id }
+                          data-index={ key }
+                          onClick={ changeFeatureColor }
+                        >
+                          <span className={ style.color } style={ { background: `${color}` } } />
+                          { color_name }
+                        </button>
+                      </li>
+                    )) }
+                  </ul>
                 </div>
-                <div className={ style.color_size }>
+                <i />
+                <Input
+                  id={ key }
+                  type="text"
+                  name={ `sku-${key}` }
+                  placeholder="SKU"
+                  msgError="SKU"
+                  required
+                />
+              </div>
+              <div className={ style.desc_opt }>
+                <div className={ style.line }>
+                  <Input
+                    id={ key }
+                    type="text"
+                    name={ `price-${key}` }
+                    placeholder="(R$) Preço"
+                    msgError="(R$) Preço"
+                    required
+                    max={ 8 }
+                  />
+                  <Input
+                    id={ key }
+                    type="text"
+                    name={ `discount-${key}` }
+                    placeholder="(R$) Desconto"
+                    msgError="(R$) Desconto"
+                    required
+                    max={ 8 }
+                  />
+                </div>
+                <div className={ style.line }>
+                  { listSizes.length
+                    ? (
+                      <div className={ style.list_sizes }>
+                        { listSizes?.map((object) => (
+                          <div className={ style.size_qtd } key={ object.id }>
+                            <button type="button">
+                              { object.size }
+                            </button>
+                            <input
+                              type="text"
+                              name={ `quantity-${key}-${object.id}` }
+                              placeholder="QTD"
+                              title="Qauntidade"
+                              required
+                              defaultValue={ 0 }
+                            />
+                          </div>
+                        )) }
+                      </div>
+                    ) : null }
                   <div className={ style.select_custon }>
-                    <span style={ { backgroundColor: listColors[key]?.color } } />
+                    <pre>
+                      +
+                    </pre>
                     <ul>
-                      { list.list_colors.map(({ id, color, color_name }) => (
+                      { list.list_sizes.map(({ id, size }) => (
                         <li key={ id }>
                           <button
                             type="button"
-                            name="colors_id"
-                            value={ color }
+                            name="sizes_id"
+                            value={ size }
                             data-id={ id }
                             data-index={ key }
-                            onClick={ changeFeatureColor }
+                            onClick={ addSizeOption }
                           >
-                            <span className={ style.color } style={ { background: `${color}` } } />
-                            { color_name }
+                            { size }
                           </button>
                         </li>
                       )) }
                     </ul>
                   </div>
-                  <i />
-                  <Input
-                    id={ key }
-                    type="text"
-                    name={ `sku-${key}` }
-                    placeholder="SKU"
-                    msgError="SKU"
-                    required
-                  />
-                </div>
-                <div className={ style.desc_opt }>
-                  <div className={ style.line }>
-                    <Input
-                      id={ key }
-                      type="text"
-                      name={ `price-${key}` }
-                      placeholder="(R$) Preço"
-                      msgError="(R$) Preço"
-                      required
-                      max={ 8 }
-                    />
-                    <Input
-                      id={ key }
-                      type="text"
-                      name={ `discount-${key}` }
-                      placeholder="(R$) Desconto"
-                      msgError="(R$) Desconto"
-                      required
-                      max={ 8 }
-                    />
-                  </div>
-                  <div className={ style.line }>
-                    { listSizes.length
-                      ? (
-                        <div className={ style.list_sizes }>
-                          { listSizes?.map((object) => (
-                            <div className={ style.size_qtd } key={ object.id }>
-                              <button type="button">
-                                { object.size }
-                              </button>
-                              <input
-                                type="text"
-                                name={ `quantity-${key}-${object.id}` }
-                                placeholder="QTD"
-                                title="Qauntidade"
-                                required
-                                defaultValue={ 0 }
-                              />
-                            </div>
-                          )) }
-                        </div>
-                      ) : null }
-                    <div className={ style.select_custon }>
-                      <pre>
-                        +
-                      </pre>
-                      <ul>
-                        { list.list_sizes.map(({ id, size }) => (
-                          <li key={ id }>
-                            <button
-                              type="button"
-                              name="sizes_id"
-                              value={ size }
-                              data-id={ id }
-                              data-index={ key }
-                              onClick={ addSizeOption }
-                            >
-                              { size }
-                            </button>
-                          </li>
-                        )) }
-                      </ul>
-                    </div>
-                  </div>
                 </div>
               </div>
-            )) }
-            <BtnAdd eventBtn={ addFeature! } title="Adicionar cor" />
-          </div>
-          <div className={ style.gen }>
-            <h3>Género</h3>
-            <div className={ style.gen_options }>
-              { list.list_gender.map(({ id, gender, gender_name }) => (
-                <InputRadio
-                  key={ id }
-                  checked={ id === 1 }
-                  iId={ gender }
-                  name={ gender_name }
-                  family="gender_id"
-                  iValue={ id }
-                  required
-                />
-              )) }
             </div>
-          </div>
-          <textarea
-            name="details"
-            id="details"
-            placeholder="Detalhes"
-            maxLength={ 500 }
-            required
-          />
-          <textarea
-            name="specifications"
-            id="espec"
-            placeholder="Especificações"
-            maxLength={ 500 }
-            required
-          />
+          )) }
+          <BtnAdd eventBtn={ addFeature! } title="Adicionar opção" />
         </div>
-        <br />
-        <BtnIco
-          textBtn="Cadastrar produto"
-          actionLiberate={ isLoading }
+        <div className={ style.gen }>
+          <h3>Género</h3>
+          <div className={ style.gen_options }>
+            { list.list_gender.map(({ id, gender, gender_name }) => (
+              <InputRadio
+                key={ id }
+                checked={ id === 1 }
+                iId={ gender }
+                name={ gender_name }
+                family="gender_id"
+                iValue={ id }
+                required
+              />
+            )) }
+          </div>
+        </div>
+        <textarea
+          name="details"
+          id="details"
+          placeholder="Detalhes"
+          maxLength={ 500 }
+          required
+        />
+        <textarea
+          name="specifications"
+          id="espec"
+          placeholder="Especificações"
+          maxLength={ 500 }
+          required
         />
       </div>
+      <br />
+      <BtnIco
+        textBtn="Cadastrar produto"
+        actionLiberate={ isLoading }
+      />
     </form>
   );
 }

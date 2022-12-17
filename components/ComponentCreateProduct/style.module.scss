@@ -1,13 +1,20 @@
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .contprod {
   // display: grid;
   margin: 0 6%;
   width: -webkit-fill-available;
 }
 
-@mixin center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.fieldset {
+  border: 1px solid var(--color-border);
+  padding: 0 1em 1em;
+  border-radius: 20px;
+  margin-top: 1.35em;
 }
 
 .panel_addproduct {
@@ -151,7 +158,9 @@
     cursor: pointer;
     width: 36px;
     height: 36px;
-    border-radius: 0.8em;
+    border-radius: 0.78em;
+    text-align: center;
+    @include center;
   }
 
   ul {
