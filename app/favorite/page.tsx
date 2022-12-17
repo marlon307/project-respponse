@@ -3,7 +3,6 @@ import React from 'react';
 // import router from 'next/router';
 import { SmallCard } from '../../components/Cards';
 import mockBag from '../../service/mockBag';
-import HeadSEO from '../../components/Head/HeadSEO';
 // import useLogin from '../../hooks/useLogin';
 import style from '../../Sass/style.module.scss';
 

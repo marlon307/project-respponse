@@ -4,6 +4,19 @@
   justify-content: center;
 }
 
+.contprod {
+  // display: grid;
+  margin: 0 6%;
+  width: -webkit-fill-available;
+}
+
+.fieldset {
+  border: 1px solid var(--color-border);
+  padding: 0 1em 1em;
+  border-radius: 20px;
+  margin-top: 1.35em;
+}
+
 .panel_addproduct {
   border-radius: 1em;
   padding: 8px 12px;
@@ -145,7 +158,9 @@
     cursor: pointer;
     width: 36px;
     height: 36px;
-    border-radius: 0.8em;
+    border-radius: 0.78em;
+    text-align: center;
+    @include center;
   }
 
   ul {
@@ -207,8 +222,8 @@
 .load_img {
   position: relative;
   z-index: 8888;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   background: var(--color-border);
   border-radius: 12px;
   cursor: pointer;
