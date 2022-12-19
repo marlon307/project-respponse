@@ -45,12 +45,12 @@ function ContentBag({ props }) {
     }
   }, [listBag]);
 
-  const openEditItemBagModal = useCallback(async (identify: TypeAddBagInfos) => {
+  const openEditItemBagModal = useCallback((identify: TypeAddBagInfos) => {
     setIdentifyEditItemBag(identify);
     setOpenModal('editbag');
   }, []);
 
-  const editBag = useCallback(async (array: TypeAddBagInfos[]) => {
+  const editBag = useCallback((array: TypeAddBagInfos[]) => {
     setStateBag(array);
     setOpenModal('');
   }, []);
@@ -89,7 +89,10 @@ function ContentBag({ props }) {
           </div>
           <ul className={ `${hiddenList ? style.hidden : ''}` }>
             { listBag?.length ? listBag?.map((object: TypeAddBagInfos) => (
-              <li key={ object.id + object.color + object.size }>
+              <li
+                id={ `product-${object.id + object.opt_id}` }
+                key={ object.id + object.color + object.size }
+              >
                 <SmallCard
                   objectID={ object }
                   removable

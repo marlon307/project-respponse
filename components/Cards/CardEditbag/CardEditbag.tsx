@@ -13,22 +13,24 @@ function CardEditbag({ props, identify, execeFunction }: Props) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const updateItembag = async ({ target }: any) => {
-    setIsLoading(true);
-    const res = await api2.patch('/bag', {
-      quantity: Number(target.value),
-      product_option: identify.opt_id,
-      size: identify.size,
-    }).catch((data) => ({ data }));
+    if (Number(target.value) <= identify.max_quantity) {
+      setIsLoading(true);
+      const res = await api2.patch('/bag', {
+        quantity: Number(target.value),
+        product_option: identify.opt_id,
+        size: identify.size,
+      }).catch((data) => ({ data }));
 
-    if (res.data.status === 200) {
-      const newProps = [...props];
-      const index = props.indexOf(identify);
-      newProps.splice(index, 1, { ...props[index], quantity: Number(target.value) });
+      if (res.data.status === 200) {
+        const newProps = [...props];
+        const index = props.indexOf(identify);
+        newProps.splice(index, 1, { ...props[index], quantity: Number(target.value) });
 
+        setIsLoading(false);
+        execeFunction(newProps);
+      }
       setIsLoading(false);
-      execeFunction(newProps);
     }
-    setIsLoading(false);
   };
 
   return (
@@ -42,6 +44,7 @@ function CardEditbag({ props, identify, execeFunction }: Props) {
                 type="button"
                 value={ value + 1 }
                 onClick={ updateItembag }
+                disabled={ identify.max_quantity < value + 1 }
               >
                 { value + 1 }
               </button>

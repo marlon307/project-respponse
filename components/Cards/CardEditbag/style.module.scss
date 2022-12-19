@@ -35,4 +35,8 @@
     font-size: 1.1em;
     flex: none;
   }
+
+  button:disabled {
+    background: var(--color-border);
+  }
 }
