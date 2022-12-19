@@ -1,5 +1,4 @@
 import React, { use } from 'react';
-import Link from 'next/link';
 import { SmallCard } from '../Cards';
 import { api2 } from '../../service/api';
 import type { Props, StateOrder } from './type';
@@ -25,12 +24,6 @@ async function getOrderId(orderid: number): Promise<StateOrder> {
 
 function OrderId({ orderid }: Props) {
   const orderId = use(getOrderId(orderid));
-
-  function copyCode(event: React.SyntheticEvent<Element, Event>, code: string) {
-    event.preventDefault();
-    // https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
-    navigator.clipboard.writeText(code);
-  }
 
   return (
     <div className={ style.order }>
@@ -94,16 +87,15 @@ function OrderId({ orderid }: Props) {
             <span className={ style.shippingcompany }>
               { orderId.carrier?.code ? <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ orderId.carrier?.code }</a>
                 : <span>Código indisponível no momento.</span> }
-              <Link
-                href="/"
-                passHref
-                onClick={ (e) => copyCode(e, orderId.carrier?.code ?? '') }
+              <button
+                type="button"
+                onClick={ () => navigator.clipboard.writeText(orderId.carrier?.code || '') }
                 aria-label="Copiar"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M21 9v-.4a1 1 0 0 0-.3-.3l-6-6-.2-.2h-.1A.9.9 0 0 0 14 2H10a3 3 0 0 0-3 3v1H6a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-1h1a3 3 0 0 0 3-3V9Zm-6-3.6L17.6 8H16a1 1 0 0 1-1-1V5.4ZM15 19a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h1v7a3 3 0 0 0 3 3h5v1Zm4-4a1 1 0 0 1-1 1h-8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3v3a3 3 0 0 0 3 3h3v5Z" fill="#333" />
                 </svg>
-              </Link>
+              </button>
             </span>
           </div>
         </div>
@@ -122,11 +114,21 @@ function OrderId({ orderid }: Props) {
         <div className={ style.footerTotal }>
           <div>
             <span>Total Dos produtos</span>
-            <span>R$ 110,99</span>
+            <span>
+              { orderId.value_order?.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
+            </span>
           </div>
           <div>
             <span>Frete</span>
-            <span>R$ 15,00</span>
+            <span>
+              { orderId.carrier?.delivery_value.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
+            </span>
           </div>
           <div>
             <span>Descontos</span>
@@ -135,7 +137,7 @@ function OrderId({ orderid }: Props) {
           <div>
             <span>Total</span>
             <span>
-              { orderId.value_order?.toLocaleString('pt-br', {
+              { (orderId.value_order + orderId.carrier.delivery_value)?.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }

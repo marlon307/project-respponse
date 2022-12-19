@@ -13,7 +13,7 @@ function BarColors({ array }: Props) {
   const handleClick = (object: IOptions) => {
     const oldPrice = document.getElementById('oldp')!;
     if (object.discount) {
-      oldPrice.setAttribute('data-oldprice', object.discount.toLocaleString('pt-br', {
+      oldPrice.setAttribute('data-oldprice', (object.price + object.discount).toLocaleString('pt-br', {
         style: 'currency',
         currency: 'BRL',
       }));

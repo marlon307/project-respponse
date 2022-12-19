@@ -70,35 +70,21 @@ function CreateProduct({ list }) {
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
-    const options = Object.keys(listColors).map((key) => {
-      formData.delete(`img-${key}`);
-      formData.delete('file');
-      return {
-        ...listColors[key],
-        sizes: listSizes.map(({ id }) => ({
-          id,
-          quantity: Number(data[`quantity-${key}-${id}`]),
-        })),
-        sku: data[`sku-${key}`],
-        discount: Number(data[`discount-${key}`]),
-        price: Number(data[`price-${key}`]),
-      };
-    });
-
-    Object.keys(listFiles).forEach((index) => {
-      Object.keys(listFiles[index]).forEach((files_index) => {
-        formData.append(`list_file-${index}`, listFiles[index][files_index]);
-      });
-    });
+    const options = Object.keys(listColors).map((key) => ({
+      ...listColors[key],
+      sizes: listSizes.map(({ id }) => ({
+        id,
+        quantity: Number(data[`quantity-${key}-${id}`]),
+      })),
+      sku: data[`sku-${key}`],
+      discount: Number(data[`discount-${key}`]),
+      price: Number(data[`price-${key}`]),
+    }));
 
     formData.append('warranty', '1');
     formData.append('list_qtd', JSON.stringify(options));
 
-    await api2.post('/product', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    }).catch((err) => err);
+    await api2.post('/product', formData).catch((err) => err);
     setIsLoading(false);
   }
 
@@ -179,7 +165,7 @@ function CreateProduct({ list }) {
             <div className={ style.info_colors } key={ key }>
               <div className={ style.list_upload }>
                 { [...Array(6).keys()].map((upload_panel) => (
-                  <label htmlFor={ `img-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
+                  <label htmlFor={ `img-${key}-${upload_panel}` } className={ style.load_img } key={ upload_panel }>
                     <Image
                       src={
                         listFiles[key][upload_panel]
@@ -191,13 +177,13 @@ function CreateProduct({ list }) {
                       fill
                     />
                     <input
-                      id={ `img-${upload_panel}` }
+                      id={ `img-${key}-${upload_panel}` }
                       type="file"
-                      name={ `img-${key}` }
+                      name="files"
                       accept=".png"
                       onChange={ loadImg }
                       data-indexcolor={ upload_panel }
-                      data-index={ selectedFeature }
+                      data-index={ key }
                       required
                     />
                   </label>

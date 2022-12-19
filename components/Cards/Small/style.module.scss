@@ -114,7 +114,6 @@
       fill: var(--hovericon);
     }
   }
-
 }
 
 .setting {
@@ -155,6 +154,16 @@
       width: 8px;
       height: 8px;
       transform: rotateZ(315deg);
+    }
+
+    &[data-error="true"]::before {
+      content: 'Quantidade indisponível.';
+      font-size: 0.75em;
+      position: absolute;
+      white-space: nowrap;
+      bottom: 0;
+      left: 1.6em;
+      color: var(--colo-red);
     }
   }
 }

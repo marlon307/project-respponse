@@ -16,6 +16,7 @@ export interface TypeAddBagInfos extends TypeEditBagInfos {
   discount: number;
   oldPrice: number;
   price: number;
+  max_quantity: number;
 }
 
 interface TShipping {

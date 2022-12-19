@@ -51,7 +51,7 @@ function CardProduct({ objectProduct }: TypeProduct) {
             className={ style.price }
             data-oldprice={
               colorList[0].discount > 0
-                ? (colorList[0].price * (colorList[0].discount / 100) + colorList[0].price).toLocaleString('pt-br', {
+                ? (colorList[0].price + colorList[0].discount).toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL',
                 }) : ''

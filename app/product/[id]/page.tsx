@@ -82,7 +82,7 @@ async function ProductId({ params }: Props) {
                 id="oldp"
                 data-oldprice={
                   option[0].discount > 0
-                    ? option[0].discount.toLocaleString('pt-br', {
+                    ? (option[0].price + option[0].discount).toLocaleString('pt-br', {
                       style: 'currency',
                       currency: 'BRL',
                     }) : null

@@ -10,7 +10,7 @@ function SmallCard({
 }: PSmallCard) {
   const {
     id, title, category_name: type, url_image: mainImg, price, color_name: colorName, color,
-    size, quantity, discount, oldPrice,
+    size, quantity, discount,
   } = objectID;
 
   return (
@@ -41,6 +41,7 @@ function SmallCard({
                 <button
                   type="button"
                   title={ `${quantity} ${type} - ${title}. ( 👇 ) Clique para alterar a quantidade.` }
+                  data-error={ editable && quantity > objectID.max_quantity }
                   onClick={ eventModal }
                 >
                   { quantity }
@@ -57,7 +58,7 @@ function SmallCard({
           <div className={ style.price }>
             <span
               data-oldprice={
-                discount > 0 && oldPrice.toLocaleString('pt-br', {
+                discount > 0 && (price + discount).toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL',
                 })

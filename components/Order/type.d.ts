@@ -1,4 +1,4 @@
-import { TypeAddBagInfos } from '../../@types/bag';
+import type { TypeAddBagInfos } from '../../@types/bag';
 
 interface Props {
   orderid: number;
@@ -18,8 +18,9 @@ interface StateOrder {
   list_products?: TypeAddBagInfos[];
   value_order?: number;
   date_order?: string;
-  carrier?: {
+  carrier: {
     name_carrier: string;
     code: string;
+    delivery_value: float;
   },
 }
