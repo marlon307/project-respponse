@@ -1,5 +1,5 @@
-import React, { FormEvent, useState } from 'react';
-// import { useSWRConfig } from 'swr';
+import React, { useState } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
 import { api2 } from '../../service/api';
 import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';
@@ -9,9 +9,16 @@ type TAddress = {
   execFunction: () => void;
 };
 
+interface IRequestAddress {
+  logradouro?: string;
+  bairro?: string;
+  uf?: string;
+  localidade?: string;
+}
+
 function Address({ execFunction }: TAddress) {
-  // const { cache, mutate } = useSWRConfig();
   const [isLoading, setisLoading] = useState(false);
+  const [address, setAdrres] = useState<IRequestAddress>({});
 
   async function handleAddAddress(event: FormEvent) {
     event.preventDefault();
@@ -28,19 +35,15 @@ function Address({ execFunction }: TAddress) {
       await api2.post('/address', formData)
         .catch(({ response }) => response);
 
-      // if (res.data.status === 201) {
-      //   const addressList = cache.get('/address');
-      //   mutate(
-      //     '/address',
-      //     [...addressList, {
-      //       id: res.data.address,
-      //       ...data,
-      //     }],
-      //     false,
-      //   );
-      // }
       setisLoading(false);
       execFunction!();
+    }
+  }
+
+  async function getAddress({ target }: ChangeEvent<HTMLInputElement>) {
+    if (target.value.length === 8) {
+      const response = await api2.get(`https://viacep.com.br/ws/${target.value}/json/`);
+      setAdrres(response.data);
     }
   }
 
@@ -69,7 +72,8 @@ function Address({ execFunction }: TAddress) {
             placeholder="CEP *"
             autoComplete="postal-code"
             msgError="Insira um CEP válido."
-            max={ 8 }
+            maxLength={ 8 }
+            onChange={ getAddress! }
           // patt="^([\d]{5})\.*([\d]{3})"
           // format="$1-$2"
           />
@@ -80,6 +84,7 @@ function Address({ execFunction }: TAddress) {
             placeholder="Rua *"
             autoComplete="street-address"
             msgError="Insira o nome da Rua."
+            defaultValue={ address.logradouro }
           />
           <Input
             id="district"
@@ -88,6 +93,7 @@ function Address({ execFunction }: TAddress) {
             placeholder="Bairro *"
             autoComplete="address-level3"
             msgError="Insira o nome do Bairro."
+            defaultValue={ address.bairro }
           />
           <Input
             id="number"
@@ -104,6 +110,7 @@ function Address({ execFunction }: TAddress) {
             autoComplete="shipping address-level1"
             msgError="Insira o Estado (UF)."
             max={ 2 }
+            defaultValue={ address.uf }
           />
           <Input
             id="city"
@@ -112,6 +119,7 @@ function Address({ execFunction }: TAddress) {
             placeholder="Cidade *"
             autoComplete="shipping shipping address-level2"
             msgError="Insira a Cidade."
+            defaultValue={ address.localidade }
           />
           <BtnIco
             textBtn="Adicionar"
