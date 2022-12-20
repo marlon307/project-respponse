@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import type { TypeEditBagInfos } from '../../@types/bag';
-import api, { api2 } from '../../service/api';
+import /* api, */ { api2 } from '../../service/api';
 import style from './style.module.scss';
 
 type TBuyFinish = {

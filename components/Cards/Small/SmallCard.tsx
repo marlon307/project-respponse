@@ -1,9 +1,8 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// import LoadingImage from '../../LoadImage';
-import style from './style.module.scss';
 import type { PSmallCard } from './type';
+import style from './style.module.scss';
 
 function SmallCard({
   objectID, removable, editable, eventModal, execFunction,
