@@ -74,8 +74,6 @@ function Address({ execFunction }: TAddress) {
             msgError="Insira um CEP válido."
             maxLength={ 8 }
             onChange={ getAddress! }
-          // patt="^([\d]{5})\.*([\d]{3})"
-          // format="$1-$2"
           />
           <Input
             id="street"

@@ -64,7 +64,9 @@ function OrderId({ orderid }: Props) {
         <div className={ style.orderadders }>
           <div>
             <h3>Dados da entrega</h3>
-            <span>Entregar para Nome da Silva</span>
+            <span>
+              { orderId?.address?.name_delivery }
+            </span>
             <span>
               Casa
               { ' - ' }

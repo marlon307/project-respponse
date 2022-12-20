@@ -13,32 +13,50 @@ function CardAdderess({
     <div className={ style.cardaddress }>
       <h3 title="Entregar para">{ namedest }</h3>
       <div>
-        <span title={ `Rua: ${street}` } className={ style.line }>
-          Rua:
-          <p>{ street }</p>
+        <span title={ `Logradouro: ${street}` } className={ style.line }>
+          <p>
+            Logradouro:
+            { ' ' }
+            { street }
+          </p>
         </span>
         <span title={ `N°: ${number}` } className={ style.line }>
-          N°:
-          <p>{ number }</p>
+          <p>
+            N°:
+            { ' ' }
+            { number }
+          </p>
         </span>
       </div>
       <span title={ `Bairro: ${district}` } className={ style.line }>
-        Bairro:
-        <p>{ district }</p>
+        <p>
+          Bairro:
+          { ' ' }
+          { district }
+        </p>
       </span>
       <div>
         <span title={ `Estado: ${state}` } className={ style.line }>
-          UF:
-          <p>{ state }</p>
+          <p>
+            UF:
+            { ' ' }
+            { state }
+          </p>
         </span>
         <span title={ `Cidade: ${city}` } className={ style.line }>
-          Cidade:
-          <p>{ city }</p>
+          <p>
+            Cidade:
+            { ' ' }
+            { city }
+          </p>
         </span>
       </div>
       <span title={ `CEP: ${zipcode}` } className={ style.line }>
-        CEP:
-        <p>{ zipcode }</p>
+        <p>
+          CEP:
+          { ' ' }
+          { zipcode }
+        </p>
       </span>
       { removable && (
         <button className={ style.delete } title="Excluir Endereço" type="button" onClick={ execFunction }>

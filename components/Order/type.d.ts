@@ -14,6 +14,7 @@ interface StateOrder {
     city: string;
     uf: string;
     zipcode: string;
+    name_delivery: string;
   };
   list_products?: TypeAddBagInfos[];
   value_order?: number;
