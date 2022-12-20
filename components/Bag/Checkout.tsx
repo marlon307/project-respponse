@@ -73,7 +73,7 @@ function Checkout({
           </h3>
         </div>
         <div className={ style.options }>
-          { shipping?.map((object) => (
+          { shipping.length ? shipping?.map((object) => (
             <InputRadio
               key={ object.id }
               name={ `${object.name_carrier} - ${object.price.toLocaleString('pt-br', {
@@ -90,7 +90,7 @@ function Checkout({
               }) }
               iValue={ object.price }
             />
-          )) }
+          )) : <InputRadio checked name="Calculando o frete..." iId="none" family="none" /> }
         </div>
       </div>
       <div className={ style.contcheckout }>
