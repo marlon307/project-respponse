@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useCallback, useState, lazy } from 'react';
+import React, {
+  useCallback, useState, lazy, useEffect,
+} from 'react';
 import BarBuy from '../Bars/BarBuy';
 import { SmallCard } from '../Cards';
 import ContentModal from '../Modal/ContentModal';
@@ -23,6 +25,7 @@ function ContentBag({ props }) {
   const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
   const [hiddenList, setHiddenList] = useState(false);
   const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(fallback?.list_b);
+  const [listCarries, setListCarries] = useState<[]>([]);
   const [shipping, setShipping] = useState<Shipping>({ price: 0 });
 
   const setBagAddres = (add: ITAddress) => {
@@ -54,6 +57,18 @@ function ContentBag({ props }) {
     setStateBag(array);
     setOpenModal('');
   }, []);
+
+  useEffect(() => {
+    async function getCarries() {
+      const { data } = await api2.post('/calc', {
+        zipcode: fallback.main_add.zipcode
+        ,
+      });
+
+      setListCarries(data.carriers);
+    }
+    getCarries();
+  }, [fallback.main_add]);
 
   return (
     <>
@@ -106,7 +121,7 @@ function ContentBag({ props }) {
         </section>
         <Checkout
           setOpenModal={ setOpenModal }
-          shipping={ fallback?.shipping_company }
+          shipping={ listCarries }
           qunatityAdd={ fallback?.list_b?.length }
           addSelected={ fallback?.main_add }
           setShipping={ setShipping }
