@@ -12,5 +12,6 @@ export interface PropsRadio extends InputHTMLAttributes<T> {
 export interface Props extends InputHTMLAttributes<T> {
   isValid?: boolean;
   format?: string | null;
-  msgError: string;
+  text?: string | null;
+  msgError?: string;
 }

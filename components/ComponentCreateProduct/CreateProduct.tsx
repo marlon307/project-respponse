@@ -7,6 +7,7 @@ import { Input, InputRadio } from '../ComponentsForm';
 import BtnAdd from '../Buttons/BtnAdd';
 import BtnIco from '../Buttons/BtnIco';
 import style from './style.module.scss';
+import InputSmall from '../ComponentsForm/InputSmall';
 
 const fakeImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
@@ -117,49 +118,6 @@ function CreateProduct({ list }) {
           msgError="Informe um titulo"
           required
         />
-        <fieldset className={ style.fieldset }>
-          <legend>* Dimensões do produto:</legend>
-          <Input
-            id="width"
-            type="text"
-            name="width"
-            placeholder="Largura"
-            msgError="Informe uma largura"
-            required
-          />
-          <Input
-            id="height"
-            type="text"
-            name="height"
-            placeholder="Altura"
-            msgError="Informe uma altura"
-            required
-          />
-          <Input
-            id="weight"
-            type="text"
-            name="weight"
-            placeholder="Peso"
-            msgError="Informe um peso"
-            required
-          />
-          <Input
-            id="length"
-            type="text"
-            name="length"
-            placeholder="Comprimento"
-            msgError="Informe um Comprimento"
-            required
-          />
-          <Input
-            id="insurance_value"
-            type="text"
-            name="insurance_value"
-            placeholder="Valor do seguro"
-            msgError="Informe valor do seguro"
-            required
-          />
-        </fieldset>
         <div className={ style.palet_colors }>
           { Object.keys(listColors).map((key) => (
             <div className={ style.info_colors } key={ key }>
@@ -247,19 +205,13 @@ function CreateProduct({ list }) {
                     ? (
                       <div className={ style.list_sizes }>
                         { listSizes?.map((object) => (
-                          <div className={ style.size_qtd } key={ object.id }>
-                            <button type="button">
-                              { object.size }
-                            </button>
-                            <input
-                              type="text"
-                              name={ `quantity-${key}-${object.id}` }
-                              placeholder="QTD"
-                              title="Qauntidade"
-                              required
-                              defaultValue={ 0 }
-                            />
-                          </div>
+                          <InputSmall
+                            key={ object.id }
+                            type="text"
+                            name={ `quantity-${key}-${object.id}` }
+                            title={ object.size }
+                            placeholder="QTD"
+                          />
                         )) }
                       </div>
                     ) : null }
@@ -290,6 +242,31 @@ function CreateProduct({ list }) {
           )) }
           <BtnAdd eventBtn={ addFeature! } title="Adicionar opção" />
         </div>
+        <fieldset className={ style.fieldset }>
+          <legend>* Dimensões do produto embalado para envio:</legend>
+          <table className={ style.table }>
+            <thead>
+              <tr>
+                <th>Tamanho</th>
+                <th>Largura (cm)</th>
+                <th>Altura (cm)</th>
+                <th>Comprimento (cm)</th>
+                <th>Peso (kg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              { listSizes.map(({ id, size }) => (
+                <tr className={ style.group_size } key={ id }>
+                  <td><span>{ size }</span></td>
+                  <td><InputSmall title="L" name={ `width-${id}` } placeholder="0.0" /></td>
+                  <td><InputSmall title="A" name={ `height-${id}` } placeholder="0.0" /></td>
+                  <td><InputSmall title="C" name={ `length-${id}` } placeholder="0.0" /></td>
+                  <td><InputSmall title="P" name={ `weight-${id}` } placeholder="0.0" /></td>
+                </tr>
+              )) }
+            </tbody>
+          </table>
+        </fieldset>
         <div className={ style.gen }>
           <h3>Género</h3>
           <div className={ style.gen_options }>

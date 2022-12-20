@@ -25,6 +25,24 @@
   }
 }
 
+.small_input {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  flex: none;
+  padding: 8px;
+  font-size: 0.9em;
+
+  span {
+    padding-right: 6px;
+  }
+
+  input {
+    width: 2.6em;
+    border-left: 1px solid var(--color-border);
+    padding: 0 14px !important;
+  }
+}
+
 .input[data-error="true"] {
   input {
     border-color: var(--colo-red);
