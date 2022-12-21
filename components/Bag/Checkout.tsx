@@ -90,7 +90,7 @@ function Checkout({
               }) }
               iValue={ object.price }
             />
-          )) : <InputRadio checked name="Calculando o frete..." iId="none" family="none" /> }
+          )) : <InputRadio checked name="Selecione um endereço para calcular o frete." iId="none" family="none" /> }
         </div>
       </div>
       <div className={ style.contcheckout }>

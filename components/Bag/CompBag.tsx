@@ -60,15 +60,21 @@ function ContentBag({ props }) {
 
   useEffect(() => {
     async function getCarries() {
-      const { data } = await api2.post('/calc', {
-        zipcode: fallback.main_add.zipcode
-        ,
-      });
+      if (fallback.main_add?.zipcode) {
+        const { data } = await api2.post('/calc', {
+          zipcode: fallback.main_add?.zipcode,
+        });
 
-      setListCarries(data.carriers);
+        setListCarries(data.carriers);
+
+        if (shipping.price) {
+          const newValue = data.carriers.find((carrier: Shipping) => carrier.id === shipping.id);
+          setShipping(newValue ?? { price: 0 });
+        }
+      }
     }
     getCarries();
-  }, [fallback.main_add]);
+  }, [fallback.main_add, listBag]);
 
   return (
     <>
@@ -130,7 +136,7 @@ function ContentBag({ props }) {
       <BarBuy
         listProducts={ listBag }
         shipping={ shipping }
-        addresId={ fallback?.main_add.id }
+        addresId={ fallback?.main_add?.id }
       />
       <ContentModal
         openModal={ setOpenModal }
