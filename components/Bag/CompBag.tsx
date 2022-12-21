@@ -64,9 +64,9 @@ function ContentBag({ props }) {
         const { data } = await api2.post('/calc', {
           zipcode: fallback.main_add?.zipcode,
         });
-
         setListCarries(data.carriers);
 
+        // Se a transpotadora tiver selecionada vai atualizar o preço do Frete e Valor total
         if (shipping.price) {
           const newValue = data.carriers.find((carrier: Shipping) => carrier.id === shipping.id);
           setShipping(newValue ?? { price: 0 });
@@ -112,7 +112,7 @@ function ContentBag({ props }) {
             { listBag?.length ? listBag?.map((object: TypeAddBagInfos) => (
               <li
                 id={ `product-${object.id + object.opt_id}` }
-                key={ object.id + object.color + object.size }
+                key={ `product-${object.id + object.color + object.size}` }
               >
                 <SmallCard
                   objectID={ object }

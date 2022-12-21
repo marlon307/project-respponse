@@ -75,7 +75,7 @@ function Checkout({
         <div className={ style.options }>
           { shipping.length ? shipping?.map((object) => (
             <InputRadio
-              key={ object.id }
+              key={ `carrier-${object.id}` }
               name={ `${object.name_carrier} - ${object.price.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
@@ -105,7 +105,7 @@ function Checkout({
         <div className={ style.options }>
           { mockPayment.map((object) => (
             <InputRadio
-              key={ object.id }
+              key={ `payment-${object.id}` }
               name={ object.name }
               iId={ object.name }
               family="payment"
