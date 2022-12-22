@@ -15,7 +15,7 @@ function BuyFinishBtn({ listProducts, shippingId, addresId }: TBuyFinish) {
   const [progress, setProgress] = useState<number | string>('Finalizar Compra');
   // const progress = 'Finalizar Compra';
   async function handleClickBuy() {
-    if (listProducts.length) {
+    if (listProducts.length && progress === 'Finalizar Compra') {
       let msg = '';
       setProgress('Processando pedido...');
       // const listRevalidate = listProducts.map(({ id }) => id.toString());

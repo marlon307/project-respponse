@@ -4,7 +4,6 @@ import React, { FormEvent, useState } from 'react';
 import { api2 } from '../../../service/api';
 import BtnIco from '../../../components/Buttons/BtnIco';
 import { Input } from '../../../components/ComponentsForm';
-import HeadSEO from '../../../components/Head/HeadSEO';
 import style from '../../../Sass/style.module.scss';
 
 function Resetpsw() {
@@ -36,49 +35,43 @@ function Resetpsw() {
   }
 
   return (
-    <>
-      <HeadSEO
-        title="Recupere sua senha"
-        description="Insira seu e-mail para recuperar sua senha."
-      />
-      <section className={ style.contlogin }>
-        <h1 className={ style.title_resetpsw }>Recuperar senha</h1>
-        <form onSubmit={ sendmailReset }>
-          { contMsg === null ? (
-            <Input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              autoComplete="email"
-              msgError={ isValid ? 'Email inválido ou não cadastrado!' : 'Email inválido!' }
-              isValid={ isValid }
-            />
-          ) : (
-            <div className={ style.msgregister }>
-              <p>
-                Enviamos para este endereço de email
-                { ' ' }
-                <b>{ contMsg }</b>
-                { ' ' }
-                um link para recupera sua senha
-              </p>
-              <span />
-              Verefique sua caixa de entrada ou span.
-            </div>
-          ) }
-          <div className={ style.action }>
-            { contMsg === null && (
-              <BtnIco
-                textBtn="Enviar Email"
-                icoName="email"
-                actionLiberate={ isLoading }
-              />
-            ) }
+    <section className={ style.contlogin }>
+      <h1 className={ style.title_resetpsw }>Recuperar senha</h1>
+      <form onSubmit={ sendmailReset }>
+        { contMsg === null ? (
+          <Input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            autoComplete="email"
+            msgError={ isValid ? 'Email inválido ou não cadastrado!' : 'Email inválido!' }
+            isValid={ isValid }
+          />
+        ) : (
+          <div className={ style.msgregister }>
+            <p>
+              Enviamos para este endereço de email
+              { ' ' }
+              <b>{ contMsg }</b>
+              { ' ' }
+              um link para recupera sua senha
+            </p>
+            <span />
+            Verefique sua caixa de entrada ou span.
           </div>
-        </form>
-      </section>
-    </>
+        ) }
+        <div className={ style.action }>
+          { contMsg === null && (
+            <BtnIco
+              textBtn="Enviar Email"
+              icoName="email"
+              actionLiberate={ isLoading }
+            />
+          ) }
+        </div>
+      </form>
+    </section>
   );
 }
 
