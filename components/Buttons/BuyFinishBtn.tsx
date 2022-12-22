@@ -13,12 +13,11 @@ type TBuyFinish = {
 
 function BuyFinishBtn({ listProducts, shippingId, addresId }: TBuyFinish) {
   const [progress, setProgress] = useState<number | string>('Finalizar Compra');
-  // const progress = 'Finalizar Compra';
+
   async function handleClickBuy() {
-    if (listProducts.length && progress === 'Finalizar Compra') {
+    if (listProducts.length && progress === 'Finalizar Compra' && addresId && shippingId) {
       let msg = '';
       setProgress('Processando pedido...');
-      // const listRevalidate = listProducts.map(({ id }) => id.toString());
 
       const { data } = await api2.post('/register_order', {
         address: addresId,
@@ -27,8 +26,6 @@ function BuyFinishBtn({ listProducts, shippingId, addresId }: TBuyFinish) {
 
       if (data.status === 200) {
         msg = `Pedido: #${data.order.toString().padStart(6, '0')}`;
-        // await api.post('/revalidate', { listRevalidate: [...new Set(listRevalidate)] })
-        //   .catch((error) => ({ data: error.message }));
       }
 
       if (data.status === 409) {
