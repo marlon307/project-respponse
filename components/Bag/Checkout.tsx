@@ -24,7 +24,7 @@ function Checkout({
 
   function selectAddress(event: { preventDefault: () => void; }) {
     event.preventDefault();
-    setOpenModal(qunatityAdd ? 'address' : 'addaddress');
+    setOpenModal({ modal: qunatityAdd ? 'address' : 'addaddress' });
   }
 
   return (
@@ -52,7 +52,7 @@ function Checkout({
           aria-label="Adicionar endereço"
           onClick={ (event) => {
             event.preventDefault();
-            setOpenModal('addaddress');
+            setOpenModal({ modal: 'addaddress' });
           } }
         >
           Adicionar endereço
@@ -114,7 +114,7 @@ function Checkout({
           aria-label="Adicionar Cartão"
           onClick={ (event) => {
             event.preventDefault();
-            setOpenModal('addcard');
+            setOpenModal({ modal: 'addcard' });
           } }
         >
           Adicionar Cartão

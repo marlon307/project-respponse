@@ -135,6 +135,47 @@ body {
   animation: lds-ellipsis3 0.6s infinite;
 }
 
+
+.bar_loading {
+  position: absolute;
+  height: 6px;
+  min-width: 100%;
+  display: block;
+  background: transparent;
+  transition: background 0.3s ease;
+  inset: 0;
+  overflow: hidden;
+
+  &[data-loading="loading"] {
+    &::after {
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(90deg,
+          rgba(#006BEF, 0) 0,
+          rgba(#006BEF, 0.2) 20%,
+          rgba(#006BEF, 0.5) 60%,
+          rgba(#006BEF, 0));
+      animation: loadin_transition 1.5s infinite;
+      content: '';
+    }
+  }
+
+  &[data-loading="sucess"] {
+    background: var(--color-green);
+  }
+
+  &[data-loading="err"] {
+    background: var(--colo-red);
+  }
+}
+
+@keyframes loadin_transition {
+  to {
+    transform: translateX(100%);
+  }
+}
+
 @keyframes lds-ellipsis1 {
   0% {
     transform: scale(0);

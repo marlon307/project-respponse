@@ -5,16 +5,20 @@ import style from './style.module.scss';
 
 interface Props {
   identify: TypeAddBagInfos;
-  execeFunction: (params: TypeAddBagInfos[]) => void
+  execeFunction: (props: any) => void
   props: TypeAddBagInfos[]
 }
 
 function CardEditbag({ props, identify, execeFunction }: Props) {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<string>('');
+  // Acredito que vai economizar processamento
+
+  const index = props
+    .findIndex((prod) => identify.opt_id === prod.opt_id && identify.size === prod.size);
 
   const updateItembag = async ({ target }: any) => {
     if (Number(target.value) <= identify.max_quantity) {
-      setIsLoading(true);
+      setIsLoading('loading');
       const res = await api2.patch('/bag', {
         quantity: Number(target.value),
         product_option: identify.opt_id,
@@ -22,14 +26,15 @@ function CardEditbag({ props, identify, execeFunction }: Props) {
       }).catch((data) => ({ data }));
 
       if (res.data.status === 200) {
-        const newProps = [...props];
-        const index = props.indexOf(identify);
-        newProps.splice(index, 1, { ...props[index], quantity: Number(target.value) });
-
-        setIsLoading(false);
-        execeFunction(newProps);
+        props.splice(index, 1, {
+          ...props[index],
+          quantity: Number(target.value),
+        });
+        setIsLoading('sucess');
+        execeFunction('');
+      } else {
+        setIsLoading('err');
       }
-      setIsLoading(false);
     }
   };
 
@@ -44,14 +49,14 @@ function CardEditbag({ props, identify, execeFunction }: Props) {
                 type="button"
                 value={ value + 1 }
                 onClick={ updateItembag }
-                disabled={ identify.max_quantity < value + 1 }
+                disabled={ identify.max_quantity < value + 1 || isLoading === 'loading' }
               >
                 { value + 1 }
               </button>
             </li>
           )) }
         </ul>
-        { isLoading ? <div className="spinner" /> : null }
+        <div className="bar_loading" data-loading={ isLoading } />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import React, {
-  useCallback, useState, lazy, useEffect,
+  useCallback, useState, lazy, useEffect, useMemo,
 } from 'react';
 import BarBuy from '../Bars/BarBuy';
 import { SmallCard } from '../Cards';
@@ -17,8 +17,7 @@ const Addacard = lazy(() => import('../Add/Addcard'));
 const CardEdit = lazy(() => import('../Cards/CardEditbag/CardEditbag'));
 
 function ContentBag({ props }) {
-  const [openModal, setOpenModal] = useState<string>('');
-  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
+  const [openModal, setOpenModal] = useState<any>({ modal: '' });
   const [hiddenList, setHiddenList] = useState(false);
   const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(props?.list_b);
   const [listCarries, setListCarries] = useState<[]>([]);
@@ -28,6 +27,8 @@ function ContentBag({ props }) {
     setOpenModal('');
     props.main_add = add;
   };
+
+  const carriersList = useMemo(() => listCarries, [listCarries]);
 
   const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
     const { data } = await api2.delete('/bag', {
@@ -44,13 +45,7 @@ function ContentBag({ props }) {
   }, [listBag]);
 
   const openEditItemBagModal = useCallback((identify: TypeAddBagInfos) => {
-    setIdentifyEditItemBag(identify);
-    setOpenModal('editbag');
-  }, []);
-
-  const editBag = useCallback((array: TypeAddBagInfos[]) => {
-    setStateBag(array);
-    setOpenModal('');
+    setOpenModal({ ...identify, modal: 'editbag' });
   }, []);
 
   useEffect(() => {
@@ -122,7 +117,7 @@ function ContentBag({ props }) {
         </section>
         <Checkout
           setOpenModal={ setOpenModal }
-          shipping={ listCarries }
+          shipping={ carriersList }
           qunatityAdd={ props?.list_b?.length }
           addSelected={ props?.main_add }
           setShipping={ setShipping }
@@ -136,20 +131,20 @@ function ContentBag({ props }) {
       <ContentModal
         openModal={ setOpenModal }
         isOpen={
-          openModal === 'address'
-          || openModal === 'addaddress'
-          || openModal === 'addcard'
-          || openModal === 'editbag'
+          openModal.modal === 'address'
+          || openModal.modal === 'addaddress'
+          || openModal.modal === 'addcard'
+          || openModal.modal === 'editbag'
         }
       >
-        { openModal === 'address' && <RenderAdderess execFunction={ setBagAddres } /> }
-        { openModal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
-        { openModal === 'addcard' && <Addacard /> }
-        { openModal === 'editbag' && (
+        { openModal.modal === 'address' && <RenderAdderess execFunction={ setBagAddres } /> }
+        { openModal.modal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
+        { openModal.modal === 'addcard' && <Addacard /> }
+        { openModal.modal === 'editbag' && (
           <CardEdit
             props={ listBag }
-            identify={ identifyEditItemBag }
-            execeFunction={ editBag }
+            identify={ openModal }
+            execeFunction={ setOpenModal }
           />
         ) }
       </ContentModal>

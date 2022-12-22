@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, Suspense } from 'react';
+import React, {
+  useEffect, useRef, Suspense, memo,
+} from 'react';
 import { createPortal } from 'react-dom';
 import useOutsideClick from '../../hooks/useOutSide';
 import style from './style.module.scss';
@@ -42,4 +44,4 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
   );
 }
 
-export default ContentModal;
+export default memo(ContentModal);
