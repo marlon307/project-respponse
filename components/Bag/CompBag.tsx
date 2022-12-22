@@ -16,10 +16,17 @@ const Addaddress = lazy(() => import('../Add/Address'));
 const Addacard = lazy(() => import('../Add/Addcard'));
 const CardEdit = lazy(() => import('../Cards/CardEditbag/CardEditbag'));
 
-function ContentBag({ props }) {
+interface Props {
+  props: {
+    list_b: TypeAddBagInfos[];
+    main_add: ITAddress;
+  };
+}
+
+function ContentBag({ props }: Props) {
   const [openModal, setOpenModal] = useState<any>({ modal: '' });
   const [hiddenList, setHiddenList] = useState(false);
-  const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(props?.list_b);
+  const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(props.list_b);
   const [listCarries, setListCarries] = useState<[]>([]);
   const [shipping, setShipping] = useState<Shipping>({ price: 0 });
 
@@ -79,7 +86,7 @@ function ContentBag({ props }) {
               </svg>
               Sacola
             </h1>
-            { props?.list_b?.length
+            { listBag?.length
               ? (
                 <button
                   type="button"
@@ -94,7 +101,7 @@ function ContentBag({ props }) {
                 { ' ' }
                 (
                 { ' ' }
-                { props?.list_b?.length }
+                { listBag?.length }
                 { ' ' }
                 )
               </span>
@@ -120,15 +127,15 @@ function ContentBag({ props }) {
         <Checkout
           setOpenModal={ setOpenModal }
           shipping={ listCarries }
-          qunatityAdd={ props?.list_b?.length }
-          addSelected={ props?.main_add }
+          qunatityAdd={ listBag?.length }
+          addSelected={ props.main_add }
           setShipping={ setShipping }
         />
       </div>
       <BarBuy
         listProducts={ listBag }
         shipping={ shipping }
-        addresId={ props?.main_add?.id }
+        addresId={ props.main_add?.id }
       />
       <ContentModal
         openModal={ setOpenModal }
