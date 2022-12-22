@@ -17,7 +17,8 @@ function CardEditbag({ props, identify, execeFunction }: Props) {
     .findIndex((prod) => identify.opt_id === prod.opt_id && identify.size === prod.size);
 
   const updateItembag = async ({ target }: any) => {
-    if (Number(target.value) <= identify.max_quantity) {
+    if (Number(target.value) <= identify.max_quantity && identify.quantity
+      !== Number(target.value)) {
       setIsLoading('loading');
       const res = await api2.patch('/bag', {
         quantity: Number(target.value),
@@ -31,7 +32,7 @@ function CardEditbag({ props, identify, execeFunction }: Props) {
           quantity: Number(target.value),
         });
         setIsLoading('sucess');
-        execeFunction('');
+        execeFunction([...props]);
       } else {
         setIsLoading('err');
       }
@@ -49,7 +50,8 @@ function CardEditbag({ props, identify, execeFunction }: Props) {
                 type="button"
                 value={ value + 1 }
                 onClick={ updateItembag }
-                disabled={ identify.max_quantity < value + 1 || isLoading === 'loading' }
+                disabled={ identify.max_quantity < value + 1 || isLoading === 'loading' || identify.quantity
+                  === value + 1 }
               >
                 { value + 1 }
               </button>

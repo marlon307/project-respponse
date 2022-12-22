@@ -1,7 +1,7 @@
 'use client';
 
 import React, {
-  useCallback, useState, lazy, useEffect, useMemo,
+  useCallback, useState, lazy, useEffect,
 } from 'react';
 import BarBuy from '../Bars/BarBuy';
 import { SmallCard } from '../Cards';
@@ -28,8 +28,6 @@ function ContentBag({ props }) {
     props.main_add = add;
   };
 
-  const carriersList = useMemo(() => listCarries, [listCarries]);
-
   const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
     const { data } = await api2.delete('/bag', {
       data: {
@@ -48,6 +46,11 @@ function ContentBag({ props }) {
     setOpenModal({ ...identify, modal: 'editbag' });
   }, []);
 
+  function closeEdit(identify: TypeAddBagInfos[]) {
+    setStateBag(identify);
+    setOpenModal('');
+  }
+
   useEffect(() => {
     async function getCarries() {
       if (props.main_add?.zipcode) {
@@ -55,7 +58,6 @@ function ContentBag({ props }) {
           zipcode: props.main_add?.zipcode,
         });
         setListCarries(data.carriers);
-
         // Se a transpotadora tiver selecionada vai atualizar o preço do Frete e Valor total
         if (shipping.price) {
           const newValue = data.carriers.find((carrier: Shipping) => carrier.id === shipping.id);
@@ -117,7 +119,7 @@ function ContentBag({ props }) {
         </section>
         <Checkout
           setOpenModal={ setOpenModal }
-          shipping={ carriersList }
+          shipping={ listCarries }
           qunatityAdd={ props?.list_b?.length }
           addSelected={ props?.main_add }
           setShipping={ setShipping }
@@ -144,7 +146,7 @@ function ContentBag({ props }) {
           <CardEdit
             props={ listBag }
             identify={ openModal }
-            execeFunction={ setOpenModal }
+            execeFunction={ closeEdit! }
           />
         ) }
       </ContentModal>
