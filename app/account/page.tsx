@@ -1,7 +1,7 @@
 import React from 'react';
 import AccountComponent from '../../components/UserCfg/AccountComponent';
 
-function Account() {
+async function Account() {
   return (
     <AccountComponent />
   );

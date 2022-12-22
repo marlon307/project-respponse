@@ -21,23 +21,19 @@ const Help = lazy(() => import('../../app/help/page'));
 function AccountComponent() {
   const { loggedOut } = useLogin();
   const [dropOption, setDropOption] = useState('');
-  const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
   const [orderid, setOrderId] = useState<number>(0);
 
   const functionOpenModal = useCallback((type: React.SetStateAction<string>) => {
-    setOpenModal(true);
     setTypeModal(type);
   }, []);
 
   const openOrderId = useCallback((idorder: number) => {
-    setOpenModal(true);
     setTypeModal('order');
     setOrderId(idorder);
   }, []);
 
   function closeModal() {
-    setOpenModal(false);
     setTypeModal('');
   }
 
@@ -148,12 +144,16 @@ function AccountComponent() {
         </div>
       </div>
       <ContentModal
-        isOpen={ openModal }
-        openModal={ setOpenModal }
+        isOpen={
+          (typeModal === 'order' && orderid !== 0)
+          || typeModal === 'cards'
+          || typeModal === 'address'
+        }
+        openModal={ setTypeModal }
       >
-        { (openModal && typeModal === 'order') && <OrderId orderid={ orderid } /> }
-        { (openModal && typeModal === 'cards') && <AddCard /> }
-        { (openModal && typeModal === 'address') && <Addaderess execFunction={ closeModal! } /> }
+        { (typeModal === 'order' && orderid !== 0) && <OrderId orderid={ orderid } /> }
+        { (typeModal === 'cards') && <AddCard /> }
+        { (typeModal === 'address') && <Addaderess execFunction={ closeModal! } /> }
       </ContentModal>
     </>
   );
