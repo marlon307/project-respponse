@@ -14,20 +14,18 @@ async function getInfoBag() {
   }).catch((err) => ({ data: err }));
 
   return {
-    props: {
-      token,
-      infobag: data.infobag,
-    },
+    token,
+    infobag: data.infobag,
   };
 }
 
 async function Bag() {
-  const { props } = await getInfoBag();
+  const { infobag } = await getInfoBag();
 
   return (
     <>
       {/* <SWRConfig value={ { fallback } }> */ }
-      <ContentBag props={ props } />
+      <ContentBag props={ infobag } />
       {/* </SWRConfig> */ }
     </>
   );

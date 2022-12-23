@@ -7,7 +7,6 @@ import BarBuy from '../Bars/BarBuy';
 import { SmallCard } from '../Cards';
 import ContentModal from '../Modal/ContentModal';
 import Checkout from '.';
-// import useBag from '../../hooks/useBag';
 import { api2 } from '../../service/api';
 import type { TypeAddBagInfos, Shipping } from '../../@types/bag';
 import style from '../../Sass/style.module.scss';
@@ -17,21 +16,23 @@ const Addaddress = lazy(() => import('../Add/Address'));
 const Addacard = lazy(() => import('../Add/Addcard'));
 const CardEdit = lazy(() => import('../Cards/CardEditbag/CardEditbag'));
 
-function ContentBag({ props }) {
-  const fallback = props?.infobag;
-  // const { mutate } = useBag(false);
+interface Props {
+  props: {
+    list_b: TypeAddBagInfos[];
+    main_add: ITAddress;
+  };
+}
 
-  const [openModal, setOpenModal] = useState<string>('');
-  const [identifyEditItemBag, setIdentifyEditItemBag] = useState<TypeAddBagInfos | any>({});
+function ContentBag({ props }: Props) {
+  const [openModal, setOpenModal] = useState<any>({ modal: '' });
   const [hiddenList, setHiddenList] = useState(false);
-  const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(fallback?.list_b);
+  const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(props.list_b);
   const [listCarries, setListCarries] = useState<[]>([]);
   const [shipping, setShipping] = useState<Shipping>({ price: 0 });
 
   const setBagAddres = (add: ITAddress) => {
     setOpenModal('');
-    fallback.main_add = add;
-    // mutate(fallback, false);
+    props.main_add = add;
   };
 
   const deleteBagItem = useCallback(async (identify: TypeAddBagInfos) => {
@@ -49,23 +50,21 @@ function ContentBag({ props }) {
   }, [listBag]);
 
   const openEditItemBagModal = useCallback((identify: TypeAddBagInfos) => {
-    setIdentifyEditItemBag(identify);
-    setOpenModal('editbag');
+    setOpenModal({ ...identify, modal: 'editbag' });
   }, []);
 
-  const editBag = useCallback((array: TypeAddBagInfos[]) => {
-    setStateBag(array);
+  function closeEdit(identify: TypeAddBagInfos[]) {
+    setStateBag(identify);
     setOpenModal('');
-  }, []);
+  }
 
   useEffect(() => {
     async function getCarries() {
-      if (fallback.main_add?.zipcode) {
+      if (props.main_add?.zipcode) {
         const { data } = await api2.post('/calc', {
-          zipcode: fallback.main_add?.zipcode,
+          zipcode: props.main_add?.zipcode,
         });
         setListCarries(data.carriers);
-
         // Se a transpotadora tiver selecionada vai atualizar o preço do Frete e Valor total
         if (shipping.price) {
           const newValue = data.carriers.find((carrier: Shipping) => carrier.id === shipping.id);
@@ -74,7 +73,7 @@ function ContentBag({ props }) {
       }
     }
     getCarries();
-  }, [fallback.main_add, listBag]);
+  }, [props.main_add, listBag]);
 
   return (
     <>
@@ -87,7 +86,7 @@ function ContentBag({ props }) {
               </svg>
               Sacola
             </h1>
-            { fallback?.list_b?.length
+            { listBag?.length
               ? (
                 <button
                   type="button"
@@ -102,7 +101,7 @@ function ContentBag({ props }) {
                 { ' ' }
                 (
                 { ' ' }
-                { fallback?.list_b?.length }
+                { listBag?.length }
                 { ' ' }
                 )
               </span>
@@ -128,33 +127,33 @@ function ContentBag({ props }) {
         <Checkout
           setOpenModal={ setOpenModal }
           shipping={ listCarries }
-          qunatityAdd={ fallback?.list_b?.length }
-          addSelected={ fallback?.main_add }
+          qunatityAdd={ listBag?.length }
+          addSelected={ props.main_add }
           setShipping={ setShipping }
         />
       </div>
       <BarBuy
         listProducts={ listBag }
         shipping={ shipping }
-        addresId={ fallback?.main_add?.id }
+        addresId={ props.main_add?.id }
       />
       <ContentModal
         openModal={ setOpenModal }
         isOpen={
-          openModal === 'address'
-          || openModal === 'addaddress'
-          || openModal === 'addcard'
-          || openModal === 'editbag'
+          openModal.modal === 'address'
+          || openModal.modal === 'addaddress'
+          || openModal.modal === 'addcard'
+          || openModal.modal === 'editbag'
         }
       >
-        { openModal === 'address' && <RenderAdderess execFunction={ setBagAddres } /> }
-        { openModal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
-        { openModal === 'addcard' && <Addacard /> }
-        { openModal === 'editbag' && (
+        { openModal.modal === 'address' && <RenderAdderess execFunction={ setBagAddres } /> }
+        { openModal.modal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
+        { openModal.modal === 'addcard' && <Addacard /> }
+        { openModal.modal === 'editbag' && (
           <CardEdit
             props={ listBag }
-            identify={ identifyEditItemBag }
-            execeFunction={ editBag }
+            identify={ openModal }
+            execeFunction={ closeEdit! }
           />
         ) }
       </ContentModal>

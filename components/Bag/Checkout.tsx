@@ -3,13 +3,12 @@ import Link from 'next/link';
 import { mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
-import { Shipping } from '../../@types/bag';
-// import { StateBagType } from '../../@types/bag';
+import type { Shipping } from '../../@types/bag';
 import style from './style.module.scss';
 
 interface Props {
   setOpenModal: Function;
-  shipping: Array<Shipping>;
+  shipping: Shipping[];
   addSelected: ITAddress;
   qunatityAdd: number;
   setShipping: (props: Shipping) => void
@@ -18,16 +17,15 @@ interface Props {
 function Checkout({
   setOpenModal, addSelected, shipping, qunatityAdd, setShipping,
 }: Props) {
-  // const { shippingCompany } = infoCheckout.shipping;
-  // const handleSipping = useCallback((idInput: number, value: number) => {
-  //   // eslint-disable-next-line no-console
-  //   console.log(idInput, value);
-  // }, []);
-
   const handlePayment = useCallback((idName: string) => {
     // eslint-disable-next-line no-console
     console.log(idName);
   }, []);
+
+  function selectAddress(event: { preventDefault: () => void; }) {
+    event.preventDefault();
+    setOpenModal({ modal: qunatityAdd ? 'address' : 'addaddress' });
+  }
 
   return (
     <section className={ style.checkout }>
@@ -44,10 +42,7 @@ function Checkout({
         <Link
           href="/"
           aria-label="Clique aqui para escolher um endereço de entrega."
-          onClick={ (event) => {
-            event.preventDefault();
-            setOpenModal(qunatityAdd ? 'address' : 'addaddress');
-          } }
+          onClick={ selectAddress! }
         >
           <CardAdderess { ...addSelected } />
         </Link>
@@ -57,7 +52,7 @@ function Checkout({
           aria-label="Adicionar endereço"
           onClick={ (event) => {
             event.preventDefault();
-            setOpenModal('addaddress');
+            setOpenModal({ modal: 'addaddress' });
           } }
         >
           Adicionar endereço
@@ -119,7 +114,7 @@ function Checkout({
           aria-label="Adicionar Cartão"
           onClick={ (event) => {
             event.preventDefault();
-            setOpenModal('addcard');
+            setOpenModal({ modal: 'addcard' });
           } }
         >
           Adicionar Cartão
