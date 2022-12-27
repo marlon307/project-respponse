@@ -1,20 +1,19 @@
 import React, {
-  useEffect, useRef, Suspense, memo,
+  useEffect, useRef, Suspense,
 } from 'react';
 import { createPortal } from 'react-dom';
 import useOutsideClick from '../../hooks/useOutSide';
 import style from './style.module.scss';
 
-type PModal = {
+interface Props {
   children: any,
   isOpen: boolean;
   openModal: Function;
-};
+}
 
-function ContentModal({ children, isOpen, openModal }: PModal) {
+function ContentModal({ children, isOpen, openModal }: Props) {
+  const getModal = isOpen && children && document.getElementById('modal');
   const modalRef = useRef<HTMLDivElement>(null);
-  const getModal = children && isOpen && document.getElementById('modal');
-
   useOutsideClick(modalRef, () => isOpen && openModal(false));
 
   useEffect(() => {
@@ -24,14 +23,14 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
     }
 
     return () => {
-      if (children && isOpen) {
-        getModal.classList.remove(style.open);
+      if (isOpen) {
+        getModal.classList?.remove(style.open);
         document.body.removeAttribute('class');
       }
     };
-  }, [children, getModal.classList, isOpen]);
+  }, [isOpen]);
 
-  return children && isOpen && createPortal(
+  return isOpen ? createPortal(
     <div
       ref={ modalRef }
       className={ style.content_modal }
@@ -41,7 +40,7 @@ function ContentModal({ children, isOpen, openModal }: PModal) {
       </Suspense>
     </div>,
     getModal,
-  );
+  ) : null;
 }
 
-export default memo(ContentModal);
+export default ContentModal;

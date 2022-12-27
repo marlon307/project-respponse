@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import Link from 'next/link';
+import Script from 'next/script';
 import { mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
@@ -17,9 +18,10 @@ interface Props {
 function Checkout({
   setOpenModal, addSelected, shipping, qunatityAdd, setShipping,
 }: Props) {
-  const handlePayment = useCallback((idName: string) => {
-    // eslint-disable-next-line no-console
-    console.log(idName);
+  const handlePayment = useCallback(({ target }) => {
+    if (target.id === 'credit') {
+      setOpenModal({ modal: 'addcard' });
+    }
   }, []);
 
   function selectAddress(event: { preventDefault: () => void; }) {
@@ -102,23 +104,12 @@ function Checkout({
             <InputRadio
               key={ `payment-${object.id}` }
               name={ object.name }
-              iId={ object.name }
+              iId={ object.type }
               family="payment"
-              execFunction={ () => handlePayment('sd') }
+              execFunction={ handlePayment! }
             />
           )) }
         </div>
-        <Link
-          href="/"
-          className="link"
-          aria-label="Adicionar Cartão"
-          onClick={ (event) => {
-            event.preventDefault();
-            setOpenModal({ modal: 'addcard' });
-          } }
-        >
-          Adicionar Cartão
-        </Link>
       </div>
       <div className={ style.contcheckout }>
         <div className={ style.select }>
@@ -135,13 +126,18 @@ function Checkout({
               id="cupom"
               type="text"
               name="cupom"
-              placeholder="Insira aqui o cupom"
+              placeholder="XD0000XD"
+              text="Insira aqui o cupom"
               msgError="Cupom inválido"
             />
           </div>
           <span className={ style.descount }>Desconto - R$ 0,00</span>
         </div>
       </div>
+      <Script
+        src="https://sdk.mercadopago.com/js/v2"
+        strategy="lazyOnload"
+      />
     </section>
   );
 }

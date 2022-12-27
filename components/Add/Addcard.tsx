@@ -1,53 +1,62 @@
-import React from 'react';
-import BtnAdd from '../Buttons/BtnAdd';
+import React, { useEffect } from 'react';
+// import type { FormEvent } from 'react';
+import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
+import { api2 } from '../../service/api';
+
+const styleInputs = {
+  style: {
+    placeholderColor: '#706bb3',
+  },
+};
 
 function Addcard() {
+  useEffect(() => {
+    const mp = new MercadoPago(process.env.MP_P_KEY);
+    const bricksBuilder = mp.bricks();
+
+    const renderCardPaymentBrick = async (bricksBuilder) => {
+      const settings = {
+        initialization: {
+          amount: 100, // valor total a ser pago
+        },
+        customization: {
+          paymentMethods: {
+            bankTransfer: ['pix'],
+          },
+          visual: {
+            style: {
+              theme: 'default', // | 'dark' | 'bootstrap' | 'flat'
+              formPadding: '0',
+            },
+          },
+        },
+        callbacks: {
+          onReady: () => {
+            // callback chamado quando o Brick estiver pronto
+          },
+          onSubmit: (cardFormData) => {
+            //  callback chamado o usuário clicar no botão de submissão dos dados
+            //  exemplo de envio dos dados coletados pelo Brick para seu servidor
+            api2.post('/teste', cardFormData);
+          },
+          onError: (error) => {
+            console.log(error);
+
+            // callback chamado para todos os casos de erro do Brick
+          },
+        },
+      };
+      window.cardPaymentBrickController = await bricksBuilder.create('cardPayment', 'cardPaymentBrick_container', settings);
+    };
+    renderCardPaymentBrick(bricksBuilder);
+  }, []);
+
   return (
     <section className={ style.sectionadd }>
       <div className={ style.content }>
-        <h1>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M7 15h3a1 1 0 0 0 0-2H7a1 1 0 0 0 0 2ZM19 5H5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3Zm1 12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6h16v6Zm0-8H4V8a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v1Z" />
-          </svg>
-          Adicionar Cartão de Crédito
-        </h1>
-        <form>
-          <Input
-            id="namecard"
-            type="text"
-            name="namecard"
-            placeholder="Nome do cartão de crédito"
-            autoComplete="cc-name"
-            msgError="Insira o nome do cartão de crédito."
-          />
-          <Input
-            id="cardvalidate"
-            type="text"
-            name="cardvalidate"
-            placeholder="Data de validade"
-            autoComplete="cc-exp"
-            msgError="Insira a data de vencimento."
-          />
-          <Input
-            id="numbercard"
-            type="text"
-            name="numbercard"
-            placeholder="Número do cartão"
-            autoComplete="cc-number"
-            msgError="Insira o número."
-          />
-          <Input
-            id="codev"
-            type="text"
-            name="codev"
-            placeholder="Código de segurança"
-            autoComplete="off"
-            msgError="Insira o código de segurança (CVV)."
-          />
-          <BtnAdd eventBtn={ () => { } } />
-        </form>
+        <div id="cardPaymentBrick_container" />
       </div>
     </section>
   );
