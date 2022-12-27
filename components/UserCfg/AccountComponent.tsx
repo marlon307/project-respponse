@@ -21,6 +21,7 @@ const Help = lazy(() => import('../../app/help/page'));
 function AccountComponent() {
   const { loggedOut } = useLogin();
   const [dropOption, setDropOption] = useState('');
+  // const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
   const [orderid, setOrderId] = useState<number>(0);
 
@@ -152,7 +153,7 @@ function AccountComponent() {
         openModal={ setTypeModal }
       >
         { (typeModal === 'order' && orderid !== 0) && <OrderId orderid={ orderid } /> }
-        { (typeModal === 'cards') && <AddCard /> }
+        <AddCard />
         { (typeModal === 'address') && <Addaderess execFunction={ closeModal! } /> }
       </ContentModal>
     </>

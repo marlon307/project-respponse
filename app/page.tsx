@@ -20,7 +20,7 @@ async function getData() {
   };
 }
 
-export default async function Page() {
+export default async function RootLayout() {
   const props: IPropsHome = await getData();
   // const props: IPropsHome = use(getData());
   // const props: IPropsHome = teste;

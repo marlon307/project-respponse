@@ -43,7 +43,7 @@ function Input({
         className={ style.ph }
         title={ statusValid || isValid ? msgError : props.placeholder }
       >
-        { statusValid || isValid ? msgError : props.placeholder }
+        { statusValid || isValid ? msgError : props.text }
       </span>
     </label>
   );

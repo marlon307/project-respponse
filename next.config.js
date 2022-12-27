@@ -28,6 +28,7 @@ module.exports = withPWA({
     VALIDATION_PSW: process.env.VALIDATION_PSW,
     LOCAL_API_HOST: process.env.LOCAL_API_HOST,
     LOCAL_API_HOST_2: process.env.LOCAL_API_HOST_2,
+    MP_P_KEY: process.env.MP_P_KEY,
   },
   experimental: { appDir: true },
   swcMinify: true,
