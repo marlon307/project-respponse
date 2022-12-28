@@ -1,44 +1,36 @@
 :is(.modal, #modal-root) {
-  position: fixed;
-  background-color: var(--color-shadow-modal);
-  backdrop-filter: blur(4px);
-  z-index: 99999;
-  transition: 0.3s opacity ease;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  &:modal {
+    transform: translate3d(-50%, -50%, 0);
+    inset: 50%;
+    animation: contentmodal 0.3s ease-in-out both;
+    background: transparent;
+  }
 
-  &.open {
-    inset: 0 0 0 0;
-    opacity: 1;
+  &::backdrop {
+    background-color: #00000070;
+    /*var(--color-shadow-modal)*/
+    backdrop-filter: blur(4px);
   }
 }
 
 .content_modal {
-  transform: translate3d(0, 0, 0);
   overflow: auto;
   max-height: 80%;
   border-radius: 1em;
-  opacity: 1;
-  animation: contentmodal 0.3s ease-in-out both;
 }
 
 @media (max-width: 470px) {
-  .content_modal {
-    top: auto;
-    bottom: 0;
-  }
-
-  .modal {
-    align-items: flex-end;
+  :is(.modal, #modal-root) {
+    &:modal {
+      transform: translate3d(-50%, 0%, 0);
+      inset: auto 50% 0 50%;
+    }
   }
 }
 
 @keyframes contentmodal {
   from {
-    transform: translate3d(0, 70%, 0);
+    transform: translate3d(-50%, 70%, 0);
     opacity: 0;
   }
 }

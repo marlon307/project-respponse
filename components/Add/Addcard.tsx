@@ -1,22 +1,15 @@
-import React, { createElement } from 'react';
+import React from 'react';
 // import type { FormEvent } from 'react';
 import Script from 'next/script';
-import BtnIco from '../Buttons/BtnIco';
 import style from './style.module.scss';
 import { api2 } from '../../service/api';
-
-const styleInputs = {
-  style: {
-    placeholderColor: '#706bb3',
-  },
-};
 
 function Addcard() {
   function rednderForm() {
     const mp = new MercadoPago(process.env.MP_P_KEY);
     const bricksBuilder = mp.bricks();
 
-    async function createForm(formBuilder) {
+    async function createForm(formBuilder: any) {
       const settings = {
         initialization: {
           amount: 100, // valor total a ser pago
@@ -29,6 +22,7 @@ function Addcard() {
             style: {
               theme: 'default', // | 'dark' | 'bootstrap' | 'flat'
               formPadding: '0',
+
             },
           },
         },
@@ -36,12 +30,12 @@ function Addcard() {
           onReady: () => {
             // callback chamado quando o Brick estiver pronto
           },
-          onSubmit: (cardFormData) => {
+          onSubmit: (cardFormData: Object) => {
             //  callback chamado o usuário clicar no botão de submissão dos dados
             //  exemplo de envio dos dados coletados pelo Brick para seu servidor
             api2.post('/teste', cardFormData);
           },
-          onError: (error) => {
+          onError: (error: any) => {
             // eslint-disable-next-line no-console
             console.log(error);
           },

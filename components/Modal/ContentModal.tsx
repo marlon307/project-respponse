@@ -18,13 +18,13 @@ function ContentModal({ children, isOpen, openModal }: Props) {
 
   useEffect(() => {
     if (isOpen) {
-      getModal.classList.add(style.open);
+      getModal.showModal();
       document.body.classList.add('hidden');
     }
 
     return () => {
       if (isOpen) {
-        getModal.classList?.remove(style.open);
+        getModal.close();
         document.body.removeAttribute('class');
       }
     };
@@ -37,7 +37,6 @@ function ContentModal({ children, isOpen, openModal }: Props) {
     >
       <Suspense fallback={ <div className="spinner" /> }>
         { children }
-        <div id="mock" />
       </Suspense>
     </div>,
     getModal,
