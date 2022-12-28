@@ -3,10 +3,16 @@ import style from './style.module.scss';
 
 function Modal() {
   return (
-    <div
-      id="modal"
-      className={ style.modal }
-    />
+    <>
+      <div
+        id="modal-root"
+        className={ style.modal }
+      />
+      <div
+        id="modal-mock"
+        className={ style.modal }
+      />
+    </>
   );
 }
 

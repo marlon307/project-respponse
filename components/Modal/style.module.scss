@@ -1,19 +1,19 @@
-.modal {
+:is(.modal, #modal-root) {
   position: fixed;
   background-color: var(--color-shadow-modal);
   backdrop-filter: blur(4px);
-  opacity: 0;
   z-index: 99999;
   transition: 0.3s opacity ease;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+  overflow: hidden;
 
-.modal.open {
-  inset: 0 0 0 0;
-  opacity: 1;
+  &.open {
+    inset: 0 0 0 0;
+    opacity: 1;
+  }
 }
 
 .content_modal {
@@ -22,9 +22,6 @@
   max-height: 80%;
   border-radius: 1em;
   opacity: 1;
-}
-
-.open .content_modal {
   animation: contentmodal 0.3s ease-in-out both;
 }
 

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { createElement } from 'react';
 // import type { FormEvent } from 'react';
+import Script from 'next/script';
 import BtnIco from '../Buttons/BtnIco';
-import { Input } from '../ComponentsForm';
 import style from './style.module.scss';
 import { api2 } from '../../service/api';
 
@@ -12,11 +12,11 @@ const styleInputs = {
 };
 
 function Addcard() {
-  useEffect(() => {
+  function rednderForm() {
     const mp = new MercadoPago(process.env.MP_P_KEY);
     const bricksBuilder = mp.bricks();
 
-    const renderCardPaymentBrick = async (bricksBuilder) => {
+    async function createForm(formBuilder) {
       const settings = {
         initialization: {
           amount: 100, // valor total a ser pago
@@ -42,22 +42,27 @@ function Addcard() {
             api2.post('/teste', cardFormData);
           },
           onError: (error) => {
+            // eslint-disable-next-line no-console
             console.log(error);
-
-            // callback chamado para todos os casos de erro do Brick
           },
         },
       };
-      window.cardPaymentBrickController = await bricksBuilder.create('cardPayment', 'cardPaymentBrick_container', settings);
-    };
-    renderCardPaymentBrick(bricksBuilder);
-  }, []);
+      const formElement = await formBuilder.create('cardPayment', 'form_card', settings);
+      window.cardPaymentBrickController = formElement;
+    }
 
+    createForm(bricksBuilder);
+  }
   return (
     <section className={ style.sectionadd }>
       <div className={ style.content }>
-        <div id="cardPaymentBrick_container" />
+        <div id="form_card" />
       </div>
+      <Script
+        src="https://sdk.mercadopago.com/js/v2"
+        strategy="lazyOnload"
+        onLoad={ rednderForm! }
+      />
     </section>
   );
 }

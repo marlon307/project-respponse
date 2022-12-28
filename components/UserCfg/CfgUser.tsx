@@ -40,6 +40,7 @@ function CfgUser({ isRequest }: Props) {
           id="name"
           type="name"
           name="name"
+          text="Nome"
           placeholder="* Nome e Sobrenome"
           msgError="Preencha Nome e Sobrenome"
           autoComplete="name"
@@ -48,7 +49,8 @@ function CfgUser({ isRequest }: Props) {
         <Input
           id="email"
           type="email"
-          placeholder="E-mail"
+          text="E-mail"
+          placeholder="email@email.com"
           defaultValue={ dataUser?.email }
           msgError="E-mail inválido"
           disabled
@@ -67,7 +69,8 @@ function CfgUser({ isRequest }: Props) {
           id="date"
           type="date"
           name="date"
-          placeholder="* Data"
+          placeholder="00/00/0000"
+          text="Data"
           defaultValue={ dataUser?.birthday }
           msgError="Selecione uma data"
         />
@@ -75,7 +78,8 @@ function CfgUser({ isRequest }: Props) {
           id="doc"
           type="doc"
           name="doc"
-          placeholder="* CPF"
+          text="CPF"
+          placeholder="000.000.000-00"
           defaultValue={ dataUser?.cpf_cnpj }
           msgError="CPF inválido"
           maxLength={ 11 }
@@ -122,7 +126,8 @@ function CfgUser({ isRequest }: Props) {
             id="tel"
             type="tel"
             name="tel"
-            placeholder="Telefone"
+            placeholder="(DD) 00000-0000"
+            text="Telefone"
             autoComplete="tel"
             defaultValue={ dataUser?.tel }
             msgError="Insira um telefone"
@@ -134,7 +139,8 @@ function CfgUser({ isRequest }: Props) {
             id="cel"
             type="tel"
             name="cel"
-            placeholder="Celular"
+            placeholder="(DD) 00000-0000"
+            text="Celular"
             autoComplete="tel"
             defaultValue={ dataUser?.cel }
             msgError="Insira um telefone"
