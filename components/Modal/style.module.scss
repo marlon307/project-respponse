@@ -1,32 +1,26 @@
 :is(.modal, #modal-root) {
-  position: fixed;
-  background-color: var(--color-shadow-modal);
-  backdrop-filter: blur(4px);
-  z-index: 99999;
-  transition: 0.3s opacity ease;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  &:modal {
+    transform: translate3d(-50%, -50%, 0);
+    inset: 50%;
+    animation: contentmodal 0.3s ease-in-out both;
+    background: transparent;
+  }
 
-  &.open {
-    inset: 0 0 0 0;
-    opacity: 1;
-    width: 100vw;
-    height: 100vh;
-    min-width: 100vw;
-    min-height: 100vh;
+  &::backdrop {
+    background: #00000070;
+    /*var(--color-shadow-modal)*/
+    backdrop-filter: blur(4px);
   }
 }
 
 .content_modal {
-  transform: translate3d(0, 0, 0);
+  display: inline-block;
+  margin: 0 auto;
   overflow: auto;
   max-height: 80%;
   border-radius: 1em;
   opacity: 1;
-  animation: contentmodal 0.3s ease-in-out both;
+
 }
 
 @media (max-width: 470px) {
@@ -42,7 +36,7 @@
 
 @keyframes contentmodal {
   from {
-    transform: translate3d(0, 70%, 0);
+    transform: translate3d(-50%, 70%, 0);
     opacity: 0;
   }
 }
