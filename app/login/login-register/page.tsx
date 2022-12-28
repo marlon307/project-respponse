@@ -90,6 +90,7 @@ function Login() {
         <Input
           id="lemail"
           type="email"
+          text="Email"
           name="username"
           autoComplete="email"
           placeholder="E-mail"
@@ -100,6 +101,7 @@ function Login() {
         <Input
           id="lpsw"
           type="password"
+          text="Senha"
           name="password"
           autoComplete="current-password"
           placeholder="Senha"
@@ -135,6 +137,7 @@ function Login() {
                 id="rname"
                 type="name"
                 name="name"
+                text="Nome"
                 autoComplete="name"
                 placeholder="Nome Sobrenome"
                 msgError="Preencha Nome e Sobrenome"
@@ -144,6 +147,7 @@ function Login() {
                 id="remail"
                 type="email"
                 name="email"
+                text="Email"
                 autoComplete="email"
                 placeholder="E-mail"
                 msgError={ isValidRegister ? 'E-mail já cadastrado!' : 'E-mail inválido!' }
@@ -154,6 +158,7 @@ function Login() {
                 id="rpsw"
                 type="password"
                 name="password"
+                text="Senha"
                 placeholder="Senha"
                 msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
                 disabled={ isLoading }

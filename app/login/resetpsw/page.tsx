@@ -43,6 +43,7 @@ function Resetpsw() {
             id="email"
             type="email"
             name="email"
+            text="Email"
             placeholder="E-mail"
             autoComplete="email"
             msgError={ isValid ? 'Email inválido ou não cadastrado!' : 'Email inválido!' }

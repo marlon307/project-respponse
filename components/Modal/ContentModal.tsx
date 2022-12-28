@@ -12,7 +12,7 @@ interface Props {
 }
 
 function ContentModal({ children, isOpen, openModal }: Props) {
-  const getModal = isOpen && children && document.getElementById('modal');
+  const getModal = isOpen && children && document.getElementById('modal-root');
   const modalRef = useRef<HTMLDivElement>(null);
   useOutsideClick(modalRef, () => isOpen && openModal(false));
 
@@ -37,6 +37,7 @@ function ContentModal({ children, isOpen, openModal }: Props) {
     >
       <Suspense fallback={ <div className="spinner" /> }>
         { children }
+        <div id="mock" />
       </Suspense>
     </div>,
     getModal,

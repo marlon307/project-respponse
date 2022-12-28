@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import Link from 'next/link';
-import Script from 'next/script';
 import { mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
@@ -134,10 +133,6 @@ function Checkout({
           <span className={ style.descount }>Desconto - R$ 0,00</span>
         </div>
       </div>
-      <Script
-        src="https://sdk.mercadopago.com/js/v2"
-        strategy="lazyOnload"
-      />
     </section>
   );
 }
