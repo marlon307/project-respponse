@@ -22,7 +22,6 @@ function Addcard() {
             style: {
               theme: 'default', // | 'dark' | 'bootstrap' | 'flat'
               formPadding: '0',
-
             },
           },
         },
@@ -47,6 +46,7 @@ function Addcard() {
 
     createForm(bricksBuilder);
   }
+
   return (
     <section className={ style.sectionadd }>
       <div className={ style.content }>

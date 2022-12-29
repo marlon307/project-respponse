@@ -2,6 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { api2 } from '../../../service/api';
 import type { Props, TypeProduct } from './product';
+import DefaultTags from '../../DefaultTags';
 
 async function getProductID(prodID: number): Promise<TypeProduct> {
   const { data } = await api2.get(`/product/${prodID}`)
@@ -14,6 +15,7 @@ export default async function Head({ params }: Props) {
 
   return (
     <>
+      <DefaultTags />
       <title>{ `${product.category_name} - ${product.title}` }</title>
       <meta name="description" content={ product.descrtion } />
       <link rel="canonical" href={ `https://project-respponse-marlon307.vercel.app${product.id}` } />
