@@ -145,10 +145,12 @@ function ContentBag({ props }: Props) {
           openModal.modal === 'address'
           || openModal.modal === 'addaddress'
           || openModal.modal === 'editbag'
+          || openModal.modal === 'addcard'
         }
       >
         { openModal.modal === 'address' && <RenderAdderess execFunction={ setBagAddres } /> }
         { openModal.modal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
+        { openModal.modal === 'addcard' && <Addacard value={ 100 } /> }
         { openModal.modal === 'editbag' && (
           <CardEdit
             props={ listBag }
@@ -157,12 +159,12 @@ function ContentBag({ props }: Props) {
           />
         ) }
       </ContentModal>
-      <MockModal
+      {/* <MockModal
         isOpen={ openModal.modal === 'addcard' }
         openModal={ setOpenModal }
       >
         <Addacard value={ 100 } />
-      </MockModal>
+      </MockModal> */}
     </>
   );
 }

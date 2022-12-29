@@ -1,61 +1,77 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import type { FormEvent } from 'react';
-import Script from 'next/script';
 import style from './style.module.scss';
 import { api2 } from '../../service/api';
 
 interface Props {
-  value: GLfloat;
+  value: number;
 }
 
-function Addcard({ value }: Props) {
-  function rednderForm(price) {
-    const mp = new MercadoPago(process.env.MP_P_KEY);
-    const bricksBuilder = mp.bricks();
-
-    async function createForm(formBuilder: any) {
-      const settings = {
-        initialization: {
-          amount: price, // valor total a ser pago
-        },
-        customization: {
-          visual: {
-            style: {
-              theme: 'default', // | 'dark' | 'bootstrap' | 'flat'
-              formPadding: '0',
-            },
-          },
-        },
-        callbacks: {
-          // callback chamado quando o Brick estiver pronto
-          onReady: () => { },
-          onError: (error: any) => {
-            // eslint-disable-next-line no-console
-            console.log(error);
-          },
-          onSubmit: (cardFormData: Object) => {
-            //  callback chamado o usuário clicar no botão de submissão dos dados
-            //  exemplo de envio dos dados coletados pelo Brick para seu servidor
-            api2.post('/teste', cardFormData);
-          },
-        },
-      };
-      const formElement = await formBuilder.create('cardPayment', 'form_card', settings);
-      window.cardPaymentBrickController = formElement;
-    }
-    createForm(bricksBuilder);
+declare global {
+  interface Window {
+    paymentController: any
   }
+}
+
+// reference https://github.com/s4mukka/react-sdk-mercadopago/blob/master/src/v2.ts
+
+function Addcard({ value }: Props) {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://sdk.mercadopago.com/js/v2';
+    document.body.appendChild(script);
+    script.addEventListener('load', () => {
+      function rednderForm(price: number) {
+        const mp = new MercadoPago(process.env.MP_P_KEY);
+        const bricksBuilder = mp.bricks();
+
+        async function createForm(formBuilder: any) {
+          const settings = {
+            initialization: {
+              amount: price, // valor total a ser pago
+            },
+            customization: {
+              visual: {
+                style: {
+                  theme: 'default', // | 'dark' | 'bootstrap' | 'flat'
+                  formPadding: '0',
+                },
+              },
+            },
+            callbacks: {
+              onReady: () => { },
+              onError: (error: any) => {
+                // eslint-disable-next-line no-console
+                console.log(error);
+              },
+              onSubmit: (cardFormData: Object) => {
+                api2.post('/teste', cardFormData);
+              },
+            },
+          };
+          const formElement = await formBuilder.create('cardPayment', 'form_card', settings);
+          window.paymentController = formElement;
+        }
+        createForm(bricksBuilder);
+      }
+      rednderForm(value);
+    });
+
+    return () => {
+      const iframe = document.body.querySelector('iframe[src*="mercadolibre"]');
+
+      if (iframe) {
+        document.body.removeChild(iframe);
+      }
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <section className={ style.sectionadd }>
       <div className={ style.content }>
         <div id="form_card" />
       </div>
-      <Script
-        src="https://sdk.mercadopago.com/js/v2"
-        strategy="lazyOnload"
-        onReady={ () => rednderForm(value) }
-      />
     </section>
   );
 }
