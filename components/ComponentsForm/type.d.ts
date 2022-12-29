@@ -5,7 +5,6 @@ export interface PropsRadio extends InputHTMLAttributes<T> {
   iId: string;
   family: string;
   iValue?: number;
-  execFunction?: () => void;
   checked?: boolean
 }
 

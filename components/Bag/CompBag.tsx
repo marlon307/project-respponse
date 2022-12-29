@@ -128,6 +128,7 @@ function ContentBag({ props }: Props) {
         <Checkout
           setOpenModal={ setOpenModal }
           shipping={ listCarries }
+          shippingSelected={ shipping }
           qunatityAdd={ listBag?.length }
           addSelected={ props.main_add }
           setShipping={ setShipping }
@@ -160,7 +161,7 @@ function ContentBag({ props }: Props) {
         isOpen={ openModal.modal === 'addcard' }
         openModal={ setOpenModal }
       >
-        <Addacard />
+        <Addacard value={ 100 } />
       </MockModal>
     </>
   );

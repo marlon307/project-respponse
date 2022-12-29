@@ -3,7 +3,7 @@ import style from './style.module.scss';
 import type { PropsRadio } from './type';
 
 function InputRadio({
-  iId, name, family, iValue, checked, execFunction,
+  iId, name, family, iValue, checked, ...props
 }: PropsRadio) {
   return (
     <div className={ style.inputRadio }>
@@ -14,7 +14,7 @@ function InputRadio({
           name={ family }
           value={ iValue }
           defaultChecked={ checked }
-          onClick={ execFunction }
+          { ...props }
         />
         <span>{ name }</span>
       </label>
