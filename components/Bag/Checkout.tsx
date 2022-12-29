@@ -9,13 +9,14 @@ import style from './style.module.scss';
 interface Props {
   setOpenModal: Function;
   shipping: Shipping[];
+  shippingSelected: Shipping;
   addSelected: ITAddress;
   qunatityAdd: number;
   setShipping: (props: Shipping) => void
 }
 
 function Checkout({
-  setOpenModal, addSelected, shipping, qunatityAdd, setShipping,
+  setOpenModal, addSelected, shipping, qunatityAdd, setShipping, shippingSelected,
 }: Props) {
   const handlePayment = useCallback(({ target }: any) => {
     if (target.id === 'credit') {
@@ -78,7 +79,7 @@ function Checkout({
               })} - até ${object.toDate} dias úteis` }
               iId={ String(object.id) }
               family="shipping"
-              execFunction={ () => setShipping({
+              onClick={ () => setShipping({
                 id: object.id,
                 price: object.price,
                 name_carrier: '',
@@ -86,7 +87,7 @@ function Checkout({
               }) }
               iValue={ object.price }
             />
-          )) : <InputRadio checked name="Selecione um endereço para calcular o frete." iId="none" family="none" /> }
+          )) : <InputRadio disabled name="Selecione um endereço para calcular o frete." iId="none" family="none" /> }
         </div>
       </div>
       <div className={ style.contcheckout }>
@@ -105,7 +106,8 @@ function Checkout({
               name={ object.name }
               iId={ object.type }
               family="payment"
-              execFunction={ handlePayment! }
+              onClick={ handlePayment! }
+              disabled={ shippingSelected?.price === 0 }
             />
           )) }
         </div>
