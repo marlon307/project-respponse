@@ -1,21 +1,26 @@
-:is(.modal, #modal-root) {
+:is(.modal, #modal-root, #modal-mock) {
+  // width: 100vw;
+
   &:modal {
     transform: translate3d(-50%, -50%, 0);
     inset: 50%;
     animation: contentmodal 0.3s ease-in-out both;
     background: transparent;
+    display: inline-table;
+    overflow: auto;
+    max-height: 80%;
   }
 
   &::backdrop {
-    background-color: #00000070;
     /*var(--color-shadow-modal)*/
+    background-color: #00000070;
     backdrop-filter: blur(4px);
   }
 }
 
 .content_modal {
+  max-height: 80vh;
   overflow: auto;
-  max-height: 80%;
   border-radius: 1em;
 }
 
@@ -25,6 +30,10 @@
       transform: translate3d(-50%, 0%, 0);
       inset: auto 50% 0 50%;
     }
+  }
+
+  .content_modal {
+    max-height: 70vh;
   }
 }
 

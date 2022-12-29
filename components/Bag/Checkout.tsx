@@ -17,7 +17,7 @@ interface Props {
 function Checkout({
   setOpenModal, addSelected, shipping, qunatityAdd, setShipping,
 }: Props) {
-  const handlePayment = useCallback(({ target }) => {
+  const handlePayment = useCallback(({ target }: any) => {
     if (target.id === 'credit') {
       setOpenModal({ modal: 'addcard' });
     }

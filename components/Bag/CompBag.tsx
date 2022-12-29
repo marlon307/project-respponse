@@ -10,6 +10,7 @@ import Checkout from '.';
 import { api2 } from '../../service/api';
 import type { TypeAddBagInfos, Shipping } from '../../@types/bag';
 import style from '../../Sass/style.module.scss';
+import MockModal from '../Modal/MockModal';
 
 const RenderAdderess = lazy(() => import('./RenderAdderess'));
 const Addaddress = lazy(() => import('../Add/Address'));
@@ -142,13 +143,11 @@ function ContentBag({ props }: Props) {
         isOpen={
           openModal.modal === 'address'
           || openModal.modal === 'addaddress'
-          || openModal.modal === 'addcard'
           || openModal.modal === 'editbag'
         }
       >
         { openModal.modal === 'address' && <RenderAdderess execFunction={ setBagAddres } /> }
         { openModal.modal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
-        { openModal.modal === 'addcard' && <Addacard /> }
         { openModal.modal === 'editbag' && (
           <CardEdit
             props={ listBag }
@@ -157,6 +156,12 @@ function ContentBag({ props }: Props) {
           />
         ) }
       </ContentModal>
+      <MockModal
+        isOpen={ openModal.modal === 'addcard' }
+        openModal={ setOpenModal }
+      >
+        <Addacard />
+      </MockModal>
     </>
   );
 }

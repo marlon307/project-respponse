@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useRef, Suspense,
+  useEffect, useRef, Suspense, useState,
 } from 'react';
 import { createPortal } from 'react-dom';
 import type { ReactNode } from 'react';
@@ -12,26 +12,31 @@ interface Props {
   openModal: Function;
 }
 
-function ContentModal({ children, isOpen, openModal }: Props) {
+function MockModal({ children, isOpen, openModal }: Props) {
   const modalRef = useRef<HTMLDivElement>(null);
-  const getModal = ((isOpen && children) ? document.getElementById('modal-root')! : null) as HTMLDialogElement;
+  const [dialogMock, setDialogMock] = useState<HTMLDialogElement | null>(null);
   useOutsideClick(modalRef, () => isOpen && openModal(false));
 
   useEffect(() => {
+    const getModal = document.getElementById('modal-mock')! as HTMLDialogElement;
+    setDialogMock(getModal);
+  }, []);
+
+  useEffect(() => {
     if (isOpen) {
-      getModal.showModal();
+      dialogMock?.showModal();
       document.body.classList.add('hidden');
     }
 
     return () => {
       if (isOpen) {
-        getModal.close();
+        dialogMock?.close();
         document.body.removeAttribute('class');
       }
     };
   }, [isOpen]);
 
-  return isOpen ? createPortal(
+  return dialogMock ? createPortal(
     <div
       ref={ modalRef }
       className={ style.content_modal }
@@ -40,8 +45,8 @@ function ContentModal({ children, isOpen, openModal }: Props) {
         { children }
       </Suspense>
     </div>,
-    getModal!,
+    dialogMock,
   ) : null;
 }
 
-export default ContentModal;
+export default MockModal;
