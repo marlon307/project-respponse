@@ -1,10 +1,10 @@
 import React, { memo, useEffect } from 'react';
-// import type { FormEvent } from 'react';
-import style from './style.module.scss';
 import { api2 } from '../../service/api';
+import style from './style.module.scss';
 
 interface Props {
   value: number;
+  exectFunction: Function;
 }
 
 declare global {
@@ -15,7 +15,7 @@ declare global {
 
 // reference https://github.com/s4mukka/react-sdk-mercadopago/blob/master/src/v2.ts
 
-function Addcard({ value }: Props) {
+function Addcard({ value, exectFunction }: Props) {
   useEffect(() => {
     async function createFrom() {
       const mp = new MercadoPago(process.env.MP_P_KEY);
@@ -39,8 +39,9 @@ function Addcard({ value }: Props) {
             // eslint-disable-next-line no-console
             console.log(error);
           },
-          onSubmit: (cardFormData: Object) => {
-            api2.post('/teste', cardFormData);
+          onSubmit: async (cardFormData: Object) => {
+            exectFunction!((c: any) => ({ ...c, ...cardFormData }));
+            await api2.post('/teste', cardFormData);
           },
         },
       };
@@ -57,7 +58,6 @@ function Addcard({ value }: Props) {
     return () => {
       const iframe = document.body.querySelector('iframe[src*="mercadolibre"]');
       if (iframe) {
-        // iframe.remove();
         document.body.removeChild(iframe);
       }
 

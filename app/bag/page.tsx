@@ -26,6 +26,7 @@ async function Bag() {
     <>
       {/* <SWRConfig value={ { fallback } }> */ }
       <ContentBag props={ infobag } />
+      {/* <script src="https://www.mercadopago.com/v2/security.js" view="bag" /> */ }
       {/* </SWRConfig> */ }
     </>
   );

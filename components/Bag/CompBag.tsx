@@ -10,11 +10,9 @@ import Checkout from '.';
 import { api2 } from '../../service/api';
 import type { TypeAddBagInfos, Shipping } from '../../@types/bag';
 import style from '../../Sass/style.module.scss';
-import MockModal from '../Modal/MockModal';
 
 const RenderAdderess = lazy(() => import('./RenderAdderess'));
 const Addaddress = lazy(() => import('../Add/Address'));
-const Addacard = lazy(() => import('../Add/Addcard'));
 const CardEdit = lazy(() => import('../Cards/CardEditbag/CardEditbag'));
 
 interface Props {
@@ -29,6 +27,7 @@ function ContentBag({ props }: Props) {
   const [hiddenList, setHiddenList] = useState(false);
   const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(props.list_b);
   const [listCarries, setListCarries] = useState<[]>([]);
+  const [paymentMethod, setPaymentMethod] = useState({ method: '', installments: 1 });
   const [shipping, setShipping] = useState<Shipping>({ price: 0 });
 
   const setBagAddres = (add: ITAddress) => {
@@ -132,12 +131,15 @@ function ContentBag({ props }: Props) {
           qunatityAdd={ listBag?.length }
           addSelected={ props.main_add }
           setShipping={ setShipping }
+          setPayment={ setPaymentMethod }
         />
       </div>
       <BarBuy
         listProducts={ listBag }
         shipping={ shipping }
         addresId={ props.main_add?.id }
+        paymentMethod={ paymentMethod }
+        setItallment={ setPaymentMethod }
       />
       <ContentModal
         openModal={ setOpenModal }
@@ -145,12 +147,10 @@ function ContentBag({ props }: Props) {
           openModal.modal === 'address'
           || openModal.modal === 'addaddress'
           || openModal.modal === 'editbag'
-          || openModal.modal === 'addcard'
         }
       >
         { openModal.modal === 'address' && <RenderAdderess execFunction={ setBagAddres } /> }
         { openModal.modal === 'addaddress' && <Addaddress execFunction={ () => setOpenModal('') } /> }
-        { openModal.modal === 'addcard' && <Addacard value={ 100 } /> }
         { openModal.modal === 'editbag' && (
           <CardEdit
             props={ listBag }
@@ -159,12 +159,6 @@ function ContentBag({ props }: Props) {
           />
         ) }
       </ContentModal>
-      {/* <MockModal
-        isOpen={ openModal.modal === 'addcard' }
-        openModal={ setOpenModal }
-      >
-        <Addacard value={ 100 } />
-      </MockModal> */}
     </>
   );
 }

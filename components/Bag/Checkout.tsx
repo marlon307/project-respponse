@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { mockPayment } from '../../service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
-import type { Shipping } from '../../@types/bag';
+import type { Pay, Shipping } from '../../@types/bag';
 import style from './style.module.scss';
 
 interface Props {
@@ -13,17 +13,12 @@ interface Props {
   addSelected: ITAddress;
   qunatityAdd: number;
   setShipping: (props: Shipping) => void
+  setPayment: Function
 }
 
 function Checkout({
-  setOpenModal, addSelected, shipping, qunatityAdd, setShipping, shippingSelected,
+  setOpenModal, addSelected, shipping, qunatityAdd, setShipping, shippingSelected, setPayment,
 }: Props) {
-  const handlePayment = useCallback(({ target }: any) => {
-    if (target.id === 'credit') {
-      setOpenModal({ modal: 'addcard' });
-    }
-  }, []);
-
   function selectAddress(event: { preventDefault: () => void; }) {
     event.preventDefault();
     setOpenModal({ modal: qunatityAdd ? 'address' : 'addaddress' });
@@ -106,7 +101,7 @@ function Checkout({
               name={ object.name }
               iId={ object.type }
               family="payment"
-              onClick={ handlePayment! }
+              onClick={ () => setPayment((c: Pay) => ({ ...c, method: object.name })) }
               disabled={ shippingSelected?.price === 0 }
             />
           )) }

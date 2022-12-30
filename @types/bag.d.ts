@@ -50,3 +50,8 @@ export interface Shipping {
   price: float;
   toDate?: number;
 }
+
+export interface Pay {
+  method: string;
+  installments: number;
+}
