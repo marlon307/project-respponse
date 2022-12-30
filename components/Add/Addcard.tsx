@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 // import type { FormEvent } from 'react';
 import style from './style.module.scss';
 import { api2 } from '../../service/api';
@@ -17,10 +17,7 @@ declare global {
 
 function Addcard({ value }: Props) {
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://sdk.mercadopago.com/js/v2';
-    document.body.appendChild(script);
-    script.addEventListener('load', async () => {
+    async function createFrom() {
       const mp = new MercadoPago(process.env.MP_P_KEY);
       const bricksBuilder = mp.bricks();
 
@@ -47,17 +44,24 @@ function Addcard({ value }: Props) {
           },
         },
       };
-      const formElement = await bricksBuilder.create('cardPayment', 'form_card', settings);
-      window.paymentController = formElement;
-    });
-    console.log(12);
+
+      window.paymentController = await bricksBuilder
+        .create('cardPayment', 'form_card', settings);
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://sdk.mercadopago.com/js/v2';
+    document.body.appendChild(script);
+    script.addEventListener('load', createFrom);
 
     return () => {
       const iframe = document.body.querySelector('iframe[src*="mercadolibre"]');
-
       if (iframe) {
+        // iframe.remove();
         document.body.removeChild(iframe);
       }
+
+      script.removeEventListener('load', createFrom);
       document.body.removeChild(script);
     };
   }, []);
@@ -71,4 +75,4 @@ function Addcard({ value }: Props) {
   );
 }
 
-export default Addcard;
+export default memo(Addcard);
