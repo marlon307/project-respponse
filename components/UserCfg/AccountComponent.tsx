@@ -15,7 +15,7 @@ const OrderId = lazy(() => import('../Order/OrderId'));
 const Address = lazy(() => import('../Cards/Address'));
 const Addaderess = lazy(() => import('../Add/Address'));
 const Cards = lazy(() => import('../Cards/Cards'));
-const AddCard = lazy(() => import('../Add/Addcard'));
+const AddCard = lazy(() => import('../PaymetCard/Addcard'));
 const Help = lazy(() => import('../../app/help/page'));
 
 function AccountComponent() {
