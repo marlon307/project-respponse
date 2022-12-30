@@ -27,7 +27,7 @@ function Checkout({
   return (
     <section className={ style.checkout }>
       <h2>Checkout</h2>
-      <div className={ style.contcheckout }>
+      <div className={ style.contcheckout } id="field-address">
         <div className={ style.select }>
           <h3>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -55,7 +55,7 @@ function Checkout({
           Adicionar endereço
         </Link>
       </div>
-      <div className={ style.contcheckout }>
+      <div className={ style.contcheckout } id="field-shipping">
         <div className={ style.select }>
           <h3>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -85,7 +85,7 @@ function Checkout({
           )) : <InputRadio disabled name="Selecione um endereço para calcular o frete." iId="none" family="none" /> }
         </div>
       </div>
-      <div className={ style.contcheckout }>
+      <div className={ style.contcheckout } id="field-payments">
         <div className={ style.select }>
           <h3>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
