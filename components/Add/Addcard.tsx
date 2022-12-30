@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-// import type { FormEvent } from 'react';
-import style from './style.module.scss';
+import React, { memo, useEffect } from 'react';
 import { api2 } from '../../service/api';
+import style from './style.module.scss';
 
 interface Props {
   value: number;
+  exectFunction: Function;
 }
 
 declare global {
@@ -15,12 +15,9 @@ declare global {
 
 // reference https://github.com/s4mukka/react-sdk-mercadopago/blob/master/src/v2.ts
 
-function Addcard({ value }: Props) {
+function Addcard({ value, exectFunction }: Props) {
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://sdk.mercadopago.com/js/v2';
-    document.body.appendChild(script);
-    script.addEventListener('load', async () => {
+    async function createFrom() {
       const mp = new MercadoPago(process.env.MP_P_KEY);
       const bricksBuilder = mp.bricks();
 
@@ -42,22 +39,29 @@ function Addcard({ value }: Props) {
             // eslint-disable-next-line no-console
             console.log(error);
           },
-          onSubmit: (cardFormData: Object) => {
-            api2.post('/teste', cardFormData);
+          onSubmit: async (cardFormData: Object) => {
+            exectFunction!((c: any) => ({ ...c, ...cardFormData }));
+            await api2.post('/teste', cardFormData);
           },
         },
       };
-      const formElement = await bricksBuilder.create('cardPayment', 'form_card', settings);
-      window.paymentController = formElement;
-    });
-    console.log(12);
+
+      window.paymentController = await bricksBuilder
+        .create('cardPayment', 'form_card', settings);
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://sdk.mercadopago.com/js/v2';
+    document.body.appendChild(script);
+    script.addEventListener('load', createFrom);
 
     return () => {
       const iframe = document.body.querySelector('iframe[src*="mercadolibre"]');
-
       if (iframe) {
         document.body.removeChild(iframe);
       }
+
+      script.removeEventListener('load', createFrom);
       document.body.removeChild(script);
     };
   }, []);
@@ -71,4 +75,4 @@ function Addcard({ value }: Props) {
   );
 }
 
-export default Addcard;
+export default memo(Addcard);
