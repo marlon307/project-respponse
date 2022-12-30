@@ -1,16 +1,10 @@
 # Respponse
 
-<div align="center">
 
-[<img alt="www.respponse.com" title="www.respponse.com" src="./public/favico.ico" />](https://project-respponse-marlon307.vercel.app/)
+<h2 align="center">🚧  Respponse 🚀 Em construção...  🚧</h2>
 
-##### CTRL+click
-
-##### COMMAND+click
-
-[https://project-respponse-marlon307.vercel.app/](https://project-respponse-marlon307.vercel.app/)
-
-</div>
+</br>
+</br>
 
 ## project-respponse
 
@@ -33,18 +27,9 @@ Atualmente eu @_marlon307 trabalho no projeto sozinho esta sendo divertido, pois
 - [TypeScript](https://www.typescriptlang.org/)
 - [Next.Js](https://nextjs.org/)
 - [Sass](https://sass-lang.com/)
-- [Python - Flask](https://flask.palletsprojects.com/)
+- [Python - FastAPI](https://fastapi.tiangolo.com/)
 - [Mysql](https://www.mysql.com/)
 </br>
 </br>
 
-<h4 align="center">🚧  Respponse 🚀 Em construção...  🚧</h4>
 
-## O que falta fazer?
-
-- [BackEnd](#-BackEnd)
-
-<h2 align="center">Progresso de produção do site</h2>
-
-- Font End 92%
-- BackEnd 0%

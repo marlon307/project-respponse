@@ -20,42 +20,37 @@ function Addcard({ value }: Props) {
     const script = document.createElement('script');
     script.src = 'https://sdk.mercadopago.com/js/v2';
     document.body.appendChild(script);
-    script.addEventListener('load', () => {
-      function rednderForm(price: number) {
-        const mp = new MercadoPago(process.env.MP_P_KEY);
-        const bricksBuilder = mp.bricks();
+    script.addEventListener('load', async () => {
+      const mp = new MercadoPago(process.env.MP_P_KEY);
+      const bricksBuilder = mp.bricks();
 
-        async function createForm(formBuilder: any) {
-          const settings = {
-            initialization: {
-              amount: price, // valor total a ser pago
+      const settings = {
+        initialization: {
+          amount: value, // valor total a ser pago
+        },
+        customization: {
+          visual: {
+            style: {
+              theme: 'default', // | 'dark' | 'bootstrap' | 'flat'
+              formPadding: '0',
             },
-            customization: {
-              visual: {
-                style: {
-                  theme: 'default', // | 'dark' | 'bootstrap' | 'flat'
-                  formPadding: '0',
-                },
-              },
-            },
-            callbacks: {
-              onReady: () => { },
-              onError: (error: any) => {
-                // eslint-disable-next-line no-console
-                console.log(error);
-              },
-              onSubmit: (cardFormData: Object) => {
-                api2.post('/teste', cardFormData);
-              },
-            },
-          };
-          const formElement = await formBuilder.create('cardPayment', 'form_card', settings);
-          window.paymentController = formElement;
-        }
-        createForm(bricksBuilder);
-      }
-      rednderForm(value);
+          },
+        },
+        callbacks: {
+          onReady: () => { },
+          onError: (error: any) => {
+            // eslint-disable-next-line no-console
+            console.log(error);
+          },
+          onSubmit: (cardFormData: Object) => {
+            api2.post('/teste', cardFormData);
+          },
+        },
+      };
+      const formElement = await bricksBuilder.create('cardPayment', 'form_card', settings);
+      window.paymentController = formElement;
     });
+    console.log(12);
 
     return () => {
       const iframe = document.body.querySelector('iframe[src*="mercadolibre"]');
