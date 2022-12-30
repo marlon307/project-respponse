@@ -24,21 +24,22 @@ function PixCard() {
         </figure>
       </div>
       <div className={ style.block }>
-        <Input
-          text="Código de pagamento"
-          value="00020126580014br.gov.bcb."
-          defaultValue="00020126580014br.gov.bcb."
-          onClick={ () => navigator.clipboard.writeText('00020126580014br.gov.bcb.') }
-        />
-        <button
-          type="button"
-          onClick={ () => navigator.clipboard.writeText('00020126580014br.gov.bcb.') }
-          aria-label="Copiar"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M21 9v-.4a1 1 0 0 0-.3-.3l-6-6-.2-.2h-.1A.9.9 0 0 0 14 2H10a3 3 0 0 0-3 3v1H6a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-1h1a3 3 0 0 0 3-3V9Zm-6-3.6L17.6 8H16a1 1 0 0 1-1-1V5.4ZM15 19a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h1v7a3 3 0 0 0 3 3h5v1Zm4-4a1 1 0 0 1-1 1h-8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3v3a3 3 0 0 0 3 3h3v5Z" fill="#333" />
-          </svg>
-        </button>
+        <div className={ style.clipboard }>
+          <Input
+            text="Código de pagamento"
+            defaultValue="00020126580014br.gov.bcb."
+            onClick={ () => navigator.clipboard.writeText('00020126580014br.gov.bcb.') }
+          />
+          <button
+            type="button"
+            onClick={ () => navigator.clipboard.writeText('00020126580014br.gov.bcb.') }
+            aria-label="Copiar"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21 9v-.4a1 1 0 0 0-.3-.3l-6-6-.2-.2h-.1A.9.9 0 0 0 14 2H10a3 3 0 0 0-3 3v1H6a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-1h1a3 3 0 0 0 3-3V9Zm-6-3.6L17.6 8H16a1 1 0 0 1-1-1V5.4ZM15 19a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h1v7a3 3 0 0 0 3 3h5v1Zm4-4a1 1 0 0 1-1 1h-8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3v3a3 3 0 0 0 3 3h3v5Z" fill="#333" />
+            </svg>
+          </button>
+        </div>
       </div>
       <div className={ style.block }>
         <h3>Como pagar?</h3>
