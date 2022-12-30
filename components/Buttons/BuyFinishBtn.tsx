@@ -5,6 +5,7 @@ import ContentModal from '../Modal/ContentModal';
 import registerOrder from '../../hooks/registerOrder';
 import type { Pay, TypeEditBagInfos } from '../../@types/bag';
 import style from './style.module.scss';
+import PixCard from '../PaymetCard/PixCard';
 
 type TBuyFinish = {
   listProducts: TypeEditBagInfos[];
@@ -15,7 +16,7 @@ type TBuyFinish = {
   setItallment: (p: Pay) => void
 };
 
-const Addacard = lazy(() => import('../Add/Addcard'));
+const Addacard = lazy(() => import('../PaymetCard/Addcard'));
 
 function BuyFinishBtn({
   listProducts, shippingId, addresId, price, paymentMethod, setItallment,
@@ -30,19 +31,20 @@ function BuyFinishBtn({
 
       switch (paymentMethod.method) {
         case 'PIX': {
-          const data = await registerOrder(addresId, shippingId!);
+          // const data = await registerOrder(addresId, shippingId!);
 
-          if (data.status === 200) {
-            msg = `Pedido: #${data.order.toString().padStart(6, '0')}`;
-          }
+          // if (data.status === 200) {
+          //   msg = `Pedido: #${data.order.toString().padStart(6, '0')}`;
+          // }
 
-          if (data.status === 409) {
-            msg = 'Finalizar Compra';
-            const productCard = document.getElementById(`product-${data.order.product_id + data.order.options_product}`)!;
-            productCard.scrollIntoView({
-              behavior: 'smooth',
-            });
-          }
+          // if (data.status === 409) {
+          //   msg = 'Finalizar Compra';
+          //   const productCard = document.getElementById(`product-${data.order.product_id + data.order.options_product}`)!;
+          //   productCard.scrollIntoView({
+          //     behavior: 'smooth',
+          //   });
+          // }
+          setOpenModal({ modal: 'pix' });
           break;
         }
         case 'Cartão de Crédito':
@@ -80,13 +82,20 @@ function BuyFinishBtn({
       >
         { progress }
       </button>
-      <ContentModal isOpen={ openModal.modal === 'card' } openModal={ setOpenModal }>
+      <ContentModal
+        isOpen={
+          openModal.modal === 'pix'
+          || openModal.modal === 'card'
+        }
+        openModal={ setOpenModal }
+      >
         { openModal.modal === 'card' && (
           <Addacard
             value={ price }
             exectFunction={ setItallment }
           />
         ) }
+        { openModal.modal === 'pix' && <PixCard /> }
       </ContentModal>
     </>
   );

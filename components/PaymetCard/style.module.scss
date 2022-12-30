@@ -1,0 +1,81 @@
+.sectionadd {
+  display: block;
+  background: var(--maincolor);
+  width: 100vw;
+  max-width: 450px;
+  border-radius: 1em;
+}
+
+.content {
+  padding: 0.8em;
+}
+
+.pixcard {
+  display: block;
+  background: var(--maincolor);
+  width: 100vw;
+  max-width: 450px;
+  border-radius: 1em;
+  padding: 1em 0;
+
+  figure {
+    position: relative;
+    display: block;
+    height: 300px;
+    max-width: 220px;
+    max-height: 200px;
+    margin: 0 auto;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  span {
+    font-size: 0.9em;
+  }
+}
+
+.block {
+  margin-bottom: 2em;
+  counter-reset: css-counter 0;
+  padding: 0 1em;
+
+  h3 {
+    margin-bottom: 1em;
+  }
+
+  button {
+    background: transparent;
+    position: absolute;
+    right: 8px;
+    top: 9px;
+    cursor: pointer;
+  }
+}
+
+.clipboard {
+  position: relative;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1em;
+  counter-increment: css-counter 1;
+
+  &::before {
+    content: counter(css-counter);
+    text-align: center;
+    display: block;
+    width: 18px;
+    flex: none;
+    height: 18px;
+    border: 2px solid #333;
+    line-height: 1.2;
+    border-radius: 50%;
+    font-weight: 600;
+  }
+}
