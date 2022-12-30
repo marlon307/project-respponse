@@ -2,8 +2,8 @@
 
 import React, { lazy, useState } from 'react';
 import ContentModal from '../Modal/ContentModal';
-import type { Pay, TypeEditBagInfos } from '../../@types/bag';
 import registerOrder from '../../hooks/registerOrder';
+import type { Pay, TypeEditBagInfos } from '../../@types/bag';
 import style from './style.module.scss';
 
 type TBuyFinish = {
@@ -24,7 +24,7 @@ function BuyFinishBtn({
   const [openModal, setOpenModal] = useState<any>({ modal: '' });
 
   async function handleClickBuy() {
-    if (listProducts.length && progress === 'Finalizar Compra' && addresId && shippingId) {
+    if (listProducts.length && progress === 'Finalizar Compra') {
       setProgress('Processando pedido...');
       let msg = '';
 
@@ -48,10 +48,25 @@ function BuyFinishBtn({
         case 'Cartão de Crédito':
           setOpenModal({ modal: 'card' });
           break;
-        default:
-          break;
-      }
+        default: {
+          let element = null;
 
+          if (paymentMethod.method === '') {
+            element = document.getElementById('field-payments');
+          }
+          if (!shippingId) {
+            element = document.getElementById('field-shipping');
+          }
+          if (!addresId) {
+            element = document.getElementById('field-address');
+          }
+          msg = 'Finalizar Compra';
+          element?.scrollIntoView({
+            behavior: 'smooth',
+          });
+          break;
+        }
+      }
       setProgress(msg);
     }
   }

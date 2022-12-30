@@ -18,7 +18,10 @@ interface TBarBuy {
   }
 }
 
-const installmentsMP = {
+type PI = {
+  [key: number]: number
+};
+const installmentsMP: PI = {
   1: 0,
   2: 7.64,
   3: 9.23,
