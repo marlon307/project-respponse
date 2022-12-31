@@ -31,20 +31,20 @@ function BuyFinishBtn({
 
       switch (paymentMethod.method) {
         case 'PIX': {
-          // const data = await registerOrder(addresId, shippingId!);
+          const data = await registerOrder(addresId, shippingId!, 'pix');
 
-          // if (data.status === 200) {
-          //   msg = `Pedido: #${data.order.toString().padStart(6, '0')}`;
-          // }
+          if (data.status === 200) {
+            msg = `Pedido: #${data.order.number_order.toString().padStart(6, '0')}`;
+            setOpenModal({ modal: 'pix', ...data.order });
+          }
 
-          // if (data.status === 409) {
-          //   msg = 'Finalizar Compra';
-          //   const productCard = document.getElementById(`product-${data.order.product_id + data.order.options_product}`)!;
-          //   productCard.scrollIntoView({
-          //     behavior: 'smooth',
-          //   });
-          // }
-          setOpenModal({ modal: 'pix' });
+          if (data.status === 409) {
+            msg = 'Finalizar Compra';
+            const productCard = document.getElementById(`product-${data.order.product_id + data.order.options_product}`)!;
+            productCard.scrollIntoView({
+              behavior: 'smooth',
+            });
+          }
           break;
         }
         case 'Cartão de Crédito':
@@ -95,7 +95,7 @@ function BuyFinishBtn({
             exectFunction={ setItallment }
           />
         ) }
-        { openModal.modal === 'pix' && <PixCard /> }
+        { openModal.modal === 'pix' && <PixCard infoPix={ openModal } /> }
       </ContentModal>
     </>
   );
