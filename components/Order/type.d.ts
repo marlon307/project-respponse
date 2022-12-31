@@ -7,6 +7,7 @@ interface Props {
 interface StateOrder {
   id?: number;
   status_id?: number,
+  payment: string;
   address?: {
     road: string;
     number_home: string;

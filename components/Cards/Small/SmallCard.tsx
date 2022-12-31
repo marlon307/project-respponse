@@ -39,7 +39,7 @@ function SmallCard({
               { editable ? (
                 <button
                   type="button"
-                  title={ `${quantity} ${type} - ${title}. ( 👇 ) Clique para alterar a quantidade.` }
+                  title={ `( 👇 ) Clique para alterar a quantidade. ${quantity} ${type} - ${title}.` }
                   data-error={ editable && quantity > objectID.max_quantity }
                   onClick={ eventModal }
                 >
