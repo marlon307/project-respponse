@@ -58,6 +58,10 @@
 
 .clipboard {
   position: relative;
+
+  svg {
+    fill: var(--color-grey);
+  }
 }
 
 .row {
