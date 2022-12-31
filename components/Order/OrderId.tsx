@@ -39,7 +39,7 @@ function OrderId({ orderid }: Props) {
             <span>
               <b>Forma de pagamento:</b>
               { ' ' }
-              Pix
+              { orderId.payment }
             </span>
           </div>
           <span>
