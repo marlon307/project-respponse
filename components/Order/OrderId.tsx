@@ -37,7 +37,7 @@ function OrderId({ orderid }: Props) {
               { orderId?.id?.toString().padStart(6, '0') }
             </span>
             <span>
-              <b>Forma de pagamento:</b>
+              <b>Pagamento:</b>
               { ' ' }
               { orderId.payment }
             </span>
