@@ -28,7 +28,7 @@ function PixCard() {
         <div className={ style.clipboard }>
           <Input
             text="Código de pagamento"
-            value="00020126580014br.gov.bcb."
+            defaultValue="00020126580014br.gov.bcb.00020126580014br.gov.bcb.00020126580014br.gov.bcb.00020126580014br.gov.bcb."
           />
           <ClipBoard text="00020126580014br.gov.bcb." />
         </div>
