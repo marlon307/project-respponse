@@ -95,7 +95,7 @@ function BarBuy({
           </div>
           <BuyFinishBtn
             listProducts={ listProducts }
-            shippingId={ shipping.id }
+            shipping={ shipping }
             addresId={ addresId }
             price={ calcValue }
             paymentMethod={ paymentMethod }
