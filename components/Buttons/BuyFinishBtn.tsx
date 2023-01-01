@@ -3,13 +3,13 @@
 import React, { lazy, useState } from 'react';
 import ContentModal from '../Modal/ContentModal';
 import registerOrder from '../../hooks/registerOrder';
-import type { Pay, TypeEditBagInfos } from '../../@types/bag';
-import style from './style.module.scss';
 import PixCard from '../PaymetCard/PixCard';
+import type { Pay, Shipping, TypeEditBagInfos } from '../../@types/bag';
+import style from './style.module.scss';
 
 type TBuyFinish = {
   listProducts: TypeEditBagInfos[];
-  shippingId: number | undefined;
+  shipping: Shipping;
   addresId: number;
   price: number;
   paymentMethod: Pay;
@@ -19,7 +19,7 @@ type TBuyFinish = {
 const Addacard = lazy(() => import('../PaymetCard/Addcard'));
 
 function BuyFinishBtn({
-  listProducts, shippingId, addresId, price, paymentMethod, setItallment,
+  listProducts, shipping, addresId, price, paymentMethod, setItallment,
 }: TBuyFinish) {
   const [progress, setProgress] = useState<number | string>('Finalizar Compra');
   const [openModal, setOpenModal] = useState<any>({ modal: '' });
@@ -31,7 +31,7 @@ function BuyFinishBtn({
 
       switch (paymentMethod.method) {
         case 'PIX': {
-          const data = await registerOrder(addresId, shippingId!, 'pix');
+          const data = await registerOrder(addresId, shipping.id!, 'pix', shipping?.price);
 
           if (data.status === 200) {
             msg = `Pedido: #${data.order.number_order.toString().padStart(6, '0')}`;
@@ -56,7 +56,7 @@ function BuyFinishBtn({
           if (paymentMethod.method === '') {
             element = document.getElementById('field-payments');
           }
-          if (!shippingId) {
+          if (!shipping.id) {
             element = document.getElementById('field-shipping');
           }
           if (!addresId) {
