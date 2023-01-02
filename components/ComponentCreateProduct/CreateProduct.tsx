@@ -19,7 +19,16 @@ interface IFile {
   [key: string]: any
 }
 
-function CreateProduct({ list }) {
+interface Props {
+  propsCreateProduct: {
+    list_ctg: Array<ICategory>;
+    list_colors: Array<IColor>;
+    list_sizes: Array<ISize>;
+    list_gender: Array<IGender>;
+  }
+}
+
+function CreateProduct({ propsCreateProduct }: Props) {
   const [selectedFeature, setSelectedFeature] = useState(1);
   const [listColors, setListColors] = useState<ListColor>({ 1: {} });
   const [listSizes, setListSize] = useState<ISize[]>([]);
@@ -104,7 +113,7 @@ function CreateProduct({ list }) {
           required
         >
           <option disabled hidden value="">Selectione uma categoria</option>
-          { list.list_ctg.map(({ id, category_name }) => (
+          { propsCreateProduct.list_ctg.map(({ id, category_name }) => (
             <option
               key={ id }
               value={ id }
@@ -118,6 +127,7 @@ function CreateProduct({ list }) {
           id="title"
           type="text"
           name="title"
+          text="Titulo"
           placeholder="Titulo"
           msgError="Informe um titulo"
           required
@@ -156,7 +166,7 @@ function CreateProduct({ list }) {
                   <span style={ { backgroundColor: listColors[key]?.color } } />
                   <span>Cor</span>
                   <ul>
-                    { list.list_colors.map(({ id, color, color_name }) => (
+                    { propsCreateProduct.list_colors.map(({ id, color, color_name }) => (
                       <li key={ id }>
                         <button
                           type="button"
@@ -178,6 +188,7 @@ function CreateProduct({ list }) {
                   id={ key }
                   type="text"
                   name={ `sku-${key}` }
+                  text="SKU"
                   placeholder="SKU"
                   msgError="SKU"
                   required
@@ -189,7 +200,8 @@ function CreateProduct({ list }) {
                     id={ key }
                     type="text"
                     name={ `price-${key}` }
-                    placeholder="(R$) Preço"
+                    placeholder="R$ 0,00"
+                    text="(R$) Preço"
                     msgError="(R$) Preço"
                     required
                     max={ 8 }
@@ -198,7 +210,8 @@ function CreateProduct({ list }) {
                     id={ key }
                     type="text"
                     name={ `discount-${key}` }
-                    placeholder="(R$) Desconto"
+                    placeholder="R$ 0,00"
+                    text="(R$) Desconto"
                     msgError="(R$) Desconto"
                     required
                     max={ 8 }
@@ -224,7 +237,7 @@ function CreateProduct({ list }) {
                       +
                     </pre>
                     <ul>
-                      { list.list_sizes.map(({ id, size }) => (
+                      { propsCreateProduct.list_sizes.map(({ id, size }) => (
                         <li key={ id }>
                           <button
                             type="button"
@@ -274,7 +287,7 @@ function CreateProduct({ list }) {
         <div className={ style.gen }>
           <h3>Género</h3>
           <div className={ style.gen_options }>
-            { list.list_gender.map(({ id, gender, gender_name }) => (
+            { propsCreateProduct.list_gender.map(({ id, gender, gender_name }) => (
               <InputRadio
                 key={ id }
                 checked={ id === 1 }

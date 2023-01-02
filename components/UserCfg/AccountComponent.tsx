@@ -14,8 +14,6 @@ const Order = lazy(() => import('../Order/Orders'));
 const OrderId = lazy(() => import('../Order/OrderId'));
 const Address = lazy(() => import('../Cards/Address'));
 const Addaderess = lazy(() => import('../Add/Address'));
-const Cards = lazy(() => import('../Cards/Cards'));
-const AddCard = lazy(() => import('../PaymetCard/Addcard'));
 const Help = lazy(() => import('../../app/help/page'));
 
 function AccountComponent() {
@@ -117,11 +115,11 @@ function AccountComponent() {
         </a>
         <div className={ style.dropcontainer }>
           <section className={ style.section }>
-            <BtnAdd eventBtn={ () => functionOpenModal('cards') } />
             <div className={ style.contentoption }>
-              <Suspense fallback={ <div className="spinner" /> }>
-                <Cards />
-              </Suspense>
+              <p>
+                Por questões de segurança, só é possível editar e/ou
+                cadastrar um cartão durante o processo de compra.
+              </p>
             </div>
           </section>
         </div>
@@ -153,7 +151,6 @@ function AccountComponent() {
         openModal={ setTypeModal }
       >
         { (typeModal === 'order' && orderid !== 0) && <OrderId orderid={ orderid } /> }
-        <AddCard />
         { (typeModal === 'address') && <Addaderess execFunction={ closeModal! } /> }
       </ContentModal>
     </>

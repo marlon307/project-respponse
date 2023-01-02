@@ -22,7 +22,7 @@ async function getPageCretProduct(): Promise<Props> {
 
 async function ProductId() {
   const { list } = await getPageCretProduct();
-  return <CreateProduct list={ list } />;
+  return <CreateProduct propsCreateProduct={ list } />;
 }
 
 export default ProductId;

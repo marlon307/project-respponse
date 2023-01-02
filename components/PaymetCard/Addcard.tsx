@@ -1,11 +1,6 @@
 import React, { memo, useEffect } from 'react';
-import { api2 } from '../../service/api';
+import registerOrder from '../../hooks/registerOrder';
 import style from './style.module.scss';
-
-interface Props {
-  value: number;
-  exectFunction: Function;
-}
 
 declare global {
   interface Window {
@@ -13,9 +8,23 @@ declare global {
   }
 }
 
+interface Props {
+  value: number;
+  propsOrder: {
+    addresId: number
+    shippingId: number
+    method_pay: string
+    price: number
+  };
+  onFinishPayment: Function;
+  exectFunction: Function;
+}
+
 // reference https://github.com/s4mukka/react-sdk-mercadopago/blob/master/src/v2.ts
 
-function Addcard({ value, exectFunction }: Props) {
+function Addcard({
+  value, propsOrder, exectFunction, onFinishPayment,
+}: Props) {
   useEffect(() => {
     async function createFrom() {
       const mp = new MercadoPago(process.env.MP_P_KEY);
@@ -39,9 +48,21 @@ function Addcard({ value, exectFunction }: Props) {
             // eslint-disable-next-line no-console
             console.log(error);
           },
-          onSubmit: async (cardFormData: Object) => {
-            exectFunction!((c: any) => ({ ...c, ...cardFormData }));
-            await api2.post('/teste', cardFormData);
+          onSubmit: async (cardFormData: any) => {
+            const data = await registerOrder(
+              propsOrder.addresId,
+              propsOrder.shippingId,
+              cardFormData.payment_method_id,
+              propsOrder.price,
+              cardFormData,
+            ).catch((err) => ({ data: err }));
+            if (data.status === 200) {
+              exectFunction!((c: any) => ({
+                ...c,
+                ...cardFormData,
+              }));
+              onFinishPayment({ number_order: data.order.number_order });
+            }
           },
         },
       };
@@ -52,6 +73,7 @@ function Addcard({ value, exectFunction }: Props) {
 
     const script = document.createElement('script');
     script.src = 'https://sdk.mercadopago.com/js/v2';
+    script.async = true;
     document.body.appendChild(script);
     script.addEventListener('load', createFrom);
 

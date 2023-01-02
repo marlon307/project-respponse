@@ -5,9 +5,9 @@
 }
 
 .contprod {
-  // display: grid;
   margin: 0 6%;
   width: -webkit-fill-available;
+  margin-bottom: 2em;
 }
 
 .panel_addproduct {
@@ -39,7 +39,7 @@
 }
 
 .color_size {
-  margin-top: 12px;
+  margin-top: 2em;
   display: flex;
   align-items: center;
 
@@ -131,6 +131,7 @@
   border: 1px solid var(--color-border);
   font-size: 1em;
   cursor: pointer;
+  margin-bottom: 1em;
 }
 
 .select_custon {

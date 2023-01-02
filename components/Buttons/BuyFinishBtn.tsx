@@ -24,6 +24,11 @@ function BuyFinishBtn({
   const [progress, setProgress] = useState<number | string>('Finalizar Compra');
   const [openModal, setOpenModal] = useState<any>({ modal: '' });
 
+  function finishPayment({ number_order }: { number_order: number }) {
+    setOpenModal({});
+    setProgress(`Pedido: #${number_order.toString().padStart(6, '0')}`);
+  }
+
   async function handleClickBuy() {
     if (listProducts.length && progress === 'Finalizar Compra') {
       setProgress('Processando pedido...');
@@ -31,7 +36,7 @@ function BuyFinishBtn({
 
       switch (paymentMethod.method) {
         case 'PIX': {
-          const data = await registerOrder(addresId, shipping.id!, 'pix', shipping?.price);
+          const data = await registerOrder(addresId, shipping.id!, 'pix', shipping?.price, {});
 
           if (data.status === 200) {
             msg = `Pedido: #${data.order.number_order.toString().padStart(6, '0')}`;
@@ -48,6 +53,7 @@ function BuyFinishBtn({
           break;
         }
         case 'Cartão de Crédito':
+          msg = 'Finalizar Compra';
           setOpenModal({ modal: 'card' });
           break;
         default: {
@@ -93,6 +99,13 @@ function BuyFinishBtn({
           <Addacard
             value={ price }
             exectFunction={ setItallment }
+            onFinishPayment={ finishPayment! }
+            propsOrder={ {
+              addresId,
+              shippingId: shipping.id!,
+              method_pay: paymentMethod.method,
+              price: shipping.price,
+            } }
           />
         ) }
         { openModal.modal === 'pix' && <PixCard infoPix={ openModal } /> }

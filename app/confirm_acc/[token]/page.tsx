@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
-import HeadSEO from '../../../components/Head/HeadSEO';
 import { api2 } from '../../../service/api';
 import style from '../../../Sass/style.module.scss';
 
@@ -37,23 +36,17 @@ function Token({ params }: Props) {
   }, []);
 
   return (
-    <>
-      <HeadSEO
-        title="Confimando conta!"
-        description="Insira seu e-mail para recuperar sua senha."
-      />
-      <section className={ style.contlogin }>
-        <h1>{ contMsg || '...' }</h1>
-        <div className={ style.msgregister }>
-          { contMsg && <span /> }
-        </div>
-        <div className={ style.action }>
-          <Link className="link" href="/login/login-register">
-            Fazer Login
-          </Link>
-        </div>
-      </section>
-    </>
+    <section className={ style.contlogin }>
+      <h1>{ contMsg || '...' }</h1>
+      <div className={ style.msgregister }>
+        { contMsg && <span /> }
+      </div>
+      <div className={ style.action }>
+        <Link className="link" href="/login/login-register">
+          Fazer Login
+        </Link>
+      </div>
+    </section>
   );
 }
 
