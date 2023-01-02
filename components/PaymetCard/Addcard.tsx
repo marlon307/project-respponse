@@ -1,6 +1,5 @@
 import React, { memo, useEffect } from 'react';
 import registerOrder from '../../hooks/registerOrder';
-import { api2 } from '../../service/api';
 import style from './style.module.scss';
 
 declare global {
@@ -17,12 +16,15 @@ interface Props {
     method_pay: string
     price: number
   };
+  onFinishPayment: Function;
   exectFunction: Function;
 }
 
 // reference https://github.com/s4mukka/react-sdk-mercadopago/blob/master/src/v2.ts
 
-function Addcard({ value, propsOrder, exectFunction }: Props) {
+function Addcard({
+  value, propsOrder, exectFunction, onFinishPayment,
+}: Props) {
   useEffect(() => {
     async function createFrom() {
       const mp = new MercadoPago(process.env.MP_P_KEY);
@@ -46,18 +48,21 @@ function Addcard({ value, propsOrder, exectFunction }: Props) {
             // eslint-disable-next-line no-console
             console.log(error);
           },
-          onSubmit: async (cardFormData: object) => {
-            exectFunction!((c: any) => ({ ...c, ...cardFormData }));
-            // await api2.post('/teste', cardFormData);
-            // console.log(cardFormData);
-
-            await registerOrder(
+          onSubmit: async (cardFormData: any) => {
+            const data = await registerOrder(
               propsOrder.addresId,
               propsOrder.shippingId,
               cardFormData.payment_method_id,
               propsOrder.price,
               cardFormData,
-            );
+            ).catch((err) => ({ data: err }));
+            if (data.status === 200) {
+              exectFunction!((c: any) => ({
+                ...c,
+                ...cardFormData,
+              }));
+              onFinishPayment({ number_order: data.order.number_order });
+            }
           },
         },
       };

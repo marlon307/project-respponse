@@ -24,6 +24,11 @@ function BuyFinishBtn({
   const [progress, setProgress] = useState<number | string>('Finalizar Compra');
   const [openModal, setOpenModal] = useState<any>({ modal: '' });
 
+  function finishPayment({ number_order }) {
+    setOpenModal({});
+    setProgress(`Pedido: #${number_order.toString().padStart(6, '0')}`);
+  }
+
   async function handleClickBuy() {
     if (listProducts.length && progress === 'Finalizar Compra') {
       setProgress('Processando pedido...');
@@ -94,6 +99,7 @@ function BuyFinishBtn({
           <Addacard
             value={ price }
             exectFunction={ setItallment }
+            onFinishPayment={ finishPayment! }
             propsOrder={ {
               addresId,
               shippingId: shipping.id!,
