@@ -118,6 +118,7 @@ function CreateProduct({ list }) {
           id="title"
           type="text"
           name="title"
+          text="Titulo"
           placeholder="Titulo"
           msgError="Informe um titulo"
           required
@@ -178,6 +179,7 @@ function CreateProduct({ list }) {
                   id={ key }
                   type="text"
                   name={ `sku-${key}` }
+                  text="SKU"
                   placeholder="SKU"
                   msgError="SKU"
                   required
@@ -189,7 +191,8 @@ function CreateProduct({ list }) {
                     id={ key }
                     type="text"
                     name={ `price-${key}` }
-                    placeholder="(R$) Preço"
+                    placeholder="R$ 0,00"
+                    text="(R$) Preço"
                     msgError="(R$) Preço"
                     required
                     max={ 8 }
@@ -198,7 +201,8 @@ function CreateProduct({ list }) {
                     id={ key }
                     type="text"
                     name={ `discount-${key}` }
-                    placeholder="(R$) Desconto"
+                    placeholder="R$ 0,00"
+                    text="(R$) Desconto"
                     msgError="(R$) Desconto"
                     required
                     max={ 8 }

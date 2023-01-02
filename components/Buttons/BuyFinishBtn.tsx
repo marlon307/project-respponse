@@ -24,7 +24,7 @@ function BuyFinishBtn({
   const [progress, setProgress] = useState<number | string>('Finalizar Compra');
   const [openModal, setOpenModal] = useState<any>({ modal: '' });
 
-  function finishPayment({ number_order }) {
+  function finishPayment({ number_order }: { number_order: number }) {
     setOpenModal({});
     setProgress(`Pedido: #${number_order.toString().padStart(6, '0')}`);
   }

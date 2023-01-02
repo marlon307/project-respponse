@@ -73,6 +73,7 @@ function Addcard({
 
     const script = document.createElement('script');
     script.src = 'https://sdk.mercadopago.com/js/v2';
+    script.async = true;
     document.body.appendChild(script);
     script.addEventListener('load', createFrom);
 
