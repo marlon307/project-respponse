@@ -31,7 +31,7 @@ function BuyFinishBtn({
 
       switch (paymentMethod.method) {
         case 'PIX': {
-          const data = await registerOrder(addresId, shipping.id!, 'pix', shipping?.price);
+          const data = await registerOrder(addresId, shipping.id!, 'pix', shipping?.price, {});
 
           if (data.status === 200) {
             msg = `Pedido: #${data.order.number_order.toString().padStart(6, '0')}`;
@@ -48,6 +48,7 @@ function BuyFinishBtn({
           break;
         }
         case 'Cartão de Crédito':
+          msg = 'Finalizar Compra';
           setOpenModal({ modal: 'card' });
           break;
         default: {
@@ -93,6 +94,12 @@ function BuyFinishBtn({
           <Addacard
             value={ price }
             exectFunction={ setItallment }
+            propsOrder={ {
+              addresId,
+              shippingId: shipping.id!,
+              method_pay: paymentMethod.method,
+              price: shipping.price,
+            } }
           />
         ) }
         { openModal.modal === 'pix' && <PixCard infoPix={ openModal } /> }
