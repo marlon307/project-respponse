@@ -5,7 +5,6 @@ export default async function Head() {
   return (
     <>
       <DefaultTags />
-
       <title>Respponse - Lista de favoritos</title>
       <meta name="description" content="Lista de favoritos" />
       <link rel="canonical" href="https://project-respponse-marlon307.vercel.app/favorite" />
