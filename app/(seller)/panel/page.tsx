@@ -11,8 +11,7 @@ async function getPropsPanel(): Promise<PanelSeller> {
       cache: 'no-store',
       authorization: `Bearer ${token}`,
     },
-  })
-    .catch((error) => ({ data: { msg: error.message } }));
+  }).catch((error) => ({ data: { msg: error.message } }));
   return data;
 }
 
