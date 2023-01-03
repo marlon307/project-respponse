@@ -41,8 +41,9 @@ function Address({ execFunction }: TAddress) {
   }
 
   async function getAddress({ target }: ChangeEvent<HTMLInputElement>) {
-    if (target.value.length === 8) {
-      const response = await api2.get(`https://viacep.com.br/ws/${target.value}/json/`);
+    const zipCode = target.value.replaceAll('-', '');
+    if (zipCode.length === 8) {
+      const response = await api2.get(`https://viacep.com.br/ws/${zipCode}/json/`);
       setAdrres(response.data);
     }
   }
@@ -61,7 +62,8 @@ function Address({ execFunction }: TAddress) {
             id="namedest"
             type="text"
             name="name_delivery"
-            placeholder="Nome do destinatário *"
+            placeholder="Nome Sobrenome"
+            text="Nome do destinatário"
             autoComplete="name"
             msgError="Insira o Nome do destinatário."
           />
@@ -69,7 +71,8 @@ function Address({ execFunction }: TAddress) {
             id="zipcode"
             type="text"
             name="zipcode"
-            placeholder="CEP *"
+            placeholder="00000000"
+            text="CEP"
             autoComplete="postal-code"
             msgError="Insira um CEP válido."
             maxLength={ 8 }
@@ -79,7 +82,8 @@ function Address({ execFunction }: TAddress) {
             id="street"
             type="text"
             name="street"
-            placeholder="Rua *"
+            text="Logradouro"
+            placeholder="Rua"
             autoComplete="street-address"
             msgError="Insira o nome da Rua."
             defaultValue={ address.logradouro }
@@ -88,7 +92,8 @@ function Address({ execFunction }: TAddress) {
             id="district"
             type="text"
             name="district"
-            placeholder="Bairro *"
+            text="Bairro"
+            placeholder="Bairro"
             autoComplete="address-level3"
             msgError="Insira o nome do Bairro."
             defaultValue={ address.bairro }
@@ -96,25 +101,30 @@ function Address({ execFunction }: TAddress) {
           <Input
             id="number"
             type="text"
+            text="Número"
             name="number_home"
-            placeholder="N° *"
+            placeholder="N°"
             msgError="Insira o número da Casa."
           />
           <Input
             id="state"
             type="text"
             name="state"
-            placeholder="UF *"
+            text="Estado"
+            placeholder="UF"
             autoComplete="shipping address-level1"
             msgError="Insira o Estado (UF)."
+            disabled
             max={ 2 }
             defaultValue={ address.uf }
           />
           <Input
             id="city"
             type="text"
+            text="Cidade"
             name="city"
-            placeholder="Cidade *"
+            placeholder="Cidade"
+            disabled
             autoComplete="shipping shipping address-level2"
             msgError="Insira a Cidade."
             defaultValue={ address.localidade }

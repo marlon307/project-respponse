@@ -3,7 +3,7 @@ import { SmallCard } from '../../components/Cards';
 import mockBag from '../../service/mockBag';
 import style from '../../Sass/style.module.scss';
 
-function Favorite() {
+function Page() {
   return (
     <section className={ style.favorites }>
       <h1 className={ style.title } title="Favoritos">
@@ -26,21 +26,4 @@ function Favorite() {
   );
 }
 
-// export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-//   if (req.cookies.u_token) {
-//     return {
-//       props: {
-//         logged: req.cookies.u_token,
-//       },
-//     };
-//   }
-
-//   return {
-//     redirect: {
-//       permanent: false,
-//       destination: '/',
-//     },
-//   };
-// };
-
-export default Favorite;
+export default Page;

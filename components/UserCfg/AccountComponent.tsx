@@ -145,7 +145,6 @@ function AccountComponent() {
       <ContentModal
         isOpen={
           (typeModal === 'order' && orderid !== 0)
-          || typeModal === 'cards'
           || typeModal === 'address'
         }
         openModal={ setTypeModal }

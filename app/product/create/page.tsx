@@ -20,9 +20,9 @@ async function getPageCretProduct(): Promise<Props> {
   };
 }
 
-async function ProductId() {
+async function Page() {
   const { list } = await getPageCretProduct();
   return <CreateProduct propsCreateProduct={ list } />;
 }
 
-export default ProductId;
+export default Page;
