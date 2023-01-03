@@ -6,7 +6,7 @@ import BtnIco from '../../../components/Buttons/BtnIco';
 import { Input } from '../../../components/ComponentsForm';
 import style from '../../../Sass/style.module.scss';
 
-function Resetpsw() {
+export default function Page() {
   // const cookie = cookies().get('u_token')?.value;
 
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);
@@ -75,5 +75,3 @@ function Resetpsw() {
     </section>
   );
 }
-
-export default Resetpsw;

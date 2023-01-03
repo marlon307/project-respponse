@@ -1,10 +1,10 @@
 import React from 'react';
 import AccountComponent from '../../components/UserCfg/AccountComponent';
 
-async function Account() {
+async function Page() {
   return (
     <AccountComponent />
   );
 }
 
-export default Account;
+export default Page;

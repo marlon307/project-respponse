@@ -21,7 +21,7 @@ async function getProductID(prodID: number): Promise<TypeProduct> {
   return data.product;
 }
 
-async function ProductId({ params }: Props) {
+async function Page({ params }: Props) {
   const product = await getProductID(params.id);
 
   const {
@@ -127,4 +127,4 @@ async function ProductId({ params }: Props) {
   );
 }
 
-export default ProductId;
+export default Page;

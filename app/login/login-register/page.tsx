@@ -160,6 +160,7 @@ function Login() {
                 name="password"
                 text="Senha"
                 placeholder="Senha"
+                autoComplete="off"
                 msgError="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres."
                 disabled={ isLoading }
               />

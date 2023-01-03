@@ -3,7 +3,7 @@ import React from 'react';
 import HelpComponent from '../../components/Help';
 import style from '../../Sass/style.module.scss';
 
-function Help() {
+function Page() {
   // const { asPath } = useRouter();
 
   return (
@@ -13,4 +13,4 @@ function Help() {
   );
 }
 
-export default Help;
+export default Page;
