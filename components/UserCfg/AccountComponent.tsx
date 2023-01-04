@@ -11,7 +11,6 @@ import style from '../../Sass/style.module.scss';
 
 const Usercfg = lazy(() => import('./CfgUser'));
 const Order = lazy(() => import('../Order/Orders'));
-const OrderId = lazy(() => import('../Order/OrderId'));
 const Address = lazy(() => import('../Cards/Address'));
 const Addaderess = lazy(() => import('../Add/Address'));
 const Help = lazy(() => import('../../app/help/page'));
@@ -19,17 +18,9 @@ const Help = lazy(() => import('../../app/help/page'));
 function AccountComponent() {
   const { loggedOut } = useLogin();
   const [dropOption, setDropOption] = useState('');
-  // const [openModal, setOpenModal] = useState(false);
   const [typeModal, setTypeModal] = useState('');
-  const [orderid, setOrderId] = useState<number>(0);
-
   const functionOpenModal = useCallback((type: React.SetStateAction<string>) => {
     setTypeModal(type);
-  }, []);
-
-  const openOrderId = useCallback((idorder: number) => {
-    setTypeModal('order');
-    setOrderId(idorder);
   }, []);
 
   function closeModal() {
@@ -76,7 +67,7 @@ function AccountComponent() {
         </a>
         <div className={ style.dropcontainer }>
           <Suspense fallback={ <div className="spinner" /> }>
-            <Order execFunction={ openOrderId } isRequest={ dropOption === 'order' } />
+            <Order isRequest={ dropOption === 'order' } />
           </Suspense>
         </div>
       </div>
@@ -143,13 +134,9 @@ function AccountComponent() {
         </div>
       </div>
       <ContentModal
-        isOpen={
-          (typeModal === 'order' && orderid !== 0)
-          || typeModal === 'address'
-        }
+        isOpen={ typeModal === 'address' }
         openModal={ setTypeModal }
       >
-        { (typeModal === 'order' && orderid !== 0) && <OrderId orderid={ orderid } /> }
         { (typeModal === 'address') && <Addaderess execFunction={ closeModal! } /> }
       </ContentModal>
     </>

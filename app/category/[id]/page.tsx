@@ -1,19 +1,19 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
-// import { GetStaticProps, GetStaticPaths } from 'next';
-// import CardProduct from '../../components/Cards/CardProduct/CardProduct';
+import React, { Suspense, useCallback, useState } from 'react';
 import ItemList from '../../../components/Filter/ItemList';
-// import api from '../../../service/api';
-import useWindowSize from '../../../hooks/useWindowSize';
 import ContentModal from '../../../components/Modal/ContentModal';
 import Filter from '../../../components/Filter/Filter';
-import type { ICardProduct } from '../../../@types/typeCardProduct';
+import Loading from './loading';
+import Categorys from '../../../components/Category/Categorys';
 import type { StateSearchType } from '../search';
 import style from '../style.module.scss';
 
-function CategoryId({ products, pageFilter }: ICardProduct) {
-  const [sizeWidth] = useWindowSize();
+interface Props {
+  params: { id: string }
+}
+
+function Page({ params }: Props) {
   const [listFilter, setListFilter] = useState<StateSearchType['listFilter']>([]);
   const [modalFilter, setModalFilter] = useState(false);
 
@@ -21,12 +21,6 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
     const { id } = target;
     setListFilter((prevState) => prevState.filter((objId) => objId.id !== id));
   }, [listFilter]);
-
-  useEffect(() => {
-    if (sizeWidth > 790) {
-      setModalFilter(false);
-    }
-  }, [sizeWidth]);
 
   function handleClick() {
     setModalFilter(!modalFilter);
@@ -72,49 +66,12 @@ function CategoryId({ products, pageFilter }: ICardProduct) {
         </div>
       </div>
       <div className={ style.categorycont }>
-        {
-          products?.map((object) => (
-            // <CardProduct
-            //   key={ object.id }
-            //   objectProduct={ object }
-            // />
-            <div key={ object.id }>
-              Card Product
-            </div>
-          ))
-        }
+        <Suspense fallback={ <Loading /> }>
+          <Categorys category_id={ params.id } filterConfig={ listFilter } />
+        </Suspense>
       </div>
     </div>
   );
 }
 
-export default CategoryId;
-
-// type RequestCategoryType = {
-//   path: string
-// };
-
-// export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-//   const { data } = await api.get('/categorys');
-//   const pgProps = await data.categorys.find(({ path }: RequestCategoryType)
-//  => path === params.id);
-//   return {
-//     props: {
-//       pageFilter: pgProps,
-//       products: data.products,
-//     },
-//   };
-// };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const { data } = await api.get('/categorys');
-
-//   const paths = data.categorys.map(({ path }: RequestCategoryType) => ({
-//     params: { id: path },
-//   }));
-
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
+export default Page;

@@ -1,7 +1,6 @@
 import React, { use } from 'react';
 import { SmallCard } from '../Cards';
 import { api2 } from '../../service/api';
-import type { Props, StateOrder } from './type';
 import style from './style.module.scss';
 import ClipBoard from '../Buttons/ClipBoard';
 
@@ -21,6 +20,10 @@ async function getOrderId(orderid: number): Promise<StateOrder> {
     });
 
   return data.order;
+}
+
+interface Props {
+  orderid: number;
 }
 
 function OrderId({ orderid }: Props) {
