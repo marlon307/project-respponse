@@ -1,7 +1,11 @@
-import type { TypeAddBagInfos } from '../../@types/bag';
+interface POrder {
+  id: number;
+  date_order: Date
+  status: string;
+}
 
-interface Props {
-  orderid: number;
+interface PropsOrder {
+  orders: POrder[];
 }
 
 interface StateOrder {

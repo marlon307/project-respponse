@@ -6,17 +6,7 @@ import style from './style.module.scss';
 
 const OrderId = lazy(() => import('./OrderId'));
 
-interface POrder {
-  id: number;
-  date_order: Date
-  status: string;
-}
-
-interface Props {
-  orders: POrder[];
-}
-
-function TableOrder({ orders }: Props) {
+function TableOrder({ orders }: PropsOrder) {
   const [orderID, setOrderID] = useState(0);
 
   return (
@@ -39,6 +29,9 @@ function TableOrder({ orders }: Props) {
                     year: 'numeric',
                     month: '2-digit',
                     day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true,
                   }) }
               </td>
               <td>{ status }</td>
