@@ -5,7 +5,7 @@ const mockItensFilter = [{
 }, {
   id: 1,
   key: 'ctg',
-  name: 'Carteira',
+  name: 'Tenis',
 }, {
   id: 2,
   key: 'ctg',

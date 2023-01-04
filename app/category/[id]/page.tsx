@@ -1,23 +1,19 @@
 'use client';
 
-import React, {
-  Suspense, useCallback, useEffect, useState,
-} from 'react';
+import React, { Suspense, useCallback, useState } from 'react';
 import ItemList from '../../../components/Filter/ItemList';
-import useWindowSize from '../../../hooks/useWindowSize';
 import ContentModal from '../../../components/Modal/ContentModal';
 import Filter from '../../../components/Filter/Filter';
 import Loading from './loading';
 import Categorys from '../../../components/Category/Categorys';
-import style from '../style.module.scss';
 import type { StateSearchType } from '../search';
+import style from '../style.module.scss';
 
 interface Props {
   params: { id: string }
 }
 
 function Page({ params }: Props) {
-  const [sizeWidth] = useWindowSize();
   const [listFilter, setListFilter] = useState<StateSearchType['listFilter']>([]);
   const [modalFilter, setModalFilter] = useState(false);
 
@@ -25,12 +21,6 @@ function Page({ params }: Props) {
     const { id } = target;
     setListFilter((prevState) => prevState.filter((objId) => objId.id !== id));
   }, [listFilter]);
-
-  useEffect(() => {
-    if (sizeWidth > 790) {
-      setModalFilter(false);
-    }
-  }, [sizeWidth]);
 
   function handleClick() {
     setModalFilter(!modalFilter);
@@ -77,7 +67,7 @@ function Page({ params }: Props) {
       </div>
       <div className={ style.categorycont }>
         <Suspense fallback={ <Loading /> }>
-          <Categorys category_id={ params.id } />
+          <Categorys category_id={ params.id } filterConfig={ listFilter } />
         </Suspense>
       </div>
     </div>

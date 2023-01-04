@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import ItemList from './ItemList';
 import mockItensFilter from '../../service/mockCtg';
 import style from './style.module.scss';
-import { StateSearchType } from '../../app/category/search';
+import type { StateSearchType } from '../../app/category/search';
 
 type TFilter = {
   setListFilter: Function;

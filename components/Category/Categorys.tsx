@@ -1,25 +1,32 @@
-import React, { use } from 'react';
-import { notFound } from 'next/navigation';
-import { api2 } from '../../service/api';
-import CardProduct from '../Cards/CardProduct/CardProduct';
-import type { ICardProduct } from '../../@types/typeCardProduct';
+'use client';
 
-async function getProductsCategoru(category_id: string): Promise<ICardProduct['products']> {
-  const { data } = await api2.get(`/category/products?category_name=${category_id}`)
-    .catch(() => notFound());
-  return data.products_ctg;
-}
+import React from 'react';
+import useCategorys from '../../hooks/useCategorys';
+import CardProduct from '../Cards/CardProduct/CardProduct';
+import type { StateSearchType } from '../../app/category/search';
 
 interface Props {
   category_id: string;
+  filterConfig: StateSearchType['listFilter']
 }
 
-function Categorys({ category_id }: Props) {
-  const products = use(getProductsCategoru(category_id));
+function Categorys({ category_id, filterConfig }: Props) {
+  const { props } = useCategorys(category_id);
+
+  const filerListProducts = filterConfig.length
+    ? props.filter(
+      (product) => filterConfig.some(
+        (cfg) => cfg.name === product.category_name
+          || product.color_list.some((propLi) => propLi.color === cfg.color
+            || propLi.sizes.includes(cfg.name))
+          || cfg.name === product.name_gender,
+      ),
+    )
+    : props;
 
   return (
     <>
-      { products.map((object) => (
+      { filerListProducts.map((object) => (
         <CardProduct
           key={ object.id }
           objectProduct={ object }
