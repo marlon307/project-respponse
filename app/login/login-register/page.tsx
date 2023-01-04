@@ -2,6 +2,7 @@
 
 import React, { FormEvent, useState } from 'react';
 // import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import BtnIco from '../../../components/Buttons/BtnIco';
 import { Input } from '../../../components/ComponentsForm';
 import { api2 } from '../../../service/api';
@@ -115,14 +116,14 @@ function Login() {
             icoName="singin"
             actionLiberate={ isLoading }
           />
-          <a
+          <Link
             href="/login/resetpsw"
             className="link"
             target="_blank"
             aria-label="Esqueceu a senha?"
           >
             Esqueceu a senha?
-          </a>
+          </Link>
         </div>
       </form>
       <form

@@ -20,6 +20,7 @@ function CardProduct({ objectProduct }: TypeProduct) {
       href={ `/product/${id.toString()}` }
       aria-label={ `${ctgName} ${title}` }
       as={ `/product/${id.toString()}` }
+      rel="stylesheet preload prefetch"
     >
       <figure>
         <Image

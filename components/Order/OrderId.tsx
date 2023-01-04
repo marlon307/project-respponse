@@ -1,4 +1,5 @@
 import React, { use } from 'react';
+import Link from 'next/link';
 import { SmallCard } from '../Cards';
 import { api2 } from '../../service/api';
 import style from './style.module.scss';
@@ -91,7 +92,7 @@ function OrderId({ orderid }: Props) {
           <div>
             <h3>{ orderId.carrier?.name_carrier }</h3>
             <span className={ style.shippingcompany }>
-              { orderId.carrier?.code ? <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ orderId.carrier?.code }</a>
+              { orderId.carrier?.code ? <Link href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ orderId.carrier?.code }</Link>
                 : <span>Código indisponível no momento.</span> }
               <ClipBoard text={ orderId.carrier?.code || '' } />
             </span>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState, FormEvent } from 'react';
 import useUser from '../../hooks/useUser';
 import { api2 } from '../../service/api';
@@ -55,14 +56,14 @@ function CfgUser({ isRequest }: Props) {
           msgError="E-mail inválido"
           disabled
         />
-        <a
+        <Link
           href="/login/resetpsw"
           target="_blank"
           rel="noopener noreferrer"
           className="link"
         >
           Trocar Senha
-        </a>
+        </Link>
       </div>
       <div className={ style.inp }>
         <Input
