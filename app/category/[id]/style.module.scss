@@ -1,0 +1,41 @@
+@import '../../../components/Cards/CardProduct/style.module.scss';
+
+.productcard {
+  img {
+    object-fit: cover;
+  }
+}
+
+.primaryline {
+  [data-ctg] {
+    background: #f1f1f1ec;
+    border-radius: 6px;
+    width: 30%;
+    height: 18px;
+  }
+}
+
+.secondline {
+  [data-title] {
+    background: #f1f1f1ec;
+    border-radius: 6px;
+    width: 50%;
+    height: 21px;
+    margin-top: 1px;
+  }
+}
+
+.price {
+  [data-price] {
+    background: #f1f1f1ec;
+    border-radius: 6px;
+    width: 33%;
+    height: 21px;
+  }
+}
+
+.colors {
+  span {
+    background: #f1f1f1ec;
+  }
+}
