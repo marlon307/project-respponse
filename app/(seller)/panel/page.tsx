@@ -40,7 +40,7 @@ async function Page() {
           <h3>Cadastrar Produto</h3>
         </div>
       </Link>
-      <Link href="/" className={ style.linkcard }>
+      <Link href="/panel/list_products" className={ style.linkcard }>
         <div className={ style.card }>
           <h3>Meus Produtos</h3>
           <h1>{ props.products.quantity }</h1>
