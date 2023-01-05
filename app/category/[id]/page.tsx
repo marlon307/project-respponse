@@ -6,7 +6,7 @@ import ContentModal from '../../../components/Modal/ContentModal';
 import Filter from '../../../components/Filter/Filter';
 import Loading from './loading';
 import Categorys from '../../../components/Category/Categorys';
-import type { StateSearchType } from '../search';
+import type { PropsItemFilter } from '../search';
 import style from '../style.module.scss';
 
 interface Props {
@@ -14,12 +14,12 @@ interface Props {
 }
 
 function Page({ params }: Props) {
-  const [listFilter, setListFilter] = useState<StateSearchType['listFilter']>([]);
+  const [listFilter, setListFilter] = useState<PropsItemFilter[]>([]);
   const [modalFilter, setModalFilter] = useState(false);
 
   const removeListFilter = useCallback(({ target }: any) => {
-    const { id } = target;
-    setListFilter((prevState) => prevState.filter((objId) => objId.id !== id));
+    const { dataset } = target;
+    setListFilter((prevState) => prevState.filter((objId) => objId.id !== dataset.id));
   }, [listFilter]);
 
   function handleClick() {
@@ -55,12 +55,13 @@ function Page({ params }: Props) {
         <div className={ style.listfilter }>
           { listFilter.map((item) => (
             <ItemList
+              id={ `i-${item.id}` }
               key={ item.id }
-              id={ item.id }
               name={ item.key }
+              data-id={ item.id }
               value={ item.name }
               color={ item.color }
-              execFunction={ removeListFilter }
+              onClick={ removeListFilter }
             />
           )) }
         </div>

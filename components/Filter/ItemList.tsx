@@ -1,33 +1,25 @@
 import React, { memo } from 'react';
+import type { InputHTMLAttributes } from 'react';
 import style from './style.module.scss';
 
-type PCtg = {
+interface PCtg extends InputHTMLAttributes<HTMLInputElement> {
   id: any;
-  name: string;
-  value: string;
   color?: string | undefined;
-  execFunction?: React.MouseEventHandler<HTMLInputElement> | undefined;
-  checked?: boolean;
-};
+}
 
-function ItemList({
-  name, id, value, execFunction, color, checked = false,
-}: PCtg) {
+function ItemList({ color, ...props }: PCtg) {
   return (
-    <label htmlFor={ id } className={ style.itemfilter }>
+    <label htmlFor={ props.id } className={ style.itemfilter }>
       <input
         type="checkbox"
-        name={ name }
-        id={ id }
-        value={ value }
-        onClick={ execFunction }
         data-color={ color }
-        defaultChecked={ checked }
+        defaultChecked={ props.checked }
+        { ...props }
       />
-      <div className={ style.filtername }>
-        { value }
+      <span className={ style.filtername }>
+        { props.value }
         { color && <span style={ { backgroundColor: `${color}` } } /> }
-      </div>
+      </span>
     </label>
   );
 }

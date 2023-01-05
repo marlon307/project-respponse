@@ -1,11 +1,11 @@
 import React from 'react';
 import useCategorys from '../../hooks/useCategorys';
 import CardProduct from '../Cards/CardProduct/CardProduct';
-import type { StateSearchType } from '../../app/category/search';
+import type { PropsItemFilter } from '../../app/category/search';
 
 interface Props {
   category_id: string;
-  filterConfig: StateSearchType['listFilter']
+  filterConfig: PropsItemFilter[]
 }
 
 function Categorys({ category_id, filterConfig }: Props) {

@@ -48,6 +48,10 @@
     position: relative;
     overflow: hidden;
     height: 0;
+
+    tbody {
+      max-height: 300px;
+    }
   }
 
   [aria-hidden="false"]+.dropcontainer {

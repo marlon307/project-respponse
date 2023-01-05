@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import ItemList from './ItemList';
 import mockItensFilter from '../../service/mockCtg';
+import type { PropsItemFilter } from '../../app/category/search';
 import style from './style.module.scss';
-import type { StateSearchType } from '../../app/category/search';
 
 type TFilter = {
-  setListFilter: Function;
-  listChecked: StateSearchType['listFilter'];
+  setListFilter: (props: (p: PropsItemFilter[]) => void | any) => void;
+  listChecked: PropsItemFilter[];
 };
 
 function Filter({ listChecked, setListFilter }: TFilter) {
@@ -14,10 +14,13 @@ function Filter({ listChecked, setListFilter }: TFilter) {
     const {
       id, name, value, dataset,
     } = target;
-
-    setListFilter!([{
-      id, name: value, key: name, color: dataset.color,
-    }, ...listChecked]);
+    if (!listChecked.some((item) => item.id === id)) {
+      setListFilter!((crrState) => [{
+        id, name: value, key: name, color: dataset.color,
+      }, ...crrState]);
+    } else {
+      setListFilter((crrState) => crrState.filter((objId) => objId.id !== id));
+    }
   }, [listChecked]);
 
   return (
@@ -29,17 +32,17 @@ function Filter({ listChecked, setListFilter }: TFilter) {
           mockItensFilter.map(({
             id, key, name, color,
           }) => (
-            key === 'color' && (
+            key === 'color' ? (
               <ItemList
-                id={ id }
+                id={ `${id}${key}` }
                 name={ key }
                 key={ name }
                 value={ name }
                 color={ color }
-                execFunction={ addListFilter }
-                checked={ listChecked.some((item) => +item.id === id) }
+                onClick={ addListFilter }
+                defaultChecked={ listChecked.some((item) => item.id === `${id}${key}`) }
               />
-            )
+            ) : null
           ))
         }
       </div>
@@ -49,12 +52,12 @@ function Filter({ listChecked, setListFilter }: TFilter) {
           mockItensFilter.map(({ id, key, name }) => (
             key === 'ctg' && (
               <ItemList
-                id={ id }
+                id={ `${id}${key}` }
+                onClick={ addListFilter }
                 name={ key }
                 key={ name }
                 value={ name }
-                execFunction={ addListFilter }
-                checked={ listChecked.some((item) => +item.id === id) }
+                defaultChecked={ listChecked.some((item) => item.id === `${id}${key}`) }
               />
             )
           ))
@@ -66,12 +69,12 @@ function Filter({ listChecked, setListFilter }: TFilter) {
           mockItensFilter.map(({ id, key, name }) => (
             key === 'size' && (
               <ItemList
-                id={ id }
+                id={ `${id}${key}` }
                 name={ key }
                 key={ name }
                 value={ name }
-                execFunction={ addListFilter }
-                checked={ listChecked.some((item) => +item.id === id) }
+                onClick={ addListFilter }
+                defaultChecked={ listChecked.some((item) => item.id === `${id}${key}`) }
               />
             )
           ))
@@ -83,12 +86,12 @@ function Filter({ listChecked, setListFilter }: TFilter) {
           mockItensFilter.map(({ id, key, name }) => (
             key === 'branch' && (
               <ItemList
-                id={ id }
+                id={ `${id}${key}` }
                 name={ key }
                 key={ name }
                 value={ name }
-                execFunction={ addListFilter }
-                checked={ listChecked.some((item) => +item.id === id) }
+                onClick={ addListFilter }
+                defaultChecked={ listChecked.some((item) => item.id === `${id}${key}`) }
               />
             )
           ))
@@ -97,25 +100,25 @@ function Filter({ listChecked, setListFilter }: TFilter) {
       <h2>Genero</h2>
       <div className={ style.block }>
         <ItemList
-          id={ 36 }
+          id="gen36"
           name="gen"
           value="Criança"
-          execFunction={ addListFilter }
-          checked={ listChecked.some((item) => +item.id === 36) }
+          onClick={ addListFilter }
+          defaultChecked={ listChecked.some((item) => item.id === 'gen36') }
         />
         <ItemList
-          id={ 37 }
+          id="gen37"
           name="gen"
           value="Femenino"
-          execFunction={ addListFilter }
-          checked={ listChecked.some((item) => +item.id === 37) }
+          onClick={ addListFilter }
+          defaultChecked={ listChecked.some((item) => item.id === 'gen37') }
         />
         <ItemList
-          id={ 38 }
+          id="gen38"
           name="gen"
           value="Masculino"
-          execFunction={ addListFilter }
-          checked={ listChecked.some((item) => +item.id === 38) }
+          onClick={ addListFilter }
+          defaultChecked={ listChecked.some((item) => item.id === 'gen38') }
         />
       </div>
       <h2>Modelo</h2>
@@ -124,12 +127,12 @@ function Filter({ listChecked, setListFilter }: TFilter) {
           mockItensFilter.map(({ id, key, name }) => (
             key === 'model' && (
               <ItemList
-                id={ id }
+                id={ `${id}${key}` }
                 name={ key }
                 key={ name }
                 value={ name }
-                execFunction={ addListFilter }
-                checked={ listChecked.some((item) => +item.id === id) }
+                onClick={ addListFilter }
+                defaultChecked={ listChecked.some((item) => item.id === `${id}${key}`) }
               />
             )
           ))
