@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import useCategorys from '../../hooks/useCategorys';
 import CardProduct from '../Cards/CardProduct/CardProduct';
