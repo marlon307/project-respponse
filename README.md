@@ -21,6 +21,7 @@ Atualmente eu @_marlon307 trabalho no projeto sozinho esta sendo divertido, pois
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [Next.Js](https://nextjs.org/)
+- [SWR](https://swr.vercel.app/)
 - [Sass](https://sass-lang.com/)
 - [Python - FastAPI](https://fastapi.tiangolo.com/)
 - [Mysql](https://www.mysql.com/)
