@@ -71,7 +71,7 @@ const mockItensFilter = [{
   key: 'branch',
   name: 'Lacoste',
 }, {
-  id: 17,
+  id: 18,
   key: 'branch',
   name: 'Hang Loose',
 }, {

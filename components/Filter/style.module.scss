@@ -9,7 +9,7 @@
     display: none;
   }
 
-  input:checked+div {
+  input:checked+span {
     color: currentColor;
     border-color: currentColor;
   }
