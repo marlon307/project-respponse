@@ -1,0 +1,26 @@
+.products_seller {
+  margin: 0 6% 3em;
+
+  h1 {
+    margin-bottom: 1em;
+  }
+}
+
+.container_products {
+  grid-area: products;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-areas: ". . . . . . .";
+  grid-column-gap: 0.8em;
+  grid-template-rows: max-content;
+  grid-row-gap: 1em;
+  row-gap: 1em;
+  align-items: start;
+  height: 100vh;
+}
+
+@media (max-width: 1080px) {
+  .container_products {
+    grid-template-areas: ". . .";
+  }
+}

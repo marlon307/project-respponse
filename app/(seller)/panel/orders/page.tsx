@@ -1,30 +1,32 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, lazy } from 'react';
 import { Input } from '../../../../components/ComponentsForm';
 import TableOrder from '../../../../components/Order/TableOrder';
 import useOrdersPanel from '../../../../hooks/useOrdersPanel';
 import style from './style.module.scss';
 
+const OrderId = lazy(() => import('../../../../components/Order/OrderIdPanel'));
+
 function Page() {
   const [status, setStatus] = useState(2);
   const { orders } = useOrdersPanel(status);
   const [orderId, setOrderId] = useState<string | null>(null);
-  const [date1, setDate1] = useState<Date | null>(null);
-  const [date2, setDate2] = useState<Date | null>(null);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
 
-  const filterOrder = date1 || date2 || orderId ? orders.filter(
+  const filterOrder = startDate || endDate || orderId ? orders.filter(
     (order) => {
-      if (new Date(order.date_order) >= new Date(date1!)
-        && new Date(order.date_order) <= new Date(date2!)
-        && String(order.id).includes(orderId!)) {
+      if (String(order.id).includes(orderId!)) {
+        return order;
+      }
+      if (new Date(startDate!) <= new Date(order.date_order)
+        && new Date(endDate!) <= new Date(order.date_order) && (startDate || endDate)) {
         return order;
       }
       return null;
     },
   ) : orders;
-
-  // (date1 === '' || date2 === '') || String(order.id).includes(orderId)
 
   return (
     <div className={ style.cont_orders }>
@@ -42,15 +44,15 @@ function Page() {
         <Input
           type="datetime-local"
           text="Data de"
-          onChange={ ({ target }) => setDate1(target.value) }
+          onChange={ ({ target }) => setStartDate(target.value) }
         />
         <Input
           type="datetime-local"
           text="Até à data"
-          onChange={ ({ target }) => setDate2(target.value) }
+          onChange={ ({ target }) => setEndDate(target.value) }
         />
       </div>
-      <TableOrder orders={ filterOrder } />
+      <TableOrder orders={ filterOrder } ConponeteRender={ OrderId } />
     </div>
   );
 }

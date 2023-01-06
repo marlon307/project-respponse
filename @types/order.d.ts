@@ -6,6 +6,7 @@ interface POrder {
 
 interface PropsOrder {
   orders: POrder[];
+  ConponeteRender: any
 }
 
 interface StateOrder {

@@ -25,7 +25,7 @@ interface Props {
 function ContentBag({ props }: Props) {
   const [openModal, setOpenModal] = useState<any>({ modal: '' });
   const [hiddenList, setHiddenList] = useState(false);
-  const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(props.list_b);
+  const [listBag, setStateBag] = useState<TypeAddBagInfos[]>(props?.list_b ?? []);
   const [listCarries, setListCarries] = useState<[]>([]);
   const [paymentMethod, setPaymentMethod] = useState({ method: '', installments: 1 });
   const [shipping, setShipping] = useState<Shipping>({ price: 0 });
@@ -60,7 +60,7 @@ function ContentBag({ props }: Props) {
 
   useEffect(() => {
     async function getCarries() {
-      if (props.main_add?.zipcode) {
+      if (props?.main_add?.zipcode) {
         const { data } = await api2.post('/calc', {
           zipcode: props.main_add?.zipcode,
         });
@@ -73,7 +73,7 @@ function ContentBag({ props }: Props) {
       }
     }
     getCarries();
-  }, [props.main_add, listBag]);
+  }, [props?.main_add, listBag]);
 
   return (
     <>
@@ -129,7 +129,7 @@ function ContentBag({ props }: Props) {
           shipping={ listCarries }
           shippingSelected={ shipping }
           qunatityAdd={ listBag?.length }
-          addSelected={ props.main_add }
+          addSelected={ props?.main_add }
           setShipping={ setShipping }
           setPayment={ setPaymentMethod }
         />
@@ -137,7 +137,7 @@ function ContentBag({ props }: Props) {
       <BarBuy
         listProducts={ listBag }
         shipping={ shipping }
-        addresId={ props.main_add?.id }
+        addresId={ props?.main_add?.id }
         paymentMethod={ paymentMethod }
         setItallment={ setPaymentMethod }
       />
