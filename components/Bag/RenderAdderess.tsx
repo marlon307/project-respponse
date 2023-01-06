@@ -1,5 +1,5 @@
-import React, { use } from 'react';
-import getAddress from '../../utils/fetchAddress';
+import React from 'react';
+import useAddress from '../../hooks/useAddress';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 
@@ -8,7 +8,7 @@ interface Props {
 }
 
 function RenderAdderess({ execFunction }: Props) {
-  const addressList = use(getAddress(true));
+  const { addressList } = useAddress(true);
 
   return (
     <div className={ style.add }>
