@@ -1,7 +1,7 @@
-import React, { use, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { CardAdderess } from '.';
 import { api2 } from '../../service/api';
-import getAddress from '../../utils/fetchAddress';
+import useAddress from '../../hooks/useAddress';
 import style from './CardAddress/style.module.scss';
 
 type TAdderess = {
@@ -9,7 +9,7 @@ type TAdderess = {
 };
 
 function Address({ isRequest }: TAdderess) {
-  const addressList = use(getAddress(isRequest));
+  const { addressList } = useAddress(isRequest);
 
   const removeAddress = useCallback(async (address: number) => {
     const { data } = await api2.delete(`/address/${address}`)
