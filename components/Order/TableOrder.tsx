@@ -1,12 +1,10 @@
 'use client';
 
-import React, { lazy, useState } from 'react';
+import React, { useState } from 'react';
 import ContentModal from '../Modal/ContentModal';
 import style from './style.module.scss';
 
-const OrderId = lazy(() => import('./OrderId'));
-
-function TableOrder({ orders }: PropsOrder) {
+function TableOrder({ orders, ConponeteRender }: PropsOrder) {
   const [orderID, setOrderID] = useState(0);
 
   return (
@@ -40,7 +38,7 @@ function TableOrder({ orders }: PropsOrder) {
         </tbody>
       </table>
       <ContentModal isOpen={ orderID > 0 } openModal={ setOrderID }>
-        { orderID > 0 && <OrderId orderid={ orderID } /> }
+        { orderID > 0 && <ConponeteRender orderid={ orderID } /> }
       </ContentModal>
     </>
   );

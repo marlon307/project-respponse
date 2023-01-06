@@ -1,7 +1,9 @@
+import React, { use, lazy } from 'react';
 import { notFound } from 'next/navigation';
-import React, { use } from 'react';
 import { api2 } from '../../service/api';
 import TableOrder from './TableOrder';
+
+const OrderId = lazy(() => import('./OrderId'));
 
 type TPropsOrders = {
   isRequest: boolean
@@ -20,7 +22,7 @@ function Orders({ isRequest }: TPropsOrders) {
   const orders = use(getOrders(isRequest));
 
   return (
-    <TableOrder orders={ orders } />
+    <TableOrder orders={ orders } ConponeteRender={ OrderId } />
   );
 }
 
