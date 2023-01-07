@@ -29,7 +29,7 @@ const useAddress = <Data = any>(isRequest: boolean) => {
   return {
     loading,
     loggedOut,
-    addressList: data,
+    addressList: data ?? [],
     mutate,
   };
 };
