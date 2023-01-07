@@ -9,14 +9,15 @@ type TAdderess = {
 };
 
 function Address({ isRequest }: TAdderess) {
-  const { addressList } = useAddress(isRequest);
+  const { addressList, mutate } = useAddress(isRequest);
 
   const removeAddress = useCallback(async (address: number) => {
     const { data } = await api2.delete(`/address/${address}`)
       .catch(({ response }) => response);
 
     if (data.status === 200) {
-      addressList.filter(({ id }: ITAddress) => id !== address);
+      const newAddressList = addressList.filter(({ id }: ITAddress) => id !== address);
+      mutate(newAddressList, false);
     }
   }, [addressList]);
 
@@ -27,7 +28,7 @@ function Address({ isRequest }: TAdderess) {
           key={ address.id }
           { ...address }
           removable
-          execFunction={ () => removeAddress(address.id ?? 0) }
+          execFunction={ () => removeAddress(address.id) }
         />
       )) }
       { !addressList?.length && <h3>Você não possui endereços cadastrados.</h3> }

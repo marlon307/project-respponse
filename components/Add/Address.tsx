@@ -37,14 +37,14 @@ function Address({ execFunction }: TAddress) {
       const responseData = await api2.post('/address', formData)
         .catch(({ response }) => response);
 
-      const newAddresList = [...addressList, {
-        id: responseData.data.id,
-        ...data,
-      }];
-
-      await mutate(newAddresList);
+      if (responseData.data.status === 201) {
+        mutate([...addressList, {
+          id: responseData.data.id,
+          ...data,
+        }]);
+        execFunction!();
+      }
       setisLoading(false);
-      execFunction!();
     }
   }
 

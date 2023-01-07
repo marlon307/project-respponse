@@ -19,7 +19,7 @@ const useAddress = <Data = any>(isRequest: boolean) => {
       suspense: true,
       revalidateOnFocus: false,
       revalidateOnMount: false,
-      revalidateIfStale: false,
+      // revalidateIfStale: false,
     },
   );
 
