@@ -18,8 +18,8 @@ const useAddress = <Data = any>(isRequest: boolean) => {
     {
       suspense: true,
       revalidateOnFocus: false,
-      revalidateOnMount: false,
-      revalidateIfStale: false,
+      // revalidateOnMount: false,
+      // revalidateIfStale: false,
     },
   );
 
@@ -29,7 +29,7 @@ const useAddress = <Data = any>(isRequest: boolean) => {
   return {
     loading,
     loggedOut,
-    addressList: data,
+    addressList: data ?? [],
     mutate,
   };
 };

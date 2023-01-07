@@ -1,37 +1,51 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, lazy } from 'react';
 import { CardAdderess } from '.';
 import { api2 } from '../../service/api';
 import useAddress from '../../hooks/useAddress';
+import BtnAdd from '../Buttons/BtnAdd';
+import ContentModal from '../Modal/ContentModal';
 import style from './CardAddress/style.module.scss';
+
+const Addaderess = lazy(() => import('../Add/Address'));
 
 type TAdderess = {
   isRequest: boolean;
 };
 
 function Address({ isRequest }: TAdderess) {
-  const { addressList } = useAddress(isRequest);
+  const { addressList, mutate } = useAddress(isRequest);
+  const [isOpen, setIsOpen] = useState(false);
 
   const removeAddress = useCallback(async (address: number) => {
     const { data } = await api2.delete(`/address/${address}`)
       .catch(({ response }) => response);
 
     if (data.status === 200) {
-      addressList.filter(({ id }: ITAddress) => id !== address);
+      mutate((cAdd: ITAddress[]) => cAdd.filter(({ id }: ITAddress) => id !== address), false);
     }
   }, [addressList]);
 
   return (
-    <div className={ style.address }>
-      { addressList?.map((address: ITAddress) => (
-        <CardAdderess
-          key={ address.id }
-          { ...address }
-          removable
-          execFunction={ () => removeAddress(address.id ?? 0) }
-        />
-      )) }
-      { !addressList?.length && <h3>Você não possui endereços cadastrados.</h3> }
-    </div>
+    <>
+      <BtnAdd eventBtn={ () => setIsOpen(true) } />
+      <div className={ style.address }>
+        { addressList?.map((address: ITAddress) => (
+          <CardAdderess
+            key={ address.id }
+            { ...address }
+            removable
+            execFunction={ () => removeAddress(address.id) }
+          />
+        )) }
+        { !addressList?.length && <h3>Você não possui endereços cadastrados.</h3> }
+      </div>
+      <ContentModal
+        isOpen={ isOpen }
+        openModal={ setIsOpen }
+      >
+        { isOpen && <Addaderess execFunction={ () => setIsOpen(false) } /> }
+      </ContentModal>
+    </>
   );
 }
 

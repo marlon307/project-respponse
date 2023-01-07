@@ -3,6 +3,7 @@ import type { FormEvent, ChangeEvent } from 'react';
 import { api2 } from '../../service/api';
 import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';
+import useAddress from '../../hooks/useAddress';
 import style from './style.module.scss';
 
 type TAddress = {
@@ -19,6 +20,7 @@ interface IRequestAddress {
 function Address({ execFunction }: TAddress) {
   const [isLoading, setisLoading] = useState(false);
   const [address, setAdrres] = useState<IRequestAddress>({});
+  const { mutate } = useAddress(false);
 
   async function handleAddAddress(event: FormEvent) {
     event.preventDefault();
@@ -32,11 +34,17 @@ function Address({ execFunction }: TAddress) {
     if (checkValue) {
       setisLoading(true);
 
-      await api2.post('/address', formData)
+      const responseData = await api2.post('/address', formData)
         .catch(({ response }) => response);
 
+      if (responseData.data.status === 201) {
+        mutate((cAdd: ITAddress[]) => [...cAdd, {
+          id: responseData.data.id,
+          ...data,
+        }]);
+        execFunction!();
+      }
       setisLoading(false);
-      execFunction!();
     }
   }
 
@@ -114,7 +122,6 @@ function Address({ execFunction }: TAddress) {
             placeholder="UF"
             autoComplete="shipping address-level1"
             msgError="Insira o Estado (UF)."
-            disabled
             max={ 2 }
             defaultValue={ address.uf }
           />
@@ -124,7 +131,6 @@ function Address({ execFunction }: TAddress) {
             text="Cidade"
             name="city"
             placeholder="Cidade"
-            disabled
             autoComplete="shipping shipping address-level2"
             msgError="Insira a Cidade."
             defaultValue={ address.localidade }

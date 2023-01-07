@@ -1,31 +1,20 @@
 'use client';
 
 import React, {
-  useState, useCallback, lazy, Suspense, useEffect,
+  useState, lazy, Suspense, useEffect,
 } from 'react';
 import { redirect } from 'next/navigation';
-import BtnAdd from '../Buttons/BtnAdd';
 import useLogin from '../../hooks/useLogin';
-import ContentModal from '../Modal/ContentModal';
 import style from '../../Sass/style.module.scss';
 
 const Usercfg = lazy(() => import('./CfgUser'));
 const Order = lazy(() => import('../Order/Orders'));
 const Address = lazy(() => import('../Cards/Address'));
-const Addaderess = lazy(() => import('../Add/Address'));
 const Help = lazy(() => import('../../app/help/page'));
 
 function AccountComponent() {
   const { loggedOut } = useLogin();
   const [dropOption, setDropOption] = useState('');
-  const [typeModal, setTypeModal] = useState('');
-  const functionOpenModal = useCallback((type: React.SetStateAction<string>) => {
-    setTypeModal(type);
-  }, []);
-
-  function closeModal() {
-    setTypeModal('');
-  }
 
   useEffect(() => {
     if (loggedOut) {
@@ -84,7 +73,6 @@ function AccountComponent() {
           <span>Endereços</span>
         </a>
         <div className={ style.dropcontainer }>
-          <BtnAdd eventBtn={ () => functionOpenModal('address') } />
           <div className={ style.contentoption }>
             <Suspense fallback={ <div className="spinner" /> }>
               <Address isRequest={ dropOption === 'address' } />
@@ -133,12 +121,6 @@ function AccountComponent() {
           </Suspense>
         </div>
       </div>
-      <ContentModal
-        isOpen={ typeModal === 'address' }
-        openModal={ setTypeModal }
-      >
-        { (typeModal === 'address') && <Addaderess execFunction={ closeModal! } /> }
-      </ContentModal>
     </>
   );
 }

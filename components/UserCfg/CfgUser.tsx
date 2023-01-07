@@ -27,7 +27,7 @@ function CfgUser({ isRequest }: Props) {
         .catch(({ response }) => response);
 
       if (res.data.status === 200) {
-        mutate({ ...dataUser, ...data }, false);
+        mutate((cUser) => ({ ...cUser, ...data }), false);
       }
       setIsLoading(false);
     }
