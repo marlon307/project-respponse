@@ -20,7 +20,7 @@ interface IRequestAddress {
 function Address({ execFunction }: TAddress) {
   const [isLoading, setisLoading] = useState(false);
   const [address, setAdrres] = useState<IRequestAddress>({});
-  const { addressList, mutate } = useAddress(false);
+  const { mutate } = useAddress(false);
 
   async function handleAddAddress(event: FormEvent) {
     event.preventDefault();
@@ -38,7 +38,7 @@ function Address({ execFunction }: TAddress) {
         .catch(({ response }) => response);
 
       if (responseData.data.status === 201) {
-        mutate([...addressList, {
+        mutate((cAdd: ITAddress[]) => [...cAdd, {
           id: responseData.data.id,
           ...data,
         }]);

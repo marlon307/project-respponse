@@ -21,8 +21,7 @@ function Address({ isRequest }: TAdderess) {
       .catch(({ response }) => response);
 
     if (data.status === 200) {
-      const newAddressList = addressList.filter(({ id }: ITAddress) => id !== address);
-      mutate(newAddressList, false);
+      mutate((cAdd: ITAddress[]) => cAdd.filter(({ id }: ITAddress) => id !== address), false);
     }
   }, [addressList]);
 
