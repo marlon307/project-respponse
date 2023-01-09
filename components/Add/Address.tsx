@@ -135,6 +135,14 @@ function Address({ execFunction }: TAddress) {
             msgError="Insira a Cidade."
             defaultValue={ address.localidade }
           />
+          <Input
+            id="complement"
+            type="text"
+            text="Complemento"
+            name="complement"
+            placeholder="Casa, Apartamento (N°), Loja e Etc..."
+            msgError="Insira o complemento."
+          />
           <BtnIco
             textBtn="Adicionar"
             actionLiberate={ isLoading }
