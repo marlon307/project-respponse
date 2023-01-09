@@ -4,6 +4,7 @@ import { api2 } from '../service/api';
 const listAddress = async (route: string) => {
   const { data } = await api2.get(route)
     .catch(({ response }) => response);
+
   if (data.status === 200) return data.address;
 
   const error: any = new Error('Not authorized!');

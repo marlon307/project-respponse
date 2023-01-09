@@ -19,11 +19,6 @@ export const mockShipping = [{
 }];
 
 export const mockPayment = [{
-  id: 0,
-  name: 'PayPal',
-  price: 26.98,
-  type: 'paypal',
-}, {
   id: 1,
   name: 'PIX',
   price: 32.55,
