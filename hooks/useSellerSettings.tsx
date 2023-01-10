@@ -5,7 +5,7 @@ import { api2 } from '../service/api';
 interface Props {
   cnpj: string;
   ie: string;
-  name_store: string;
+  store_name: string;
   address: ITAddress
 }
 

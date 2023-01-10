@@ -19,8 +19,13 @@ function Page() {
   async function handlerSubimit(e: FormEvent) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    formData.append('address', String(address?.id || dataSeller?.address.id));
-    await api2.patch('/panel/setings', formData);
+    const data = Object.fromEntries(formData);
+    const object = { ...data, address: address ?? dataSeller?.address };
+
+    if (JSON.stringify(object) !== JSON.stringify(dataSeller)) {
+      formData.append('address', String(address?.id || dataSeller?.address.id));
+      await api2.patch('/panel/setings', formData);
+    }
   }
 
   function selectAddress(add: ITAddress) {
@@ -37,7 +42,7 @@ function Page() {
             text="Nome da Loja"
             name="store_name"
             placeholder="00.000.000/0000-00"
-            defaultValue={ dataSeller?.name_store }
+            defaultValue={ dataSeller?.store_name }
             maxLength={ 14 }
             minLength={ 14 }
             required
