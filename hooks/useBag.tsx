@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { api2 } from '../service/api';
+import { api2 } from 'service/api';
 
 export const listBag = async (path: string) => {
   if (path) {

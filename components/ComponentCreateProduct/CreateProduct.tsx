@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, FormEvent } from 'react';
 import Image from 'next/image';
-import { api2 } from '../../service/api';
+import { api2 } from 'service/api';
 import { Input, InputRadio } from '../ComponentsForm';
 import BtnAdd from '../Buttons/BtnAdd';
 import BtnIco from '../Buttons/BtnIco';

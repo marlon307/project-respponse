@@ -1,12 +1,11 @@
 import React, { useState, useEffect, lazy } from 'react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import useLogin, { logOutUser } from 'hooks/useLogin';
 import ContentModal from '../../Modal/ContentModal';
 import style from './styles/style.module.scss';
-import useLogin, { logOutUser } from '../../../hooks/useLogin';
 
-// const ContentModal = lazy(() => import('../../Modal/ContentModal'));
-const LoginRegister = lazy(() => import('../../../app/login/login-register/page'));
+const LoginRegister = lazy(() => import('app/login/login-register/page'));
 
 function MenuUser({ data }: any) {
   const { mutate } = useLogin();

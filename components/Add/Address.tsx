@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import type { FormEvent, ChangeEvent } from 'react';
-import { api2 } from '../../service/api';
+import { api2 } from 'service/api';
+import useAddress from 'hooks/useAddress';
 import BtnIco from '../Buttons/BtnIco';
 import { Input } from '../ComponentsForm';
-import useAddress from '../../hooks/useAddress';
 import style from './style.module.scss';
 
 type TAddress = {

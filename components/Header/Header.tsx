@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import useLogin from 'hooks/useLogin';
 import SearchBar from '../SearchBar';
 import Bar from '../SearchBar/Bar';
 // import MenuBag from './components/MenuBag';
 import MenuUser from './components/MenuUser';
 import MenuMobile from './components/MenuMobile';
-import useLogin from '../../hooks/useLogin';
 import style from './style.module.scss';
 
 function Header() {

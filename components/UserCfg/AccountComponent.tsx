@@ -4,13 +4,13 @@ import React, {
   useState, lazy, Suspense, useEffect,
 } from 'react';
 import { redirect } from 'next/navigation';
-import useLogin from '../../hooks/useLogin';
-import style from '../../Sass/style.module.scss';
+import useLogin from 'hooks/useLogin';
+import style from 'Sass/style.module.scss';
 
 const Usercfg = lazy(() => import('./CfgUser'));
 const Order = lazy(() => import('../Order/Orders'));
 const Address = lazy(() => import('../Cards/Address'));
-const Help = lazy(() => import('../../app/help/page'));
+const Help = lazy(() => import('app/help/page'));
 
 function AccountComponent() {
   const { loggedOut } = useLogin();

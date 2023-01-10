@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { mockPayment } from '../../service/mockCheckout';
+import { mockPayment } from 'service/mockCheckout';
 import { CardAdderess } from '../Cards';
 import { Input, InputRadio } from '../ComponentsForm';
 import type { Pay, Shipping } from '../../@types/bag';

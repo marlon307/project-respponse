@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { api2 } from '../service/api';
+import { api2 } from 'service/api';
 
 const listAddress = async (route: string) => {
   const { data } = await api2.get(route)

@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
-import { api2 } from '../../../service/api';
-import style from '../../../Sass/style.module.scss';
+import { api2 } from 'service/api';
+import style from 'Sass/style.module.scss';
 
 interface Props {
   params: {

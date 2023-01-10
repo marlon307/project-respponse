@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ButtonHTMLAttributes } from 'react';
+import Svg from 'assets/Svg';
 import style from './style.module.scss';
-import Svg from '../../assets/Svg';
 
 export interface PBtnIco extends ButtonHTMLAttributes<HTMLButtonElement> {
   textBtn: string;

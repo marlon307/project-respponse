@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import useLogin, { logOutUser } from '../../../hooks/useLogin';
+import useLogin, { logOutUser } from 'hooks/useLogin';
 import style from './styles/style.module.scss';
 
 function MenuMobile({ data }: any) {

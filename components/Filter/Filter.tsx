@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
+import mockItensFilter from 'service/mockCtg';
 import ItemList from './ItemList';
-import mockItensFilter from '../../service/mockCtg';
 import type { PropsItemFilter } from '../../app/category/search';
 import style from './style.module.scss';
 

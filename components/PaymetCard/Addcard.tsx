@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react';
-import registerOrder from '../../hooks/registerOrder';
+import registerOrder from 'hooks/registerOrder';
 import style from './style.module.scss';
 
 declare global {

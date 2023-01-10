@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import { getCookie, deleteCookie, setCookie } from 'cookies-next';
-import { api2 } from '../service/api';
+import { api2 } from 'service/api';
 
 export const loginUser = async (formData: FormData, request: boolean = false) => {
   const cookie = getCookie('u_token');

@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { api2 } from '../../../service/api';
+import { api2 } from 'service/api';
 import type { Props, TypeProduct } from './product';
 import DefaultTags from '../../DefaultTags';
 

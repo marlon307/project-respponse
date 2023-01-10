@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import type { IOptions } from '../../app/product/[id]/product';
-import { checkColorAvailable, checkSizeAvailable } from '../../hooks/useCheckAvailable';
+import type { IOptions } from 'app/product/[id]/product';
+import { checkColorAvailable, checkSizeAvailable } from 'hooks/useCheckAvailable';
 import style from './style.module.scss';
 
 interface Props {

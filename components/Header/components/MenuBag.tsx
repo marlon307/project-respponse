@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
+import useBag from 'hooks/useBag';
+import calcAllValuesArray from 'hooks/useCalcs';
+import style from 'styles/style.module.scss';
 import { SmallCard } from '../../Cards';
-import { BtnRedirect } from '../../Buttons';
-import useBag from '../../../hooks/useBag';
-import { TypeAddBagInfos } from '../../../@types/bag';
-import calcAllValuesArray from '../../../hooks/useCalcs';
-import style from './styles/style.module.scss';
+import { BtnRedirect } from '../Buttons';
+import type { TypeAddBagInfos } from '../../../@types/bag';
 
 function MenuBag() {
   const ref = useRef(null);

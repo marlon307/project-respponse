@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import { CardCategory } from '../components/Cards';
-import { api2 } from '../service/api';
-import CardProduct from '../components/Cards/CardProduct/CardProduct';
-import { BtnRedirect } from '../components/Buttons';
+import { CardCategory } from 'components/Cards';
+import { api2 } from 'service/api';
+import CardProduct from 'components/Cards/CardProduct/CardProduct';
+import { BtnRedirect } from 'components/Buttons';
+import style from 'Sass/style.module.scss';
 import type { IPropsHome } from '../@types/typesIndex';
-import style from '../Sass/style.module.scss';
 
 async function getData() {
   const newdata = await api2.get('/product')

@@ -3,13 +3,13 @@
 import React, {
   useCallback, useState, lazy, useEffect,
 } from 'react';
+import { api2 } from 'service/api';
+import style from 'Sass/style.module.scss';
+import Checkout from './Checkout';
 import BarBuy from '../Bars/BarBuy';
 import { SmallCard } from '../Cards';
 import ContentModal from '../Modal/ContentModal';
-import Checkout from '.';
-import { api2 } from '../../service/api';
 import type { TypeAddBagInfos, Shipping } from '../../@types/bag';
-import style from '../../Sass/style.module.scss';
 
 const RenderAdderess = lazy(() => import('./RenderAdderess'));
 const Addaddress = lazy(() => import('../Add/Address'));
