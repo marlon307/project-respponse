@@ -1,0 +1,14 @@
+.breadcrumb {
+  margin: 8px 2px;
+
+  a {
+    display: inline-block;
+    color: var(--color-dark-grey);
+    text-transform: capitalize;
+
+    &::before {
+      content: '/';
+      margin: 0 4px;
+    }
+  }
+}
