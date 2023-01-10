@@ -1,6 +1,6 @@
 import React from 'react';
-import CreateProduct from '../../../components/ComponentCreateProduct/CreateProduct';
-import { api2 } from '../../../service/api';
+import CreateProduct from 'components/ComponentCreateProduct/CreateProduct';
+import { api2 } from 'service/api';
 
 type Props = {
   list: {

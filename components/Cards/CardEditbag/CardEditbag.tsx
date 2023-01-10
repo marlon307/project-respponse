@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { api2 } from '../../../service/api';
+import { api2 } from 'service/api';
 import type { TypeAddBagInfos } from '../../../@types/bag';
 import style from './style.module.scss';
 

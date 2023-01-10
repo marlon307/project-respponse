@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import { notFound } from 'next/navigation';
-import { api2 } from '../service/api';
+import { api2 } from 'service/api';
 
 interface Props {
   cnpj: string;

@@ -1,7 +1,7 @@
 import React, { use } from 'react';
 import Link from 'next/link';
+import { api2 } from 'service/api';
 import { SmallCard } from '../Cards';
-import { api2 } from '../../service/api';
 import style from './style.module.scss';
 import ClipBoard from '../Buttons/ClipBoard';
 

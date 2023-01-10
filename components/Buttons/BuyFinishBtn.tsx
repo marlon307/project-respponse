@@ -1,8 +1,8 @@
 'use client';
 
 import React, { lazy, useState } from 'react';
+import registerOrder from 'hooks/registerOrder';
 import ContentModal from '../Modal/ContentModal';
-import registerOrder from '../../hooks/registerOrder';
 import PixCard from '../PaymetCard/PixCard';
 import type { Pay, Shipping, TypeEditBagInfos } from '../../@types/bag';
 import style from './style.module.scss';

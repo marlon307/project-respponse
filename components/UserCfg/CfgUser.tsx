@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { useState, FormEvent } from 'react';
-import useUser from '../../hooks/useUser';
-import { api2 } from '../../service/api';
+import useUser from 'hooks/useUser';
+import { api2 } from 'service/api';
 import BtnIco from '../Buttons/BtnIco';
 import { InputRadio } from '../ComponentsForm';
 import Input from '../ComponentsForm/Input';

@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-import useOrders from '../../hooks/userOrders';
+import useOrders from 'hooks/userOrders';
 
 import TableOrder from './TableOrder';
 

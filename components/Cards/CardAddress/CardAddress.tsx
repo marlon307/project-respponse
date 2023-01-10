@@ -7,7 +7,7 @@ interface Props extends ITAddress {
 }
 
 function CardAdderess({
-  name_delivery: namedest = 'Clique aqui ( 👇 ) para selecionar o endereço.', city = '---', district = '---', number_home: number = '---', state = '---', street = '---', zipcode = '---', execFunction, removable = false,
+  name_delivery: namedest = 'Clique aqui ( 👇 ) para selecionar o endereço.', city = '---', district = '---', number_home: number = '---', state = '---', street = '---', zipcode = '---', complement = '---', execFunction, removable = false,
 }: Props) {
   return (
     <div className={ style.cardaddress }>
@@ -51,13 +51,22 @@ function CardAdderess({
           </p>
         </span>
       </div>
-      <span title={ `CEP: ${zipcode}` } className={ style.line }>
-        <p>
-          CEP:
-          { ' ' }
-          { zipcode }
-        </p>
-      </span>
+      <div>
+        <span title={ `CEP: ${zipcode}` } className={ style.line }>
+          <p>
+            CEP:
+            { ' ' }
+            { zipcode }
+          </p>
+        </span>
+        <span title={ `Complemento: ${complement}` } className={ style.line }>
+          <p>
+            Comp.:
+            { ' ' }
+            { complement }
+          </p>
+        </span>
+      </div>
       { removable && (
         <button className={ style.delete } title="Excluir Endereço" type="button" onClick={ execFunction }>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

@@ -1,10 +1,10 @@
 'use client';
 
 import React, { FormEvent, useState } from 'react';
-import { api2 } from '../../../service/api';
-import BtnIco from '../../../components/Buttons/BtnIco';
-import { Input } from '../../../components/ComponentsForm';
-import style from '../../../Sass/style.module.scss';
+import { api2 } from 'service/api';
+import BtnIco from 'components/Buttons/BtnIco';
+import { Input } from 'components/ComponentsForm';
+import style from 'Sass/style.module.scss';
 
 export default function Page() {
   // const cookie = cookies().get('u_token')?.value;

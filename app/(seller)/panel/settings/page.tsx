@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import type { FormEvent } from 'react';
-import { Input } from '../../../../components/ComponentsForm';
-import CardAddress from '../../../../components/Cards/CardAddress/CardAddress';
-import BtnIco from '../../../../components/Buttons/BtnIco';
-import { api2 } from '../../../../service/api';
-import useSellerSettings from '../../../../hooks/useSellerSettings';
-import RenderAdderess from '../../../../components/Bag/RenderAdderess';
-import ContentModal from '../../../../components/Modal/ContentModal';
+import { Input } from 'components/ComponentsForm';
+import CardAddress from 'components/Cards/CardAddress/CardAddress';
+import BtnIco from 'components/Buttons/BtnIco';
+import { api2 } from 'service/api';
+import useSellerSettings from 'hooks/useSellerSettings';
+import RenderAdderess from 'components/Bag/RenderAdderess';
+import ContentModal from 'components/Modal/ContentModal';
 import style from './style.module.scss';
 
 function Page() {
@@ -21,6 +21,7 @@ function Page() {
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
     const object = { ...data, address: address || dataSeller?.address };
+
     // Só funciona quando renderiza apos isso a orde das chves do objeto muda e não funciona mais
     if (JSON.stringify(object) !== JSON.stringify(dataSeller)) {
       formData.append('address', String(address?.id || dataSeller?.address.id));

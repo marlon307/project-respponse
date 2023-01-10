@@ -1,6 +1,6 @@
 import React from 'react';
-import { BtnRedirect } from '../components/Buttons';
-import style from '../Sass/style.module.scss';
+import { BtnRedirect } from 'components/Buttons';
+import style from 'Sass/style.module.scss';
 
 export default function NotFound404() {
   return (

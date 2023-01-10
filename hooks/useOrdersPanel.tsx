@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import { notFound } from 'next/navigation';
-import { api2 } from '../service/api';
+import { api2 } from 'service/api';
 
 async function getOrders(route: string): Promise<POrder[]> {
   const { data } = await api2.get(route)

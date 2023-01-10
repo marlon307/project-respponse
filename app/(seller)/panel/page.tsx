@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import React from 'react';
-import { api2 } from '../../../service/api';
+import { api2 } from 'service/api';
 import style from './style.module.scss';
 
 async function getPropsPanel(): Promise<PanelSeller> {

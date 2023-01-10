@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import Modal from '../components/Modal/Modal';
-import style from '../Sass/style.module.scss';
-import '../Sass/globals.scss';
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
+import Modal from 'components/Modal/Modal';
+import style from 'Sass/style.module.scss';
+import 'Sass/globals.scss';
 
 interface Props {
   children: ReactNode

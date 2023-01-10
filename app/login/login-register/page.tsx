@@ -3,11 +3,11 @@
 import React, { FormEvent, useState } from 'react';
 // import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import BtnIco from '../../../components/Buttons/BtnIco';
-import { Input } from '../../../components/ComponentsForm';
-import { api2 } from '../../../service/api';
-import useLogin, { loginUser } from '../../../hooks/useLogin';
-import style from '../../../Sass/style.module.scss';
+import BtnIco from 'components/Buttons/BtnIco';
+import { Input } from 'components/ComponentsForm';
+import { api2 } from 'service/api';
+import useLogin, { loginUser } from 'hooks/useLogin';
+import style from 'Sass/style.module.scss';
 
 function Login() {
   const validEmail = new RegExp(`^${process.env.VALIDATION_EMAIL!}$`);

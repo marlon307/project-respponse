@@ -1,5 +1,5 @@
 import React from 'react';
-import useAddress from '../../hooks/useAddress';
+import useAddress from 'hooks/useAddress';
 import { CardAdderess } from '../Cards';
 import style from './style.module.scss';
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { SmallCard } from '../../components/Cards';
-import mockBag from '../../service/mockBag';
-import style from '../../Sass/style.module.scss';
+import { SmallCard } from 'components/Cards';
+import mockBag from 'service/mockBag';
+import style from 'Sass/style.module.scss';
 
 function Page() {
   return (

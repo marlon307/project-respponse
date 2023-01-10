@@ -1,7 +1,7 @@
 import React, { useCallback, useState, lazy } from 'react';
+import { api2 } from 'service/api';
+import useAddress from 'hooks/useAddress';
 import { CardAdderess } from '.';
-import { api2 } from '../../service/api';
-import useAddress from '../../hooks/useAddress';
 import BtnAdd from '../Buttons/BtnAdd';
 import ContentModal from '../Modal/ContentModal';
 import style from './CardAddress/style.module.scss';

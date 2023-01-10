@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { api2 } from '../../service/api';
+import { api2 } from 'service/api';
 import type { PBtnAddBag } from './types';
 import style from './style.module.scss';
 

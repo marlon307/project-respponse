@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import React from 'react';
-import CardProduct from '../../../../components/Cards/CardProduct/CardProduct';
-import { api2 } from '../../../../service/api';
+import CardProduct from 'components/Cards/CardProduct/CardProduct';
+import { api2 } from 'service/api';
 import type { PropsCardProductCategory } from '../../../../@types/typeCardProduct';
 import style from './style.module.scss';
 

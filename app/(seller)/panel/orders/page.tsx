@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState, lazy } from 'react';
-import { Input } from '../../../../components/ComponentsForm';
-import TableOrder from '../../../../components/Order/TableOrder';
-import useOrdersPanel from '../../../../hooks/useOrdersPanel';
+import { Input } from 'components/ComponentsForm';
+import TableOrder from 'components/Order/TableOrder';
+import useOrdersPanel from 'hooks/useOrdersPanel';
 import style from './style.module.scss';
 
-const OrderId = lazy(() => import('../../../../components/Order/OrderIdPanel'));
+const OrderId = lazy(() => import('components/Order/OrderIdPanel'));
 
 function Page() {
   const [status, setStatus] = useState(2);

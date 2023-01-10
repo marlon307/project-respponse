@@ -1,5 +1,5 @@
 import React from 'react';
-import AccountComponent from '../../components/UserCfg/AccountComponent';
+import AccountComponent from 'components/UserCfg/AccountComponent';
 
 async function Page() {
   return (

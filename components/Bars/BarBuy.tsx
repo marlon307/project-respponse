@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import calcAllValuesArray from '../../hooks/useCalcs';
+import calcAllValuesArray from 'hooks/useCalcs';
 import { BuyFinishBtn } from '../Buttons';
 import type {
   Pay, Shipping, StateBagType, TypeAddBagInfos,

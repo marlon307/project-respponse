@@ -1,11 +1,11 @@
 'use client';
 
 import React, { Suspense, useCallback, useState } from 'react';
-import ItemList from '../../../components/Filter/ItemList';
-import ContentModal from '../../../components/Modal/ContentModal';
-import Filter from '../../../components/Filter/Filter';
+import ItemList from 'components/Filter/ItemList';
+import ContentModal from 'components/Modal/ContentModal';
+import Filter from 'components/Filter/Filter';
+import Categorys from 'components/Category/Categorys';
 import Loading from './loading';
-import Categorys from '../../../components/Category/Categorys';
 import type { PropsItemFilter } from '../search';
 import style from '../style.module.scss';
 

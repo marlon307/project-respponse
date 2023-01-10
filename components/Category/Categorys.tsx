@@ -1,5 +1,5 @@
 import React from 'react';
-import useCategorys from '../../hooks/useCategorys';
+import useCategorys from 'hooks/useCategorys';
 import CardProduct from '../Cards/CardProduct/CardProduct';
 import type { PropsItemFilter } from '../../app/category/search';
 

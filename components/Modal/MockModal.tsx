@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import type { ReactNode } from 'react';
-import useOutsideClick from '../../hooks/useOutSide';
+import useOutsideClick from 'hooks/useOutSide';
 import style from './style.module.scss';
 
 interface Props {
