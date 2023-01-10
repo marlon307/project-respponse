@@ -14,7 +14,6 @@ interface Props {
 function CfgUser({ isRequest }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const { dataUser, mutate } = useUser(isRequest);
-
   async function saveUpdateInfoUser(event: FormEvent) {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
@@ -81,7 +80,7 @@ function CfgUser({ isRequest }: Props) {
           name="doc"
           text="CPF"
           placeholder="000.000.000-00"
-          defaultValue={ dataUser?.cpf_cnpj }
+          defaultValue={ dataUser?.cpf }
           msgError="CPF inválido"
           maxLength={ 11 }
         // pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useCallback } from 'react';
 import type { FocusEvent } from 'react';
 import type { Props } from './type';
@@ -32,6 +34,8 @@ function Input({
     }
   }, []);
 
+  const identifyInput = msgError ?? props.text;
+
   return (
     <label className={ style.input } htmlFor={ props.id } data-error={ statusValid || isValid }>
       <input
@@ -41,9 +45,9 @@ function Input({
       />
       <span
         className={ style.ph }
-        title={ statusValid || isValid ? msgError : props.placeholder }
+        title={ statusValid || isValid ? identifyInput : props.placeholder }
       >
-        { statusValid || isValid ? msgError : props.text }
+        { statusValid || isValid ? identifyInput : props.text }
       </span>
     </label>
   );

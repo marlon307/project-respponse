@@ -20,6 +20,12 @@ async function Page() {
 
   return (
     <div className={ style.container }>
+      <Link href="/panel/settings" className={ style.linkcard }>
+        <div className={ style.card }>
+          <h3>Configurações</h3>
+          <span>Documentos, Endereço</span>
+        </div>
+      </Link>
       <Link href="/panel/orders" className={ style.linkcard }>
         <div className={ style.card }>
           <h3>Pedidos</h3>

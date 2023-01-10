@@ -5,7 +5,7 @@ interface PropsData {
   name?: string;
   email?: string;
   birthday?: string;
-  cpf_cnpj?: string;
+  cpf?: string;
   tel?: string;
   cel?: string;
   gender_id?: number;

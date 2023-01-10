@@ -1,0 +1,32 @@
+.form {
+  margin: 0 6%;
+
+  button {
+    margin-top: 2em;
+  }
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+
+  fieldset {
+    max-width: 400px;
+    padding: 1.6em 1em 1em;
+    border: 1px solid var(--color-border);
+    border-radius: 1em;
+    display: flex;
+    gap: 1.5em;
+    flex-direction: column;
+
+    &:nth-child(2) {
+      width: 100%;
+    }
+  }
+
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+}
