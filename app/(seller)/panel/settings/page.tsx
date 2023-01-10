@@ -1,43 +1,32 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import type { FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
 import { Input } from '../../../../components/ComponentsForm';
 import CardAddress from '../../../../components/Cards/CardAddress/CardAddress';
 import BtnIco from '../../../../components/Buttons/BtnIco';
 import { api2 } from '../../../../service/api';
+import useSellerSettings from '../../../../hooks/useSellerSettings';
+import RenderAdderess from '../../../../components/Bag/RenderAdderess';
+import ContentModal from '../../../../components/Modal/ContentModal';
 import style from './style.module.scss';
 
-interface PropsSettings {
-  cnpj: string;
-  ie: string;
-  name_store: string;
-  address: ITAddress
-}
-
 function Page() {
-  const [sllerInfo, setSellerInfo] = useState({} as PropsSettings);
-  const router = useRouter();
+  const { dataSeller } = useSellerSettings();
+  const [address, setAddress] = useState(dataSeller?.address);
+  const [isOpen, setIsOpen] = useState(false);
 
   async function handlerSubimit(e: FormEvent) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    formData.append('address', '1');
-
+    formData.append('address', String(address?.id || dataSeller?.address.id));
     await api2.patch('/panel/setings', formData);
   }
 
-  useEffect(() => {
-    async function getSettingSeller() {
-      const response = await api2.get('/panel/setings')
-        .catch((err) => (err.response.status === 401 ? router.push('/') : err));
-      if (response.data.status === 200) {
-        setSellerInfo(response.data.settings);
-      }
-    }
-    getSettingSeller();
-  }, []);
+  function selectAddress(add: ITAddress) {
+    setIsOpen(false);
+    setAddress(add);
+  }
 
   return (
     <form className={ style.form } onSubmit={ handlerSubimit }>
@@ -48,7 +37,7 @@ function Page() {
             text="Nome da Loja"
             name="store_name"
             placeholder="00.000.000/0000-00"
-            defaultValue={ sllerInfo.name_store }
+            defaultValue={ dataSeller?.name_store }
             maxLength={ 14 }
             minLength={ 14 }
             required
@@ -57,7 +46,7 @@ function Page() {
             text="CNPJ"
             name="cnpj"
             placeholder="00.000.000/0000-00"
-            defaultValue={ sllerInfo.cnpj }
+            defaultValue={ dataSeller?.cnpj }
             maxLength={ 14 }
             minLength={ 14 }
             required
@@ -66,7 +55,7 @@ function Page() {
             text="Incrição Estadual"
             name="ie"
             placeholder="00000000000000"
-            defaultValue={ sllerInfo.ie }
+            defaultValue={ dataSeller?.ie }
             maxLength={ 14 }
             minLength={ 14 }
             required
@@ -74,13 +63,18 @@ function Page() {
         </fieldset>
         <fieldset>
           <legend>Endereço de coleta</legend>
-          <CardAddress { ...sllerInfo.address } />
+          <button type="button" onClick={ () => setIsOpen(true) }>
+            <CardAddress { ...address ?? dataSeller?.address } />
+          </button>
         </fieldset>
       </div>
       <BtnIco
         textBtn="Salvar"
         actionLiberate={ false }
       />
+      <ContentModal isOpen={ isOpen } openModal={ setIsOpen }>
+        { isOpen && <RenderAdderess execFunction={ selectAddress! } /> }
+      </ContentModal>
     </form>
   );
 }
