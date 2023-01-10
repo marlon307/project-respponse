@@ -21,6 +21,7 @@ function Page() {
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
     const object = { ...data, address: address || dataSeller?.address };
+
     // Só funciona quando renderiza apos isso a orde das chves do objeto muda e não funciona mais
     if (JSON.stringify(object) !== JSON.stringify(dataSeller)) {
       formData.append('address', String(address?.id || dataSeller?.address.id));

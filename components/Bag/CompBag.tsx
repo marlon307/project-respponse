@@ -137,7 +137,7 @@ function ContentBag({ props }: Props) {
       <BarBuy
         listProducts={ listBag }
         shipping={ shipping }
-        addresId={ props?.main_add.id }
+        addresId={ props?.main_add?.id }
         paymentMethod={ paymentMethod }
         setItallment={ setPaymentMethod }
       />
