@@ -7,12 +7,13 @@ import CardAddress from 'components/Cards/CardAddress/CardAddress';
 import BtnIco from 'components/Buttons/BtnIco';
 import { api2 } from 'service/api';
 import useSellerSettings from 'hooks/useSellerSettings';
+import type { PropsSettingsPanel } from 'hooks/useSellerSettings';
 import RenderAdderess from 'components/Bag/RenderAdderess';
 import ContentModal from 'components/Modal/ContentModal';
 import style from './style.module.scss';
 
 function Page() {
-  const { dataSeller } = useSellerSettings();
+  const { dataSeller, mutate } = useSellerSettings();
   const [address, setAddress] = useState(dataSeller?.address as ITAddress);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,12 +21,14 @@ function Page() {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
-    const object = { ...data, address: address || dataSeller?.address };
+    const object = { ...data, address: address || dataSeller?.address } as PropsSettingsPanel;
 
-    // Só funciona quando renderiza apos isso a orde das chves do objeto muda e não funciona mais
     if (JSON.stringify(object) !== JSON.stringify(dataSeller)) {
       formData.append('address', String(address?.id || dataSeller?.address.id));
-      await api2.patch('/panel/setings', formData);
+      const resp = await api2.patch('/panel/setings', formData);
+      if (resp.data.status === 200) {
+        mutate(object);
+      }
     }
   }
 
