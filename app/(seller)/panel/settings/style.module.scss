@@ -25,8 +25,57 @@
     }
   }
 
+  textarea {
+    border: 1px solid var(--color-border);
+    border-radius: 1em;
+    padding: 1em;
+    width: -webkit-fill-available;
+    resize: none;
+  }
+
   button {
     all: unset;
     cursor: pointer;
+  }
+}
+
+.block {
+  width: 100%;
+}
+
+.title_span {
+  margin-bottom: 8px;
+  display: block;
+}
+
+.box {
+  position: relative;
+  display: inline-flex;
+  gap: 6px;
+  width: 100%;
+  margin-bottom: 8px;
+
+  button {
+    position: absolute;
+    right: -12px;
+    top: -10px;
+    padding: 1px 4px;
+    border-radius: 50%;
+    background: var(--color-red);
+    display: none;
+  }
+
+  &:hover button {
+    display: block;
+  }
+}
+
+@media (max-width: 860px) {
+  .fields {
+    margin: 0 auto;
+
+    fieldset {
+      width: 100%;
+    }
   }
 }

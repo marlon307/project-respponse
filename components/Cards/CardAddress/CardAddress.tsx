@@ -15,7 +15,7 @@ function CardAdderess({
       <div>
         <span title={ `Logradouro: ${street}` } className={ style.line }>
           <p>
-            Logradouro:
+            Rua:
             { ' ' }
             { street }
           </p>

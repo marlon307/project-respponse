@@ -260,7 +260,7 @@ function CreateProduct({ propsCreateProduct }: Props) {
           <BtnAdd eventBtn={ addFeature! } title="Adicionar opção" />
         </div>
         <fieldset className={ style.fieldset }>
-          <legend>* Dimensões do produto embalado para envio:</legend>
+          <legend>* Dimensões do produto para envio:</legend>
           <table className={ style.table }>
             <thead>
               <tr>

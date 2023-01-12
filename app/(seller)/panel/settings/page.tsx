@@ -10,12 +10,14 @@ import useSellerSettings from 'hooks/useSellerSettings';
 import type { PropsSettingsPanel } from 'hooks/useSellerSettings';
 import RenderAdderess from 'components/Bag/RenderAdderess';
 import ContentModal from 'components/Modal/ContentModal';
+import InputSmall from 'components/ComponentsForm/InputSmall';
 import style from './style.module.scss';
 
 function Page() {
   const { dataSeller, mutate } = useSellerSettings();
   const [address, setAddress] = useState(dataSeller?.address as ITAddress);
   const [isOpen, setIsOpen] = useState(false);
+  const [boxNumber, setBoxNumber] = useState(0);
 
   async function handlerSubimit(e: FormEvent) {
     e.preventDefault();
@@ -25,6 +27,13 @@ function Page() {
 
     if (JSON.stringify(object) !== JSON.stringify(dataSeller)) {
       formData.append('address', String(address?.id || dataSeller?.address.id));
+      formData.append('listboxes', JSON.stringify([...Array(boxNumber).keys()].map((box) => ({
+        width: data[`width-${box}`],
+        height: data[`height-${box}`],
+        length: data[`length-${box}`],
+        weight: data[`weight-${box}`],
+      }))));
+
       const resp = await api2.patch('/panel/setings', formData);
       if (resp.data.status === 200) {
         mutate(object);
@@ -71,10 +80,36 @@ function Page() {
           />
         </fieldset>
         <fieldset>
-          <legend>Endereço de coleta</legend>
+          <legend>Configurações para transporte</legend>
           <button type="button" onClick={ () => setIsOpen(true) }>
+            <span className={ style.title_span }>Endereço de coleta</span>
             <CardAddress { ...address ?? dataSeller?.address } />
           </button>
+          <div className={ style.block }>
+            <span className={ style.title_span }>Observações</span>
+            <textarea
+              name="obs"
+              id="obs"
+              cols={ 20 }
+              rows={ 5 }
+              placeholder="Máximo de caracteres 64"
+              maxLength={ 64 }
+              defaultValue={ dataSeller?.obs }
+            />
+          </div>
+          <div className={ style.block }>
+            <span className={ style.title_span }>Caixas</span>
+            { [...Array(boxNumber).keys()].map((box) => (
+              <div className={ style.box } key={ box }>
+                <InputSmall title="L" type="number" name={ `width-${box}` } placeholder="0.0" required />
+                <InputSmall title="A" type="number" name={ `height-${box}` } placeholder="0.0" required />
+                <InputSmall title="C" type="number" name={ `length-${box}` } placeholder="0.0" required />
+                <InputSmall title="P" type="number" name={ `weight-${box}` } placeholder="0.0" required />
+                <button type="button" title="Excluir">&#x2715;</button>
+              </div>
+            )) }
+            <button type="button" onClick={ () => setBoxNumber((ccBox) => ccBox + 1) }>Criar Caixa</button>
+          </div>
         </fieldset>
       </div>
       <BtnIco

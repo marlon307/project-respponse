@@ -6,6 +6,7 @@ export interface PropsSettingsPanel {
   cnpj: string;
   ie: string;
   store_name: string;
+  obs: string;
   address: ITAddress
 }
 

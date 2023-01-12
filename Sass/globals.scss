@@ -9,7 +9,7 @@
   --color-blue: #006BEF;
   --color-black: #333;
   --backgroundimg: #EAEAEA;
-  --colo-red: #DB1818;
+  --color-red: #DB1818;
   --color-green: #43AA37;
   --color-grey-with: #A7A7A7;
   --color-grey: #505050;
@@ -166,7 +166,7 @@ body {
   }
 
   &[data-loading="err"] {
-    background: var(--colo-red);
+    background: var(--color-red);
   }
 }
 
