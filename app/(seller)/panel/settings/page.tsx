@@ -27,11 +27,12 @@ function Page() {
 
     if (JSON.stringify(object) !== JSON.stringify(dataSeller)) {
       formData.append('address', String(address?.id || dataSeller?.address.id));
-      formData.append('listboxes', JSON.stringify([...Array(boxNumber).keys()].map((box) => ({
-        width: data[`width-${box}`],
-        height: data[`height-${box}`],
-        length: data[`length-${box}`],
-        weight: data[`weight-${box}`],
+      formData.append('listboxes', JSON.stringify(dataSeller?.boxes.map((box) => ({
+        id: box.id,
+        width: data[`width-${box.id}`],
+        height: data[`height-${box.id}`],
+        length: data[`length-${box.id}`],
+        weight: data[`weight-${box.id}`],
       }))));
 
       const resp = await api2.patch('/panel/setings', formData);
@@ -99,12 +100,12 @@ function Page() {
           </div>
           <div className={ style.block }>
             <span className={ style.title_span }>Caixas</span>
-            { [...Array(boxNumber).keys()].map((box) => (
-              <div className={ style.box } key={ box }>
-                <InputSmall title="L" type="number" name={ `width-${box}` } placeholder="0.0" required />
-                <InputSmall title="A" type="number" name={ `height-${box}` } placeholder="0.0" required />
-                <InputSmall title="C" type="number" name={ `length-${box}` } placeholder="0.0" required />
-                <InputSmall title="P" type="number" name={ `weight-${box}` } placeholder="0.0" required />
+            { dataSeller?.boxes?.map((box) => (
+              <div className={ style.box } key={ box.id }>
+                <InputSmall title="L" type="number" defaultValue={ box.width } name={ `width-${box.id}` } placeholder="0.0" required />
+                <InputSmall title="A" type="number" defaultValue={ box.height } name={ `height-${box.id}` } placeholder="0.0" required />
+                <InputSmall title="C" type="number" defaultValue={ box.length } name={ `length-${box.id}` } placeholder="0.0" required />
+                <InputSmall title="P" type="number" defaultValue={ box.weight } name={ `weight-${box.id}` } placeholder="0.0" required />
                 <button type="button" title="Excluir">&#x2715;</button>
               </div>
             )) }
