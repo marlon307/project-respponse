@@ -206,14 +206,14 @@
 
 :is(.btn_t3, .btn_t2)[data-error="true"] {
   gap: 1.4em;
-  border-color: var(--colo-red) !important;
+  border-color: var(--color-red) !important;
 
   span {
-    color: var(--colo-red) !important;
+    color: var(--color-red) !important;
   }
 
   path {
-    fill: var(--colo-red);
+    fill: var(--color-red);
   }
 }
 

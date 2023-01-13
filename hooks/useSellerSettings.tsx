@@ -2,11 +2,21 @@ import useSWR from 'swr';
 import { notFound } from 'next/navigation';
 import { api2 } from 'service/api';
 
+type TBox = {
+  id?: number;
+  height: number;
+  length: number;
+  weight: number;
+  width: number;
+};
+
 export interface PropsSettingsPanel {
   cnpj: string;
   ie: string;
   store_name: string;
+  obs: string;
   address: ITAddress
+  boxes: TBox[];
 }
 
 async function getSellerSetings(route: string): Promise<PropsSettingsPanel> {
