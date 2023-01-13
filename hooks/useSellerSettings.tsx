@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { api2 } from 'service/api';
 
 type TBox = {
-  id?: number;
+  id?: number | string;
   height: number;
   length: number;
   weight: number;
