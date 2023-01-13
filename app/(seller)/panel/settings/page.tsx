@@ -15,9 +15,8 @@ import style from './style.module.scss';
 
 function Page() {
   const { dataSeller, mutate } = useSellerSettings();
-  const [address, setAddress] = useState(dataSeller?.address as ITAddress);
+  const [address, setAddress] = useState<ITAddress>(dataSeller?.address!);
   const [isOpen, setIsOpen] = useState(false);
-  const [boxNumber, setBoxNumber] = useState(0);
 
   async function handlerSubimit(e: FormEvent) {
     e.preventDefault();
@@ -27,8 +26,8 @@ function Page() {
 
     if (JSON.stringify(object) !== JSON.stringify(dataSeller)) {
       formData.append('address', String(address?.id || dataSeller?.address.id));
-      formData.append('listboxes', JSON.stringify(dataSeller?.boxes.map((box) => ({
-        id: box.id,
+      formData.append('listboxes', JSON.stringify(dataSeller?.boxes?.map((box) => ({
+        id: typeof box.id === 'number' ? box.id : null,
         width: data[`width-${box.id}`],
         height: data[`height-${box.id}`],
         length: data[`length-${box.id}`],
@@ -45,6 +44,19 @@ function Page() {
   function selectAddress(add: ITAddress) {
     setIsOpen(false);
     setAddress(add);
+  }
+
+  function handlerAddBox() {
+    mutate((prevState) => ({
+      ...prevState!,
+      boxes: [...prevState?.boxes ?? [], {
+        id: `b-${prevState?.boxes.length ?? 0 + 1}`,
+        height: 0,
+        length: 0,
+        weight: 0,
+        width: 0,
+      }],
+    }), false);
   }
 
   return (
@@ -109,7 +121,7 @@ function Page() {
                 <button type="button" title="Excluir">&#x2715;</button>
               </div>
             )) }
-            <button type="button" onClick={ () => setBoxNumber((ccBox) => ccBox + 1) }>Criar Caixa</button>
+            <button type="button" onClick={ handlerAddBox }>Criar Caixa</button>
           </div>
         </fieldset>
       </div>
