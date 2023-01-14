@@ -113,7 +113,7 @@ function CreateProduct({ propsCreateProduct }: Props) {
           required
         >
           <option disabled hidden value="">Selectione uma categoria</option>
-          { propsCreateProduct.list_ctg.map(({ id, category_name }) => (
+          { propsCreateProduct?.list_ctg.map(({ id, category_name }) => (
             <option
               key={ id }
               value={ id }
@@ -166,7 +166,7 @@ function CreateProduct({ propsCreateProduct }: Props) {
                   <span style={ { backgroundColor: listColors[key]?.color } } />
                   <span>Cor</span>
                   <ul>
-                    { propsCreateProduct.list_colors.map(({ id, color, color_name }) => (
+                    { propsCreateProduct?.list_colors.map(({ id, color, color_name }) => (
                       <li key={ id }>
                         <button
                           type="button"
@@ -237,7 +237,7 @@ function CreateProduct({ propsCreateProduct }: Props) {
                       +
                     </pre>
                     <ul>
-                      { propsCreateProduct.list_sizes.map(({ id, size }) => (
+                      { propsCreateProduct?.list_sizes.map(({ id, size }) => (
                         <li key={ id }>
                           <button
                             type="button"
@@ -287,7 +287,7 @@ function CreateProduct({ propsCreateProduct }: Props) {
         <div className={ style.gen }>
           <h3>Género</h3>
           <div className={ style.gen_options }>
-            { propsCreateProduct.list_gender.map(({ id, gender, gender_name }) => (
+            { propsCreateProduct?.list_gender.map(({ id, gender, gender_name }) => (
               <InputRadio
                 key={ id }
                 checked={ id === 1 }
