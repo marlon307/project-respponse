@@ -10,7 +10,7 @@ export default async function Head({ params }: IHead) {
     <>
       <title>{ `Respponse - Categoria ${params.id}` }</title>
       <meta name="description" content={ `Categoria ${params.id}` } />
-      <link rel="canonical" href={ `https://project-respponse-marlon307.vercel.app${params.id}` } />
+      <link rel="canonical" href={ `https://project-respponse-marlon307.vercel.app/category/${params.id}` } />
       <meta property="og:title" content={ `Respponse - Categoria ${params.id}` } />
       <meta property="og:description" content={ `Respponse - todas produto com a categoria ${params.id}` } />
       <meta name="keywords" content={ `${params.id}` } />

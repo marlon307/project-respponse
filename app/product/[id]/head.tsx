@@ -17,7 +17,7 @@ export default async function Head({ params }: Props) {
     <>
       <title>{ `${product.category_name} - ${product.title}` }</title>
       <meta name="description" content={ product.descrtion } />
-      <link rel="canonical" href={ `https://project-respponse-marlon307.vercel.app${product.id}` } />
+      <link rel="canonical" href={ `https://project-respponse-marlon307.vercel.app/product/${product.id}` } />
       <meta property="og:title" content={ product.title } />
       <meta property="og:description" content={ product.descrtion } />
       <meta name="keywords" content={ `${product.category_name} - ${product.title}` } />
