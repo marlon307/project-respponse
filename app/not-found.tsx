@@ -2,7 +2,7 @@ import React from 'react';
 import { BtnRedirect } from 'components/Buttons';
 import style from 'Sass/style.module.scss';
 
-export default function NotFound404() {
+export default function NotFound() {
   return (
     <div className={ style.notfound }>
       <h1>404</h1>
