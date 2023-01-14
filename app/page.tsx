@@ -5,11 +5,12 @@ import { api2 } from 'service/api';
 import CardProduct from 'components/Cards/CardProduct/CardProduct';
 import { BtnRedirect } from 'components/Buttons';
 import style from 'Sass/style.module.scss';
+import { notFound } from 'next/navigation';
 import type { IPropsHome } from '../@types/typesIndex';
 
 async function getData() {
   const newdata = await api2.get('/product')
-    .catch((error) => ({ data: error.message }));
+    .catch(() => notFound());
 
   return {
     categorys: newdata.data.categorys,

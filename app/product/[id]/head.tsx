@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { api2 } from 'service/api';
 import type { Props, TypeProduct } from './product';
-import DefaultTags from '../../DefaultTags';
+import DefaultTags from '../../../components/Head/DefaultTags';
 
 async function getProductID(prodID: number): Promise<TypeProduct> {
   const { data } = await api2.get(`/product/${prodID}`)
