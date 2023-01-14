@@ -15,13 +15,15 @@ export default async function Head({ params }: Props) {
 
   return (
     <>
-      <DefaultTags />
       <title>{ `${product.category_name} - ${product.title}` }</title>
       <meta name="description" content={ product.descrtion } />
       <link rel="canonical" href={ `https://project-respponse-marlon307.vercel.app${product.id}` } />
       <meta property="og:title" content={ product.title } />
       <meta property="og:description" content={ product.descrtion } />
       <meta name="keywords" content={ `${product.category_name} - ${product.title}` } />
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow" />
+      <DefaultTags />
     </>
   );
 }
