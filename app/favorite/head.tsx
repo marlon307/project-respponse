@@ -1,5 +1,5 @@
 import React from 'react';
-import DefaultTags from '../DefaultTags';
+import DefaultTags from '../../components/Head/DefaultTags';
 
 export default async function Head() {
   return (
