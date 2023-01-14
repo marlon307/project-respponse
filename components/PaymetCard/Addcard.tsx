@@ -4,7 +4,8 @@ import style from './style.module.scss';
 
 declare global {
   interface Window {
-    paymentController: any
+    paymentController: any;
+    MercadoPago: any;
   }
 }
 
@@ -27,7 +28,7 @@ function Addcard({
 }: Props) {
   useEffect(() => {
     async function createFrom() {
-      const mp = new MercadoPago(process.env.MP_P_KEY);
+      const mp = new window.MercadoPago(process.env.MP_P_KEY);
       const bricksBuilder = mp.bricks();
 
       const settings = {
