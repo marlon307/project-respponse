@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { getCookie } from 'cookies-next';
 
-interface MyHeaders extends Record<string, any> {
-  authorization?: string;
-}
+// interface MyHeaders extends Record<string, any> {
+//   authorization?: string;
+// }
 
 const api = axios.create({
   baseURL: process.env.LOCAL_API_HOST,
@@ -30,7 +30,7 @@ api2.interceptors.request.use((config: AxiosRequestConfig) => {
 
   if (token) {
     // api2.defaults.headers.common.authorization = `Bearer ${token}`;
-    config.headers = config.headers as MyHeaders;
+    // config.headers = config.headers as MyHeaders;
     config.headers.authorization = `Bearer ${token}`;
   }
 
