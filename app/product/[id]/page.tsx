@@ -7,21 +7,24 @@ import BarSize from 'components/Bars/BarSize';
 import BarColors from 'components/Bars/BarColors';
 import { api2 } from 'service/api';
 import { ButtonNext, ButtonPrev } from 'components/Buttons/Buttons';
+import CardProduct from 'components/Cards/CardProduct/CardProduct';
+import type { ICardProduct } from '../../../@types/typeCardProduct';
 import type { Props, TypeProduct } from './product';
 import style from './style.module.scss';
 
-// interface Props {
-//   similar: SimilarProduct['similar'],
-// }
+interface PropsReponse {
+  product: TypeProduct
+  similar: ICardProduct['products'],
+}
 
-async function getProductID(prodID: number): Promise<TypeProduct> {
+async function getProductID(prodID: number): Promise<PropsReponse> {
   const { data } = await api2.get(`/product/${prodID}`)
     .catch(() => notFound());
-  return data.product;
+  return data;
 }
 
 async function Page({ params }: Props) {
-  const product = await getProductID(params.id);
+  const { product, similar } = await getProductID(params.id);
 
   const {
     title, category_name: ctgName, gender,
@@ -62,11 +65,11 @@ async function Page({ params }: Props) {
       <div className={ style.products_similar }>
         <h3>Produtos Similares</h3>
         <div className={ style.slide_prod }>
-          {/* { similar.map((productSimilar: TypeProduct['similar'][0]) => (
-              <div className={ style.panel } key={ productSimilar.id }>
-                <CardProduct objectProduct={ productSimilar } />
-              </div>
-            )) } */}
+          { similar.map((productSimilar) => (
+            <div className={ style.panel } key={ productSimilar.id }>
+              <CardProduct objectProduct={ productSimilar } />
+            </div>
+          )) }
         </div>
       </div>
       <div className={ style.maincontentinfo }>

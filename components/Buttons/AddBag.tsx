@@ -39,6 +39,7 @@ function AddBag({ array }: PBtnAddBag) {
       }
     } else {
       setActiveMsg(true);
+      setTimeout(() => setActiveMsg(false), 3000);
     }
   }
 
