@@ -1496,10 +1496,10 @@ axe-core@^4.6.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.6.3.tgz#fc0db6fdb65cc7a80ccf85286d91d64ababa3ece"
   integrity sha512-/BQzOX780JhsxDnPpH4ZiyrJAzcd8AfzFPkv+89veFSr1rcMjuq2JDCwypKaPeB6ljHp9KjXhPpjgCvQlWYuqg==
 
-axios@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.3.tgz#31a3d824c0ebf754a004b585e5f04a5f87e6c4ff"
-  integrity sha512-pdDkMYJeuXLZ6Xj/Q5J3Phpe+jbGdsSzlQaFVkMQzRUL05+6+tetX8TV3p4HrU4kzuO9bt+io/yGQxuyxA/xcw==
+axios@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.5.tgz#858c129d286e7ee3b1e970961cde410ba3ea3740"
+  integrity sha512-9pU/8mmjSSOb4CXVsvGIevN+MlO/t9OWtKadTaLuN85Gge3HGorUckgp8A/2FH4V4hJ7JuQ3LIeI7KAV9ITZrQ==
   dependencies:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
@@ -1617,9 +1617,9 @@ callsites@^3.0.0:
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
 caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001406:
-  version "1.0.30001447"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001447.tgz#ef1f39ae38d839d7176713735a8e467a0a2523bd"
-  integrity sha512-bdKU1BQDPeEXe9A39xJnGtY0uRq/z5osrnXUw0TcK+EYno45Y+U7QU9HhHEyzvMDffpYadFXi3idnSNkcwLkTw==
+  version "1.0.30001448"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001448.tgz#ca7550b1587c92a392a2b377cd9c508b3b4395bf"
+  integrity sha512-tq2YI+MJnooG96XpbTRYkBxLxklZPOdLmNIOdIhvf7SNJan6u5vCKum8iT7ZfCt70m1GPkuC7P3TtX6UuhupuA==
 
 chalk@^2.0.0:
   version "2.4.2"
@@ -3872,10 +3872,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-swr@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-2.0.1.tgz#8b4c132269fadcd845df4d44bd8722eba484ff71"
-  integrity sha512-6z4FpS9dKAay7axedlStsPahEw25nuMlVh4GHkuPpGptbmEEP8v/+kr0GkAE/7ErUs25U2VFOnZQz3AWfkmXdw==
+swr@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-2.0.2.tgz#fd34f3aac354f6b70f9134eb4218c747cc899a8d"
+  integrity sha512-iHbQW17hsduonMEliZnr6/yaxb+yvLe2r0+AH+ZfeqKzwc2bb+QRYpZm5/b/H0Lxgy7VWow4o71JeSazSun+9A==
   dependencies:
     use-sync-external-store "^1.2.0"
 
