@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
+// import type { AxiosRequestConfig } from 'axios';
 import { getCookie } from 'cookies-next';
 
 // interface MyHeaders extends Record<string, any> {
@@ -15,7 +16,7 @@ export const api2 = axios.create({
 });
 
 // https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900
-api.interceptors.request.use((config: AxiosRequestConfig) => {
+api.interceptors.request.use((config) => {
   const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9';
 
   if (token) {
@@ -25,7 +26,7 @@ api.interceptors.request.use((config: AxiosRequestConfig) => {
   return config;
 });
 
-api2.interceptors.request.use((config: AxiosRequestConfig) => {
+api2.interceptors.request.use((config/*: AxiosRequestConfig */) => {
   const token = getCookie('u_token');
 
   if (token) {
