@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import useOrderId from 'hooks/useOrderId';
+import { api2 } from 'service/api';
 import { SmallCard } from '../Cards';
 import style from './style.module.scss';
 import ClipBoard from '../Buttons/ClipBoard';
@@ -13,9 +14,14 @@ function OrderIdPanel({ orderid }: Props) {
   const { orderId, mutate } = useOrderId(orderid);
   const totalOrder = orderId ? orderId.value_order + orderId.carrier.delivery_value : 0;
 
-  function handleStatus({ target }: { target: { value: string } }) {
-    orderId!.status_id = Number(target.value);
-    mutate(orderId);
+  async function handleStatus({ target }: { target: { value: string } }) {
+    const { data } = await api2.patch(`/seller/update_status/${orderid}`, {
+      status: Number(target.value),
+    });
+    if (data.status === 200) {
+      orderId!.status_id = Number(target.value);
+      mutate({ ...orderId! }, { revalidate: false });
+    }
   }
 
   return (
