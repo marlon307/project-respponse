@@ -20,8 +20,8 @@ function Page() {
       if (String(order.id).includes(orderId!)) {
         return order;
       }
-      if (new Date(startDate!) <= new Date(order.date_order)
-        && new Date(endDate!) <= new Date(order.date_order) && (startDate || endDate)) {
+      if (new Date(order.date_order) >= new Date(startDate!)
+        && new Date(order.date_order) <= new Date(endDate!) && (startDate || endDate)) {
         return order;
       }
       return null;

@@ -1,34 +1,22 @@
-import React, { use } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { api2 } from 'service/api';
+import useOrderId from 'hooks/useOrderId';
 import { SmallCard } from '../Cards';
 import style from './style.module.scss';
 import ClipBoard from '../Buttons/ClipBoard';
-
-async function getOrderId(orderid: number): Promise<StateOrder> {
-  const { data } = await api2.get(`/order/${orderid}`);
-
-  data.order.date_order = new Date(data.order.date_order)
-    .toLocaleDateString('pt-BR', {
-      weekday: 'long',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      timeZone: 'UTC',
-    });
-
-  return data.order;
-}
 
 interface Props {
   orderid: number;
 }
 
 function OrderIdPanel({ orderid }: Props) {
-  const orderId = use(getOrderId(orderid));
+  const { orderId, mutate } = useOrderId(orderid);
+  const totalOrder = orderId ? orderId.value_order + orderId.carrier.delivery_value : 0;
+
+  function handleStatus({ target }: { target: { value: string } }) {
+    orderId!.status_id = Number(target.value);
+    mutate(orderId);
+  }
 
   return (
     <div className={ style.order }>
@@ -43,24 +31,30 @@ function OrderIdPanel({ orderid }: Props) {
             <span>
               <b>Pagamento:</b>
               { ' ' }
-              { orderId.payment }
+              { orderId?.payment }
             </span>
           </div>
           <span>
             <b>Data:</b>
             { ' ' }
             <span>
-              { orderId.date_order }
+              { orderId?.date_order }
             </span>
           </span>
         </div>
         <div className={ style.status }>
-          <h2>Status do Pedido</h2>
+          <div className={ style.row }>
+            <h2>Status do Pedido</h2>
+            <select name="status" id="status" onChange={ handleStatus }>
+              <option value="2">Pagamento Aprovado</option>
+              <option value="3">Separado/NF-e</option>
+            </select>
+          </div>
           <div className={ style.progressbar }>
-            <div data-status={ orderId.status_id }>
+            <div data-status={ orderId?.status_id }>
               <span title="Pedido Realizado" aria-label="Pedido Realizado" />
               <span title="Pagamento Aprovado" aria-label="Pagamento Aprovado" />
-              <span title="NF-e Disponivel" aria-label="NF-e Disponivel" />
+              <span title="NF-e Disponível" aria-label="NF-e Disponível" />
               <span title="Em Transporte" aria-label="Em Transporte" />
               <span title="Pedido Entregue" aria-label="Pedido Entregue" />
             </div>
@@ -90,18 +84,18 @@ function OrderIdPanel({ orderid }: Props) {
             </span>
           </div>
           <div>
-            <h3>{ orderId.carrier?.name_carrier }</h3>
+            <h3>{ orderId?.carrier.name_carrier }</h3>
             <span className={ style.shippingcompany }>
-              { orderId.carrier?.code ? <Link href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ orderId.carrier?.code }</Link>
+              { orderId?.carrier.code ? <Link href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" target="_blank" rel="noopener noreferrer">{ orderId.carrier?.code }</Link>
                 : <span>Código indisponível no momento.</span> }
-              <ClipBoard text={ orderId.carrier?.code || '' } />
+              <ClipBoard text={ orderId?.carrier.code || '' } />
               <button type="button">Gerar Etiqueta</button>
             </span>
           </div>
         </div>
         <div className={ style.orderitems }>
           <ul>
-            { orderId.list_products?.map((object) => (
+            { orderId?.list_products?.map((object) => (
               <li key={ `${object.id}${object.color}${object.size}` }>
                 <SmallCard
                   removable={ false }
@@ -115,7 +109,7 @@ function OrderIdPanel({ orderid }: Props) {
           <div>
             <span>Total Dos produtos</span>
             <span>
-              { orderId.value_order?.toLocaleString('pt-br', {
+              { orderId?.value_order?.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }
@@ -124,7 +118,7 @@ function OrderIdPanel({ orderid }: Props) {
           <div>
             <span>Frete</span>
             <span>
-              { orderId.carrier?.delivery_value.toLocaleString('pt-br', {
+              { orderId?.carrier.delivery_value.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }
@@ -137,7 +131,7 @@ function OrderIdPanel({ orderid }: Props) {
           <div>
             <span>Total</span>
             <span>
-              { (orderId.value_order + orderId.carrier.delivery_value)?.toLocaleString('pt-br', {
+              { totalOrder.toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',
               }) }

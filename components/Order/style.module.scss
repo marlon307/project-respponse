@@ -35,6 +35,18 @@
   h2 {
     color: var(--color-grey);
   }
+
+  .row {
+    display: flex;
+    gap: 1em;
+  }
+
+  select {
+    background: transparent;
+    border-radius: 6px;
+    padding: 0 8px;
+    border: 1px solid var(--color-border);
+  }
 }
 
 .progressbar {
