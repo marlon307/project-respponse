@@ -8,13 +8,13 @@ import BarColors from 'components/Bars/BarColors';
 import { api2 } from 'service/api';
 import { ButtonNext, ButtonPrev } from 'components/Buttons/Buttons';
 import CardProduct from 'components/Cards/CardProduct/CardProduct';
-import type { ICardProduct } from '../../../@types/typeCardProduct';
+import type { PropsProduct } from '../../../@types/typeCardProduct';
 import type { Props, TypeProduct } from './product';
 import style from './style.module.scss';
 
 interface PropsReponse {
   product: TypeProduct
-  similar: ICardProduct['products'],
+  similar: PropsProduct[],
 }
 
 async function getProductID(prodID: number): Promise<PropsReponse> {
