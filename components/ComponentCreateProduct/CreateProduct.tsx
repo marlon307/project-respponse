@@ -275,10 +275,18 @@ function CreateProduct({ propsCreateProduct }: Props) {
               { listSizes.map(({ id, size }) => (
                 <tr className={ style.group_size } key={ id }>
                   <td><span>{ size }</span></td>
-                  <td><InputSmall title="L" name={ `width-${id}` } placeholder="0.0" /></td>
-                  <td><InputSmall title="A" name={ `height-${id}` } placeholder="0.0" /></td>
-                  <td><InputSmall title="C" name={ `length-${id}` } placeholder="0.0" /></td>
-                  <td><InputSmall title="P" name={ `weight-${id}` } placeholder="0.0" /></td>
+                  <td>
+                    <InputSmall title="L" name={ `width-${id}` } placeholder="0.0" />
+                  </td>
+                  <td>
+                    <InputSmall title="A" name={ `height-${id}` } placeholder="0.0" />
+                  </td>
+                  <td>
+                    <InputSmall title="C" name={ `length-${id}` } placeholder="0.0" />
+                  </td>
+                  <td>
+                    <InputSmall title="P" name={ `weight-${id}` } placeholder="0.0" />
+                  </td>
                 </tr>
               )) }
             </tbody>
